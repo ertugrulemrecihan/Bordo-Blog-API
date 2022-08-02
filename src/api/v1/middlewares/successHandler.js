@@ -9,10 +9,10 @@ const successHandler = (req, res, next) => {
             statusCode: response.statusCode
         };
         if (response instanceof ApiSuccess) {
-            return res.json(resJson);
+            return res.status(resJson.statusCode).json(resJson);
         } else if (response instanceof ApiDataSuccess) {
             resJson.data = response.data;
-            return res.json(resJson);
+            return res.status(resJson.statusCode).json(resJson);
         }
     } else {
         return next();
