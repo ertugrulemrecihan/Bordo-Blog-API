@@ -1,0 +1,37 @@
+{
+  "name": "bordo.io-staj-back-end",
+  "version": "0.0.0",
+  "description": "",
+  "main": "app.js",
+  "scripts": {
+    "start": "node src/app.js",
+    "lint": "exlint src/**/*.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ertugrulchn/Bordo.io-Staj-Back-End.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ertugrulchn/Bordo.io-Staj-Back-End/issues"
+  },
+  "homepage": "https://github.com/ertugrulchn/Bordo.io-Staj-Back-End#readme",
+  "dependencies": {
+    "bcrypt": "^5.0.1",
+    "cors": "^2.8.5",
+    "crpyto-js": "^0.0.1-security",
+    "dotenv": "^16.0.1",
+    "express": "^4.18.1",
+    "http-status": "^1.5.2",
+    "joi": "^17.6.0",
+    "json-web-token": "^3.2.0",
+    "nodemailer": "^6.7.7",
+    "nodemailer-express-handlebars": "^5.0.0"
+  },
+  "devDependencies": {
+    "eslint": "^8.21.0",
+    "nodemon": "^2.0.19"
+  }
+}

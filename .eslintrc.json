@@ -1,0 +1,26 @@
+{
+    "extends": "eslint:recommended",
+    "parserOptions": {
+        "ecmaVersion": 5,
+        "sourceType": "module",
+        "ecmaFeatures": {
+            "jsx": true,
+            "experimentalObjectRestSpread": true
+        }
+    },
+    "env": {
+        "node": true
+    },
+    "rules": {
+        "indent": [
+            "error",
+            "tab"
+        ],
+        "global-require": [
+            "error"
+        ],
+        "handle-callback-err": [
+            "error"
+        ]
+    }
+}
