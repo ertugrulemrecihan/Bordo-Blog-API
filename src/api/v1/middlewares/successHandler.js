@@ -9,10 +9,10 @@ const successHandler = (req, res, next) => {
             success: true,
         };
 
-        if (response instanceof ApiSuccess) {
-            return res.status(response.statusCode).json(resJson);
-        } else if (response instanceof ApiDataSuccess) {
+        if (response instanceof ApiDataSuccess) {
             resJson.data = response.data;
+            return res.status(response.statusCode).json(resJson);
+        } else if (response instanceof ApiSuccess) {
             return res.status(response.statusCode).json(resJson);
         } else {
             return next(new Error("Invalid response type"));
