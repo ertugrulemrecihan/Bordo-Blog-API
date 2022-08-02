@@ -6,13 +6,16 @@ const successHandler = (req, res, next) => {
         const response = res.locals.apiResponse;
         const resJson = {
             message: response.message,
-            statusCode: response.statusCode
+            success: true,
         };
+
         if (response instanceof ApiSuccess) {
-            return res.status(resJson.statusCode).json(resJson);
+            return res.status(response.statusCode).json(resJson);
         } else if (response instanceof ApiDataSuccess) {
             resJson.data = response.data;
-            return res.status(resJson.statusCode).json(resJson);
+            return res.status(response.statusCode).json(resJson);
+        } else {
+            return next(new Error("Invalid response type"));
         }
     } else {
         return next();
