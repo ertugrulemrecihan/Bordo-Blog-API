@@ -2,7 +2,7 @@ const mongoose = require("mongoose");
 
 const PasswordResetSchema = mongoose.Schema(
     {
-        account_id: {
+        user_id: {
             type: mongoose.Schema.Types.ObjectId,
             required: true,
         },

@@ -6,13 +6,13 @@ const RoleSchema = mongoose.Schema(
             type: String,
             min: 3,
             max: 50,
-            require: true,
+            required: true,
         },
         description: {
             type: String,
             min: 3,
             max: 50,
-            require: true,
+            required: true,
         },
     },
     {

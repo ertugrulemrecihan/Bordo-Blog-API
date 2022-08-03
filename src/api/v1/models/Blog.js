@@ -28,14 +28,14 @@ const BlogSchema = mongoose.Schema({
     viewers: [
         {
             type: mongoose.Schema.Types.ObjectId,
-            ref: "account",
+            ref: "user",
             required: true,
         },
     ],
     likes: [
         {
             type: mongoose.Schema.Types.ObjectId,
-            ref: "account",
+            ref: "user",
             required: true,
         },
     ],
