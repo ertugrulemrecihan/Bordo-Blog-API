@@ -1,0 +1,20 @@
+const httpStatus = require('http-status');
+const ApiError = require('../responses/error/apiError');
+
+const bodyValidator = (schema) => (req, res, next) => {
+    const options = {
+        errors: { wrap: { label: '\'' } },
+        abortEarly: false,
+    };
+
+    const { error } = schema.validate(req.body, options);
+
+    if (error) {
+        const errorMessage = error.details.map(detail => detail.message).join(', ');
+        throw new ApiError(errorMessage, httpStatus.BAD_REQUEST);
+    }
+
+    next();
+};
+
+module.exports = bodyValidator;
