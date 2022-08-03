@@ -107,7 +107,7 @@ class UserController {
                 subject: 'Password Reset Successful',
                 template: 'passwordResetSuccess',
                 context: {
-                    fullName: user.firstName + ' ' + user.lastName,
+                    fullName: user.first_name + ' ' + user.last_name,
                 }
             });
 
@@ -141,7 +141,7 @@ class UserController {
             subject: 'Password Changed',
             template: 'passwordChanged',
             context: {
-                fullName: user.firstName + ' ' + user.lastName,
+                fullName: user.first_name + ' ' + user.last_name,
             }
         });
 
