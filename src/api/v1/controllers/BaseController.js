@@ -6,8 +6,11 @@ class BaseController {
     constructor(service) {
         this.service = service;
 
-        this.singleModelName = this.service.model.modelName;
-        this.pluralModelName = this.service.model.collection.name;
+        const singleModelName = this.service.model.modelName;
+        const pluralModelName = this.service.model.collection.name;
+        // Capitalize first letters
+        this.singleModelName = singleModelName.charAt(0).toUpperCase() + singleModelName.slice(1);
+        this.pluralModelName = pluralModelName.charAt(0).toUpperCase() + pluralModelName.slice(1);
     }
 
     fetchAll = async (req, res, next) => {
