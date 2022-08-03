@@ -1,11 +1,13 @@
 const express = require("express");
 const config = require("./config");
 const loaders = require("./loaders");
+const events = require("./api/v1/scripts/events");
 const successHandler = require("./api/v1/middlewares/successHandler");
 const errorHandler = require("./api/v1/middlewares/errorHandler");
 
 config();
 loaders();
+events();
 
 const app = express();
 app.use(express.json());
