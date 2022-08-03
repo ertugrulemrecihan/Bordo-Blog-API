@@ -26,7 +26,6 @@ class UserController {
             new ApiDataSuccess(response, "Registration successful", httpStatus.CREATED).place(res);
             return next();
         } catch (error) {
-            console.log('error :>> ', error);
             if (error.code === 11000) return next(new ApiError("Email already exists", httpStatus.CONFLICT));
             return next(new ApiError("Registration failed", httpStatus.INTERNAL_SERVER_ERROR));
         }

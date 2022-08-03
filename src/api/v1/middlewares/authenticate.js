@@ -9,8 +9,6 @@ const authenticate = (req, res, next) => {
     JWT.verify(token, process.env.JWT_ACCESS_SECRET, (err, decoded) => {
         if (err) return next(new ApiError('Invalid token', httpStatus.UNAUTHORIZED));
 
-        console.log('decoded :>> ', decoded);
-
         req.user = decoded.data;
         next();
     });
