@@ -7,6 +7,8 @@ const bodyValidator = (schema) => (req, res, next) => {
         abortEarly: false,
     };
 
+    if (!req.body) return next(new ApiError('Request body must not be empty', httpStatus.BAD_REQUEST));
+
     const { error } = schema.validate(req.body, options);
 
     if (error) {
