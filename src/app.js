@@ -14,6 +14,7 @@ const app = express();
 app.use(express.json());
 
 app.use("/api/v1/user", routes.user);
+app.use("/api/v1/role", routes.role);
 
 app.use(successHandler);
 app.use(errorHandler);

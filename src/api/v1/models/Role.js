@@ -11,7 +11,7 @@ const RoleSchema = mongoose.Schema(
         description: {
             type: String,
             min: 3,
-            max: 50,
+            max: 150,
             required: true,
         },
     },
