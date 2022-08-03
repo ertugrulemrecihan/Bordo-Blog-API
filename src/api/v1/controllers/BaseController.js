@@ -27,12 +27,16 @@ class BaseController {
     fetchOneByQuery = async (req, res, next) => {
         const response = await this.service.fetchOneByQuery(req.query);
 
+        if (!response) return next(new ApiError(`${this.singleModelName} not found`, httpStatus.NOT_FOUND));
+
         new ApiDataSuccess(response, `${this.singleModelName} fetched successfully`, httpStatus.OK).place(res);
         return next();
     };
 
     fetchOneByParamsId = async (req, res, next) => {
         const response = await this.service.fetchOneById(req.params.id);
+
+        if (!response) return next(new ApiError(`${this.singleModelName} not found`, httpStatus.NOT_FOUND));
 
         new ApiDataSuccess(response, `${this.singleModelName} fetched successfully`, httpStatus.OK).place(res);
         return next();
