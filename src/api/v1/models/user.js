@@ -26,7 +26,6 @@ const UserSchema = Mongoose.Schema(
                 min: 10,
                 max: 10,
                 required: false,
-                unique: true,
             },
             required: false,
         },
