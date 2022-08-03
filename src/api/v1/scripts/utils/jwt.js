@@ -16,9 +16,19 @@ const decodePasswordResetToken = (token) => {
     return JWT.verify(token, process.env.JWT_PASSWORD_RESET_SECRET);
 };
 
+const generateEmailVerifyToken = (data) => {
+    return JWT.sign({ data }, process.env.JWT_EMAIL_VERIFY_SECRET, { expiresIn: process.env.JWT_EMAIL_VERIFY_EXP * 60 });
+};
+
+const decodeEmailVerifyToken = (token) => {
+    return JWT.verify(token, process.env.JWT_EMAIL_VERIFY_SECRET);
+};
+
 module.exports = {
     generateAccessToken,
     generateRefreshToken,
     generatePasswordResetToken,
-    decodePasswordResetToken
+    decodePasswordResetToken,
+    generateEmailVerifyToken,
+    decodeEmailVerifyToken
 };

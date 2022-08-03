@@ -20,6 +20,10 @@ const createPasswordResetTokenValidation = Joi.object({
     email: Joi.string().required().email(),
 });
 
+const createEmailVerifyTokenValidation = Joi.object({
+    email: Joi.string().required().email(),
+});
+
 const passwordResetValidation = Joi.object({
     token: Joi.string().required().min(6),
     new_password: Joi.string().required().min(8).regex(/^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&*()+?])(?=.{8,})/),
@@ -31,10 +35,16 @@ const changePasswordValidation = Joi.object({
     new_password: Joi.string().required().min(8).regex(/^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&*()+?])(?=.{8,})/).invalid(Joi.ref('oldPassword')),
 });
 
+const emailVerify = Joi.object({
+    token: Joi.string().required().min(6),
+});
+
 module.exports = {
     loginValidation,
     registerValidation,
     createPasswordResetTokenValidation,
     passwordResetValidation,
     changePasswordValidation,
+    createEmailVerifyTokenValidation,
+    emailVerify
 };

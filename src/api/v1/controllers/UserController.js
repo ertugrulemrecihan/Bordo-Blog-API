@@ -8,6 +8,7 @@ const ApiDataSuccess = require('../responses/success/apiDataSuccess');
 const ApiError = require('../responses/error/apiError');
 const eventEmitter = require('../scripts/events/eventEmitter');
 const ApiSuccess = require('../responses/success/apiSuccess');
+const emailVerifyService = require('../services/EmailVerifyService');
 
 class UserController {
     async register(req, res, next) {
@@ -20,12 +21,18 @@ class UserController {
             const user = await service.create(req.body);
             const response = userHelper.createResponse(user);
 
-            //! FIXME - Add email verification
-            // new ApiDataSuccess(response, "Registration successful. Email verification sent as email.", httpStatus.CREATED).place(res);
+            try {
+                await userHelper.createAndVerifyEmail(req.body.email);
+            } catch (error) {
+                console.log(error);
+                new ApiSuccess("Your Registration Has Been Created Successfully, but the verification link could not be sent", httpStatus.OK).place(res)
+                return next()
+            }
 
             new ApiDataSuccess(response, "Registration successful", httpStatus.CREATED).place(res);
             return next();
         } catch (error) {
+            console.log(error);
             if (error.code === 11000) return next(new ApiError("Email already exists", httpStatus.CONFLICT));
             return next(new ApiError("Registration failed", httpStatus.INTERNAL_SERVER_ERROR));
         }
@@ -146,6 +153,52 @@ class UserController {
 
         new ApiSuccess("Password has been changed", httpStatus.OK).place(res);
         return next();
+    }
+
+    async getEmailVerifyToken(req, res, next) {
+        try {
+            const successResult = await userHelper.createAndVerifyEmail(req.body.email);
+            successResult.place(res);
+            return next()
+        } catch (error) {
+            return next(error)
+        }
+    }
+
+    async confirmEmail(req, res, next) {
+        try {
+            const decodedToken = jwtHelper.decodeEmailVerifyToken(req.body.token);
+
+            const user = await service.fetchOneByQuery({ _id: decodedToken.data._id, email: decodedToken.data.email });
+            if (!user) throw new Error();
+
+            const currentVerifyToken = await emailVerifyService.fetchOneByQuery({ user_id: user._id });
+            if (!currentVerifyToken) throw new Error();
+
+            if (currentVerifyToken.token !== req.body.token) throw new Error();
+
+            const result = await service.updateById(user._id, {
+                email_is_verified: true
+            })
+
+            if (!result) return next(new ApiError("Email Verification Failed", httpStatus.INTERNAL_SERVER_ERROR));
+
+            await emailVerifyService.deleteById(currentVerifyToken._id)
+
+            eventEmitter.emit('send_email', {
+                to: user.email,
+                subject: 'Email Verify Successful',
+                template: 'emailVerifySuccess',
+                context: {
+                    fullName: user.first_name + ' ' + user.last_name,
+                }
+            })
+
+            new ApiSuccess("Email Verified", httpStatus.OK).place(res);
+            return next()
+        } catch (error) {
+            return next(new ApiError("Invalid or expired email verification reset token", httpStatus.UNAUTHORIZED));
+        }
     }
 }
 
