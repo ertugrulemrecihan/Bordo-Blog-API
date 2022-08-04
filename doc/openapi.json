@@ -1,0 +1,114 @@
+{
+    "openapi": "3.0.1",
+    "info": {
+        "version": "v1",
+        "title": "Blogs",
+        "description": "Blog Management API",
+        "contact": {},
+        "license": {
+            "name": "Apache 2.0",
+            "url": "https://www.apache.org/licenses/LICENSE-2.0.html"
+        }
+    },
+    "servers": [
+        {
+            "url": "http://localhost:3000/api/v1",
+            "description": "Local server"
+        }
+    ],
+    "tags": [
+        {
+            "name": "Users",
+            "description": "User Authentication"
+        },
+        {
+            "name": "Tags",
+            "description": "Tag CRUD"
+        }
+    ],
+    "paths": {
+        "/user/login": {
+            "$ref": "./paths/user-login.json"
+        },
+        "/user/register": {
+            "$ref": "./paths/user-register.json"
+        },
+        "/user/get-password-reset-token": {
+            "$ref": "./paths/user-get-password-reset-token.json"
+        },
+        "/user/get-email-verify-token": {
+            "$ref": "./paths/user-get-email-verify-token.json"
+        },
+        "/user/password-reset": {
+            "$ref": "./paths/user-reset-password.json"
+        },
+        "/user/email-confirm": {
+            "$ref": "./paths/user-email-confirm.json"
+        },
+        "/user/change-password": {
+            "$ref": "./paths/user-change-password.json"
+        }
+    },
+    "components": {
+        "requestBodies": {
+            "user-login": {
+                "$ref": "./request-bodies/user-login.json"
+            },
+            "user-register": {
+                "$ref": "./request-bodies/user-register.json"
+            },
+            "user-get-password-reset-token": {
+                "$ref": "./request-bodies/user-get-password-reset-token.json"
+            },
+            "user-get-email-verify-token": {
+                "$ref": "./request-bodies/user-get-email-verify-token.json"
+            },
+            "user-reset-password": {
+                "$ref": "./request-bodies/user-reset-password.json"
+            },
+            "user-email-confirm": {
+                "$ref": "./request-bodies/user-email-confirm.json"
+            },
+            "user-change-password": {
+                "$ref": "./request-bodies/user-change-password.json"
+            }
+        },
+        "schemas": {
+            "user-login": {
+                "$ref": "./schemas/user-login.json"
+            },
+            "user-register": {
+                "$ref": "./schemas/user-register.json"
+            },
+            "user-get-password-reset-token": {
+                "$ref": "./schemas/user-get-password-reset-token.json"
+            },
+            "user-get-email-verify-token": {
+                "$ref": "./schemas/user-get-email-verify-token.json"
+            },
+            "user-password-reset": {
+                "$ref": "./schemas/user-reset-password.json"
+            },
+            "user-email-confirm": {
+                "$ref": "./schemas/user-email-confirm.json"
+            },
+            "user-change-password": {
+                "$ref": "./schemas/user-change-password.json"
+            },
+            "base": {
+                "$ref": "./schemas/base.json"
+            },
+            "error": {
+                "$ref": "./schemas/error.json"
+            }
+        },
+        "securitySchemes": {
+            "bearerAuth": {
+                "type": "http",
+                "description": "JWT Authorization header using the Bearer scheme.",
+                "scheme": "bearer",
+                "bearerFormat": "JWT"
+            }
+        }
+    }
+}

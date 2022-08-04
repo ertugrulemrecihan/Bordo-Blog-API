@@ -1,0 +1,21 @@
+{
+    "allOf": [
+        {
+            "$ref": "./base.json"
+        },
+        {
+            "type": "object",
+            "properties": {
+                "email": {
+                    "title": "User Email Address",
+                    "description": "User Email Address",
+                    "type": "string",
+                    "format": "email"
+                }
+            }
+        }
+    ],
+    "required": [
+        "email"
+    ]
+}
