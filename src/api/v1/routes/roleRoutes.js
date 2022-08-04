@@ -7,10 +7,10 @@ const bodyValidator = require("../middlewares/bodyValidator");
 const schemas = require('../validations/role')
 const paramIdValidator = require('../middlewares/paramsIdValidator');
 
-router.get("", authenticate, authorize('Admin'), controller.fetchAllByQuery);
+router.get("/", authenticate, authorize('Admin'), controller.fetchAllByQuery);
 router.get("/:id", authenticate, authorize('Admin'), paramIdValidator, controller.fetchOneByParamsId);
 router.post("/create-role", authenticate, authorize('Admin'), bodyValidator(schemas.createValidations), controller.create);
-router.put("/update-role/:id", authenticate, authorize('Admin'), paramIdValidator, controller.updateByParamsId);
+router.put("/update-role/:id", authenticate, authorize('Admin'), paramIdValidator, bodyValidator(schemas.updateValidations), controller.updateByParamsId);
 router.delete("/delete-role/:id", authenticate, authorize('Admin'), paramIdValidator, controller.deleteByParamsId);
 
 module.exports = router;
