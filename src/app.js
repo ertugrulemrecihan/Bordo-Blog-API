@@ -15,6 +15,7 @@ app.use(express.json());
 
 app.use("/api/v1/user", routes.user);
 app.use("/api/v1/role", routes.role);
+app.use("/api/v1/tag", routes.tag);
 
 app.use(successHandler);
 app.use(errorHandler);

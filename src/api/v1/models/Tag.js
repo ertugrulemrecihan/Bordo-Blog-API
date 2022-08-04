@@ -1,16 +1,22 @@
 const mongoose = require("mongoose");
 
-const TagSchema = mongoose.Schema({
-    name: {
-        type: String,
-        required: true,
+const TagSchema = mongoose.Schema(
+    {
+        name: {
+            type: String,
+            required: true,
+            min: 3,
+            max: 50,
+        },
+        post_count: {
+            type: Number,
+            default: 0,
+        },
     },
-    post_count: {
-        type: Number,
+    {
+        timestamps: true,
+        versionKey: false,
     }
-}, {
-    timestamps: true,
-    versionKey: false
-});
+);
 
-module.exports = mongoose.model('tag', TagSchema);
+module.exports = mongoose.model("tag", TagSchema);
