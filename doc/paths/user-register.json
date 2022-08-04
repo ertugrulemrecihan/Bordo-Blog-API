@@ -1,0 +1,34 @@
+{
+    "summary": "",
+    "description": "",
+    "post": {
+        "tags": [
+            "Users"
+        ],
+        "summary": "Register",
+        "description": "Register",
+        "operationId": "users.register",
+        "security": [
+            {
+                "bearerAuth": []
+            }
+        ],
+        "requestBody": {
+            "$ref": "../request-bodies/user-register.json"
+        },
+        "responses": {
+            "201": {
+                "$ref": "../responses/user-register.json"
+            },
+            "400": {
+                "$ref": "../responses/400.json"
+            },
+            "401": {
+                "$ref": "../responses/401.json"
+            },
+            "404": {
+                "$ref": "../responses/404.json"
+            }
+        }
+    }
+}

@@ -1,0 +1,28 @@
+{
+    "type": "object",
+    "properties": {
+        "_id": {
+            "title": "Document Id",
+            "description": "Id of the document",
+            "type": "string",
+            "readOnly": true,
+            "example": "1234567890abcdefghijklmn"
+        },
+        "createdAt": {
+            "title": "Document Creation Date",
+            "description": "The `createdAt` value is determined automatically by the API.",
+            "type": "string",
+            "format": "date-time",
+            "readOnly": true
+        },
+        "updatedAt": {
+            "title": "Document Update Date",
+            "description": "The `updatedAt` value is determined automatically by the API.",
+            "type": "string",
+            "format": "date-time",
+            "readOnly": true,
+            "nullable": true
+        }
+    },
+    "required": []
+}

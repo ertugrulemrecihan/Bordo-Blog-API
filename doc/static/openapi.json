@@ -1,0 +1,655 @@
+{
+  "openapi": "3.0.1",
+  "info": {
+    "version": "v1",
+    "title": "Blogs",
+    "description": "Blog Management API",
+    "contact": {},
+    "license": {
+      "name": "Apache 2.0",
+      "url": "https://www.apache.org/licenses/LICENSE-2.0.html"
+    }
+  },
+  "servers": [
+    {
+      "url": "http://localhost:3000/api/v1",
+      "description": "Local server"
+    }
+  ],
+  "tags": [
+    {
+      "name": "Users",
+      "description": "User Authentication"
+    },
+    {
+      "name": "Tags",
+      "description": "Tag CRUD"
+    }
+  ],
+  "paths": {
+    "/user/login": {
+      "summary": "",
+      "description": "",
+      "post": {
+        "tags": [
+          "Users"
+        ],
+        "summary": "Login Own Account",
+        "description": "Login Account",
+        "operationId": "users.login",
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "requestBody": {
+          "$ref": "#/components/requestBodies/user-login"
+        },
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "$ref": "#/components/schemas/user-login"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Unexpected error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/error"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unexpected error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/error"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Unexpected error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/error"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/user/register": {
+      "summary": "",
+      "description": "",
+      "post": {
+        "tags": [
+          "Users"
+        ],
+        "summary": "Register",
+        "description": "Register",
+        "operationId": "users.register",
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "requestBody": {
+          "$ref": "#/components/requestBodies/user-register"
+        },
+        "responses": {
+          "201": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "$ref": "#/components/schemas/user-register"
+                }
+              }
+            }
+          },
+          "400": {
+            "$ref": "#/paths/~1user~1login/post/responses/400"
+          },
+          "401": {
+            "$ref": "#/paths/~1user~1login/post/responses/401"
+          },
+          "404": {
+            "$ref": "#/paths/~1user~1login/post/responses/404"
+          }
+        }
+      }
+    },
+    "/user/get-password-reset-token": {
+      "summary": "",
+      "description": "",
+      "post": {
+        "tags": [
+          "Users"
+        ],
+        "summary": "Reset password",
+        "description": "If you forgot password try this",
+        "operationId": "users.get-password-reset-token",
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "requestBody": {
+          "$ref": "#/components/requestBodies/user-get-password-reset-token"
+        },
+        "responses": {
+          "200": {
+            "description": "Unexpected error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/user-get-password-reset-token"
+                }
+              }
+            }
+          },
+          "400": {
+            "$ref": "#/paths/~1user~1login/post/responses/400"
+          },
+          "401": {
+            "$ref": "#/paths/~1user~1login/post/responses/401"
+          },
+          "404": {
+            "$ref": "#/paths/~1user~1login/post/responses/404"
+          }
+        }
+      }
+    },
+    "/user/get-email-verify-token": {
+      "summary": "",
+      "description": "",
+      "post": {
+        "tags": [
+          "Users"
+        ],
+        "summary": "Verify Email Address",
+        "description": "Email Verify Token",
+        "operationId": "users.get-email-verify-token",
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "requestBody": {
+          "$ref": "#/components/requestBodies/user-get-email-verify-token"
+        },
+        "responses": {
+          "200": {
+            "description": "Unexpected error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/user-get-email-verify-token"
+                }
+              }
+            }
+          },
+          "400": {
+            "$ref": "#/paths/~1user~1login/post/responses/400"
+          },
+          "401": {
+            "$ref": "#/paths/~1user~1login/post/responses/401"
+          },
+          "404": {
+            "$ref": "#/paths/~1user~1login/post/responses/404"
+          }
+        }
+      }
+    },
+    "/user/password-reset": {
+      "summary": "",
+      "description": "",
+      "post": {
+        "tags": [
+          "Users"
+        ],
+        "summary": "Reset Password",
+        "description": "Reset Password",
+        "operationId": "users.reset-password",
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "requestBody": {
+          "$ref": "#/components/requestBodies/user-reset-password"
+        },
+        "responses": {
+          "201": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "$ref": "#/components/schemas/user-password-reset"
+                }
+              }
+            }
+          },
+          "400": {
+            "$ref": "#/paths/~1user~1login/post/responses/400"
+          },
+          "401": {
+            "$ref": "#/paths/~1user~1login/post/responses/401"
+          },
+          "404": {
+            "$ref": "#/paths/~1user~1login/post/responses/404"
+          }
+        }
+      }
+    },
+    "/user/email-confirm": {
+      "summary": "",
+      "description": "",
+      "post": {
+        "tags": [
+          "Users"
+        ],
+        "summary": "Email Verify",
+        "description": "Email Verify",
+        "operationId": "users.email-confirm",
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "requestBody": {
+          "$ref": "#/components/requestBodies/user-email-confirm"
+        },
+        "responses": {
+          "201": {
+            "$ref": "#/paths/~1user~1register/post/responses/201"
+          },
+          "400": {
+            "$ref": "#/paths/~1user~1login/post/responses/400"
+          },
+          "401": {
+            "$ref": "#/paths/~1user~1login/post/responses/401"
+          },
+          "404": {
+            "$ref": "#/paths/~1user~1login/post/responses/404"
+          }
+        }
+      }
+    },
+    "/user/change-password": {
+      "summary": "",
+      "description": "",
+      "post": {
+        "tags": [
+          "Users"
+        ],
+        "summary": "Change Password",
+        "description": "Change Password",
+        "operationId": "users.change-password",
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "requestBody": {
+          "$ref": "#/components/requestBodies/user-change-password"
+        },
+        "responses": {
+          "201": {
+            "description": "Unexpected error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/user-change-password"
+                }
+              }
+            }
+          },
+          "400": {
+            "$ref": "#/paths/~1user~1login/post/responses/400"
+          },
+          "401": {
+            "$ref": "#/paths/~1user~1login/post/responses/401"
+          },
+          "404": {
+            "$ref": "#/paths/~1user~1login/post/responses/404"
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "requestBodies": {
+      "user-login": {
+        "description": "",
+        "content": {
+          "application/json": {
+            "schema": {
+              "type": "object",
+              "$ref": "#/components/schemas/user-login"
+            }
+          }
+        }
+      },
+      "user-register": {
+        "description": "",
+        "content": {
+          "application/json": {
+            "schema": {
+              "type": "object",
+              "$ref": "#/components/schemas/user-register"
+            }
+          }
+        }
+      },
+      "user-get-password-reset-token": {
+        "description": "",
+        "content": {
+          "application/json": {
+            "schema": {
+              "type": "object",
+              "$ref": "#/components/schemas/user-get-password-reset-token"
+            }
+          }
+        }
+      },
+      "user-get-email-verify-token": {
+        "description": "",
+        "content": {
+          "application/json": {
+            "schema": {
+              "type": "object",
+              "$ref": "#/components/schemas/user-get-email-verify-token"
+            }
+          }
+        }
+      },
+      "user-reset-password": {
+        "description": "",
+        "content": {
+          "application/json": {
+            "schema": {
+              "type": "object",
+              "$ref": "#/components/schemas/user-password-reset"
+            }
+          }
+        }
+      },
+      "user-email-confirm": {
+        "description": "",
+        "content": {
+          "application/json": {
+            "schema": {
+              "type": "object",
+              "$ref": "#/components/schemas/user-email-confirm"
+            }
+          }
+        }
+      },
+      "user-change-password": {
+        "description": "",
+        "content": {
+          "application/json": {
+            "schema": {
+              "type": "object",
+              "$ref": "#/components/schemas/user-change-password"
+            }
+          }
+        }
+      }
+    },
+    "schemas": {
+      "user-login": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/base"
+          },
+          {
+            "type": "object",
+            "properties": {
+              "email": {
+                "title": "User Email Address",
+                "description": "User Email Address",
+                "type": "string",
+                "format": "email"
+              },
+              "password": {
+                "title": "User password",
+                "description": "User password",
+                "type": "string",
+                "minLength": 10
+              }
+            }
+          }
+        ],
+        "required": [
+          "email",
+          "password"
+        ]
+      },
+      "user-register": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/base"
+          },
+          {
+            "type": "object",
+            "properties": {
+              "first_name": {
+                "title": "User First Name",
+                "description": "If the user's first name is longer than the allowed length, it will be truncated and saved.",
+                "type": "string",
+                "maxLength": 100
+              },
+              "last_name": {
+                "title": "User Last Name",
+                "description": "If the user's last name is longer than the allowed length, it will be truncated and saved.",
+                "type": "string",
+                "maxLength": 100
+              },
+              "email": {
+                "title": "User Email Address",
+                "description": "User Email Address",
+                "type": "string",
+                "format": "email"
+              },
+              "password": {
+                "title": "User password",
+                "description": "User password",
+                "type": "string",
+                "minLength": 10
+              }
+            }
+          }
+        ],
+        "required": [
+          "first_name",
+          "last_name",
+          "email",
+          "password"
+        ]
+      },
+      "user-get-password-reset-token": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/base"
+          },
+          {
+            "type": "object",
+            "properties": {
+              "email": {
+                "title": "User Email Address",
+                "description": "User Email Address",
+                "type": "string",
+                "format": "email"
+              }
+            }
+          }
+        ],
+        "required": [
+          "email"
+        ]
+      },
+      "user-get-email-verify-token": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/base"
+          },
+          {
+            "type": "object",
+            "properties": {
+              "email": {
+                "title": "User Email Address",
+                "description": "User Email Address",
+                "type": "string",
+                "format": "email"
+              }
+            }
+          }
+        ],
+        "required": [
+          "email"
+        ]
+      },
+      "user-password-reset": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/base"
+          },
+          {
+            "type": "object",
+            "properties": {
+              "password": {
+                "title": "You'r password",
+                "description": "You'r password",
+                "type": "string"
+              },
+              "new_password": {
+                "title": "New Password",
+                "description": "New Password",
+                "type": "string"
+              }
+            }
+          }
+        ],
+        "required": [
+          "password",
+          "new_password"
+        ]
+      },
+      "user-email-confirm": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/base"
+          },
+          {
+            "type": "object",
+            "properties": {
+              "token": {
+                "title": "Token",
+                "description": "Email Verify Token",
+                "type": "string"
+              }
+            }
+          }
+        ],
+        "required": [
+          "token"
+        ]
+      },
+      "user-change-password": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/base"
+          },
+          {
+            "type": "object",
+            "properties": {
+              "old_password": {
+                "title": "You'r Old Password",
+                "description": "You'r Old Password",
+                "type": "string"
+              },
+              "new_password": {
+                "title": "You'r New Password",
+                "description": "You'r New Password",
+                "type": "string"
+              }
+            }
+          }
+        ],
+        "required": [
+          "old_password",
+          "new_password"
+        ]
+      },
+      "base": {
+        "type": "object",
+        "properties": {
+          "_id": {
+            "title": "Document Id",
+            "description": "Id of the document",
+            "type": "string",
+            "readOnly": true,
+            "example": "1234567890abcdefghijklmn"
+          },
+          "createdAt": {
+            "title": "Document Creation Date",
+            "description": "The `createdAt` value is determined automatically by the API.",
+            "type": "string",
+            "format": "date-time",
+            "readOnly": true
+          },
+          "updatedAt": {
+            "title": "Document Update Date",
+            "description": "The `updatedAt` value is determined automatically by the API.",
+            "type": "string",
+            "format": "date-time",
+            "readOnly": true,
+            "nullable": true
+          }
+        },
+        "required": []
+      },
+      "error": {
+        "type": "object",
+        "required": [],
+        "properties": {
+          "error": {
+            "properties": {
+              "message": {
+                "type": "string"
+              }
+            }
+          },
+          "success": {
+            "type": "boolean",
+            "default": false
+          }
+        }
+      }
+    },
+    "securitySchemes": {
+      "bearerAuth": {
+        "type": "http",
+        "description": "JWT Authorization header using the Bearer scheme.",
+        "scheme": "bearer",
+        "bearerFormat": "JWT"
+      }
+    }
+  }
+}

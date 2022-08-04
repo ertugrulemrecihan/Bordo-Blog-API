@@ -1,0 +1,42 @@
+{
+    "allOf": [
+        {
+            "$ref": "./base.json"
+        },
+        {
+            "type": "object",
+            "properties": {
+                "first_name": {
+                    "title": "User First Name",
+                    "description": "If the user's first name is longer than the allowed length, it will be truncated and saved.",
+                    "type": "string",
+                    "maxLength": 100
+                },
+                "last_name": {
+                    "title": "User Last Name",
+                    "description": "If the user's last name is longer than the allowed length, it will be truncated and saved.",
+                    "type": "string",
+                    "maxLength": 100
+                },
+                "email": {
+                    "title": "User Email Address",
+                    "description": "User Email Address",
+                    "type": "string",
+                    "format": "email"
+                },
+                "password": {
+                    "title": "User password",
+                    "description": "User password",
+                    "type": "string",
+                    "minLength": 10
+                }
+            }
+        }
+    ],
+    "required": [
+        "first_name",
+        "last_name",
+        "email",
+        "password"
+    ]
+}
