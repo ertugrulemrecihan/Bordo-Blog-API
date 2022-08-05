@@ -7,23 +7,28 @@ const bodyValidator = require("../../middlewares/bodyValidator");
 const schemas = require("../../validations/role");
 const paramIdValidator = require("../../middlewares/paramsIdValidator");
 
-router.get("/", authenticate, authorize("Admin"), controller.fetchAllByQuery);
 router.get(
-    "/:id",
+    "/getAll",
+    authenticate,
+    authorize("Admin"),
+    controller.fetchAllByQuery
+);
+router.get(
+    "/get/:id",
     authenticate,
     authorize("Admin"),
     paramIdValidator,
     controller.fetchOneByParamsId
 );
 router.post(
-    "/create-role",
+    "/create",
     authenticate,
     authorize("Admin"),
     bodyValidator(schemas.createValidations),
     controller.create
 );
 router.put(
-    "/update-role/:id",
+    "/update/:id",
     authenticate,
     authorize("Admin"),
     paramIdValidator,
@@ -31,7 +36,7 @@ router.put(
     controller.updateByParamsId
 );
 router.delete(
-    "/delete-role/:id",
+    "/delete/:id",
     authenticate,
     authorize("Admin"),
     paramIdValidator,
