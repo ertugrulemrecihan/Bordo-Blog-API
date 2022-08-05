@@ -14,8 +14,10 @@ const app = express();
 app.use(express.json());
 
 app.use("/api/v1/user", routes.user);
-app.use("/api/v1/role", routes.role);
-app.use("/api/v1/tag", routes.tag);
+
+// Admin Routes
+app.use("/api/v1/admin/role", routes.adminRole);
+app.use("/api/v1/admin/tag", routes.adminTag);
 
 app.use(successHandler);
 app.use(errorHandler);

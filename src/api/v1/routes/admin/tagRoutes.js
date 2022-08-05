@@ -1,11 +1,11 @@
 const express = require("express");
 const router = express.Router();
-const controller = require("../controllers/TagController");
-const authenticate = require("../middlewares/authenticate");
-const authorize = require("../middlewares/authorization");
-const bodyValidator = require("../middlewares/bodyValidator");
-const paramIdValidator = require("../middlewares/paramsIdValidator");
-const schemas = require("../validations/tag");
+const controller = require("../../controllers/TagController");
+const authenticate = require("../../middlewares/authenticate");
+const authorize = require("../../middlewares/authorization");
+const bodyValidator = require("../../middlewares/bodyValidator");
+const paramIdValidator = require("../../middlewares/paramsIdValidator");
+const schemas = require("../../validations/tag");
 
 router.route("/").get(authenticate, authorize("Admin"), controller.fetchAll);
 router.get(
