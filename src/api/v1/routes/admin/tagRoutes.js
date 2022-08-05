@@ -9,26 +9,26 @@ const schemas = require("../../validations/tag");
 
 router
     .route("/getAll")
-    .get(authenticate, authorize("Admin"), controller.fetchAll);
+    .get(authenticate, controller.fetchAll);
 router.get(
     "/get/:id",
     authenticate,
-    authorize("Admin"),
     paramIdValidator,
     controller.fetchOneByParamsId
 );
-router.post(
+router.put(
     "/create",
     authenticate,
     authorize("Admin"),
-    bodyValidator(schemas.createValidations),
+    bodyValidator(schemas.createValidation),
     controller.create
 );
-router.put(
+router.patch(
     "/update/:id",
     authenticate,
     authorize("Admin"),
     paramIdValidator,
+    bodyValidator(schemas.updateValidation),
     controller.updateByParamsId
 );
 router.delete(
