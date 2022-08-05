@@ -1,6 +1,11 @@
 const mongoose = require("mongoose");
 
 const PostSchema = mongoose.Schema({
+    writer_id: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "user",
+        required: "true"
+    },
     title: {
         type: String,
         min: 10,
@@ -48,10 +53,11 @@ const PostSchema = mongoose.Schema({
     ],
     tags: [
         {
-            type: String,
+            type: mongoose.Schema.Types.ObjectId,
+            ref: "tag",
             required: true,
         },
     ],
-});
+}, { timestamps: true, versionKey: false });
 
 module.exports = mongoose.model("post", PostSchema);
