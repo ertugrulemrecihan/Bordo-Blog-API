@@ -2,22 +2,22 @@ const Role = require("../api/v1/models/Role");
 const User = require("../api/v1/models/User");
 const { passwordToHash } = require("../api/v1/scripts/utils/password");
 
-const createRole = async () => {
-    const adminRole = await Role.findOne({ name: "Admin" });
+const createRole = async (roleName, roleDescription) => {
+    const role = await Role.findOne({ name: roleName });
 
-    let adminRoleId = null;
+    let roleId = null;
 
-    if (!adminRole) {
-        const role = new Role({
-            name: "Admin",
-            description: "Highest-Ranked Authority"
+    if (!role) {
+        const createdRole = new Role({
+            name: roleName,
+            description: roleDescription
         });
 
-        adminRoleId = await role.save();
+        roleId = await createdRole.save();
     } else {
-        adminRoleId = adminRole._id;
+        roleId = role._id;
     }
-    return adminRoleId;
+    return roleId;
 };
 
 const createAdminUser = async (adminRoleId) => {
@@ -47,6 +47,6 @@ const createAdminUser = async (adminRoleId) => {
 };
 
 module.exports = async () => {
-    const adminRoleId = await createRole();
+    const adminRoleId = await createRole("Admin", "User with access to everything");
     await createAdminUser(adminRoleId);
 };
