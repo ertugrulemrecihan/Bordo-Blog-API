@@ -1,6 +1,6 @@
-const Role = require("../api/v1/models/Role");
-const User = require("../api/v1/models/User");
-const { passwordToHash } = require("../api/v1/scripts/utils/password");
+const Role = require('../api/v1/models/Role');
+const User = require('../api/v1/models/User');
+const { passwordToHash } = require('../api/v1/scripts/utils/password');
 
 const createRole = async (roleName, roleDescription) => {
     const role = await Role.findOne({ name: roleName });
@@ -24,7 +24,7 @@ const createAdminUser = async (adminRoleId) => {
     const adminUser = await User.findOne({ email: process.env.ADMIN_EMAIL });
 
     if (adminUser) {
-        // adminUser._id
+        // AdminUser._id
         if (!adminUser.roles.some(role => role._id.toString() === adminRoleId.toString())) {
             adminUser.roles = [adminRoleId];  // Admin account only has Admin role
             await adminUser.save();
@@ -47,6 +47,6 @@ const createAdminUser = async (adminRoleId) => {
 };
 
 module.exports = async () => {
-    const adminRoleId = await createRole("Admin", "User with access to everything");
+    const adminRoleId = await createRole('Admin', 'User with access to everything');
     await createAdminUser(adminRoleId);
 };

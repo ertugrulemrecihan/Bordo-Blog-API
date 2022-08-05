@@ -1,4 +1,4 @@
-const emailSender = require("./emailSender");
+const emailSender = require('./emailSender');
 
 module.exports = () => {
     emailSender();

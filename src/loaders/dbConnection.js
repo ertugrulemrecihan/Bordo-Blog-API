@@ -1,12 +1,12 @@
-const Mongoose = require("mongoose");
+const Mongoose = require('mongoose');
 const db = Mongoose.connection;
 
-db.once("open", () => {
-    console.log("Connected to MongoDB");
+db.once('open', () => {
+    console.log('Connected to MongoDB');
 });
 
-db.once("disconnected", () => {
-    console.log("Disconnected from MongoDB");
+db.once('disconnected', () => {
+    console.log('Disconnected from MongoDB');
 });
 
 

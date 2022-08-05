@@ -1,4 +1,4 @@
-const ApiSuccess = require("./apiSuccess");
+const ApiSuccess = require('./apiSuccess');
 
 class ApiDataSuccess extends ApiSuccess {
     constructor(data, message, statusCode) {

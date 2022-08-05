@@ -14,6 +14,6 @@ router.route('/delete/:id').delete(authenticate, authorization('Admin'), paramId
 router.route('/update/:id').patch(authenticate, authorization('Admin'), paramIdValidator, bodyValidator(schemas.updateValidation), controller.updateByParamsId);
 router.route('/addTag/:id').post(authenticate, authorization('Admin'), paramIdValidator, bodyValidator(schemas.addTag), controller.addTag);
 router.route('/removeTag/:id').post(authenticate, authorization('Admin'), paramIdValidator, bodyValidator(schemas.removeTag), controller.removeTag);
-//TODO: Comment Silme
+// TODO: Comment Silme
 
 module.exports = router;

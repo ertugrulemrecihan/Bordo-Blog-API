@@ -1,10 +1,10 @@
-const mongoose = require("mongoose");
+const mongoose = require('mongoose');
 
 const PasswordResetSchema = mongoose.Schema(
     {
         user_id: {
             type: mongoose.Schema.Types.ObjectId,
-            ref: "user",
+            ref: 'user',
             required: true,
         },
         token: {
@@ -16,11 +16,10 @@ const PasswordResetSchema = mongoose.Schema(
             default: Date.now,
             expires: 60 * 60,
         }
-    },
-    {
+    }, {
         timestamps: true,
         versionKey: false,
     }
 );
 
-module.exports = mongoose.model("password_reset", PasswordResetSchema);
+module.exports = mongoose.model('password_reset', PasswordResetSchema);

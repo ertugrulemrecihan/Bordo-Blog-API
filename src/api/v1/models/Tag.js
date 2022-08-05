@@ -1,4 +1,4 @@
-const mongoose = require("mongoose");
+const mongoose = require('mongoose');
 
 const TagSchema = mongoose.Schema(
     {
@@ -13,11 +13,10 @@ const TagSchema = mongoose.Schema(
             type: Number,
             default: 0,
         },
-    },
-    {
+    }, {
         timestamps: true,
         versionKey: false,
     }
 );
 
-module.exports = mongoose.model("tag", TagSchema);
+module.exports = mongoose.model('tag', TagSchema);

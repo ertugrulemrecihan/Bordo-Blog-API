@@ -1,5 +1,5 @@
-const Role = require("../models/Role");
-const BaseService = require("./BaseService");
+const Role = require('../models/Role');
+const BaseService = require('./BaseService');
 
 class RoleService extends BaseService {
     constructor() {

@@ -15,7 +15,7 @@ const successHandler = (req, res, next) => {
         } else if (response instanceof ApiSuccess) {
             return res.status(response.statusCode).json(resJson);
         } else {
-            return next(new Error("Invalid response type"));
+            return next(new Error('Invalid response type'));
         }
     } else {
         return next();

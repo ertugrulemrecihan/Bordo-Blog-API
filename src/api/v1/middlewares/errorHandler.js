@@ -1,12 +1,12 @@
-const httpStatus = require("http-status");
-const ApiError = require("../responses/error/apiError");
+const httpStatus = require('http-status');
+const ApiError = require('../responses/error/apiError');
 
 // eslint-disable-next-line no-unused-vars
 const ErrorHandler = (err, req, res, next) => {
     if (err instanceof ApiError) {
         const apiError = {
             error: {
-                message: err.message || "Something went wrong",
+                message: err.message || 'Something went wrong',
             },
             success: false,
         };
@@ -15,7 +15,7 @@ const ErrorHandler = (err, req, res, next) => {
 
     return res.status(httpStatus.INTERNAL_SERVER_ERROR).json({
         error: {
-            message: "Internal Server Error",
+            message: 'Internal Server Error',
         },
         success: false,
     });

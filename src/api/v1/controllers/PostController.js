@@ -1,11 +1,11 @@
-const BaseController = require("./BaseController");
-const postService = require("../services/PostService");
-const userService = require("../services/UserService");
+const BaseController = require('./BaseController');
+const postService = require('../services/PostService');
+const userService = require('../services/UserService');
 const tagService = require('../services/TagService');
-const ApiError = require("../responses/error/apiError");
-const ApiDataSuccess = require("../responses/success/apiDataSuccess");
-const httpStatus = require("http-status");
-const ApiSuccess = require("../responses/success/apiSuccess");
+const ApiError = require('../responses/error/apiError');
+const ApiDataSuccess = require('../responses/success/apiDataSuccess');
+const httpStatus = require('http-status');
+const ApiSuccess = require('../responses/success/apiSuccess');
 
 class PostController extends BaseController {
     constructor() {
@@ -23,7 +23,7 @@ class PostController extends BaseController {
         const postId = req.params.id;
 
         const post = await postService.fetchOneByQuery({ _id: postId, writer_id: req.user._id });
-        if (!post) return next(new ApiError("Post not found", httpStatus.NOT_FOUND));
+        if (!post) return next(new ApiError('Post not found', httpStatus.NOT_FOUND));
 
         new ApiDataSuccess(post, 'Post fetched successfully', httpStatus.OK).place(res);
         return next();
@@ -35,13 +35,13 @@ class PostController extends BaseController {
         try {
             const response = await postService.create(req.body);
 
-            if (!response) return next(new ApiError(`Post creation failed`, httpStatus.BAD_REQUEST));
+            if (!response) return next(new ApiError('Post creation failed', httpStatus.BAD_REQUEST));
 
-            new ApiDataSuccess(response, `Post created successfully`, httpStatus.OK).place(res);
+            new ApiDataSuccess(response, 'Post created successfully', httpStatus.OK).place(res);
             return next();
         } catch (err) {
-            if (err.code === 11000) return next(new ApiError(`Post already exists`, httpStatus.CONFLICT));
-            return next(new ApiError(`Post creation failed`, httpStatus.BAD_REQUEST));
+            if (err.code === 11000) return next(new ApiError('Post already exists', httpStatus.CONFLICT));
+            return next(new ApiError('Post creation failed', httpStatus.BAD_REQUEST));
         }
     };
 
@@ -66,7 +66,7 @@ class PostController extends BaseController {
         const postId = req.params.id;
 
         const post = await postService.fetchOneByQuery({ _id: postId, writer_id: req.user._id });
-        if (!post) return next(new ApiError("Post not found", httpStatus.NOT_FOUND));
+        if (!post) return next(new ApiError('Post not found', httpStatus.NOT_FOUND));
 
         const result = await postService.deleteById(post._id);
         if (!result) return next(new ApiError('Post deleted failed', httpStatus.INTERNAL_SERVER_ERROR));
@@ -92,10 +92,10 @@ class PostController extends BaseController {
         const postId = req.params.id;
 
         const post = await postService.fetchOneById(postId);
-        if (!post) return next(new ApiError("Post not found", httpStatus.NOT_FOUND));
+        if (!post) return next(new ApiError('Post not found', httpStatus.NOT_FOUND));
 
         const user = await userService.fetchOneById(req.user._id);
-        if (!user) return next(new ApiError("User not found", httpStatus.NOT_FOUND));
+        if (!user) return next(new ApiError('User not found', httpStatus.NOT_FOUND));
 
         const isExists = post.viewers.includes(user._id);
 
@@ -106,9 +106,9 @@ class PostController extends BaseController {
         post.viewers.push(user);
 
         const updatedPost = await postService.updateById(postId, { viewers: post.viewers });
-        if (!updatedPost) return next(new ApiError("There was a problem adding the viewer", httpStatus.BAD_REQUEST));
+        if (!updatedPost) return next(new ApiError('There was a problem adding the viewer', httpStatus.BAD_REQUEST));
 
-        new ApiDataSuccess(updatedPost, "User successfully added to post as viewer", httpStatus.OK).place(res);
+        new ApiDataSuccess(updatedPost, 'User successfully added to post as viewer', httpStatus.OK).place(res);
         return next();
     }
 
@@ -116,25 +116,25 @@ class PostController extends BaseController {
         const postId = req.params.id;
 
         const post = await postService.fetchOneById(postId);
-        if (!post) return next(new ApiError("Post not found", httpStatus.NOT_FOUND));
+        if (!post) return next(new ApiError('Post not found', httpStatus.NOT_FOUND));
 
         const user = await userService.fetchOneById(req.user._id);
-        if (!user) return next(new ApiError("User not found", httpStatus.NOT_FOUND));
+        if (!user) return next(new ApiError('User not found', httpStatus.NOT_FOUND));
 
         const index = post.likes.indexOf(req.user._id);
         let message = null;
         if (index > -1) {
             // Unlike
             post.likes.splice(index, 1);
-            message = "User has been successfully removed from the list of likes";
+            message = 'User has been successfully removed from the list of likes';
         } else {
             // Like
             post.likes.push(user);
-            message = "User has been successfully added to the list of likes";
+            message = 'User has been successfully added to the list of likes';
         }
 
         const updatedPost = await postService.updateById(post._id, { likes: post.likes });
-        if (!updatedPost) return next(new ApiError("There was a problem changing the like status", httpStatus.INTERNAL_SERVER_ERROR));
+        if (!updatedPost) return next(new ApiError('There was a problem changing the like status', httpStatus.INTERNAL_SERVER_ERROR));
 
         new ApiDataSuccess(updatedPost, message, httpStatus.OK).place(res);
         return next();
@@ -153,10 +153,10 @@ class PostController extends BaseController {
         const tagId = req.body.tag_id;
 
         const post = await postService.fetchOneByQuery({ _id: postId, writer_id: req.user._id });
-        if (!post) return next(new ApiError("Post not found", httpStatus.NOT_FOUND));
+        if (!post) return next(new ApiError('Post not found', httpStatus.NOT_FOUND));
 
         const tag = await tagService.fetchOneById(tagId);
-        if (!tag) return next(new ApiError("Tag not found", httpStatus.NOT_FOUND));
+        if (!tag) return next(new ApiError('Tag not found', httpStatus.NOT_FOUND));
 
         const isExists = post.tags.includes(tagId);
 
@@ -166,14 +166,14 @@ class PostController extends BaseController {
 
         post.tags.push(tagId);
 
-        //! FIXME: Add transaction
+        // ! FIXME: Add transaction
         const updatedPost = await postService.updateById(postId, { tags: post.tags });
-        if (!updatedPost) return next(new ApiError("There was a problem adding the tag", httpStatus.INTERNAL_SERVER_ERROR));
+        if (!updatedPost) return next(new ApiError('There was a problem adding the tag', httpStatus.INTERNAL_SERVER_ERROR));
 
         const updatedTag = await tagService.updateById(tagId, { post_count: (tag.post_count + 1) });
-        if (!updatedTag) return next(new ApiError("Tag added successfully but tag usage count could not be increased"));
+        if (!updatedTag) return next(new ApiError('Tag added successfully but tag usage count could not be increased'));
 
-        new ApiDataSuccess(updatedPost, "Tag added successfully", httpStatus.OK).place(res);
+        new ApiDataSuccess(updatedPost, 'Tag added successfully', httpStatus.OK).place(res);
         return next();
     }
 
@@ -182,17 +182,17 @@ class PostController extends BaseController {
         const tagId = req.body.tag_id;
 
         const post = await postService.fetchOneByQuery({ _id: postId, writer_id: req.user._id });
-        if (!post) return next(new ApiError("Post not found", httpStatus.NOT_FOUND));
+        if (!post) return next(new ApiError('Post not found', httpStatus.NOT_FOUND));
 
         const index = post.tags.indexOf(tagId);
-        if (index <= -1) return next(new ApiError("Tag not found", httpStatus.NOT_FOUND));
+        if (index <= -1) return next(new ApiError('Tag not found', httpStatus.NOT_FOUND));
 
         post.tags.splice(index, 1);
 
         const updatedPost = await postService.updateById(postId, { tags: post.tags });
-        if (!updatedPost) return next(new ApiError("There was a problem deleting the tag", httpStatus.INTERNAL_SERVER_ERROR));
+        if (!updatedPost) return next(new ApiError('There was a problem deleting the tag', httpStatus.INTERNAL_SERVER_ERROR));
 
-        new ApiDataSuccess(updatedPost, "Tag removed successfully", httpStatus.OK).place(res);
+        new ApiDataSuccess(updatedPost, 'Tag removed successfully', httpStatus.OK).place(res);
         return next();
     }
 }

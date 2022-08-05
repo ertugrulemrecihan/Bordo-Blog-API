@@ -1,4 +1,4 @@
-const mongoose = require("mongoose");
+const mongoose = require('mongoose');
 
 const PackageSchema = mongoose.Schema(
     {
@@ -32,11 +32,10 @@ const PackageSchema = mongoose.Schema(
             max: 100,
             required: true,
         },
-    },
-    {
+    }, {
         timestamps: true,
         versionKey: false,
     }
 );
 
-module.exports = mongoose.model("package", PackageSchema);
+module.exports = mongoose.model('package', PackageSchema);

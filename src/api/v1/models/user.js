@@ -1,4 +1,4 @@
-const Mongoose = require("mongoose");
+const Mongoose = require('mongoose');
 
 const UserSchema = Mongoose.Schema(
     {
@@ -58,22 +58,21 @@ const UserSchema = Mongoose.Schema(
         roles: [
             {
                 type: Mongoose.Schema.Types.ObjectId,
-                ref: "role",
+                ref: 'role',
                 required: true,
             },
         ],
         package: [
             {
                 type: Mongoose.Schema.Types.ObjectId,
-                ref: "package",
+                ref: 'package',
                 required: true,
             },
         ],
-    },
-    {
+    }, {
         timestamps: true,
         versionKey: false,
     }
 );
 
-module.exports = Mongoose.model("user", UserSchema);
+module.exports = Mongoose.model('user', UserSchema);

@@ -3,7 +3,7 @@ const hbs = require('nodemailer-express-handlebars');
 const eventEmitter = require('./eventEmitter');
 
 module.exports = () => {
-    eventEmitter.on("send_email", (emailData) => {
+    eventEmitter.on('send_email', (emailData) => {
         let transporter = nodemailer.createTransport({
             host: process.env.EMAIL_HOST,   // For Gmail: smtp.gmail.com
             port: process.env.EMAIL_PORT,   // For Gmail: 587
@@ -14,14 +14,14 @@ module.exports = () => {
         });
 
         if (emailData.template) {
-            transporter.use("compile", hbs({
+            transporter.use('compile', hbs({
                 viewEngine: {
-                    extName: ".hbs",
-                    partialsDir: "src/api/v1/scripts/templates/email",
+                    extName: '.hbs',
+                    partialsDir: 'src/api/v1/scripts/templates/email',
                     defaultLayout: false,
                 },
-                viewPath: "src/api/v1/scripts/templates/email",
-                extName: ".hbs"
+                viewPath: 'src/api/v1/scripts/templates/email',
+                extName: '.hbs'
             }));
         }
 

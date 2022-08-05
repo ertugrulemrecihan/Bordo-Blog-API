@@ -24,17 +24,15 @@ class UserController {
             try {
                 await userHelper.createAndVerifyEmail(req.body.email);
             } catch (error) {
-                console.log(error);
-                new ApiSuccess("Your Registration Has Been Created Successfully, but the verification link could not be sent", httpStatus.OK).place(res)
-                return next()
+                new ApiSuccess('Your Registration Has Been Created Successfully, but the verification link could not be sent', httpStatus.OK).place(res);
+                return next();
             }
 
-            new ApiDataSuccess(response, "Registration successful", httpStatus.CREATED).place(res);
+            new ApiDataSuccess(response, 'Registration successful', httpStatus.CREATED).place(res);
             return next();
         } catch (error) {
-            console.log(error);
-            if (error.code === 11000) return next(new ApiError("Email already exists", httpStatus.CONFLICT));
-            return next(new ApiError("Registration failed", httpStatus.INTERNAL_SERVER_ERROR));
+            if (error.code === 11000) return next(new ApiError('Email already exists', httpStatus.CONFLICT));
+            return next(new ApiError('Registration failed', httpStatus.INTERNAL_SERVER_ERROR));
         }
     }
 
@@ -44,11 +42,11 @@ class UserController {
         if (!user) return next(new ApiError('No user found associated with this email', httpStatus.NOT_FOUND));
 
         const hashedPassword = passwordHelper.passwordToHashWithSalt(req.body.password, user.salt);
-        if (user.password !== hashedPassword) return next(new ApiError("Invalid password", httpStatus.UNAUTHORIZED));
+        if (user.password !== hashedPassword) return next(new ApiError('Invalid password', httpStatus.UNAUTHORIZED));
 
         const response = userHelper.createResponse(user);
 
-        new ApiDataSuccess(response, "Login successful", httpStatus.OK).place(res);
+        new ApiDataSuccess(response, 'Login successful', httpStatus.OK).place(res);
         return next();
     }
 
@@ -67,7 +65,7 @@ class UserController {
             token: resetToken
         });
 
-        //! FIXME - Add frontend password reset page url
+        // ! FIXME - Add frontend password reset page url
         const resetUrl = resetToken;
 
         eventEmitter.emit('send_email', {
@@ -104,7 +102,7 @@ class UserController {
                 salt: hashedSalt
             });
 
-            if (!result) return next(new ApiError("Password reset failed", httpStatus.INTERNAL_SERVER_ERROR));
+            if (!result) return next(new ApiError('Password reset failed', httpStatus.INTERNAL_SERVER_ERROR));
 
             await passwordResetService.deleteById(currentResetToken._id);
 
@@ -117,11 +115,11 @@ class UserController {
                 }
             });
 
-            new ApiSuccess("Password has been reset", httpStatus.OK).place(res);
+            new ApiSuccess('Password has been reset', httpStatus.OK).place(res);
             return next();
 
         } catch {
-            return next(new ApiError("Invalid or expired password reset token", httpStatus.UNAUTHORIZED));
+            return next(new ApiError('Invalid or expired password reset token', httpStatus.UNAUTHORIZED));
         }
     }
 
@@ -131,7 +129,7 @@ class UserController {
         if (!user) return next(new ApiError('No user found associated with this email', httpStatus.NOT_FOUND));
 
         const hashedOldPassword = passwordHelper.passwordToHashWithSalt(req.body.old_password, user.salt);
-        if (user.password !== hashedOldPassword) return next(new ApiError("Invalid old password", httpStatus.BAD_REQUEST));
+        if (user.password !== hashedOldPassword) return next(new ApiError('Invalid old password', httpStatus.BAD_REQUEST));
 
         // Set new Password
         const { hashedPassword, hashedSalt } = passwordHelper.passwordToHash(req.body.new_password);
@@ -140,7 +138,7 @@ class UserController {
             salt: hashedSalt
         });
 
-        if (!result) return next(new ApiError("Password change failed", httpStatus.INTERNAL_SERVER_ERROR));
+        if (!result) return next(new ApiError('Password change failed', httpStatus.INTERNAL_SERVER_ERROR));
 
         eventEmitter.emit('send_email', {
             to: user.email,
@@ -151,7 +149,7 @@ class UserController {
             }
         });
 
-        new ApiSuccess("Password has been changed", httpStatus.OK).place(res);
+        new ApiSuccess('Password has been changed', httpStatus.OK).place(res);
         return next();
     }
 
@@ -159,9 +157,9 @@ class UserController {
         try {
             const successResult = await userHelper.createAndVerifyEmail(req.body.email);
             successResult.place(res);
-            return next()
+            return next();
         } catch (error) {
-            return next(error)
+            return next(error);
         }
     }
 
@@ -179,11 +177,11 @@ class UserController {
 
             const result = await service.updateById(user._id, {
                 email_is_verified: true
-            })
+            });
 
-            if (!result) return next(new ApiError("Email Verification Failed", httpStatus.INTERNAL_SERVER_ERROR));
+            if (!result) return next(new ApiError('Email Verification Failed', httpStatus.INTERNAL_SERVER_ERROR));
 
-            await emailVerifyService.deleteById(currentVerifyToken._id)
+            await emailVerifyService.deleteById(currentVerifyToken._id);
 
             eventEmitter.emit('send_email', {
                 to: user.email,
@@ -192,12 +190,12 @@ class UserController {
                 context: {
                     fullName: user.first_name + ' ' + user.last_name,
                 }
-            })
+            });
 
-            new ApiSuccess("Email Verified", httpStatus.OK).place(res);
-            return next()
+            new ApiSuccess('Email Verified', httpStatus.OK).place(res);
+            return next();
         } catch (error) {
-            return next(new ApiError("Invalid or expired email verification reset token", httpStatus.UNAUTHORIZED));
+            return next(new ApiError('Invalid or expired email verification reset token', httpStatus.UNAUTHORIZED));
         }
     }
 }

@@ -1,5 +1,5 @@
-const httpStatus = require("http-status");
-const ApiError = require("../responses/error/apiError");
+const httpStatus = require('http-status');
+const ApiError = require('../responses/error/apiError');
 
 const authorization = (...roles) => (req, res, next) => {
     const userRole = req.user.roles.map((role) => role.name.toLowerCase());
@@ -18,7 +18,7 @@ const authorization = (...roles) => (req, res, next) => {
     if (isAuthorized) {
         return next();
     } else {
-        return next(new ApiError("Not Authorized", httpStatus.FORBIDDEN));
+        return next(new ApiError('Not Authorized', httpStatus.FORBIDDEN));
     }
 };
 

@@ -1,5 +1,5 @@
-const BaseService = require("./BaseService");
-const PasswordReset = require("../models/PasswordReset");
+const BaseService = require('./BaseService');
+const PasswordReset = require('../models/PasswordReset');
 
 class PasswordResetService extends BaseService {
     constructor() {

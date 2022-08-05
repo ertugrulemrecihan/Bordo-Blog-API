@@ -1,4 +1,4 @@
-const Joi = require("joi");
+const Joi = require('joi');
 
 const createValidation = Joi.object({
     title: Joi.string().required().min(10).max(200),
@@ -16,11 +16,11 @@ const updateValidation = Joi.object({
 });
 
 const addTag = Joi.object({
-    "tag_id": Joi.string().required().length(24)
+    'tag_id': Joi.string().required().length(24)
 });
 
 const removeTag = Joi.object({
-    "tag_id": Joi.string().required().length(24)
+    'tag_id': Joi.string().required().length(24)
 });
 
 module.exports = {

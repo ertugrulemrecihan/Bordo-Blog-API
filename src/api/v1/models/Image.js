@@ -1,4 +1,4 @@
-const mongoose = require("mongoose");
+const mongoose = require('mongoose');
 
 const ImageSchema = mongoose.Schema({
     path: {
@@ -8,4 +8,4 @@ const ImageSchema = mongoose.Schema({
     },
 });
 
-module.exports = mongoose.model("image", ImageSchema);
+module.exports = mongoose.model('image', ImageSchema);
