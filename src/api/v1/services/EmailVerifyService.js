@@ -1,5 +1,5 @@
 const EmailVerify = require('../models/EmailVerify');
-const BaseService = require('./BaseService')
+const BaseService = require('./BaseService');
 
 class EmailVerifyService extends BaseService {
     constructor() {

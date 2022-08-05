@@ -64,6 +64,11 @@
             "error",
             "never"
         ],
-        "no-unused-vars": "error"
+        "no-unused-vars": "error",
+        // Satır sonlarında noktalı virgül olmalı
+        "semi": [
+            "error",
+            "always"
+        ]
     }
 }

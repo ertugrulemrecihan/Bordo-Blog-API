@@ -20,6 +20,6 @@ const EmailValidationSchema = mongoose.Schema({
 }, {
     timestamps: true,
     versionKey: false
-})
+});
 
-module.exports = mongoose.model('email_validation', EmailValidationSchema)
+module.exports = mongoose.model('email_validation', EmailValidationSchema);
