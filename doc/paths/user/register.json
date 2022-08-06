@@ -1,0 +1,29 @@
+{
+    "summary": "",
+    "description": "",
+    "post": {
+        "tags": [
+            "Users"
+        ],
+        "summary": "Register",
+        "description": "Register",
+        "operationId": "users.register",
+        "requestBody": {
+            "$ref": "../../request-bodies/user/register.json"
+        },
+        "responses": {
+            "201": {
+                "$ref": "../../responses/user/register.json"
+            },
+            "400": {
+                "$ref": "../../responses/api-responses/400.json"
+            },
+            "409": {
+                "$ref": "../../responses/api-responses/409.json"
+            },
+            "500": {
+                "$ref": "../../responses/api-responses/500.json"
+            }
+        }
+    }
+}

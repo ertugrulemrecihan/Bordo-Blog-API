@@ -1,0 +1,17 @@
+{
+    "type": "object",
+    "properties": {
+        "_id": {
+            "title": "Package MongoDb Id",
+            "description": "Package MongoDb Id",
+            "type": "string",
+            "example": "62ed69679c045c97a63390a4"
+        },
+        "name": {
+            "title": "Package name",
+            "description": "Package name",
+            "type": "string",
+            "example": "Basic Package"
+        }
+    }
+}

@@ -1,0 +1,21 @@
+{
+    "description": "Password must contain at least 1 lowercase letter, 1 uppercase letter and 1 special character and must be at least 8 characters",
+    "content": {
+        "application/json": {
+            "schema": {
+                "allOf": [
+                    {
+                        "type": "object",
+                        "$ref": "../../schemas/user/other/email-password.json"
+                    },
+                    {
+                        "required": [
+                            "email",
+                            "password"
+                        ]
+                    }
+                ]
+            }
+        }
+    }
+}

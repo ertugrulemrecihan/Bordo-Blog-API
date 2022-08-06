@@ -1,0 +1,11 @@
+{
+    "type": "object",
+    "properties": {
+        "packages": {
+            "type": "array",
+            "items": {
+                "$ref": "./package-item.json"
+            }
+        }
+    }
+}

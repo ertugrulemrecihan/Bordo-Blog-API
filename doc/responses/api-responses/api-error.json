@@ -1,0 +1,16 @@
+{
+    "type": "object",
+    "properties": {
+        "error": {
+            "properties": {
+                "message": {
+                    "type": "string"
+                }
+            }
+        },
+        "success": {
+            "type": "boolean",
+            "default": false
+        }
+    }
+}

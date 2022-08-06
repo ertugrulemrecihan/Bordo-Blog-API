@@ -1,0 +1,17 @@
+{
+    "type": "object",
+    "properties": {
+        "first_name": {
+            "title": "User first name",
+            "description": "User first name",
+            "type": "string",
+            "minLength": 3
+        },
+        "last_name": {
+            "title": "User last name",
+            "description": "User last name",
+            "type": "string",
+            "minLength": 3
+        }
+    }
+}

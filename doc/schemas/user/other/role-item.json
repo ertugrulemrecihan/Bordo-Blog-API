@@ -1,0 +1,17 @@
+{
+    "type": "object",
+    "properties": {
+        "_id": {
+            "title": "Role MongoDb Id",
+            "description": "Role MongoDb Id",
+            "type": "string",
+            "example": "62ed69679c045c97a63390a4"
+        },
+        "name": {
+            "title": "Role name",
+            "description": "Role name",
+            "type": "string",
+            "example": "Writer"
+        }
+    }
+}

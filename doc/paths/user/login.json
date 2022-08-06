@@ -1,0 +1,26 @@
+{
+    "summary": "",
+    "description": "",
+    "post": {
+        "tags": [
+            "Users"
+        ],
+        "summary": "Login",
+        "description": "Login Account",
+        "operationId": "users.login",
+        "requestBody": {
+            "$ref": "../../request-bodies/user/login.json"
+        },
+        "responses": {
+            "200": {
+                "$ref": "../../responses/user/login.json"
+            },
+            "400": {
+                "$ref": "../../responses/api-responses/400.json"
+            },
+            "404": {
+                "$ref": "../../responses/api-responses/404.json"
+            }
+        }
+    }
+}

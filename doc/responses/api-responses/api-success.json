@@ -1,0 +1,16 @@
+{
+    "type": "object",
+    "properties": {
+        "message": {
+            "title": "Response message",
+            "description": "Response message",
+            "type": "string"
+        },
+        "success": {
+            "title": "Response success status",
+            "description": "Response success status",
+            "type": "boolean",
+            "default": true
+        }
+    }
+}

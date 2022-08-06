@@ -1,0 +1,20 @@
+{
+    "description": "",
+    "content": {
+        "application/json": {
+            "schema": {
+                "type": "object",
+                "allOf": [
+                    {
+                        "$ref": "../../schemas/user/email.json"
+                    },
+                    {
+                        "required": [
+                            "email"
+                        ]
+                    }
+                ]
+            }
+        }
+    }
+}

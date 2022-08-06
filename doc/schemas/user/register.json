@@ -1,0 +1,46 @@
+{
+    "allOf": [
+        {
+            "$ref": "../../responses/api-responses/api-success.json"
+        },
+        {
+            "type": "object",
+            "properties": {
+                "data": {
+                    "allOf": [
+                        {
+                            "$ref": "./other/auth-response-without-roles-and-package.json"
+                        },
+                        {
+                            "type": "object",
+                            "properties": {
+                                "roles": {
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "./other/role-item.json"
+                                    },
+                                    "example": []
+                                }
+                            }
+                        },
+                        {
+                            "type": "object",
+                            "properties": {
+                                "packages": {
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "./other/package-item.json"
+                                    },
+                                    "example": []
+                                }
+                            }
+                        },
+                        {
+                            "$ref": "./other/tokens.json"
+                        }
+                    ]
+                }
+            }
+        }
+    ]
+}

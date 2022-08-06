@@ -2,7 +2,7 @@
     "openapi": "3.0.1",
     "info": {
         "version": "v1",
-        "title": "Blogs",
+        "title": "Bordo-Blog API",
         "description": "Blog Management API",
         "contact": {},
         "license": {
@@ -19,87 +19,74 @@
     "tags": [
         {
             "name": "Users",
-            "description": "User Authentication"
-        },
-        {
-            "name": "Tags",
-            "description": "Tag CRUD"
+            "description": "User endpoints"
         }
     ],
     "paths": {
         "/user/login": {
-            "$ref": "./paths/user-login.json"
+            "$ref": "./paths/user/login.json"
         },
         "/user/register": {
-            "$ref": "./paths/user-register.json"
+            "$ref": "./paths/user/register.json"
         },
-        "/user/get-password-reset-token": {
-            "$ref": "./paths/user-get-password-reset-token.json"
+        "/user/get-password-reset-email": {
+            "$ref": "./paths/user/get-password-reset-email.json"
         },
-        "/user/get-email-verify-token": {
-            "$ref": "./paths/user-get-email-verify-token.json"
+        "/user/reset-password": {
+            "$ref": "./paths/user/reset-password.json"
         },
-        "/user/password-reset": {
-            "$ref": "./paths/user-reset-password.json"
+        "/user/get-email-verification-email": {
+            "$ref": "./paths/user/get-email-verification-email.json"
         },
-        "/user/email-confirm": {
-            "$ref": "./paths/user-email-confirm.json"
+        "/user/verify-email": {
+            "$ref": "./paths/user/verify-email.json"
         },
         "/user/change-password": {
-            "$ref": "./paths/user-change-password.json"
+            "$ref": "./paths/user/change-password.json"
         }
     },
     "components": {
         "requestBodies": {
-            "user-login": {
-                "$ref": "./request-bodies/user-login.json"
+            "login": {
+                "$ref": "./request-bodies/user/login.json"
             },
-            "user-register": {
-                "$ref": "./request-bodies/user-register.json"
+            "register": {
+                "$ref": "./request-bodies/user/register.json"
             },
-            "user-get-password-reset-token": {
-                "$ref": "./request-bodies/user-get-password-reset-token.json"
+            "get-password-reset-email": {
+                "$ref": "./request-bodies/user/get-password-reset-email.json"
             },
-            "user-get-email-verify-token": {
-                "$ref": "./request-bodies/user-get-email-verify-token.json"
+            "get-email-verification-email": {
+                "$ref": "./request-bodies/user/get-email-verification-email.json"
             },
-            "user-reset-password": {
-                "$ref": "./request-bodies/user-reset-password.json"
+            "reset-password": {
+                "$ref": "./request-bodies/user/reset-password.json"
             },
-            "user-email-confirm": {
-                "$ref": "./request-bodies/user-email-confirm.json"
+            "verify-email": {
+                "$ref": "./request-bodies/user/verify-email.json"
             },
-            "user-change-password": {
-                "$ref": "./request-bodies/user-change-password.json"
+            "change-password": {
+                "$ref": "./request-bodies/user/change-password.json"
             }
         },
         "schemas": {
-            "user-login": {
-                "$ref": "./schemas/user-login.json"
+            "login": {
+                "$ref": "./schemas/user/login.json"
             },
-            "user-register": {
-                "$ref": "./schemas/user-register.json"
+            "register": {
+                "$ref": "./schemas/user/register.json"
             },
-            "user-get-password-reset-token": {
-                "$ref": "./schemas/user-get-password-reset-token.json"
+            "reset-password": {
+                "$ref": "./schemas/user/reset-password.json"
             },
-            "user-get-email-verify-token": {
-                "$ref": "./schemas/user-get-email-verify-token.json"
+            "verify-email": {
+                "$ref": "./schemas/user/verify-email.json"
             },
-            "user-password-reset": {
-                "$ref": "./schemas/user-reset-password.json"
+            "change-password": {
+                "$ref": "./schemas/user/change-password.json"
             },
-            "user-email-confirm": {
-                "$ref": "./schemas/user-email-confirm.json"
-            },
-            "user-change-password": {
-                "$ref": "./schemas/user-change-password.json"
-            },
-            "base": {
-                "$ref": "./schemas/base.json"
-            },
-            "error": {
-                "$ref": "./schemas/error.json"
+            "email": {
+                "$ref": "./schemas/user/email.json"
             }
         },
         "securitySchemes": {

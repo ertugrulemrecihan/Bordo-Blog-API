@@ -1,0 +1,33 @@
+{
+    "summary": "",
+    "description": "",
+    "post": {
+        "tags": [
+            "Users"
+        ],
+        "summary": "Verify email address",
+        "description": "With the token received from this endpoint, a request can be made to the `user/verify-email` endpoint.",
+        "operationId": "users.get-email-verification-email",
+        "requestBody": {
+            "$ref": "../../request-bodies/user/get-email-verification-email.json"
+        },
+        "responses": {
+            "200": {
+                "description": "When this response is received, an email verification link will be sent to the user's email address.",
+                "content": {
+                    "application/json": {
+                        "schema": {
+                            "$ref": "../../responses/api-responses/api-success.json"
+                        }
+                    }
+                }
+            },
+            "400": {
+                "$ref": "../../responses/api-responses/400.json"
+            },
+            "404": {
+                "$ref": "../../responses/api-responses/404.json"
+            }
+        }
+    }
+}

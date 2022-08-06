@@ -1,0 +1,13 @@
+{
+    "type": "object",
+    "properties": {
+        "token": {
+            "title": "JWT Email verification token",
+            "description": "Email verification token from endpoint `user/get-email-verification-email`.",
+            "type": "string"
+        }
+    },
+    "required": [
+        "token"
+    ]
+}

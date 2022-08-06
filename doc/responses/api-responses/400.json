@@ -1,0 +1,10 @@
+{
+    "description": "Bad request error",
+    "content": {
+        "application/json": {
+            "schema": {
+                "$ref": "./api-error.json"
+            }
+        }
+    }
+}

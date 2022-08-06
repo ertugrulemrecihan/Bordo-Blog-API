@@ -1,0 +1,23 @@
+{
+    "type": "object",
+    "properties": {
+        "_id": {
+            "title": "Document MongoDb Id",
+            "description": "MongoDb Id of the document",
+            "type": "string",
+            "example": "62ed69679c045c97a63390a4"
+        },
+        "createdAt": {
+            "title": "Document Creation Date",
+            "description": "The `createdAt` value is determined automatically by the API.",
+            "type": "string",
+            "format": "date-time"
+        },
+        "updatedAt": {
+            "title": "Document Update Date",
+            "description": "The `updatedAt` value is determined automatically by the API.",
+            "type": "string",
+            "format": "date-time"
+        }
+    }
+}
