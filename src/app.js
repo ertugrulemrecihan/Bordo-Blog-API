@@ -1,4 +1,5 @@
 const express = require('express');
+const cors = require('cors');
 const config = require('./config');
 const loaders = require('./loaders');
 const events = require('./api/v1/scripts/events');
@@ -12,6 +13,10 @@ events();
 
 const app = express();
 app.use(express.json());
+
+app.use(cors({
+    origin: '*'
+}));
 
 app.use('/api/v1/user', routes.user);
 app.use('/api/v1/post', routes.post);
