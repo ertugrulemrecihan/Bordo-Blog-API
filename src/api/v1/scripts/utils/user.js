@@ -1,5 +1,5 @@
 const jwtHelper = require('./jwt');
-const emailVerifyService = require('../../services/EmailVerifyService');
+const emailVerificationTokenService = require('../../services/EmailVerificationTokenService');
 const httpStatus = require('http-status');
 const userService = require('../../services/UserService');
 const ApiError = require('../../responses/error/apiError');
@@ -32,14 +32,14 @@ const createAndVerifyEmail = async (email) => {
     if (!user) throw new ApiError('No user found associated with this email', httpStatus.NOT_FOUND);
     if (user.email_verified) throw new ApiError('User\'s email address is already verified', httpStatus.BAD_REQUEST);
 
-    const currentVerifyToken = emailVerifyService.fetchOneByQuery({ user: user._id });
-    if (currentVerifyToken) await emailVerifyService.deleteById(currentVerifyToken._id);
+    const currentVerifyToken = await emailVerificationTokenService.fetchOneByQuery({ user: user._id });
+    if (currentVerifyToken) await emailVerificationTokenService.deleteById(currentVerifyToken._id);
 
 
     const jwtUser = deletePasswordAndSaltFields(user);
     const emailVerifyToken = jwtHelper.generateEmailVerifyToken(jwtUser);
 
-    await emailVerifyService.create({
+    await emailVerificationTokenService.create({
         user_id: user._id,
         token: emailVerifyToken
     });
@@ -57,7 +57,7 @@ const createAndVerifyEmail = async (email) => {
         }
     });
 
-    return new ApiSuccess('Email verification link sent successfully. You can verify your email by clicking the link', httpStatus.OK);
+    return new ApiSuccess('Email verification link successfully sent to email', httpStatus.OK);
 };
 
 module.exports = {

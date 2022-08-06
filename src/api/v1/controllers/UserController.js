@@ -1,6 +1,6 @@
 const httpStatus = require('http-status');
 const service = require('../services/UserService');
-const passwordResetService = require('../services/PasswordResetService');
+const passwordResetTokenService = require('../services/PasswordResetTokenService');
 const passwordHelper = require('../scripts/utils/password');
 const jwtHelper = require('../scripts/utils/jwt');
 const userHelper = require('../scripts/utils/user');
@@ -8,7 +8,7 @@ const ApiDataSuccess = require('../responses/success/apiDataSuccess');
 const ApiError = require('../responses/error/apiError');
 const eventEmitter = require('../scripts/events/eventEmitter');
 const ApiSuccess = require('../responses/success/apiSuccess');
-const emailVerifyService = require('../services/EmailVerifyService');
+const emailVerificationTokenService = require('../services/EmailVerificationTokenService');
 
 class UserController {
     async register(req, res, next) {
@@ -54,13 +54,13 @@ class UserController {
         const user = await service.fetchOneByQuery({ email: req.body.email });
         if (!user) return next(new ApiError('No user found associated with this email', httpStatus.NOT_FOUND));
 
-        const currentResetToken = passwordResetService.fetchOneByQuery({ user_id: user._id });
-        if (currentResetToken) await passwordResetService.deleteById(currentResetToken._id);
+        const currentResetToken = await passwordResetTokenService.fetchOneByQuery({ user_id: user._id });
+        if (currentResetToken) await passwordResetTokenService.deleteById(currentResetToken._id);
 
         const jwtUser = userHelper.deletePasswordAndSaltFields(user);
         const resetToken = jwtHelper.generatePasswordResetToken(jwtUser);
 
-        await passwordResetService.create({
+        await passwordResetTokenService.create({
             user_id: user._id,
             token: resetToken
         });
@@ -90,7 +90,7 @@ class UserController {
             const user = await service.fetchOneByQuery({ _id: decodedToken.data._id, email: decodedToken.data.email });
             if (!user) throw new Error();
 
-            const currentResetToken = await passwordResetService.fetchOneByQuery({ user_id: user._id });
+            const currentResetToken = await passwordResetTokenService.fetchOneByQuery({ user_id: user._id });
             if (!currentResetToken) throw new Error();
 
             if (currentResetToken.token !== req.body.token) throw new Error();
@@ -104,7 +104,7 @@ class UserController {
 
             if (!result) return next(new ApiError('Password reset failed', httpStatus.INTERNAL_SERVER_ERROR));
 
-            await passwordResetService.deleteById(currentResetToken._id);
+            await passwordResetTokenService.deleteById(currentResetToken._id);
 
             eventEmitter.emit('send_email', {
                 to: user.email,
@@ -170,7 +170,7 @@ class UserController {
             const user = await service.fetchOneByQuery({ _id: decodedToken.data._id, email: decodedToken.data.email });
             if (!user) throw new Error();
 
-            const currentVerifyToken = await emailVerifyService.fetchOneByQuery({ user_id: user._id });
+            const currentVerifyToken = await emailVerificationTokenService.fetchOneByQuery({ user_id: user._id });
             if (!currentVerifyToken) throw new Error();
 
             if (currentVerifyToken.token !== req.body.token) throw new Error();
@@ -179,9 +179,9 @@ class UserController {
                 email_verified: true
             });
 
-            if (!result) return next(new ApiError('Email Verification Failed', httpStatus.INTERNAL_SERVER_ERROR));
+            if (!result) return next(new ApiError('Email verification failed', httpStatus.INTERNAL_SERVER_ERROR));
 
-            await emailVerifyService.deleteById(currentVerifyToken._id);
+            await emailVerificationTokenService.deleteById(currentVerifyToken._id);
 
             eventEmitter.emit('send_email', {
                 to: user.email,
@@ -192,7 +192,7 @@ class UserController {
                 }
             });
 
-            new ApiSuccess('Email Verified', httpStatus.OK).place(res);
+            new ApiSuccess('Email successfully verified', httpStatus.OK).place(res);
             return next();
         } catch (error) {
             return next(new ApiError('Invalid or expired email verification reset token', httpStatus.BAD_REQUEST));

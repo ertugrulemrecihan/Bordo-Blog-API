@@ -7,7 +7,7 @@ const authenticate = (req, res, next) => {
     if (!token) return next(new ApiError('Access denied', httpStatus.UNAUTHORIZED));
 
     JWT.verify(token, process.env.JWT_ACCESS_SECRET, (err, decoded) => {
-        if (err) return next(new ApiError('Invalid token', httpStatus.UNAUTHORIZED));
+        if (err) return next(new ApiError('Invalid access token', httpStatus.UNAUTHORIZED));
 
         req.user = decoded.data;
         next();
