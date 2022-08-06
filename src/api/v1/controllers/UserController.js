@@ -24,7 +24,7 @@ class UserController {
             try {
                 await userHelper.createAndVerifyEmail(req.body.email);
             } catch (error) {
-                new ApiSuccess('Your Registration Has Been Created Successfully, but the verification link could not be sent', httpStatus.OK).place(res);
+                new ApiDataSuccess(response, 'Your registration has been created successfully, but the verification link could not be sent', httpStatus.CREATED).place(res);
                 return next();
             }
 
@@ -42,7 +42,7 @@ class UserController {
         if (!user) return next(new ApiError('No user found associated with this email', httpStatus.NOT_FOUND));
 
         const hashedPassword = passwordHelper.passwordToHashWithSalt(req.body.password, user.salt);
-        if (user.password !== hashedPassword) return next(new ApiError('Invalid password', httpStatus.UNAUTHORIZED));
+        if (user.password !== hashedPassword) return next(new ApiError('Invalid password', httpStatus.BAD_REQUEST));
 
         const response = userHelper.createResponse(user);
 
@@ -50,7 +50,7 @@ class UserController {
         return next();
     }
 
-    async getPasswordResetToken(req, res, next) {
+    async getPasswordResetEmail(req, res, next) {
         const user = await service.fetchOneByQuery({ email: req.body.email });
         if (!user) return next(new ApiError('No user found associated with this email', httpStatus.NOT_FOUND));
 
@@ -119,7 +119,7 @@ class UserController {
             return next();
 
         } catch {
-            return next(new ApiError('Invalid or expired password reset token', httpStatus.UNAUTHORIZED));
+            return next(new ApiError('Invalid or expired password reset token', httpStatus.BAD_REQUEST));
         }
     }
 
@@ -153,7 +153,7 @@ class UserController {
         return next();
     }
 
-    async getEmailVerifyToken(req, res, next) {
+    async getEmailVerificationEmail(req, res, next) {
         try {
             const successResult = await userHelper.createAndVerifyEmail(req.body.email);
             successResult.place(res);
@@ -163,7 +163,7 @@ class UserController {
         }
     }
 
-    async confirmEmail(req, res, next) {
+    async verifyEmail(req, res, next) {
         try {
             const decodedToken = jwtHelper.decodeEmailVerifyToken(req.body.token);
 
@@ -176,7 +176,7 @@ class UserController {
             if (currentVerifyToken.token !== req.body.token) throw new Error();
 
             const result = await service.updateById(user._id, {
-                email_is_verified: true
+                email_verified: true
             });
 
             if (!result) return next(new ApiError('Email Verification Failed', httpStatus.INTERNAL_SERVER_ERROR));
@@ -195,7 +195,7 @@ class UserController {
             new ApiSuccess('Email Verified', httpStatus.OK).place(res);
             return next();
         } catch (error) {
-            return next(new ApiError('Invalid or expired email verification reset token', httpStatus.UNAUTHORIZED));
+            return next(new ApiError('Invalid or expired email verification reset token', httpStatus.BAD_REQUEST));
         }
     }
 }

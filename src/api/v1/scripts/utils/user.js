@@ -30,7 +30,7 @@ const deletePasswordAndSaltFields = (user) => {
 const createAndVerifyEmail = async (email) => {
     const user = await userService.fetchOneByQuery({ email: email });
     if (!user) throw new ApiError('No user found associated with this email', httpStatus.NOT_FOUND);
-    if (user.email_is_verified) throw new ApiError('User\'s email address is already verified', httpStatus.BAD_REQUEST);
+    if (user.email_verified) throw new ApiError('User\'s email address is already verified', httpStatus.BAD_REQUEST);
 
     const currentVerifyToken = emailVerifyService.fetchOneByQuery({ user: user._id });
     if (currentVerifyToken) await emailVerifyService.deleteById(currentVerifyToken._id);
@@ -57,7 +57,7 @@ const createAndVerifyEmail = async (email) => {
         }
     });
 
-    return new ApiSuccess('Email Verification Link Sent Successfully You Can Verify Your Email By Clicking The Link', httpStatus.OK);
+    return new ApiSuccess('Email verification link sent successfully. You can verify your email by clicking the link', httpStatus.OK);
 };
 
 module.exports = {

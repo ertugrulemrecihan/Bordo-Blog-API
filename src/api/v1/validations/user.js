@@ -10,21 +10,17 @@ const registerValidation = Joi.object({
     password: Joi.string().required().min(8).regex(/^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&*()+?])(?=.{8,})/),
     first_name: Joi.string().required().min(3).max(100),
     last_name: Joi.string().required().min(3).max(100),
-    phone: Joi.object({
-        area_code: Joi.string().required().min(1).max(4),
-        number: Joi.string().required().min(10).max(10),
-    }),
 });
 
 const createPasswordResetTokenValidation = Joi.object({
     email: Joi.string().required().email(),
 });
 
-const createEmailVerifyTokenValidation = Joi.object({
+const createEmailVerificationTokenValidation = Joi.object({
     email: Joi.string().required().email(),
 });
 
-const passwordResetValidation = Joi.object({
+const resetPasswordValidation = Joi.object({
     token: Joi.string().required().min(6),
     new_password: Joi.string().required().min(8).regex(/^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&*()+?])(?=.{8,})/),
 });
@@ -35,7 +31,7 @@ const changePasswordValidation = Joi.object({
     new_password: Joi.string().required().min(8).regex(/^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&*()+?])(?=.{8,})/).invalid(Joi.ref('old_password')),
 });
 
-const emailVerify = Joi.object({
+const verifyEmail = Joi.object({
     token: Joi.string().required().min(6),
 });
 
@@ -43,8 +39,8 @@ module.exports = {
     loginValidation,
     registerValidation,
     createPasswordResetTokenValidation,
-    passwordResetValidation,
+    resetPasswordValidation,
     changePasswordValidation,
-    createEmailVerifyTokenValidation,
-    emailVerify
+    createEmailVerificationTokenValidation,
+    verifyEmail
 };
