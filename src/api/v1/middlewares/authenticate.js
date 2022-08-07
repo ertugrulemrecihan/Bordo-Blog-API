@@ -10,6 +10,9 @@ const authenticate = (req, res, next) => {
         if (err) return next(new ApiError('Invalid access token', httpStatus.UNAUTHORIZED));
 
         req.user = decoded.data;
+
+        if (!req.user.email_verified) return next(new ApiError('User email is not verified', httpStatus.FORBIDDEN));
+
         next();
     });
 };
