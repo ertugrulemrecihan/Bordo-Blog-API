@@ -1,0 +1,10 @@
+{
+    "description": "Forbidden error",
+    "content": {
+        "application/json": {
+            "schema": {
+                "$ref": "./api-error.json"
+            }
+        }
+    }
+}
