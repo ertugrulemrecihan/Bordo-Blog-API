@@ -122,7 +122,7 @@ class PostController extends BaseController {
         const user = await userService.fetchOneById(req.user._id);
         if (!user) return next(new ApiError('User not found', httpStatus.NOT_FOUND));
 
-        const index = post.likes.indexOf(req.user._id);
+        const index = post.likes.findIndex(o => o._id == req.user._id);
         let message = null;
         if (index > -1) {
             // Unlike
@@ -217,7 +217,7 @@ class PostController extends BaseController {
         const post = await postService.fetchOneByQuery({ _id: postId, writer_id: req.user._id });
         if (!post) return next(new ApiError('Post not found', httpStatus.NOT_FOUND));
 
-        const index = post.tags.indexOf(tagId);
+        const index = post.tags.findIndex(o => o._id == tagId);
         if (index <= -1) return next(new ApiError('Tag not found', httpStatus.NOT_FOUND));
 
         post.tags.splice(index, 1);

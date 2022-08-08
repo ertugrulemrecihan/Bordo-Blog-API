@@ -5,6 +5,11 @@ class PostService extends BaseService {
     constructor() {
         super(Post, [{
             path: 'comments'
+        }, {
+            path: 'likes',
+            select: 'first_name last_name email'
+        }, {
+            path: 'tags'
         }]);
     }
 
