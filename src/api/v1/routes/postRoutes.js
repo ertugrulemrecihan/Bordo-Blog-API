@@ -17,7 +17,8 @@ router.route('/delete/my/:id').delete(authenticate, authorization('Writer'), par
 router.route('/update/my/:id').patch(authenticate, authorization('Writer'), paramIdValidator, bodyValidator(schemas.updateValidation), controller.updateMyPost);
 router.route('/addView/:id').post(authenticate, paramIdValidator, controller.addView);  // ! FIXME: Abone olmalı 
 router.route('/changeLikeStatus/:id').post(authenticate, paramIdValidator, controller.changeLikeStatus); // ! FIXME: Abone olmalı
-// TODO: Comment ekleme ekle
+router.route('/addComment/:id').post(authenticate, paramIdValidator, bodyValidator(schemas.addComment), controller.addComment);
+router.route('/deleteComment/:id').post(authenticate, paramIdValidator, bodyValidator(schemas.deleteComment), controller.deleteComment);
 // TODO: Comment silme ekle
 router.route('/addTag/:id').post(authenticate, authorization('Writer'), paramIdValidator, bodyValidator(schemas.addTag), controller.addTag);
 router.route('/removeTag/:id').post(authenticate, authorization('Writer'), paramIdValidator, bodyValidator(schemas.removeTag), controller.removeTag);

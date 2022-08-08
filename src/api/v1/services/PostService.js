@@ -3,7 +3,9 @@ const BaseService = require('./BaseService');
 
 class PostService extends BaseService {
     constructor() {
-        super(Post);
+        super(Post, [{
+            path: 'comments'
+        }]);
     }
 
     fetchAllBySelect(select) {

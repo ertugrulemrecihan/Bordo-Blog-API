@@ -6,6 +6,7 @@ const ApiError = require('../responses/error/apiError');
 const ApiDataSuccess = require('../responses/success/apiDataSuccess');
 const httpStatus = require('http-status');
 const ApiSuccess = require('../responses/success/apiSuccess');
+const commentService = require('../services/CommentService');
 
 class PostController extends BaseController {
     constructor() {
@@ -140,13 +141,45 @@ class PostController extends BaseController {
         return next();
     }
 
-    // async addComment(req, res, next) {
-    //     //TODO
-    // }
+    async addComment(req, res, next) {
+        const postId = req.params.id;
 
-    // async deleteComment(req, res, next) {
-    //     //TODO
-    // }
+        const post = await postService.fetchOneById(postId);
+        if (!post) return next(new ApiError('Post not found', httpStatus.NOT_FOUND));
+
+        const comment = await commentService.create({
+            user_id: req.user._id,
+            comment: req.body.comment
+        });
+
+        const updatedComment = await postService.updateById(postId, { comments: comment });
+        if (!updatedComment) return next(new ApiError('There was a problem adding the comment', httpStatus.INTERNAL_SERVER_ERROR));
+
+        new ApiDataSuccess(updatedComment, 'Comment added successfully', httpStatus.OK).place(res);
+        return next();
+    }
+
+    async deleteComment(req, res, next) {
+        const postId = req.params.id;
+        const commentId = req.body.comment_id;
+
+        const post = await postService.fetchOneById(postId);
+        if (!post) return next(new ApiError('Post not found', httpStatus.NOT_FOUND));
+
+        const index = post.comments.findIndex(o => o._id == commentId);
+        console.log(index);
+        if (index <= -1) return next(new ApiError('Comment not found', httpStatus.NOT_FOUND));
+
+        post.comments.splice(index, 1);
+
+        await commentService.deleteById(commentId);
+
+        const deletedComment = await postService.updateById(postId, { comments: post.comments });
+        if (!deletedComment) return next(new ApiError('There was a problem deleting the comment', httpStatus.INTERNAL_SERVER_ERROR));
+
+        new ApiDataSuccess(deletedComment, 'Comment deleted successfully', httpStatus.OK).place(res);
+        return next();
+    }
 
     async addTag(req, res, next) {
         const postId = req.params.id;

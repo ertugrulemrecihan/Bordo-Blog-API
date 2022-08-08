@@ -15,6 +15,14 @@ const updateValidation = Joi.object({
     // images: Joi.array().items(Joi.string()),
 });
 
+const addComment = Joi.object({
+    'comment': Joi.string().required(),
+});
+
+const deleteComment = Joi.object({
+    'comment_id': Joi.string().required()
+});
+
 const addTag = Joi.object({
     'tag_id': Joi.string().required().length(24)
 });
@@ -26,6 +34,8 @@ const removeTag = Joi.object({
 module.exports = {
     createValidation,
     updateValidation,
+    addComment,
     addTag,
-    removeTag
+    removeTag,
+    deleteComment
 };
