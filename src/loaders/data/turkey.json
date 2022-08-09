@@ -1,0 +1,4617 @@
+{
+    "data": [
+        {
+            "city_name": "Adana",
+            "plate_code": " 01",
+            "area_code": "0322",
+            "region": "Akdeniz",
+            "districts": [
+                {
+                    "name": "Aladağ",
+                    "zip_code": "01700"
+                },
+                {
+                    "name": "Seyhan",
+                    "zip_code": "01000"
+                },
+                {
+                    "name": "Yüreğir",
+                    "zip_code": "01300"
+                },
+                {
+                    "name": "Çukurova",
+                    "zip_code": "01300"
+                },
+                {
+                    "name": "Sarıçam",
+                    "zip_code": "01400"
+                },
+                {
+                    "name": "Ceyhan",
+                    "zip_code": "01900"
+                },
+                {
+                    "name": "Kozan",
+                    "zip_code": "01500"
+                },
+                {
+                    "name": "İmamoğlu",
+                    "zip_code": "01700"
+                },
+                {
+                    "name": "Karataş",
+                    "zip_code": "01900"
+                },
+                {
+                    "name": "Karaisalı",
+                    "zip_code": "01700"
+                },
+                {
+                    "name": "Pozantı",
+                    "zip_code": "01400"
+                },
+                {
+                    "name": "Yumurtalık",
+                    "zip_code": "01600"
+                },
+                {
+                    "name": "Tufanbeyli",
+                    "zip_code": "01600"
+                },
+                {
+                    "name": "Feke",
+                    "zip_code": "01600"
+                },
+                {
+                    "name": "Saimbeyli",
+                    "zip_code": "01700"
+                }
+            ],
+            "zip_code": "01000"
+        },
+        {
+            "city_name": "Adıyaman",
+            "plate_code": "02",
+            "area_code": "416",
+            "region": "Güneydoğu Anadolu",
+            "districts": [
+                {
+                    "name": "Merkez",
+                    "zip_code": "02000"
+                },
+                {
+                    "name": "Kahta",
+                    "zip_code": "02400"
+                },
+                {
+                    "name": "Besni",
+                    "zip_code": "02300"
+                },
+                {
+                    "name": "Gölbaşı",
+                    "zip_code": "02500"
+                },
+                {
+                    "name": "Gerger",
+                    "zip_code": "02700"
+                },
+                {
+                    "name": "Sincik",
+                    "zip_code": "02900"
+                },
+                {
+                    "name": "Çelikhan",
+                    "zip_code": "02600"
+                },
+                {
+                    "name": "Tut",
+                    "zip_code": "02300"
+                },
+                {
+                    "name": "Samsat",
+                    "zip_code": "02800"
+                }
+            ],
+            "zip_code": "02000"
+        },
+        {
+            "city_name": "Afyonkarahisar",
+            "plate_code": "03",
+            "area_code": "272",
+            "region": "Ege",
+            "districts": [
+                {
+                    "name": "Merkez",
+                    "zip_code": "03000"
+                },
+                {
+                    "name": "Sandıklı",
+                    "zip_code": "03500"
+                },
+                {
+                    "name": "Dinar",
+                    "zip_code": "03400"
+                },
+                {
+                    "name": "Bolvadin",
+                    "zip_code": "03300"
+                },
+                {
+                    "name": "Sinanpaşa",
+                    "zip_code": "03800"
+                },
+                {
+                    "name": "Emirdağ",
+                    "zip_code": "03600"
+                },
+                {
+                    "name": "Şuhut",
+                    "zip_code": "03800"
+                },
+                {
+                    "name": "Çay",
+                    "zip_code": "03700"
+                },
+                {
+                    "name": "İhsaniye",
+                    "zip_code": "03300"
+                },
+                {
+                    "name": "İscehisar",
+                    "zip_code": "03700"
+                },
+                {
+                    "name": "Sultandağı",
+                    "zip_code": "03900"
+                },
+                {
+                    "name": "Çobanlar",
+                    "zip_code": "03000"
+                },
+                {
+                    "name": "Dazkırı",
+                    "zip_code": "03900"
+                },
+                {
+                    "name": "Başmakçı",
+                    "zip_code": "03400"
+                },
+                {
+                    "name": "Hocalar",
+                    "zip_code": "03500"
+                },
+                {
+                    "name": "Bayat",
+                    "zip_code": "03700"
+                },
+                {
+                    "name": "Evciler",
+                    "zip_code": "03900"
+                },
+                {
+                    "name": "Kızılören",
+                    "zip_code": "03500"
+                }
+            ],
+            "zip_code": "03000"
+        },
+        {
+            "city_name": "Ağrı",
+            "plate_code": "04",
+            "area_code": "472",
+            "region": "Doğu Anadolu",
+            "districts": [
+                {
+                    "name": "Merkez",
+                    "zip_code": "04000"
+                },
+                {
+                    "name": "Patnos",
+                    "zip_code": "04500"
+                },
+                {
+                    "name": "Doğubayazıt",
+                    "zip_code": "04400"
+                },
+                {
+                    "name": "Diyadin",
+                    "zip_code": "04900"
+                },
+                {
+                    "name": "Eleşkirt",
+                    "zip_code": "04600"
+                },
+                {
+                    "name": "Tutak",
+                    "zip_code": "04700"
+                },
+                {
+                    "name": "Taşlıçay",
+                    "zip_code": "04800"
+                },
+                {
+                    "name": "Hamur",
+                    "zip_code": "04800"
+                }
+            ],
+            "zip_code": "04000"
+        },
+        {
+            "city_name": "Amasya",
+            "plate_code": "05",
+            "area_code": "358",
+            "region": "Karadeniz",
+            "districts": [
+                {
+                    "name": "Merkez",
+                    "zip_code": "05000"
+                },
+                {
+                    "name": "Merzifon",
+                    "zip_code": "05300"
+                },
+                {
+                    "name": "Suluova",
+                    "zip_code": "05500"
+                },
+                {
+                    "name": "Taşova",
+                    "zip_code": "05800"
+                },
+                {
+                    "name": "Göynücek",
+                    "zip_code": "05900"
+                },
+                {
+                    "name": "Hamamözü",
+                    "zip_code": "05700"
+                }
+            ],
+            "zip_code": "05000"
+        },
+        {
+            "city_name": "Ankara",
+            "plate_code": "06",
+            "area_code": "312",
+            "region": "İç Anadolu",
+            "districts": [
+                {
+                    "name": "Çankaya",
+                    "zip_code": "06500"
+                },
+                {
+                    "name": "Keçiören",
+                    "zip_code": "06300"
+                },
+                {
+                    "name": "Yenimahalle",
+                    "zip_code": "06500"
+                },
+                {
+                    "name": "Mamak",
+                    "zip_code": "06600"
+                },
+                {
+                    "name": "Etimesgut",
+                    "zip_code": "06700"
+                },
+                {
+                    "name": "Sincan",
+                    "zip_code": "06900"
+                },
+                {
+                    "name": "Altındağ",
+                    "zip_code": "06000"
+                },
+                {
+                    "name": "Pursaklar",
+                    "zip_code": "06100"
+                },
+                {
+                    "name": "Gölbaşı",
+                    "zip_code": "06800"
+                },
+                {
+                    "name": "Polatlı",
+                    "zip_code": "06900"
+                },
+                {
+                    "name": "Çubuk",
+                    "zip_code": "06700"
+                },
+                {
+                    "name": "Kahramankazan",
+                    "zip_code": "06900"
+                },
+                {
+                    "name": "Beypazarı",
+                    "zip_code": "06700"
+                },
+                {
+                    "name": "Haymana",
+                    "zip_code": "06800"
+                },
+                {
+                    "name": "Elmadağ",
+                    "zip_code": "06700"
+                },
+                {
+                    "name": "Akyurt",
+                    "zip_code": "06700"
+                },
+                {
+                    "name": "Şereflikoçhisar",
+                    "zip_code": "06900"
+                },
+                {
+                    "name": "Bala",
+                    "zip_code": "06700"
+                },
+                {
+                    "name": "Kızılcahamam",
+                    "zip_code": "06800"
+                },
+                {
+                    "name": "Nallıhan",
+                    "zip_code": "06900"
+                },
+                {
+                    "name": "Ayaş",
+                    "zip_code": "06700"
+                },
+                {
+                    "name": "Çamlıdere",
+                    "zip_code": "06700"
+                },
+                {
+                    "name": "Kalecik",
+                    "zip_code": "06800"
+                },
+                {
+                    "name": "Güdül",
+                    "zip_code": "06800"
+                },
+                {
+                    "name": "Evren",
+                    "zip_code": "06700"
+                }
+            ],
+            "zip_code": "06000"
+        },
+        {
+            "city_name": "Antalya",
+            "plate_code": "07",
+            "area_code": "242",
+            "region": "Akdeniz",
+            "districts": [
+                {
+                    "name": "Kepez",
+                    "zip_code": "07000"
+                },
+                {
+                    "name": "Muratpaşa",
+                    "zip_code": "07000"
+                },
+                {
+                    "name": "Alanya",
+                    "zip_code": "07400"
+                },
+                {
+                    "name": "Manavgat",
+                    "zip_code": "07600"
+                },
+                {
+                    "name": "Konyaaltı",
+                    "zip_code": "07000"
+                },
+                {
+                    "name": "Serik",
+                    "zip_code": "07500"
+                },
+                {
+                    "name": "Aksu",
+                    "zip_code": "07100"
+                },
+                {
+                    "name": "Kumluca",
+                    "zip_code": "07300"
+                },
+                {
+                    "name": "Döşemealtı",
+                    "zip_code": "07100"
+                },
+                {
+                    "name": "Kaş",
+                    "zip_code": "07500"
+                },
+                {
+                    "name": "Korkuteli",
+                    "zip_code": "07800"
+                },
+                {
+                    "name": "Gazipaşa",
+                    "zip_code": "07900"
+                },
+                {
+                    "name": " Finike",
+                    "zip_code": "07000"
+                },
+                {
+                    "name": "Kemer",
+                    "zip_code": "07900"
+                },
+                {
+                    "name": "Elmalı",
+                    "zip_code": "07700"
+                },
+                {
+                    "name": "Demre",
+                    "zip_code": "07500"
+                },
+                {
+                    "name": "Akseki",
+                    "zip_code": "07600"
+                },
+                {
+                    "name": "Gündoğmuş",
+                    "zip_code": "07800"
+                },
+                {
+                    "name": "İbradi",
+                    "zip_code": "07000"
+                }
+            ],
+            "zip_code": "07000"
+        },
+        {
+            "city_name": "Artvin",
+            "plate_code": "08",
+            "area_code": "466",
+            "region": "Karadeniz",
+            "districts": [
+                {
+                    "name": "Merkez",
+                    "zip_code": "08000"
+                },
+                {
+                    "name": "Hopa",
+                    "zip_code": "08600"
+                },
+                {
+                    "name": "Borçka",
+                    "zip_code": "08400"
+                },
+                {
+                    "name": "Arhavi",
+                    "zip_code": "08200"
+                },
+                {
+                    "name": "Yusufeli",
+                    "zip_code": "08800"
+                },
+                {
+                    "name": "Şavşat",
+                    "zip_code": "08700"
+                },
+                {
+                    "name": "Aksu",
+                    "zip_code": "08000"
+                },
+                {
+                    "name": "Kumluca",
+                    "zip_code": "08000"
+                },
+                {
+                    "name": "Ardanuç",
+                    "zip_code": "08300"
+                },
+                {
+                    "name": "Kemalpaşa",
+                    "zip_code": "08600"
+                },
+                {
+                    "name": "Murgul",
+                    "zip_code": "08500"
+                }
+            ],
+            "zip_code": "08000"
+        },
+        {
+            "city_name": "Aydın",
+            "plate_code": "09",
+            "area_code": "256",
+            "region": "Ege",
+            "districts": [
+                {
+                    "name": "Efeler",
+                    "zip_code": "09100"
+                },
+                {
+                    "name": "Nazilli",
+                    "zip_code": "09800"
+                },
+                {
+                    "name": "Söke",
+                    "zip_code": "09200"
+                },
+                {
+                    "name": "Kuşadası",
+                    "zip_code": "09400"
+                },
+                {
+                    "name": "Didim",
+                    "zip_code": "09300"
+                },
+                {
+                    "name": "İncirliova",
+                    "zip_code": "09600"
+                },
+                {
+                    "name": "Çine",
+                    "zip_code": "09500"
+                },
+                {
+                    "name": "Germencik",
+                    "zip_code": "09700"
+                },
+                {
+                    "name": "Bozdoğan",
+                    "zip_code": "09700"
+                },
+                {
+                    "name": "Köşk",
+                    "zip_code": "09500"
+                },
+                {
+                    "name": "Kuyucak",
+                    "zip_code": "09900"
+                },
+                {
+                    "name": "Koçarlı",
+                    "zip_code": "09900"
+                },
+                {
+                    "name": "Sultanhisar",
+                    "zip_code": "09400"
+                },
+                {
+                    "name": "Karacasu",
+                    "zip_code": "09300"
+                },
+                {
+                    "name": "Buharkent",
+                    "zip_code": "09600"
+                },
+                {
+                    "name": "Yenipazar",
+                    "zip_code": "09300"
+                },
+                {
+                    "name": "Karpuzlu",
+                    "zip_code": "09500"
+                }
+            ],
+            "zip_code": "09000"
+        },
+        {
+            "city_name": "Balıkesir",
+            "plate_code": "10",
+            "area_code": "266",
+            "region": "Marmara",
+            "districts": [
+                {
+                    "name": "Altıeylül",
+                    "zip_code": "10100"
+                },
+                {
+                    "name": "Karesi",
+                    "zip_code": "10000"
+                },
+                {
+                    "name": "Edremit",
+                    "zip_code": "10300"
+                },
+                {
+                    "name": "Bandırma",
+                    "zip_code": "10200"
+                },
+                {
+                    "name": "Gönen",
+                    "zip_code": "10900"
+                },
+                {
+                    "name": "Ayvalık",
+                    "zip_code": "10400"
+                },
+                {
+                    "name": "Burhaniye",
+                    "zip_code": "10700"
+                },
+                {
+                    "name": "Bigadiç",
+                    "zip_code": "10400"
+                },
+                {
+                    "name": "Susurluk",
+                    "zip_code": "10600"
+                },
+                {
+                    "name": "Dursunbey",
+                    "zip_code": "10800"
+                },
+                {
+                    "name": "Sındırgı",
+                    "zip_code": "10300"
+                },
+                {
+                    "name": "Erdek",
+                    "zip_code": "10500"
+                },
+                {
+                    "name": "İvrindi",
+                    "zip_code": "10700"
+                },
+                {
+                    "name": "Havran",
+                    "zip_code": "10500"
+                },
+                {
+                    "name": "Kepsut",
+                    "zip_code": "10600"
+                },
+                {
+                    "name": "Manyas",
+                    "zip_code": "10400"
+                },
+                {
+                    "name": "Savaştepe",
+                    "zip_code": "10500"
+                },
+                {
+                    "name": "Gömeç",
+                    "zip_code": "10700"
+                },
+                {
+                    "name": "Balya",
+                    "zip_code": "10800"
+                },
+                {
+                    "name": "Marmara",
+                    "zip_code": "10900"
+                }
+            ],
+            "zip_code": "10000"
+        },
+        {
+            "city_name": "Bilecik",
+            "plate_code": "11",
+            "area_code": "228",
+            "region": "Marmara",
+            "districts": [
+                {
+                    "name": "Merkez",
+                    "zip_code": "11000"
+                },
+                {
+                    "name": "Bozüyük",
+                    "zip_code": "11300"
+                },
+                {
+                    "name": "Osmaneli",
+                    "zip_code": "11500"
+                },
+                {
+                    "name": "Söğüt",
+                    "zip_code": "11600"
+                },
+                {
+                    "name": "Gölpazarı",
+                    "zip_code": "11700"
+                },
+                {
+                    "name": "Pazaryeri",
+                    "zip_code": "11800"
+                },
+                {
+                    "name": "İnhisar",
+                    "zip_code": "11600"
+                },
+                {
+                    "name": "Yenipazar",
+                    "zip_code": "11700"
+                }
+            ],
+            "zip_code": "11000"
+        },
+        {
+            "city_name": "Bingöl",
+            "plate_code": "12",
+            "area_code": "426",
+            "region": "Doğu Anadolu",
+            "districts": [
+                {
+                    "name": "Merkez",
+                    "zip_code": "12000"
+                },
+                {
+                    "name": "Genç",
+                    "zip_code": "12500"
+                },
+                {
+                    "name": "Solhan",
+                    "zip_code": "12700"
+                },
+                {
+                    "name": "Karlıova",
+                    "zip_code": "12900"
+                },
+                {
+                    "name": "Adaklı",
+                    "zip_code": "12600"
+                },
+                {
+                    "name": "Kiğı",
+                    "zip_code": "12800"
+                },
+                {
+                    "name": "Yedisu",
+                    "zip_code": "12800"
+                },
+                {
+                    "name": "Yayladere",
+                    "zip_code": "12600"
+                }
+            ],
+            "zip_code": "12000"
+        },
+        {
+            "city_name": "Bitlis",
+            "plate_code": "13",
+            "area_code": "434",
+            "region": "Doğu Anadolu",
+            "districts": [
+                {
+                    "name": "Tatvan",
+                    "zip_code": "13200"
+                },
+                {
+                    "name": "Merkez",
+                    "zip_code": "13000"
+                },
+                {
+                    "name": "Güroymak",
+                    "zip_code": "13800"
+                },
+                {
+                    "name": "Ahlat",
+                    "zip_code": "13400"
+                },
+                {
+                    "name": "Hizan",
+                    "zip_code": "13600"
+                },
+                {
+                    "name": "Mutki",
+                    "zip_code": "13700"
+                },
+                {
+                    "name": "Adilcevaz",
+                    "zip_code": "13500"
+                }
+            ],
+            "zip_code": "13000"
+        },
+        {
+            "city_name": "Bolu",
+            "plate_code": "14",
+            "area_code": "374",
+            "region": "Karadeniz",
+            "districts": [
+                {
+                    "name": "Merkez",
+                    "zip_code": "14000"
+                },
+                {
+                    "name": "Gerede",
+                    "zip_code": "14900"
+                },
+                {
+                    "name": "Mudurnu",
+                    "zip_code": "14800"
+                },
+                {
+                    "name": "Göynük",
+                    "zip_code": "14700"
+                },
+                {
+                    "name": "Mengen",
+                    "zip_code": "14800"
+                },
+                {
+                    "name": "Yeniçağa",
+                    "zip_code": "14600"
+                },
+                {
+                    "name": "Dörtdivan",
+                    "zip_code": "14900"
+                },
+                {
+                    "name": "Seben",
+                    "zip_code": "14700"
+                },
+                {
+                    "name": "Kıbrıscık",
+                    "zip_code": "14600"
+                }
+            ],
+            "zip_code": "14000"
+        },
+        {
+            "city_name": "Burdur",
+            "plate_code": "15",
+            "area_code": "248",
+            "region": "Akdeniz",
+            "districts": [
+                {
+                    "name": "Merkez",
+                    "zip_code": "15000"
+                },
+                {
+                    "name": "Bucak",
+                    "zip_code": "15300"
+                },
+                {
+                    "name": "Gölhisar",
+                    "zip_code": "15400"
+                },
+                {
+                    "name": "Yeşilova",
+                    "zip_code": "15500"
+                },
+                {
+                    "name": "Çavdır",
+                    "zip_code": "15900"
+                },
+                {
+                    "name": "Tefenni",
+                    "zip_code": "15600"
+                },
+                {
+                    "name": "Ağlasun",
+                    "zip_code": "15800"
+                },
+                {
+                    "name": "Karamanlı",
+                    "zip_code": "15700"
+                },
+                {
+                    "name": "Altınyayla",
+                    "zip_code": "15400"
+                },
+                {
+                    "name": "Çeltikçi",
+                    "zip_code": "15000"
+                },
+                {
+                    "name": "Kemer",
+                    "zip_code": "15000"
+                }
+            ],
+            "zip_code": "15000"
+        },
+        {
+            "city_name": "Bursa",
+            "plate_code": "16",
+            "area_code": "224",
+            "region": "Marmara",
+            "districts": [
+                {
+                    "name": "Osmangazi",
+                    "zip_code": "16100"
+                },
+                {
+                    "name": "Yıldırım",
+                    "zip_code": "16300"
+                },
+                {
+                    "name": "Nilüfer",
+                    "zip_code": "16200"
+                },
+                {
+                    "name": "İnegöl",
+                    "zip_code": "16400"
+                },
+                {
+                    "name": "Gemlik",
+                    "zip_code": "16600"
+                },
+                {
+                    "name": "Mustafakemalpa",
+                    "zip_code": "16000"
+                },
+                {
+                    "name": "Mudanya",
+                    "zip_code": "16900"
+                },
+                {
+                    "name": "Gürsu",
+                    "zip_code": "16500"
+                },
+                {
+                    "name": "Karacabey",
+                    "zip_code": "16700"
+                },
+                {
+                    "name": "Orhangazi",
+                    "zip_code": "16800"
+                },
+                {
+                    "name": "Kestel",
+                    "zip_code": "16400"
+                },
+                {
+                    "name": "Yenişehir",
+                    "zip_code": "16900"
+                },
+                {
+                    "name": "İznik",
+                    "zip_code": "16800"
+                },
+                {
+                    "name": "Orhaneli",
+                    "zip_code": "16900"
+                },
+                {
+                    "name": "Keles",
+                    "zip_code": "16700"
+                },
+                {
+                    "name": "Büyükorhan",
+                    "zip_code": "16900"
+                },
+                {
+                    "name": "Harmancık",
+                    "zip_code": "16700"
+                }
+            ],
+            "zip_code": "16000"
+        },
+        {
+            "city_name": "Çanakkale",
+            "plate_code": "17",
+            "area_code": "286",
+            "region": "Ege",
+            "districts": [
+                {
+                    "name": "Merkez",
+                    "zip_code": "17000"
+                },
+                {
+                    "name": "Biga",
+                    "zip_code": "17200"
+                },
+                {
+                    "name": "Çan",
+                    "zip_code": "17400"
+                },
+                {
+                    "name": "Gelibolu",
+                    "zip_code": "17300"
+                },
+                {
+                    "name": "Ayvacık",
+                    "zip_code": "17800"
+                },
+                {
+                    "name": "Ezine",
+                    "zip_code": "17600"
+                },
+                {
+                    "name": "Yenice",
+                    "zip_code": "17500"
+                },
+                {
+                    "name": "Bayramiç",
+                    "zip_code": "17700"
+                },
+                {
+                    "name": "Lapseki",
+                    "zip_code": "17800"
+                },
+                {
+                    "name": "Gökçeada",
+                    "zip_code": "17700"
+                },
+                {
+                    "name": "Eceabat",
+                    "zip_code": "17900"
+                },
+                {
+                    "name": "Bozcaada",
+                    "zip_code": "17600"
+                }
+            ],
+            "zip_code": "17000"
+        },
+        {
+            "city_name": "Çankırı",
+            "plate_code": "18",
+            "area_code": "376",
+            "region": "İç Anadolu",
+            "districts": [
+                {
+                    "name": "Merkez",
+                    "zip_code": "18000"
+                },
+                {
+                    "name": "Orta",
+                    "zip_code": "18800"
+                },
+                {
+                    "name": "Çerkeş",
+                    "zip_code": "18600"
+                },
+                {
+                    "name": "Ilgaz",
+                    "zip_code": "18400"
+                },
+                {
+                    "name": "Şabanözü",
+                    "zip_code": "18600"
+                },
+                {
+                    "name": "Kurşunlu",
+                    "zip_code": "18300"
+                },
+                {
+                    "name": "Yapraklı",
+                    "zip_code": "18900"
+                },
+                {
+                    "name": "Kızılırmak",
+                    "zip_code": "18200"
+                },
+                {
+                    "name": "Eldivan",
+                    "zip_code": "18700"
+                },
+                {
+                    "name": "Atkaracalar",
+                    "zip_code": "18300"
+                },
+                {
+                    "name": "Korgun",
+                    "zip_code": "18200"
+                },
+                {
+                    "name": "Bayramören",
+                    "zip_code": "18300"
+                }
+            ],
+            "zip_code": "18000"
+        },
+        {
+            "city_name": "Çorum",
+            "plate_code": "19",
+            "area_code": "364",
+            "region": "Karadeniz",
+            "districts": [
+                {
+                    "name": "Merkez",
+                    "zip_code": "19000"
+                },
+                {
+                    "name": "Sungurlu",
+                    "zip_code": "19300"
+                },
+                {
+                    "name": "Osmancık",
+                    "zip_code": "19500"
+                },
+                {
+                    "name": "İskilip",
+                    "zip_code": "19400"
+                },
+                {
+                    "name": "Alaca",
+                    "zip_code": "19600"
+                },
+                {
+                    "name": "Bayat",
+                    "zip_code": "19800"
+                },
+                {
+                    "name": "Kargı",
+                    "zip_code": "19900"
+                },
+                {
+                    "name": "Mecitözü",
+                    "zip_code": "19700"
+                },
+                {
+                    "name": "Ortaköy",
+                    "zip_code": "19900"
+                },
+                {
+                    "name": "Uğurludağ",
+                    "zip_code": "19400"
+                },
+                {
+                    "name": "Dodurga",
+                    "zip_code": "19000"
+                },
+                {
+                    "name": "Oğuzlar",
+                    "zip_code": "19000"
+                },
+                {
+                    "name": "Laçin",
+                    "zip_code": "19000"
+                },
+                {
+                    "name": "Boğazkale",
+                    "zip_code": "19300"
+                }
+            ],
+            "zip_code": "19000"
+        },
+        {
+            "city_name": "Denizli",
+            "plate_code": "20",
+            "area_code": "258",
+            "region": "Ege",
+            "districts": [
+                {
+                    "name": "Pamukkale",
+                    "zip_code": "20200"
+                },
+                {
+                    "name": "Merkezefendi",
+                    "zip_code": "20000"
+                },
+                {
+                    "name": "Çivril",
+                    "zip_code": "20600"
+                },
+                {
+                    "name": "Acıpayam",
+                    "zip_code": "20800"
+                },
+                {
+                    "name": "Tavas",
+                    "zip_code": "20500"
+                },
+                {
+                    "name": "Honaz",
+                    "zip_code": "20300"
+                },
+                {
+                    "name": "Sarayköy",
+                    "zip_code": "20300"
+                },
+                {
+                    "name": "Buldan",
+                    "zip_code": "20400"
+                },
+                {
+                    "name": "Kale",
+                    "zip_code": "20500"
+                },
+                {
+                    "name": "Çal",
+                    "zip_code": "20700"
+                },
+                {
+                    "name": "Çameli",
+                    "zip_code": "20900"
+                },
+                {
+                    "name": "Serinhisar",
+                    "zip_code": "20400"
+                },
+                {
+                    "name": "Bozkurt",
+                    "zip_code": "20300"
+                },
+                {
+                    "name": "Güney",
+                    "zip_code": "20400"
+                },
+                {
+                    "name": "Çardak",
+                    "zip_code": "20300"
+                },
+                {
+                    "name": "Bekilli",
+                    "zip_code": "20900"
+                },
+                {
+                    "name": "Beyağaç",
+                    "zip_code": "20500"
+                },
+                {
+                    "name": "Babadağ",
+                    "zip_code": "20400"
+                },
+                {
+                    "name": "Baklan",
+                    "zip_code": "20700"
+                }
+            ],
+            "zip_code": "20000"
+        },
+        {
+            "city_name": "Diyarbakır",
+            "plate_code": "21",
+            "area_code": "412",
+            "region": "Güneydoğu Anadolu",
+            "districts": [
+                {
+                    "name": "Bağlar",
+                    "zip_code": "21000"
+                },
+                {
+                    "name": "Kayapınar",
+                    "zip_code": "21000"
+                },
+                {
+                    "name": "Yenişehir",
+                    "zip_code": "21100"
+                },
+                {
+                    "name": "Ergani",
+                    "zip_code": "21900"
+                },
+                {
+                    "name": "Bismil",
+                    "zip_code": "21500"
+                },
+                {
+                    "name": "Sur",
+                    "zip_code": "21200"
+                },
+                {
+                    "name": "Silvan",
+                    "zip_code": "21600"
+                },
+                {
+                    "name": "Çınar",
+                    "zip_code": "21700"
+                },
+                {
+                    "name": "Çermik",
+                    "zip_code": "21600"
+                },
+                {
+                    "name": "Dicle",
+                    "zip_code": "21800"
+                },
+                {
+                    "name": "Kulp",
+                    "zip_code": "21900"
+                },
+                {
+                    "name": "Hani",
+                    "zip_code": "21800"
+                },
+                {
+                    "name": "Lice",
+                    "zip_code": "21700"
+                },
+                {
+                    "name": "Eğil",
+                    "zip_code": "21400"
+                },
+                {
+                    "name": "Hazro",
+                    "zip_code": "21500"
+                },
+                {
+                    "name": "Kocaköy",
+                    "zip_code": "21400"
+                },
+                {
+                    "name": "Çüngüş",
+                    "zip_code": "21800"
+                }
+            ],
+            "zip_code": "21000"
+        },
+        {
+            "city_name": "Edirne",
+            "plate_code": "22",
+            "area_code": "284",
+            "region": "Marmara",
+            "districts": [
+                {
+                    "name": "Merkez",
+                    "zip_code": "22000"
+                },
+                {
+                    "name": "Keşan",
+                    "zip_code": "22800"
+                },
+                {
+                    "name": "Uzunköprü",
+                    "zip_code": "22300"
+                },
+                {
+                    "name": "İpsala",
+                    "zip_code": "22400"
+                },
+                {
+                    "name": "Havsa",
+                    "zip_code": "22500"
+                },
+                {
+                    "name": "Meriç",
+                    "zip_code": "22600"
+                },
+                {
+                    "name": "Enez",
+                    "zip_code": "22700"
+                },
+                {
+                    "name": "Süloğlu",
+                    "zip_code": "22500"
+                },
+                {
+                    "name": "Lalapaşa",
+                    "zip_code": "22900"
+                }
+            ],
+            "zip_code": "22000"
+        },
+        {
+            "city_name": "Elazığ",
+            "plate_code": "23",
+            "area_code": "424",
+            "region": "Doğu Anadolu",
+            "districts": [
+                {
+                    "name": "Merkez",
+                    "zip_code": "23000"
+                },
+                {
+                    "name": "Kovancılar",
+                    "zip_code": "23800"
+                },
+                {
+                    "name": "Karakoçan",
+                    "zip_code": "23600"
+                },
+                {
+                    "name": "Palu",
+                    "zip_code": "23500"
+                },
+                {
+                    "name": "Baskil",
+                    "zip_code": "23800"
+                },
+                {
+                    "name": "Arıcak",
+                    "zip_code": "23500"
+                },
+                {
+                    "name": "Maden",
+                    "zip_code": "23400"
+                },
+                {
+                    "name": "Sivrice",
+                    "zip_code": "23900"
+                },
+                {
+                    "name": "Keban",
+                    "zip_code": "23700"
+                },
+                {
+                    "name": "Alacakaya",
+                    "zip_code": "23400"
+                },
+                {
+                    "name": "Ağın",
+                    "zip_code": "23900"
+                }
+            ],
+            "zip_code": "23000"
+        },
+        {
+            "city_name": "Erzincan",
+            "plate_code": "24",
+            "area_code": "446",
+            "region": "Doğu Anadolu",
+            "districts": [
+                {
+                    "name": "Merkez",
+                    "zip_code": "24000"
+                },
+                {
+                    "name": "Tercan",
+                    "zip_code": "24800"
+                },
+                {
+                    "name": "Üzümlü",
+                    "zip_code": "24100"
+                },
+                {
+                    "name": "Refahiye",
+                    "zip_code": "24300"
+                },
+                {
+                    "name": "Çayırlı",
+                    "zip_code": "24500"
+                },
+                {
+                    "name": "İliç",
+                    "zip_code": "24700"
+                },
+                {
+                    "name": "Kemah",
+                    "zip_code": "24400"
+                },
+                {
+                    "name": "Kemaliye",
+                    "zip_code": "24600"
+                },
+                {
+                    "name": "Otlukbeli",
+                    "zip_code": "24500"
+                }
+            ],
+            "zip_code": "24000"
+        },
+        {
+            "city_name": "Erzurum",
+            "plate_code": "25",
+            "area_code": "42",
+            "region": "Doğu Anadolu",
+            "districts": [
+                {
+                    "name": "Yakutiye",
+                    "zip_code": "25200"
+                },
+                {
+                    "name": "Palandöken",
+                    "zip_code": "25000"
+                },
+                {
+                    "name": "Aziziye",
+                    "zip_code": "25700"
+                },
+                {
+                    "name": "Horasan",
+                    "zip_code": "25800"
+                },
+                {
+                    "name": "Oltu",
+                    "zip_code": "25400"
+                },
+                {
+                    "name": "Pasinler",
+                    "zip_code": "25300"
+                },
+                {
+                    "name": "Karayazı",
+                    "zip_code": "25800"
+                },
+                {
+                    "name": "Hınıs",
+                    "zip_code": "25600"
+                },
+                {
+                    "name": "Tekman",
+                    "zip_code": "25500"
+                },
+                {
+                    "name": "Aşkale",
+                    "zip_code": "25500"
+                },
+                {
+                    "name": "Karaçoban",
+                    "zip_code": "25600"
+                },
+                {
+                    "name": "Şenkaya",
+                    "zip_code": "25300"
+                },
+                {
+                    "name": "Çat",
+                    "zip_code": "25700"
+                },
+                {
+                    "name": "Tortum",
+                    "zip_code": "25400"
+                },
+                {
+                    "name": "Köprüköy",
+                    "zip_code": "25300"
+                },
+                {
+                    "name": "İspir",
+                    "zip_code": "25900"
+                },
+                {
+                    "name": "Narman",
+                    "zip_code": "25500"
+                },
+                {
+                    "name": "Uzundere",
+                    "zip_code": "25400"
+                },
+                {
+                    "name": "Olur",
+                    "zip_code": "25600"
+                },
+                {
+                    "name": "Pazaryolu",
+                    "zip_code": "25900"
+                }
+            ],
+            "zip_code": "25000"
+        },
+        {
+            "city_name": "Eskişehir",
+            "plate_code": "26",
+            "area_code": "222",
+            "region": "İç Anadolu",
+            "districts": [
+                {
+                    "name": "Odunpazarı",
+                    "zip_code": "26000"
+                },
+                {
+                    "name": "Tepebaşı",
+                    "zip_code": "26100"
+                },
+                {
+                    "name": "Sivrihisar",
+                    "zip_code": "26600"
+                },
+                {
+                    "name": "Çifteler",
+                    "zip_code": "26700"
+                },
+                {
+                    "name": "Seyitgazi",
+                    "zip_code": "26900"
+                },
+                {
+                    "name": "Alpu",
+                    "zip_code": "26800"
+                },
+                {
+                    "name": "Mihalıççık",
+                    "zip_code": "26900"
+                },
+                {
+                    "name": "Mahmudiye",
+                    "zip_code": "26800"
+                },
+                {
+                    "name": "Beylikova",
+                    "zip_code": "26700"
+                },
+                {
+                    "name": "İnönü",
+                    "zip_code": "26600"
+                },
+                {
+                    "name": "Günyüzü",
+                    "zip_code": "26600"
+                },
+                {
+                    "name": "Sarıcakaya",
+                    "zip_code": "26800"
+                },
+                {
+                    "name": "Mihalgazi",
+                    "zip_code": "26800"
+                },
+                {
+                    "name": "Han",
+                    "zip_code": "26700"
+                }
+            ],
+            "zip_code": "26000"
+        },
+        {
+            "city_name": "Gaziantep",
+            "plate_code": "27",
+            "area_code": "342",
+            "region": "Güneydoğu Anadolu",
+            "districts": [
+                {
+                    "name": "Şahinbey",
+                    "zip_code": "27200"
+                },
+                {
+                    "name": "Şehitkamil",
+                    "zip_code": "27000"
+                },
+                {
+                    "name": "Nizip",
+                    "zip_code": "27700"
+                },
+                {
+                    "name": "İslahiye",
+                    "zip_code": "27800"
+                },
+                {
+                    "name": "Nurdağı",
+                    "zip_code": "27800"
+                },
+                {
+                    "name": "Araban",
+                    "zip_code": "27600"
+                },
+                {
+                    "name": "Oğuzeli",
+                    "zip_code": "27900"
+                },
+                {
+                    "name": "Yavuzeli",
+                    "zip_code": "27900"
+                },
+                {
+                    "name": "Karkamış",
+                    "zip_code": "27800"
+                }
+            ],
+            "zip_code": "27000"
+        },
+        {
+            "city_name": "Giresun",
+            "plate_code": "28",
+            "area_code": "454",
+            "region": "Karadeniz",
+            "districts": [
+                {
+                    "name": "Merkez",
+                    "zip_code": "28000"
+                },
+                {
+                    "name": "Bulancak",
+                    "zip_code": "28300"
+                },
+                {
+                    "name": "Espiye",
+                    "zip_code": "28600"
+                },
+                {
+                    "name": "Görele",
+                    "zip_code": "28800"
+                },
+                {
+                    "name": "Tirebolu",
+                    "zip_code": "28500"
+                },
+                {
+                    "name": "Şebinkarahisar",
+                    "zip_code": "28400"
+                },
+                {
+                    "name": "Keşap",
+                    "zip_code": "28900"
+                },
+                {
+                    "name": "Dereli",
+                    "zip_code": "28900"
+                },
+                {
+                    "name": "Yağlıdere",
+                    "zip_code": "28600"
+                },
+                {
+                    "name": "Piraziz",
+                    "zip_code": "28300"
+                },
+                {
+                    "name": "Eynesil",
+                    "zip_code": "28800"
+                },
+                {
+                    "name": "Alucra",
+                    "zip_code": "28700"
+                },
+                {
+                    "name": "Çamoluk",
+                    "zip_code": "28700"
+                },
+                {
+                    "name": "Güce",
+                    "zip_code": "28500"
+                },
+                {
+                    "name": "Doğankent",
+                    "zip_code": "28500"
+                },
+                {
+                    "name": "Çanakçı",
+                    "zip_code": "28800"
+                }
+            ],
+            "zip_code": "28000"
+        },
+        {
+            "city_name": "Gümüşhane",
+            "plate_code": "29",
+            "area_code": "456",
+            "region": "Karadeniz",
+            "districts": [
+                {
+                    "name": "Merkez",
+                    "zip_code": "29000"
+                },
+                {
+                    "name": "Kelkit",
+                    "zip_code": "29600"
+                },
+                {
+                    "name": "Şiran",
+                    "zip_code": "29700"
+                },
+                {
+                    "name": "Kürtün",
+                    "zip_code": "29800"
+                },
+                {
+                    "name": "Torul",
+                    "zip_code": "29800"
+                },
+                {
+                    "name": "Köse",
+                    "zip_code": "29600"
+                }
+            ],
+            "zip_code": "29000"
+        },
+        {
+            "city_name": "Hakkari",
+            "plate_code": "30",
+            "area_code": "438",
+            "region": "Doğu Anadolu",
+            "districts": [
+                {
+                    "name": "Yüksekova",
+                    "zip_code": "30300"
+                },
+                {
+                    "name": "Merkez",
+                    "zip_code": "30000"
+                },
+                {
+                    "name": "Şemdinli",
+                    "zip_code": "30800"
+                },
+                {
+                    "name": "Derecik",
+                    "zip_code": "30600"
+                },
+                {
+                    "name": "Çukurca",
+                    "zip_code": "30700"
+                }
+            ],
+            "zip_code": "30000"
+        },
+        {
+            "city_name": "Hatay",
+            "plate_code": "31",
+            "area_code": "326",
+            "region": "Güneydoğu Anadolu",
+            "districts": [
+                {
+                    "name": "Antakya",
+                    "zip_code": "31000"
+                },
+                {
+                    "name": "İskenderun",
+                    "zip_code": "31200"
+                },
+                {
+                    "name": "Defne",
+                    "zip_code": "31100"
+                },
+                {
+                    "name": "Dörtyol",
+                    "zip_code": "31600"
+                },
+                {
+                    "name": "Samandağ",
+                    "zip_code": "31800"
+                },
+                {
+                    "name": "Kırıkhan",
+                    "zip_code": "31400"
+                },
+                {
+                    "name": "Reyhanlı",
+                    "zip_code": "31500"
+                },
+                {
+                    "name": "Arsuz",
+                    "zip_code": "31200"
+                },
+                {
+                    "name": "Altınözü",
+                    "zip_code": "31700"
+                },
+                {
+                    "name": "Hassa",
+                    "zip_code": "31700"
+                },
+                {
+                    "name": "Payas",
+                    "zip_code": "31900"
+                },
+                {
+                    "name": "Erzin",
+                    "zip_code": "31900"
+                },
+                {
+                    "name": "Yayladağı",
+                    "zip_code": "31500"
+                },
+                {
+                    "name": "Belen",
+                    "zip_code": "31300"
+                },
+                {
+                    "name": "Kumlu",
+                    "zip_code": "31500"
+                }
+            ],
+            "zip_code": "31000"
+        },
+        {
+            "city_name": "Isparta",
+            "plate_code": "32",
+            "area_code": "246",
+            "region": "Akdeniz",
+            "districts": [
+                {
+                    "name": "Merkez",
+                    "zip_code": "32000"
+                },
+                {
+                    "name": "Yalvaç",
+                    "zip_code": "32400"
+                },
+                {
+                    "name": "Eğirdir",
+                    "zip_code": "32500"
+                },
+                {
+                    "name": "Şarkikaraağaç",
+                    "zip_code": "32800"
+                },
+                {
+                    "name": "Gelendost",
+                    "zip_code": "32900"
+                },
+                {
+                    "name": "Keçiborlu",
+                    "zip_code": "32700"
+                },
+                {
+                    "name": "Senirkent",
+                    "zip_code": "32600"
+                },
+                {
+                    "name": "Sütçüler",
+                    "zip_code": "32900"
+                },
+                {
+                    "name": "Gönen",
+                    "zip_code": "32000"
+                },
+                {
+                    "name": "Uluborlu",
+                    "zip_code": "32600"
+                },
+                {
+                    "name": "Atabey",
+                    "zip_code": "32600"
+                },
+                {
+                    "name": "Aksu",
+                    "zip_code": "32500"
+                },
+                {
+                    "name": "Yenişarbademli",
+                    "zip_code": "32800"
+                }
+            ],
+            "zip_code": "32000"
+        },
+        {
+            "city_name": "Mersin",
+            "plate_code": "33",
+            "area_code": "324",
+            "region": "Akdeniz",
+            "districts": [
+                {
+                    "name": "Tarsus",
+                    "zip_code": "33400"
+                },
+                {
+                    "name": "Toroslar",
+                    "zip_code": "33200"
+                },
+                {
+                    "name": "Akdeniz",
+                    "zip_code": "33200"
+                },
+                {
+                    "name": "Yenişehir",
+                    "zip_code": "33100"
+                },
+                {
+                    "name": "Mezitli",
+                    "zip_code": "33200"
+                },
+                {
+                    "name": "Erdemli",
+                    "zip_code": "33700"
+                },
+                {
+                    "name": "Silifke",
+                    "zip_code": "33900"
+                },
+                {
+                    "name": "Anamur",
+                    "zip_code": "33600"
+                },
+                {
+                    "name": "Mut",
+                    "zip_code": "33600"
+                },
+                {
+                    "name": "Bozyazı",
+                    "zip_code": "33700"
+                },
+                {
+                    "name": "Gülnar",
+                    "zip_code": "33700"
+                },
+                {
+                    "name": "Aydıncık",
+                    "zip_code": "33800"
+                },
+                {
+                    "name": "Çamlıyayla",
+                    "zip_code": "33500"
+                }
+            ],
+            "zip_code": "33000"
+        },
+        {
+            "city_name": "İstanbul",
+            "plate_code": "34",
+            "area_code": "212-216",
+            "region": "Marmara",
+            "districts": [
+                {
+                    "name": "Esenyurt",
+                    "zip_code": "34500"
+                },
+                {
+                    "name": "Küçükçekmece",
+                    "zip_code": "34300"
+                },
+                {
+                    "name": "Bağcılar",
+                    "zip_code": "34200"
+                },
+                {
+                    "name": "Pendik",
+                    "zip_code": "34800"
+                },
+                {
+                    "name": "Ümraniye",
+                    "zip_code": "34700"
+                },
+                {
+                    "name": "Bahçelievler",
+                    "zip_code": "34100"
+                },
+                {
+                    "name": "Üsküdar",
+                    "zip_code": "34600"
+                },
+                {
+                    "name": "Sultangazi",
+                    "zip_code": "34200"
+                },
+                {
+                    "name": "Maltepe",
+                    "zip_code": "34800"
+                },
+                {
+                    "name": "Gaziosmanpaşa",
+                    "zip_code": "34200"
+                },
+                {
+                    "name": "Kartal",
+                    "zip_code": "34800"
+                },
+                {
+                    "name": "Kadıköy",
+                    "zip_code": "34700"
+                },
+                {
+                    "name": "Esenler",
+                    "zip_code": "34200"
+                },
+                {
+                    "name": "Kağıthane",
+                    "zip_code": "34400"
+                },
+                {
+                    "name": "Fatih",
+                    "zip_code": "34000"
+                },
+                {
+                    "name": "Avcılar",
+                    "zip_code": "34300"
+                },
+                {
+                    "name": "Başakşehir",
+                    "zip_code": "34400"
+                },
+                {
+                    "name": "Ataşehir",
+                    "zip_code": "34700"
+                },
+                {
+                    "name": "Sancaktepe",
+                    "zip_code": "34800"
+                },
+                {
+                    "name": "Eyüp",
+                    "zip_code": "34000"
+                },
+                {
+                    "name": "Sarıyer",
+                    "zip_code": "34400"
+                },
+                {
+                    "name": "Beylikdüzü",
+                    "zip_code": "34500"
+                },
+                {
+                    "name": "Sultanbeyli",
+                    "zip_code": "34900"
+                },
+                {
+                    "name": "Güngören",
+                    "zip_code": "34100"
+                },
+                {
+                    "name": "Zeytinburnu",
+                    "zip_code": "34000"
+                },
+                {
+                    "name": "Şişli",
+                    "zip_code": "34300"
+                },
+                {
+                    "name": "Bayrampaşa",
+                    "zip_code": "34000"
+                },
+                {
+                    "name": "Arnavutköy",
+                    "zip_code": "34200"
+                },
+                {
+                    "name": "Tuzla",
+                    "zip_code": "34900"
+                },
+                {
+                    "name": "Çekmeköy",
+                    "zip_code": "34700"
+                },
+                {
+                    "name": "Büyükçekmece",
+                    "zip_code": "34500"
+                },
+                {
+                    "name": "Beykoz",
+                    "zip_code": "34800"
+                },
+                {
+                    "name": "Beyoğlu",
+                    "zip_code": "34400"
+                },
+                {
+                    "name": "Bakırköy",
+                    "zip_code": "34100"
+                },
+                {
+                    "name": "Silivri",
+                    "zip_code": "34500"
+                },
+                {
+                    "name": "Beşiktaş",
+                    "zip_code": "34000"
+                },
+                {
+                    "name": "Çatalca",
+                    "zip_code": "34500"
+                },
+                {
+                    "name": "Şile",
+                    "zip_code": "34900"
+                },
+                {
+                    "name": "Adalar",
+                    "zip_code": "34900"
+                }
+            ],
+            "zip_code": "34000"
+        },
+        {
+            "city_name": "İzmir",
+            "plate_code": "35",
+            "area_code": "232",
+            "region": "Ege",
+            "districts": [
+                {
+                    "name": "Buca",
+                    "zip_code": "35300"
+                },
+                {
+                    "name": "Karabağlar",
+                    "zip_code": "35100"
+                },
+                {
+                    "name": "Bornova",
+                    "zip_code": "35000"
+                },
+                {
+                    "name": "Konak",
+                    "zip_code": "35200"
+                },
+                {
+                    "name": "Karşıyaka",
+                    "zip_code": "35600"
+                },
+                {
+                    "name": "Bayraklı",
+                    "zip_code": "35500"
+                },
+                {
+                    "name": "Çiğli",
+                    "zip_code": "35600"
+                },
+                {
+                    "name": "Torbalı",
+                    "zip_code": "35800"
+                },
+                {
+                    "name": "Menemen",
+                    "zip_code": "35600"
+                },
+                {
+                    "name": "Gaziemir",
+                    "zip_code": "35400"
+                },
+                {
+                    "name": "Ödemiş",
+                    "zip_code": "35700"
+                },
+                {
+                    "name": "Kemalpaşa",
+                    "zip_code": "35700"
+                },
+                {
+                    "name": "Bergama",
+                    "zip_code": "35700"
+                },
+                {
+                    "name": "Aliağa",
+                    "zip_code": "35800"
+                },
+                {
+                    "name": "Menderes",
+                    "zip_code": "35400"
+                },
+                {
+                    "name": "Tire",
+                    "zip_code": "35900"
+                },
+                {
+                    "name": "Balçova",
+                    "zip_code": "35300"
+                },
+                {
+                    "name": "Urla",
+                    "zip_code": "35400"
+                },
+                {
+                    "name": "Narlıdere",
+                    "zip_code": "35300"
+                },
+                {
+                    "name": "Dikili",
+                    "zip_code": "35900"
+                },
+                {
+                    "name": "Kiraz",
+                    "zip_code": "35800"
+                },
+                {
+                    "name": "Seferihisar",
+                    "zip_code": "35400"
+                },
+                {
+                    "name": "Çeşme",
+                    "zip_code": "35900"
+                },
+                {
+                    "name": "Bayındır",
+                    "zip_code": "35800"
+                },
+                {
+                    "name": "Selçuk",
+                    "zip_code": "35900"
+                },
+                {
+                    "name": "Foça",
+                    "zip_code": "35600"
+                },
+                {
+                    "name": "Güzelbahçe",
+                    "zip_code": "35300"
+                },
+                {
+                    "name": "Kınık",
+                    "zip_code": "35900"
+                },
+                {
+                    "name": "Beydağ",
+                    "zip_code": "35700"
+                },
+                {
+                    "name": "Karaburun",
+                    "zip_code": "35900"
+                }
+            ],
+            "zip_code": "35000"
+        },
+        {
+            "city_name": "Kars",
+            "plate_code": "36",
+            "area_code": "474",
+            "region": "Doğu Anadolu",
+            "districts": [
+                {
+                    "name": "Merkez",
+                    "zip_code": "36000"
+                },
+                {
+                    "name": "Kağızman",
+                    "zip_code": "36700"
+                },
+                {
+                    "name": "Sarıkamış",
+                    "zip_code": "36500"
+                },
+                {
+                    "name": "Selim",
+                    "zip_code": "36900"
+                },
+                {
+                    "name": "Digor",
+                    "zip_code": "36600"
+                },
+                {
+                    "name": "Arpaçay",
+                    "zip_code": "36700"
+                },
+                {
+                    "name": "Akyaka",
+                    "zip_code": "36700"
+                },
+                {
+                    "name": "Susuz",
+                    "zip_code": "36700"
+                }
+            ],
+            "zip_code": "36000"
+        },
+        {
+            "city_name": "Kastamonu",
+            "plate_code": "37",
+            "area_code": "366",
+            "region": "Karadeniz",
+            "districts": [
+                {
+                    "name": "Merkez",
+                    "zip_code": "37000"
+                },
+                {
+                    "name": "Tosya",
+                    "zip_code": "37300"
+                },
+                {
+                    "name": "Taşköprü",
+                    "zip_code": "37400"
+                },
+                {
+                    "name": "Cide",
+                    "zip_code": "37600"
+                },
+                {
+                    "name": "İnebolu",
+                    "zip_code": "37500"
+                },
+                {
+                    "name": "Araç",
+                    "zip_code": "37800"
+                },
+                {
+                    "name": "Bozkurt",
+                    "zip_code": "37600"
+                },
+                {
+                    "name": "Daday",
+                    "zip_code": "37800"
+                },
+                {
+                    "name": "Azdavay",
+                    "zip_code": "37700"
+                },
+                {
+                    "name": "Çatalzeytin",
+                    "zip_code": "37900"
+                },
+                {
+                    "name": "Doğanyurt",
+                    "zip_code": "37500"
+                },
+                {
+                    "name": "Küre",
+                    "zip_code": "37900"
+                },
+                {
+                    "name": "Pınarbaşı",
+                    "zip_code": "37700"
+                },
+                {
+                    "name": "İhsangazi",
+                    "zip_code": "37200"
+                },
+                {
+                    "name": "Şenpazar",
+                    "zip_code": "37600"
+                },
+                {
+                    "name": "Abana",
+                    "zip_code": "37900"
+                },
+                {
+                    "name": "Hanönü",
+                    "zip_code": "37400"
+                },
+                {
+                    "name": "Seydiler",
+                    "zip_code": "37200"
+                },
+                {
+                    "name": "Ağlı",
+                    "zip_code": "37900"
+                }
+            ],
+            "zip_code": "37000"
+        },
+        {
+            "city_name": "Kayseri",
+            "plate_code": "38",
+            "area_code": "352",
+            "region": "İç Anadolu",
+            "districts": [
+                {
+                    "name": "Melikgazi",
+                    "zip_code": "38100"
+                },
+                {
+                    "name": "Kocasinan",
+                    "zip_code": "38000"
+                },
+                {
+                    "name": "Talas",
+                    "zip_code": "38200"
+                },
+                {
+                    "name": "Develi",
+                    "zip_code": "38400"
+                },
+                {
+                    "name": "Yahyalı",
+                    "zip_code": "38500"
+                },
+                {
+                    "name": "Bünyan",
+                    "zip_code": "38600"
+                },
+                {
+                    "name": "Pınarbaşı",
+                    "zip_code": "38700"
+                },
+                {
+                    "name": "Tomarza",
+                    "zip_code": "38900"
+                },
+                {
+                    "name": "Yeşilhisar",
+                    "zip_code": "38800"
+                },
+                {
+                    "name": "Sarıoğlan",
+                    "zip_code": "38800"
+                },
+                {
+                    "name": "Hacılar",
+                    "zip_code": "38300"
+                },
+                {
+                    "name": "Sarız",
+                    "zip_code": "38600"
+                },
+                {
+                    "name": "Felahiye",
+                    "zip_code": "38700"
+                },
+                {
+                    "name": "Akkışla",
+                    "zip_code": "38800"
+                },
+                {
+                    "name": "Özvatan",
+                    "zip_code": "38700"
+                }
+            ],
+            "zip_code": "38000"
+        },
+        {
+            "city_name": "Kırklareli",
+            "plate_code": "39",
+            "area_code": "288",
+            "region": "Marmara",
+            "districts": [
+                {
+                    "name": "Lüleburgaz",
+                    "zip_code": "39700"
+                },
+                {
+                    "name": "Merkez",
+                    "zip_code": "39000"
+                },
+                {
+                    "name": "Babaeski",
+                    "zip_code": "39500"
+                },
+                {
+                    "name": "Vize",
+                    "zip_code": "39400"
+                },
+                {
+                    "name": "Pınarhisar",
+                    "zip_code": "39300"
+                },
+                {
+                    "name": "Demirköy",
+                    "zip_code": "39500"
+                },
+                {
+                    "name": "Pehlivanköy",
+                    "zip_code": "39600"
+                },
+                {
+                    "name": "Kofçaz",
+                    "zip_code": "39700"
+                }
+            ],
+            "zip_code": "39000"
+        },
+        {
+            "city_name": "Kırşehir",
+            "plate_code": "40",
+            "area_code": "386",
+            "region": "İç Anadolu",
+            "districts": [
+                {
+                    "name": "Merkez",
+                    "zip_code": "40000"
+                },
+                {
+                    "name": "Kaman",
+                    "zip_code": "40300"
+                },
+                {
+                    "name": "Mucur",
+                    "zip_code": "40500"
+                },
+                {
+                    "name": "Çiçekdağı",
+                    "zip_code": "40700"
+                },
+                {
+                    "name": "Akpınar",
+                    "zip_code": "40300"
+                },
+                {
+                    "name": "Boztepe",
+                    "zip_code": "40000"
+                },
+                {
+                    "name": "Akçakent",
+                    "zip_code": "40700"
+                }
+            ],
+            "zip_code": "40000"
+        },
+        {
+            "city_name": "Kocaeli",
+            "plate_code": "41",
+            "area_code": "262",
+            "region": "Marmara",
+            "districts": [
+                {
+                    "name": "Gebze",
+                    "zip_code": "41400"
+                },
+                {
+                    "name": "İzmit",
+                    "zip_code": "41300"
+                },
+                {
+                    "name": "Darıca",
+                    "zip_code": "41700"
+                },
+                {
+                    "name": "Körfez",
+                    "zip_code": "41800"
+                },
+                {
+                    "name": "Gölcük",
+                    "zip_code": "41900"
+                },
+                {
+                    "name": "Derince",
+                    "zip_code": "41900"
+                },
+                {
+                    "name": "Çayırova",
+                    "zip_code": "41400"
+                },
+                {
+                    "name": "Kartepe",
+                    "zip_code": "41200"
+                },
+                {
+                    "name": "Başiskele",
+                    "zip_code": "41000"
+                },
+                {
+                    "name": "Karamürsel",
+                    "zip_code": "41500"
+                },
+                {
+                    "name": "Kandıra",
+                    "zip_code": "41600"
+                },
+                {
+                    "name": "Dilovası",
+                    "zip_code": "41400"
+                }
+            ],
+            "zip_code": "41000"
+        },
+        {
+            "city_name": "Konya",
+            "plate_code": "42",
+            "area_code": "332",
+            "region": "İç Anadolu",
+            "districts": [
+                {
+                    "name": "Selçuklu",
+                    "zip_code": "42100"
+                },
+                {
+                    "name": "Meram",
+                    "zip_code": "42000"
+                },
+                {
+                    "name": "Karatay",
+                    "zip_code": "42000"
+                },
+                {
+                    "name": "Ereğli",
+                    "zip_code": "42300"
+                },
+                {
+                    "name": "Akşehir",
+                    "zip_code": "42500"
+                },
+                {
+                    "name": "Beyşehir",
+                    "zip_code": "42700"
+                },
+                {
+                    "name": "Çumra",
+                    "zip_code": "42500"
+                },
+                {
+                    "name": "Seydişehir",
+                    "zip_code": "42300"
+                },
+                {
+                    "name": "Ilgın",
+                    "zip_code": "42600"
+                },
+                {
+                    "name": "Cihanbeyli",
+                    "zip_code": "42800"
+                },
+                {
+                    "name": "Kulu",
+                    "zip_code": "42700"
+                },
+                {
+                    "name": "Karapınar",
+                    "zip_code": "42400"
+                },
+                {
+                    "name": "Kadınhanı",
+                    "zip_code": "42800"
+                },
+                {
+                    "name": "Sarayönü",
+                    "zip_code": "42400"
+                },
+                {
+                    "name": "Bozkır",
+                    "zip_code": "42600"
+                },
+                {
+                    "name": "Yunak",
+                    "zip_code": "42500"
+                },
+                {
+                    "name": "Hüyük",
+                    "zip_code": "42600"
+                },
+                {
+                    "name": "Doğanhisar",
+                    "zip_code": "42900"
+                },
+                {
+                    "name": "Altınekin",
+                    "zip_code": "42400"
+                },
+                {
+                    "name": "Hadim",
+                    "zip_code": "42800"
+                },
+                {
+                    "name": "Çeltik",
+                    "zip_code": "42900"
+                },
+                {
+                    "name": "Güneysınır",
+                    "zip_code": "42400"
+                },
+                {
+                    "name": "Emirgazi",
+                    "zip_code": "42900"
+                },
+                {
+                    "name": "Taşkent",
+                    "zip_code": "42900"
+                },
+                {
+                    "name": "Tuzlukçu",
+                    "zip_code": "42900"
+                },
+                {
+                    "name": "Derebucak",
+                    "zip_code": "42400"
+                },
+                {
+                    "name": "Akören",
+                    "zip_code": "42400"
+                },
+                {
+                    "name": "Ahırlı",
+                    "zip_code": "42300"
+                },
+                {
+                    "name": "Derbent",
+                    "zip_code": "42900"
+                },
+                {
+                    "name": "Halkapınar",
+                    "zip_code": "42900"
+                },
+                {
+                    "name": "Yalıhüyük",
+                    "zip_code": "42400"
+                }
+            ],
+            "zip_code": "42000"
+        },
+        {
+            "city_name": "Kütahya",
+            "plate_code": "43",
+            "area_code": "274",
+            "region": "İç Anadolu",
+            "districts": [
+                {
+                    "name": "Merkez",
+                    "zip_code": "43000"
+                },
+                {
+                    "name": "Tavşanlı",
+                    "zip_code": "43400"
+                },
+                {
+                    "name": "Simav",
+                    "zip_code": "43500"
+                },
+                {
+                    "name": "Gediz",
+                    "zip_code": "43600"
+                },
+                {
+                    "name": "Emet",
+                    "zip_code": "43700"
+                },
+                {
+                    "name": "Altıntaş",
+                    "zip_code": "43800"
+                },
+                {
+                    "name": "Domaniç",
+                    "zip_code": "43800"
+                },
+                {
+                    "name": "Hisarcık",
+                    "zip_code": "43700"
+                },
+                {
+                    "name": "Aslanapa",
+                    "zip_code": "43200"
+                },
+                {
+                    "name": "Çavdarhisar",
+                    "zip_code": "43700"
+                },
+                {
+                    "name": "Şaphane",
+                    "zip_code": "43900"
+                },
+                {
+                    "name": "Pazarlar",
+                    "zip_code": "43500"
+                },
+                {
+                    "name": "Dumlupınar",
+                    "zip_code": "43800"
+                }
+            ],
+            "zip_code": "43000"
+        },
+        {
+            "city_name": "Malatya",
+            "plate_code": "44",
+            "area_code": "422",
+            "region": "Doğu Anadolu",
+            "districts": [
+                {
+                    "name": "Yeşilyurt",
+                    "zip_code": "44900"
+                },
+                {
+                    "name": "Battalgazi",
+                    "zip_code": "44200"
+                },
+                {
+                    "name": "Doğanşehir",
+                    "zip_code": "44500"
+                },
+                {
+                    "name": "Akçadağ",
+                    "zip_code": "44600"
+                },
+                {
+                    "name": "Darende",
+                    "zip_code": "44700"
+                },
+                {
+                    "name": "Hekimhan",
+                    "zip_code": "44400"
+                },
+                {
+                    "name": "Yazıhan",
+                    "zip_code": "44300"
+                },
+                {
+                    "name": "Pütürge",
+                    "zip_code": "44800"
+                },
+                {
+                    "name": "Arapgir",
+                    "zip_code": "44800"
+                },
+                {
+                    "name": "Kuluncak",
+                    "zip_code": "44700"
+                },
+                {
+                    "name": "Arguvan",
+                    "zip_code": "44900"
+                },
+                {
+                    "name": "Kale",
+                    "zip_code": "44300"
+                },
+                {
+                    "name": "Doğanyol",
+                    "zip_code": "44800"
+                }
+            ],
+            "zip_code": "44000"
+        },
+        {
+            "city_name": "Manisa",
+            "plate_code": "45",
+            "area_code": "236",
+            "region": "Ege",
+            "districts": [
+                {
+                    "name": "Yunusemre",
+                    "zip_code": "45100"
+                },
+                {
+                    "name": "Akhisar",
+                    "zip_code": "45200"
+                },
+                {
+                    "name": "Şehzadeler",
+                    "zip_code": "45000"
+                },
+                {
+                    "name": "Turgutlu",
+                    "zip_code": "45400"
+                },
+                {
+                    "name": "Salihli",
+                    "zip_code": "45300"
+                },
+                {
+                    "name": "Soma",
+                    "zip_code": "45500"
+                },
+                {
+                    "name": "Alaşehir",
+                    "zip_code": "45600"
+                },
+                {
+                    "name": "Saruhanlı",
+                    "zip_code": "45800"
+                },
+                {
+                    "name": "Kula",
+                    "zip_code": "45100"
+                },
+                {
+                    "name": "Demirci",
+                    "zip_code": "45900"
+                },
+                {
+                    "name": "Kırıkağaç",
+                    "zip_code": "45000"
+                },
+                {
+                    "name": "Sarıgöl",
+                    "zip_code": "45400"
+                },
+                {
+                    "name": "Gördes",
+                    "zip_code": "45700"
+                },
+                {
+                    "name": "Selendi",
+                    "zip_code": "45900"
+                },
+                {
+                    "name": "Ahmetli",
+                    "zip_code": "45400"
+                },
+                {
+                    "name": "Gölmarmara",
+                    "zip_code": "45500"
+                },
+                {
+                    "name": "Köprübaşı",
+                    "zip_code": "45900"
+                }
+            ],
+            "zip_code": "45000"
+        },
+        {
+            "city_name": "Kahramanmaraş",
+            "plate_code": "46",
+            "area_code": "344",
+            "region": "Akdeniz",
+            "districts": [
+                {
+                    "name": "Onikişubat",
+                    "zip_code": "46000"
+                },
+                {
+                    "name": "Dulkadiroğlu",
+                    "zip_code": "46100"
+                },
+                {
+                    "name": "Elbistan",
+                    "zip_code": "46300"
+                },
+                {
+                    "name": "Afşin",
+                    "zip_code": "46500"
+                },
+                {
+                    "name": "Türkoğlu",
+                    "zip_code": "46800"
+                },
+                {
+                    "name": "Pazarcık",
+                    "zip_code": "46700"
+                },
+                {
+                    "name": "Göksun",
+                    "zip_code": "46600"
+                },
+                {
+                    "name": "Andırın",
+                    "zip_code": "46400"
+                },
+                {
+                    "name": "Çağlayancerit",
+                    "zip_code": "46700"
+                },
+                {
+                    "name": "Nurhak",
+                    "zip_code": "46300"
+                },
+                {
+                    "name": "Ekinözü",
+                    "zip_code": "46300"
+                }
+            ],
+            "zip_code": "46000"
+        },
+        {
+            "city_name": "Mardin",
+            "plate_code": "47",
+            "area_code": "482",
+            "region": "Güneydoğu Anadolu",
+            "districts": [
+                {
+                    "name": "Kızıltepe",
+                    "zip_code": "47400"
+                },
+                {
+                    "name": "Artuklu",
+                    "zip_code": "47400"
+                },
+                {
+                    "name": "Midyat",
+                    "zip_code": "47500"
+                },
+                {
+                    "name": "Nusaybin",
+                    "zip_code": "47300"
+                },
+                {
+                    "name": "Derik",
+                    "zip_code": "47800"
+                },
+                {
+                    "name": "Mazıdağı",
+                    "zip_code": "47700"
+                },
+                {
+                    "name": "Dargeçit",
+                    "zip_code": "47700"
+                },
+                {
+                    "name": "Savur",
+                    "zip_code": "47800"
+                },
+                {
+                    "name": "Yeşilli",
+                    "zip_code": "47600"
+                },
+                {
+                    "name": "Ömerli",
+                    "zip_code": "47500"
+                }
+            ],
+            "zip_code": "47000"
+        },
+        {
+            "city_name": "Muğla",
+            "plate_code": "48",
+            "area_code": "252",
+            "region": "Ege",
+            "districts": [
+                {
+                    "name": "Bodrum",
+                    "zip_code": "48400"
+                },
+                {
+                    "name": "Fethiye",
+                    "zip_code": "48300"
+                },
+                {
+                    "name": "Milas",
+                    "zip_code": "48200"
+                },
+                {
+                    "name": "Menteşe",
+                    "zip_code": "48000"
+                },
+                {
+                    "name": "Marmaris",
+                    "zip_code": "48700"
+                },
+                {
+                    "name": "Seydikemer",
+                    "zip_code": "48800"
+                },
+                {
+                    "name": "Ortaca",
+                    "zip_code": "48600"
+                },
+                {
+                    "name": "Yatağan",
+                    "zip_code": "48500"
+                },
+                {
+                    "name": "Dalaman",
+                    "zip_code": "48700"
+                },
+                {
+                    "name": "Köyceğiz",
+                    "zip_code": "48800"
+                },
+                {
+                    "name": "Ula",
+                    "zip_code": "48600"
+                },
+                {
+                    "name": "Datça",
+                    "zip_code": "48900"
+                },
+                {
+                    "name": "Kavaklıdere",
+                    "zip_code": "48500"
+                }
+            ],
+            "zip_code": "48000"
+        },
+        {
+            "city_name": "Muş",
+            "plate_code": "49",
+            "area_code": "436",
+            "region": "Doğu Anadolu",
+            "districts": [
+                {
+                    "name": "Merkez",
+                    "zip_code": "49000"
+                },
+                {
+                    "name": "Bulanık",
+                    "zip_code": "49500"
+                },
+                {
+                    "name": "Malazgirt",
+                    "zip_code": "49500"
+                },
+                {
+                    "name": "Varto",
+                    "zip_code": "49600"
+                },
+                {
+                    "name": "Korkut",
+                    "zip_code": "49700"
+                },
+                {
+                    "name": "Hasköy",
+                    "zip_code": "49700"
+                }
+            ],
+            "zip_code": "49000"
+        },
+        {
+            "city_name": "Nevşehir",
+            "plate_code": "50",
+            "area_code": "384",
+            "region": "İç Anadolu",
+            "districts": [
+                {
+                    "name": "Merkez",
+                    "zip_code": "50000"
+                },
+                {
+                    "name": "Ürgüp",
+                    "zip_code": "50400"
+                },
+                {
+                    "name": "Avanos",
+                    "zip_code": "50500"
+                },
+                {
+                    "name": "Gülşehir",
+                    "zip_code": "50900"
+                },
+                {
+                    "name": "Derinkuyu",
+                    "zip_code": "50700"
+                },
+                {
+                    "name": "Acıgöl",
+                    "zip_code": "50100"
+                },
+                {
+                    "name": "Kozaklı",
+                    "zip_code": "50600"
+                },
+                {
+                    "name": "Hacıbektaş",
+                    "zip_code": "50800"
+                }
+            ],
+            "zip_code": "50000"
+        },
+        {
+            "city_name": "Niğde",
+            "plate_code": "51",
+            "area_code": "388",
+            "region": "İç Anadolu",
+            "districts": [
+                {
+                    "name": "Merkez",
+                    "zip_code": "51000"
+                },
+                {
+                    "name": "Bor",
+                    "zip_code": "51700"
+                },
+                {
+                    "name": "Çiftlik",
+                    "zip_code": "51800"
+                },
+                {
+                    "name": "Ulukışla",
+                    "zip_code": "51900"
+                },
+                {
+                    "name": "Altunhisar",
+                    "zip_code": "51600"
+                },
+                {
+                    "name": "Çamardı",
+                    "zip_code": "51600"
+                }
+            ],
+            "zip_code": "51000"
+        },
+        {
+            "city_name": "Ordu",
+            "plate_code": "52",
+            "area_code": "452",
+            "region": "Karadeniz",
+            "districts": [
+                {
+                    "name": "Altınordu",
+                    "zip_code": "52200"
+                },
+                {
+                    "name": "Ünye",
+                    "zip_code": "52300"
+                },
+                {
+                    "name": "Fatsa",
+                    "zip_code": "52400"
+                },
+                {
+                    "name": "Perşembe",
+                    "zip_code": "52700"
+                },
+                {
+                    "name": "Kumru",
+                    "zip_code": "52800"
+                },
+                {
+                    "name": "Korgan",
+                    "zip_code": "52700"
+                },
+                {
+                    "name": "Gölköy",
+                    "zip_code": "52600"
+                },
+                {
+                    "name": "Ulubey",
+                    "zip_code": "52800"
+                },
+                {
+                    "name": "Mesudiye",
+                    "zip_code": "52900"
+                },
+                {
+                    "name": "Akkuş",
+                    "zip_code": "52900"
+                },
+                {
+                    "name": "Aybastı",
+                    "zip_code": "52500"
+                },
+                {
+                    "name": "Gürgentepe",
+                    "zip_code": "52600"
+                },
+                {
+                    "name": "İkizce",
+                    "zip_code": "52300"
+                },
+                {
+                    "name": "Çatalpınar",
+                    "zip_code": "52400"
+                },
+                {
+                    "name": "Çaybaşı",
+                    "zip_code": "52300"
+                },
+                {
+                    "name": "Çamaş",
+                    "zip_code": "52400"
+                },
+                {
+                    "name": "Kabataş",
+                    "zip_code": "52500"
+                },
+                {
+                    "name": "Kabadüz",
+                    "zip_code": "52000"
+                },
+                {
+                    "name": "Gülyalı",
+                    "zip_code": "52000"
+                }
+            ],
+            "zip_code": "52000"
+        },
+        {
+            "city_name": "Rize",
+            "plate_code": "53",
+            "area_code": "464",
+            "region": "Karadeniz",
+            "districts": [
+                {
+                    "name": "Merkez",
+                    "zip_code": "53000"
+                },
+                {
+                    "name": "Çayeli",
+                    "zip_code": "53200"
+                },
+                {
+                    "name": "Ardeşen",
+                    "zip_code": "53400"
+                },
+                {
+                    "name": "Pazar",
+                    "zip_code": "53300"
+                },
+                {
+                    "name": "Fındıklı",
+                    "zip_code": "53700"
+                },
+                {
+                    "name": "Kalkandere",
+                    "zip_code": "53500"
+                },
+                {
+                    "name": "Güneysu",
+                    "zip_code": "53300"
+                },
+                {
+                    "name": "İyidere",
+                    "zip_code": "53600"
+                },
+                {
+                    "name": "İkizdere",
+                    "zip_code": "53600"
+                },
+                {
+                    "name": "Derepazarı",
+                    "zip_code": "53900"
+                },
+                {
+                    "name": "Çamlıhemşin",
+                    "zip_code": "53700"
+                },
+                {
+                    "name": "Hemşin",
+                    "zip_code": "53500"
+                }
+            ],
+            "zip_code": "53000"
+        },
+        {
+            "city_name": "Sakarya",
+            "plate_code": "54",
+            "area_code": "264",
+            "region": "Marmara",
+            "districts": [
+                {
+                    "name": "Adapazarı",
+                    "zip_code": "54100"
+                },
+                {
+                    "name": "Serdivan",
+                    "zip_code": "54000"
+                },
+                {
+                    "name": "Akyazı",
+                    "zip_code": "54400"
+                },
+                {
+                    "name": "Erenler",
+                    "zip_code": "54200"
+                },
+                {
+                    "name": "Hendek",
+                    "zip_code": "54300"
+                },
+                {
+                    "name": "Karasu",
+                    "zip_code": "54500"
+                },
+                {
+                    "name": "Geyve",
+                    "zip_code": "54700"
+                },
+                {
+                    "name": "Arifiye",
+                    "zip_code": "54500"
+                },
+                {
+                    "name": "Sapanca",
+                    "zip_code": "54600"
+                },
+                {
+                    "name": "Pamukova",
+                    "zip_code": "54900"
+                },
+                {
+                    "name": "Ferizli",
+                    "zip_code": "54100"
+                },
+                {
+                    "name": "Kocaali",
+                    "zip_code": "54800"
+                },
+                {
+                    "name": "Kaynarca",
+                    "zip_code": "54600"
+                },
+                {
+                    "name": "Söğütlü",
+                    "zip_code": "54100"
+                },
+                {
+                    "name": "Karapürçek",
+                    "zip_code": "54400"
+                },
+                {
+                    "name": "Taraklı",
+                    "zip_code": "54700"
+                }
+            ],
+            "zip_code": "54000"
+        },
+        {
+            "city_name": "Samsun",
+            "plate_code": "55",
+            "area_code": "362",
+            "region": "Karadeniz",
+            "districts": [
+                {
+                    "name": "İlkadım",
+                    "zip_code": "55000"
+                },
+                {
+                    "name": "Atakum",
+                    "zip_code": "55200"
+                },
+                {
+                    "name": "Bafra",
+                    "zip_code": "55400"
+                },
+                {
+                    "name": "Çarşamba",
+                    "zip_code": "55500"
+                },
+                {
+                    "name": "Canik",
+                    "zip_code": "55000"
+                },
+                {
+                    "name": "Vezirköprü",
+                    "zip_code": "55900"
+                },
+                {
+                    "name": "Terme",
+                    "zip_code": "55600"
+                },
+                {
+                    "name": "Tekkeköy",
+                    "zip_code": "55300"
+                },
+                {
+                    "name": "Havza",
+                    "zip_code": "55700"
+                },
+                {
+                    "name": "19 Mayıs",
+                    "zip_code": "55400"
+                },
+                {
+                    "name": "Alaçam",
+                    "zip_code": "55800"
+                },
+                {
+                    "name": "Salıpazarı",
+                    "zip_code": "55500"
+                },
+                {
+                    "name": "Ayvacık",
+                    "zip_code": "55500"
+                },
+                {
+                    "name": "Kavak",
+                    "zip_code": "55800"
+                },
+                {
+                    "name": "Asarcık",
+                    "zip_code": "55800"
+                },
+                {
+                    "name": "Ladik",
+                    "zip_code": "55700"
+                },
+                {
+                    "name": "Yakakent",
+                    "zip_code": "55800"
+                }
+            ],
+            "zip_code": "55000"
+        },
+        {
+            "city_name": "Siirt",
+            "plate_code": "56",
+            "area_code": "484",
+            "region": "Güneydoğu Anadolu",
+            "districts": [
+                {
+                    "name": "Merkez",
+                    "zip_code": "56000"
+                },
+                {
+                    "name": "Kurtalan",
+                    "zip_code": "56500"
+                },
+                {
+                    "name": "Pervari",
+                    "zip_code": "56700"
+                },
+                {
+                    "name": "Baykan",
+                    "zip_code": "56400"
+                },
+                {
+                    "name": "Şirvan",
+                    "zip_code": "56800"
+                },
+                {
+                    "name": "Eruh",
+                    "zip_code": "56500"
+                },
+                {
+                    "name": "Tillo",
+                    "zip_code": "56800"
+                }
+            ],
+            "zip_code": "56000"
+        },
+        {
+            "city_name": "Sinop",
+            "plate_code": "57",
+            "area_code": "368",
+            "region": "Karadeniz",
+            "districts": [
+                {
+                    "name": "Merkez",
+                    "zip_code": "57000"
+                },
+                {
+                    "name": "Boyabat",
+                    "zip_code": "57200"
+                },
+                {
+                    "name": "Gerze",
+                    "zip_code": "57600"
+                },
+                {
+                    "name": "Ayancık",
+                    "zip_code": "57400"
+                },
+                {
+                    "name": "Durağan",
+                    "zip_code": "57700"
+                },
+                {
+                    "name": "Türkeli",
+                    "zip_code": "57900"
+                },
+                {
+                    "name": "Erfelek",
+                    "zip_code": "57800"
+                },
+                {
+                    "name": "Saraydüzü",
+                    "zip_code": "57300"
+                },
+                {
+                    "name": "Dikmen",
+                    "zip_code": "57600"
+                }
+            ],
+            "zip_code": "57000"
+        },
+        {
+            "city_name": "Sivas",
+            "plate_code": "58",
+            "area_code": "346",
+            "region": "İç Anadolu",
+            "districts": [
+                {
+                    "name": "Merkez",
+                    "zip_code": "58000"
+                },
+                {
+                    "name": "Şarkışla",
+                    "zip_code": "58400"
+                },
+                {
+                    "name": "Yıldızeli",
+                    "zip_code": "58500"
+                },
+                {
+                    "name": "Suşehri",
+                    "zip_code": "58600"
+                },
+                {
+                    "name": "Gemerek",
+                    "zip_code": "58800"
+                },
+                {
+                    "name": "Zara",
+                    "zip_code": "58700"
+                },
+                {
+                    "name": "Kangal",
+                    "zip_code": "58900"
+                },
+                {
+                    "name": "Gürün",
+                    "zip_code": "58800"
+                },
+                {
+                    "name": "Divriği",
+                    "zip_code": "58300"
+                },
+                {
+                    "name": "Koyulhisar",
+                    "zip_code": "58600"
+                },
+                {
+                    "name": "Hafik",
+                    "zip_code": "58700"
+                },
+                {
+                    "name": "Ulaş",
+                    "zip_code": "58300"
+                },
+                {
+                    "name": "Altınyayla",
+                    "zip_code": "58400"
+                },
+                {
+                    "name": "İmranlı",
+                    "zip_code": "58900"
+                },
+                {
+                    "name": "Akıncılar",
+                    "zip_code": "58500"
+                },
+                {
+                    "name": "Gölova",
+                    "zip_code": "58600"
+                },
+                {
+                    "name": "Doğanşar",
+                    "zip_code": "58700"
+                }
+            ],
+            "zip_code": "58000"
+        },
+        {
+            "city_name": "Tekirdağ",
+            "plate_code": "59",
+            "area_code": "282",
+            "region": "Marmara",
+            "districts": [
+                {
+                    "name": "Çorlu",
+                    "zip_code": "59800"
+                },
+                {
+                    "name": "Süleymanpaşa",
+                    "zip_code": "59100"
+                },
+                {
+                    "name": "Çerkezköy",
+                    "zip_code": "59500"
+                },
+                {
+                    "name": "Kapaklı",
+                    "zip_code": "59500"
+                },
+                {
+                    "name": "Ergene",
+                    "zip_code": "59900"
+                },
+                {
+                    "name": "Malkara",
+                    "zip_code": "59300"
+                },
+                {
+                    "name": "Saray",
+                    "zip_code": "59600"
+                },
+                {
+                    "name": "Şarköy",
+                    "zip_code": "59800"
+                },
+                {
+                    "name": "Hayrabolu",
+                    "zip_code": "59400"
+                },
+                {
+                    "name": "Muratlı",
+                    "zip_code": "59700"
+                },
+                {
+                    "name": "Marmaraereğlisi",
+                    "zip_code": "59700"
+                }
+            ],
+            "zip_code": "59000"
+        },
+        {
+            "city_name": "Tokat",
+            "plate_code": "60",
+            "area_code": "356",
+            "region": "İç Anadolu",
+            "districts": [
+                {
+                    "name": "Merkez",
+                    "zip_code": "60000"
+                },
+                {
+                    "name": "Erbaa",
+                    "zip_code": "60500"
+                },
+                {
+                    "name": "Turhal",
+                    "zip_code": "60300"
+                },
+                {
+                    "name": "Niksar",
+                    "zip_code": "60600"
+                },
+                {
+                    "name": "Zile",
+                    "zip_code": "60400"
+                },
+                {
+                    "name": "Reşadiye",
+                    "zip_code": "60700"
+                },
+                {
+                    "name": "Almus",
+                    "zip_code": "60900"
+                },
+                {
+                    "name": "Pazar",
+                    "zip_code": "60800"
+                },
+                {
+                    "name": "Yeşilyurt",
+                    "zip_code": "60800"
+                },
+                {
+                    "name": "Artova",
+                    "zip_code": "60600"
+                },
+                {
+                    "name": "Sulusaray",
+                    "zip_code": "60800"
+                },
+                {
+                    "name": "Başçiftlik",
+                    "zip_code": "60600"
+                }
+            ],
+            "zip_code": "60000"
+        },
+        {
+            "city_name": "Trabzon",
+            "plate_code": "61",
+            "area_code": "462",
+            "region": "Karadeniz",
+            "districts": [
+                {
+                    "name": "Ortahisar",
+                    "zip_code": "61000"
+                },
+                {
+                    "name": "Akçaabat",
+                    "zip_code": "61300"
+                },
+                {
+                    "name": "Araklı",
+                    "zip_code": "61700"
+                },
+                {
+                    "name": "Of",
+                    "zip_code": "61800"
+                },
+                {
+                    "name": "Yomra",
+                    "zip_code": "61200"
+                },
+                {
+                    "name": "Arsin",
+                    "zip_code": "61900"
+                },
+                {
+                    "name": "Vakfıkebir",
+                    "zip_code": "61400"
+                },
+                {
+                    "name": "Sürmene",
+                    "zip_code": "61600"
+                },
+                {
+                    "name": "Maçka",
+                    "zip_code": "61700"
+                },
+                {
+                    "name": "Beşikdüzü",
+                    "zip_code": "61800"
+                },
+                {
+                    "name": "Çarşıbaşı",
+                    "zip_code": "61400"
+                },
+                {
+                    "name": "Çaykara",
+                    "zip_code": "61900"
+                },
+                {
+                    "name": "Tonya",
+                    "zip_code": "61500"
+                },
+                {
+                    "name": "Düzköy",
+                    "zip_code": "61300"
+                },
+                {
+                    "name": "Şalpazarı",
+                    "zip_code": "61600"
+                },
+                {
+                    "name": "Hayrat",
+                    "zip_code": "61400"
+                },
+                {
+                    "name": "Köprübaşı",
+                    "zip_code": "61600"
+                },
+                {
+                    "name": "Dernekpazarı",
+                    "zip_code": "61900"
+                }
+            ],
+            "zip_code": "61000"
+        },
+        {
+            "city_name": "Tunceli",
+            "plate_code": "62",
+            "area_code": "428",
+            "region": "Doğu Anadolu",
+            "districts": [
+                {
+                    "name": "Merkez",
+                    "zip_code": "62000"
+                },
+                {
+                    "name": "Pertek",
+                    "zip_code": "62500"
+                },
+                {
+                    "name": "Mazgirt",
+                    "zip_code": "62800"
+                },
+                {
+                    "name": "Çemişgezek",
+                    "zip_code": "62600"
+                },
+                {
+                    "name": "Ovacık",
+                    "zip_code": "62900"
+                },
+                {
+                    "name": "Hozat",
+                    "zip_code": "62400"
+                },
+                {
+                    "name": "Pülümür",
+                    "zip_code": "62700"
+                },
+                {
+                    "name": "Nazımiye",
+                    "zip_code": "62900"
+                }
+            ],
+            "zip_code": "62000"
+        },
+        {
+            "city_name": "Şanlıurfa",
+            "plate_code": "63",
+            "area_code": "414",
+            "region": "Güneydoğu Anadolu",
+            "districts": [
+                {
+                    "name": "Eyyübiye",
+                    "zip_code": "63200"
+                },
+                {
+                    "name": "Haliliye",
+                    "zip_code": "63000"
+                },
+                {
+                    "name": "Siverek",
+                    "zip_code": "63600"
+                },
+                {
+                    "name": "Viranşehir",
+                    "zip_code": "63700"
+                },
+                {
+                    "name": "Karaköprü",
+                    "zip_code": "63300"
+                },
+                {
+                    "name": "Akçakale",
+                    "zip_code": "63500"
+                },
+                {
+                    "name": "Suruç",
+                    "zip_code": "63800"
+                },
+                {
+                    "name": "Birecik",
+                    "zip_code": "63400"
+                },
+                {
+                    "name": "Harran",
+                    "zip_code": "63500"
+                },
+                {
+                    "name": "Ceylanpınar",
+                    "zip_code": "63500"
+                },
+                {
+                    "name": "Bozova",
+                    "zip_code": "63800"
+                },
+                {
+                    "name": "Hilvan",
+                    "zip_code": "63900"
+                }
+            ],
+            "zip_code": "63000"
+        },
+        {
+            "city_name": "Uşak",
+            "plate_code": "64",
+            "area_code": "276",
+            "region": "Ege",
+            "districts": [
+                {
+                    "name": "Merkez",
+                    "zip_code": "64000"
+                },
+                {
+                    "name": "Banaz",
+                    "zip_code": "64500"
+                },
+                {
+                    "name": "Eşme",
+                    "zip_code": "64600"
+                },
+                {
+                    "name": "Sivaslı",
+                    "zip_code": "64800"
+                },
+                {
+                    "name": "Ulubey",
+                    "zip_code": "64900"
+                },
+                {
+                    "name": "Karahallı",
+                    "zip_code": "64700"
+                }
+            ],
+            "zip_code": "64000"
+        },
+        {
+            "city_name": "Van",
+            "plate_code": "65",
+            "area_code": "432",
+            "region": "Doğu Anadolu ",
+            "districts": [
+                {
+                    "name": "İpekyolu",
+                    "zip_code": "65200"
+                },
+                {
+                    "name": "Erciş",
+                    "zip_code": "65400"
+                },
+                {
+                    "name": "Tuşba",
+                    "zip_code": "65000"
+                },
+                {
+                    "name": "Edremit",
+                    "zip_code": "65100"
+                },
+                {
+                    "name": "Özalp",
+                    "zip_code": "65800"
+                },
+                {
+                    "name": "Çaldıran",
+                    "zip_code": "65900"
+                },
+                {
+                    "name": "Başkale",
+                    "zip_code": "65600"
+                },
+                {
+                    "name": "Muradiye",
+                    "zip_code": "65500"
+                },
+                {
+                    "name": "Gürpınar",
+                    "zip_code": "65900"
+                },
+                {
+                    "name": "Gevaş",
+                    "zip_code": "65700"
+                },
+                {
+                    "name": "Saray",
+                    "zip_code": "65800"
+                },
+                {
+                    "name": "Çatak",
+                    "zip_code": "65800"
+                },
+                {
+                    "name": "Bahçesaray",
+                    "zip_code": "65700"
+                }
+            ],
+            "zip_code": "65000"
+        },
+        {
+            "city_name": "Yozgat",
+            "plate_code": "66",
+            "area_code": "354",
+            "region": "İç Anadolu",
+            "districts": [
+                {
+                    "name": "Merkez",
+                    "zip_code": "66000"
+                },
+                {
+                    "name": "Sorgun",
+                    "zip_code": "66700"
+                },
+                {
+                    "name": "Akdağmadeni",
+                    "zip_code": "66300"
+                },
+                {
+                    "name": "Yerköy",
+                    "zip_code": "66900"
+                },
+                {
+                    "name": "Boğazlıyan",
+                    "zip_code": "66400"
+                },
+                {
+                    "name": "Sarıkaya",
+                    "zip_code": "66600"
+                },
+                {
+                    "name": "Çekerek",
+                    "zip_code": "66500"
+                },
+                {
+                    "name": "Şefaatli",
+                    "zip_code": "66800"
+                },
+                {
+                    "name": "Saraykent",
+                    "zip_code": "66300"
+                },
+                {
+                    "name": "Çayıralan",
+                    "zip_code": "66600"
+                },
+                {
+                    "name": "Kadışehri",
+                    "zip_code": "66500"
+                },
+                {
+                    "name": "Aydıncık",
+                    "zip_code": "66500"
+                },
+                {
+                    "name": "Yenifakılı",
+                    "zip_code": "66400"
+                },
+                {
+                    "name": "Çandır",
+                    "zip_code": "66600"
+                }
+            ],
+            "zip_code": "66000"
+        },
+        {
+            "city_name": "Zonguldak",
+            "plate_code": "67",
+            "area_code": "372",
+            "region": "Karadeniz",
+            "districts": [
+                {
+                    "name": "Ereğli",
+                    "zip_code": "67300"
+                },
+                {
+                    "name": "Merkez",
+                    "zip_code": "67000"
+                },
+                {
+                    "name": "Çaycuma",
+                    "zip_code": "67900"
+                },
+                {
+                    "name": "Devrek",
+                    "zip_code": "67800"
+                },
+                {
+                    "name": "Kozlu",
+                    "zip_code": "67600"
+                },
+                {
+                    "name": "Alaplı",
+                    "zip_code": "67800"
+                },
+                {
+                    "name": "Kilimli",
+                    "zip_code": "67100"
+                },
+                {
+                    "name": "Gökçebey",
+                    "zip_code": "67600"
+                }
+            ],
+            "zip_code": "67000"
+        },
+        {
+            "city_name": "Aksaray",
+            "plate_code": "68",
+            "area_code": "382",
+            "region": "İç Anadolu",
+            "districts": [
+                {
+                    "name": "Merkez",
+                    "zip_code": "68000"
+                },
+                {
+                    "name": "Ortaköy",
+                    "zip_code": "68600"
+                },
+                {
+                    "name": "Eskil",
+                    "zip_code": "68800"
+                },
+                {
+                    "name": "Gülağaç",
+                    "zip_code": "68900"
+                },
+                {
+                    "name": "Güzelyurt",
+                    "zip_code": "68500"
+                },
+                {
+                    "name": "Sultanhanı",
+                    "zip_code": "68100"
+                },
+                {
+                    "name": "Ağaçören",
+                    "zip_code": "68600"
+                },
+                {
+                    "name": "Sarıyahşi",
+                    "zip_code": "68700"
+                }
+            ],
+            "zip_code": "68000"
+        },
+        {
+            "city_name": "Bayburt",
+            "plate_code": "69",
+            "area_code": "458",
+            "region": "Karadeniz",
+            "districts": [
+                {
+                    "name": "Merkez",
+                    "zip_code": "69000"
+                },
+                {
+                    "name": "Demirözü",
+                    "zip_code": "69400"
+                },
+                {
+                    "name": "Aydıntepe",
+                    "zip_code": "69500"
+                }
+            ],
+            "zip_code": "69000"
+        },
+        {
+            "city_name": "Karaman",
+            "plate_code": "70",
+            "area_code": "338",
+            "region": "İç Anadolu",
+            "districts": [
+                {
+                    "name": "Merkez",
+                    "zip_code": "70000"
+                },
+                {
+                    "name": "Ermenek",
+                    "zip_code": "70400"
+                },
+                {
+                    "name": "Sarıveliler",
+                    "zip_code": "70800"
+                },
+                {
+                    "name": "Ayrancı",
+                    "zip_code": "70500"
+                },
+                {
+                    "name": "Kazımkarabekir",
+                    "zip_code": "70600"
+                },
+                {
+                    "name": "Başyayla",
+                    "zip_code": "70700"
+                }
+            ],
+            "zip_code": "70000"
+        },
+        {
+            "city_name": "Kırıkkale",
+            "plate_code": "71",
+            "area_code": "318",
+            "region": "İç Anadolu",
+            "districts": [
+                {
+                    "name": "Merkez",
+                    "zip_code": "71000"
+                },
+                {
+                    "name": "Yahşihan",
+                    "zip_code": "71400"
+                },
+                {
+                    "name": "Keskin",
+                    "zip_code": "71800"
+                },
+                {
+                    "name": "Delice",
+                    "zip_code": "71600"
+                },
+                {
+                    "name": "Sulakyurt",
+                    "zip_code": "71900"
+                },
+                {
+                    "name": "Bahşili",
+                    "zip_code": "71000"
+                },
+                {
+                    "name": "Balışeyh",
+                    "zip_code": "71500"
+                },
+                {
+                    "name": "Karakeçili",
+                    "zip_code": "71500"
+                },
+                {
+                    "name": "Çelebi",
+                    "zip_code": "71800"
+                }
+            ],
+            "zip_code": "71000"
+        },
+        {
+            "city_name": "Batman",
+            "plate_code": "72",
+            "area_code": "488",
+            "region": "Güneydoğu Anadolu",
+            "districts": [
+                {
+                    "name": "Merkez",
+                    "zip_code": "72000"
+                },
+                {
+                    "name": "Kozluk",
+                    "zip_code": "72400"
+                },
+                {
+                    "name": "Sason",
+                    "zip_code": "72500"
+                },
+                {
+                    "name": "Beşiri",
+                    "zip_code": "72200"
+                },
+                {
+                    "name": "Gercüş",
+                    "zip_code": "72300"
+                },
+                {
+                    "name": "Hasankeyf",
+                    "zip_code": "72300"
+                }
+            ],
+            "zip_code": "72000"
+        },
+        {
+            "city_name": "Şırnak",
+            "plate_code": "73",
+            "area_code": "486",
+            "region": "Güneydoğu Anadolu",
+            "districts": [
+                {
+                    "name": "Cizre",
+                    "zip_code": "73200"
+                },
+                {
+                    "name": "Silopi",
+                    "zip_code": "73400"
+                },
+                {
+                    "name": "Merkez",
+                    "zip_code": "73000"
+                },
+                {
+                    "name": "İdil",
+                    "zip_code": "73300"
+                },
+                {
+                    "name": "Uludere",
+                    "zip_code": "73600"
+                },
+                {
+                    "name": "Beytüşşebap",
+                    "zip_code": "73800"
+                },
+                {
+                    "name": "Güçlükonak",
+                    "zip_code": "73700"
+                }
+            ],
+            "zip_code": "73000"
+        },
+        {
+            "city_name": "Bartın",
+            "plate_code": "74",
+            "area_code": "378",
+            "region": "Karadeniz",
+            "districts": [
+                {
+                    "name": "Merkez",
+                    "zip_code": "74000"
+                },
+                {
+                    "name": "Ulus",
+                    "zip_code": "74600"
+                },
+                {
+                    "name": "Amasra",
+                    "zip_code": "74300"
+                },
+                {
+                    "name": "Kurucaşile",
+                    "zip_code": "74500"
+                }
+            ],
+            "zip_code": "74000"
+        },
+        {
+            "city_name": "Ardahan",
+            "plate_code": "75",
+            "area_code": "478",
+            "region": "Doğu Anadolu",
+            "districts": [
+                {
+                    "name": "Merkez",
+                    "zip_code": "75000"
+                },
+                {
+                    "name": "Göle",
+                    "zip_code": "75700"
+                },
+                {
+                    "name": "Çıldır",
+                    "zip_code": "75400"
+                },
+                {
+                    "name": "Hanak",
+                    "zip_code": "75900"
+                },
+                {
+                    "name": "Posof",
+                    "zip_code": "75800"
+                },
+                {
+                    "name": "Damal",
+                    "zip_code": "75600"
+                }
+            ],
+            "zip_code": "75000"
+        },
+        {
+            "city_name": "Iğdır",
+            "plate_code": "76",
+            "area_code": "476",
+            "region": "Doğu Anadolu",
+            "districts": [
+                {
+                    "name": "Merkez",
+                    "zip_code": "76000"
+                },
+                {
+                    "name": "Tuzluca",
+                    "zip_code": "76900"
+                },
+                {
+                    "name": "Aralık",
+                    "zip_code": "76500"
+                },
+                {
+                    "name": "Karakoyunlu",
+                    "zip_code": "76700"
+                }
+            ],
+            "zip_code": "76000"
+        },
+        {
+            "city_name": "Yalova",
+            "plate_code": "77",
+            "area_code": "226",
+            "region": "Marmara",
+            "districts": [
+                {
+                    "name": "Merkez",
+                    "zip_code": "77000"
+                },
+                {
+                    "name": "Çiftlikköy",
+                    "zip_code": "77600"
+                },
+                {
+                    "name": "Çınarcık",
+                    "zip_code": "77300"
+                },
+                {
+                    "name": "Altınova",
+                    "zip_code": "77700"
+                },
+                {
+                    "name": "Armutlu",
+                    "zip_code": "77500"
+                },
+                {
+                    "name": "Termal",
+                    "zip_code": "77400"
+                }
+            ],
+            "zip_code": "77000"
+        },
+        {
+            "city_name": "Karabük",
+            "plate_code": "78",
+            "area_code": "370",
+            "region": "Karadeniz",
+            "districts": [
+                {
+                    "name": "Merkez",
+                    "zip_code": "78000"
+                },
+                {
+                    "name": "Safranbolu",
+                    "zip_code": "78600"
+                },
+                {
+                    "name": "Yenice",
+                    "zip_code": "78700"
+                },
+                {
+                    "name": "Eskipazar",
+                    "zip_code": "78400"
+                },
+                {
+                    "name": "Eflani",
+                    "zip_code": "78300"
+                },
+                {
+                    "name": "Ovacık",
+                    "zip_code": "78500"
+                }
+            ],
+            "zip_code": "78000"
+        },
+        {
+            "city_name": "Kilis",
+            "plate_code": "79",
+            "area_code": "348",
+            "region": "Güneydoğu Anadolu",
+            "districts": [
+                {
+                    "name": "Merkez",
+                    "zip_code": "79000"
+                },
+                {
+                    "name": "Musabeyli",
+                    "zip_code": "79600"
+                },
+                {
+                    "name": "Elbeyli",
+                    "zip_code": "79500"
+                },
+                {
+                    "name": "Polateli",
+                    "zip_code": "79700"
+                }
+            ],
+            "zip_code": "79000"
+        },
+        {
+            "city_name": "Osmaniye",
+            "plate_code": "80",
+            "area_code": "328",
+            "region": "Akdeniz",
+            "districts": [
+                {
+                    "name": "Merkez",
+                    "zip_code": "80000"
+                },
+                {
+                    "name": "Kadirli",
+                    "zip_code": "80700"
+                },
+                {
+                    "name": "Düziçi",
+                    "zip_code": "80700"
+                },
+                {
+                    "name": "Bahçe",
+                    "zip_code": "80500"
+                },
+                {
+                    "name": "Toprakkale",
+                    "zip_code": "80900"
+                },
+                {
+                    "name": "Sumbas",
+                    "zip_code": "80900"
+                },
+                {
+                    "name": "Hasanbeyli",
+                    "zip_code": "80800"
+                }
+            ],
+            "zip_code": "80000"
+        },
+        {
+            "city_name": "Düzce",
+            "plate_code": "81",
+            "area_code": "380",
+            "region": "Karadeniz",
+            "districts": [
+                {
+                    "name": "Merkez",
+                    "zip_code": "81000"
+                },
+                {
+                    "name": "Akçakoca",
+                    "zip_code": "81600"
+                },
+                {
+                    "name": "Kaynaşlı",
+                    "zip_code": "81900"
+                },
+                {
+                    "name": "Gölyaka",
+                    "zip_code": "81800"
+                },
+                {
+                    "name": "Çilimli",
+                    "zip_code": "81700"
+                },
+                {
+                    "name": "Yığılca",
+                    "zip_code": "81900"
+                },
+                {
+                    "name": "Gümüşova",
+                    "zip_code": "81800"
+                },
+                {
+                    "name": "Cumayeri",
+                    "zip_code": "81700"
+                }
+            ],
+            "zip_code": "81000"
+        }
+    ]
+}
