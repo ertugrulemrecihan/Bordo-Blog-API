@@ -33,7 +33,7 @@ class UserController extends BaseController {
             const refreshToken = response.refresh_token;
 
             const accesTokenResult = await accessTokenService.create({
-                user_id: user._id,
+                user: user._id,
                 token: accessToken
             });
 
@@ -43,7 +43,7 @@ class UserController extends BaseController {
             }
 
             const refreshTokenResult = await refreshTokenService.create({
-                user_id: user._id,
+                user: user._id,
                 token: refreshToken
             });
 
