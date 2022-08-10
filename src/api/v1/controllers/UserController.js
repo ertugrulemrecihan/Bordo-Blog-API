@@ -274,6 +274,14 @@ class UserController extends BaseController {
             return next(new ApiError('Invalid or expired email verification token', httpStatus.BAD_REQUEST));
         }
     }
+
+    async getMyProfile(req, res, next) {
+        const user = await userService.fetchOneById(req.user._id);
+        const response = userHelper.deletePasswordAndSaltFields(user);
+
+        new ApiDataSuccess(response, 'Profile fetched successfuly', httpStatus.OK).place(res);
+        return next();
+    }
 }
 
 module.exports = new UserController();
