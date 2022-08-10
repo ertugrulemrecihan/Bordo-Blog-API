@@ -1,7 +1,7 @@
 {
     "summary": "",
     "description": "",
-    "post": {
+    "get": {
         "tags": [
             "Users"
         ],
