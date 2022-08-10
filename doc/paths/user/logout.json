@@ -8,6 +8,11 @@
         "summary": "Log out",
         "description": "Log out account",
         "operationId": "users.logout",
+        "security": [
+            {
+                "bearerAuth": []
+            }
+        ],
         "responses": {
             "200": {
                 "description": "Log out successfully",
