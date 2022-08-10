@@ -30,7 +30,6 @@ class AddressController extends BaseController {
         try {
             req.body.user_id = req.user._id;
             const response = await addressService.create(req.body);
-            console.log(response);
 
             if (!response) return next(new ApiError('Address creation failed', httpStatus.BAD_REQUEST));
 
@@ -38,7 +37,6 @@ class AddressController extends BaseController {
             return next();
         } catch (err) {
             if (err.code === 11000) return next(new ApiError('Address already exists', httpStatus.CONFLICT));
-            console.log('err', err);
             return next(new ApiError('Address creation failed', httpStatus.BAD_REQUEST));
         }
     }

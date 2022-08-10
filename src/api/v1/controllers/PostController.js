@@ -167,7 +167,6 @@ class PostController extends BaseController {
         if (!post) return next(new ApiError('Post not found', httpStatus.NOT_FOUND));
 
         const index = post.comments.findIndex(o => o._id == commentId);
-        console.log(index);
         if (index <= -1) return next(new ApiError('Comment not found', httpStatus.NOT_FOUND));
 
         post.comments.splice(index, 1);
