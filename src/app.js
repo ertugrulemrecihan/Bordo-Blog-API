@@ -6,6 +6,8 @@ const events = require('./api/v1/scripts/events');
 const successHandler = require('./api/v1/middlewares/successHandler');
 const errorHandler = require('./api/v1/middlewares/errorHandler');
 const routes = require('./api/v1/routes');
+const swaggerUi = require('swagger-ui-express');
+const swaggerDocument = require('../doc/static/openapi.json');
 
 config();
 loaders();
@@ -17,6 +19,8 @@ app.use(express.json());
 app.use(cors({
     origin: '*'
 }));
+
+app.use('/api/v1/doc', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
 
 app.use('/api/v1/user', routes.user);
 app.use('/api/v1/post', routes.post);
