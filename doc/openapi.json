@@ -46,6 +46,9 @@
         },
         "/user/change-password": {
             "$ref": "./paths/user/change-password.json"
+        },
+        "/user/profile": {
+            "$ref": "./paths/user/profile.json"
         }
     },
     "components": {

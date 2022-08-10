@@ -1,0 +1,31 @@
+{
+    "summary": "",
+    "description": "",
+    "post": {
+        "tags": [
+            "Users"
+        ],
+        "summary": "User's profile",
+        "description": "User's profile",
+        "operationId": "users.profile",
+        "security": [
+            {
+                "bearerAuth": []
+            }
+        ],
+        "responses": {
+            "200": {
+                "$ref": "../../responses/user/profile.json"
+            },
+            "400": {
+                "$ref": "../../responses/api-responses/400.json"
+            },
+            "401": {
+                "$ref": "../../responses/api-responses/401.json"
+            },
+            "403": {
+                "$ref": "../../responses/api-responses/403.json"
+            }
+        }
+    }
+}
