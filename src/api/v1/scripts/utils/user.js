@@ -5,6 +5,8 @@ const userService = require('../../services/UserService');
 const ApiError = require('../../responses/error/apiError');
 const eventEmitter = require('../events/eventEmitter');
 const ApiSuccess = require('../../responses/success/apiSuccess');
+const accessTokenService = require('../../services/AccessTokenService');
+const refreshTokenService = require('../../services/RefreshTokenService');
 
 const createResponse = (user) => {
     const userObject = deleteProfile(user);
@@ -68,8 +70,16 @@ const createAndVerifyEmail = async (email) => {
     return new ApiSuccess('Email verification link successfully sent to email', httpStatus.OK);
 };
 
+const logOut = async (userId) => {
+    const deletedAccessTokenResult = await accessTokenService.deleteByQuery({ user: userId });
+    const deletedRefreshTokenResult = await refreshTokenService.deleteByQuery({ user: userId });
+
+    return (!deletedAccessTokenResult || !deletedRefreshTokenResult);
+};
+
 module.exports = {
     createResponse,
     deletePasswordAndSaltFields,
-    createAndVerifyEmail
+    createAndVerifyEmail,
+    logOut
 };

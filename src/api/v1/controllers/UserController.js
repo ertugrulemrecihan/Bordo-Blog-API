@@ -11,6 +11,8 @@ const ApiSuccess = require('../responses/success/apiSuccess');
 const emailVerificationTokenService = require('../services/EmailVerificationTokenService');
 const BaseController = require('./BaseController');
 const userService = require('../services/UserService');
+const accessTokenService = require('../services/AccessTokenService');
+const refreshTokenService = require('../services/RefreshTokenService');
 
 class UserController extends BaseController {
     constructor() {
@@ -26,6 +28,29 @@ class UserController extends BaseController {
         try {
             const user = await service.create(req.body);
             const response = userHelper.createResponse(user);
+
+            const accessToken = response.access_token;
+            const refreshToken = response.refresh_token;
+
+            const accesTokenResult = await accessTokenService.create({
+                user_id: user._id,
+                token: accessToken
+            });
+
+            if (!accesTokenResult) {
+                new ApiDataSuccess(user, 'User created', httpStatus.CREATED).place(res);
+                return next();
+            }
+
+            const refreshTokenResult = await refreshTokenService.create({
+                user_id: user._id,
+                token: refreshToken
+            });
+
+            if (!refreshTokenResult) {
+                new ApiDataSuccess(user, 'User created', httpStatus.CREATED).place(res);
+                return next();
+            }
 
             try {
                 await userHelper.createAndVerifyEmail(req.body.email);
@@ -52,7 +77,44 @@ class UserController extends BaseController {
 
         const response = userHelper.createResponse(user);
 
+        const accessToken = response.access_token;
+        const refreshToken = response.refresh_token;
+
+        const currentAccessToken = await accessTokenService.fetchOneByQuery({ user_id: user._id });
+        if (currentAccessToken) await accessTokenService.deleteById(currentAccessToken._id);
+
+        const accesTokenResult = await accessTokenService.create({
+            user: user._id,
+            token: accessToken
+        });
+
+        if (!accesTokenResult) {
+            return next(new ApiError('Login Failed', httpStatus.INTERNAL_SERVER_ERROR));
+        }
+
+        const currentRefreshToken = await refreshTokenService.fetchOneByQuery({ user_id: user._id });
+        if (currentRefreshToken) await refreshTokenService.deleteById(currentRefreshToken._id);
+
+        const refreshTokenResult = await refreshTokenService.create({
+            user: user._id,
+            token: refreshToken
+        });
+
+        if (!refreshTokenResult) {
+            return next(new ApiError('Login Failed', httpStatus.INTERNAL_SERVER_ERROR));
+        }
+
         new ApiDataSuccess(response, 'Login successful', httpStatus.OK).place(res);
+        return next();
+    }
+
+    async logOut(req, res, next) {
+        const result = await userHelper.logOut(req.user._id);
+        if (result) {
+            return next(new ApiError('Log out failed', httpStatus.INTERNAL_SERVER_ERROR));
+        }
+
+        new ApiSuccess('Log out successfuly', httpStatus.OK).place(res);
         return next();
     }
 
@@ -121,6 +183,8 @@ class UserController extends BaseController {
                 }
             });
 
+            await userHelper.logOut(user._id);
+
             new ApiSuccess('Password has been reset', httpStatus.OK).place(res);
             return next();
 
@@ -155,6 +219,8 @@ class UserController extends BaseController {
             }
         });
 
+        await userHelper.logOut(req.user._id);
+
         new ApiSuccess('Password has been changed', httpStatus.OK).place(res);
         return next();
     }
@@ -175,6 +241,8 @@ class UserController extends BaseController {
 
             const user = await service.fetchOneByQuery({ _id: decodedToken.data._id, email: decodedToken.data.email });
             if (!user) throw new Error();
+
+            if (user.email_verified) return next(new ApiError('User email already verified', httpStatus.BAD_REQUEST));
 
             const currentVerifyToken = await emailVerificationTokenService.fetchOneByQuery({ user_id: user._id });
             if (!currentVerifyToken) throw new Error();
@@ -198,10 +266,12 @@ class UserController extends BaseController {
                 }
             });
 
+            await userHelper.logOut(user._id);
+
             new ApiSuccess('Email successfully verified', httpStatus.OK).place(res);
             return next();
         } catch (error) {
-            return next(new ApiError('Invalid or expired email verification reset token', httpStatus.BAD_REQUEST));
+            return next(new ApiError('Invalid or expired email verification token', httpStatus.BAD_REQUEST));
         }
     }
 }
