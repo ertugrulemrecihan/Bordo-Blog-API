@@ -29,6 +29,9 @@
         "/user/register": {
             "$ref": "./paths/user/register.json"
         },
+        "/user/logout": {
+            "$ref": "./paths/user/logout.json"
+        },
         "/user/get-password-reset-email": {
             "$ref": "./paths/user/get-password-reset-email.json"
         },

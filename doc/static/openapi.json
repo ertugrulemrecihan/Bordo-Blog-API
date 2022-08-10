@@ -123,6 +123,56 @@
             }
           },
           "500": {
+            "$ref": "#/paths/~1user~1logout/post/responses/500"
+          }
+        }
+      }
+    },
+    "/user/logout": {
+      "summary": "",
+      "description": "",
+      "post": {
+        "tags": [
+          "Users"
+        ],
+        "summary": "Log out",
+        "description": "Log out account",
+        "operationId": "users.logout",
+        "responses": {
+          "200": {
+            "description": "Log out successfully",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/login/allOf/0"
+                }
+              }
+            }
+          },
+          "400": {
+            "$ref": "#/paths/~1user~1login/post/responses/400"
+          },
+          "401": {
+            "description": "Unauthorized error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/paths/~1user~1login/post/responses/400/content/application~1json/schema"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/paths/~1user~1login/post/responses/400/content/application~1json/schema"
+                }
+              }
+            }
+          },
+          "500": {
             "description": "Internal server error",
             "content": {
               "application/json": {
@@ -196,7 +246,7 @@
             "$ref": "#/paths/~1user~1login/post/responses/400"
           },
           "500": {
-            "$ref": "#/paths/~1user~1register/post/responses/500"
+            "$ref": "#/paths/~1user~1logout/post/responses/500"
           }
         }
       }
@@ -262,7 +312,7 @@
             "$ref": "#/paths/~1user~1login/post/responses/400"
           },
           "500": {
-            "$ref": "#/paths/~1user~1register/post/responses/500"
+            "$ref": "#/paths/~1user~1logout/post/responses/500"
           }
         }
       }
@@ -300,30 +350,16 @@
             "$ref": "#/paths/~1user~1login/post/responses/400"
           },
           "401": {
-            "description": "Unauthorized error",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/paths/~1user~1login/post/responses/400/content/application~1json/schema"
-                }
-              }
-            }
+            "$ref": "#/paths/~1user~1logout/post/responses/401"
           },
           "403": {
-            "description": "Forbidden error",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/paths/~1user~1login/post/responses/400/content/application~1json/schema"
-                }
-              }
-            }
+            "$ref": "#/paths/~1user~1logout/post/responses/403"
           },
           "404": {
             "$ref": "#/paths/~1user~1login/post/responses/404"
           },
           "500": {
-            "$ref": "#/paths/~1user~1register/post/responses/500"
+            "$ref": "#/paths/~1user~1logout/post/responses/500"
           }
         }
       }
