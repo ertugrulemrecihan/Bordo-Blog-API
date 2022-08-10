@@ -7,3 +7,4 @@ module.exports.adminTag = require('./admin/tagRoutes');
 module.exports.adminRole = require('./admin/roleRoutes');
 module.exports.adminPost = require('./admin/postRoutes');
 module.exports.adminAddress = require('./admin/addressRoutes');
+module.exports.adminUser = require('./admin/userRoutes');

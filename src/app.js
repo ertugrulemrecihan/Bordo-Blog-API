@@ -25,6 +25,7 @@ app.use('/api/v1/post', routes.post);
 app.use('/api/v1/admin/role', routes.adminRole);
 app.use('/api/v1/admin/tag', routes.adminTag);
 app.use('/api/v1/admin/post', routes.adminPost);
+app.use('/api/v1/admin/user', routes.adminUser);
 
 app.use(successHandler);
 app.use(errorHandler);

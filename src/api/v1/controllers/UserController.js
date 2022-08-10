@@ -9,8 +9,14 @@ const ApiError = require('../responses/error/apiError');
 const eventEmitter = require('../scripts/events/eventEmitter');
 const ApiSuccess = require('../responses/success/apiSuccess');
 const emailVerificationTokenService = require('../services/EmailVerificationTokenService');
+const BaseController = require('./BaseController');
+const userService = require('../services/UserService');
 
-class UserController {
+class UserController extends BaseController {
+    constructor() {
+        super(userService);
+    }
+
     async register(req, res, next) {
         const { hashedPassword, hashedSalt } = passwordHelper.passwordToHash(req.body.password);
 
