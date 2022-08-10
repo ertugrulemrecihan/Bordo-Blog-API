@@ -12,7 +12,7 @@
   },
   "servers": [
     {
-      "url": "http://localhost:3000/api/v1",
+      "url": "https://bordo-blog.herokuapp.com/api/v1",
       "description": "Local server"
     }
   ],
@@ -518,106 +518,21 @@
             "type": "object",
             "properties": {
               "data": {
-                "allOf": [
-                  {
-                    "type": "object",
-                    "allOf": [
-                      {
-                        "type": "object",
-                        "properties": {
-                          "_id": {
-                            "title": "Document MongoDb Id",
-                            "description": "MongoDb Id of the document",
-                            "type": "string",
-                            "example": "62ed69679c045c97a63390a4"
-                          },
-                          "createdAt": {
-                            "title": "Document Creation Date",
-                            "description": "The `createdAt` value is determined automatically by the API.",
-                            "type": "string",
-                            "format": "date-time"
-                          },
-                          "updatedAt": {
-                            "title": "Document Update Date",
-                            "description": "The `updatedAt` value is determined automatically by the API.",
-                            "type": "string",
-                            "format": "date-time"
-                          }
-                        }
-                      },
-                      {
-                        "$ref": "#/components/requestBodies/register/content/application~1json/schema/allOf/0/allOf/0"
-                      },
-                      {
-                        "type": "object",
-                        "properties": {
-                          "email": {
-                            "title": "User email address",
-                            "description": "User email address",
-                            "type": "string",
-                            "format": "email"
-                          },
-                          "email_verified": {
-                            "title": "User's email is verified?",
-                            "description": "User's email is verified?",
-                            "type": "boolean",
-                            "default": "true"
-                          },
-                          "email_notification": {
-                            "title": "User is subscribed the email notification?",
-                            "description": "User's email is verified?",
-                            "type": "boolean",
-                            "default": "true"
-                          }
-                        }
-                      }
-                    ]
+                "type": "object",
+                "properties": {
+                  "access_token": {
+                    "title": "JWT access token",
+                    "description": "JWT access token",
+                    "type": "string",
+                    "example": "eyJhbG7Il9pZCI6IjYyZW..."
                   },
-                  {
-                    "type": "object",
-                    "properties": {
-                      "roles": {
-                        "type": "array",
-                        "items": {
-                          "$ref": "#/components/schemas/register/allOf/1/properties/data/allOf/1/properties/roles/items"
-                        }
-                      }
-                    }
-                  },
-                  {
-                    "type": "object",
-                    "properties": {
-                      "packages": {
-                        "type": "array",
-                        "items": {
-                          "$ref": "#/components/schemas/register/allOf/1/properties/data/allOf/2/properties/packages/items"
-                        }
-                      }
-                    }
-                  },
-                  {
-                    "type": "object",
-                    "properties": {
-                      "tokens": {
-                        "type": "object",
-                        "properties": {
-                          "access": {
-                            "title": "JWT access token",
-                            "description": "JWT access token",
-                            "type": "string",
-                            "example": "eyJhbG7Il9pZCI6IjYyZW..."
-                          },
-                          "refresh": {
-                            "title": "JWT refresh token",
-                            "description": "JWT refresh token",
-                            "type": "string",
-                            "example": "eyJhbG7Il9pZCI6IjYyZW..."
-                          }
-                        }
-                      }
-                    }
+                  "refresh_token": {
+                    "title": "JWT refresh token",
+                    "description": "JWT refresh token",
+                    "type": "string",
+                    "example": "eyJhbG7Il9pZCI6IjYyZW..."
                   }
-                ]
+                }
               }
             }
           }
@@ -632,66 +547,7 @@
             "type": "object",
             "properties": {
               "data": {
-                "allOf": [
-                  {
-                    "$ref": "#/components/schemas/login/allOf/1/properties/data/allOf/0"
-                  },
-                  {
-                    "type": "object",
-                    "properties": {
-                      "roles": {
-                        "type": "array",
-                        "items": {
-                          "type": "object",
-                          "properties": {
-                            "_id": {
-                              "title": "Role MongoDb Id",
-                              "description": "Role MongoDb Id",
-                              "type": "string",
-                              "example": "62ed69679c045c97a63390a4"
-                            },
-                            "name": {
-                              "title": "Role name",
-                              "description": "Role name",
-                              "type": "string",
-                              "example": "Writer"
-                            }
-                          }
-                        },
-                        "example": []
-                      }
-                    }
-                  },
-                  {
-                    "type": "object",
-                    "properties": {
-                      "packages": {
-                        "type": "array",
-                        "items": {
-                          "type": "object",
-                          "properties": {
-                            "_id": {
-                              "title": "Package MongoDb Id",
-                              "description": "Package MongoDb Id",
-                              "type": "string",
-                              "example": "62ed69679c045c97a63390a4"
-                            },
-                            "name": {
-                              "title": "Package name",
-                              "description": "Package name",
-                              "type": "string",
-                              "example": "Basic Package"
-                            }
-                          }
-                        },
-                        "example": []
-                      }
-                    }
-                  },
-                  {
-                    "$ref": "#/components/schemas/login/allOf/1/properties/data/allOf/3"
-                  }
-                ]
+                "$ref": "#/components/schemas/login/allOf/1/properties/data"
               }
             }
           }

@@ -7,15 +7,23 @@ const eventEmitter = require('../events/eventEmitter');
 const ApiSuccess = require('../../responses/success/apiSuccess');
 
 const createResponse = (user) => {
-    const userObject = deletePasswordAndSaltFields(user);
+    const userObject = deleteProfile(user);
 
     return {
-        ...userObject,
-        tokens: {
-            access: jwtHelper.generateAccessToken(userObject),
-            refresh: jwtHelper.generateRefreshToken(userObject),
-        }
+        access_token: jwtHelper.generateAccessToken(userObject),
+        refresh_token: jwtHelper.generateRefreshToken(userObject),
     };
+};
+
+const deleteProfile = (user) => {
+    const userObject = deletePasswordAndSaltFields(user);
+
+    delete userObject.first_name;
+    delete userObject.last_name;
+    delete userObject.email_notification;
+    delete userObject.packages;
+
+    return userObject;
 };
 
 const deletePasswordAndSaltFields = (user) => {
