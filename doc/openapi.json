@@ -13,6 +13,10 @@
     "servers": [
         {
             "url": "https://bordo-blog.herokuapp.com/api/v1",
+            "description": "Web server"
+        },
+        {
+            "url": "http://localhost:3000/api/v1",
             "description": "Local server"
         }
     ],
@@ -20,6 +24,10 @@
         {
             "name": "Users",
             "description": "User endpoints"
+        },
+        {
+            "name": "Tags",
+            "description": "Tag endpoints"
         }
     ],
     "paths": {
@@ -49,6 +57,21 @@
         },
         "/user/profile": {
             "$ref": "./paths/user/profile.json"
+        },
+        "/admin/tag/getAll": {
+            "$ref": "./paths/tag/get-all-tags.json"
+        },
+        "/admin/tag/get/{tagId}": {
+            "$ref": "./paths/tag/get-tag-by-id.json"
+        },
+        "/admin/tag/create": {
+            "$ref": "./paths/admin/tag/create-tag.json"
+        },
+        "/admin/tag/update/{tagId}": {
+            "$ref": "./paths/admin/tag/update-tag.json"
+        },
+        "/admin/tag/delete/{tagId}": {
+            "$ref": "./paths/admin/tag/delete-tag.json"
         }
     },
     "components": {
@@ -73,26 +96,6 @@
             },
             "change-password": {
                 "$ref": "./request-bodies/user/change-password.json"
-            }
-        },
-        "schemas": {
-            "login": {
-                "$ref": "./schemas/user/login.json"
-            },
-            "register": {
-                "$ref": "./schemas/user/register.json"
-            },
-            "reset-password": {
-                "$ref": "./schemas/user/reset-password.json"
-            },
-            "verify-email": {
-                "$ref": "./schemas/user/verify-email.json"
-            },
-            "change-password": {
-                "$ref": "./schemas/user/change-password.json"
-            },
-            "email": {
-                "$ref": "./schemas/user/email.json"
             }
         },
         "securitySchemes": {

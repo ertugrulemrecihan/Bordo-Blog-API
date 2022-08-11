@@ -1,0 +1,9 @@
+{
+    "in": "path",
+    "name": "tagId",
+    "schema": {
+        "type": "string"
+    },
+    "required": true,
+    "description": ""
+}

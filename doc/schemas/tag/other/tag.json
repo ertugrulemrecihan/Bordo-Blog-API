@@ -1,0 +1,11 @@
+{
+    "type": "object",
+    "properties": {
+        "name": {
+            "title": "Tag name",
+            "description": "Tag name",
+            "type": "string",
+            "minLength": 3
+        }
+    }
+}

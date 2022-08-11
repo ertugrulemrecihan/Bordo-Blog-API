@@ -13,6 +13,10 @@
   "servers": [
     {
       "url": "https://bordo-blog.herokuapp.com/api/v1",
+      "description": "Web server"
+    },
+    {
+      "url": "http://localhost:3000/api/v1",
       "description": "Local server"
     }
   ],
@@ -20,6 +24,10 @@
     {
       "name": "Users",
       "description": "User endpoints"
+    },
+    {
+      "name": "Tags",
+      "description": "Tag endpoints"
     }
   ],
   "paths": {
@@ -43,7 +51,33 @@
               "application/json": {
                 "schema": {
                   "type": "object",
-                  "$ref": "#/components/schemas/login"
+                  "allOf": [
+                    {
+                      "$ref": "#/paths/~1user~1logout/post/responses/200/content/application~1json/schema"
+                    },
+                    {
+                      "type": "object",
+                      "properties": {
+                        "data": {
+                          "type": "object",
+                          "properties": {
+                            "access_token": {
+                              "title": "JWT access token",
+                              "description": "JWT access token",
+                              "type": "string",
+                              "example": "eyJhbG7Il9pZCI6IjYyZW..."
+                            },
+                            "refresh_token": {
+                              "title": "JWT refresh token",
+                              "description": "JWT refresh token",
+                              "type": "string",
+                              "example": "eyJhbG7Il9pZCI6IjYyZW..."
+                            }
+                          }
+                        }
+                      }
+                    }
+                  ]
                 }
               }
             }
@@ -104,7 +138,19 @@
               "application/json": {
                 "schema": {
                   "type": "object",
-                  "$ref": "#/components/schemas/register"
+                  "allOf": [
+                    {
+                      "$ref": "#/paths/~1user~1logout/post/responses/200/content/application~1json/schema"
+                    },
+                    {
+                      "type": "object",
+                      "properties": {
+                        "data": {
+                          "$ref": "#/paths/~1user~1login/post/responses/200/content/application~1json/schema/allOf/1/properties/data"
+                        }
+                      }
+                    }
+                  ]
                 }
               }
             }
@@ -149,7 +195,20 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/login/allOf/0"
+                  "type": "object",
+                  "properties": {
+                    "message": {
+                      "title": "Response message",
+                      "description": "Response message",
+                      "type": "string"
+                    },
+                    "success": {
+                      "title": "Response success status",
+                      "description": "Response success status",
+                      "type": "boolean",
+                      "default": true
+                    }
+                  }
                 }
               }
             }
@@ -209,7 +268,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/login/allOf/0"
+                  "$ref": "#/paths/~1user~1logout/post/responses/200/content/application~1json/schema"
                 }
               }
             }
@@ -242,7 +301,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/login/allOf/0"
+                  "$ref": "#/paths/~1user~1logout/post/responses/200/content/application~1json/schema"
                 }
               }
             }
@@ -275,7 +334,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/login/allOf/0"
+                  "$ref": "#/paths/~1user~1logout/post/responses/200/content/application~1json/schema"
                 }
               }
             }
@@ -308,7 +367,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/login/allOf/0"
+                  "$ref": "#/paths/~1user~1logout/post/responses/200/content/application~1json/schema"
                 }
               }
             }
@@ -346,7 +405,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/login/allOf/0"
+                  "$ref": "#/paths/~1user~1logout/post/responses/200/content/application~1json/schema"
                 }
               }
             }
@@ -393,7 +452,7 @@
                   "type": "object",
                   "allOf": [
                     {
-                      "$ref": "#/components/schemas/login/allOf/0"
+                      "$ref": "#/paths/~1user~1logout/post/responses/200/content/application~1json/schema"
                     },
                     {
                       "type": "object",
@@ -527,6 +586,368 @@
           }
         }
       }
+    },
+    "/admin/tag/getAll": {
+      "summary": "",
+      "description": "",
+      "get": {
+        "tags": [
+          "Tags"
+        ],
+        "summary": "Get All Tag",
+        "description": "Get All Tag",
+        "operationId": "tags.get-all-tag",
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "allOf": [
+                    {
+                      "$ref": "#/paths/~1user~1logout/post/responses/200/content/application~1json/schema"
+                    },
+                    {
+                      "type": "object",
+                      "properties": {
+                        "data": {
+                          "type": "array",
+                          "items": {
+                            "$ref": "#/paths/~1admin~1tag~1create/post/requestBody/content/application~1json/schema/allOf/0"
+                          }
+                        }
+                      }
+                    }
+                  ]
+                }
+              }
+            }
+          },
+          "400": {
+            "$ref": "#/paths/~1user~1login/post/responses/400"
+          },
+          "401": {
+            "$ref": "#/paths/~1user~1logout/post/responses/401"
+          },
+          "403": {
+            "$ref": "#/paths/~1user~1logout/post/responses/403"
+          },
+          "500": {
+            "$ref": "#/paths/~1user~1logout/post/responses/500"
+          }
+        }
+      }
+    },
+    "/admin/tag/get/{tagId}": {
+      "summary": "",
+      "description": "",
+      "get": {
+        "tags": [
+          "Tags"
+        ],
+        "summary": "Get tag by id",
+        "description": "Get tag by id",
+        "operationId": "tags.get-tag-by-id",
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "tagId",
+            "schema": {
+              "type": "string"
+            },
+            "required": true,
+            "description": ""
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "allOf": [
+                    {
+                      "$ref": "#/paths/~1user~1logout/post/responses/200/content/application~1json/schema"
+                    },
+                    {
+                      "type": "object",
+                      "properties": {
+                        "data": {
+                          "type": "array",
+                          "items": {
+                            "$ref": "#/paths/~1admin~1tag~1create/post/requestBody/content/application~1json/schema/allOf/0"
+                          }
+                        }
+                      }
+                    }
+                  ]
+                }
+              }
+            }
+          },
+          "400": {
+            "$ref": "#/paths/~1user~1login/post/responses/400"
+          },
+          "401": {
+            "$ref": "#/paths/~1user~1logout/post/responses/401"
+          },
+          "403": {
+            "$ref": "#/paths/~1user~1logout/post/responses/403"
+          },
+          "404": {
+            "$ref": "#/paths/~1user~1login/post/responses/404"
+          },
+          "500": {
+            "$ref": "#/paths/~1user~1logout/post/responses/500"
+          }
+        }
+      }
+    },
+    "/admin/tag/create": {
+      "summary": "",
+      "description": "",
+      "post": {
+        "tags": [
+          "Tags"
+        ],
+        "summary": "Create tag",
+        "description": "Create tag",
+        "operationId": "tags.create-tag",
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "requestBody": {
+          "description": "",
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "allOf": [
+                  {
+                    "type": "object",
+                    "properties": {
+                      "name": {
+                        "title": "Tag name",
+                        "description": "Tag name",
+                        "type": "string",
+                        "minLength": 3
+                      }
+                    }
+                  },
+                  {
+                    "required": [
+                      "name"
+                    ]
+                  }
+                ]
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "allOf": [
+                    {
+                      "$ref": "#/paths/~1user~1logout/post/responses/200/content/application~1json/schema"
+                    },
+                    {
+                      "type": "object",
+                      "properties": {
+                        "data": {
+                          "allOf": [
+                            {
+                              "$ref": "#/paths/~1admin~1tag~1create/post/requestBody/content/application~1json/schema/allOf/0"
+                            }
+                          ]
+                        }
+                      }
+                    }
+                  ]
+                }
+              }
+            }
+          },
+          "400": {
+            "$ref": "#/paths/~1user~1login/post/responses/400"
+          },
+          "401": {
+            "$ref": "#/paths/~1user~1logout/post/responses/401"
+          },
+          "403": {
+            "$ref": "#/paths/~1user~1logout/post/responses/403"
+          },
+          "500": {
+            "$ref": "#/paths/~1user~1logout/post/responses/500"
+          }
+        }
+      }
+    },
+    "/admin/tag/update/{tagId}": {
+      "summary": "",
+      "description": "",
+      "patch": {
+        "tags": [
+          "Tags"
+        ],
+        "summary": "Update tag",
+        "description": "Update tag",
+        "operationId": "tags.update-tag",
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "requestBody": {
+          "description": "",
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "allOf": [
+                  {
+                    "$ref": "#/paths/~1admin~1tag~1create/post/requestBody/content/application~1json/schema/allOf/0"
+                  },
+                  {
+                    "required": [
+                      "name"
+                    ]
+                  }
+                ]
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "$ref": "#/paths/~1admin~1tag~1get~1%7BtagId%7D/get/parameters/0"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "allOf": [
+                    {
+                      "$ref": "#/paths/~1user~1logout/post/responses/200/content/application~1json/schema"
+                    },
+                    {
+                      "type": "object",
+                      "properties": {
+                        "data": {
+                          "allOf": [
+                            {
+                              "$ref": "#/paths/~1admin~1tag~1create/post/requestBody/content/application~1json/schema/allOf/0"
+                            }
+                          ]
+                        }
+                      }
+                    }
+                  ]
+                }
+              }
+            }
+          },
+          "400": {
+            "$ref": "#/paths/~1user~1login/post/responses/400"
+          },
+          "401": {
+            "$ref": "#/paths/~1user~1logout/post/responses/401"
+          },
+          "403": {
+            "$ref": "#/paths/~1user~1logout/post/responses/403"
+          },
+          "409": {
+            "$ref": "#/paths/~1user~1register/post/responses/409"
+          },
+          "500": {
+            "$ref": "#/paths/~1user~1logout/post/responses/500"
+          }
+        }
+      }
+    },
+    "/admin/tag/delete/{tagId}": {
+      "summary": "",
+      "description": "",
+      "delete": {
+        "tags": [
+          "Tags"
+        ],
+        "summary": "Delete tag",
+        "description": "Delete tag",
+        "operationId": "tags.delete-tag",
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "parameters": [
+          {
+            "$ref": "#/paths/~1admin~1tag~1get~1%7BtagId%7D/get/parameters/0"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "allOf": [
+                    {
+                      "$ref": "#/paths/~1user~1logout/post/responses/200/content/application~1json/schema"
+                    },
+                    {
+                      "type": "object",
+                      "properties": {
+                        "data": {
+                          "type": "array",
+                          "items": {
+                            "$ref": "#/paths/~1admin~1tag~1create/post/requestBody/content/application~1json/schema/allOf/0"
+                          }
+                        }
+                      }
+                    }
+                  ]
+                }
+              }
+            }
+          },
+          "400": {
+            "$ref": "#/paths/~1user~1login/post/responses/400"
+          },
+          "401": {
+            "$ref": "#/paths/~1user~1logout/post/responses/401"
+          },
+          "403": {
+            "$ref": "#/paths/~1user~1logout/post/responses/403"
+          },
+          "500": {
+            "$ref": "#/paths/~1user~1logout/post/responses/500"
+          }
+        }
+      }
     }
   },
   "components": {
@@ -629,7 +1050,15 @@
               "type": "object",
               "allOf": [
                 {
-                  "$ref": "#/components/schemas/email"
+                  "type": "object",
+                  "properties": {
+                    "email": {
+                      "title": "User email address",
+                      "description": "User email address",
+                      "type": "string",
+                      "format": "email"
+                    }
+                  }
                 },
                 {
                   "required": [
@@ -649,7 +1078,7 @@
               "type": "object",
               "allOf": [
                 {
-                  "$ref": "#/components/schemas/email"
+                  "$ref": "#/components/requestBodies/get-password-reset-email/content/application~1json/schema/allOf/0"
                 },
                 {
                   "required": [
@@ -667,155 +1096,73 @@
           "application/json": {
             "schema": {
               "type": "object",
-              "$ref": "#/components/schemas/reset-password"
-            }
-          }
-        }
-      },
-      "verify-email": {
-        "description": "",
-        "content": {
-          "application/json": {
-            "schema": {
-              "type": "object",
-              "$ref": "#/components/schemas/verify-email"
-            }
-          }
-        }
-      },
-      "change-password": {
-        "description": "",
-        "content": {
-          "application/json": {
-            "schema": {
-              "type": "object",
-              "$ref": "#/components/schemas/change-password"
-            }
-          }
-        }
-      }
-    },
-    "schemas": {
-      "login": {
-        "allOf": [
-          {
-            "type": "object",
-            "properties": {
-              "message": {
-                "title": "Response message",
-                "description": "Response message",
-                "type": "string"
-              },
-              "success": {
-                "title": "Response success status",
-                "description": "Response success status",
-                "type": "boolean",
-                "default": true
-              }
-            }
-          },
-          {
-            "type": "object",
-            "properties": {
-              "data": {
-                "type": "object",
-                "properties": {
-                  "access_token": {
-                    "title": "JWT access token",
-                    "description": "JWT access token",
-                    "type": "string",
-                    "example": "eyJhbG7Il9pZCI6IjYyZW..."
-                  },
-                  "refresh_token": {
-                    "title": "JWT refresh token",
-                    "description": "JWT refresh token",
-                    "type": "string",
-                    "example": "eyJhbG7Il9pZCI6IjYyZW..."
-                  }
+              "properties": {
+                "token": {
+                  "title": "JWT Password reset token",
+                  "description": "Password reset token from endpoint `user/get-password-reset-email`.",
+                  "type": "string",
+                  "example": "eyJhbG7Il9pZCI6IjYyZW..."
+                },
+                "new_password": {
+                  "title": "New Password",
+                  "description": "New Password",
+                  "type": "string",
+                  "example": "Bordo02!"
                 }
-              }
+              },
+              "required": [
+                "token",
+                "new_password"
+              ]
             }
           }
-        ]
-      },
-      "register": {
-        "allOf": [
-          {
-            "$ref": "#/components/schemas/login/allOf/0"
-          },
-          {
-            "type": "object",
-            "properties": {
-              "data": {
-                "$ref": "#/components/schemas/login/allOf/1/properties/data"
-              }
-            }
-          }
-        ]
-      },
-      "reset-password": {
-        "type": "object",
-        "properties": {
-          "token": {
-            "title": "JWT Password reset token",
-            "description": "Password reset token from endpoint `user/get-password-reset-email`.",
-            "type": "string",
-            "example": "eyJhbG7Il9pZCI6IjYyZW..."
-          },
-          "new_password": {
-            "title": "New Password",
-            "description": "New Password",
-            "type": "string",
-            "example": "Bordo02!"
-          }
-        },
-        "required": [
-          "token",
-          "new_password"
-        ]
+        }
       },
       "verify-email": {
-        "type": "object",
-        "properties": {
-          "token": {
-            "title": "JWT Email verification token",
-            "description": "Email verification token from endpoint `user/get-email-verification-email`.",
-            "type": "string"
+        "description": "",
+        "content": {
+          "application/json": {
+            "schema": {
+              "type": "object",
+              "properties": {
+                "token": {
+                  "title": "JWT Email verification token",
+                  "description": "Email verification token from endpoint `user/get-email-verification-email`.",
+                  "type": "string"
+                }
+              },
+              "required": [
+                "token"
+              ]
+            }
           }
-        },
-        "required": [
-          "token"
-        ]
+        }
       },
       "change-password": {
-        "type": "object",
-        "properties": {
-          "old_password": {
-            "title": "User old password",
-            "description": "User old password",
-            "type": "string",
-            "example": "Bordo01!"
-          },
-          "new_password": {
-            "title": "User new password",
-            "description": "User new password",
-            "type": "string",
-            "example": "Bordo02!"
-          }
-        },
-        "required": [
-          "old_password",
-          "new_password"
-        ]
-      },
-      "email": {
-        "type": "object",
-        "properties": {
-          "email": {
-            "title": "User email address",
-            "description": "User email address",
-            "type": "string",
-            "format": "email"
+        "description": "",
+        "content": {
+          "application/json": {
+            "schema": {
+              "type": "object",
+              "properties": {
+                "old_password": {
+                  "title": "User old password",
+                  "description": "User old password",
+                  "type": "string",
+                  "example": "Bordo01!"
+                },
+                "new_password": {
+                  "title": "User new password",
+                  "description": "User new password",
+                  "type": "string",
+                  "example": "Bordo02!"
+                }
+              },
+              "required": [
+                "old_password",
+                "new_password"
+              ]
+            }
           }
         }
       }
