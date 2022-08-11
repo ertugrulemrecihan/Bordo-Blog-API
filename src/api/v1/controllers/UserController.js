@@ -236,8 +236,9 @@ class UserController extends BaseController {
     }
 
     async verifyEmail(req, res, next) {
+        const emailVerifyToken = req.params.emailVerifyToken;
         try {
-            const decodedToken = jwtHelper.decodeEmailVerifyToken(req.body.token);
+            const decodedToken = jwtHelper.decodeEmailVerifyToken(emailVerifyToken);
 
             const user = await service.fetchOneByQuery({ _id: decodedToken.data._id, email: decodedToken.data.email });
             if (!user) throw new Error();
@@ -247,7 +248,7 @@ class UserController extends BaseController {
             const currentVerifyToken = await emailVerificationTokenService.fetchOneByQuery({ user_id: user._id });
             if (!currentVerifyToken) throw new Error();
 
-            if (currentVerifyToken.token !== req.body.token) throw new Error();
+            if (currentVerifyToken.token !== emailVerifyToken) throw new Error();
 
             const result = await service.updateById(user._id, {
                 email_verified: true
@@ -267,6 +268,8 @@ class UserController extends BaseController {
             });
 
             await userHelper.logOut(user._id);
+
+            //! FIXME - Kullanıcıyı frontend ana sayfaya yönlendir
 
             new ApiSuccess('Email successfully verified', httpStatus.OK).place(res);
             return next();

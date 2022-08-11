@@ -12,7 +12,7 @@ router.route('/get-password-reset-email').post(bodyValidator(schemas.createPassw
 router.route('/get-email-verification-email').post(bodyValidator(schemas.createEmailVerificationTokenValidation), controller.getEmailVerificationEmail);
 router.route('/reset-password').post(bodyValidator(schemas.resetPasswordValidation), controller.resetPassword);
 router.route('/change-password').post(authenticate, bodyValidator(schemas.changePasswordValidation), controller.changePassword);
-router.route('/verify-email').post(bodyValidator(schemas.verifyEmail), controller.verifyEmail);
+router.route('/verify-email/:emailVerifyToken').get(controller.verifyEmail);
 router.route('/profile').get(authenticate, controller.getMyProfile);
 
 module.exports = router;

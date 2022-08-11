@@ -54,7 +54,7 @@ const createAndVerifyEmail = async (email) => {
         token: emailVerifyToken
     });
 
-    const verifyUrl = emailVerifyToken;
+    const verifyUrl = `${process.env.API_URL}:${process.env.API_PORT}/api/v1/user/verify-email/${emailVerifyToken}`;
 
     eventEmitter.emit('send_email', {
         to: user.email,

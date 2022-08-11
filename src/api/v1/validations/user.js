@@ -31,10 +31,6 @@ const changePasswordValidation = Joi.object({
     new_password: Joi.string().required().min(8).regex(/^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&*()+?])(?=.{8,})/).invalid(Joi.ref('old_password')),
 });
 
-const verifyEmail = Joi.object({
-    token: Joi.string().required().min(6),
-});
-
 const adminUserUpdateValidation = Joi.object({
     email: Joi.string().email(),
     first_name: Joi.string().min(3).max(100),
@@ -50,6 +46,5 @@ module.exports = {
     resetPasswordValidation,
     changePasswordValidation,
     createEmailVerificationTokenValidation,
-    verifyEmail,
     adminUserUpdateValidation
 };
