@@ -20,7 +20,7 @@ const addComment = Joi.object({
 });
 
 const deleteComment = Joi.object({
-    'comment_id': Joi.string().required()
+    'comment_id': Joi.string().required().length(24)
 });
 
 const addTag = Joi.object({

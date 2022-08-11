@@ -8,7 +8,7 @@ const schemas = require('../validations/address');
 
 router.route('/getAll/my').get(authenticate, controller.getAllMyAddresses);
 router.route('/getAll/my/:id').get(authenticate, controller.getMyAddress);
-router.route('/create').post(authenticate, bodyValidator(schemas.createValidation), controller.createMyAddress);
+router.route('/create').put(authenticate, bodyValidator(schemas.createValidation), controller.createMyAddress);
 router.route('/update/:id').patch(authenticate, paramIdValidator, bodyValidator(schemas.updateValidation), controller.updateMyAddress);
 router.route('/delete/:id').delete(authenticate, paramIdValidator, controller.deleteMyAddress);
 

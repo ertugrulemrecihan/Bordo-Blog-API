@@ -9,8 +9,8 @@ const paramIdValidator = require('../../middlewares/paramsIdValidator');
 
 router.route('/getAll').get(authenticate, authorize('Admin'), controller.fetchAllByQuery);
 router.route('/get/:id').get(authenticate, authorize('Admin'), paramIdValidator, controller.fetchOneByParamsId);
-router.route('/create').post(authenticate, authorize('Admin'), bodyValidator(schemas.createValidations), controller.create);
-router.route('/update/:id').put(authenticate, authorize('Admin'), paramIdValidator, bodyValidator(schemas.updateValidations), controller.updateByParamsId);
+router.route('/create').put(authenticate, authorize('Admin'), bodyValidator(schemas.createValidations), controller.create);
+router.route('/update/:id').patch(authenticate, authorize('Admin'), paramIdValidator, bodyValidator(schemas.updateValidations), controller.updateByParamsId);
 router.route('/delete/:id').delete(authenticate, authorize('Admin'), paramIdValidator, controller.deleteByParamsId);
 
 module.exports = router;

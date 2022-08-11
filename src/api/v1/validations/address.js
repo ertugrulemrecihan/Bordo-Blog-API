@@ -16,7 +16,7 @@ const updateValidation = Joi.object({
     address_2: Joi.string().min(10).max(200)
 });
 
-const creatAdminValidation = Joi.object({
+const createAdminValidation = Joi.object({
     user_id: Joi.string().required(),
     city_id: Joi.string().required(),
     country_id: Joi.string().required(),
@@ -37,6 +37,6 @@ const updateAdminValidation = Joi.object({
 module.exports = {
     createValidation,
     updateValidation,
-    creatAdminValidation,
+    createAdminValidation,
     updateAdminValidation
 };
