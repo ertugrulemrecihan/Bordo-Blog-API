@@ -1,6 +1,7 @@
 module.exports.user = require('./userRoutes');
 module.exports.post = require('./postRoutes');
 module.exports.address = require('./addressRoutes');
+module.exports.tag = require('./tagRoutes');
 
 // Admin Routes
 module.exports.adminTag = require('./admin/tagRoutes');
