@@ -7,11 +7,7 @@
             "type": "object",
             "properties": {
                 "data": {
-                    "allOf": [
-                        {
-                            "$ref": "./other/tag.json"
-                        }
-                    ]
+                    "$ref": "./other/tag.json"
                 }
             }
         }

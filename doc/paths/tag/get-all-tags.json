@@ -8,11 +8,6 @@
         "summary": "Get All Tag",
         "description": "Get All Tag",
         "operationId": "tags.get-all-tag",
-        "security": [
-            {
-                "bearerAuth": []
-            }
-        ],
         "responses": {
             "200": {
                 "$ref": "../../responses/tag/get-all-tags.json"

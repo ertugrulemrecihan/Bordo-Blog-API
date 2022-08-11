@@ -6,7 +6,15 @@
                 "type": "object",
                 "allOf": [
                     {
-                        "$ref": "../../../schemas/tag/other/tag.json"
+                        "type": "object",
+                        "properties": {
+                            "name": {
+                                "title": "Tag name",
+                                "description": "Tag name",
+                                "type": "string",
+                                "minLength": 3
+                            }
+                        }
                     },
                     {
                         "required": [

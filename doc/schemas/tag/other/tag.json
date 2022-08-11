@@ -1,11 +1,25 @@
 {
     "type": "object",
-    "properties": {
-        "name": {
-            "title": "Tag name",
-            "description": "Tag name",
-            "type": "string",
-            "minLength": 3
+    "allOf": [
+        {
+            "type": "object",
+            "properties": {
+                "name": {
+                    "title": "Tag name",
+                    "description": "Tag name",
+                    "type": "string",
+                    "minLength": 3
+                },
+                "post_count": {
+                    "title": "Post Count",
+                    "description": "Post Countr",
+                    "type": "number",
+                    "minLength": 3
+                }
+            }
+        },
+        {
+            "$ref": "../../../responses/api-responses/data-response-base.json"
         }
-    }
+    ]
 }

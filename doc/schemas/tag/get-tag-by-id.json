@@ -7,10 +7,7 @@
             "type": "object",
             "properties": {
                 "data": {
-                    "type": "array",
-                    "items": {
-                        "$ref": "../tag/other/tag.json"
-                    }
+                    "$ref": "../tag/other/tag.json"
                 }
             }
         }

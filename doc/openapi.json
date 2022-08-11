@@ -58,10 +58,10 @@
         "/user/profile": {
             "$ref": "./paths/user/profile.json"
         },
-        "/admin/tag/getAll": {
+        "/tag/getAll": {
             "$ref": "./paths/tag/get-all-tags.json"
         },
-        "/admin/tag/get/{tagId}": {
+        "/tag/get/{tagId}": {
             "$ref": "./paths/tag/get-tag-by-id.json"
         },
         "/admin/tag/create": {

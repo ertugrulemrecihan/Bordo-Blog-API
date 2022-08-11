@@ -8,11 +8,6 @@
         "summary": "Get tag by id",
         "description": "Get tag by id",
         "operationId": "tags.get-tag-by-id",
-        "security": [
-            {
-                "bearerAuth": []
-            }
-        ],
         "parameters": [
             {
                 "$ref": "../../parameters/path/tag/tag_id.json"

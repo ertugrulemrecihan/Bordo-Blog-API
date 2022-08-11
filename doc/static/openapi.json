@@ -83,34 +83,14 @@
             }
           },
           "400": {
-            "description": "Bad request error",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "type": "object",
-                  "properties": {
-                    "error": {
-                      "properties": {
-                        "message": {
-                          "type": "string"
-                        }
-                      }
-                    },
-                    "success": {
-                      "type": "boolean",
-                      "default": false
-                    }
-                  }
-                }
-              }
-            }
+            "$ref": "#/paths/~1tag~1getAll/get/responses/400"
           },
           "404": {
             "description": "Not found error",
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/paths/~1user~1login/post/responses/400/content/application~1json/schema"
+                  "$ref": "#/paths/~1tag~1getAll/get/responses/401/content/application~1json/schema"
                 }
               }
             }
@@ -156,20 +136,20 @@
             }
           },
           "400": {
-            "$ref": "#/paths/~1user~1login/post/responses/400"
+            "$ref": "#/paths/~1tag~1getAll/get/responses/400"
           },
           "409": {
             "description": "Conflict error",
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/paths/~1user~1login/post/responses/400/content/application~1json/schema"
+                  "$ref": "#/paths/~1tag~1getAll/get/responses/401/content/application~1json/schema"
                 }
               }
             }
           },
           "500": {
-            "$ref": "#/paths/~1user~1logout/post/responses/500"
+            "$ref": "#/paths/~1tag~1getAll/get/responses/500"
           }
         }
       }
@@ -214,37 +194,16 @@
             }
           },
           "400": {
-            "$ref": "#/paths/~1user~1login/post/responses/400"
+            "$ref": "#/paths/~1tag~1getAll/get/responses/400"
           },
           "401": {
-            "description": "Unauthorized error",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/paths/~1user~1login/post/responses/400/content/application~1json/schema"
-                }
-              }
-            }
+            "$ref": "#/paths/~1tag~1getAll/get/responses/401"
           },
           "403": {
-            "description": "Forbidden error",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/paths/~1user~1login/post/responses/400/content/application~1json/schema"
-                }
-              }
-            }
+            "$ref": "#/paths/~1tag~1getAll/get/responses/403"
           },
           "500": {
-            "description": "Internal server error",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/paths/~1user~1login/post/responses/400/content/application~1json/schema"
-                }
-              }
-            }
+            "$ref": "#/paths/~1tag~1getAll/get/responses/500"
           }
         }
       }
@@ -274,7 +233,7 @@
             }
           },
           "400": {
-            "$ref": "#/paths/~1user~1login/post/responses/400"
+            "$ref": "#/paths/~1tag~1getAll/get/responses/400"
           },
           "404": {
             "$ref": "#/paths/~1user~1login/post/responses/404"
@@ -307,10 +266,10 @@
             }
           },
           "400": {
-            "$ref": "#/paths/~1user~1login/post/responses/400"
+            "$ref": "#/paths/~1tag~1getAll/get/responses/400"
           },
           "500": {
-            "$ref": "#/paths/~1user~1logout/post/responses/500"
+            "$ref": "#/paths/~1tag~1getAll/get/responses/500"
           }
         }
       }
@@ -340,7 +299,7 @@
             }
           },
           "400": {
-            "$ref": "#/paths/~1user~1login/post/responses/400"
+            "$ref": "#/paths/~1tag~1getAll/get/responses/400"
           },
           "404": {
             "$ref": "#/paths/~1user~1login/post/responses/404"
@@ -373,10 +332,10 @@
             }
           },
           "400": {
-            "$ref": "#/paths/~1user~1login/post/responses/400"
+            "$ref": "#/paths/~1tag~1getAll/get/responses/400"
           },
           "500": {
-            "$ref": "#/paths/~1user~1logout/post/responses/500"
+            "$ref": "#/paths/~1tag~1getAll/get/responses/500"
           }
         }
       }
@@ -411,19 +370,19 @@
             }
           },
           "400": {
-            "$ref": "#/paths/~1user~1login/post/responses/400"
+            "$ref": "#/paths/~1tag~1getAll/get/responses/400"
           },
           "401": {
-            "$ref": "#/paths/~1user~1logout/post/responses/401"
+            "$ref": "#/paths/~1tag~1getAll/get/responses/401"
           },
           "403": {
-            "$ref": "#/paths/~1user~1logout/post/responses/403"
+            "$ref": "#/paths/~1tag~1getAll/get/responses/403"
           },
           "404": {
             "$ref": "#/paths/~1user~1login/post/responses/404"
           },
           "500": {
-            "$ref": "#/paths/~1user~1logout/post/responses/500"
+            "$ref": "#/paths/~1tag~1getAll/get/responses/500"
           }
         }
       }
@@ -463,27 +422,7 @@
                               "type": "object",
                               "allOf": [
                                 {
-                                  "type": "object",
-                                  "properties": {
-                                    "_id": {
-                                      "title": "Document MongoDb Id",
-                                      "description": "MongoDb Id of the document",
-                                      "type": "string",
-                                      "example": "62ed69679c045c97a63390a4"
-                                    },
-                                    "createdAt": {
-                                      "title": "Document Creation Date",
-                                      "description": "The `createdAt` value is determined automatically by the API.",
-                                      "type": "string",
-                                      "format": "date-time"
-                                    },
-                                    "updatedAt": {
-                                      "title": "Document Update Date",
-                                      "description": "The `updatedAt` value is determined automatically by the API.",
-                                      "type": "string",
-                                      "format": "date-time"
-                                    }
-                                  }
+                                  "$ref": "#/paths/~1tag~1get~1%7BtagId%7D/get/responses/200/content/application~1json/schema/allOf/1/properties/data/allOf/1"
                                 },
                                 {
                                   "$ref": "#/components/requestBodies/register/content/application~1json/schema/allOf/0/allOf/0"
@@ -576,18 +515,18 @@
             }
           },
           "400": {
-            "$ref": "#/paths/~1user~1login/post/responses/400"
+            "$ref": "#/paths/~1tag~1getAll/get/responses/400"
           },
           "401": {
-            "$ref": "#/paths/~1user~1logout/post/responses/401"
+            "$ref": "#/paths/~1tag~1getAll/get/responses/401"
           },
           "403": {
-            "$ref": "#/paths/~1user~1logout/post/responses/403"
+            "$ref": "#/paths/~1tag~1getAll/get/responses/403"
           }
         }
       }
     },
-    "/admin/tag/getAll": {
+    "/tag/getAll": {
       "summary": "",
       "description": "",
       "get": {
@@ -597,11 +536,6 @@
         "summary": "Get All Tag",
         "description": "Get All Tag",
         "operationId": "tags.get-all-tag",
-        "security": [
-          {
-            "bearerAuth": []
-          }
-        ],
         "responses": {
           "200": {
             "description": "",
@@ -619,7 +553,7 @@
                         "data": {
                           "type": "array",
                           "items": {
-                            "$ref": "#/paths/~1admin~1tag~1create/post/requestBody/content/application~1json/schema/allOf/0"
+                            "$ref": "#/paths/~1admin~1tag~1create/post/responses/200/content/application~1json/schema/allOf/1/properties/data"
                           }
                         }
                       }
@@ -630,21 +564,62 @@
             }
           },
           "400": {
-            "$ref": "#/paths/~1user~1login/post/responses/400"
+            "description": "Bad request error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/paths/~1tag~1getAll/get/responses/401/content/application~1json/schema"
+                }
+              }
+            }
           },
           "401": {
-            "$ref": "#/paths/~1user~1logout/post/responses/401"
+            "description": "Unauthorized error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "error": {
+                      "properties": {
+                        "message": {
+                          "type": "string"
+                        }
+                      }
+                    },
+                    "success": {
+                      "type": "boolean",
+                      "default": false
+                    }
+                  }
+                }
+              }
+            }
           },
           "403": {
-            "$ref": "#/paths/~1user~1logout/post/responses/403"
+            "description": "Forbidden error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/paths/~1tag~1getAll/get/responses/401/content/application~1json/schema"
+                }
+              }
+            }
           },
           "500": {
-            "$ref": "#/paths/~1user~1logout/post/responses/500"
+            "description": "Internal server error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/paths/~1tag~1getAll/get/responses/401/content/application~1json/schema"
+                }
+              }
+            }
           }
         }
       }
     },
-    "/admin/tag/get/{tagId}": {
+    "/tag/get/{tagId}": {
       "summary": "",
       "description": "",
       "get": {
@@ -654,11 +629,6 @@
         "summary": "Get tag by id",
         "description": "Get tag by id",
         "operationId": "tags.get-tag-by-id",
-        "security": [
-          {
-            "bearerAuth": []
-          }
-        ],
         "parameters": [
           {
             "in": "path",
@@ -685,10 +655,7 @@
                       "type": "object",
                       "properties": {
                         "data": {
-                          "type": "array",
-                          "items": {
-                            "$ref": "#/paths/~1admin~1tag~1create/post/requestBody/content/application~1json/schema/allOf/0"
-                          }
+                          "$ref": "#/paths/~1admin~1tag~1create/post/responses/200/content/application~1json/schema/allOf/1/properties/data"
                         }
                       }
                     }
@@ -698,19 +665,19 @@
             }
           },
           "400": {
-            "$ref": "#/paths/~1user~1login/post/responses/400"
+            "$ref": "#/paths/~1tag~1getAll/get/responses/400"
           },
           "401": {
-            "$ref": "#/paths/~1user~1logout/post/responses/401"
+            "$ref": "#/paths/~1tag~1getAll/get/responses/401"
           },
           "403": {
-            "$ref": "#/paths/~1user~1logout/post/responses/403"
+            "$ref": "#/paths/~1tag~1getAll/get/responses/403"
           },
           "404": {
             "$ref": "#/paths/~1user~1login/post/responses/404"
           },
           "500": {
-            "$ref": "#/paths/~1user~1logout/post/responses/500"
+            "$ref": "#/paths/~1tag~1getAll/get/responses/500"
           }
         }
       }
@@ -773,9 +740,47 @@
                       "type": "object",
                       "properties": {
                         "data": {
+                          "type": "object",
                           "allOf": [
                             {
-                              "$ref": "#/paths/~1admin~1tag~1create/post/requestBody/content/application~1json/schema/allOf/0"
+                              "type": "object",
+                              "properties": {
+                                "name": {
+                                  "title": "Tag name",
+                                  "description": "Tag name",
+                                  "type": "string",
+                                  "minLength": 3
+                                },
+                                "post_count": {
+                                  "title": "Post Count",
+                                  "description": "Post Countr",
+                                  "type": "number",
+                                  "minLength": 3
+                                }
+                              }
+                            },
+                            {
+                              "type": "object",
+                              "properties": {
+                                "_id": {
+                                  "title": "Document MongoDb Id",
+                                  "description": "MongoDb Id of the document",
+                                  "type": "string",
+                                  "example": "62ed69679c045c97a63390a4"
+                                },
+                                "createdAt": {
+                                  "title": "Document Creation Date",
+                                  "description": "The `createdAt` value is determined automatically by the API.",
+                                  "type": "string",
+                                  "format": "date-time"
+                                },
+                                "updatedAt": {
+                                  "title": "Document Update Date",
+                                  "description": "The `updatedAt` value is determined automatically by the API.",
+                                  "type": "string",
+                                  "format": "date-time"
+                                }
+                              }
                             }
                           ]
                         }
@@ -787,16 +792,16 @@
             }
           },
           "400": {
-            "$ref": "#/paths/~1user~1login/post/responses/400"
+            "$ref": "#/paths/~1tag~1getAll/get/responses/400"
           },
           "401": {
-            "$ref": "#/paths/~1user~1logout/post/responses/401"
+            "$ref": "#/paths/~1tag~1getAll/get/responses/401"
           },
           "403": {
-            "$ref": "#/paths/~1user~1logout/post/responses/403"
+            "$ref": "#/paths/~1tag~1getAll/get/responses/403"
           },
           "500": {
-            "$ref": "#/paths/~1user~1logout/post/responses/500"
+            "$ref": "#/paths/~1tag~1getAll/get/responses/500"
           }
         }
       }
@@ -824,7 +829,15 @@
                 "type": "object",
                 "allOf": [
                   {
-                    "$ref": "#/paths/~1admin~1tag~1create/post/requestBody/content/application~1json/schema/allOf/0"
+                    "type": "object",
+                    "properties": {
+                      "name": {
+                        "title": "Tag name",
+                        "description": "Tag name",
+                        "type": "string",
+                        "minLength": 3
+                      }
+                    }
                   },
                   {
                     "required": [
@@ -838,7 +851,7 @@
         },
         "parameters": [
           {
-            "$ref": "#/paths/~1admin~1tag~1get~1%7BtagId%7D/get/parameters/0"
+            "$ref": "#/paths/~1tag~1get~1%7BtagId%7D/get/parameters/0"
           }
         ],
         "responses": {
@@ -858,7 +871,7 @@
                         "data": {
                           "allOf": [
                             {
-                              "$ref": "#/paths/~1admin~1tag~1create/post/requestBody/content/application~1json/schema/allOf/0"
+                              "$ref": "#/paths/~1admin~1tag~1create/post/responses/200/content/application~1json/schema/allOf/1/properties/data"
                             }
                           ]
                         }
@@ -870,19 +883,19 @@
             }
           },
           "400": {
-            "$ref": "#/paths/~1user~1login/post/responses/400"
+            "$ref": "#/paths/~1tag~1getAll/get/responses/400"
           },
           "401": {
-            "$ref": "#/paths/~1user~1logout/post/responses/401"
+            "$ref": "#/paths/~1tag~1getAll/get/responses/401"
           },
           "403": {
-            "$ref": "#/paths/~1user~1logout/post/responses/403"
+            "$ref": "#/paths/~1tag~1getAll/get/responses/403"
           },
           "409": {
             "$ref": "#/paths/~1user~1register/post/responses/409"
           },
           "500": {
-            "$ref": "#/paths/~1user~1logout/post/responses/500"
+            "$ref": "#/paths/~1tag~1getAll/get/responses/500"
           }
         }
       }
@@ -904,7 +917,7 @@
         ],
         "parameters": [
           {
-            "$ref": "#/paths/~1admin~1tag~1get~1%7BtagId%7D/get/parameters/0"
+            "$ref": "#/paths/~1tag~1get~1%7BtagId%7D/get/parameters/0"
           }
         ],
         "responses": {
@@ -922,10 +935,7 @@
                       "type": "object",
                       "properties": {
                         "data": {
-                          "type": "array",
-                          "items": {
-                            "$ref": "#/paths/~1admin~1tag~1create/post/requestBody/content/application~1json/schema/allOf/0"
-                          }
+                          "$ref": "#/paths/~1admin~1tag~1create/post/responses/200/content/application~1json/schema/allOf/1/properties/data"
                         }
                       }
                     }
@@ -935,16 +945,16 @@
             }
           },
           "400": {
-            "$ref": "#/paths/~1user~1login/post/responses/400"
+            "$ref": "#/paths/~1tag~1getAll/get/responses/400"
           },
           "401": {
-            "$ref": "#/paths/~1user~1logout/post/responses/401"
+            "$ref": "#/paths/~1tag~1getAll/get/responses/401"
           },
           "403": {
-            "$ref": "#/paths/~1user~1logout/post/responses/403"
+            "$ref": "#/paths/~1tag~1getAll/get/responses/403"
           },
           "500": {
-            "$ref": "#/paths/~1user~1logout/post/responses/500"
+            "$ref": "#/paths/~1tag~1getAll/get/responses/500"
           }
         }
       }
