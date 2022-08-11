@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 
 const PostSchema = mongoose.Schema({
-    writer_id: {
+    writer: {
         type: mongoose.Schema.Types.ObjectId,
         ref: 'user',
         required: 'true'
@@ -23,13 +23,6 @@ const PostSchema = mongoose.Schema({
         min: 120,
         required: true,
     },
-    images: [
-        {
-            type: mongoose.Schema.Types.ObjectId,
-            ref: 'image',
-            required: true,
-        },
-    ],
     viewers: [
         {
             type: mongoose.Schema.Types.ObjectId,

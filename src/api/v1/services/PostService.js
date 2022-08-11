@@ -10,6 +10,9 @@ class PostService extends BaseService {
             select: 'first_name last_name email'
         }, {
             path: 'tags'
+        }, {
+            path: 'writer',
+            select: 'first_name last_name email'
         }]);
     }
 

@@ -14,7 +14,7 @@ class PostController extends BaseController {
     }
 
     async fetchAllMyPosts(req, res, next) {
-        const response = await postService.fetchAll({ writer_id: req.user._id });
+        const response = await postService.fetchAll({ writer: req.user._id });
 
         new ApiDataSuccess(response, 'Blogs that the user is the author of have been successfully fetched', httpStatus.OK).place(res);
         return next();
@@ -23,7 +23,7 @@ class PostController extends BaseController {
     async fetchOneMyPost(req, res, next) {
         const postId = req.params.id;
 
-        const post = await postService.fetchOneByQuery({ _id: postId, writer_id: req.user._id });
+        const post = await postService.fetchOneByQuery({ _id: postId, writer: req.user._id });
         if (!post) return next(new ApiError('Post not found', httpStatus.NOT_FOUND));
 
         new ApiDataSuccess(post, 'Post fetched successfully', httpStatus.OK).place(res);
@@ -32,7 +32,7 @@ class PostController extends BaseController {
 
     // Override
     create = async (req, res, next) => {
-        req.body.writer_id = req.user._id;
+        req.body.writer = req.user._id;
         try {
             const response = await postService.create(req.body);
 
@@ -41,6 +41,9 @@ class PostController extends BaseController {
             new ApiDataSuccess(response, 'Post created successfully', httpStatus.OK).place(res);
             return next();
         } catch (err) {
+            console.log('====================================');
+            console.log(err);
+            console.log('====================================');
             if (err.code === 11000) return next(new ApiError('Post already exists', httpStatus.CONFLICT));
             return next(new ApiError('Post creation failed', httpStatus.BAD_REQUEST));
         }
@@ -66,7 +69,7 @@ class PostController extends BaseController {
     async deleteMyPost(req, res, next) {
         const postId = req.params.id;
 
-        const post = await postService.fetchOneByQuery({ _id: postId, writer_id: req.user._id });
+        const post = await postService.fetchOneByQuery({ _id: postId, writer: req.user._id });
         if (!post) return next(new ApiError('Post not found', httpStatus.NOT_FOUND));
 
         const result = await postService.deleteById(post._id);
@@ -79,7 +82,7 @@ class PostController extends BaseController {
     async updateMyPost(req, res, next) {
         const postId = req.params.id;
 
-        const post = await postService.fetchOneByQuery({ _id: postId, writer_id: req.user._id });
+        const post = await postService.fetchOneByQuery({ _id: postId, writer: req.user._id });
         if (!post) return next(new ApiError('Post not found', httpStatus.NOT_FOUND));
 
         const result = await postService.updateById(post._id, req.body);
@@ -184,7 +187,7 @@ class PostController extends BaseController {
         const postId = req.params.id;
         const tagId = req.body.tag_id;
 
-        const post = await postService.fetchOneByQuery({ _id: postId, writer_id: req.user._id });
+        const post = await postService.fetchOneByQuery({ _id: postId, writer: req.user._id });
         if (!post) return next(new ApiError('Post not found', httpStatus.NOT_FOUND));
 
         const tag = await tagService.fetchOneById(tagId);
@@ -213,7 +216,7 @@ class PostController extends BaseController {
         const postId = req.params.id;
         const tagId = req.body.tag_id;
 
-        const post = await postService.fetchOneByQuery({ _id: postId, writer_id: req.user._id });
+        const post = await postService.fetchOneByQuery({ _id: postId, writer: req.user._id });
         if (!post) return next(new ApiError('Post not found', httpStatus.NOT_FOUND));
 
         const index = post.tags.findIndex(o => o._id == tagId);
