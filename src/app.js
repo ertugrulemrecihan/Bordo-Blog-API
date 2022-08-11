@@ -24,12 +24,14 @@ app.use('/api/v1/doc', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
 
 app.use('/api/v1/user', routes.user);
 app.use('/api/v1/post', routes.post);
+app.use('/api/v1/address', routes.address);
 
 // Admin Routes
 app.use('/api/v1/admin/role', routes.adminRole);
 app.use('/api/v1/admin/tag', routes.adminTag);
 app.use('/api/v1/admin/post', routes.adminPost);
 app.use('/api/v1/admin/user', routes.adminUser);
+app.use('/api/v1/admin/address', routes.adminAddress);
 
 app.use(successHandler);
 app.use(errorHandler);
