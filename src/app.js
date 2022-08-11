@@ -33,11 +33,13 @@ app.use('/api/v1/admin/tag', routes.adminTag);
 app.use('/api/v1/admin/post', routes.adminPost);
 app.use('/api/v1/admin/user', routes.adminUser);
 app.use('/api/v1/admin/address', routes.adminAddress);
+app.use('/api/v1/admin/plan', routes.adminPlan);
 
 app.use(successHandler);
 app.use(errorHandler);
 
 const PORT = process.env.PORT || 3000;
-app.listen(PORT, () =>
-    console.log(`Listening Port On http://localhost:${PORT}`)
+app.listen(PORT, async () => {
+    console.log(`Listening Port On http://localhost:${PORT}`);
+}
 );

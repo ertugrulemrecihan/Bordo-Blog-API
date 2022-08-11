@@ -9,3 +9,4 @@ module.exports.adminRole = require('./admin/roleRoutes');
 module.exports.adminPost = require('./admin/postRoutes');
 module.exports.adminAddress = require('./admin/addressRoutes');
 module.exports.adminUser = require('./admin/userRoutes');
+module.exports.adminPlan = require('./admin/planRoutes');
