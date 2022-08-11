@@ -33,6 +33,15 @@ class PostController extends BaseController {
     // Override
     create = async (req, res, next) => {
         req.body.writer = req.user._id;
+
+        const tags = req.body.tags;
+        if (tags) {
+            for (const tagId of tags) {
+                const result = await tagService.fetchOneById(tagId);
+                if (!result) return next(new ApiError(`Tag not found. Tag Id: ${tagId}`, httpStatus.NOT_FOUND));
+            }
+        }
+
         try {
             const response = await postService.create(req.body);
 
@@ -41,9 +50,6 @@ class PostController extends BaseController {
             new ApiDataSuccess(response, 'Post created successfully', httpStatus.OK).place(res);
             return next();
         } catch (err) {
-            console.log('====================================');
-            console.log(err);
-            console.log('====================================');
             if (err.code === 11000) return next(new ApiError('Post already exists', httpStatus.CONFLICT));
             return next(new ApiError('Post creation failed', httpStatus.BAD_REQUEST));
         }
