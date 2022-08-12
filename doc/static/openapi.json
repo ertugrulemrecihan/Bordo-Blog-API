@@ -307,19 +307,27 @@
         }
       }
     },
-    "/user/verify-email": {
+    "/user/verify-email/{emailVerifyToken}": {
       "summary": "",
       "description": "",
-      "post": {
+      "get": {
         "tags": [
           "Users"
         ],
         "summary": "Verify email",
         "description": "Verify email",
         "operationId": "users.verify.email",
-        "requestBody": {
-          "$ref": "#/components/requestBodies/verify-email"
-        },
+        "parameters": [
+          {
+            "in": "path",
+            "name": "emailVerifyToken",
+            "schema": {
+              "type": "string"
+            },
+            "required": true,
+            "description": "emailVerifyToken in email verification mail"
+          }
+        ],
         "responses": {
           "200": {
             "description": "Email verification successfully",
@@ -1123,26 +1131,6 @@
               "required": [
                 "token",
                 "new_password"
-              ]
-            }
-          }
-        }
-      },
-      "verify-email": {
-        "description": "",
-        "content": {
-          "application/json": {
-            "schema": {
-              "type": "object",
-              "properties": {
-                "token": {
-                  "title": "JWT Email verification token",
-                  "description": "Email verification token from endpoint `user/get-email-verification-email`.",
-                  "type": "string"
-                }
-              },
-              "required": [
-                "token"
               ]
             }
           }

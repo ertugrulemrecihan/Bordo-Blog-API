@@ -1,16 +1,18 @@
 {
     "summary": "",
     "description": "",
-    "post": {
+    "get": {
         "tags": [
             "Users"
         ],
         "summary": "Verify email",
         "description": "Verify email",
         "operationId": "users.verify.email",
-        "requestBody": {
-            "$ref": "../../request-bodies/user/verify-email.json"
-        },
+        "parameters": [
+            {
+                "$ref": "../../parameters/path/user/email-verify-token.json"
+            }
+        ],
         "responses": {
             "200": {
                 "description": "Email verification successfully",

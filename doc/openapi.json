@@ -49,7 +49,7 @@
         "/user/get-email-verification-email": {
             "$ref": "./paths/user/get-email-verification-email.json"
         },
-        "/user/verify-email": {
+        "/user/verify-email/{emailVerifyToken}": {
             "$ref": "./paths/user/verify-email.json"
         },
         "/user/change-password": {
@@ -90,9 +90,6 @@
             },
             "reset-password": {
                 "$ref": "./request-bodies/user/reset-password.json"
-            },
-            "verify-email": {
-                "$ref": "./request-bodies/user/verify-email.json"
             },
             "change-password": {
                 "$ref": "./request-bodies/user/change-password.json"

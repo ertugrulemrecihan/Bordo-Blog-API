@@ -1,0 +1,9 @@
+{
+    "in": "path",
+    "name": "emailVerifyToken",
+    "schema": {
+        "type": "string"
+    },
+    "required": true,
+    "description": "emailVerifyToken in email verification mail"
+}
