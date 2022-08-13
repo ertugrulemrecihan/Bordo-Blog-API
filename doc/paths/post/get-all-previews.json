@@ -1,0 +1,17 @@
+{
+    "summary": "",
+    "description": "",
+    "get": {
+        "tags": [
+            "Posts"
+        ],
+        "summary": "Get All Post Previews",
+        "description": "Get All Post Previews",
+        "operationId": "post.get-all-previews",
+        "responses": {
+            "200": {
+                "$ref": "../../responses/post/get-all-previews.json"
+            }
+        }
+    }
+}

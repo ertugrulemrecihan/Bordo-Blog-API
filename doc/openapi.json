@@ -12,12 +12,12 @@
     },
     "servers": [
         {
-            "url": "https://bordo-blog.herokuapp.com/api/v1",
-            "description": "Web server"
-        },
-        {
             "url": "http://localhost:3000/api/v1",
             "description": "Local server"
+        },
+        {
+            "url": "https://bordo-blog.herokuapp.com/api/v1",
+            "description": "Web server"
         }
     ],
     "tags": [
@@ -28,6 +28,10 @@
         {
             "name": "Tags",
             "description": "Tag endpoints"
+        },
+        {
+            "name": "Posts",
+            "description": "Writer post endpoints"
         }
     ],
     "paths": {
@@ -72,6 +76,21 @@
         },
         "/admin/tag/delete/{tagId}": {
             "$ref": "./paths/admin/tag/delete-tag.json"
+        },
+        "/post/getAll/my": {
+            "$ref": "./paths/post/get-all-my-post.json"
+        },
+        "/post/get/my/{postId}": {
+            "$ref": "./paths/post/get-my-post-by-id.json"
+        },
+        "/post/getAll/previews": {
+            "$ref": "./paths/post/get-all-previews.json"
+        },
+        "/post/get/preview/{postId}": {
+            "$ref": "./paths/post/get-preview-by-id.json"
+        },
+        "/post/create": {
+            "$ref": "./paths/post/create-post.json"
         }
     },
     "components": {
@@ -93,6 +112,15 @@
             },
             "change-password": {
                 "$ref": "./request-bodies/user/change-password.json"
+            },
+            "create-tag": {
+                "$ref": "./request-bodies/admin/tag/create-tag.json"
+            },
+            "update-tag": {
+                "$ref": "./request-bodies/admin/tag/update-tag.json"
+            },
+            "create-post": {
+                "$ref": "./request-bodies/post/create-post.json"
             }
         },
         "securitySchemes": {

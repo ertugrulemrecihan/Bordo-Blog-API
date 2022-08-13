@@ -1,0 +1,67 @@
+{
+    "description": "",
+    "content": {
+        "application/json": {
+            "schema": {
+                "allOf": [
+                    {
+                        "type": "object",
+                        "allOf": [
+                            {
+                                "$ref": "../../schemas/post/other/title-description.json"
+                            },
+                            {
+                                "required": [
+                                    "title",
+                                    "description"
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "type": "object",
+                        "allOf": [
+                            {
+                                "type": "object",
+                                "properties": {
+                                    "content": {
+                                        "title": "Post content",
+                                        "description": "Post content",
+                                        "type": "string"
+                                    }
+                                }
+                            },
+                            {
+                                "required": [
+                                    "content"
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "type": "object",
+                        "allOf": [
+                            {
+                                "type": "object",
+                                "properties": {
+                                    "tags": {
+                                        "type": "array",
+                                        "items": {
+                                            "allOf": [
+                                                {
+                                                    "title": "Tag Id",
+                                                    "description": "Tag Id",
+                                                    "type": "string"
+                                                }
+                                            ]
+                                        }
+                                    }
+                                }
+                            }
+                        ]
+                    }
+                ]
+            }
+        }
+    }
+}

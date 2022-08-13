@@ -38,7 +38,7 @@ app.use('/api/v1/admin/plan', routes.adminPlan);
 app.use(successHandler);
 app.use(errorHandler);
 
-const PORT = process.env.API_PORT || 3000;
+const PORT = process.env.PORT || 3000;
 app.listen(PORT, async () => {
     console.log(`Listening Port On ${process.env.API_URL}:${PORT}`);
 }

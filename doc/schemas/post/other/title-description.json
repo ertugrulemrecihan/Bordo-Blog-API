@@ -1,0 +1,15 @@
+{
+    "type": "object",
+    "properties": {
+        "title": {
+            "title": "Post title",
+            "description": "Post title",
+            "type": "string"
+        },
+        "description": {
+            "title": "Post description",
+            "description": "Post description",
+            "type": "string"
+        }
+    }
+}

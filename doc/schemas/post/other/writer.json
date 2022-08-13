@@ -1,0 +1,31 @@
+{
+    "type": "object",
+    "properties": {
+        "writer": {
+            "type": "object",
+            "properties": {
+                "_id": {
+                    "title": "Writer id",
+                    "description": "Writer id",
+                    "type": "string"
+                },
+                "first_name": {
+                    "title": "Writer first name",
+                    "description": "Writer first name",
+                    "type": "string"
+                },
+                "last_name": {
+                    "title": "Writer last name",
+                    "description": "Writer last name",
+                    "type": "string"
+                },
+                "email": {
+                    "title": "Writer email address",
+                    "description": "Writer email address",
+                    "type": "string",
+                    "format": "email"
+                }
+            }
+        }
+    }
+}

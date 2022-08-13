@@ -13,11 +13,11 @@
   "servers": [
     {
       "url": "https://bordo-blog.herokuapp.com/api/v1",
-      "description": "Web server"
+      "description": "Local server"
     },
     {
-      "url": "http://localhost:3000/api/v1",
-      "description": "Local server"
+      "url": "https://bordo-blog.herokuapp.com/api/v1",
+      "description": "Web server"
     }
   ],
   "tags": [
@@ -28,6 +28,10 @@
     {
       "name": "Tags",
       "description": "Tag endpoints"
+    },
+    {
+      "name": "Posts",
+      "description": "Writer post endpoints"
     }
   ],
   "paths": {
@@ -139,14 +143,7 @@
             "$ref": "#/paths/~1tag~1getAll/get/responses/400"
           },
           "409": {
-            "description": "Conflict error",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/paths/~1tag~1getAll/get/responses/401/content/application~1json/schema"
-                }
-              }
-            }
+            "$ref": "#/paths/~1post~1create/post/responses/409"
           },
           "500": {
             "$ref": "#/paths/~1tag~1getAll/get/responses/500"
@@ -430,7 +427,7 @@
                               "type": "object",
                               "allOf": [
                                 {
-                                  "$ref": "#/paths/~1tag~1get~1%7BtagId%7D/get/responses/200/content/application~1json/schema/allOf/1/properties/data/allOf/1"
+                                  "$ref": "#/paths/~1post~1create/post/responses/200/content/application~1json/schema/allOf/1/properties/data/allOf/0"
                                 },
                                 {
                                   "$ref": "#/components/requestBodies/register/content/application~1json/schema/allOf/0/allOf/0"
@@ -706,32 +703,7 @@
           }
         ],
         "requestBody": {
-          "description": "",
-          "content": {
-            "application/json": {
-              "schema": {
-                "type": "object",
-                "allOf": [
-                  {
-                    "type": "object",
-                    "properties": {
-                      "name": {
-                        "title": "Tag name",
-                        "description": "Tag name",
-                        "type": "string",
-                        "minLength": 3
-                      }
-                    }
-                  },
-                  {
-                    "required": [
-                      "name"
-                    ]
-                  }
-                ]
-              }
-            }
-          }
+          "$ref": "#/components/requestBodies/create-tag"
         },
         "responses": {
           "200": {
@@ -768,27 +740,7 @@
                               }
                             },
                             {
-                              "type": "object",
-                              "properties": {
-                                "_id": {
-                                  "title": "Document MongoDb Id",
-                                  "description": "MongoDb Id of the document",
-                                  "type": "string",
-                                  "example": "62ed69679c045c97a63390a4"
-                                },
-                                "createdAt": {
-                                  "title": "Document Creation Date",
-                                  "description": "The `createdAt` value is determined automatically by the API.",
-                                  "type": "string",
-                                  "format": "date-time"
-                                },
-                                "updatedAt": {
-                                  "title": "Document Update Date",
-                                  "description": "The `updatedAt` value is determined automatically by the API.",
-                                  "type": "string",
-                                  "format": "date-time"
-                                }
-                              }
+                              "$ref": "#/paths/~1post~1create/post/responses/200/content/application~1json/schema/allOf/1/properties/data/allOf/0"
                             }
                           ]
                         }
@@ -830,32 +782,7 @@
           }
         ],
         "requestBody": {
-          "description": "",
-          "content": {
-            "application/json": {
-              "schema": {
-                "type": "object",
-                "allOf": [
-                  {
-                    "type": "object",
-                    "properties": {
-                      "name": {
-                        "title": "Tag name",
-                        "description": "Tag name",
-                        "type": "string",
-                        "minLength": 3
-                      }
-                    }
-                  },
-                  {
-                    "required": [
-                      "name"
-                    ]
-                  }
-                ]
-              }
-            }
-          }
+          "$ref": "#/components/requestBodies/update-tag"
         },
         "parameters": [
           {
@@ -900,7 +827,7 @@
             "$ref": "#/paths/~1tag~1getAll/get/responses/403"
           },
           "409": {
-            "$ref": "#/paths/~1user~1register/post/responses/409"
+            "$ref": "#/paths/~1post~1create/post/responses/409"
           },
           "500": {
             "$ref": "#/paths/~1tag~1getAll/get/responses/500"
@@ -963,6 +890,592 @@
           },
           "500": {
             "$ref": "#/paths/~1tag~1getAll/get/responses/500"
+          }
+        }
+      }
+    },
+    "/post/getAll/my": {
+      "summary": "",
+      "description": "",
+      "get": {
+        "tags": [
+          "Posts"
+        ],
+        "summary": "Get All My Posts",
+        "description": "Get All My Posts",
+        "operationId": "post.get-all-my-posts",
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "allOf": [
+                    {
+                      "$ref": "#/paths/~1user~1logout/post/responses/200/content/application~1json/schema"
+                    },
+                    {
+                      "type": "object",
+                      "properties": {
+                        "data": {
+                          "type": "array",
+                          "items": {
+                            "allOf": [
+                              {
+                                "$ref": "#/paths/~1post~1create/post/responses/200/content/application~1json/schema/allOf/1/properties/data/allOf/0"
+                              },
+                              {
+                                "$ref": "#/paths/~1post~1create/post/responses/200/content/application~1json/schema/allOf/1/properties/data/allOf/1"
+                              },
+                              {
+                                "$ref": "#/components/requestBodies/create-post/content/application~1json/schema/allOf/0/allOf/0"
+                              },
+                              {
+                                "type": "object",
+                                "properties": {
+                                  "content": {
+                                    "title": "Post content",
+                                    "description": "Post content",
+                                    "type": "string"
+                                  }
+                                }
+                              },
+                              {
+                                "$ref": "#/paths/~1post~1create/post/responses/200/content/application~1json/schema/allOf/1/properties/data/allOf/4"
+                              },
+                              {
+                                "$ref": "#/paths/~1post~1create/post/responses/200/content/application~1json/schema/allOf/1/properties/data/allOf/5"
+                              },
+                              {
+                                "$ref": "#/paths/~1post~1create/post/responses/200/content/application~1json/schema/allOf/1/properties/data/allOf/6"
+                              },
+                              {
+                                "$ref": "#/components/requestBodies/create-post/content/application~1json/schema/allOf/2/items/allOf/0"
+                              }
+                            ]
+                          }
+                        }
+                      }
+                    }
+                  ]
+                }
+              }
+            }
+          },
+          "400": {
+            "$ref": "#/paths/~1tag~1getAll/get/responses/400"
+          },
+          "401": {
+            "$ref": "#/paths/~1tag~1getAll/get/responses/401"
+          },
+          "403": {
+            "$ref": "#/paths/~1tag~1getAll/get/responses/403"
+          }
+        }
+      }
+    },
+    "/post/get/my/{postId}": {
+      "summary": "",
+      "description": "",
+      "get": {
+        "tags": [
+          "Posts"
+        ],
+        "summary": "Get All My Posts By Id",
+        "description": "Get All My Posts By Id",
+        "operationId": "post.get-all-my-post-by-id",
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "postId",
+            "schema": {
+              "type": "string"
+            },
+            "required": true,
+            "description": ""
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "allOf": [
+                    {
+                      "$ref": "#/paths/~1user~1logout/post/responses/200/content/application~1json/schema"
+                    },
+                    {
+                      "type": "object",
+                      "properties": {
+                        "data": {
+                          "type": "object",
+                          "items": {
+                            "allOf": [
+                              {
+                                "$ref": "#/paths/~1post~1create/post/responses/200/content/application~1json/schema/allOf/1/properties/data/allOf/0"
+                              },
+                              {
+                                "$ref": "#/paths/~1post~1create/post/responses/200/content/application~1json/schema/allOf/1/properties/data/allOf/1"
+                              },
+                              {
+                                "$ref": "#/components/requestBodies/create-post/content/application~1json/schema/allOf/0/allOf/0"
+                              },
+                              {
+                                "type": "object",
+                                "properties": {
+                                  "content": {
+                                    "title": "Post content",
+                                    "description": "Post content",
+                                    "type": "string"
+                                  }
+                                }
+                              },
+                              {
+                                "$ref": "#/paths/~1post~1create/post/responses/200/content/application~1json/schema/allOf/1/properties/data/allOf/4"
+                              },
+                              {
+                                "$ref": "#/paths/~1post~1create/post/responses/200/content/application~1json/schema/allOf/1/properties/data/allOf/5"
+                              },
+                              {
+                                "$ref": "#/paths/~1post~1create/post/responses/200/content/application~1json/schema/allOf/1/properties/data/allOf/6"
+                              },
+                              {
+                                "$ref": "#/components/requestBodies/create-post/content/application~1json/schema/allOf/2/items/allOf/0"
+                              }
+                            ]
+                          }
+                        }
+                      }
+                    }
+                  ]
+                }
+              }
+            }
+          },
+          "400": {
+            "$ref": "#/paths/~1tag~1getAll/get/responses/400"
+          },
+          "401": {
+            "$ref": "#/paths/~1tag~1getAll/get/responses/401"
+          },
+          "403": {
+            "$ref": "#/paths/~1tag~1getAll/get/responses/403"
+          },
+          "404": {
+            "$ref": "#/paths/~1user~1login/post/responses/404"
+          }
+        }
+      }
+    },
+    "/post/getAll/previews": {
+      "summary": "",
+      "description": "",
+      "get": {
+        "tags": [
+          "Posts"
+        ],
+        "summary": "Get All Post Previews",
+        "description": "Get All Post Previews",
+        "operationId": "post.get-all-previews",
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "allOf": [
+                    {
+                      "$ref": "#/paths/~1user~1logout/post/responses/200/content/application~1json/schema"
+                    },
+                    {
+                      "type": "object",
+                      "properties": {
+                        "data": {
+                          "type": "array",
+                          "items": {
+                            "allOf": [
+                              {
+                                "$ref": "#/paths/~1post~1create/post/responses/200/content/application~1json/schema/allOf/1/properties/data/allOf/0"
+                              },
+                              {
+                                "$ref": "#/paths/~1post~1create/post/responses/200/content/application~1json/schema/allOf/1/properties/data/allOf/1"
+                              },
+                              {
+                                "$ref": "#/components/requestBodies/create-post/content/application~1json/schema/allOf/0/allOf/0"
+                              },
+                              {
+                                "$ref": "#/paths/~1post~1create/post/responses/200/content/application~1json/schema/allOf/1/properties/data/allOf/4"
+                              },
+                              {
+                                "$ref": "#/paths/~1post~1create/post/responses/200/content/application~1json/schema/allOf/1/properties/data/allOf/5"
+                              },
+                              {
+                                "$ref": "#/components/requestBodies/create-post/content/application~1json/schema/allOf/2/items/allOf/0"
+                              }
+                            ]
+                          }
+                        }
+                      }
+                    }
+                  ]
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/post/get/preview/{postId}": {
+      "summary": "",
+      "description": "",
+      "get": {
+        "tags": [
+          "Posts"
+        ],
+        "summary": "Get Post Preview By Id",
+        "description": "Get Post Preview By Id",
+        "operationId": "post.get-post-preview-by-id",
+        "parameters": [
+          {
+            "$ref": "#/paths/~1post~1get~1my~1%7BpostId%7D/get/parameters/0"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "allOf": [
+                    {
+                      "$ref": "#/paths/~1user~1logout/post/responses/200/content/application~1json/schema"
+                    },
+                    {
+                      "type": "object",
+                      "properties": {
+                        "data": {
+                          "type": "object",
+                          "items": {
+                            "allOf": [
+                              {
+                                "$ref": "#/paths/~1post~1create/post/responses/200/content/application~1json/schema/allOf/1/properties/data/allOf/0"
+                              },
+                              {
+                                "$ref": "#/paths/~1post~1create/post/responses/200/content/application~1json/schema/allOf/1/properties/data/allOf/1"
+                              },
+                              {
+                                "$ref": "#/components/requestBodies/create-post/content/application~1json/schema/allOf/0/allOf/0"
+                              },
+                              {
+                                "$ref": "#/paths/~1post~1create/post/responses/200/content/application~1json/schema/allOf/1/properties/data/allOf/4"
+                              },
+                              {
+                                "$ref": "#/paths/~1post~1create/post/responses/200/content/application~1json/schema/allOf/1/properties/data/allOf/5"
+                              },
+                              {
+                                "$ref": "#/components/requestBodies/create-post/content/application~1json/schema/allOf/2/items/allOf/0"
+                              }
+                            ]
+                          }
+                        }
+                      }
+                    }
+                  ]
+                }
+              }
+            }
+          },
+          "400": {
+            "$ref": "#/paths/~1tag~1getAll/get/responses/400"
+          },
+          "404": {
+            "$ref": "#/paths/~1user~1login/post/responses/404"
+          }
+        }
+      }
+    },
+    "/post/create": {
+      "summary": "",
+      "description": "",
+      "post": {
+        "tags": [
+          "Posts"
+        ],
+        "summary": "Create A New Post",
+        "description": "Create A New Post",
+        "operationId": "post.create-post",
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "requestBody": {
+          "$ref": "#/components/requestBodies/create-post"
+        },
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "allOf": [
+                    {
+                      "$ref": "#/paths/~1user~1logout/post/responses/200/content/application~1json/schema"
+                    },
+                    {
+                      "type": "object",
+                      "properties": {
+                        "data": {
+                          "allOf": [
+                            {
+                              "type": "object",
+                              "properties": {
+                                "_id": {
+                                  "title": "Document MongoDb Id",
+                                  "description": "MongoDb Id of the document",
+                                  "type": "string",
+                                  "example": "62ed69679c045c97a63390a4"
+                                },
+                                "createdAt": {
+                                  "title": "Document Creation Date",
+                                  "description": "The `createdAt` value is determined automatically by the API.",
+                                  "type": "string",
+                                  "format": "date-time"
+                                },
+                                "updatedAt": {
+                                  "title": "Document Update Date",
+                                  "description": "The `updatedAt` value is determined automatically by the API.",
+                                  "type": "string",
+                                  "format": "date-time"
+                                }
+                              }
+                            },
+                            {
+                              "type": "object",
+                              "properties": {
+                                "writer": {
+                                  "type": "object",
+                                  "properties": {
+                                    "_id": {
+                                      "title": "Writer id",
+                                      "description": "Writer id",
+                                      "type": "string"
+                                    },
+                                    "first_name": {
+                                      "title": "Writer first name",
+                                      "description": "Writer first name",
+                                      "type": "string"
+                                    },
+                                    "last_name": {
+                                      "title": "Writer last name",
+                                      "description": "Writer last name",
+                                      "type": "string"
+                                    },
+                                    "email": {
+                                      "title": "Writer email address",
+                                      "description": "Writer email address",
+                                      "type": "string",
+                                      "format": "email"
+                                    }
+                                  }
+                                }
+                              }
+                            },
+                            {
+                              "$ref": "#/components/requestBodies/create-post/content/application~1json/schema/allOf/0/allOf/0"
+                            },
+                            {
+                              "type": "object",
+                              "properties": {
+                                "content": {
+                                  "title": "Post content",
+                                  "description": "Post content",
+                                  "type": "string"
+                                }
+                              }
+                            },
+                            {
+                              "type": "object",
+                              "properties": {
+                                "viewers": {
+                                  "type": "array",
+                                  "items": {
+                                    "type": "object",
+                                    "properties": {
+                                      "_id": {
+                                        "title": "Viewer MongoDb Id",
+                                        "description": "Viewer MongoDb Id",
+                                        "type": "string",
+                                        "example": "62ed69679c045c97a63390a4"
+                                      },
+                                      "first_name": {
+                                        "title": "Viewer first name",
+                                        "description": "Viewer first name",
+                                        "type": "string",
+                                        "example": "Viewer"
+                                      },
+                                      "last_name": {
+                                        "title": "Viewer last name",
+                                        "description": "Viewer last name",
+                                        "type": "string",
+                                        "example": "Viewer"
+                                      },
+                                      "email": {
+                                        "title": "Viewer email name",
+                                        "description": "Viewer email name",
+                                        "type": "string",
+                                        "example": "email@email.com",
+                                        "format": "email"
+                                      }
+                                    }
+                                  }
+                                }
+                              }
+                            },
+                            {
+                              "type": "object",
+                              "properties": {
+                                "likes": {
+                                  "type": "array",
+                                  "items": {
+                                    "type": "object",
+                                    "properties": {
+                                      "_id": {
+                                        "title": "Viewer MongoDb Id",
+                                        "description": "Viewer MongoDb Id",
+                                        "type": "string",
+                                        "example": "62ed69679c045c97a63390a4"
+                                      },
+                                      "first_name": {
+                                        "title": "Viewer first name",
+                                        "description": "Viewer first name",
+                                        "type": "string",
+                                        "example": "Viewer"
+                                      },
+                                      "last_name": {
+                                        "title": "Viewer last name",
+                                        "description": "Viewer last name",
+                                        "type": "string",
+                                        "example": "Viewer"
+                                      },
+                                      "email": {
+                                        "title": "Viewer email name",
+                                        "description": "Viewer email name",
+                                        "type": "string",
+                                        "example": "email@email.com",
+                                        "format": "email"
+                                      }
+                                    }
+                                  }
+                                }
+                              }
+                            },
+                            {
+                              "type": "object",
+                              "properties": {
+                                "comments": {
+                                  "type": "array",
+                                  "items": {
+                                    "allOf": [
+                                      {
+                                        "$ref": "#/paths/~1post~1create/post/responses/200/content/application~1json/schema/allOf/1/properties/data/allOf/0"
+                                      },
+                                      {
+                                        "type": "object",
+                                        "properties": {
+                                          "user_id": {
+                                            "type": "object",
+                                            "properties": {
+                                              "_id": {
+                                                "title": "User id",
+                                                "description": "User id",
+                                                "type": "string"
+                                              },
+                                              "first_name": {
+                                                "title": "User first name",
+                                                "description": "User first name",
+                                                "type": "string"
+                                              },
+                                              "last_name": {
+                                                "title": "User last name",
+                                                "description": "User last name",
+                                                "type": "string"
+                                              },
+                                              "email": {
+                                                "title": "User email address",
+                                                "description": "User email address",
+                                                "type": "string",
+                                                "format": "email"
+                                              }
+                                            }
+                                          }
+                                        }
+                                      },
+                                      {
+                                        "type": "object",
+                                        "properties": {
+                                          "comment": {
+                                            "title": "Viewer first name",
+                                            "description": "Viewer first name",
+                                            "type": "string",
+                                            "example": "Viewer"
+                                          }
+                                        }
+                                      }
+                                    ]
+                                  }
+                                }
+                              }
+                            },
+                            {
+                              "$ref": "#/components/requestBodies/create-post/content/application~1json/schema/allOf/2/items/allOf/0"
+                            }
+                          ]
+                        }
+                      }
+                    }
+                  ]
+                }
+              }
+            }
+          },
+          "400": {
+            "$ref": "#/paths/~1tag~1getAll/get/responses/400"
+          },
+          "401": {
+            "$ref": "#/paths/~1tag~1getAll/get/responses/401"
+          },
+          "403": {
+            "$ref": "#/paths/~1tag~1getAll/get/responses/403"
+          },
+          "404": {
+            "$ref": "#/paths/~1user~1login/post/responses/404"
+          },
+          "409": {
+            "description": "Conflict error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/paths/~1tag~1getAll/get/responses/401/content/application~1json/schema"
+                }
+              }
+            }
           }
         }
       }
@@ -1159,6 +1672,158 @@
               "required": [
                 "old_password",
                 "new_password"
+              ]
+            }
+          }
+        }
+      },
+      "create-tag": {
+        "description": "",
+        "content": {
+          "application/json": {
+            "schema": {
+              "type": "object",
+              "allOf": [
+                {
+                  "type": "object",
+                  "properties": {
+                    "name": {
+                      "title": "Tag name",
+                      "description": "Tag name",
+                      "type": "string",
+                      "minLength": 3
+                    }
+                  }
+                },
+                {
+                  "required": [
+                    "name"
+                  ]
+                }
+              ]
+            }
+          }
+        }
+      },
+      "update-tag": {
+        "description": "",
+        "content": {
+          "application/json": {
+            "schema": {
+              "type": "object",
+              "allOf": [
+                {
+                  "type": "object",
+                  "properties": {
+                    "name": {
+                      "title": "Tag name",
+                      "description": "Tag name",
+                      "type": "string",
+                      "minLength": 3
+                    }
+                  }
+                },
+                {
+                  "required": [
+                    "name"
+                  ]
+                }
+              ]
+            }
+          }
+        }
+      },
+      "create-post": {
+        "description": "",
+        "content": {
+          "application/json": {
+            "schema": {
+              "allOf": [
+                {
+                  "type": "object",
+                  "allOf": [
+                    {
+                      "type": "object",
+                      "properties": {
+                        "title": {
+                          "title": "Post title",
+                          "description": "Post title",
+                          "type": "string"
+                        },
+                        "description": {
+                          "title": "Post description",
+                          "description": "Post description",
+                          "type": "string"
+                        }
+                      }
+                    },
+                    {
+                      "required": [
+                        "title",
+                        "description"
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": "object",
+                  "allOf": [
+                    {
+                      "type": "object",
+                      "properties": {
+                        "content": {
+                          "title": "Post content",
+                          "description": "Post content",
+                          "type": "string"
+                        }
+                      }
+                    },
+                    {
+                      "required": [
+                        "content"
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": "object",
+                  "items": {
+                    "allOf": [
+                      {
+                        "type": "object",
+                        "properties": {
+                          "tags": {
+                            "type": "array",
+                            "items": {
+                              "allOf": [
+                                {
+                                  "$ref": "#/paths/~1post~1create/post/responses/200/content/application~1json/schema/allOf/1/properties/data/allOf/0"
+                                },
+                                {
+                                  "type": "object",
+                                  "properties": {
+                                    "name": {
+                                      "title": "Tag name",
+                                      "description": "Tag name",
+                                      "type": "string",
+                                      "example": "Tag"
+                                    },
+                                    "post_count": {
+                                      "title": "Tag post count",
+                                      "description": "Tag post count",
+                                      "type": "string",
+                                      "example": "0"
+                                    }
+                                  }
+                                }
+                              ]
+                            }
+                          }
+                        }
+                      }
+                    ]
+                  }
+                }
               ]
             }
           }

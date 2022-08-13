@@ -1,0 +1,24 @@
+{
+    "allOf": [
+        {
+            "$ref": "../../../responses/api-responses/data-response-base.json"
+        },
+        {
+            "type": "object",
+            "properties": {
+                "name": {
+                    "title": "Tag name",
+                    "description": "Tag name",
+                    "type": "string",
+                    "example": "Tag"
+                },
+                "post_count": {
+                    "title": "Tag post count",
+                    "description": "Tag post count",
+                    "type": "string",
+                    "example": "0"
+                }
+            }
+        }
+    ]
+}

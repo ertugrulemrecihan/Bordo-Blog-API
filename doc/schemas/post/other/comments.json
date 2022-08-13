@@ -1,0 +1,11 @@
+{
+    "type": "object",
+    "properties": {
+        "comments": {
+            "type": "array",
+            "items": {
+                "$ref": "./comments-item.json"
+            }
+        }
+    }
+}

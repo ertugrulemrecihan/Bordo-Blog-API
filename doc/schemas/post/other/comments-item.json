@@ -1,0 +1,21 @@
+{
+    "allOf": [
+        {
+            "$ref": "../../../responses/api-responses/data-response-base.json"
+        },
+        {
+            "$ref": "./comment-user.json"
+        },
+        {
+            "type": "object",
+            "properties": {
+                "comment": {
+                    "title": "Viewer first name",
+                    "description": "Viewer first name",
+                    "type": "string",
+                    "example": "Viewer"
+                }
+            }
+        }
+    ]
+}

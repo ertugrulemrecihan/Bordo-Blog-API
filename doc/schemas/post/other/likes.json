@@ -1,0 +1,11 @@
+{
+    "type": "object",
+    "properties": {
+        "likes": {
+            "type": "array",
+            "items": {
+                "$ref": "./likes-item.json"
+            }
+        }
+    }
+}
