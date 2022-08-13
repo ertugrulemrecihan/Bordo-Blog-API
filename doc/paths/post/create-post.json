@@ -1,0 +1,40 @@
+{
+    "summary": "",
+    "description": "",
+    "put": {
+        "tags": [
+            "Posts"
+        ],
+        "summary": "Create A New Post",
+        "description": "Create A New Post",
+        "operationId": "post.create-post",
+        "security": [
+            {
+                "bearerAuth": []
+            }
+        ],
+        "requestBody": {
+            "$ref": "../../request-bodies/post/create-post.json"
+        },
+        "responses": {
+            "200": {
+                "$ref": "../../responses/post/create-post.json"
+            },
+            "400": {
+                "$ref": "../../responses/api-responses/400.json"
+            },
+            "401": {
+                "$ref": "../../responses/api-responses/401.json"
+            },
+            "403": {
+                "$ref": "../../responses/api-responses/403.json"
+            },
+            "404": {
+                "$ref": "../../responses/api-responses/404.json"
+            },
+            "409": {
+                "$ref": "../../responses/api-responses/409.json"
+            }
+        }
+    }
+}

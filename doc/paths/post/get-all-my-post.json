@@ -1,0 +1,31 @@
+{
+    "summary": "",
+    "description": "",
+    "get": {
+        "tags": [
+            "Posts"
+        ],
+        "summary": "Get All My Posts",
+        "description": "Get All My Posts",
+        "operationId": "post.get-all-my-posts",
+        "security": [
+            {
+                "bearerAuth": []
+            }
+        ],
+        "responses": {
+            "200": {
+                "$ref": "../../responses/post/get-all-my-posts.json"
+            },
+            "400": {
+                "$ref": "../../responses/api-responses/400.json"
+            },
+            "401": {
+                "$ref": "../../responses/api-responses/401.json"
+            },
+            "403": {
+                "$ref": "../../responses/api-responses/403.json"
+            }
+        }
+    }
+}

@@ -1,0 +1,31 @@
+{
+    "type": "object",
+    "properties": {
+        "user_id": {
+            "type": "object",
+            "properties": {
+                "_id": {
+                    "title": "User id",
+                    "description": "User id",
+                    "type": "string"
+                },
+                "first_name": {
+                    "title": "User first name",
+                    "description": "User first name",
+                    "type": "string"
+                },
+                "last_name": {
+                    "title": "User last name",
+                    "description": "User last name",
+                    "type": "string"
+                },
+                "email": {
+                    "title": "User email address",
+                    "description": "User email address",
+                    "type": "string",
+                    "format": "email"
+                }
+            }
+        }
+    }
+}

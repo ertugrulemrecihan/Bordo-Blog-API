@@ -1,0 +1,30 @@
+{
+    "type": "object",
+    "properties": {
+        "_id": {
+            "title": "Viewer MongoDb Id",
+            "description": "Viewer MongoDb Id",
+            "type": "string",
+            "example": "62ed69679c045c97a63390a4"
+        },
+        "first_name": {
+            "title": "Viewer first name",
+            "description": "Viewer first name",
+            "type": "string",
+            "example": "Viewer"
+        },
+        "last_name": {
+            "title": "Viewer last name",
+            "description": "Viewer last name",
+            "type": "string",
+            "example": "Viewer"
+        },
+        "email": {
+            "title": "Viewer email name",
+            "description": "Viewer email name",
+            "type": "string",
+            "example": "email@email.com",
+            "format": "email"
+        }
+    }
+}
