@@ -98,6 +98,9 @@
                 }
               }
             }
+          },
+          "500": {
+            "$ref": "#/paths/~1tag~1getAll/get/responses/500"
           }
         }
       }
@@ -300,6 +303,9 @@
           },
           "404": {
             "$ref": "#/paths/~1user~1login/post/responses/404"
+          },
+          "500": {
+            "$ref": "#/paths/~1tag~1getAll/get/responses/500"
           }
         }
       }
@@ -527,6 +533,9 @@
           },
           "403": {
             "$ref": "#/paths/~1tag~1getAll/get/responses/403"
+          },
+          "500": {
+            "$ref": "#/paths/~1tag~1getAll/get/responses/500"
           }
         }
       }
@@ -1651,7 +1660,7 @@
         }
       },
       "reset-password": {
-        "description": "",
+        "description": "New password must contain at least 1 lowercase letter, 1 uppercase letter and 1 special character and must be at least 8 characters",
         "content": {
           "application/json": {
             "schema": {
@@ -1679,7 +1688,7 @@
         }
       },
       "change-password": {
-        "description": "",
+        "description": "New password must contain at least 1 lowercase letter, 1 uppercase letter and 1 special character and must be at least 8 characters",
         "content": {
           "application/json": {
             "schema": {
