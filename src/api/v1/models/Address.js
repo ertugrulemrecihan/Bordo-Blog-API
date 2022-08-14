@@ -2,22 +2,22 @@ const mongoose = require('mongoose');
 
 const AddressSchema = mongoose.Schema(
     {
-        city_id: {
+        city: {
             type: mongoose.Schema.Types.ObjectId,
             ref: 'city',
             required: true,
         },
-        country_id: {
+        country: {
             type: mongoose.Schema.Types.ObjectId,
             ref: 'country',
             required: true,
         },
-        district_id: {
+        district: {
             type: mongoose.Schema.Types.ObjectId,
             ref: 'district',
             required: true,
         },
-        user_id: {
+        user: {
             type: mongoose.Schema.Types.ObjectId,
             ref: 'user',
             required: true,

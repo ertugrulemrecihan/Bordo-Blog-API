@@ -2,7 +2,7 @@ const mongoose = require('mongoose');
 
 const DistrictSchema = mongoose.Schema(
     {
-        city_id: {
+        city: {
             type: mongoose.Schema.Types.ObjectId,
             ref: 'city',
             required: true,

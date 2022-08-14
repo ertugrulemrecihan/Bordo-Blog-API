@@ -27,8 +27,8 @@ router
     .put(
         authenticate,
         authorization('Admin'),
-        bodyValidator(schemas.creatAdminValidation),
-        controller.create
+        bodyValidator(schemas.createAdminValidation),
+        controller.createAddressForAdmin
     );
 router
     .route('/update/:id')
@@ -37,7 +37,7 @@ router
         authorization('Admin'),
         paramIdValidator,
         bodyValidator(schemas.updateAdminValidation),
-        controller.updateByParamsId
+        controller.updateAddressByParamsIdForAdmin
     );
 router
     .route('/delete/:id')

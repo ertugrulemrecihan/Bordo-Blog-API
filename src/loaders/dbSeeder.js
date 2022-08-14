@@ -70,14 +70,14 @@ const createCountry = async () => {
     return countryId;
 };
 
-const createCity = async (country_id, city) => {
+const createCity = async (country, city) => {
     const currentCity = await City.findOne({ name: city.city_name });
 
     let cityId = null;
 
     if (!currentCity) {
         const newCity = new City({
-            country_id: country_id,
+            country: country,
             name: city.city_name,
             region: city.region,
             zip_code: city.zip_code,
@@ -90,14 +90,14 @@ const createCity = async (country_id, city) => {
     return cityId;
 };
 
-const createDistrict = async (district_id, district) => {
+const createDistrict = async (city, district) => {
     const currentDistrict = await District.findOne({ name: district.name });
 
     let districtId = null;
 
     if (!currentDistrict) {
         const newDistrict = new District({
-            city_id: district_id,
+            city: city,
             name: district.name,
             zip_code: district.zip_code,
         }).save();

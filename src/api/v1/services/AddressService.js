@@ -5,17 +5,17 @@ class AddressService extends BaseService {
     constructor() {
         super(Address, [
             {
-                path: 'user_id',
+                path: 'user',
                 select: 'first_name last_name email',
             },
             {
-                path: 'city_id',
+                path: 'city',
             },
             {
-                path: 'country_id',
+                path: 'country',
             },
             {
-                path: 'district_id',
+                path: 'district',
             },
         ]);
     }
