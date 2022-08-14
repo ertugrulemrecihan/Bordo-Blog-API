@@ -66,32 +66,24 @@ class PostController extends BaseController {
             }
         }
 
-        try {
-            const response = await postService.create(req.body);
+        const response = await postService.create(req.body);
 
-            if (!response) {
-                return next(
-                    new ApiError('Post creation failed', httpStatus.BAD_REQUEST)
-                );
-            }
-
-            new ApiDataSuccess(
-                response,
-                'Post created successfully',
-                httpStatus.OK
-            ).place(res);
-
-            return next();
-        } catch (err) {
-            if (err.code === 11000) {
-                return next(
-                    new ApiError('Post already exists', httpStatus.CONFLICT)
-                );
-            }
+        if (!response) {
             return next(
-                new ApiError('Post creation failed', httpStatus.BAD_REQUEST)
+                new ApiError(
+                    'Post creation failed',
+                    httpStatus.INTERNAL_SERVER_ERROR
+                )
             );
         }
+
+        new ApiDataSuccess(
+            response,
+            'Post created successfully',
+            httpStatus.OK
+        ).place(res);
+
+        return next();
     };
 
     async fetchAllPreviews(req, res, next) {
@@ -149,13 +141,13 @@ class PostController extends BaseController {
         if (!result) {
             return next(
                 new ApiError(
-                    'Post deleted failed',
+                    'Post deletion failed',
                     httpStatus.INTERNAL_SERVER_ERROR
                 )
             );
         }
 
-        new ApiSuccess('Post deleted successfully', httpStatus.OK).place(res);
+        new ApiSuccess('Post deletion successfully', httpStatus.OK).place(res);
 
         return next();
     }
@@ -173,10 +165,11 @@ class PostController extends BaseController {
         }
 
         const result = await postService.updateById(post._id, req.body);
+
         if (!result) {
             return next(
                 new ApiError(
-                    'Post updated failed',
+                    'Post update failed',
                     httpStatus.INTERNAL_SERVER_ERROR
                 )
             );
@@ -184,7 +177,7 @@ class PostController extends BaseController {
 
         new ApiDataSuccess(
             result,
-            'Post updated successfully',
+            'Post update successfully',
             httpStatus.OK
         ).place(res);
 
@@ -225,7 +218,7 @@ class PostController extends BaseController {
             return next(
                 new ApiError(
                     'There was a problem adding the viewer',
-                    httpStatus.BAD_REQUEST
+                    httpStatus.INTERNAL_SERVER_ERROR
                 )
             );
         }
@@ -412,9 +405,11 @@ class PostController extends BaseController {
 
         if (!updatedTag) {
             return next(
-                new ApiError(
+                new ApiDataSuccess(
+                    updatedPost,
                     // eslint-disable-next-line max-len
-                    'Tag added successfully but tag usage count could not be increased'
+                    'Tag added successfully but tag usage count could not be increased',
+                    httpStatus.INTERNAL_SERVER_ERROR
                 )
             );
         }

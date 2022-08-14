@@ -125,6 +125,7 @@ class UserController extends BaseController {
             user_id: user._id,
         });
 
+        // ! FIXME - Silmek yerine mevcut olan response edilebilir mi?
         if (currentAccessToken) {
             await accessTokenService.deleteById(currentAccessToken._id);
         }
@@ -133,12 +134,6 @@ class UserController extends BaseController {
             user: user._id,
             token: accessToken,
         });
-
-        if (!accessTokenResult) {
-            return next(
-                new ApiError('Login Failed', httpStatus.INTERNAL_SERVER_ERROR)
-            );
-        }
 
         const currentRefreshToken = await refreshTokenService.fetchOneByQuery({
             user_id: user._id,
@@ -153,7 +148,7 @@ class UserController extends BaseController {
             token: refreshToken,
         });
 
-        if (!refreshTokenResult) {
+        if (!accessTokenResult || !refreshTokenResult) {
             return next(
                 new ApiError('Login Failed', httpStatus.INTERNAL_SERVER_ERROR)
             );
@@ -168,6 +163,7 @@ class UserController extends BaseController {
 
     async logOut(req, res, next) {
         const result = await userHelper.logOut(req.user._id);
+
         if (result) {
             return next(
                 new ApiError('Log out failed', httpStatus.INTERNAL_SERVER_ERROR)
@@ -451,6 +447,16 @@ class UserController extends BaseController {
 
     async getMyProfile(req, res, next) {
         const user = await userService.fetchOneById(req.user._id);
+
+        if (!user) {
+            return next(
+                new ApiError(
+                    'Failed to fetch user profile',
+                    httpStatus.INTERNAL_SERVER_ERROR
+                )
+            );
+        }
+
         const response = userHelper.deletePasswordAndSaltFields(user);
 
         new ApiDataSuccess(

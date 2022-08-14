@@ -89,7 +89,7 @@ class BaseController {
                 return next(
                     new ApiError(
                         `${this.singleModelName} creation failed`,
-                        httpStatus.BAD_REQUEST
+                        httpStatus.INTERNAL_SERVER_ERROR
                     )
                 );
             }
@@ -113,7 +113,7 @@ class BaseController {
             return next(
                 new ApiError(
                     `${this.singleModelName} creation failed`,
-                    httpStatus.BAD_REQUEST
+                    httpStatus.INTERNAL_SERVER_ERROR
                 )
             );
         }
@@ -126,7 +126,7 @@ class BaseController {
             return next(
                 new ApiError(
                     `${this.singleModelName} update failed`,
-                    httpStatus.BAD_REQUEST
+                    httpStatus.INTERNAL_SERVER_ERROR
                 )
             );
         }
@@ -147,7 +147,7 @@ class BaseController {
             return next(
                 new ApiError(
                     `${this.singleModelName} update failed`,
-                    httpStatus.BAD_REQUEST
+                    httpStatus.INTERNAL_SERVER_ERROR
                 )
             );
         }
@@ -168,7 +168,7 @@ class BaseController {
             return next(
                 new ApiError(
                     `${this.singleModelName} deletion failed`,
-                    httpStatus.BAD_REQUEST
+                    httpStatus.INTERNAL_SERVER_ERROR
                 )
             );
         }
@@ -189,7 +189,7 @@ class BaseController {
             return next(
                 new ApiError(
                     `${this.singleModelName} deletion failed`,
-                    httpStatus.BAD_REQUEST
+                    httpStatus.INTERNAL_SERVER_ERROR
                 )
             );
         }

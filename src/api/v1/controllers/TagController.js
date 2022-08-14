@@ -17,7 +17,10 @@ class TagController extends BaseController {
 
             if (!response) {
                 return next(
-                    new ApiError('Tag creation failed', httpStatus.BAD_REQUEST)
+                    new ApiError(
+                        'Tag creation failed',
+                        httpStatus.INTERNAL_SERVER_ERROR
+                    )
                 );
             }
 
@@ -35,7 +38,10 @@ class TagController extends BaseController {
                 );
             }
             return next(
-                new ApiError('Tag creation failed', httpStatus.BAD_REQUEST)
+                new ApiError(
+                    'Tag creation failed',
+                    httpStatus.INTERNAL_SERVER_ERROR
+                )
             );
         }
     };

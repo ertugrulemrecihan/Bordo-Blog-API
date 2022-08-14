@@ -160,7 +160,10 @@ class AddressController extends BaseController {
 
         if (!response) {
             return next(
-                new ApiError('Address creation failed', httpStatus.BAD_REQUEST)
+                new ApiError(
+                    'Address creation failed',
+                    httpStatus.INTERNAL_SERVER_ERROR
+                )
             );
         }
 
@@ -213,7 +216,10 @@ class AddressController extends BaseController {
 
         if (!response) {
             return next(
-                new ApiError('Address creation failed', httpStatus.BAD_REQUEST)
+                new ApiError(
+                    'Address creation failed',
+                    httpStatus.INTERNAL_SERVER_ERROR
+                )
             );
         }
 
@@ -286,7 +292,10 @@ class AddressController extends BaseController {
 
         if (!response) {
             return next(
-                new ApiError('Address update failed', httpStatus.BAD_REQUEST)
+                new ApiError(
+                    'Address update failed',
+                    httpStatus.INTERNAL_SERVER_ERROR
+                )
             );
         }
 
@@ -308,7 +317,10 @@ class AddressController extends BaseController {
 
         if (!response) {
             return next(
-                new ApiError('Address update failed', httpStatus.BAD_REQUEST)
+                new ApiError(
+                    'Address update failed',
+                    httpStatus.INTERNAL_SERVER_ERROR
+                )
             );
         }
 
@@ -330,7 +342,10 @@ class AddressController extends BaseController {
 
         if (!response) {
             return next(
-                new ApiError('Address deletion failed', httpStatus.BAD_REQUEST)
+                new ApiError(
+                    'Address deletion failed',
+                    httpStatus.INTERNAL_SERVER_ERROR
+                )
             );
         }
 
