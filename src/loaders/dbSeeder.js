@@ -14,7 +14,7 @@ const createRole = async (roleName, roleDescription) => {
     if (!role) {
         const createdRole = new Role({
             name: roleName,
-            description: roleDescription
+            description: roleDescription,
         });
 
         roleId = await createdRole.save();
@@ -29,12 +29,16 @@ const createAdminUser = async (adminRoleId) => {
 
     if (adminUser) {
         // AdminUser._id
-        if (!adminUser.roles.some(role => role._id.toString() === adminRoleId.toString())) {
-            adminUser.roles = [adminRoleId];  // Admin account only has Admin role
+        if (
+            !adminUser.roles.some(
+                (role) => role._id.toString() === adminRoleId.toString()
+            )
+        ) {
+            // Admin account only has Admin role
+            adminUser.roles = [adminRoleId];
             await adminUser.save();
         }
-    }
-    else {
+    } else {
         const password = passwordToHash(process.env.ADMIN_PASSWORD);
 
         const newAdmin = new User({
@@ -56,7 +60,7 @@ const createCountry = async () => {
 
     if (!currentCity) {
         const newCountry = new Country({
-            name: 'Türkiye'
+            name: 'Türkiye',
         }).save();
 
         countryId = await (await newCountry).save();
@@ -76,7 +80,7 @@ const createCity = async (country_id, city) => {
             country_id: country_id,
             name: city.city_name,
             region: city.region,
-            zip_code: city.zip_code
+            zip_code: city.zip_code,
         }).save();
 
         cityId = await (await newCity).save();
@@ -95,7 +99,7 @@ const createDistrict = async (district_id, district) => {
         const newDistrict = new District({
             city_id: district_id,
             name: district.name,
-            zip_code: district.zip_code
+            zip_code: district.zip_code,
         }).save();
 
         districtId = await (await newDistrict).save();
@@ -106,7 +110,10 @@ const createDistrict = async (district_id, district) => {
 };
 
 module.exports = async () => {
-    const adminRoleId = await createRole('Admin', 'User with access to everything');
+    const adminRoleId = await createRole(
+        'Admin',
+        'User with access to everything'
+    );
     await createAdminUser(adminRoleId);
     const countryId = await createCountry();
 

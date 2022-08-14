@@ -5,7 +5,7 @@ const createValidation = Joi.object({
     description: Joi.string().required().min(3).max(350),
     purchases_count: Joi.number().min(0),
     price: Joi.number().required().min(0),
-    right_to_view: Joi.number().required().min(1)
+    right_to_view: Joi.number().required().min(1),
 });
 
 const updateValidations = Joi.object({
@@ -13,10 +13,10 @@ const updateValidations = Joi.object({
     description: Joi.string().min(3).max(350),
     purchases_count: Joi.number().min(0),
     price: Joi.number().min(0),
-    right_to_view: Joi.number().min(1)
+    right_to_view: Joi.number().min(1),
 });
 
 module.exports = {
     createValidation,
-    updateValidations
+    updateValidations,
 };

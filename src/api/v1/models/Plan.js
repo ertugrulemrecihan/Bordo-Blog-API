@@ -17,19 +17,20 @@ const PlanSchema = mongoose.Schema(
         purchases_count: {
             type: Number,
             min: 0,
-            default: 0
+            default: 0,
         },
         price: {
             type: Number,
             min: 0,
-            required: true
+            required: true,
         },
         right_to_view: {
             type: Number,
             required: true,
-            min: 1
-        }
-    }, { timestamps: true, versionKey: false, }
+            min: 1,
+        },
+    },
+    { timestamps: true, versionKey: false }
 );
 
 module.exports = mongoose.model('plan', PlanSchema);

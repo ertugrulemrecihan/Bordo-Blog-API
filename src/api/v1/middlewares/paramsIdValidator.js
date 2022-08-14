@@ -10,8 +10,14 @@ const paramIdValidator = (req, res, next) => {
         const key = keyList[i];
         const value = req.params[key];
 
-        if (key.toLowerCase().includes('id') && !mongoose.Types.ObjectId.isValid(value)) {
-            throw new ApiError('Parameters contain invalid ID', httpStatus.BAD_REQUEST);
+        if (
+            key.toLowerCase().includes('id') &&
+            !mongoose.Types.ObjectId.isValid(value)
+        ) {
+            throw new ApiError(
+                'Parameters contain invalid ID',
+                httpStatus.BAD_REQUEST
+            );
         }
     }
 

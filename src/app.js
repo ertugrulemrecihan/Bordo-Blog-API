@@ -16,9 +16,11 @@ events();
 const app = express();
 app.use(express.json());
 
-app.use(cors({
-    origin: '*'
-}));
+app.use(
+    cors({
+        origin: '*',
+    })
+);
 
 app.use('/api/v1/doc', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
 
@@ -41,5 +43,4 @@ app.use(errorHandler);
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, async () => {
     console.log(`Listening Port On ${process.env.API_URL}:${PORT}`);
-}
-);
+});

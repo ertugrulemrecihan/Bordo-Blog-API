@@ -62,13 +62,22 @@
         // Fonksiyon parametreleri tek satırda olmalı
         "function-call-argument-newline": [
             "error",
-            "never"
+            "consistent"
         ],
         "no-unused-vars": "error",
         // Satır sonlarında noktalı virgül olmalı
         "semi": [
             "error",
             "always"
-        ]
+        ],
+        // Satır uzunluğu max 80 karakter olmalı
+        "max-len": [
+            "error",
+            {
+                "code": 80
+            }
+        ],
+        // If, while gibi tek satırda yazılabilecek durumlarda dahi bracket ({}) kullanılmalı
+        "curly": "error"
     }
 }

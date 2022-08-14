@@ -5,30 +5,31 @@ const createValidation = Joi.object({
     description: Joi.string().required().min(10).max(375),
     content: Joi.string().required().min(120),
     tags: Joi.array().items(Joi.string().required().length(24)),
-    // images: Joi.array().items(Joi.string().required()),  //! FIXME - Images ve tags field'larını düzelt
+    // ! FIXME - Images field'ını düzelt
+    // Images: Joi.array().items(Joi.string().required()),
 });
 
 const updateValidation = Joi.object({
     title: Joi.string().min(10).max(200),
     description: Joi.string().min(10).max(375),
     content: Joi.string().min(120),
-    // images: Joi.array().items(Joi.string()),
+    // Images: Joi.array().items(Joi.string()),
 });
 
 const addComment = Joi.object({
-    'comment': Joi.string().required(),
+    comment: Joi.string().required(),
 });
 
 const deleteComment = Joi.object({
-    'comment_id': Joi.string().required().length(24)
+    comment_id: Joi.string().required().length(24),
 });
 
 const addTag = Joi.object({
-    'tag_id': Joi.string().required().length(24)
+    tag_id: Joi.string().required().length(24),
 });
 
 const removeTag = Joi.object({
-    'tag_id': Joi.string().required().length(24)
+    tag_id: Joi.string().required().length(24),
 });
 
 module.exports = {
@@ -37,5 +38,5 @@ module.exports = {
     addComment,
     addTag,
     removeTag,
-    deleteComment
+    deleteComment,
 };

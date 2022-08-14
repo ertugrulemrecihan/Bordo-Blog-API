@@ -1,4 +1,5 @@
 const jwtHelper = require('./jwt');
+// eslint-disable-next-line max-len
 const emailVerificationTokenService = require('../../services/EmailVerificationTokenService');
 const httpStatus = require('http-status');
 const userService = require('../../services/UserService');
@@ -39,21 +40,34 @@ const deletePasswordAndSaltFields = (user) => {
 
 const createAndVerifyEmail = async (email) => {
     const user = await userService.fetchOneByQuery({ email: email });
-    if (!user) throw new ApiError('No user found associated with this email', httpStatus.NOT_FOUND);
-    if (user.email_verified) throw new ApiError('User\'s email address is already verified', httpStatus.BAD_REQUEST);
+    if (!user) {
+        throw new ApiError(
+            'No user found associated with this email',
+            httpStatus.NOT_FOUND
+        );
+    }
+    if (user.email_verified) {
+        throw new ApiError(
+            "User's email address is already verified",
+            httpStatus.BAD_REQUEST
+        );
+    }
 
-    const currentVerifyToken = await emailVerificationTokenService.fetchOneByQuery({ user: user._id });
-    if (currentVerifyToken) await emailVerificationTokenService.deleteById(currentVerifyToken._id);
-
+    const currentVerifyToken =
+        await emailVerificationTokenService.fetchOneByQuery({ user: user._id });
+    if (currentVerifyToken) {
+        await emailVerificationTokenService.deleteById(currentVerifyToken._id);
+    }
 
     const jwtUser = deletePasswordAndSaltFields(user);
     const emailVerifyToken = jwtHelper.generateEmailVerifyToken(jwtUser);
 
     await emailVerificationTokenService.create({
         user_id: user._id,
-        token: emailVerifyToken
+        token: emailVerifyToken,
     });
 
+    // eslint-disable-next-line max-len
     const verifyUrl = `${process.env.API_URL}:${process.env.API_PORT}/api/v1/user/verify-email/${emailVerifyToken}`;
 
     eventEmitter.emit('send_email', {
@@ -64,22 +78,29 @@ const createAndVerifyEmail = async (email) => {
             fullName: user.first_name + ' ' + user.last_name,
             validationUrl: verifyUrl,
             expires: process.env.JWT_EMAIL_VERIFY_EXP,
-        }
+        },
     });
 
-    return new ApiSuccess('Email verification link successfully sent to email', httpStatus.OK);
+    return new ApiSuccess(
+        'Email verification link successfully sent to email',
+        httpStatus.OK
+    );
 };
 
 const logOut = async (userId) => {
-    const deletedAccessTokenResult = await accessTokenService.deleteByQuery({ user: userId });
-    const deletedRefreshTokenResult = await refreshTokenService.deleteByQuery({ user: userId });
+    const deletedAccessTokenResult = await accessTokenService.deleteByQuery({
+        user: userId,
+    });
+    const deletedRefreshTokenResult = await refreshTokenService.deleteByQuery({
+        user: userId,
+    });
 
-    return (!deletedAccessTokenResult || !deletedRefreshTokenResult);
+    return !deletedAccessTokenResult || !deletedRefreshTokenResult;
 };
 
 module.exports = {
     createResponse,
     deletePasswordAndSaltFields,
     createAndVerifyEmail,
-    logOut
+    logOut,
 };

@@ -1,29 +1,32 @@
 const mongoose = require('mongoose');
 
-const CitySchema = mongoose.Schema({
-    country_id: {
-        type: mongoose.Schema.Types.ObjectId,
-        ref: 'country',
-        required: true
+const CitySchema = mongoose.Schema(
+    {
+        country_id: {
+            type: mongoose.Schema.Types.ObjectId,
+            ref: 'country',
+            required: true,
+        },
+        zip_code: {
+            type: String,
+            required: true,
+            min: 5,
+            max: 5,
+        },
+        name: {
+            type: String,
+            min: 3,
+            max: 30,
+            required: true,
+        },
+        region: {
+            type: String,
+            min: 3,
+            max: 60,
+            required: true,
+        },
     },
-    zip_code: {
-        type: String,
-        required: true,
-        min: 5,
-        max: 5
-    },
-    name: {
-        type: String,
-        min: 3,
-        max: 30,
-        required: true
-    },
-    region: {
-        type: String,
-        min: 3,
-        max: 60,
-        required: true
-    }
-}, { versionKey: false });
+    { versionKey: false }
+);
 
 module.exports = mongoose.model('city', CitySchema);

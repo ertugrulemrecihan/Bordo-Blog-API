@@ -5,7 +5,7 @@ const createValidation = Joi.object({
     country_id: Joi.string().required(),
     district_id: Joi.string().required(),
     address_1: Joi.string().required().min(10).max(200),
-    address_2: Joi.string().min(10).max(200)
+    address_2: Joi.string().min(10).max(200),
 });
 
 const updateValidation = Joi.object({
@@ -13,7 +13,7 @@ const updateValidation = Joi.object({
     country_id: Joi.string(),
     district_id: Joi.string(),
     address_1: Joi.string().min(10).max(200),
-    address_2: Joi.string().min(10).max(200)
+    address_2: Joi.string().min(10).max(200),
 });
 
 const createAdminValidation = Joi.object({
@@ -22,7 +22,7 @@ const createAdminValidation = Joi.object({
     country_id: Joi.string().required(),
     district_id: Joi.string().required(),
     address_1: Joi.string().required().min(10).max(200),
-    address_2: Joi.string().min(10).max(200)
+    address_2: Joi.string().min(10).max(200),
 });
 
 const updateAdminValidation = Joi.object({
@@ -31,12 +31,12 @@ const updateAdminValidation = Joi.object({
     country_id: Joi.string(),
     district_id: Joi.string(),
     address_1: Joi.string().min(10).max(200),
-    address_2: Joi.string().min(10).max(200)
+    address_2: Joi.string().min(10).max(200),
 });
 
 module.exports = {
     createValidation,
     updateValidation,
     createAdminValidation,
-    updateAdminValidation
+    updateAdminValidation,
 };

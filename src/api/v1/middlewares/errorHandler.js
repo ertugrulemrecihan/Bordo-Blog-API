@@ -10,7 +10,9 @@ const ErrorHandler = (err, req, res, next) => {
             },
             success: false,
         };
-        return res.status(err.statusCode || httpStatus.INTERNAL_SERVER_ERROR).json(apiError);
+        return res
+            .status(err.statusCode || httpStatus.INTERNAL_SERVER_ERROR)
+            .json(apiError);
     }
 
     return res.status(httpStatus.INTERNAL_SERVER_ERROR).json({

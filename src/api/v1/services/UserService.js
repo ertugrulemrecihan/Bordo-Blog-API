@@ -3,10 +3,12 @@ const User = require('../models/User');
 
 class UserService extends BaseService {
     constructor() {
-        super(User, [{
-            path: 'roles',
-            select: 'name',
-        }]);
+        super(User, [
+            {
+                path: 'roles',
+                select: 'name',
+            },
+        ]);
     }
 }
 

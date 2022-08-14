@@ -15,8 +15,12 @@ const PasswordResetTokenSchema = mongoose.Schema(
             type: Date,
             default: Date.now,
             expires: 60 * 60,
-        }
-    }, { timestamps: true, versionKey: false, }
+        },
+    },
+    { timestamps: true, versionKey: false }
 );
 
-module.exports = mongoose.model('password_reset_token', PasswordResetTokenSchema);
+module.exports = mongoose.model(
+    'password_reset_token',
+    PasswordResetTokenSchema
+);

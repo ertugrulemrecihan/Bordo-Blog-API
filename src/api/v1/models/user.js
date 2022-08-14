@@ -50,7 +50,8 @@ const UserSchema = Mongoose.Schema(
                 required: true,
             },
         ],
-    }, { timestamps: true, versionKey: false, }
+    },
+    { timestamps: true, versionKey: false }
 );
 
 module.exports = Mongoose.model('user', UserSchema);

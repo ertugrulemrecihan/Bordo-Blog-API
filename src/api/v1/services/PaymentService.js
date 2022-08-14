@@ -5,15 +5,17 @@ const Iyzipay = require('iyzipay');
 const iyzipay = new Iyzipay({
     apiKey: process.env.IYZIPAY_API_KEY,
     secretKey: process.env.IYZIPAY_SECRET_KEY,
-    uri: process.env.IYZIPAY_URI
+    uri: process.env.IYZIPAY_URI,
 });
 
 class PaymentService extends BaseService {
     constructor() {
-        super(Payment, [{
-            path: 'user_id',
-            select: 'first_name last_name email'
-        }]);
+        super(Payment, [
+            {
+                path: 'user_id',
+                select: 'first_name last_name email',
+            },
+        ]);
     }
 
     async threedsInitialize(data) {

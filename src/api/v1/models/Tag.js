@@ -13,7 +13,8 @@ const TagSchema = mongoose.Schema(
             type: Number,
             default: 0,
         },
-    }, {
+    },
+    {
         timestamps: true,
         versionKey: false,
     }

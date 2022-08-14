@@ -14,7 +14,8 @@ const RoleSchema = mongoose.Schema(
             max: 150,
             required: true,
         },
-    }, {
+    },
+    {
         timestamps: true,
         versionKey: false,
     }
