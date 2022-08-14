@@ -31,6 +31,9 @@ class UserController extends BaseController {
 
         try {
             const user = await service.create(req.body);
+            if (!user) {
+                throw new Error();
+            }
             // ! FIXME - Populate ile field sil
             const response = userHelper.createResponse(user);
 
@@ -48,14 +51,11 @@ class UserController extends BaseController {
             });
 
             if (!accessTokenResult || !refreshTokenResult) {
-                // ! FIXME
-                new ApiDataSuccess(
-                    user,
-                    'User created',
-                    httpStatus.CREATED
-                ).place(res);
+                // ! FIXME - Add transaction
+                // ! Kullanıcıyı silmek yerine transaction'ı rollback yaptır
 
-                return next();
+                await userService.deleteById(user._id);
+                throw new Error();
             }
 
             try {
