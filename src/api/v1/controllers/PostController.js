@@ -54,7 +54,9 @@ class PostController extends BaseController {
 
         if (tags) {
             for (const tagId of tags) {
-                const result = await tagService.fetchOneById(tagId);
+                const result = await tagService.updateById(tagId, {
+                    $inc: { post_count: 1 },
+                });
                 if (!result) {
                     return next(
                         new ApiError(
@@ -80,7 +82,7 @@ class PostController extends BaseController {
         new ApiDataSuccess(
             response,
             'Post created successfully',
-            httpStatus.OK
+            httpStatus.CREATED
         ).place(res);
 
         return next();
