@@ -8,7 +8,7 @@ const schemas = require('../validations/post');
 
 // TODO: Kullanıcının aboneliği varsa getir
 router
-    .route('/getAll/my')
+    .route('/get-all/my')
     .get(authenticate, controller.fetchAllMyPosts); // ! FIXME: Abone olmalı
 router
     .route('/get/my/:id')
@@ -18,7 +18,7 @@ router
         controller.fetchOneMyPost
     ); // ! FIXME: Abone olmalı
 router
-    .route('/getAll/previews')
+    .route('/get-all/previews')
     .get(controller.fetchAllPreviews);
 router
     .route('/get/preview/:id')
@@ -46,21 +46,21 @@ router
         controller.updateMyPost
     );
 router
-    .route('/addView/:id')
+    .route('/add-view/:id')
     .post(
         authenticate,
         paramIdValidator,
         controller.addView
     ); // ! FIXME: Abone olmalı
 router
-    .route('/changeLikeStatus/:id')
+    .route('/change-like-status/:id')
     .post(
         authenticate,
         paramIdValidator,
         controller.changeLikeStatus
     ); // ! FIXME: Abone olmalı
 router
-    .route('/addComment/:id')
+    .route('/add-comment/:id')
     .post(
         authenticate,
         paramIdValidator,
@@ -68,8 +68,8 @@ router
         controller.addComment
     );
 router
-    .route('/deleteComment/:id')
-    .post(
+    .route('/delete-comment/:id')
+    .delete(
         authenticate,
         paramIdValidator,
         bodyValidator(schemas.deleteComment),
@@ -77,7 +77,7 @@ router
     );
 // TODO: Comment silme ekle
 router
-    .route('/addTag/:id')
+    .route('/add-tag/:id')
     .post(
         authenticate,
         paramIdValidator,
@@ -85,8 +85,8 @@ router
         controller.addTag
     );
 router
-    .route('/removeTag/:id')
-    .post(
+    .route('/delete-tag/:id')
+    .delete(
         authenticate,
         paramIdValidator,
         bodyValidator(schemas.removeTag),

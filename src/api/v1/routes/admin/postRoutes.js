@@ -3,17 +3,11 @@ const router = express.Router();
 const controller = require('../../controllers/PostController');
 const authenticate = require('../../middlewares/authenticate');
 const authorization = require('../../middlewares/authorization');
-const bodyValidator = require('../../middlewares/bodyValidator');
 const paramIdValidator = require('../../middlewares/paramsIdValidator');
-const schemas = require('../../validations/post');
 
 router
     .route('/get-all')
-    .get(
-        authenticate,
-        authorization('Admin'),
-        controller.fetchAll
-    );
+    .get(authenticate, authorization('Admin'), controller.fetchAll);
 router
     .route('/get/:id')
     .get(
@@ -23,47 +17,12 @@ router
         controller.fetchOneByParamsId
     );
 router
-    .route('/create')
-    .post(
-        authenticate,
-        authorization('Admin'),
-        bodyValidator(schemas.createValidation),
-        controller.create
-    );
-router
     .route('/delete/:id')
     .delete(
         authenticate,
         authorization('Admin'),
         paramIdValidator,
         controller.deleteByParamsId
-    );
-router
-    .route('/update/:id')
-    .patch(
-        authenticate,
-        authorization('Admin'),
-        paramIdValidator,
-        bodyValidator(schemas.updateValidation),
-        controller.updateByParamsId
-    );
-router
-    .route('/add-tag/:id')
-    .post(
-        authenticate,
-        authorization('Admin'),
-        paramIdValidator,
-        bodyValidator(schemas.addTag),
-        controller.addTag
-    );
-router
-    .route('/remove-tag/:id')
-    .post(
-        authenticate,
-        authorization('Admin'),
-        paramIdValidator,
-        bodyValidator(schemas.removeTag),
-        controller.removeTag
     );
 // TODO: Comment Silme
 
