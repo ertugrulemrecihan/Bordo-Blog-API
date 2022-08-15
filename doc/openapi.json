@@ -12,13 +12,13 @@
     },
     "servers": [
         {
-            "url": "http://localhost:3000/api/v1",
-            "description": "Local server"
-        },
-        {
             "url": "https://bordo-blog.herokuapp.com/api/v1",
             "description": "Web server"
-        }
+        },
+        {
+            "url": "http://localhost:3000/api/v1",
+            "description": "Local server"
+        }        
     ],
     "tags": [
         {
