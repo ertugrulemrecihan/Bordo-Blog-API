@@ -129,8 +129,8 @@ class BaseController {
             if (!response) {
                 return next(
                     new ApiError(
-                        `${this.singleModelName} update failed`,
-                        httpStatus.INTERNAL_SERVER_ERROR
+                        `${this.singleModelName} not found`,
+                        httpStatus.NOT_FOUND
                     )
                 );
             }
@@ -153,7 +153,7 @@ class BaseController {
             }
             return next(
                 new ApiError(
-                    `${this.singleModelName} creation failed`,
+                    `${this.singleModelName} update failed`,
                     httpStatus.INTERNAL_SERVER_ERROR
                 )
             );
@@ -170,8 +170,8 @@ class BaseController {
             if (!response) {
                 return next(
                     new ApiError(
-                        `${this.singleModelName} update failed`,
-                        httpStatus.INTERNAL_SERVER_ERROR
+                        `${this.singleModelName} not found`,
+                        httpStatus.NOT_FOUND
                     )
                 );
             }
@@ -194,7 +194,7 @@ class BaseController {
             }
             return next(
                 new ApiError(
-                    `${this.singleModelName} creation failed`,
+                    `${this.singleModelName} update failed`,
                     httpStatus.INTERNAL_SERVER_ERROR
                 )
             );
