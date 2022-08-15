@@ -4,15 +4,13 @@ const controller = require('../../controllers/UserController');
 const authenticate = require('../../middlewares/authenticate');
 const authorization = require('../../middlewares/authorization');
 const paramsIdValidator = require('../../middlewares/paramsIdValidator');
-const bodyValidator = require('../../middlewares/bodyValidator');
-const schemas = require('../../validations/user');
 
 router
-    .route('/getAll')
+    .route('/get-all')
     .get(
         authenticate,
         authorization('Admin'),
-        controller.fetchAll
+        controller.fetchAllForAdmin
     );
 router
     .route('/get/:id')
@@ -20,7 +18,7 @@ router
         authenticate,
         authorization('Admin'),
         paramsIdValidator,
-        controller.fetchOneByParamsId
+        controller.fetchOneByParamsIdForAdmin
     );
 router
     .route('/delete/:id')
@@ -28,16 +26,7 @@ router
         authenticate,
         authorization('Admin'),
         paramsIdValidator,
-        controller.deleteByParamsId
-    );
-router
-    .route('/update/:id')
-    .patch(
-        authenticate,
-        authorization('Admin'),
-        paramsIdValidator,
-        bodyValidator(schemas.adminUserUpdateValidation),
-        controller.updateByParamsId
+        controller.deleteByParamsIdForAdmin
     );
 
 module.exports = router;
