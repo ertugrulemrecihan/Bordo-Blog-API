@@ -8,7 +8,7 @@ const paramIdValidator = require('../../middlewares/paramsIdValidator');
 const schemas = require('../../validations/post');
 
 router
-    .route('/getAll')
+    .route('/get-all')
     .get(
         authenticate,
         authorization('Admin'),
@@ -48,7 +48,7 @@ router
         controller.updateByParamsId
     );
 router
-    .route('/addTag/:id')
+    .route('/add-tag/:id')
     .post(
         authenticate,
         authorization('Admin'),
@@ -57,7 +57,7 @@ router
         controller.addTag
     );
 router
-    .route('/removeTag/:id')
+    .route('/remove-tag/:id')
     .post(
         authenticate,
         authorization('Admin'),
