@@ -1,0 +1,13 @@
+{
+    "allOf": [
+        {
+            "$ref": "./other/auth-response-without-roles-and-package.json"
+        },
+        {
+            "$ref": "./other/roles.json"
+        },
+        {
+            "$ref": "./other/packages.json"
+        }
+    ]
+}

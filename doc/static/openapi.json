@@ -154,9 +154,6 @@
                               ]
                             },
                             {
-                              "$ref": "#/components/requestBodies/register/content/application~1json/schema/allOf/0/allOf/0"
-                            },
-                            {
                               "type": "object",
                               "properties": {
                                 "roles": {
@@ -596,6 +593,195 @@
           },
           "500": {
             "$ref": "#/paths/~1users~1login/post/responses/500"
+          }
+        }
+      }
+    },
+    "/admin/users/get-all": {
+      "summary": "",
+      "description": "",
+      "get": {
+        "tags": [
+          "Users"
+        ],
+        "summary": "Get all users",
+        "description": "Get all users",
+        "operationId": "users.admin-get-all",
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "allOf": [
+                    {
+                      "$ref": "#/paths/~1users~1logout/post/responses/200/content/application~1json/schema"
+                    },
+                    {
+                      "type": "object",
+                      "properties": {
+                        "data": {
+                          "type": "array",
+                          "items": {
+                            "$ref": "#/paths/~1admin~1users~1get~1%7BuserId%7D/get/responses/200/content/application~1json/schema/allOf/1/properties/data"
+                          }
+                        }
+                      }
+                    }
+                  ]
+                }
+              }
+            }
+          },
+          "400": {
+            "$ref": "#/paths/~1users~1login/post/responses/400"
+          },
+          "401": {
+            "$ref": "#/paths/~1users~1logout/post/responses/401"
+          },
+          "403": {
+            "$ref": "#/paths/~1users~1logout/post/responses/403"
+          }
+        }
+      }
+    },
+    "/admin/users/get/{userId}": {
+      "summary": "",
+      "description": "",
+      "get": {
+        "tags": [
+          "Users"
+        ],
+        "summary": "Get user by userId",
+        "description": "Get user by userId",
+        "operationId": "users.admin-get",
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "userId",
+            "schema": {
+              "type": "string"
+            },
+            "required": true,
+            "description": "User id",
+            "length": 24
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "allOf": [
+                    {
+                      "$ref": "#/paths/~1users~1logout/post/responses/200/content/application~1json/schema"
+                    },
+                    {
+                      "type": "object",
+                      "properties": {
+                        "data": {
+                          "allOf": [
+                            {
+                              "$ref": "#/paths/~1users~1profile/get/responses/200/content/application~1json/schema/allOf/1/properties/data/allOf/0"
+                            },
+                            {
+                              "$ref": "#/paths/~1users~1profile/get/responses/200/content/application~1json/schema/allOf/1/properties/data/allOf/1"
+                            },
+                            {
+                              "$ref": "#/paths/~1users~1profile/get/responses/200/content/application~1json/schema/allOf/1/properties/data/allOf/2"
+                            }
+                          ]
+                        }
+                      }
+                    }
+                  ]
+                }
+              }
+            }
+          },
+          "400": {
+            "$ref": "#/paths/~1users~1login/post/responses/400"
+          },
+          "401": {
+            "$ref": "#/paths/~1users~1logout/post/responses/401"
+          },
+          "403": {
+            "$ref": "#/paths/~1users~1logout/post/responses/403"
+          },
+          "404": {
+            "$ref": "#/paths/~1users~1login/post/responses/404"
+          }
+        }
+      }
+    },
+    "/admin/users/delete/{userId}": {
+      "summary": "",
+      "description": "",
+      "delete": {
+        "tags": [
+          "Users"
+        ],
+        "summary": "Delete user",
+        "description": "Delete user",
+        "operationId": "users.admin-delete",
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "parameters": [
+          {
+            "$ref": "#/paths/~1admin~1users~1get~1%7BuserId%7D/get/parameters/0"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "allOf": [
+                    {
+                      "$ref": "#/paths/~1users~1logout/post/responses/200/content/application~1json/schema"
+                    },
+                    {
+                      "type": "object",
+                      "properties": {
+                        "data": {
+                          "$ref": "#/paths/~1admin~1users~1get~1%7BuserId%7D/get/responses/200/content/application~1json/schema/allOf/1/properties/data"
+                        }
+                      }
+                    }
+                  ]
+                }
+              }
+            }
+          },
+          "400": {
+            "$ref": "#/paths/~1users~1login/post/responses/400"
+          },
+          "401": {
+            "$ref": "#/paths/~1users~1logout/post/responses/401"
+          },
+          "403": {
+            "$ref": "#/paths/~1users~1logout/post/responses/403"
+          },
+          "404": {
+            "$ref": "#/paths/~1users~1login/post/responses/404"
           }
         }
       }

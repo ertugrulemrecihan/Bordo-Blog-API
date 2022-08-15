@@ -74,6 +74,23 @@
         "/users/change-password": {
             "$ref": "./paths/user/change-password.json"
         },
+
+
+        
+        
+        "/admin/users/get-all": {
+            "$ref": "./paths/admin/user/get-all.json"
+        },
+        "/admin/users/get/{userId}": {
+            "$ref": "./paths/admin/user/get.json"
+        },
+        "/admin/users/delete/{userId}": {
+            "$ref": "./paths/admin/user/delete.json"
+        },
+
+
+
+
         "/tags/get-all": {
             "$ref": "./paths/tag/get-all-tags.json"
         },
