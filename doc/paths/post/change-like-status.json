@@ -5,20 +5,22 @@
         "tags": [
             "Posts"
         ],
-        "summary": "Create A New Post",
-        "description": "Create A New Post",
-        "operationId": "post.create-post",
+        "summary": "Add Like To Post",
+        "description": "Add Like To Post",
+        "operationId": "post.change-like-status",
         "security": [
             {
                 "bearerAuth": []
             }
         ],
-        "requestBody": {
-            "$ref": "../../request-bodies/post/create-post.json"
-        },
+        "parameters": [
+            {
+                "$ref": "../../parameters/path/post/post_id.json"
+            }
+        ],
         "responses": {
-            "201": {
-                "$ref": "../../responses/post/create-post.json"
+            "200": {
+                "$ref": "../../responses/post/change-like-status.json"
             },
             "400": {
                 "$ref": "../../responses/api-responses/400.json"

@@ -1,0 +1,26 @@
+{
+    "description": "",
+    "content": {
+        "application/json": {
+            "schema": {
+                "allOf": [
+                    {
+                        "type": "object",
+                        "properties": {
+                            "tag_id": {
+                                "title": "Post Tag Id",
+                                "description": "Post Tag Id",
+                                "type": "string"
+                            }
+                        }
+                    },
+                    {
+                        "required": [
+                            "tag_id"
+                        ]
+                    }
+                ]
+            }
+        }
+    }
+}

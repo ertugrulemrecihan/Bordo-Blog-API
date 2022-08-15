@@ -28,31 +28,13 @@
                             }
                         },
                         {
-                            "type": "object",
-                            "properties": {
-                                "viewers": {
-                                    "type": "array",
-                                    "example": []
-                                }
-                            }
+                            "$ref": "./other/viewers.json"
                         },
                         {
-                            "type": "object",
-                            "properties": {
-                                "likes": {
-                                    "type": "array",
-                                    "example": []
-                                }
-                            }
+                            "$ref": "./other/likes.json"
                         },
                         {
-                            "type": "object",
-                            "properties": {
-                                "comments": {
-                                    "type": "array",
-                                    "example": []
-                                }
-                            }
+                            "$ref": "./other/comments.json"
                         },
                         {
                             "$ref": "./other/tags.json"

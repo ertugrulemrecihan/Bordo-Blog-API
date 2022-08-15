@@ -15,8 +15,8 @@
                 "post_count": {
                     "title": "Tag post count",
                     "description": "Tag post count",
-                    "type": "string",
-                    "example": "0"
+                    "type": "number",
+                    "example": 0
                 }
             }
         }

@@ -31,36 +31,36 @@
         },
         {
             "name": "Posts",
-            "description": "Writer post endpoints"
+            "description": "Post endpoints"
         }
     ],
     "paths": {
-        "/user/login": {
-            "$ref": "./paths/user/login.json"
-        },
-        "/user/register": {
-            "$ref": "./paths/user/register.json"
-        },
-        "/user/logout": {
-            "$ref": "./paths/user/logout.json"
-        },
-        "/user/get-password-reset-email": {
-            "$ref": "./paths/user/get-password-reset-email.json"
-        },
-        "/user/reset-password": {
-            "$ref": "./paths/user/reset-password.json"
-        },
-        "/user/get-email-verification-email": {
-            "$ref": "./paths/user/get-email-verification-email.json"
-        },
-        "/user/verify-email/{emailVerifyToken}": {
+        "/users/verify-email/{emailVerifyToken}": {
             "$ref": "./paths/user/verify-email.json"
         },
-        "/user/change-password": {
-            "$ref": "./paths/user/change-password.json"
-        },
-        "/user/profile": {
+        "/users/profile": {
             "$ref": "./paths/user/profile.json"
+        },
+        "/users/login": {
+            "$ref": "./paths/user/login.json"
+        },
+        "/users/register": {
+            "$ref": "./paths/user/register.json"
+        },
+        "/users/logout": {
+            "$ref": "./paths/user/logout.json"
+        },
+        "/users/get-password-reset-email": {
+            "$ref": "./paths/user/get-password-reset-email.json"
+        },
+        "/users/reset-password": {
+            "$ref": "./paths/user/reset-password.json"
+        },
+        "/users/get-email-verification-email": {
+            "$ref": "./paths/user/get-email-verification-email.json"
+        },
+        "/users/change-password": {
+            "$ref": "./paths/user/change-password.json"
         },
         "/tags/get-all": {
             "$ref": "./paths/tag/get-all-tags.json"
@@ -77,20 +77,53 @@
         "/admin/tags/delete/{tagId}": {
             "$ref": "./paths/admin/tag/delete-tag.json"
         },
-        "/post/getAll/my": {
+        "/posts/get-all/my": {
             "$ref": "./paths/post/get-all-my-post.json"
         },
         "/post/get/my/{postId}": {
             "$ref": "./paths/post/get-my-post-by-id.json"
         },
-        "/post/getAll/previews": {
+        "/posts/get-all/previews": {
             "$ref": "./paths/post/get-all-previews.json"
         },
-        "/post/get/preview/{postId}": {
+        "/posts/get/preview/{postId}": {
             "$ref": "./paths/post/get-preview-by-id.json"
         },
-        "/post/create": {
+        "/posts/create": {
             "$ref": "./paths/post/create-post.json"
+        },
+        "/posts/add-view/{postId}": {
+            "$ref": "./paths/post/add-view.json"
+        },
+        "/posts/change-like-status/{postId}": {
+            "$ref": "./paths/post/change-like-status.json"
+        },
+        "/posts/add-comment/{postId}": {
+            "$ref": "./paths/post/add-comment.json"
+        },
+        "/posts/add-tag/{postId}": {
+            "$ref": "./paths/post/add-tag.json"
+        },
+        "/posts/update/my/{postId}": {
+            "$ref": "./paths/post/update-post.json"
+        },
+        "/posts/delete/my/{postId}": {
+            "$ref": "./paths/post/delete-post.json"
+        },
+        "/posts/delete-comment/{postId}": {
+            "$ref": "./paths/post/delete-comment.json"
+        },
+        "/posts/delete-tag/{postId}": {
+            "$ref": "./paths/post/delete-tag.json"
+        },
+        "/admin/posts/get-all": {
+            "$ref": "./paths/admin/post/get-all-posts.json"
+        },
+        "/admin/posts/get/{postId}": {
+            "$ref": "./paths/admin/post/get-post-by-id.json"
+        },
+        "/admin/posts/delete/{postId}": {
+            "$ref": "./paths/admin/post/delete-users-post.json"
         }
     },
     "components": {

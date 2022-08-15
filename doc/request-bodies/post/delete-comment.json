@@ -1,0 +1,26 @@
+{
+    "description": "",
+    "content": {
+        "application/json": {
+            "schema": {
+                "allOf": [
+                    {
+                        "type": "object",
+                        "properties": {
+                            "comment_id": {
+                                "title": "Post Comment Id",
+                                "description": "Post Comment Id",
+                                "type": "string"
+                            }
+                        }
+                    },
+                    {
+                        "required": [
+                            "comment_id"
+                        ]
+                    }
+                ]
+            }
+        }
+    }
+}

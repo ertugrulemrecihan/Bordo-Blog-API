@@ -1,0 +1,11 @@
+{
+    "description": "",
+    "content": {
+        "application/json": {
+            "schema": {
+                "type": "object",
+                "$ref": "../../schemas/post/add-comment.json"
+            }
+        }
+    }
+}

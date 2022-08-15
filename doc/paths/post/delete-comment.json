@@ -1,24 +1,29 @@
 {
     "summary": "",
     "description": "",
-    "post": {
+    "delete": {
         "tags": [
             "Posts"
         ],
-        "summary": "Create A New Post",
-        "description": "Create A New Post",
-        "operationId": "post.create-post",
+        "summary": "Delete Comment To Post",
+        "description": "Delete Comment To Post",
+        "operationId": "post.delete-comment",
         "security": [
             {
                 "bearerAuth": []
             }
         ],
+        "parameters": [
+            {
+                "$ref": "../../parameters/path/post/post_id.json"
+            }
+        ],
         "requestBody": {
-            "$ref": "../../request-bodies/post/create-post.json"
+            "$ref": "../../request-bodies/post/delete-comment.json"
         },
         "responses": {
-            "201": {
-                "$ref": "../../responses/post/create-post.json"
+            "200": {
+                "$ref": "../../responses/post/delete-comment.json"
             },
             "400": {
                 "$ref": "../../responses/api-responses/400.json"

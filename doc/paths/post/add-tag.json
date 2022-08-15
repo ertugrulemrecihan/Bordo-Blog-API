@@ -5,20 +5,25 @@
         "tags": [
             "Posts"
         ],
-        "summary": "Create A New Post",
-        "description": "Create A New Post",
-        "operationId": "post.create-post",
+        "summary": "Add Tag To Post",
+        "description": "Add Tag To Post",
+        "operationId": "post.add-tag",
         "security": [
             {
                 "bearerAuth": []
             }
         ],
+        "parameters": [
+            {
+                "$ref": "../../parameters/path/post/post_id.json"
+            }
+        ],
         "requestBody": {
-            "$ref": "../../request-bodies/post/create-post.json"
+            "$ref": "../../request-bodies/post/add-tag.json"
         },
         "responses": {
-            "201": {
-                "$ref": "../../responses/post/create-post.json"
+            "200": {
+                "$ref": "../../responses/post/add-tag.json"
             },
             "400": {
                 "$ref": "../../responses/api-responses/400.json"
@@ -31,6 +36,9 @@
             },
             "404": {
                 "$ref": "../../responses/api-responses/404.json"
+            },
+            "409": {
+                "$ref": "../../responses/api-responses/409.json"
             },
             "500": {
                 "$ref": "../../responses/api-responses/500.json"
