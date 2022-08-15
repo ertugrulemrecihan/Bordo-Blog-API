@@ -8,7 +8,7 @@ const paramIdValidator = require('../../middlewares/paramsIdValidator');
 const schemas = require('../../validations/address');
 
 router
-    .route('/getAll')
+    .route('/get-all')
     .get(
         authenticate,
         authorization('Admin'),

@@ -7,27 +7,27 @@ const paramIdValidator = require('../middlewares/paramsIdValidator');
 const schemas = require('../validations/address');
 
 router
-    .route('/getAll/countries')
+    .route('/get-all/country')
     .get(
         authenticate,
         controller.getAllCountries
     );
 router
-    .route('/getAll/cities/:countryId')
+    .route('/get-all/city/:countryId')
     .get(
         authenticate,
         paramIdValidator,
         controller.getAllCitiesByCountryId
     );
 router
-    .route('/getAll/districts/:cityId')
+    .route('/get-all/district/:cityId')
     .get(
         authenticate,
         paramIdValidator,
         controller.getAllDistrictsByCityId
     );
 router
-    .route('/getAll/my')
+    .route('/get-all/my')
     .get(
         authenticate,
         controller.getAllMyAddresses

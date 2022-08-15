@@ -170,7 +170,7 @@ class AddressController extends BaseController {
         new ApiDataSuccess(
             response,
             'Address created successfully',
-            httpStatus.OK
+            httpStatus.CREATED
         ).place(res);
 
         return next();
@@ -226,7 +226,7 @@ class AddressController extends BaseController {
         new ApiDataSuccess(
             response,
             'Address created successfully',
-            httpStatus.OK
+            httpStatus.CREATED
         ).place(res);
 
         return next();
@@ -318,8 +318,8 @@ class AddressController extends BaseController {
         if (!response) {
             return next(
                 new ApiError(
-                    'Address update failed',
-                    httpStatus.INTERNAL_SERVER_ERROR
+                    'Address not found',
+                    httpStatus.NOT_FOUND
                 )
             );
         }
@@ -343,8 +343,8 @@ class AddressController extends BaseController {
         if (!response) {
             return next(
                 new ApiError(
-                    'Address deletion failed',
-                    httpStatus.INTERNAL_SERVER_ERROR
+                    'Address not found',
+                    httpStatus.NOT_FOUND
                 )
             );
         }
