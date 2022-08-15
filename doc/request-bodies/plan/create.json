@@ -1,0 +1,22 @@
+{
+    "description": "",
+    "content": {
+        "application/json": {
+            "schema": {
+                "allOf": [
+                    {
+                        "$ref": "../../schemas/plan/other/plan.json"
+                    },
+                    {
+                        "required": [
+                            "name",
+                            "description",
+                            "price",
+                            "right_to_view"
+                        ]
+                    }
+                ]
+            }
+        }
+    }
+}

@@ -1,0 +1,53 @@
+{
+    "allOf": [
+        {
+            "type": "object",
+                "properties": {
+                    "name": {
+                        "title": "Plan name",
+                        "description": "Plan name",
+                        "type": "string",
+                        "minLength": 3,
+                        "maxLength": 150,
+                        "example": "Basic Plan"
+                    }
+                }
+        },
+        {
+            "type": "object",
+                "properties": {
+                    "description": {
+                        "title": "Plan description",
+                        "description": "Plan description",
+                        "type": "string",
+                        "minLength": 3,
+                        "maxLength": 350
+                    }
+                }
+        },
+        {
+            "type": "object",
+                "properties": {
+                    "price": {
+                        "title": "Plan price",
+                        "description": "Plan price",
+                        "type": "number",
+                        "minLength": 0.0,
+                        "example": "999.90"
+                    }
+                }
+        },
+        {
+            "type": "object",
+                "properties": {
+                    "right_to_view": {
+                        "title": "Number of post view rights",
+                        "description": "Number of post view rights",
+                        "type": "number",
+                        "minLength": 1,
+                        "example": "50"
+                    }
+                }
+        }
+    ]
+}

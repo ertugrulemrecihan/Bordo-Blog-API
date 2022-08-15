@@ -40,6 +40,10 @@
     {
       "name": "Roles (Only Admins)",
       "description": "User roles endpoints"
+    },
+    {
+      "name": "Plans (Only Admins)",
+      "description": "Plan endpoints"
     }
   ],
   "paths": {
@@ -4113,6 +4117,369 @@
         "responses": {
           "200": {
             "$ref": "#/paths/~1admin~1roles~1update~1%7BroleId%7D/patch/responses/200"
+          },
+          "400": {
+            "$ref": "#/paths/~1users~1login/post/responses/400"
+          },
+          "401": {
+            "$ref": "#/paths/~1users~1logout/post/responses/401"
+          },
+          "403": {
+            "$ref": "#/paths/~1users~1logout/post/responses/403"
+          },
+          "404": {
+            "$ref": "#/paths/~1users~1login/post/responses/404"
+          }
+        }
+      }
+    },
+    "/admin/plans/get-all": {
+      "summary": "",
+      "description": "",
+      "get": {
+        "tags": [
+          "Plans (Only Admins)"
+        ],
+        "summary": "Get all plans",
+        "description": "Get all plans",
+        "operationId": "plans.admin-get-all",
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "allOf": [
+                    {
+                      "$ref": "#/paths/~1users~1logout/post/responses/200/content/application~1json/schema"
+                    },
+                    {
+                      "type": "object",
+                      "properties": {
+                        "data": {
+                          "type": "array",
+                          "items": {
+                            "$ref": "#/paths/~1admin~1plans~1update~1%7BplanId%7D/patch/requestBody/content/application~1json/schema"
+                          }
+                        }
+                      }
+                    }
+                  ]
+                }
+              }
+            }
+          },
+          "400": {
+            "$ref": "#/paths/~1users~1login/post/responses/400"
+          },
+          "401": {
+            "$ref": "#/paths/~1users~1logout/post/responses/401"
+          },
+          "403": {
+            "$ref": "#/paths/~1users~1logout/post/responses/403"
+          }
+        }
+      }
+    },
+    "/admin/plans/get/{planId}": {
+      "summary": "",
+      "description": "",
+      "get": {
+        "tags": [
+          "Plans (Only Admins)"
+        ],
+        "summary": "Get plan by planId",
+        "description": "Get plan by planId",
+        "operationId": "plans.admin-get",
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "planId",
+            "schema": {
+              "type": "string"
+            },
+            "required": true,
+            "description": "Plan id",
+            "length": 24
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "allOf": [
+                    {
+                      "$ref": "#/paths/~1users~1logout/post/responses/200/content/application~1json/schema"
+                    },
+                    {
+                      "type": "object",
+                      "properties": {
+                        "data": {
+                          "$ref": "#/paths/~1admin~1plans~1update~1%7BplanId%7D/patch/requestBody/content/application~1json/schema"
+                        }
+                      }
+                    }
+                  ]
+                }
+              }
+            }
+          },
+          "400": {
+            "$ref": "#/paths/~1users~1login/post/responses/400"
+          },
+          "401": {
+            "$ref": "#/paths/~1users~1logout/post/responses/401"
+          },
+          "403": {
+            "$ref": "#/paths/~1users~1logout/post/responses/403"
+          },
+          "404": {
+            "$ref": "#/paths/~1users~1login/post/responses/404"
+          }
+        }
+      }
+    },
+    "/admin/plans/create": {
+      "summary": "",
+      "description": "",
+      "post": {
+        "tags": [
+          "Plans (Only Admins)"
+        ],
+        "summary": "Create plan",
+        "description": "Create plan",
+        "operationId": "plans.admin-create",
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "requestBody": {
+          "description": "",
+          "content": {
+            "application/json": {
+              "schema": {
+                "allOf": [
+                  {
+                    "$ref": "#/paths/~1admin~1plans~1update~1%7BplanId%7D/patch/requestBody/content/application~1json/schema"
+                  },
+                  {
+                    "required": [
+                      "name",
+                      "description",
+                      "price",
+                      "right_to_view"
+                    ]
+                  }
+                ]
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "allOf": [
+                    {
+                      "$ref": "#/paths/~1users~1logout/post/responses/200/content/application~1json/schema"
+                    },
+                    {
+                      "type": "object",
+                      "properties": {
+                        "data": {
+                          "$ref": "#/paths/~1admin~1plans~1update~1%7BplanId%7D/patch/requestBody/content/application~1json/schema"
+                        }
+                      }
+                    }
+                  ]
+                }
+              }
+            }
+          },
+          "400": {
+            "$ref": "#/paths/~1users~1login/post/responses/400"
+          },
+          "401": {
+            "$ref": "#/paths/~1users~1logout/post/responses/401"
+          },
+          "403": {
+            "$ref": "#/paths/~1users~1logout/post/responses/403"
+          },
+          "409": {
+            "$ref": "#/paths/~1users~1register/post/responses/409"
+          },
+          "500": {
+            "$ref": "#/paths/~1users~1login/post/responses/500"
+          }
+        }
+      }
+    },
+    "/admin/plans/update/{planId}": {
+      "summary": "",
+      "description": "",
+      "patch": {
+        "tags": [
+          "Plans (Only Admins)"
+        ],
+        "summary": "Update role",
+        "description": "Update role",
+        "operationId": "roles.admin-update",
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "parameters": [
+          {
+            "$ref": "#/paths/~1admin~1plans~1get~1%7BplanId%7D/get/parameters/0"
+          }
+        ],
+        "requestBody": {
+          "description": "",
+          "content": {
+            "application/json": {
+              "schema": {
+                "allOf": [
+                  {
+                    "type": "object",
+                    "properties": {
+                      "name": {
+                        "title": "Plan name",
+                        "description": "Plan name",
+                        "type": "string",
+                        "minLength": 3,
+                        "maxLength": 150,
+                        "example": "Basic Plan"
+                      }
+                    }
+                  },
+                  {
+                    "type": "object",
+                    "properties": {
+                      "description": {
+                        "title": "Plan description",
+                        "description": "Plan description",
+                        "type": "string",
+                        "minLength": 3,
+                        "maxLength": 350
+                      }
+                    }
+                  },
+                  {
+                    "type": "object",
+                    "properties": {
+                      "price": {
+                        "title": "Plan price",
+                        "description": "Plan price",
+                        "type": "number",
+                        "minLength": 0,
+                        "example": "999.90"
+                      }
+                    }
+                  },
+                  {
+                    "type": "object",
+                    "properties": {
+                      "right_to_view": {
+                        "title": "Number of post view rights",
+                        "description": "Number of post view rights",
+                        "type": "number",
+                        "minLength": 1,
+                        "example": "50"
+                      }
+                    }
+                  }
+                ]
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "allOf": [
+                    {
+                      "$ref": "#/paths/~1users~1logout/post/responses/200/content/application~1json/schema"
+                    },
+                    {
+                      "type": "object",
+                      "properties": {
+                        "data": {
+                          "$ref": "#/paths/~1admin~1plans~1update~1%7BplanId%7D/patch/requestBody/content/application~1json/schema"
+                        }
+                      }
+                    }
+                  ]
+                }
+              }
+            }
+          },
+          "400": {
+            "$ref": "#/paths/~1users~1login/post/responses/400"
+          },
+          "401": {
+            "$ref": "#/paths/~1users~1logout/post/responses/401"
+          },
+          "403": {
+            "$ref": "#/paths/~1users~1logout/post/responses/403"
+          },
+          "404": {
+            "$ref": "#/paths/~1users~1login/post/responses/404"
+          },
+          "409": {
+            "$ref": "#/paths/~1users~1register/post/responses/409"
+          },
+          "500": {
+            "$ref": "#/paths/~1users~1login/post/responses/500"
+          }
+        }
+      }
+    },
+    "/admin/plans/delete/{planId}": {
+      "summary": "",
+      "description": "",
+      "delete": {
+        "tags": [
+          "Plans (Only Admins)"
+        ],
+        "summary": "Delete plan",
+        "description": "Delete plan",
+        "operationId": "plans.admin-delete",
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "parameters": [
+          {
+            "$ref": "#/paths/~1admin~1plans~1get~1%7BplanId%7D/get/parameters/0"
+          }
+        ],
+        "responses": {
+          "200": {
+            "$ref": "#/paths/~1admin~1plans~1update~1%7BplanId%7D/patch/responses/200"
           },
           "400": {
             "$ref": "#/paths/~1users~1login/post/responses/400"
