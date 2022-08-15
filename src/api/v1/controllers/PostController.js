@@ -199,7 +199,12 @@ class PostController extends BaseController {
             return next(new ApiError('User not found', httpStatus.NOT_FOUND));
         }
 
-        const isExists = post.viewers.includes(user._id);
+        const isExists = post.viewers.some(
+            (u) => u._id.toString() == user._id.toString()
+        );
+        console.log(isExists);
+        console.log(post.viewers);
+        console.log(user._id);
 
         if (isExists) {
             return next(
