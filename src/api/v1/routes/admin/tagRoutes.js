@@ -9,7 +9,7 @@ const schemas = require('../../validations/tag');
 
 router
     .route('/create')
-    .post(
+    .put(
         authenticate,
         authorize('Admin'),
         bodyValidator(schemas.createValidation),

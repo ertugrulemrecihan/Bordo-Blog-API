@@ -12,7 +12,11 @@ router
     .get(authenticate, controller.fetchAllMyPosts); // ! FIXME: Abone olmalı
 router
     .route('/get/my/:id')
-    .get(authenticate, controller.fetchOneMyPost); // ! FIXME: Abone olmalı
+    .get(
+        authenticate,
+        paramIdValidator,
+        controller.fetchOneMyPost
+    ); // ! FIXME: Abone olmalı
 router
     .route('/getAll/previews')
     .get(controller.fetchAllPreviews);

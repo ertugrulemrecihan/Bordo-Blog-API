@@ -97,7 +97,7 @@ class BaseController {
             new ApiDataSuccess(
                 response,
                 `${this.singleModelName} created successfully`,
-                httpStatus.OK
+                httpStatus.CREATED
             ).place(res);
 
             return next();
