@@ -27,7 +27,7 @@ class TagController extends BaseController {
             new ApiDataSuccess(
                 response,
                 'Tag created successfully',
-                httpStatus.OK
+                httpStatus.CREATED
             ).place(res);
 
             return next();
