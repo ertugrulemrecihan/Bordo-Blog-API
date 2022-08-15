@@ -16,27 +16,7 @@ const updateValidation = Joi.object({
     address_2: Joi.string().min(10).max(200),
 });
 
-const createAdminValidation = Joi.object({
-    user: Joi.string().required(),
-    city: Joi.string().required(),
-    country: Joi.string().required(),
-    district: Joi.string().required(),
-    address_1: Joi.string().required().min(10).max(200),
-    address_2: Joi.string().min(10).max(200),
-});
-
-const updateAdminValidation = Joi.object({
-    user: Joi.string(),
-    city: Joi.string(),
-    country: Joi.string(),
-    district: Joi.string(),
-    address_1: Joi.string().min(10).max(200),
-    address_2: Joi.string().min(10).max(200),
-});
-
 module.exports = {
     createValidation,
     updateValidation,
-    createAdminValidation,
-    updateAdminValidation,
 };

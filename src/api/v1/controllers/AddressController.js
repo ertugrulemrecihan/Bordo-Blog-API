@@ -1,7 +1,6 @@
 const httpStatus = require('http-status');
 const ApiError = require('../responses/error/apiError');
 const ApiDataSuccess = require('../responses/success/apiDataSuccess');
-const userService = require('../services/UserService');
 const addressService = require('../services/AddressService');
 const countryService = require('../services/CountryService');
 const cityService = require('../services/CityService');
@@ -115,68 +114,6 @@ class AddressController extends BaseController {
     }
 
     // ! FIXME - Refactor Method
-    async createAddressForAdmin(req, res, next) {
-        const userId = req.body.user;
-        const countryId = req.body.country;
-        const cityId = req.body.city;
-        const districtId = req.body.district;
-
-        const userResult = await userService.fetchOneById(userId);
-
-        if (!userResult) {
-            return next(new ApiError('User not found', httpStatus.NOT_FOUND));
-        }
-
-        const countryResult = await countryService.fetchOneById(countryId);
-
-        if (!countryResult) {
-            return next(
-                new ApiError('Country not found', httpStatus.NOT_FOUND)
-            );
-        }
-
-        const cityResult = await cityService.fetchOneByQuery({
-            _id: cityId,
-            country: countryId,
-        });
-
-        if (!cityResult) {
-            return next(new ApiError('City not found', httpStatus.NOT_FOUND));
-        }
-
-        const districtResult = await districtService.fetchOneByQuery({
-            _id: districtId,
-            country: countryId,
-            city: cityId,
-        });
-
-        if (!districtResult) {
-            return next(
-                new ApiError('District not found', httpStatus.NOT_FOUND)
-            );
-        }
-
-        const response = await addressService.create(req.body);
-
-        if (!response) {
-            return next(
-                new ApiError(
-                    'Address creation failed',
-                    httpStatus.INTERNAL_SERVER_ERROR
-                )
-            );
-        }
-
-        new ApiDataSuccess(
-            response,
-            'Address created successfully',
-            httpStatus.CREATED
-        ).place(res);
-
-        return next();
-    }
-
-    // ! FIXME - Refactor Method
     async createMyAddress(req, res, next) {
         req.body.user = req.user._id;
         const countryId = req.body.country;
@@ -232,82 +169,6 @@ class AddressController extends BaseController {
         return next();
     }
 
-    async updateAddressByParamsIdForAdmin(req, res, next) {
-        const userId = req.body?.user;
-        const countryId = req.body?.country;
-        const cityId = req.body?.city;
-        const districtId = req.body?.district;
-
-        if (userId) {
-            const userResult = await userService.fetchOneById(userId);
-
-            if (!userResult) {
-                return next(
-                    new ApiError('User not found', httpStatus.NOT_FOUND)
-                );
-            }
-        }
-
-        if (countryId) {
-            const countryResult = await countryService.fetchOneById(countryId);
-
-            if (!countryResult) {
-                return next(
-                    new ApiError('Country not found', httpStatus.NOT_FOUND)
-                );
-            }
-        }
-
-        if (cityId) {
-            const cityResult = await cityService.fetchOneById(cityId);
-
-            if (!cityResult) {
-                return next(
-                    new ApiError('City not found', httpStatus.NOT_FOUND)
-                );
-            }
-        }
-
-        if (districtId) {
-            const districtResult = await districtService.fetchOneById(
-                districtId
-            );
-
-            if (!districtResult) {
-                return next(
-                    new ApiError('District not found', httpStatus.NOT_FOUND)
-                );
-            }
-        }
-
-        // ! FIXME - İl/ilçe değişimi yapılıyorsa ilgili il
-        // ! varolan veya yeni verilen ülkenin bir ili mi,
-        // ! ilgili ilçe varolan veya yeni verilen ilin bir ilçesi mi
-        // ! kontrolü yapılmalı
-
-        const response = await addressService.updateById(
-            req.params.id,
-            req.body
-        );
-
-        if (!response) {
-            return next(
-                new ApiError(
-                    'Address update failed',
-                    httpStatus.INTERNAL_SERVER_ERROR
-                )
-            );
-        }
-
-        new ApiDataSuccess(
-            response,
-            'Address updated successfully',
-            httpStatus.OK
-        ).place(res);
-
-        return next();
-    }
-
     async updateMyAddress(req, res, next) {
         const userId = req.user._id;
         const response = await addressService.updateByQuery(
@@ -317,10 +178,7 @@ class AddressController extends BaseController {
 
         if (!response) {
             return next(
-                new ApiError(
-                    'Address not found',
-                    httpStatus.NOT_FOUND
-                )
+                new ApiError('Address not found', httpStatus.NOT_FOUND)
             );
         }
 
@@ -342,10 +200,7 @@ class AddressController extends BaseController {
 
         if (!response) {
             return next(
-                new ApiError(
-                    'Address not found',
-                    httpStatus.NOT_FOUND
-                )
+                new ApiError('Address not found', httpStatus.NOT_FOUND)
             );
         }
 
