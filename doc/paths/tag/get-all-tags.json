@@ -5,24 +5,12 @@
         "tags": [
             "Tags"
         ],
-        "summary": "Get All Tag",
-        "description": "Get All Tag",
+        "summary": "Get all tag",
+        "description": "Get all tag",
         "operationId": "tags.get-all-tag",
         "responses": {
             "200": {
                 "$ref": "../../responses/tag/get-all-tags.json"
-            },
-            "400": {
-                "$ref": "../../responses/api-responses/400.json"
-            },
-            "401": {
-                "$ref": "../../responses/api-responses/401.json"
-            },
-            "403": {
-                "$ref": "../../responses/api-responses/403.json"
-            },
-            "500": {
-                "$ref": "../../responses/api-responses/500.json"
             }
         }
     }

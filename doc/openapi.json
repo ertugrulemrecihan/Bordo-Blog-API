@@ -62,19 +62,19 @@
         "/user/profile": {
             "$ref": "./paths/user/profile.json"
         },
-        "/tag/getAll": {
+        "/tags/get-all": {
             "$ref": "./paths/tag/get-all-tags.json"
         },
-        "/tag/get/{tagId}": {
+        "/tags/get/{tagId}": {
             "$ref": "./paths/tag/get-tag-by-id.json"
         },
-        "/admin/tag/create": {
+        "/admin/tags/create": {
             "$ref": "./paths/admin/tag/create-tag.json"
         },
-        "/admin/tag/update/{tagId}": {
+        "/admin/tags/update/{tagId}": {
             "$ref": "./paths/admin/tag/update-tag.json"
         },
-        "/admin/tag/delete/{tagId}": {
+        "/admin/tags/delete/{tagId}": {
             "$ref": "./paths/admin/tag/delete-tag.json"
         },
         "/post/getAll/my": {
