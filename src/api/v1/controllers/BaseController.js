@@ -120,45 +120,85 @@ class BaseController {
     };
 
     updateByQuery = async (req, res, next) => {
-        const response = await this.service.updateByQuery(req.query, req.body);
+        try {
+            const response = await this.service.updateByQuery(
+                req.query,
+                req.body
+            );
 
-        if (!response) {
+            if (!response) {
+                return next(
+                    new ApiError(
+                        `${this.singleModelName} update failed`,
+                        httpStatus.INTERNAL_SERVER_ERROR
+                    )
+                );
+            }
+
+            new ApiDataSuccess(
+                response,
+                `${this.singleModelName} updated successfully`,
+                httpStatus.OK
+            ).place(res);
+
+            return next();
+        } catch (err) {
+            if (err.code === 11000) {
+                return next(
+                    new ApiError(
+                        `${this.singleModelName} already exists`,
+                        httpStatus.CONFLICT
+                    )
+                );
+            }
             return next(
                 new ApiError(
-                    `${this.singleModelName} update failed`,
+                    `${this.singleModelName} creation failed`,
                     httpStatus.INTERNAL_SERVER_ERROR
                 )
             );
         }
-
-        new ApiDataSuccess(
-            response,
-            `${this.singleModelName} updated successfully`,
-            httpStatus.OK
-        ).place(res);
-
-        return next();
     };
 
     updateByParamsId = async (req, res, next) => {
-        const response = await this.service.updateById(req.params.id, req.body);
+        try {
+            const response = await this.service.updateById(
+                req.params.id,
+                req.body
+            );
 
-        if (!response) {
+            if (!response) {
+                return next(
+                    new ApiError(
+                        `${this.singleModelName} update failed`,
+                        httpStatus.INTERNAL_SERVER_ERROR
+                    )
+                );
+            }
+
+            new ApiDataSuccess(
+                response,
+                `${this.singleModelName} updated successfully`,
+                httpStatus.OK
+            ).place(res);
+
+            return next();
+        } catch (err) {
+            if (err.code === 11000) {
+                return next(
+                    new ApiError(
+                        `${this.singleModelName} already exists`,
+                        httpStatus.CONFLICT
+                    )
+                );
+            }
             return next(
                 new ApiError(
-                    `${this.singleModelName} update failed`,
+                    `${this.singleModelName} creation failed`,
                     httpStatus.INTERNAL_SERVER_ERROR
                 )
             );
         }
-
-        new ApiDataSuccess(
-            response,
-            `${this.singleModelName} updated successfully`,
-            httpStatus.OK
-        ).place(res);
-
-        return next();
     };
 
     deleteByQuery = async (req, res, next) => {
@@ -167,8 +207,8 @@ class BaseController {
         if (!response) {
             return next(
                 new ApiError(
-                    `${this.singleModelName} deletion failed`,
-                    httpStatus.INTERNAL_SERVER_ERROR
+                    `${this.singleModelName} not found`,
+                    httpStatus.NOT_FOUND
                 )
             );
         }
@@ -188,8 +228,8 @@ class BaseController {
         if (!response) {
             return next(
                 new ApiError(
-                    `${this.singleModelName} deletion failed`,
-                    httpStatus.INTERNAL_SERVER_ERROR
+                    `${this.singleModelName} not found`,
+                    httpStatus.NOT_FOUND
                 )
             );
         }
