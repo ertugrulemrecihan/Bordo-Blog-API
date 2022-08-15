@@ -36,6 +36,10 @@
         {
             "name": "Addresses",
             "description": "Address endpoints"
+        },
+        {
+            "name": "Roles (Only Admins)",
+            "description": "User roles endpoints"
         }
     ],
     "paths": {
@@ -84,7 +88,7 @@
         "/posts/get-all/my": {
             "$ref": "./paths/post/get-all-my-post.json"
         },
-        "/post/get/my/{postId}": {
+        "/posts/get/my/{postId}": {
             "$ref": "./paths/post/get-my-post-by-id.json"
         },
         "/posts/get-all/previews": {
@@ -158,6 +162,21 @@
         },
         "/admin/addresses/get/{addressId}": {
             "$ref": "./paths/admin/address/get.json"
+        },
+        "/admin/roles/get-all": {
+            "$ref": "./paths/admin/role/get-all.json"
+        },
+        "/admin/roles/get/{roleId}": {
+            "$ref": "./paths/admin/role/get.json"
+        },
+        "/admin/roles/create": {
+            "$ref": "./paths/admin/role/create.json"
+        },
+        "/admin/roles/update/{roleId}": {
+            "$ref": "./paths/admin/role/update.json"
+        },
+        "/admin/roles/delete/{roleId}": {
+            "$ref": "./paths/admin/role/delete.json"
         }
     },
     "components": {

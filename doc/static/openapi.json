@@ -36,6 +36,10 @@
     {
       "name": "Addresses",
       "description": "Address endpoints"
+    },
+    {
+      "name": "Roles (Only Admins)",
+      "description": "User roles endpoints"
     }
   ],
   "paths": {
@@ -986,7 +990,7 @@
         }
       }
     },
-    "/post/get/my/{postId}": {
+    "/posts/get/my/{postId}": {
       "summary": "",
       "description": "",
       "get": {
@@ -1158,7 +1162,7 @@
         "operationId": "post.get-post-preview-by-id",
         "parameters": [
           {
-            "$ref": "#/paths/~1post~1get~1my~1%7BpostId%7D/get/parameters/0"
+            "$ref": "#/paths/~1posts~1get~1my~1%7BpostId%7D/get/parameters/0"
           }
         ],
         "responses": {
@@ -1420,7 +1424,7 @@
         ],
         "parameters": [
           {
-            "$ref": "#/paths/~1post~1get~1my~1%7BpostId%7D/get/parameters/0"
+            "$ref": "#/paths/~1posts~1get~1my~1%7BpostId%7D/get/parameters/0"
           }
         ],
         "responses": {
@@ -1517,7 +1521,7 @@
         ],
         "parameters": [
           {
-            "$ref": "#/paths/~1post~1get~1my~1%7BpostId%7D/get/parameters/0"
+            "$ref": "#/paths/~1posts~1get~1my~1%7BpostId%7D/get/parameters/0"
           }
         ],
         "responses": {
@@ -1611,7 +1615,7 @@
         ],
         "parameters": [
           {
-            "$ref": "#/paths/~1post~1get~1my~1%7BpostId%7D/get/parameters/0"
+            "$ref": "#/paths/~1posts~1get~1my~1%7BpostId%7D/get/parameters/0"
           }
         ],
         "requestBody": {
@@ -1731,7 +1735,7 @@
         ],
         "parameters": [
           {
-            "$ref": "#/paths/~1post~1get~1my~1%7BpostId%7D/get/parameters/0"
+            "$ref": "#/paths/~1posts~1get~1my~1%7BpostId%7D/get/parameters/0"
           }
         ],
         "requestBody": {
@@ -1978,7 +1982,7 @@
         ],
         "parameters": [
           {
-            "$ref": "#/paths/~1post~1get~1my~1%7BpostId%7D/get/parameters/0"
+            "$ref": "#/paths/~1posts~1get~1my~1%7BpostId%7D/get/parameters/0"
           }
         ],
         "requestBody": {
@@ -2106,7 +2110,7 @@
         ],
         "parameters": [
           {
-            "$ref": "#/paths/~1post~1get~1my~1%7BpostId%7D/get/parameters/0"
+            "$ref": "#/paths/~1posts~1get~1my~1%7BpostId%7D/get/parameters/0"
           }
         ],
         "responses": {
@@ -2160,7 +2164,7 @@
         ],
         "parameters": [
           {
-            "$ref": "#/paths/~1post~1get~1my~1%7BpostId%7D/get/parameters/0"
+            "$ref": "#/paths/~1posts~1get~1my~1%7BpostId%7D/get/parameters/0"
           }
         ],
         "requestBody": {
@@ -2280,7 +2284,7 @@
         ],
         "parameters": [
           {
-            "$ref": "#/paths/~1post~1get~1my~1%7BpostId%7D/get/parameters/0"
+            "$ref": "#/paths/~1posts~1get~1my~1%7BpostId%7D/get/parameters/0"
           }
         ],
         "requestBody": {
@@ -2486,7 +2490,7 @@
         ],
         "parameters": [
           {
-            "$ref": "#/paths/~1post~1get~1my~1%7BpostId%7D/get/parameters/0"
+            "$ref": "#/paths/~1posts~1get~1my~1%7BpostId%7D/get/parameters/0"
           }
         ],
         "responses": {
@@ -2577,7 +2581,7 @@
         ],
         "parameters": [
           {
-            "$ref": "#/paths/~1post~1get~1my~1%7BpostId%7D/get/parameters/0"
+            "$ref": "#/paths/~1posts~1get~1my~1%7BpostId%7D/get/parameters/0"
           }
         ],
         "responses": {
@@ -3736,6 +3740,391 @@
                 }
               }
             }
+          },
+          "400": {
+            "$ref": "#/paths/~1users~1login/post/responses/400"
+          },
+          "401": {
+            "$ref": "#/paths/~1users~1logout/post/responses/401"
+          },
+          "403": {
+            "$ref": "#/paths/~1users~1logout/post/responses/403"
+          },
+          "404": {
+            "$ref": "#/paths/~1users~1login/post/responses/404"
+          }
+        }
+      }
+    },
+    "/admin/roles/get-all": {
+      "summary": "",
+      "description": "",
+      "get": {
+        "tags": [
+          "Roles (Only Admins)"
+        ],
+        "summary": "Get all roles",
+        "description": "Get all roles",
+        "operationId": "roles.admin-get-all",
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "allOf": [
+                    {
+                      "$ref": "#/paths/~1users~1logout/post/responses/200/content/application~1json/schema"
+                    },
+                    {
+                      "type": "object",
+                      "properties": {
+                        "data": {
+                          "type": "array",
+                          "items": {
+                            "$ref": "#/paths/~1admin~1roles~1create/post/responses/201/content/application~1json/schema/allOf/1/properties/data"
+                          }
+                        }
+                      }
+                    }
+                  ]
+                }
+              }
+            }
+          },
+          "400": {
+            "$ref": "#/paths/~1users~1login/post/responses/400"
+          },
+          "401": {
+            "$ref": "#/paths/~1users~1logout/post/responses/401"
+          },
+          "403": {
+            "$ref": "#/paths/~1users~1logout/post/responses/403"
+          }
+        }
+      }
+    },
+    "/admin/roles/get/{roleId}": {
+      "summary": "",
+      "description": "",
+      "get": {
+        "tags": [
+          "Roles (Only Admins)"
+        ],
+        "summary": "Get role by roleId",
+        "description": "Get role by roleId",
+        "operationId": "roles.admin-get",
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "roleId",
+            "schema": {
+              "type": "string"
+            },
+            "required": true,
+            "description": "Role id",
+            "length": 24
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "allOf": [
+                    {
+                      "$ref": "#/paths/~1users~1logout/post/responses/200/content/application~1json/schema"
+                    },
+                    {
+                      "type": "object",
+                      "properties": {
+                        "data": {
+                          "$ref": "#/paths/~1admin~1roles~1create/post/responses/201/content/application~1json/schema/allOf/1/properties/data"
+                        }
+                      }
+                    }
+                  ]
+                }
+              }
+            }
+          },
+          "400": {
+            "$ref": "#/paths/~1users~1login/post/responses/400"
+          },
+          "401": {
+            "$ref": "#/paths/~1users~1logout/post/responses/401"
+          },
+          "403": {
+            "$ref": "#/paths/~1users~1logout/post/responses/403"
+          },
+          "404": {
+            "$ref": "#/paths/~1users~1login/post/responses/404"
+          }
+        }
+      }
+    },
+    "/admin/roles/create": {
+      "summary": "",
+      "description": "",
+      "post": {
+        "tags": [
+          "Roles (Only Admins)"
+        ],
+        "summary": "Create roles",
+        "description": "Create roles",
+        "operationId": "roles.admin-create",
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "requestBody": {
+          "description": "",
+          "content": {
+            "application/json": {
+              "schema": {
+                "allOf": [
+                  {
+                    "type": "object",
+                    "properties": {
+                      "name": {
+                        "title": "Role name",
+                        "description": "Role name",
+                        "type": "string",
+                        "minLength": 3,
+                        "maxLength": 50
+                      }
+                    }
+                  },
+                  {
+                    "type": "object",
+                    "properties": {
+                      "description": {
+                        "title": "Role description",
+                        "description": "Role description",
+                        "type": "string",
+                        "minLength": 3,
+                        "maxLength": 150
+                      }
+                    }
+                  },
+                  {
+                    "required": [
+                      "name",
+                      "description"
+                    ]
+                  }
+                ]
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "allOf": [
+                    {
+                      "$ref": "#/paths/~1users~1logout/post/responses/200/content/application~1json/schema"
+                    },
+                    {
+                      "type": "object",
+                      "properties": {
+                        "data": {
+                          "allOf": [
+                            {
+                              "$ref": "#/paths/~1posts~1create/post/responses/201/content/application~1json/schema/allOf/1/properties/data/allOf/0"
+                            },
+                            {
+                              "type": "object",
+                              "properties": {
+                                "name": {
+                                  "title": "Role name",
+                                  "description": "Role name",
+                                  "type": "string",
+                                  "minLength": 3,
+                                  "maxLength": 50
+                                }
+                              }
+                            },
+                            {
+                              "type": "object",
+                              "properties": {
+                                "description": {
+                                  "title": "Role description",
+                                  "description": "Role description",
+                                  "type": "string",
+                                  "minLength": 3,
+                                  "maxLength": 150
+                                }
+                              }
+                            }
+                          ]
+                        }
+                      }
+                    }
+                  ]
+                }
+              }
+            }
+          },
+          "400": {
+            "$ref": "#/paths/~1users~1login/post/responses/400"
+          },
+          "401": {
+            "$ref": "#/paths/~1users~1logout/post/responses/401"
+          },
+          "403": {
+            "$ref": "#/paths/~1users~1logout/post/responses/403"
+          },
+          "409": {
+            "$ref": "#/paths/~1users~1register/post/responses/409"
+          },
+          "500": {
+            "$ref": "#/paths/~1users~1login/post/responses/500"
+          }
+        }
+      }
+    },
+    "/admin/roles/update/{roleId}": {
+      "summary": "",
+      "description": "",
+      "patch": {
+        "tags": [
+          "Roles (Only Admins)"
+        ],
+        "summary": "Update roles",
+        "description": "Update roles",
+        "operationId": "roles.admin-update",
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "parameters": [
+          {
+            "$ref": "#/paths/~1admin~1roles~1get~1%7BroleId%7D/get/parameters/0"
+          }
+        ],
+        "requestBody": {
+          "description": "",
+          "content": {
+            "application/json": {
+              "schema": {
+                "allOf": [
+                  {
+                    "type": "object",
+                    "properties": {
+                      "name": {
+                        "title": "Role name",
+                        "description": "Role name",
+                        "type": "string",
+                        "minLength": 3,
+                        "maxLength": 50
+                      }
+                    }
+                  },
+                  {
+                    "type": "object",
+                    "properties": {
+                      "description": {
+                        "title": "Role description",
+                        "description": "Role description",
+                        "type": "string",
+                        "minLength": 3,
+                        "maxLength": 150
+                      }
+                    }
+                  }
+                ]
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "allOf": [
+                    {
+                      "$ref": "#/paths/~1users~1logout/post/responses/200/content/application~1json/schema"
+                    },
+                    {
+                      "type": "object",
+                      "properties": {
+                        "data": {
+                          "$ref": "#/paths/~1admin~1roles~1create/post/responses/201/content/application~1json/schema/allOf/1/properties/data"
+                        }
+                      }
+                    }
+                  ]
+                }
+              }
+            }
+          },
+          "400": {
+            "$ref": "#/paths/~1users~1login/post/responses/400"
+          },
+          "401": {
+            "$ref": "#/paths/~1users~1logout/post/responses/401"
+          },
+          "403": {
+            "$ref": "#/paths/~1users~1logout/post/responses/403"
+          },
+          "404": {
+            "$ref": "#/paths/~1users~1login/post/responses/404"
+          },
+          "409": {
+            "$ref": "#/paths/~1users~1register/post/responses/409"
+          },
+          "500": {
+            "$ref": "#/paths/~1users~1login/post/responses/500"
+          }
+        }
+      }
+    },
+    "/admin/roles/delete/{roleId}": {
+      "summary": "",
+      "description": "",
+      "delete": {
+        "tags": [
+          "Roles (Only Admins)"
+        ],
+        "summary": "Delete role",
+        "description": "Delete role",
+        "operationId": "roles.admin-delete",
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "parameters": [
+          {
+            "$ref": "#/paths/~1admin~1roles~1get~1%7BroleId%7D/get/parameters/0"
+          }
+        ],
+        "responses": {
+          "200": {
+            "$ref": "#/paths/~1admin~1roles~1update~1%7BroleId%7D/patch/responses/200"
           },
           "400": {
             "$ref": "#/paths/~1users~1login/post/responses/400"
