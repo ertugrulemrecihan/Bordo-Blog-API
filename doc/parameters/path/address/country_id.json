@@ -1,10 +1,10 @@
 {
     "in": "path",
-    "name": "tagId",
+    "name": "countryId",
     "schema": {
         "type": "string"
     },
     "required": true,
-    "description": "Tag id",
+    "description": "Country id",
     "length": 24
 }

@@ -1,0 +1,40 @@
+{
+    "allOf": [
+        {
+            "type": "object",
+            "properties": {
+                "country": {
+                    "title": "MongoDb Id of the country",
+                    "description": "MongoDb Id of the country",
+                    "type": "string",
+                    "length": 24,
+                    "example": "62f8d2787eb0550b2715c84a"
+                }
+            }
+        },
+        {
+            "type": "object",
+            "properties": {
+                "city": {
+                    "title": "MongoDb Id of the city",
+                    "description": "MongoDb Id of the city",
+                    "type": "string",
+                    "length": 24,
+                    "example": "62f8d2787eb0550b2715c84e"
+                }
+            }
+        },
+        {
+            "type": "object",
+            "properties": {
+                "district": {
+                    "title": "MongoDb Id of the district",
+                    "description": "MongoDb Id of the district",
+                    "type": "string",
+                    "length": 24,
+                    "example": "62f8d2797eb0550b2715c852"
+                }
+            }
+        }
+    ]
+}

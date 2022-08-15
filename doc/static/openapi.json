@@ -32,6 +32,10 @@
     {
       "name": "Posts",
       "description": "Post endpoints"
+    },
+    {
+      "name": "Addresses",
+      "description": "Address endpoints"
     }
   ],
   "paths": {
@@ -646,7 +650,8 @@
               "type": "string"
             },
             "required": true,
-            "description": ""
+            "description": "Tag id",
+            "length": 24
           }
         ],
         "responses": {
@@ -823,6 +828,9 @@
           },
           "403": {
             "$ref": "#/paths/~1users~1logout/post/responses/403"
+          },
+          "404": {
+            "$ref": "#/paths/~1users~1login/post/responses/404"
           },
           "409": {
             "$ref": "#/paths/~1users~1register/post/responses/409"
@@ -1001,7 +1009,8 @@
               "type": "string"
             },
             "required": true,
-            "description": ""
+            "description": "Post id",
+            "length": 24
           }
         ],
         "responses": {
@@ -1245,7 +1254,7 @@
                               "type": "object",
                               "properties": {
                                 "_id": {
-                                  "title": "Document MongoDb Id",
+                                  "title": "MongoDb Id of the document",
                                   "description": "MongoDb Id of the document",
                                   "type": "string",
                                   "example": "62ed69679c045c97a63390a4"
@@ -2622,6 +2631,1104 @@
                               }
                             ]
                           }
+                        }
+                      }
+                    }
+                  ]
+                }
+              }
+            }
+          },
+          "400": {
+            "$ref": "#/paths/~1users~1login/post/responses/400"
+          },
+          "401": {
+            "$ref": "#/paths/~1users~1logout/post/responses/401"
+          },
+          "403": {
+            "$ref": "#/paths/~1users~1logout/post/responses/403"
+          },
+          "404": {
+            "$ref": "#/paths/~1users~1login/post/responses/404"
+          }
+        }
+      }
+    },
+    "/addresses/get-all/country": {
+      "summary": "",
+      "description": "",
+      "get": {
+        "tags": [
+          "Addresses"
+        ],
+        "summary": "Get all countries",
+        "description": "Get all countries",
+        "operationId": "address.get-all-country",
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "allOf": [
+                    {
+                      "$ref": "#/paths/~1users~1logout/post/responses/200/content/application~1json/schema"
+                    },
+                    {
+                      "type": "object",
+                      "properties": {
+                        "data": {
+                          "type": "array",
+                          "items": {
+                            "type": "object",
+                            "properties": {
+                              "_id": {
+                                "title": "MongoDb Id of the country",
+                                "description": "MongoDb Id of the country",
+                                "type": "string",
+                                "length": 24,
+                                "example": "62ed69679c045c97a63390a4"
+                              },
+                              "name": {
+                                "title": "Country name",
+                                "description": "Country name",
+                                "type": "string",
+                                "minLength": 3,
+                                "maxLength": 80,
+                                "example": "Türkiye"
+                              }
+                            }
+                          }
+                        }
+                      }
+                    }
+                  ]
+                }
+              }
+            }
+          },
+          "400": {
+            "$ref": "#/paths/~1users~1login/post/responses/400"
+          },
+          "401": {
+            "$ref": "#/paths/~1users~1logout/post/responses/401"
+          },
+          "403": {
+            "$ref": "#/paths/~1users~1logout/post/responses/403"
+          }
+        }
+      }
+    },
+    "/addresses/get-all/city/{countryId}": {
+      "summary": "",
+      "description": "",
+      "get": {
+        "tags": [
+          "Addresses"
+        ],
+        "summary": "Get all cities by country id",
+        "description": "Get all cities by country id",
+        "operationId": "address.get-all-city",
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "countryId",
+            "schema": {
+              "type": "string"
+            },
+            "required": true,
+            "description": "Country id",
+            "length": 24
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "allOf": [
+                    {
+                      "$ref": "#/paths/~1users~1logout/post/responses/200/content/application~1json/schema"
+                    },
+                    {
+                      "type": "object",
+                      "properties": {
+                        "data": {
+                          "allOf": [
+                            {
+                              "type": "object",
+                              "properties": {
+                                "country": {
+                                  "$ref": "#/paths/~1addresses~1get-all~1country/get/responses/200/content/application~1json/schema/allOf/1/properties/data/items"
+                                }
+                              }
+                            },
+                            {
+                              "type": "object",
+                              "properties": {
+                                "cities": {
+                                  "type": "array",
+                                  "items": {
+                                    "$ref": "#/paths/~1addresses~1get-all~1district~1%7BcityId%7D/get/responses/200/content/application~1json/schema/allOf/1/properties/data/allOf/0/properties/city"
+                                  }
+                                }
+                              }
+                            }
+                          ]
+                        }
+                      }
+                    }
+                  ]
+                }
+              }
+            }
+          },
+          "400": {
+            "$ref": "#/paths/~1users~1login/post/responses/400"
+          },
+          "401": {
+            "$ref": "#/paths/~1users~1logout/post/responses/401"
+          },
+          "403": {
+            "$ref": "#/paths/~1users~1logout/post/responses/403"
+          },
+          "404": {
+            "$ref": "#/paths/~1users~1login/post/responses/404"
+          }
+        }
+      }
+    },
+    "/addresses/get-all/district/{cityId}": {
+      "summary": "",
+      "description": "",
+      "get": {
+        "tags": [
+          "Addresses"
+        ],
+        "summary": "Get all districts by city id",
+        "description": "Get all districts by city id",
+        "operationId": "address.get-all-district",
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "cityId",
+            "schema": {
+              "type": "string"
+            },
+            "required": true,
+            "description": "City id",
+            "length": 24
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "allOf": [
+                    {
+                      "$ref": "#/paths/~1users~1logout/post/responses/200/content/application~1json/schema"
+                    },
+                    {
+                      "type": "object",
+                      "properties": {
+                        "data": {
+                          "allOf": [
+                            {
+                              "type": "object",
+                              "properties": {
+                                "city": {
+                                  "type": "object",
+                                  "properties": {
+                                    "_id": {
+                                      "title": "MongoDb Id of the city",
+                                      "description": "MongoDb Id of the city",
+                                      "type": "string",
+                                      "length": 24,
+                                      "example": "62f8d2ed7eb0550b2715cf1f"
+                                    },
+                                    "country": {
+                                      "title": "MongoDb Id of the country",
+                                      "description": "MongoDb Id of the country",
+                                      "type": "string",
+                                      "length": 24,
+                                      "example": "62ed69679c045c97a63390a4"
+                                    },
+                                    "zip_code": {
+                                      "title": "City zip code",
+                                      "description": "City zip code",
+                                      "type": "string",
+                                      "length": 5,
+                                      "example": "34000"
+                                    },
+                                    "name": {
+                                      "title": "City name",
+                                      "description": "City name",
+                                      "type": "string",
+                                      "minLength": 3,
+                                      "maxLength": 30,
+                                      "example": "İstanbul"
+                                    },
+                                    "region": {
+                                      "title": "City region",
+                                      "description": "City region",
+                                      "type": "string",
+                                      "minLength": 3,
+                                      "maxLength": 60,
+                                      "example": "Marmara"
+                                    }
+                                  }
+                                }
+                              }
+                            },
+                            {
+                              "type": "object",
+                              "properties": {
+                                "districts": {
+                                  "type": "array",
+                                  "items": {
+                                    "type": "object",
+                                    "properties": {
+                                      "_id": {
+                                        "title": "MongoDb Id of the district",
+                                        "description": "MongoDb Id of the district",
+                                        "type": "string",
+                                        "length": 24,
+                                        "example": "62f8d2ee7eb0550b2715cf2b"
+                                      },
+                                      "city": {
+                                        "title": "MongoDb Id of the city",
+                                        "description": "MongoDb Id of the city",
+                                        "type": "string",
+                                        "length": 24,
+                                        "example": "62f8d2ed7eb0550b2715cf1f"
+                                      },
+                                      "zip_code": {
+                                        "title": "District zip code",
+                                        "description": "District zip code",
+                                        "type": "string",
+                                        "length": 5,
+                                        "example": "34500"
+                                      },
+                                      "name": {
+                                        "title": "District name",
+                                        "description": "District name",
+                                        "type": "string",
+                                        "minLength": 3,
+                                        "maxLength": 80,
+                                        "example": "Esenyurt"
+                                      }
+                                    }
+                                  }
+                                }
+                              }
+                            }
+                          ]
+                        }
+                      }
+                    }
+                  ]
+                }
+              }
+            }
+          },
+          "400": {
+            "$ref": "#/paths/~1users~1login/post/responses/400"
+          },
+          "401": {
+            "$ref": "#/paths/~1users~1logout/post/responses/401"
+          },
+          "403": {
+            "$ref": "#/paths/~1users~1logout/post/responses/403"
+          },
+          "404": {
+            "$ref": "#/paths/~1users~1login/post/responses/404"
+          }
+        }
+      }
+    },
+    "/addresses/get-all/my": {
+      "summary": "",
+      "description": "",
+      "get": {
+        "tags": [
+          "Addresses"
+        ],
+        "summary": "Get all addresses of the user",
+        "description": "Get all addresses of the user",
+        "operationId": "address.get-all-my",
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "allOf": [
+                    {
+                      "$ref": "#/paths/~1users~1logout/post/responses/200/content/application~1json/schema"
+                    },
+                    {
+                      "type": "object",
+                      "properties": {
+                        "data": {
+                          "type": "array",
+                          "items": {
+                            "$ref": "#/paths/~1addresses~1get~1my~1%7BaddressId%7D/get/responses/200/content/application~1json/schema/allOf/1/properties/data"
+                          }
+                        }
+                      }
+                    }
+                  ]
+                }
+              }
+            }
+          },
+          "400": {
+            "$ref": "#/paths/~1users~1login/post/responses/400"
+          },
+          "401": {
+            "$ref": "#/paths/~1users~1logout/post/responses/401"
+          },
+          "403": {
+            "$ref": "#/paths/~1users~1logout/post/responses/403"
+          }
+        }
+      }
+    },
+    "/addresses/get/my/{addressId}": {
+      "summary": "",
+      "description": "",
+      "get": {
+        "tags": [
+          "Addresses"
+        ],
+        "summary": "Get user's address by address id",
+        "description": "Get user's address by address id",
+        "operationId": "address.get-my",
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "addressId",
+            "schema": {
+              "type": "string"
+            },
+            "required": true,
+            "description": "Address id",
+            "length": 24
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "allOf": [
+                    {
+                      "$ref": "#/paths/~1users~1logout/post/responses/200/content/application~1json/schema"
+                    },
+                    {
+                      "type": "object",
+                      "properties": {
+                        "data": {
+                          "allOf": [
+                            {
+                              "type": "object",
+                              "properties": {
+                                "_id": {
+                                  "title": "MongoDb Id of the address",
+                                  "description": "MongoDb Id of the address",
+                                  "type": "string",
+                                  "length": 24,
+                                  "example": "62f8d2787eb0550b2715c847"
+                                }
+                              }
+                            },
+                            {
+                              "type": "object",
+                              "properties": {
+                                "country": {
+                                  "$ref": "#/paths/~1addresses~1get-all~1country/get/responses/200/content/application~1json/schema/allOf/1/properties/data/items"
+                                }
+                              }
+                            },
+                            {
+                              "type": "object",
+                              "properties": {
+                                "city": {
+                                  "$ref": "#/paths/~1addresses~1get-all~1district~1%7BcityId%7D/get/responses/200/content/application~1json/schema/allOf/1/properties/data/allOf/0/properties/city"
+                                }
+                              }
+                            },
+                            {
+                              "type": "object",
+                              "properties": {
+                                "district": {
+                                  "$ref": "#/paths/~1addresses~1get-all~1district~1%7BcityId%7D/get/responses/200/content/application~1json/schema/allOf/1/properties/data/allOf/1/properties/districts/items"
+                                }
+                              }
+                            },
+                            {
+                              "type": "object",
+                              "properties": {
+                                "user": {
+                                  "allOf": [
+                                    {
+                                      "type": "object",
+                                      "properties": {
+                                        "_id": {
+                                          "title": "MongoDb Id of the user",
+                                          "description": "MongoDb Id of the user",
+                                          "type": "string",
+                                          "length": 24,
+                                          "example": "62f8d2b77eb0550b2715cbe6"
+                                        }
+                                      }
+                                    },
+                                    {
+                                      "$ref": "#/components/requestBodies/register/content/application~1json/schema/allOf/0/allOf/0"
+                                    },
+                                    {
+                                      "type": "object",
+                                      "properties": {
+                                        "email": {
+                                          "title": "User email",
+                                          "description": "User email",
+                                          "type": "string",
+                                          "format": "email"
+                                        }
+                                      }
+                                    }
+                                  ]
+                                }
+                              }
+                            },
+                            {
+                              "type": "object",
+                              "properties": {
+                                "address_1": {
+                                  "title": "Address line 1",
+                                  "description": "Address line 1",
+                                  "type": "string",
+                                  "minLength": 10,
+                                  "maxLength": 200
+                                }
+                              }
+                            },
+                            {
+                              "type": "object",
+                              "properties": {
+                                "address_2": {
+                                  "title": "Address line 2",
+                                  "description": "Address line 2",
+                                  "type": "string",
+                                  "minLength": 10,
+                                  "maxLength": 200,
+                                  "required": false
+                                }
+                              }
+                            }
+                          ]
+                        }
+                      }
+                    }
+                  ]
+                }
+              }
+            }
+          },
+          "400": {
+            "$ref": "#/paths/~1users~1login/post/responses/400"
+          },
+          "401": {
+            "$ref": "#/paths/~1users~1logout/post/responses/401"
+          },
+          "403": {
+            "$ref": "#/paths/~1users~1logout/post/responses/403"
+          },
+          "404": {
+            "$ref": "#/paths/~1users~1login/post/responses/404"
+          }
+        }
+      }
+    },
+    "/addresses/create": {
+      "summary": "",
+      "description": "",
+      "post": {
+        "tags": [
+          "Addresses"
+        ],
+        "summary": "Create address",
+        "description": "Create address",
+        "operationId": "address.create",
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "requestBody": {
+          "description": "",
+          "content": {
+            "application/json": {
+              "schema": {
+                "allOf": [
+                  {
+                    "allOf": [
+                      {
+                        "type": "object",
+                        "properties": {
+                          "country": {
+                            "title": "MongoDb Id of the country",
+                            "description": "MongoDb Id of the country",
+                            "type": "string",
+                            "length": 24,
+                            "example": "62f8d2787eb0550b2715c84a"
+                          }
+                        }
+                      },
+                      {
+                        "type": "object",
+                        "properties": {
+                          "city": {
+                            "title": "MongoDb Id of the city",
+                            "description": "MongoDb Id of the city",
+                            "type": "string",
+                            "length": 24,
+                            "example": "62f8d2787eb0550b2715c84e"
+                          }
+                        }
+                      },
+                      {
+                        "type": "object",
+                        "properties": {
+                          "district": {
+                            "title": "MongoDb Id of the district",
+                            "description": "MongoDb Id of the district",
+                            "type": "string",
+                            "length": 24,
+                            "example": "62f8d2797eb0550b2715c852"
+                          }
+                        }
+                      }
+                    ]
+                  },
+                  {
+                    "type": "object",
+                    "properties": {
+                      "address_1": {
+                        "title": "Address line 1",
+                        "description": "Address line 1",
+                        "type": "string",
+                        "minLength": 10,
+                        "maxLength": 200
+                      }
+                    }
+                  },
+                  {
+                    "type": "object",
+                    "properties": {
+                      "address_2": {
+                        "title": "Address line 2",
+                        "description": "Address line 2",
+                        "type": "string",
+                        "minLength": 10,
+                        "maxLength": 200
+                      }
+                    }
+                  },
+                  {
+                    "required": [
+                      "country",
+                      "city",
+                      "district",
+                      "address_1"
+                    ]
+                  }
+                ]
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "allOf": [
+                    {
+                      "$ref": "#/paths/~1users~1logout/post/responses/200/content/application~1json/schema"
+                    },
+                    {
+                      "type": "object",
+                      "properties": {
+                        "data": {
+                          "allOf": [
+                            {
+                              "type": "object",
+                              "properties": {
+                                "_id": {
+                                  "title": "MongoDb Id of the address",
+                                  "description": "MongoDb Id of the address",
+                                  "type": "string",
+                                  "length": 24,
+                                  "example": "62f8d2787eb0550b2715c847"
+                                }
+                              }
+                            },
+                            {
+                              "$ref": "#/paths/~1addresses~1create/post/requestBody/content/application~1json/schema/allOf/0"
+                            },
+                            {
+                              "type": "object",
+                              "properties": {
+                                "user": {
+                                  "title": "MongoDb Id of the user",
+                                  "description": "MongoDb Id of the user",
+                                  "type": "string",
+                                  "length": 24,
+                                  "example": "62f8d2787eb0550b2715c847"
+                                }
+                              }
+                            },
+                            {
+                              "type": "object",
+                              "properties": {
+                                "address_1": {
+                                  "title": "Address line 1",
+                                  "description": "Address line 1",
+                                  "type": "string",
+                                  "minLength": 10,
+                                  "maxLength": 200
+                                }
+                              }
+                            },
+                            {
+                              "type": "object",
+                              "properties": {
+                                "address_2": {
+                                  "title": "Address line 2",
+                                  "description": "Address line 2",
+                                  "type": "string",
+                                  "minLength": 10,
+                                  "maxLength": 200,
+                                  "required": false
+                                }
+                              }
+                            }
+                          ]
+                        }
+                      }
+                    }
+                  ]
+                }
+              }
+            }
+          },
+          "400": {
+            "$ref": "#/paths/~1users~1login/post/responses/400"
+          },
+          "401": {
+            "$ref": "#/paths/~1users~1logout/post/responses/401"
+          },
+          "403": {
+            "$ref": "#/paths/~1users~1logout/post/responses/403"
+          },
+          "404": {
+            "$ref": "#/paths/~1users~1login/post/responses/404"
+          },
+          "500": {
+            "$ref": "#/paths/~1users~1login/post/responses/500"
+          }
+        }
+      }
+    },
+    "/addresses/update/{addressId}": {
+      "summary": "",
+      "description": "",
+      "patch": {
+        "tags": [
+          "Addresses"
+        ],
+        "summary": "Update address",
+        "description": "Update address",
+        "operationId": "address.update",
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "parameters": [
+          {
+            "$ref": "#/paths/~1addresses~1get~1my~1%7BaddressId%7D/get/parameters/0"
+          }
+        ],
+        "requestBody": {
+          "description": "",
+          "content": {
+            "application/json": {
+              "schema": {
+                "allOf": [
+                  {
+                    "$ref": "#/paths/~1addresses~1create/post/requestBody/content/application~1json/schema/allOf/0"
+                  },
+                  {
+                    "type": "object",
+                    "properties": {
+                      "address_1": {
+                        "title": "Address line 1",
+                        "description": "Address line 1",
+                        "type": "string",
+                        "minLength": 10,
+                        "maxLength": 200
+                      }
+                    }
+                  },
+                  {
+                    "type": "object",
+                    "properties": {
+                      "address_2": {
+                        "title": "Address line 2",
+                        "description": "Address line 2",
+                        "type": "string",
+                        "minLength": 10,
+                        "maxLength": 200
+                      }
+                    }
+                  }
+                ]
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "allOf": [
+                    {
+                      "$ref": "#/paths/~1users~1logout/post/responses/200/content/application~1json/schema"
+                    },
+                    {
+                      "type": "object",
+                      "properties": {
+                        "data": {
+                          "allOf": [
+                            {
+                              "type": "object",
+                              "properties": {
+                                "_id": {
+                                  "title": "MongoDb Id of the address",
+                                  "description": "MongoDb Id of the address",
+                                  "type": "string",
+                                  "length": 24,
+                                  "example": "62f8d2787eb0550b2715c847"
+                                }
+                              }
+                            },
+                            {
+                              "$ref": "#/paths/~1addresses~1create/post/requestBody/content/application~1json/schema/allOf/0"
+                            },
+                            {
+                              "type": "object",
+                              "properties": {
+                                "user": {
+                                  "title": "MongoDb Id of the user",
+                                  "description": "MongoDb Id of the user",
+                                  "type": "string",
+                                  "length": 24,
+                                  "example": "62f8d2787eb0550b2715c847"
+                                }
+                              }
+                            },
+                            {
+                              "type": "object",
+                              "properties": {
+                                "address_1": {
+                                  "title": "Address line 1",
+                                  "description": "Address line 1",
+                                  "type": "string",
+                                  "minLength": 10,
+                                  "maxLength": 200
+                                }
+                              }
+                            },
+                            {
+                              "type": "object",
+                              "properties": {
+                                "address_2": {
+                                  "title": "Address line 2",
+                                  "description": "Address line 2",
+                                  "type": "string",
+                                  "minLength": 10,
+                                  "maxLength": 200,
+                                  "required": false
+                                }
+                              }
+                            }
+                          ]
+                        }
+                      }
+                    }
+                  ]
+                }
+              }
+            }
+          },
+          "400": {
+            "$ref": "#/paths/~1users~1login/post/responses/400"
+          },
+          "401": {
+            "$ref": "#/paths/~1users~1logout/post/responses/401"
+          },
+          "403": {
+            "$ref": "#/paths/~1users~1logout/post/responses/403"
+          },
+          "404": {
+            "$ref": "#/paths/~1users~1login/post/responses/404"
+          }
+        }
+      }
+    },
+    "/addresses/delete/{addressId}": {
+      "summary": "",
+      "description": "",
+      "delete": {
+        "tags": [
+          "Addresses"
+        ],
+        "summary": "Delete address",
+        "description": "Delete address",
+        "operationId": "address.delete",
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "parameters": [
+          {
+            "$ref": "#/paths/~1addresses~1get~1my~1%7BaddressId%7D/get/parameters/0"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "allOf": [
+                    {
+                      "$ref": "#/paths/~1users~1logout/post/responses/200/content/application~1json/schema"
+                    },
+                    {
+                      "type": "object",
+                      "properties": {
+                        "data": {
+                          "allOf": [
+                            {
+                              "type": "object",
+                              "properties": {
+                                "_id": {
+                                  "title": "MongoDb Id of the address",
+                                  "description": "MongoDb Id of the address",
+                                  "type": "string",
+                                  "length": 24,
+                                  "example": "62f8d2787eb0550b2715c847"
+                                }
+                              }
+                            },
+                            {
+                              "$ref": "#/paths/~1addresses~1create/post/requestBody/content/application~1json/schema/allOf/0"
+                            },
+                            {
+                              "type": "object",
+                              "properties": {
+                                "user": {
+                                  "title": "MongoDb Id of the user",
+                                  "description": "MongoDb Id of the user",
+                                  "type": "string",
+                                  "length": 24,
+                                  "example": "62f8d2787eb0550b2715c847"
+                                }
+                              }
+                            },
+                            {
+                              "type": "object",
+                              "properties": {
+                                "address_1": {
+                                  "title": "Address line 1",
+                                  "description": "Address line 1",
+                                  "type": "string",
+                                  "minLength": 10,
+                                  "maxLength": 200
+                                }
+                              }
+                            },
+                            {
+                              "type": "object",
+                              "properties": {
+                                "address_2": {
+                                  "title": "Address line 2",
+                                  "description": "Address line 2",
+                                  "type": "string",
+                                  "minLength": 10,
+                                  "maxLength": 200,
+                                  "required": false
+                                }
+                              }
+                            }
+                          ]
+                        }
+                      }
+                    }
+                  ]
+                }
+              }
+            }
+          },
+          "400": {
+            "$ref": "#/paths/~1users~1login/post/responses/400"
+          },
+          "401": {
+            "$ref": "#/paths/~1users~1logout/post/responses/401"
+          },
+          "403": {
+            "$ref": "#/paths/~1users~1logout/post/responses/403"
+          },
+          "404": {
+            "$ref": "#/paths/~1users~1login/post/responses/404"
+          }
+        }
+      }
+    },
+    "/admin/addresses/get-all": {
+      "summary": "",
+      "description": "",
+      "get": {
+        "tags": [
+          "Addresses"
+        ],
+        "summary": "Get all addresses",
+        "description": "Get all addresses",
+        "operationId": "address.admin-get-all",
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "allOf": [
+                    {
+                      "$ref": "#/paths/~1users~1logout/post/responses/200/content/application~1json/schema"
+                    },
+                    {
+                      "type": "object",
+                      "properties": {
+                        "data": {
+                          "type": "array",
+                          "items": {
+                            "$ref": "#/paths/~1addresses~1get~1my~1%7BaddressId%7D/get/responses/200/content/application~1json/schema/allOf/1/properties/data"
+                          }
+                        }
+                      }
+                    }
+                  ]
+                }
+              }
+            }
+          },
+          "400": {
+            "$ref": "#/paths/~1users~1login/post/responses/400"
+          },
+          "401": {
+            "$ref": "#/paths/~1users~1logout/post/responses/401"
+          },
+          "403": {
+            "$ref": "#/paths/~1users~1logout/post/responses/403"
+          }
+        }
+      }
+    },
+    "/admin/addresses/get/{addressId}": {
+      "summary": "",
+      "description": "",
+      "get": {
+        "tags": [
+          "Addresses"
+        ],
+        "summary": "Get address by addressId",
+        "description": "Get address by addressId",
+        "operationId": "address.admin-get",
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "parameters": [
+          {
+            "$ref": "#/paths/~1addresses~1get~1my~1%7BaddressId%7D/get/parameters/0"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "allOf": [
+                    {
+                      "$ref": "#/paths/~1users~1logout/post/responses/200/content/application~1json/schema"
+                    },
+                    {
+                      "type": "object",
+                      "properties": {
+                        "data": {
+                          "$ref": "#/paths/~1addresses~1get~1my~1%7BaddressId%7D/get/responses/200/content/application~1json/schema/allOf/1/properties/data"
                         }
                       }
                     }

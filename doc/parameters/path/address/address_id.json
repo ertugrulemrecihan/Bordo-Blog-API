@@ -1,10 +1,10 @@
 {
     "in": "path",
-    "name": "tagId",
+    "name": "addressId",
     "schema": {
         "type": "string"
     },
     "required": true,
-    "description": "Tag id",
+    "description": "Address id",
     "length": 24
 }

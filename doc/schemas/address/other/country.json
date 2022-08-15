@@ -1,0 +1,20 @@
+{
+    "type": "object",
+    "properties": {
+        "_id": {
+            "title": "MongoDb Id of the country",
+            "description": "MongoDb Id of the country",
+            "type": "string",
+            "length": 24,
+            "example": "62ed69679c045c97a63390a4"
+        },
+        "name": {
+            "title": "Country name",
+            "description": "Country name",
+            "type": "string",
+            "minLength": 3,
+            "maxLength": 80,
+            "example": "Türkiye"
+        }
+    }
+}

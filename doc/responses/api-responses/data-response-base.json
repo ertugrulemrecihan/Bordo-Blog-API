@@ -2,7 +2,7 @@
     "type": "object",
     "properties": {
         "_id": {
-            "title": "Document MongoDb Id",
+            "title": "MongoDb Id of the document",
             "description": "MongoDb Id of the document",
             "type": "string",
             "example": "62ed69679c045c97a63390a4"

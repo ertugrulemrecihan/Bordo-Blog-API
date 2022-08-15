@@ -1,0 +1,101 @@
+{
+    "allOf": [
+        {
+            "type": "object",
+                "properties": {
+                    "_id": {
+                        "title": "MongoDb Id of the address",
+                        "description": "MongoDb Id of the address",
+                        "type": "string",
+                        "length": 24,
+                        "example": "62f8d2787eb0550b2715c847"
+                    }
+                }
+        },
+        {
+            "type": "object",
+            "properties": {
+                "country": {
+                    "$ref": "../other/country.json"
+                }
+            }
+        },
+        {
+            "type": "object",
+            "properties": {
+                "city": {
+                    "$ref": "../other/city.json"
+                }
+            }
+        },
+        {
+            "type": "object",
+            "properties": {
+                "district": {
+                    "$ref": "../other/district.json"
+                }
+            }
+        },
+        {
+            "type": "object",
+            "properties": {
+                "user": {
+                    "allOf": [
+                        {
+                            "type": "object",
+                            "properties": {
+                                "_id": {
+                                    "title": "MongoDb Id of the user",
+                                    "description": "MongoDb Id of the user",
+                                    "type": "string",
+                                    "length": 24,
+                                    "example": "62f8d2b77eb0550b2715cbe6"
+                                }
+                            }
+                        },
+                        {
+                            "$ref": "../../user/other/first-name-last-name.json"
+                        },
+                        {
+                            "type": "object",
+                            "properties": {
+                                "email": {
+                                    "title": "User email",
+                                    "description": "User email",
+                                    "type": "string",
+                                    "format": "email"
+                                }
+                            }
+                        }
+                    ]
+                    
+                }
+            }
+        },
+        {
+            "type": "object",
+            "properties": {
+                "address_1": {
+                    "title": "Address line 1",
+                    "description": "Address line 1",
+                    "type": "string",
+                    "minLength": 10,
+                    "maxLength": 200
+                }
+            }
+        },
+        {
+            "type": "object",
+            "properties": {
+                "address_2": {
+                    "title": "Address line 2",
+                    "description": "Address line 2",
+                    "type": "string",
+                    "minLength": 10,
+                    "maxLength": 200,
+                    "required": false
+                }
+            }
+        }
+    ]
+}

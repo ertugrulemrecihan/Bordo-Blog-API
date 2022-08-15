@@ -1,0 +1,18 @@
+{
+    "allOf": [
+        {
+            "$ref": "../../responses/api-responses/api-success.json"
+        },
+        {
+            "type": "object",
+            "properties": {
+                "data": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "./other/country.json"
+                    }                    
+                }
+            }
+        }
+    ]
+}

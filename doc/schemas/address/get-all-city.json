@@ -1,0 +1,35 @@
+{
+    "allOf": [
+        {
+            "$ref": "../../responses/api-responses/api-success.json"
+        },
+        {
+            "type": "object",
+            "properties": {
+                "data": {
+                    "allOf": [
+                        {
+                            "type": "object",
+                            "properties": {
+                                "country": {
+                                    "$ref": "./other/country.json"
+                                }
+                            }
+                        },
+                        {
+                            "type": "object",
+                            "properties": {
+                                "cities": {
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "./other/city.json"
+                                    }
+                                }
+                            }
+                        }
+                    ]                    
+                }
+            }
+        }
+    ]
+}
