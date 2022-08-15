@@ -957,13 +957,13 @@
                                 }
                               },
                               {
-                                "$ref": "#/paths/~1posts~1add-tag~1%7BpostId%7D/post/responses/200/content/application~1json/schema/allOf/1/properties/data/allOf/4"
+                                "$ref": "#/paths/~1posts~1get~1my~1%7BpostId%7D/get/responses/200/content/application~1json/schema/allOf/1/properties/data/allOf/4"
                               },
                               {
-                                "$ref": "#/paths/~1posts~1add-tag~1%7BpostId%7D/post/responses/200/content/application~1json/schema/allOf/1/properties/data/allOf/5"
+                                "$ref": "#/paths/~1posts~1get~1my~1%7BpostId%7D/get/responses/200/content/application~1json/schema/allOf/1/properties/data/allOf/5"
                               },
                               {
-                                "$ref": "#/paths/~1posts~1add-tag~1%7BpostId%7D/post/responses/200/content/application~1json/schema/allOf/1/properties/data/allOf/6"
+                                "$ref": "#/paths/~1posts~1get~1my~1%7BpostId%7D/get/responses/200/content/application~1json/schema/allOf/1/properties/data/allOf/6"
                               },
                               {
                                 "$ref": "#/paths/~1posts~1create/post/responses/201/content/application~1json/schema/allOf/1/properties/data/allOf/7"
@@ -1032,42 +1032,163 @@
                       "type": "object",
                       "properties": {
                         "data": {
-                          "type": "object",
-                          "items": {
-                            "allOf": [
-                              {
-                                "$ref": "#/paths/~1posts~1create/post/responses/201/content/application~1json/schema/allOf/1/properties/data/allOf/0"
-                              },
-                              {
-                                "$ref": "#/paths/~1posts~1create/post/responses/201/content/application~1json/schema/allOf/1/properties/data/allOf/1"
-                              },
-                              {
-                                "$ref": "#/components/requestBodies/create-post/content/application~1json/schema/allOf/0/allOf/0"
-                              },
-                              {
-                                "type": "object",
-                                "properties": {
-                                  "content": {
-                                    "title": "Post content",
-                                    "description": "Post content",
-                                    "type": "string"
+                          "allOf": [
+                            {
+                              "$ref": "#/paths/~1posts~1create/post/responses/201/content/application~1json/schema/allOf/1/properties/data/allOf/0"
+                            },
+                            {
+                              "$ref": "#/paths/~1posts~1create/post/responses/201/content/application~1json/schema/allOf/1/properties/data/allOf/1"
+                            },
+                            {
+                              "$ref": "#/components/requestBodies/create-post/content/application~1json/schema/allOf/0/allOf/0"
+                            },
+                            {
+                              "type": "object",
+                              "properties": {
+                                "content": {
+                                  "title": "Post content",
+                                  "description": "Post content",
+                                  "type": "string"
+                                }
+                              }
+                            },
+                            {
+                              "type": "object",
+                              "properties": {
+                                "viewers": {
+                                  "type": "array",
+                                  "items": {
+                                    "type": "object",
+                                    "properties": {
+                                      "_id": {
+                                        "title": "Viewer MongoDb Id",
+                                        "description": "Viewer MongoDb Id",
+                                        "type": "string",
+                                        "example": "62ed69679c045c97a63390a4"
+                                      },
+                                      "first_name": {
+                                        "title": "Viewer first name",
+                                        "description": "Viewer first name",
+                                        "type": "string",
+                                        "example": "Viewer"
+                                      },
+                                      "last_name": {
+                                        "title": "Viewer last name",
+                                        "description": "Viewer last name",
+                                        "type": "string",
+                                        "example": "Viewer"
+                                      },
+                                      "email": {
+                                        "title": "Viewer email name",
+                                        "description": "Viewer email name",
+                                        "type": "string",
+                                        "example": "email@email.com",
+                                        "format": "email"
+                                      }
+                                    }
                                   }
                                 }
-                              },
-                              {
-                                "$ref": "#/paths/~1posts~1add-tag~1%7BpostId%7D/post/responses/200/content/application~1json/schema/allOf/1/properties/data/allOf/4"
-                              },
-                              {
-                                "$ref": "#/paths/~1posts~1add-tag~1%7BpostId%7D/post/responses/200/content/application~1json/schema/allOf/1/properties/data/allOf/5"
-                              },
-                              {
-                                "$ref": "#/paths/~1posts~1add-tag~1%7BpostId%7D/post/responses/200/content/application~1json/schema/allOf/1/properties/data/allOf/6"
-                              },
-                              {
-                                "$ref": "#/paths/~1posts~1create/post/responses/201/content/application~1json/schema/allOf/1/properties/data/allOf/7"
                               }
-                            ]
-                          }
+                            },
+                            {
+                              "type": "object",
+                              "properties": {
+                                "likes": {
+                                  "type": "array",
+                                  "items": {
+                                    "type": "object",
+                                    "properties": {
+                                      "_id": {
+                                        "title": "Viewer MongoDb Id",
+                                        "description": "Viewer MongoDb Id",
+                                        "type": "string",
+                                        "example": "62ed69679c045c97a63390a4"
+                                      },
+                                      "first_name": {
+                                        "title": "Viewer first name",
+                                        "description": "Viewer first name",
+                                        "type": "string",
+                                        "example": "Viewer"
+                                      },
+                                      "last_name": {
+                                        "title": "Viewer last name",
+                                        "description": "Viewer last name",
+                                        "type": "string",
+                                        "example": "Viewer"
+                                      },
+                                      "email": {
+                                        "title": "Viewer email name",
+                                        "description": "Viewer email name",
+                                        "type": "string",
+                                        "example": "email@email.com",
+                                        "format": "email"
+                                      }
+                                    }
+                                  }
+                                }
+                              }
+                            },
+                            {
+                              "type": "object",
+                              "properties": {
+                                "comments": {
+                                  "type": "array",
+                                  "items": {
+                                    "allOf": [
+                                      {
+                                        "$ref": "#/paths/~1posts~1create/post/responses/201/content/application~1json/schema/allOf/1/properties/data/allOf/0"
+                                      },
+                                      {
+                                        "type": "object",
+                                        "properties": {
+                                          "user_id": {
+                                            "type": "object",
+                                            "properties": {
+                                              "_id": {
+                                                "title": "User id",
+                                                "description": "User id",
+                                                "type": "string"
+                                              },
+                                              "first_name": {
+                                                "title": "User first name",
+                                                "description": "User first name",
+                                                "type": "string"
+                                              },
+                                              "last_name": {
+                                                "title": "User last name",
+                                                "description": "User last name",
+                                                "type": "string"
+                                              },
+                                              "email": {
+                                                "title": "User email address",
+                                                "description": "User email address",
+                                                "type": "string",
+                                                "format": "email"
+                                              }
+                                            }
+                                          }
+                                        }
+                                      },
+                                      {
+                                        "type": "object",
+                                        "properties": {
+                                          "comment": {
+                                            "title": "Viewer first name",
+                                            "description": "Viewer first name",
+                                            "type": "string",
+                                            "example": "Viewer"
+                                          }
+                                        }
+                                      }
+                                    ]
+                                  }
+                                }
+                              }
+                            },
+                            {
+                              "$ref": "#/paths/~1posts~1create/post/responses/201/content/application~1json/schema/allOf/1/properties/data/allOf/7"
+                            }
+                          ]
                         }
                       }
                     }
@@ -1129,10 +1250,10 @@
                                 "$ref": "#/components/requestBodies/create-post/content/application~1json/schema/allOf/0/allOf/0"
                               },
                               {
-                                "$ref": "#/paths/~1posts~1add-tag~1%7BpostId%7D/post/responses/200/content/application~1json/schema/allOf/1/properties/data/allOf/4"
+                                "$ref": "#/paths/~1posts~1get~1my~1%7BpostId%7D/get/responses/200/content/application~1json/schema/allOf/1/properties/data/allOf/4"
                               },
                               {
-                                "$ref": "#/paths/~1posts~1add-tag~1%7BpostId%7D/post/responses/200/content/application~1json/schema/allOf/1/properties/data/allOf/5"
+                                "$ref": "#/paths/~1posts~1get~1my~1%7BpostId%7D/get/responses/200/content/application~1json/schema/allOf/1/properties/data/allOf/5"
                               },
                               {
                                 "$ref": "#/paths/~1posts~1create/post/responses/201/content/application~1json/schema/allOf/1/properties/data/allOf/7"
@@ -1180,29 +1301,26 @@
                       "type": "object",
                       "properties": {
                         "data": {
-                          "type": "object",
-                          "items": {
-                            "allOf": [
-                              {
-                                "$ref": "#/paths/~1posts~1create/post/responses/201/content/application~1json/schema/allOf/1/properties/data/allOf/0"
-                              },
-                              {
-                                "$ref": "#/paths/~1posts~1create/post/responses/201/content/application~1json/schema/allOf/1/properties/data/allOf/1"
-                              },
-                              {
-                                "$ref": "#/components/requestBodies/create-post/content/application~1json/schema/allOf/0/allOf/0"
-                              },
-                              {
-                                "$ref": "#/paths/~1posts~1add-tag~1%7BpostId%7D/post/responses/200/content/application~1json/schema/allOf/1/properties/data/allOf/4"
-                              },
-                              {
-                                "$ref": "#/paths/~1posts~1add-tag~1%7BpostId%7D/post/responses/200/content/application~1json/schema/allOf/1/properties/data/allOf/5"
-                              },
-                              {
-                                "$ref": "#/paths/~1posts~1create/post/responses/201/content/application~1json/schema/allOf/1/properties/data/allOf/7"
-                              }
-                            ]
-                          }
+                          "allOf": [
+                            {
+                              "$ref": "#/paths/~1posts~1create/post/responses/201/content/application~1json/schema/allOf/1/properties/data/allOf/0"
+                            },
+                            {
+                              "$ref": "#/paths/~1posts~1create/post/responses/201/content/application~1json/schema/allOf/1/properties/data/allOf/1"
+                            },
+                            {
+                              "$ref": "#/components/requestBodies/create-post/content/application~1json/schema/allOf/0/allOf/0"
+                            },
+                            {
+                              "$ref": "#/paths/~1posts~1get~1my~1%7BpostId%7D/get/responses/200/content/application~1json/schema/allOf/1/properties/data/allOf/4"
+                            },
+                            {
+                              "$ref": "#/paths/~1posts~1get~1my~1%7BpostId%7D/get/responses/200/content/application~1json/schema/allOf/1/properties/data/allOf/5"
+                            },
+                            {
+                              "$ref": "#/paths/~1posts~1create/post/responses/201/content/application~1json/schema/allOf/1/properties/data/allOf/7"
+                            }
+                          ]
                         }
                       }
                     }
@@ -1463,13 +1581,13 @@
                               }
                             },
                             {
-                              "$ref": "#/paths/~1posts~1add-tag~1%7BpostId%7D/post/responses/200/content/application~1json/schema/allOf/1/properties/data/allOf/4"
+                              "$ref": "#/paths/~1posts~1get~1my~1%7BpostId%7D/get/responses/200/content/application~1json/schema/allOf/1/properties/data/allOf/4"
                             },
                             {
-                              "$ref": "#/paths/~1posts~1add-tag~1%7BpostId%7D/post/responses/200/content/application~1json/schema/allOf/1/properties/data/allOf/5"
+                              "$ref": "#/paths/~1posts~1get~1my~1%7BpostId%7D/get/responses/200/content/application~1json/schema/allOf/1/properties/data/allOf/5"
                             },
                             {
-                              "$ref": "#/paths/~1posts~1add-tag~1%7BpostId%7D/post/responses/200/content/application~1json/schema/allOf/1/properties/data/allOf/6"
+                              "$ref": "#/paths/~1posts~1get~1my~1%7BpostId%7D/get/responses/200/content/application~1json/schema/allOf/1/properties/data/allOf/6"
                             },
                             {
                               "$ref": "#/paths/~1posts~1create/post/responses/201/content/application~1json/schema/allOf/1/properties/data/allOf/7"
@@ -1560,13 +1678,13 @@
                               }
                             },
                             {
-                              "$ref": "#/paths/~1posts~1add-tag~1%7BpostId%7D/post/responses/200/content/application~1json/schema/allOf/1/properties/data/allOf/4"
+                              "$ref": "#/paths/~1posts~1get~1my~1%7BpostId%7D/get/responses/200/content/application~1json/schema/allOf/1/properties/data/allOf/4"
                             },
                             {
-                              "$ref": "#/paths/~1posts~1add-tag~1%7BpostId%7D/post/responses/200/content/application~1json/schema/allOf/1/properties/data/allOf/5"
+                              "$ref": "#/paths/~1posts~1get~1my~1%7BpostId%7D/get/responses/200/content/application~1json/schema/allOf/1/properties/data/allOf/5"
                             },
                             {
-                              "$ref": "#/paths/~1posts~1add-tag~1%7BpostId%7D/post/responses/200/content/application~1json/schema/allOf/1/properties/data/allOf/6"
+                              "$ref": "#/paths/~1posts~1get~1my~1%7BpostId%7D/get/responses/200/content/application~1json/schema/allOf/1/properties/data/allOf/6"
                             },
                             {
                               "$ref": "#/paths/~1posts~1create/post/responses/201/content/application~1json/schema/allOf/1/properties/data/allOf/7"
@@ -1680,13 +1798,13 @@
                               }
                             },
                             {
-                              "$ref": "#/paths/~1posts~1add-tag~1%7BpostId%7D/post/responses/200/content/application~1json/schema/allOf/1/properties/data/allOf/4"
+                              "$ref": "#/paths/~1posts~1get~1my~1%7BpostId%7D/get/responses/200/content/application~1json/schema/allOf/1/properties/data/allOf/4"
                             },
                             {
-                              "$ref": "#/paths/~1posts~1add-tag~1%7BpostId%7D/post/responses/200/content/application~1json/schema/allOf/1/properties/data/allOf/5"
+                              "$ref": "#/paths/~1posts~1get~1my~1%7BpostId%7D/get/responses/200/content/application~1json/schema/allOf/1/properties/data/allOf/5"
                             },
                             {
-                              "$ref": "#/paths/~1posts~1add-tag~1%7BpostId%7D/post/responses/200/content/application~1json/schema/allOf/1/properties/data/allOf/6"
+                              "$ref": "#/paths/~1posts~1get~1my~1%7BpostId%7D/get/responses/200/content/application~1json/schema/allOf/1/properties/data/allOf/6"
                             },
                             {
                               "$ref": "#/paths/~1posts~1create/post/responses/201/content/application~1json/schema/allOf/1/properties/data/allOf/7"
@@ -1800,137 +1918,13 @@
                               }
                             },
                             {
-                              "type": "object",
-                              "properties": {
-                                "viewers": {
-                                  "type": "array",
-                                  "items": {
-                                    "type": "object",
-                                    "properties": {
-                                      "_id": {
-                                        "title": "Viewer MongoDb Id",
-                                        "description": "Viewer MongoDb Id",
-                                        "type": "string",
-                                        "example": "62ed69679c045c97a63390a4"
-                                      },
-                                      "first_name": {
-                                        "title": "Viewer first name",
-                                        "description": "Viewer first name",
-                                        "type": "string",
-                                        "example": "Viewer"
-                                      },
-                                      "last_name": {
-                                        "title": "Viewer last name",
-                                        "description": "Viewer last name",
-                                        "type": "string",
-                                        "example": "Viewer"
-                                      },
-                                      "email": {
-                                        "title": "Viewer email name",
-                                        "description": "Viewer email name",
-                                        "type": "string",
-                                        "example": "email@email.com",
-                                        "format": "email"
-                                      }
-                                    }
-                                  }
-                                }
-                              }
+                              "$ref": "#/paths/~1posts~1get~1my~1%7BpostId%7D/get/responses/200/content/application~1json/schema/allOf/1/properties/data/allOf/4"
                             },
                             {
-                              "type": "object",
-                              "properties": {
-                                "likes": {
-                                  "type": "array",
-                                  "items": {
-                                    "type": "object",
-                                    "properties": {
-                                      "_id": {
-                                        "title": "Viewer MongoDb Id",
-                                        "description": "Viewer MongoDb Id",
-                                        "type": "string",
-                                        "example": "62ed69679c045c97a63390a4"
-                                      },
-                                      "first_name": {
-                                        "title": "Viewer first name",
-                                        "description": "Viewer first name",
-                                        "type": "string",
-                                        "example": "Viewer"
-                                      },
-                                      "last_name": {
-                                        "title": "Viewer last name",
-                                        "description": "Viewer last name",
-                                        "type": "string",
-                                        "example": "Viewer"
-                                      },
-                                      "email": {
-                                        "title": "Viewer email name",
-                                        "description": "Viewer email name",
-                                        "type": "string",
-                                        "example": "email@email.com",
-                                        "format": "email"
-                                      }
-                                    }
-                                  }
-                                }
-                              }
+                              "$ref": "#/paths/~1posts~1get~1my~1%7BpostId%7D/get/responses/200/content/application~1json/schema/allOf/1/properties/data/allOf/5"
                             },
                             {
-                              "type": "object",
-                              "properties": {
-                                "comments": {
-                                  "type": "array",
-                                  "items": {
-                                    "allOf": [
-                                      {
-                                        "$ref": "#/paths/~1posts~1create/post/responses/201/content/application~1json/schema/allOf/1/properties/data/allOf/0"
-                                      },
-                                      {
-                                        "type": "object",
-                                        "properties": {
-                                          "user_id": {
-                                            "type": "object",
-                                            "properties": {
-                                              "_id": {
-                                                "title": "User id",
-                                                "description": "User id",
-                                                "type": "string"
-                                              },
-                                              "first_name": {
-                                                "title": "User first name",
-                                                "description": "User first name",
-                                                "type": "string"
-                                              },
-                                              "last_name": {
-                                                "title": "User last name",
-                                                "description": "User last name",
-                                                "type": "string"
-                                              },
-                                              "email": {
-                                                "title": "User email address",
-                                                "description": "User email address",
-                                                "type": "string",
-                                                "format": "email"
-                                              }
-                                            }
-                                          }
-                                        }
-                                      },
-                                      {
-                                        "type": "object",
-                                        "properties": {
-                                          "comment": {
-                                            "title": "Viewer first name",
-                                            "description": "Viewer first name",
-                                            "type": "string",
-                                            "example": "Viewer"
-                                          }
-                                        }
-                                      }
-                                    ]
-                                  }
-                                }
-                              }
+                              "$ref": "#/paths/~1posts~1get~1my~1%7BpostId%7D/get/responses/200/content/application~1json/schema/allOf/1/properties/data/allOf/6"
                             },
                             {
                               "$ref": "#/paths/~1posts~1create/post/responses/201/content/application~1json/schema/allOf/1/properties/data/allOf/7"
@@ -2055,13 +2049,13 @@
                               }
                             },
                             {
-                              "$ref": "#/paths/~1posts~1add-tag~1%7BpostId%7D/post/responses/200/content/application~1json/schema/allOf/1/properties/data/allOf/4"
+                              "$ref": "#/paths/~1posts~1get~1my~1%7BpostId%7D/get/responses/200/content/application~1json/schema/allOf/1/properties/data/allOf/4"
                             },
                             {
-                              "$ref": "#/paths/~1posts~1add-tag~1%7BpostId%7D/post/responses/200/content/application~1json/schema/allOf/1/properties/data/allOf/5"
+                              "$ref": "#/paths/~1posts~1get~1my~1%7BpostId%7D/get/responses/200/content/application~1json/schema/allOf/1/properties/data/allOf/5"
                             },
                             {
-                              "$ref": "#/paths/~1posts~1add-tag~1%7BpostId%7D/post/responses/200/content/application~1json/schema/allOf/1/properties/data/allOf/6"
+                              "$ref": "#/paths/~1posts~1get~1my~1%7BpostId%7D/get/responses/200/content/application~1json/schema/allOf/1/properties/data/allOf/6"
                             },
                             {
                               "$ref": "#/paths/~1posts~1create/post/responses/201/content/application~1json/schema/allOf/1/properties/data/allOf/7"
@@ -2229,13 +2223,13 @@
                               }
                             },
                             {
-                              "$ref": "#/paths/~1posts~1add-tag~1%7BpostId%7D/post/responses/200/content/application~1json/schema/allOf/1/properties/data/allOf/4"
+                              "$ref": "#/paths/~1posts~1get~1my~1%7BpostId%7D/get/responses/200/content/application~1json/schema/allOf/1/properties/data/allOf/4"
                             },
                             {
-                              "$ref": "#/paths/~1posts~1add-tag~1%7BpostId%7D/post/responses/200/content/application~1json/schema/allOf/1/properties/data/allOf/5"
+                              "$ref": "#/paths/~1posts~1get~1my~1%7BpostId%7D/get/responses/200/content/application~1json/schema/allOf/1/properties/data/allOf/5"
                             },
                             {
-                              "$ref": "#/paths/~1posts~1add-tag~1%7BpostId%7D/post/responses/200/content/application~1json/schema/allOf/1/properties/data/allOf/6"
+                              "$ref": "#/paths/~1posts~1get~1my~1%7BpostId%7D/get/responses/200/content/application~1json/schema/allOf/1/properties/data/allOf/6"
                             },
                             {
                               "$ref": "#/paths/~1posts~1create/post/responses/201/content/application~1json/schema/allOf/1/properties/data/allOf/7"
@@ -2349,13 +2343,13 @@
                               }
                             },
                             {
-                              "$ref": "#/paths/~1posts~1add-tag~1%7BpostId%7D/post/responses/200/content/application~1json/schema/allOf/1/properties/data/allOf/4"
+                              "$ref": "#/paths/~1posts~1get~1my~1%7BpostId%7D/get/responses/200/content/application~1json/schema/allOf/1/properties/data/allOf/4"
                             },
                             {
-                              "$ref": "#/paths/~1posts~1add-tag~1%7BpostId%7D/post/responses/200/content/application~1json/schema/allOf/1/properties/data/allOf/5"
+                              "$ref": "#/paths/~1posts~1get~1my~1%7BpostId%7D/get/responses/200/content/application~1json/schema/allOf/1/properties/data/allOf/5"
                             },
                             {
-                              "$ref": "#/paths/~1posts~1add-tag~1%7BpostId%7D/post/responses/200/content/application~1json/schema/allOf/1/properties/data/allOf/6"
+                              "$ref": "#/paths/~1posts~1get~1my~1%7BpostId%7D/get/responses/200/content/application~1json/schema/allOf/1/properties/data/allOf/6"
                             },
                             {
                               "$ref": "#/paths/~1posts~1create/post/responses/201/content/application~1json/schema/allOf/1/properties/data/allOf/7"
@@ -2440,13 +2434,13 @@
                                 }
                               },
                               {
-                                "$ref": "#/paths/~1posts~1add-tag~1%7BpostId%7D/post/responses/200/content/application~1json/schema/allOf/1/properties/data/allOf/4"
+                                "$ref": "#/paths/~1posts~1get~1my~1%7BpostId%7D/get/responses/200/content/application~1json/schema/allOf/1/properties/data/allOf/4"
                               },
                               {
-                                "$ref": "#/paths/~1posts~1add-tag~1%7BpostId%7D/post/responses/200/content/application~1json/schema/allOf/1/properties/data/allOf/5"
+                                "$ref": "#/paths/~1posts~1get~1my~1%7BpostId%7D/get/responses/200/content/application~1json/schema/allOf/1/properties/data/allOf/5"
                               },
                               {
-                                "$ref": "#/paths/~1posts~1add-tag~1%7BpostId%7D/post/responses/200/content/application~1json/schema/allOf/1/properties/data/allOf/6"
+                                "$ref": "#/paths/~1posts~1get~1my~1%7BpostId%7D/get/responses/200/content/application~1json/schema/allOf/1/properties/data/allOf/6"
                               },
                               {
                                 "$ref": "#/paths/~1posts~1create/post/responses/201/content/application~1json/schema/allOf/1/properties/data/allOf/7"
@@ -2508,39 +2502,36 @@
                       "type": "object",
                       "properties": {
                         "data": {
-                          "type": "object",
-                          "items": {
-                            "allOf": [
-                              {
-                                "$ref": "#/paths/~1posts~1create/post/responses/201/content/application~1json/schema/allOf/1/properties/data/allOf/0"
-                              },
-                              {
-                                "$ref": "#/paths/~1posts~1create/post/responses/201/content/application~1json/schema/allOf/1/properties/data/allOf/1"
-                              },
-                              {
-                                "$ref": "#/components/requestBodies/create-post/content/application~1json/schema/allOf/0/allOf/0"
-                              },
-                              {
-                                "type": "object",
-                                "properties": {
-                                  "content": {
-                                    "title": "Post content",
-                                    "description": "Post content",
-                                    "type": "string"
-                                  }
+                          "allOf": [
+                            {
+                              "$ref": "#/paths/~1posts~1create/post/responses/201/content/application~1json/schema/allOf/1/properties/data/allOf/0"
+                            },
+                            {
+                              "$ref": "#/paths/~1posts~1create/post/responses/201/content/application~1json/schema/allOf/1/properties/data/allOf/1"
+                            },
+                            {
+                              "$ref": "#/components/requestBodies/create-post/content/application~1json/schema/allOf/0/allOf/0"
+                            },
+                            {
+                              "type": "object",
+                              "properties": {
+                                "content": {
+                                  "title": "Post content",
+                                  "description": "Post content",
+                                  "type": "string"
                                 }
-                              },
-                              {
-                                "$ref": "#/paths/~1posts~1add-tag~1%7BpostId%7D/post/responses/200/content/application~1json/schema/allOf/1/properties/data/allOf/4"
-                              },
-                              {
-                                "$ref": "#/paths/~1posts~1add-tag~1%7BpostId%7D/post/responses/200/content/application~1json/schema/allOf/1/properties/data/allOf/5"
-                              },
-                              {
-                                "$ref": "#/paths/~1posts~1create/post/responses/201/content/application~1json/schema/allOf/1/properties/data/allOf/7"
                               }
-                            ]
-                          }
+                            },
+                            {
+                              "$ref": "#/paths/~1posts~1get~1my~1%7BpostId%7D/get/responses/200/content/application~1json/schema/allOf/1/properties/data/allOf/4"
+                            },
+                            {
+                              "$ref": "#/paths/~1posts~1get~1my~1%7BpostId%7D/get/responses/200/content/application~1json/schema/allOf/1/properties/data/allOf/5"
+                            },
+                            {
+                              "$ref": "#/paths/~1posts~1create/post/responses/201/content/application~1json/schema/allOf/1/properties/data/allOf/7"
+                            }
+                          ]
                         }
                       }
                     }
@@ -2599,42 +2590,39 @@
                       "type": "object",
                       "properties": {
                         "data": {
-                          "type": "object",
-                          "items": {
-                            "allOf": [
-                              {
-                                "$ref": "#/paths/~1posts~1create/post/responses/201/content/application~1json/schema/allOf/1/properties/data/allOf/0"
-                              },
-                              {
-                                "$ref": "#/paths/~1posts~1create/post/responses/201/content/application~1json/schema/allOf/1/properties/data/allOf/1"
-                              },
-                              {
-                                "$ref": "#/components/requestBodies/create-post/content/application~1json/schema/allOf/0/allOf/0"
-                              },
-                              {
-                                "type": "object",
-                                "properties": {
-                                  "content": {
-                                    "title": "Post content",
-                                    "description": "Post content",
-                                    "type": "string"
-                                  }
+                          "allOf": [
+                            {
+                              "$ref": "#/paths/~1posts~1create/post/responses/201/content/application~1json/schema/allOf/1/properties/data/allOf/0"
+                            },
+                            {
+                              "$ref": "#/paths/~1posts~1create/post/responses/201/content/application~1json/schema/allOf/1/properties/data/allOf/1"
+                            },
+                            {
+                              "$ref": "#/components/requestBodies/create-post/content/application~1json/schema/allOf/0/allOf/0"
+                            },
+                            {
+                              "type": "object",
+                              "properties": {
+                                "content": {
+                                  "title": "Post content",
+                                  "description": "Post content",
+                                  "type": "string"
                                 }
-                              },
-                              {
-                                "$ref": "#/paths/~1posts~1add-tag~1%7BpostId%7D/post/responses/200/content/application~1json/schema/allOf/1/properties/data/allOf/4"
-                              },
-                              {
-                                "$ref": "#/paths/~1posts~1add-tag~1%7BpostId%7D/post/responses/200/content/application~1json/schema/allOf/1/properties/data/allOf/5"
-                              },
-                              {
-                                "$ref": "#/paths/~1posts~1add-tag~1%7BpostId%7D/post/responses/200/content/application~1json/schema/allOf/1/properties/data/allOf/6"
-                              },
-                              {
-                                "$ref": "#/paths/~1posts~1create/post/responses/201/content/application~1json/schema/allOf/1/properties/data/allOf/7"
                               }
-                            ]
-                          }
+                            },
+                            {
+                              "$ref": "#/paths/~1posts~1get~1my~1%7BpostId%7D/get/responses/200/content/application~1json/schema/allOf/1/properties/data/allOf/4"
+                            },
+                            {
+                              "$ref": "#/paths/~1posts~1get~1my~1%7BpostId%7D/get/responses/200/content/application~1json/schema/allOf/1/properties/data/allOf/5"
+                            },
+                            {
+                              "$ref": "#/paths/~1posts~1get~1my~1%7BpostId%7D/get/responses/200/content/application~1json/schema/allOf/1/properties/data/allOf/6"
+                            },
+                            {
+                              "$ref": "#/paths/~1posts~1create/post/responses/201/content/application~1json/schema/allOf/1/properties/data/allOf/7"
+                            }
+                          ]
                         }
                       }
                     }

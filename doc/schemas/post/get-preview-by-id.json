@@ -7,29 +7,26 @@
             "type": "object",
             "properties": {
                 "data": {
-                    "type": "object",
-                    "items": {
-                        "allOf": [
-                            {
-                                "$ref": "../../responses/api-responses/data-response-base.json"
-                            },
-                            {
-                                "$ref": "./other/writer.json"
-                            },
-                            {
-                                "$ref": "./other/title-description.json"
-                            },
-                            {
-                                "$ref": "./other/viewers.json"
-                            },
-                            {
-                                "$ref": "./other/likes.json"
-                            },
-                            {
-                                "$ref": "./other/tags.json"
-                            }
-                        ]
-                    }
+                    "allOf": [
+                        {
+                            "$ref": "../../responses/api-responses/data-response-base.json"
+                        },
+                        {
+                            "$ref": "./other/writer.json"
+                        },
+                        {
+                            "$ref": "./other/title-description.json"
+                        },
+                        {
+                            "$ref": "./other/viewers.json"
+                        },
+                        {
+                            "$ref": "./other/likes.json"
+                        },
+                        {
+                            "$ref": "./other/tags.json"
+                        }
+                    ]
                 }
             }
         }
