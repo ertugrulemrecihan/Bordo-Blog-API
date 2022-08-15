@@ -24,7 +24,7 @@ router
     );
 router
     .route('/create')
-    .put(
+    .post(
         authenticate,
         authorize('Admin'),
         bodyValidator(schemas.createValidation),

@@ -25,7 +25,7 @@ router
     .get(paramIdValidator, controller.fetchOnePreview);
 router
     .route('/create')
-    .put(
+    .post(
         authenticate,
         bodyValidator(schemas.createValidation),
         controller.create

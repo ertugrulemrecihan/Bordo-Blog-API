@@ -41,7 +41,7 @@ router
     );
 router
     .route('/create')
-    .put(
+    .post(
         authenticate,
         bodyValidator(schemas.createValidation),
         controller.createMyAddress
