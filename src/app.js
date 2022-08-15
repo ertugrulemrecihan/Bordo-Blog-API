@@ -24,18 +24,18 @@ app.use(
 
 app.use('/api/v1/doc', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
 
-app.use('/api/v1/user', routes.user);
-app.use('/api/v1/post', routes.post);
-app.use('/api/v1/address', routes.address);
-app.use('/api/v1/tag', routes.tag);
+app.use('/api/v1/users', routes.user);
+app.use('/api/v1/posts', routes.post);
+app.use('/api/v1/addresses', routes.address);
+app.use('/api/v1/tags', routes.tag);
 
 // Admin Routes
-app.use('/api/v1/admin/role', routes.adminRole);
-app.use('/api/v1/admin/tag', routes.adminTag);
-app.use('/api/v1/admin/post', routes.adminPost);
-app.use('/api/v1/admin/user', routes.adminUser);
-app.use('/api/v1/admin/address', routes.adminAddress);
-app.use('/api/v1/admin/plan', routes.adminPlan);
+app.use('/api/v1/admin/roles', routes.adminRole);
+app.use('/api/v1/admin/tags', routes.adminTag);
+app.use('/api/v1/admin/posts', routes.adminPost);
+app.use('/api/v1/admin/users', routes.adminUser);
+app.use('/api/v1/admin/addresses', routes.adminAddress);
+app.use('/api/v1/admin/plans', routes.adminPlan);
 
 app.use(successHandler);
 app.use(errorHandler);
