@@ -21,6 +21,9 @@ router
     .route('/logout')
     .post(authenticate, controller.logOut);
 router
+    .route('/upload-avatar')
+    .post(authenticate, controller.uploadAvatar);
+router
     .route('/get-password-reset-email')
     .post(
         bodyValidator(

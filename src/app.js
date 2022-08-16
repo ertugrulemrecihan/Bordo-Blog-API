@@ -8,6 +8,8 @@ const errorHandler = require('./api/v1/middlewares/errorHandler');
 const routes = require('./api/v1/routes');
 const swaggerUi = require('swagger-ui-express');
 const swaggerDocument = require('../doc/static/openapi.json');
+const path = require('path');
+const fileUploader = require('express-fileupload');
 
 config();
 loaders();
@@ -22,6 +24,8 @@ app.use(
     })
 );
 
+app.use('/public', express.static(path.join(__dirname, '../public')));
+app.use(fileUploader());
 app.use('/api/v1/doc', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
 
 app.use('/api/v1/users', routes.user);
