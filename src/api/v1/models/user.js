@@ -19,6 +19,10 @@ const UserSchema = Mongoose.Schema(
             required: true,
             unique: true,
         },
+        avatar: {
+            type: String,
+            default: '/uploads/avatars/default-avatar.jpg',
+        },
         email_verified: {
             type: Boolean,
             default: false,

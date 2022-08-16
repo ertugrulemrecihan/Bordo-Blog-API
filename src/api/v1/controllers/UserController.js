@@ -1,3 +1,7 @@
+const path = require('path');
+const fs = require('fs');
+const { v4: uuidv4 } = require('uuid');
+const mime = require('mime-types');
 const httpStatus = require('http-status');
 const service = require('../services/UserService');
 const passwordHelper = require('../scripts/utils/password');
@@ -466,6 +470,79 @@ class UserController extends BaseController {
         ).place(res);
 
         return next();
+    }
+
+    async uploadAvatar(req, res, next) {
+        try {
+            const avatar = req.files?.avatar;
+            if (!avatar) {
+                return next(
+                    new ApiError(
+                        'Image file cannot be empty!',
+                        httpStatus.BAD_REQUEST
+                    )
+                );
+            }
+
+            if (
+                avatar.mimetype != 'image/jpeg' &&
+                avatar.mimetype != 'image/png'
+            ) {
+                return next(
+                    new ApiError(
+                        // eslint-disable-next-line max-len
+                        'Please do not go beyond the preferred file formats. (.jpg, .png)',
+                        httpStatus.BAD_REQUEST
+                    )
+                );
+            }
+
+            const newFileName = `${uuidv4()}.${mime.extension(
+                avatar.mimetype
+            )}`;
+
+            const uploadPath = path.join(
+                __dirname,
+                '../../../../public/uploads/avatars/',
+                newFileName
+            );
+
+            avatar.mv(uploadPath, function (err) {
+                if (err) {
+                    return next(
+                        new ApiError(
+                            'An error was encountered while uploading the file',
+                            httpStatus.INTERNAL_SERVER_ERROR
+                        )
+                    );
+                }
+            });
+
+            const updatedAvatar = await userService.updateById(req.user._id, {
+                avatar: '/public/uploads/avatars/' + newFileName,
+            });
+
+            if (!updatedAvatar) {
+                if (fs.existsSync(uploadPath)) {
+                    fs.unlinkSync(uploadPath);
+                }
+                return next(
+                    new ApiError(
+                        'An error was encountered while uploading the file',
+                        httpStatus.INTERNAL_SERVER_ERROR
+                    )
+                );
+            }
+
+            new ApiDataSuccess(
+                updatedAvatar,
+                'User avatar updated successfuly.',
+                httpStatus.OK
+            ).place(res);
+            return next();
+        } catch (error) {
+            return new ApiError(error, httpStatus.BAD_REQUEST);
+        }
     }
 }
 
