@@ -591,11 +591,14 @@ class UserController extends BaseController {
                 }
             }
 
-            const updatedAvatar = await userService.updateById(req.user._id, {
+            const updatedUser = await userService.updateById(req.user._id, {
                 avatar: '/uploads/avatars/' + newFileName,
             });
 
-            if (!updatedAvatar) {
+            const newUpdatedUser =
+                userHelper.deletePasswordAndSaltFields(updatedUser);
+
+            if (!newUpdatedUser) {
                 if (fs.existsSync(uploadPath)) {
                     fs.unlinkSync(uploadPath);
                 }
@@ -608,7 +611,7 @@ class UserController extends BaseController {
             }
 
             new ApiDataSuccess(
-                updatedAvatar,
+                newUpdatedUser,
                 'User avatar updated successfuly.',
                 httpStatus.OK
             ).place(res);
