@@ -4,40 +4,114 @@ class BaseService {
         this.populate = populate;
     }
 
-    fetchAll(query) {
-        return this.model.find(query || {}).populate(this.populate);
+    #getFinalQuery(query, { populate, select, session }) {
+        if (populate || this.populate) {
+            query.populate(populate || this.populate);
+        }
+
+        if (select) {
+            query.select(select);
+        }
+
+        if (session) {
+            query.session(session);
+        }
+
+        return query;
     }
 
-    fetchOneById(id) {
-        return this.model.findById(id).populate(this.populate);
+    fetchAll(query, populate, select, session) {
+        const dbQuery = this.model.find(query || {});
+
+        const finalQuery = this.#getFinalQuery(dbQuery, {
+            populate,
+            select,
+            session,
+        });
+
+        return finalQuery.exec();
     }
 
-    fetchOneByQuery(query) {
-        return this.model.findOne(query).populate(this.populate);
+    fetchOneById(id, populate, select, session) {
+        const dbQuery = this.model.findById(id);
+
+        const finalQuery = this.#getFinalQuery(dbQuery, {
+            populate,
+            select,
+            session,
+        });
+
+        return finalQuery.exec();
     }
 
-    create(item) {
-        return this.model.create(item);
+    fetchOneByQuery(query, populate, select, session) {
+        const dbQuery = this.model.findOne(query);
+
+        const finalQuery = this.#getFinalQuery(dbQuery, {
+            populate,
+            select,
+            session,
+        });
+
+        return finalQuery.exec();
     }
 
-    updateById(id, item) {
-        return this.model.findByIdAndUpdate(id, item, { new: true });
+    create(item, session) {
+        const createdData = session ? [item] : item;
+
+        return session
+            ? this.model.create(createdData, { session })
+            : this.model.create(createdData);
     }
 
-    updateByQuery(query, item) {
-        return this.model.findOneAndUpdate(query, item, { new: true });
+    updateById(id, item, session) {
+        const dbQuery = this.model.findByIdAndUpdate(id, item, { new: true });
+
+        const finalQuery = this.#getFinalQuery(dbQuery, {
+            session,
+        });
+
+        return finalQuery.exec();
     }
 
-    deleteById(id) {
-        return this.model.findByIdAndDelete(id);
+    updateByQuery(query, item, session) {
+        const dbQuery = this.model.findOneAndUpdate(query, item, { new: true });
+
+        const finalQuery = this.#getFinalQuery(dbQuery, {
+            session,
+        });
+
+        return finalQuery.exec();
     }
 
-    deleteByQuery(query) {
-        return this.model.findOneAndDelete(query);
+    deleteById(id, session) {
+        const dbQuery = this.model.findByIdAndDelete(id);
+
+        const finalQuery = this.#getFinalQuery(dbQuery, {
+            session,
+        });
+
+        return finalQuery.exec();
     }
 
-    deleteAll(where) {
-        return this.model.deleteMany(where || {});
+    deleteByQuery(query, session) {
+        const dbQuery = this.model.findOneAndDelete(query);
+
+        const finalQuery = this.#getFinalQuery(dbQuery, {
+            session,
+        });
+
+        return finalQuery.exec();
+    }
+
+    deleteAll(where, session) {
+        const dbQuery = this.model.deleteMany(where || {});
+
+        const finalQuery = this.#getFinalQuery(dbQuery, {
+            session,
+        });
+
+        return finalQuery.exec();
     }
 }
 
