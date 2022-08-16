@@ -122,7 +122,7 @@ class UserController extends BaseController {
         const refreshToken = response.refresh_token;
 
         const currentAccessToken = await accessTokenService.fetchOneByQuery({
-            user_id: user._id,
+            user: user._id,
         });
 
         // ! FIXME - Silmek yerine mevcut olan response edilebilir mi?
@@ -136,7 +136,7 @@ class UserController extends BaseController {
         });
 
         const currentRefreshToken = await refreshTokenService.fetchOneByQuery({
-            user_id: user._id,
+            user: user._id,
         });
 
         if (currentRefreshToken) {
@@ -490,12 +490,7 @@ class UserController extends BaseController {
         const response = await service.fetchOneById(req.params.id);
 
         if (!response) {
-            return next(
-                new ApiError(
-                    'User not found',
-                    httpStatus.NOT_FOUND
-                )
-            );
+            return next(new ApiError('User not found', httpStatus.NOT_FOUND));
         }
 
         // ! FIXME - BaseService'e metod bazlı popülasyon
@@ -515,12 +510,7 @@ class UserController extends BaseController {
         const response = await service.deleteById(req.params.id);
 
         if (!response) {
-            return next(
-                new ApiError(
-                    'User not found',
-                    httpStatus.NOT_FOUND
-                )
-            );
+            return next(new ApiError('User not found', httpStatus.NOT_FOUND));
         }
 
         // ! FIXME - BaseService'e metod bazlı popülasyon
