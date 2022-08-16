@@ -126,7 +126,7 @@ class UserController extends BaseController {
         const refreshToken = response.refresh_token;
 
         const currentAccessToken = await accessTokenService.fetchOneByQuery({
-            user_id: user._id,
+            user: user._id,
         });
 
         // ! FIXME - Silmek yerine mevcut olan response edilebilir mi?
@@ -140,7 +140,7 @@ class UserController extends BaseController {
         });
 
         const currentRefreshToken = await refreshTokenService.fetchOneByQuery({
-            user_id: user._id,
+            user: user._id,
         });
 
         if (currentRefreshToken) {
