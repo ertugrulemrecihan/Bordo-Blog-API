@@ -18,7 +18,7 @@
         {
             "url": "http://localhost:3000/api/v1",
             "description": "Local server"
-        }        
+        }
     ],
     "tags": [
         {
@@ -62,6 +62,9 @@
         "/users/logout": {
             "$ref": "./paths/user/logout.json"
         },
+        "/users/upload-avatar": {
+            "$ref": "./paths/user/upload-avatar.json"
+        },
         "/users/get-password-reset-email": {
             "$ref": "./paths/user/get-password-reset-email.json"
         },
@@ -74,10 +77,6 @@
         "/users/change-password": {
             "$ref": "./paths/user/change-password.json"
         },
-
-
-        
-        
         "/admin/users/get-all": {
             "$ref": "./paths/admin/user/get-all.json"
         },
@@ -87,10 +86,6 @@
         "/admin/users/delete/{userId}": {
             "$ref": "./paths/admin/user/delete.json"
         },
-
-
-
-
         "/tags/get-all": {
             "$ref": "./paths/tag/get-all-tags.json"
         },

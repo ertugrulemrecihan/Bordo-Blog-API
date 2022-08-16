@@ -448,6 +448,132 @@
         }
       }
     },
+    "/users/upload-avatar": {
+      "summary": "",
+      "description": "",
+      "post": {
+        "tags": [
+          "Users"
+        ],
+        "summary": "Upload Avatar",
+        "description": "Upload Avatar",
+        "operationId": "users.upload-avatar",
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "requestBody": {
+          "description": "",
+          "content": {
+            "multipart/form-data": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "avatar": {
+                    "type": "string",
+                    "format": "binary"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "allOf": [
+                    {
+                      "$ref": "#/paths/~1users~1logout/post/responses/200/content/application~1json/schema"
+                    },
+                    {
+                      "type": "object",
+                      "properties": {
+                        "data": {
+                          "allOf": [
+                            {
+                              "$ref": "#/paths/~1posts~1create/post/responses/201/content/application~1json/schema/allOf/1/properties/data/allOf/0"
+                            },
+                            {
+                              "$ref": "#/components/requestBodies/register/content/application~1json/schema/allOf/0/allOf/0"
+                            },
+                            {
+                              "type": "object",
+                              "properties": {
+                                "email": {
+                                  "title": "User Email",
+                                  "description": "User Email",
+                                  "type": "string",
+                                  "format": "email"
+                                }
+                              }
+                            },
+                            {
+                              "type": "object",
+                              "properties": {
+                                "avatar": {
+                                  "title": "User Profile Picture",
+                                  "description": "User Profile Picture",
+                                  "type": "string"
+                                }
+                              }
+                            },
+                            {
+                              "type": "object",
+                              "properties": {
+                                "email_verified": {
+                                  "title": "Email Verified",
+                                  "description": "Email Verified",
+                                  "type": "boolean",
+                                  "example": false
+                                }
+                              }
+                            },
+                            {
+                              "type": "object",
+                              "properties": {
+                                "email_notification": {
+                                  "title": "Email Notification",
+                                  "description": "Email Notification",
+                                  "type": "boolean",
+                                  "example": false
+                                }
+                              }
+                            },
+                            {
+                              "$ref": "#/paths/~1users~1profile/get/responses/200/content/application~1json/schema/allOf/1/properties/data/allOf/1"
+                            },
+                            {
+                              "$ref": "#/paths/~1users~1profile/get/responses/200/content/application~1json/schema/allOf/1/properties/data/allOf/2"
+                            }
+                          ]
+                        }
+                      }
+                    }
+                  ]
+                }
+              }
+            }
+          },
+          "400": {
+            "$ref": "#/paths/~1users~1login/post/responses/400"
+          },
+          "401": {
+            "$ref": "#/paths/~1users~1logout/post/responses/401"
+          },
+          "403": {
+            "$ref": "#/paths/~1users~1logout/post/responses/403"
+          },
+          "500": {
+            "$ref": "#/paths/~1users~1login/post/responses/500"
+          }
+        }
+      }
+    },
     "/users/get-password-reset-email": {
       "summary": "",
       "description": "",

@@ -1,0 +1,64 @@
+{
+    "allOf": [
+        {
+            "$ref": "../../responses/api-responses/api-success.json"
+        },
+        {
+            "type": "object",
+            "properties": {
+                "data": {
+                    "allOf": [
+                        {
+                            "$ref": "../../responses/api-responses/data-response-base.json"
+                        },
+                        {
+                            "$ref": "./other/first-name-last-name.json"
+                        },
+                        {
+                            "type": "object",
+                            "properties": {
+                                "email": {
+                                    "title": "User Email",
+                                    "description": "User Email",
+                                    "type": "string",
+                                    "format": "email"
+                                }
+                            }
+                        },
+                        {
+                            "$ref": "./other/avatar.json"
+                        },
+                        {
+                            "type": "object",
+                            "properties": {
+                                "email_verified": {
+                                    "title": "Email Verified",
+                                    "description": "Email Verified",
+                                    "type": "boolean",
+                                    "example": false
+                                }
+                            }
+                        },
+                        {
+                            "type": "object",
+                            "properties": {
+                                "email_notification": {
+                                    "title": "Email Notification",
+                                    "description": "Email Notification",
+                                    "type": "boolean",
+                                    "example": false
+                                }
+                            }
+                        },
+                        {
+                            "$ref": "./other/roles.json"
+                        },
+                        {
+                            "$ref": "./other/packages.json"
+                        }
+                    ]
+                }
+            }
+        }
+    ]
+}

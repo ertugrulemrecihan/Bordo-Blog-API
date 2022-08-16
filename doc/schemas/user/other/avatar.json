@@ -1,0 +1,10 @@
+{
+    "type": "object",
+    "properties": {
+        "avatar": {
+            "title": "User Profile Picture",
+            "description": "User Profile Picture",
+            "type": "string"
+        }
+    }
+}
