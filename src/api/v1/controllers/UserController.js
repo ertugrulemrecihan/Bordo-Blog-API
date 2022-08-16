@@ -494,12 +494,7 @@ class UserController extends BaseController {
         const response = await service.fetchOneById(req.params.id);
 
         if (!response) {
-            return next(
-                new ApiError(
-                    'User not found',
-                    httpStatus.NOT_FOUND
-                )
-            );
+            return next(new ApiError('User not found', httpStatus.NOT_FOUND));
         }
 
         // ! FIXME - BaseService'e metod bazlı popülasyon
@@ -519,12 +514,7 @@ class UserController extends BaseController {
         const response = await service.deleteById(req.params.id);
 
         if (!response) {
-            return next(
-                new ApiError(
-                    'User not found',
-                    httpStatus.NOT_FOUND
-                )
-            );
+            return next(new ApiError('User not found', httpStatus.NOT_FOUND));
         }
 
         // ! FIXME - BaseService'e metod bazlı popülasyon
@@ -565,7 +555,7 @@ class UserController extends BaseController {
                 );
             }
 
-            const newFileName = `${uuidv4()}.${mime.extension(
+            const newFileName = `${uuidv4()}-${req.user._id}.${mime.extension(
                 avatar.mimetype
             )}`;
 
@@ -586,8 +576,23 @@ class UserController extends BaseController {
                 }
             });
 
+            const user = await userService.fetchOneByQuery({
+                _id: req.user._id,
+            });
+
+            if (user.avatar != '/uploads/avatars/default-avatar.jpg') {
+                const currentPath = path.join(
+                    __dirname,
+                    '../../../../public',
+                    user.avatar
+                );
+                if (fs.existsSync(currentPath)) {
+                    fs.unlinkSync(currentPath);
+                }
+            }
+
             const updatedAvatar = await userService.updateById(req.user._id, {
-                avatar: '/public/uploads/avatars/' + newFileName,
+                avatar: '/uploads/avatars/' + newFileName,
             });
 
             if (!updatedAvatar) {
