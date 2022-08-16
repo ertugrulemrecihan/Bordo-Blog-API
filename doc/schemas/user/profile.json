@@ -12,9 +12,6 @@
                             "$ref": "./other/auth-response-without-roles-and-package.json"
                         },
                         {
-                            "$ref": "./other/first-name-last-name.json"
-                        },
-                        {
                             "$ref": "./other/roles.json"
                         },
                         {

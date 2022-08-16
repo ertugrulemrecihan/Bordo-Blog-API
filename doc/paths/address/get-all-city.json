@@ -1,0 +1,39 @@
+{
+    "summary": "",
+    "description": "",
+    "get": {
+        "tags": [
+            "Addresses"
+        ],
+        "summary": "Get all cities by country id",
+        "description": "Get all cities by country id",
+        "operationId": "address.get-all-city",
+        "security": [
+            {
+                "bearerAuth": []
+            }
+        ],        
+        "parameters": [
+            {
+                "$ref": "../../parameters/path/address/country_id.json"
+            }
+        ],
+        "responses": {
+            "200": {
+                "$ref": "../../responses/address/get-all-city.json"
+            },
+            "400": {
+                "$ref": "../../responses/api-responses/400.json"
+            },
+            "401": {
+                "$ref": "../../responses/api-responses/401.json"
+            },
+            "403": {
+                "$ref": "../../responses/api-responses/403.json"
+            },
+            "404": {
+                "$ref": "../../responses/api-responses/404.json"
+            }
+        }
+    }
+}

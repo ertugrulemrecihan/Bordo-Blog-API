@@ -1,9 +1,9 @@
 const CryptoJs = require('crypto-js');
-const bcrypt = require('bcrypt');
+const random = require('random-gen');
 
 const passwordToHash = (plainPassword) => {
     // Generate a salt
-    const randomSalt = bcrypt.genSaltSync(10);
+    const randomSalt = random.alphaNum(30);
 
     // Hash the salt
     const hashedSalt = CryptoJs.HmacSHA256(

@@ -8,7 +8,7 @@ const schemas = require('../../validations/role');
 const paramIdValidator = require('../../middlewares/paramsIdValidator');
 
 router
-    .route('/getAll')
+    .route('/get-all')
     .get(
         authenticate,
         authorize('Admin'),

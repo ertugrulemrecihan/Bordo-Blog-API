@@ -1,0 +1,34 @@
+{
+    "type": "object",
+    "properties": {
+        "_id": {
+            "title": "MongoDb Id of the district",
+            "description": "MongoDb Id of the district",
+            "type": "string",
+            "length": 24,
+            "example": "62f8d2ee7eb0550b2715cf2b"
+        },
+        "city": {
+            "title": "MongoDb Id of the city",
+            "description": "MongoDb Id of the city",
+            "type": "string",
+            "length": 24,
+            "example": "62f8d2ed7eb0550b2715cf1f"
+        },
+        "zip_code":{
+            "title": "District zip code",
+            "description": "District zip code",
+            "type": "string",
+            "length": 5,
+            "example": "34500"
+        },
+        "name": {
+            "title": "District name",
+            "description": "District name",
+            "type": "string",
+            "minLength": 3,
+            "maxLength": 80,
+            "example": "Esenyurt"
+        }
+    }
+}

@@ -1,0 +1,31 @@
+{
+    "allOf": [
+        {
+            "$ref": "../../../responses/api-responses/data-response-base.json"
+        },
+        {
+            "type": "object",
+            "properties": {
+                "name": {
+                    "title": "Role name",
+                    "description": "Role name",
+                    "type": "string",
+                    "minLength": 3,
+                    "maxLength": 50
+                }
+            }
+        },
+        {
+            "type": "object",
+            "properties": {
+                "description": {
+                    "title": "Role description",
+                    "description": "Role description",
+                    "type": "string",
+                    "minLength": 3,
+                    "maxLength": 150
+                }
+            }
+        }
+    ]
+}

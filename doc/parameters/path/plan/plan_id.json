@@ -1,0 +1,10 @@
+{
+    "in": "path",
+    "name": "planId",
+    "schema": {
+        "type": "string"
+    },
+    "required": true,
+    "description": "Plan id",
+    "length": 24
+}

@@ -1,0 +1,42 @@
+{
+    "type": "object",
+    "properties": {
+        "_id": {
+            "title": "MongoDb Id of the city",
+            "description": "MongoDb Id of the city",
+            "type": "string",
+            "length": 24,
+            "example": "62f8d2ed7eb0550b2715cf1f"
+        },
+        "country": {
+            "title": "MongoDb Id of the country",
+            "description": "MongoDb Id of the country",
+            "type": "string",
+            "length": 24,
+            "example": "62ed69679c045c97a63390a4"
+        },
+        "zip_code":{
+            "title": "City zip code",
+            "description": "City zip code",
+            "type": "string",
+            "length": 5,
+            "example": "34000"
+        },
+        "name": {
+            "title": "City name",
+            "description": "City name",
+            "type": "string",
+            "minLength": 3,
+            "maxLength": 30,
+            "example": "İstanbul"
+        },
+        "region": {
+            "title": "City region",
+            "description": "City region",
+            "type": "string",
+            "minLength": 3,
+            "maxLength": 60,
+            "example": "Marmara"
+        }
+    }
+}

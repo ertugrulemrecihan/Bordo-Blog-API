@@ -20,7 +20,6 @@
   },
   "homepage": "https://github.com/ertugrulchn/Bordo.io-Staj-Back-End#readme",
   "dependencies": {
-    "bcrypt": "^5.0.1",
     "cors": "^2.8.5",
     "crypto-js": "^4.1.1",
     "dotenv": "^16.0.1",
@@ -34,6 +33,7 @@
     "mongoose": "^6.5.0",
     "nodemailer": "^6.7.7",
     "nodemailer-express-handlebars": "^5.0.0",
+    "random-gen": "^0.1.0",
     "swagger-ui-express": "^4.5.0",
     "uuid": "^8.3.2"
   },

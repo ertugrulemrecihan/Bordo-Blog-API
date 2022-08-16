@@ -57,14 +57,6 @@ const changePasswordValidation = Joi.object({
         .invalid(Joi.ref('old_password')),
 });
 
-const adminUserUpdateValidation = Joi.object({
-    email: Joi.string().email(),
-    first_name: Joi.string().min(3).max(100),
-    last_name: Joi.string().min(3).max(100),
-    email_verified: Joi.boolean(),
-    email_notification: Joi.boolean(),
-});
-
 module.exports = {
     loginValidation,
     registerValidation,
@@ -72,5 +64,4 @@ module.exports = {
     resetPasswordValidation,
     changePasswordValidation,
     createEmailVerificationTokenValidation,
-    adminUserUpdateValidation,
 };

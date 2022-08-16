@@ -1,0 +1,15 @@
+{
+    "allOf": [
+        {
+            "$ref": "../../../responses/api-responses/api-success.json"
+        },
+        {
+            "type": "object",
+            "properties": {
+                "data": {
+                    "$ref": "../user-for-admin.json"
+                }
+            }
+        }
+    ]
+}

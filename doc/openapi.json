@@ -12,13 +12,13 @@
     },
     "servers": [
         {
-            "url": "http://localhost:3000/api/v1",
-            "description": "Local server"
-        },
-        {
             "url": "https://bordo-blog.herokuapp.com/api/v1",
             "description": "Web server"
-        }
+        },
+        {
+            "url": "http://localhost:3000/api/v1",
+            "description": "Local server"
+        }        
     ],
     "tags": [
         {
@@ -32,6 +32,18 @@
         {
             "name": "Posts",
             "description": "Post endpoints"
+        },
+        {
+            "name": "Addresses",
+            "description": "Address endpoints"
+        },
+        {
+            "name": "Roles (Only Admins)",
+            "description": "User roles endpoints"
+        },
+        {
+            "name": "Plans (Only Admins)",
+            "description": "Plan endpoints"
         }
     ],
     "paths": {
@@ -62,6 +74,23 @@
         "/users/change-password": {
             "$ref": "./paths/user/change-password.json"
         },
+
+
+        
+        
+        "/admin/users/get-all": {
+            "$ref": "./paths/admin/user/get-all.json"
+        },
+        "/admin/users/get/{userId}": {
+            "$ref": "./paths/admin/user/get.json"
+        },
+        "/admin/users/delete/{userId}": {
+            "$ref": "./paths/admin/user/delete.json"
+        },
+
+
+
+
         "/tags/get-all": {
             "$ref": "./paths/tag/get-all-tags.json"
         },
@@ -80,7 +109,7 @@
         "/posts/get-all/my": {
             "$ref": "./paths/post/get-all-my-post.json"
         },
-        "/post/get/my/{postId}": {
+        "/posts/get/my/{postId}": {
             "$ref": "./paths/post/get-my-post-by-id.json"
         },
         "/posts/get-all/previews": {
@@ -124,6 +153,66 @@
         },
         "/admin/posts/delete/{postId}": {
             "$ref": "./paths/admin/post/delete-users-post.json"
+        },
+        "/addresses/get-all/country": {
+            "$ref": "./paths/address/get-all-country.json"
+        },
+        "/addresses/get-all/city/{countryId}": {
+            "$ref": "./paths/address/get-all-city.json"
+        },
+        "/addresses/get-all/district/{cityId}": {
+            "$ref": "./paths/address/get-all-district.json"
+        },
+        "/addresses/get-all/my": {
+            "$ref": "./paths/address/get-all-my.json"
+        },
+        "/addresses/get/my/{addressId}": {
+            "$ref": "./paths/address/get-my.json"
+        },
+        "/addresses/create": {
+            "$ref": "./paths/address/create.json"
+        },
+        "/addresses/update/{addressId}": {
+            "$ref": "./paths/address/update.json"
+        },
+        "/addresses/delete/{addressId}": {
+            "$ref": "./paths/address/delete.json"
+        },
+        "/admin/addresses/get-all": {
+            "$ref": "./paths/admin/address/get-all.json"
+        },
+        "/admin/addresses/get/{addressId}": {
+            "$ref": "./paths/admin/address/get.json"
+        },
+        "/admin/roles/get-all": {
+            "$ref": "./paths/admin/role/get-all.json"
+        },
+        "/admin/roles/get/{roleId}": {
+            "$ref": "./paths/admin/role/get.json"
+        },
+        "/admin/roles/create": {
+            "$ref": "./paths/admin/role/create.json"
+        },
+        "/admin/roles/update/{roleId}": {
+            "$ref": "./paths/admin/role/update.json"
+        },
+        "/admin/roles/delete/{roleId}": {
+            "$ref": "./paths/admin/role/delete.json"
+        },
+        "/admin/plans/get-all": {
+            "$ref": "./paths/admin/plan/get-all.json"
+        },
+        "/admin/plans/get/{planId}": {
+            "$ref": "./paths/admin/plan/get.json"
+        },
+        "/admin/plans/create": {
+            "$ref": "./paths/admin/plan/create.json"
+        },
+        "/admin/plans/update/{planId}": {
+            "$ref": "./paths/admin/plan/update.json"
+        },
+        "/admin/plans/delete/{planId}": {
+            "$ref": "./paths/admin/plan/delete.json"
         }
     },
     "components": {

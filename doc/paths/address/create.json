@@ -1,0 +1,40 @@
+{
+    "summary": "",
+    "description": "",
+    "post": {
+        "tags": [
+            "Addresses"
+        ],
+        "summary": "Create address",
+        "description": "Create address",
+        "operationId": "address.create",
+        "security": [
+            {
+                "bearerAuth": []
+            }
+        ],
+        "requestBody": {
+            "$ref": "../../request-bodies/address/create.json"
+        },
+        "responses": {
+            "201": {
+                "$ref": "../../responses/address/create.json"
+            },
+            "400": {
+                "$ref": "../../responses/api-responses/400.json"
+            },
+            "401": {
+                "$ref": "../../responses/api-responses/401.json"
+            },
+            "403": {
+                "$ref": "../../responses/api-responses/403.json"
+            },
+            "404": {
+                "$ref": "../../responses/api-responses/404.json"
+            },
+            "500": {
+                "$ref": "../../responses/api-responses/500.json"
+            }
+        }
+    }
+}

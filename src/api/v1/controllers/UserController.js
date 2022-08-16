@@ -472,6 +472,74 @@ class UserController extends BaseController {
         return next();
     }
 
+    async fetchAllForAdmin(req, res, next) {
+        const response = await service.fetchAll();
+
+        // ! FIXME - BaseService'e metod bazlı popülasyon
+        // ! eklendiğinde burayı güncelle
+        const result = response.map((u) =>
+            userHelper.deletePasswordAndSaltFields(u)
+        );
+
+        new ApiDataSuccess(
+            result,
+            'Users fetched successfully',
+            httpStatus.OK
+        ).place(res);
+
+        return next();
+    }
+
+    async fetchOneByParamsIdForAdmin(req, res, next) {
+        const response = await service.fetchOneById(req.params.id);
+
+        if (!response) {
+            return next(
+                new ApiError(
+                    'User not found',
+                    httpStatus.NOT_FOUND
+                )
+            );
+        }
+
+        // ! FIXME - BaseService'e metod bazlı popülasyon
+        // ! eklendiğinde burayı güncelle
+        const result = userHelper.deletePasswordAndSaltFields(response);
+
+        new ApiDataSuccess(
+            result,
+            'User fetched successfully',
+            httpStatus.OK
+        ).place(res);
+
+        return next();
+    }
+
+    async deleteByParamsIdForAdmin(req, res, next) {
+        const response = await service.deleteById(req.params.id);
+
+        if (!response) {
+            return next(
+                new ApiError(
+                    'User not found',
+                    httpStatus.NOT_FOUND
+                )
+            );
+        }
+
+        // ! FIXME - BaseService'e metod bazlı popülasyon
+        // ! eklendiğinde burayı güncelle
+        const result = userHelper.deletePasswordAndSaltFields(response);
+
+        new ApiDataSuccess(
+            result,
+            'User deleted successfully',
+            httpStatus.OK
+        ).place(res);
+
+        return next();
+    }
+
     async uploadAvatar(req, res, next) {
         try {
             const avatar = req.files?.avatar;

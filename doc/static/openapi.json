@@ -12,12 +12,12 @@
   },
   "servers": [
     {
-      "url": "http://localhost:3000/api/v1",
-      "description": "Local server"
-    },
-    {
       "url": "https://bordo-blog.herokuapp.com/api/v1",
       "description": "Web server"
+    },
+    {
+      "url": "http://localhost:3000/api/v1",
+      "description": "Local server"
     }
   ],
   "tags": [
@@ -32,6 +32,18 @@
     {
       "name": "Posts",
       "description": "Post endpoints"
+    },
+    {
+      "name": "Addresses",
+      "description": "Address endpoints"
+    },
+    {
+      "name": "Roles (Only Admins)",
+      "description": "User roles endpoints"
+    },
+    {
+      "name": "Plans (Only Admins)",
+      "description": "Plan endpoints"
     }
   ],
   "paths": {
@@ -140,9 +152,6 @@
                                   }
                                 }
                               ]
-                            },
-                            {
-                              "$ref": "#/components/requestBodies/register/content/application~1json/schema/allOf/0/allOf/0"
                             },
                             {
                               "type": "object",
@@ -588,6 +597,195 @@
         }
       }
     },
+    "/admin/users/get-all": {
+      "summary": "",
+      "description": "",
+      "get": {
+        "tags": [
+          "Users"
+        ],
+        "summary": "Get all users",
+        "description": "Get all users",
+        "operationId": "users.admin-get-all",
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "allOf": [
+                    {
+                      "$ref": "#/paths/~1users~1logout/post/responses/200/content/application~1json/schema"
+                    },
+                    {
+                      "type": "object",
+                      "properties": {
+                        "data": {
+                          "type": "array",
+                          "items": {
+                            "$ref": "#/paths/~1admin~1users~1get~1%7BuserId%7D/get/responses/200/content/application~1json/schema/allOf/1/properties/data"
+                          }
+                        }
+                      }
+                    }
+                  ]
+                }
+              }
+            }
+          },
+          "400": {
+            "$ref": "#/paths/~1users~1login/post/responses/400"
+          },
+          "401": {
+            "$ref": "#/paths/~1users~1logout/post/responses/401"
+          },
+          "403": {
+            "$ref": "#/paths/~1users~1logout/post/responses/403"
+          }
+        }
+      }
+    },
+    "/admin/users/get/{userId}": {
+      "summary": "",
+      "description": "",
+      "get": {
+        "tags": [
+          "Users"
+        ],
+        "summary": "Get user by userId",
+        "description": "Get user by userId",
+        "operationId": "users.admin-get",
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "userId",
+            "schema": {
+              "type": "string"
+            },
+            "required": true,
+            "description": "User id",
+            "length": 24
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "allOf": [
+                    {
+                      "$ref": "#/paths/~1users~1logout/post/responses/200/content/application~1json/schema"
+                    },
+                    {
+                      "type": "object",
+                      "properties": {
+                        "data": {
+                          "allOf": [
+                            {
+                              "$ref": "#/paths/~1users~1profile/get/responses/200/content/application~1json/schema/allOf/1/properties/data/allOf/0"
+                            },
+                            {
+                              "$ref": "#/paths/~1users~1profile/get/responses/200/content/application~1json/schema/allOf/1/properties/data/allOf/1"
+                            },
+                            {
+                              "$ref": "#/paths/~1users~1profile/get/responses/200/content/application~1json/schema/allOf/1/properties/data/allOf/2"
+                            }
+                          ]
+                        }
+                      }
+                    }
+                  ]
+                }
+              }
+            }
+          },
+          "400": {
+            "$ref": "#/paths/~1users~1login/post/responses/400"
+          },
+          "401": {
+            "$ref": "#/paths/~1users~1logout/post/responses/401"
+          },
+          "403": {
+            "$ref": "#/paths/~1users~1logout/post/responses/403"
+          },
+          "404": {
+            "$ref": "#/paths/~1users~1login/post/responses/404"
+          }
+        }
+      }
+    },
+    "/admin/users/delete/{userId}": {
+      "summary": "",
+      "description": "",
+      "delete": {
+        "tags": [
+          "Users"
+        ],
+        "summary": "Delete user",
+        "description": "Delete user",
+        "operationId": "users.admin-delete",
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "parameters": [
+          {
+            "$ref": "#/paths/~1admin~1users~1get~1%7BuserId%7D/get/parameters/0"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "allOf": [
+                    {
+                      "$ref": "#/paths/~1users~1logout/post/responses/200/content/application~1json/schema"
+                    },
+                    {
+                      "type": "object",
+                      "properties": {
+                        "data": {
+                          "$ref": "#/paths/~1admin~1users~1get~1%7BuserId%7D/get/responses/200/content/application~1json/schema/allOf/1/properties/data"
+                        }
+                      }
+                    }
+                  ]
+                }
+              }
+            }
+          },
+          "400": {
+            "$ref": "#/paths/~1users~1login/post/responses/400"
+          },
+          "401": {
+            "$ref": "#/paths/~1users~1logout/post/responses/401"
+          },
+          "403": {
+            "$ref": "#/paths/~1users~1logout/post/responses/403"
+          },
+          "404": {
+            "$ref": "#/paths/~1users~1login/post/responses/404"
+          }
+        }
+      }
+    },
     "/tags/get-all": {
       "summary": "",
       "description": "",
@@ -646,7 +844,8 @@
               "type": "string"
             },
             "required": true,
-            "description": ""
+            "description": "Tag id",
+            "length": 24
           }
         ],
         "responses": {
@@ -824,6 +1023,9 @@
           "403": {
             "$ref": "#/paths/~1users~1logout/post/responses/403"
           },
+          "404": {
+            "$ref": "#/paths/~1users~1login/post/responses/404"
+          },
           "409": {
             "$ref": "#/paths/~1users~1register/post/responses/409"
           },
@@ -945,13 +1147,13 @@
                                 }
                               },
                               {
-                                "$ref": "#/paths/~1posts~1add-tag~1%7BpostId%7D/post/responses/200/content/application~1json/schema/allOf/1/properties/data/allOf/4"
+                                "$ref": "#/paths/~1posts~1get~1my~1%7BpostId%7D/get/responses/200/content/application~1json/schema/allOf/1/properties/data/allOf/4"
                               },
                               {
-                                "$ref": "#/paths/~1posts~1add-tag~1%7BpostId%7D/post/responses/200/content/application~1json/schema/allOf/1/properties/data/allOf/5"
+                                "$ref": "#/paths/~1posts~1get~1my~1%7BpostId%7D/get/responses/200/content/application~1json/schema/allOf/1/properties/data/allOf/5"
                               },
                               {
-                                "$ref": "#/paths/~1posts~1add-tag~1%7BpostId%7D/post/responses/200/content/application~1json/schema/allOf/1/properties/data/allOf/6"
+                                "$ref": "#/paths/~1posts~1get~1my~1%7BpostId%7D/get/responses/200/content/application~1json/schema/allOf/1/properties/data/allOf/6"
                               },
                               {
                                 "$ref": "#/paths/~1posts~1create/post/responses/201/content/application~1json/schema/allOf/1/properties/data/allOf/7"
@@ -978,7 +1180,7 @@
         }
       }
     },
-    "/post/get/my/{postId}": {
+    "/posts/get/my/{postId}": {
       "summary": "",
       "description": "",
       "get": {
@@ -1001,756 +1203,10 @@
               "type": "string"
             },
             "required": true,
-            "description": ""
+            "description": "Post id",
+            "length": 24
           }
         ],
-        "responses": {
-          "200": {
-            "description": "",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "type": "object",
-                  "allOf": [
-                    {
-                      "$ref": "#/paths/~1users~1logout/post/responses/200/content/application~1json/schema"
-                    },
-                    {
-                      "type": "object",
-                      "properties": {
-                        "data": {
-                          "type": "object",
-                          "items": {
-                            "allOf": [
-                              {
-                                "$ref": "#/paths/~1posts~1create/post/responses/201/content/application~1json/schema/allOf/1/properties/data/allOf/0"
-                              },
-                              {
-                                "$ref": "#/paths/~1posts~1create/post/responses/201/content/application~1json/schema/allOf/1/properties/data/allOf/1"
-                              },
-                              {
-                                "$ref": "#/components/requestBodies/create-post/content/application~1json/schema/allOf/0/allOf/0"
-                              },
-                              {
-                                "type": "object",
-                                "properties": {
-                                  "content": {
-                                    "title": "Post content",
-                                    "description": "Post content",
-                                    "type": "string"
-                                  }
-                                }
-                              },
-                              {
-                                "$ref": "#/paths/~1posts~1add-tag~1%7BpostId%7D/post/responses/200/content/application~1json/schema/allOf/1/properties/data/allOf/4"
-                              },
-                              {
-                                "$ref": "#/paths/~1posts~1add-tag~1%7BpostId%7D/post/responses/200/content/application~1json/schema/allOf/1/properties/data/allOf/5"
-                              },
-                              {
-                                "$ref": "#/paths/~1posts~1add-tag~1%7BpostId%7D/post/responses/200/content/application~1json/schema/allOf/1/properties/data/allOf/6"
-                              },
-                              {
-                                "$ref": "#/paths/~1posts~1create/post/responses/201/content/application~1json/schema/allOf/1/properties/data/allOf/7"
-                              }
-                            ]
-                          }
-                        }
-                      }
-                    }
-                  ]
-                }
-              }
-            }
-          },
-          "400": {
-            "$ref": "#/paths/~1users~1login/post/responses/400"
-          },
-          "401": {
-            "$ref": "#/paths/~1users~1logout/post/responses/401"
-          },
-          "403": {
-            "$ref": "#/paths/~1users~1logout/post/responses/403"
-          },
-          "404": {
-            "$ref": "#/paths/~1users~1login/post/responses/404"
-          }
-        }
-      }
-    },
-    "/posts/get-all/previews": {
-      "summary": "",
-      "description": "",
-      "get": {
-        "tags": [
-          "Posts"
-        ],
-        "summary": "Get All Post Previews",
-        "description": "Get All Post Previews",
-        "operationId": "post.get-all-previews",
-        "responses": {
-          "200": {
-            "description": "",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "type": "object",
-                  "allOf": [
-                    {
-                      "$ref": "#/paths/~1users~1logout/post/responses/200/content/application~1json/schema"
-                    },
-                    {
-                      "type": "object",
-                      "properties": {
-                        "data": {
-                          "type": "array",
-                          "items": {
-                            "allOf": [
-                              {
-                                "$ref": "#/paths/~1posts~1create/post/responses/201/content/application~1json/schema/allOf/1/properties/data/allOf/0"
-                              },
-                              {
-                                "$ref": "#/paths/~1posts~1create/post/responses/201/content/application~1json/schema/allOf/1/properties/data/allOf/1"
-                              },
-                              {
-                                "$ref": "#/components/requestBodies/create-post/content/application~1json/schema/allOf/0/allOf/0"
-                              },
-                              {
-                                "$ref": "#/paths/~1posts~1add-tag~1%7BpostId%7D/post/responses/200/content/application~1json/schema/allOf/1/properties/data/allOf/4"
-                              },
-                              {
-                                "$ref": "#/paths/~1posts~1add-tag~1%7BpostId%7D/post/responses/200/content/application~1json/schema/allOf/1/properties/data/allOf/5"
-                              },
-                              {
-                                "$ref": "#/paths/~1posts~1create/post/responses/201/content/application~1json/schema/allOf/1/properties/data/allOf/7"
-                              }
-                            ]
-                          }
-                        }
-                      }
-                    }
-                  ]
-                }
-              }
-            }
-          }
-        }
-      }
-    },
-    "/posts/get/preview/{postId}": {
-      "summary": "",
-      "description": "",
-      "get": {
-        "tags": [
-          "Posts"
-        ],
-        "summary": "Get Post Preview By Id",
-        "description": "Get Post Preview By Id",
-        "operationId": "post.get-post-preview-by-id",
-        "parameters": [
-          {
-            "$ref": "#/paths/~1post~1get~1my~1%7BpostId%7D/get/parameters/0"
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "type": "object",
-                  "allOf": [
-                    {
-                      "$ref": "#/paths/~1users~1logout/post/responses/200/content/application~1json/schema"
-                    },
-                    {
-                      "type": "object",
-                      "properties": {
-                        "data": {
-                          "type": "object",
-                          "items": {
-                            "allOf": [
-                              {
-                                "$ref": "#/paths/~1posts~1create/post/responses/201/content/application~1json/schema/allOf/1/properties/data/allOf/0"
-                              },
-                              {
-                                "$ref": "#/paths/~1posts~1create/post/responses/201/content/application~1json/schema/allOf/1/properties/data/allOf/1"
-                              },
-                              {
-                                "$ref": "#/components/requestBodies/create-post/content/application~1json/schema/allOf/0/allOf/0"
-                              },
-                              {
-                                "$ref": "#/paths/~1posts~1add-tag~1%7BpostId%7D/post/responses/200/content/application~1json/schema/allOf/1/properties/data/allOf/4"
-                              },
-                              {
-                                "$ref": "#/paths/~1posts~1add-tag~1%7BpostId%7D/post/responses/200/content/application~1json/schema/allOf/1/properties/data/allOf/5"
-                              },
-                              {
-                                "$ref": "#/paths/~1posts~1create/post/responses/201/content/application~1json/schema/allOf/1/properties/data/allOf/7"
-                              }
-                            ]
-                          }
-                        }
-                      }
-                    }
-                  ]
-                }
-              }
-            }
-          },
-          "400": {
-            "$ref": "#/paths/~1users~1login/post/responses/400"
-          },
-          "404": {
-            "$ref": "#/paths/~1users~1login/post/responses/404"
-          }
-        }
-      }
-    },
-    "/posts/create": {
-      "summary": "",
-      "description": "",
-      "post": {
-        "tags": [
-          "Posts"
-        ],
-        "summary": "Create A New Post",
-        "description": "Create A New Post",
-        "operationId": "post.create-post",
-        "security": [
-          {
-            "bearerAuth": []
-          }
-        ],
-        "requestBody": {
-          "$ref": "#/components/requestBodies/create-post"
-        },
-        "responses": {
-          "201": {
-            "description": "",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "type": "object",
-                  "allOf": [
-                    {
-                      "$ref": "#/paths/~1users~1logout/post/responses/200/content/application~1json/schema"
-                    },
-                    {
-                      "type": "object",
-                      "properties": {
-                        "data": {
-                          "allOf": [
-                            {
-                              "type": "object",
-                              "properties": {
-                                "_id": {
-                                  "title": "Document MongoDb Id",
-                                  "description": "MongoDb Id of the document",
-                                  "type": "string",
-                                  "example": "62ed69679c045c97a63390a4"
-                                },
-                                "createdAt": {
-                                  "title": "Document Creation Date",
-                                  "description": "The `createdAt` value is determined automatically by the API.",
-                                  "type": "string",
-                                  "format": "date-time"
-                                },
-                                "updatedAt": {
-                                  "title": "Document Update Date",
-                                  "description": "The `updatedAt` value is determined automatically by the API.",
-                                  "type": "string",
-                                  "format": "date-time"
-                                }
-                              }
-                            },
-                            {
-                              "type": "object",
-                              "properties": {
-                                "writer": {
-                                  "type": "object",
-                                  "properties": {
-                                    "_id": {
-                                      "title": "Writer id",
-                                      "description": "Writer id",
-                                      "type": "string"
-                                    },
-                                    "first_name": {
-                                      "title": "Writer first name",
-                                      "description": "Writer first name",
-                                      "type": "string"
-                                    },
-                                    "last_name": {
-                                      "title": "Writer last name",
-                                      "description": "Writer last name",
-                                      "type": "string"
-                                    },
-                                    "email": {
-                                      "title": "Writer email address",
-                                      "description": "Writer email address",
-                                      "type": "string",
-                                      "format": "email"
-                                    }
-                                  }
-                                }
-                              }
-                            },
-                            {
-                              "$ref": "#/components/requestBodies/create-post/content/application~1json/schema/allOf/0/allOf/0"
-                            },
-                            {
-                              "type": "object",
-                              "properties": {
-                                "content": {
-                                  "title": "Post content",
-                                  "description": "Post content",
-                                  "type": "string"
-                                }
-                              }
-                            },
-                            {
-                              "type": "object",
-                              "properties": {
-                                "viewers": {
-                                  "type": "array",
-                                  "example": []
-                                }
-                              }
-                            },
-                            {
-                              "type": "object",
-                              "properties": {
-                                "likes": {
-                                  "type": "array",
-                                  "example": []
-                                }
-                              }
-                            },
-                            {
-                              "type": "object",
-                              "properties": {
-                                "comments": {
-                                  "type": "array",
-                                  "example": []
-                                }
-                              }
-                            },
-                            {
-                              "type": "object",
-                              "properties": {
-                                "tags": {
-                                  "type": "array",
-                                  "items": {
-                                    "allOf": [
-                                      {
-                                        "$ref": "#/paths/~1posts~1create/post/responses/201/content/application~1json/schema/allOf/1/properties/data/allOf/0"
-                                      },
-                                      {
-                                        "type": "object",
-                                        "properties": {
-                                          "name": {
-                                            "title": "Tag name",
-                                            "description": "Tag name",
-                                            "type": "string",
-                                            "example": "Tag"
-                                          },
-                                          "post_count": {
-                                            "title": "Tag post count",
-                                            "description": "Tag post count",
-                                            "type": "number",
-                                            "example": 0
-                                          }
-                                        }
-                                      }
-                                    ]
-                                  }
-                                }
-                              }
-                            }
-                          ]
-                        }
-                      }
-                    }
-                  ]
-                }
-              }
-            }
-          },
-          "400": {
-            "$ref": "#/paths/~1users~1login/post/responses/400"
-          },
-          "401": {
-            "$ref": "#/paths/~1users~1logout/post/responses/401"
-          },
-          "403": {
-            "$ref": "#/paths/~1users~1logout/post/responses/403"
-          },
-          "404": {
-            "$ref": "#/paths/~1users~1login/post/responses/404"
-          },
-          "500": {
-            "$ref": "#/paths/~1users~1login/post/responses/500"
-          }
-        }
-      }
-    },
-    "/posts/add-view/{postId}": {
-      "summary": "",
-      "description": "",
-      "post": {
-        "tags": [
-          "Posts"
-        ],
-        "summary": "Add View To Post",
-        "description": "Add View To Post",
-        "operationId": "post.add-view",
-        "security": [
-          {
-            "bearerAuth": []
-          }
-        ],
-        "parameters": [
-          {
-            "$ref": "#/paths/~1post~1get~1my~1%7BpostId%7D/get/parameters/0"
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "type": "object",
-                  "allOf": [
-                    {
-                      "$ref": "#/paths/~1users~1logout/post/responses/200/content/application~1json/schema"
-                    },
-                    {
-                      "type": "object",
-                      "properties": {
-                        "data": {
-                          "allOf": [
-                            {
-                              "$ref": "#/paths/~1posts~1create/post/responses/201/content/application~1json/schema/allOf/1/properties/data/allOf/0"
-                            },
-                            {
-                              "$ref": "#/paths/~1posts~1create/post/responses/201/content/application~1json/schema/allOf/1/properties/data/allOf/1"
-                            },
-                            {
-                              "$ref": "#/components/requestBodies/create-post/content/application~1json/schema/allOf/0/allOf/0"
-                            },
-                            {
-                              "type": "object",
-                              "properties": {
-                                "content": {
-                                  "title": "Post content",
-                                  "description": "Post content",
-                                  "type": "string"
-                                }
-                              }
-                            },
-                            {
-                              "$ref": "#/paths/~1posts~1add-tag~1%7BpostId%7D/post/responses/200/content/application~1json/schema/allOf/1/properties/data/allOf/4"
-                            },
-                            {
-                              "$ref": "#/paths/~1posts~1add-tag~1%7BpostId%7D/post/responses/200/content/application~1json/schema/allOf/1/properties/data/allOf/5"
-                            },
-                            {
-                              "$ref": "#/paths/~1posts~1add-tag~1%7BpostId%7D/post/responses/200/content/application~1json/schema/allOf/1/properties/data/allOf/6"
-                            },
-                            {
-                              "$ref": "#/paths/~1posts~1create/post/responses/201/content/application~1json/schema/allOf/1/properties/data/allOf/7"
-                            }
-                          ]
-                        }
-                      }
-                    }
-                  ]
-                }
-              }
-            }
-          },
-          "400": {
-            "$ref": "#/paths/~1users~1login/post/responses/400"
-          },
-          "401": {
-            "$ref": "#/paths/~1users~1logout/post/responses/401"
-          },
-          "403": {
-            "$ref": "#/paths/~1users~1logout/post/responses/403"
-          },
-          "404": {
-            "$ref": "#/paths/~1users~1login/post/responses/404"
-          },
-          "409": {
-            "$ref": "#/paths/~1users~1register/post/responses/409"
-          },
-          "500": {
-            "$ref": "#/paths/~1users~1login/post/responses/500"
-          }
-        }
-      }
-    },
-    "/posts/change-like-status/{postId}": {
-      "summary": "",
-      "description": "",
-      "post": {
-        "tags": [
-          "Posts"
-        ],
-        "summary": "Add Like To Post",
-        "description": "Add Like To Post",
-        "operationId": "post.change-like-status",
-        "security": [
-          {
-            "bearerAuth": []
-          }
-        ],
-        "parameters": [
-          {
-            "$ref": "#/paths/~1post~1get~1my~1%7BpostId%7D/get/parameters/0"
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "type": "object",
-                  "allOf": [
-                    {
-                      "$ref": "#/paths/~1users~1logout/post/responses/200/content/application~1json/schema"
-                    },
-                    {
-                      "type": "object",
-                      "properties": {
-                        "data": {
-                          "allOf": [
-                            {
-                              "$ref": "#/paths/~1posts~1create/post/responses/201/content/application~1json/schema/allOf/1/properties/data/allOf/0"
-                            },
-                            {
-                              "$ref": "#/paths/~1posts~1create/post/responses/201/content/application~1json/schema/allOf/1/properties/data/allOf/1"
-                            },
-                            {
-                              "$ref": "#/components/requestBodies/create-post/content/application~1json/schema/allOf/0/allOf/0"
-                            },
-                            {
-                              "type": "object",
-                              "properties": {
-                                "content": {
-                                  "title": "Post content",
-                                  "description": "Post content",
-                                  "type": "string"
-                                }
-                              }
-                            },
-                            {
-                              "$ref": "#/paths/~1posts~1add-tag~1%7BpostId%7D/post/responses/200/content/application~1json/schema/allOf/1/properties/data/allOf/4"
-                            },
-                            {
-                              "$ref": "#/paths/~1posts~1add-tag~1%7BpostId%7D/post/responses/200/content/application~1json/schema/allOf/1/properties/data/allOf/5"
-                            },
-                            {
-                              "$ref": "#/paths/~1posts~1add-tag~1%7BpostId%7D/post/responses/200/content/application~1json/schema/allOf/1/properties/data/allOf/6"
-                            },
-                            {
-                              "$ref": "#/paths/~1posts~1create/post/responses/201/content/application~1json/schema/allOf/1/properties/data/allOf/7"
-                            }
-                          ]
-                        }
-                      }
-                    }
-                  ]
-                }
-              }
-            }
-          },
-          "400": {
-            "$ref": "#/paths/~1users~1login/post/responses/400"
-          },
-          "401": {
-            "$ref": "#/paths/~1users~1logout/post/responses/401"
-          },
-          "403": {
-            "$ref": "#/paths/~1users~1logout/post/responses/403"
-          },
-          "404": {
-            "$ref": "#/paths/~1users~1login/post/responses/404"
-          },
-          "500": {
-            "$ref": "#/paths/~1users~1login/post/responses/500"
-          }
-        }
-      }
-    },
-    "/posts/add-comment/{postId}": {
-      "summary": "",
-      "description": "",
-      "post": {
-        "tags": [
-          "Posts"
-        ],
-        "summary": "Add Comment To Post",
-        "description": "Add Comment To Post",
-        "operationId": "post.add-comment",
-        "security": [
-          {
-            "bearerAuth": []
-          }
-        ],
-        "parameters": [
-          {
-            "$ref": "#/paths/~1post~1get~1my~1%7BpostId%7D/get/parameters/0"
-          }
-        ],
-        "requestBody": {
-          "description": "",
-          "content": {
-            "application/json": {
-              "schema": {
-                "allOf": [
-                  {
-                    "type": "object",
-                    "properties": {
-                      "comment": {
-                        "title": "Post Comment",
-                        "description": "Post Comment",
-                        "type": "string"
-                      }
-                    }
-                  },
-                  {
-                    "required": [
-                      "comment"
-                    ]
-                  }
-                ]
-              }
-            }
-          }
-        },
-        "responses": {
-          "200": {
-            "description": "",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "type": "object",
-                  "allOf": [
-                    {
-                      "$ref": "#/paths/~1users~1logout/post/responses/200/content/application~1json/schema"
-                    },
-                    {
-                      "type": "object",
-                      "properties": {
-                        "data": {
-                          "allOf": [
-                            {
-                              "$ref": "#/paths/~1posts~1create/post/responses/201/content/application~1json/schema/allOf/1/properties/data/allOf/0"
-                            },
-                            {
-                              "$ref": "#/paths/~1posts~1create/post/responses/201/content/application~1json/schema/allOf/1/properties/data/allOf/1"
-                            },
-                            {
-                              "$ref": "#/components/requestBodies/create-post/content/application~1json/schema/allOf/0/allOf/0"
-                            },
-                            {
-                              "type": "object",
-                              "properties": {
-                                "content": {
-                                  "title": "Post content",
-                                  "description": "Post content",
-                                  "type": "string"
-                                }
-                              }
-                            },
-                            {
-                              "$ref": "#/paths/~1posts~1add-tag~1%7BpostId%7D/post/responses/200/content/application~1json/schema/allOf/1/properties/data/allOf/4"
-                            },
-                            {
-                              "$ref": "#/paths/~1posts~1add-tag~1%7BpostId%7D/post/responses/200/content/application~1json/schema/allOf/1/properties/data/allOf/5"
-                            },
-                            {
-                              "$ref": "#/paths/~1posts~1add-tag~1%7BpostId%7D/post/responses/200/content/application~1json/schema/allOf/1/properties/data/allOf/6"
-                            },
-                            {
-                              "$ref": "#/paths/~1posts~1create/post/responses/201/content/application~1json/schema/allOf/1/properties/data/allOf/7"
-                            }
-                          ]
-                        }
-                      }
-                    }
-                  ]
-                }
-              }
-            }
-          },
-          "400": {
-            "$ref": "#/paths/~1users~1login/post/responses/400"
-          },
-          "401": {
-            "$ref": "#/paths/~1users~1logout/post/responses/401"
-          },
-          "403": {
-            "$ref": "#/paths/~1users~1logout/post/responses/403"
-          },
-          "404": {
-            "$ref": "#/paths/~1users~1login/post/responses/404"
-          },
-          "500": {
-            "$ref": "#/paths/~1users~1login/post/responses/500"
-          }
-        }
-      }
-    },
-    "/posts/add-tag/{postId}": {
-      "summary": "",
-      "description": "",
-      "post": {
-        "tags": [
-          "Posts"
-        ],
-        "summary": "Add Tag To Post",
-        "description": "Add Tag To Post",
-        "operationId": "post.add-tag",
-        "security": [
-          {
-            "bearerAuth": []
-          }
-        ],
-        "parameters": [
-          {
-            "$ref": "#/paths/~1post~1get~1my~1%7BpostId%7D/get/parameters/0"
-          }
-        ],
-        "requestBody": {
-          "description": "",
-          "content": {
-            "application/json": {
-              "schema": {
-                "allOf": [
-                  {
-                    "type": "object",
-                    "properties": {
-                      "tag_id": {
-                        "title": "Post Tag",
-                        "description": "Post Tag",
-                        "type": "string"
-                      }
-                    }
-                  },
-                  {
-                    "required": [
-                      "tag_id"
-                    ]
-                  }
-                ]
-              }
-            }
-          }
-        },
         "responses": {
           "200": {
             "description": "",
@@ -1942,6 +1398,747 @@
           },
           "404": {
             "$ref": "#/paths/~1users~1login/post/responses/404"
+          }
+        }
+      }
+    },
+    "/posts/get-all/previews": {
+      "summary": "",
+      "description": "",
+      "get": {
+        "tags": [
+          "Posts"
+        ],
+        "summary": "Get All Post Previews",
+        "description": "Get All Post Previews",
+        "operationId": "post.get-all-previews",
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "allOf": [
+                    {
+                      "$ref": "#/paths/~1users~1logout/post/responses/200/content/application~1json/schema"
+                    },
+                    {
+                      "type": "object",
+                      "properties": {
+                        "data": {
+                          "type": "array",
+                          "items": {
+                            "allOf": [
+                              {
+                                "$ref": "#/paths/~1posts~1create/post/responses/201/content/application~1json/schema/allOf/1/properties/data/allOf/0"
+                              },
+                              {
+                                "$ref": "#/paths/~1posts~1create/post/responses/201/content/application~1json/schema/allOf/1/properties/data/allOf/1"
+                              },
+                              {
+                                "$ref": "#/components/requestBodies/create-post/content/application~1json/schema/allOf/0/allOf/0"
+                              },
+                              {
+                                "$ref": "#/paths/~1posts~1get~1my~1%7BpostId%7D/get/responses/200/content/application~1json/schema/allOf/1/properties/data/allOf/4"
+                              },
+                              {
+                                "$ref": "#/paths/~1posts~1get~1my~1%7BpostId%7D/get/responses/200/content/application~1json/schema/allOf/1/properties/data/allOf/5"
+                              },
+                              {
+                                "$ref": "#/paths/~1posts~1create/post/responses/201/content/application~1json/schema/allOf/1/properties/data/allOf/7"
+                              }
+                            ]
+                          }
+                        }
+                      }
+                    }
+                  ]
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/posts/get/preview/{postId}": {
+      "summary": "",
+      "description": "",
+      "get": {
+        "tags": [
+          "Posts"
+        ],
+        "summary": "Get Post Preview By Id",
+        "description": "Get Post Preview By Id",
+        "operationId": "post.get-post-preview-by-id",
+        "parameters": [
+          {
+            "$ref": "#/paths/~1posts~1get~1my~1%7BpostId%7D/get/parameters/0"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "allOf": [
+                    {
+                      "$ref": "#/paths/~1users~1logout/post/responses/200/content/application~1json/schema"
+                    },
+                    {
+                      "type": "object",
+                      "properties": {
+                        "data": {
+                          "allOf": [
+                            {
+                              "$ref": "#/paths/~1posts~1create/post/responses/201/content/application~1json/schema/allOf/1/properties/data/allOf/0"
+                            },
+                            {
+                              "$ref": "#/paths/~1posts~1create/post/responses/201/content/application~1json/schema/allOf/1/properties/data/allOf/1"
+                            },
+                            {
+                              "$ref": "#/components/requestBodies/create-post/content/application~1json/schema/allOf/0/allOf/0"
+                            },
+                            {
+                              "$ref": "#/paths/~1posts~1get~1my~1%7BpostId%7D/get/responses/200/content/application~1json/schema/allOf/1/properties/data/allOf/4"
+                            },
+                            {
+                              "$ref": "#/paths/~1posts~1get~1my~1%7BpostId%7D/get/responses/200/content/application~1json/schema/allOf/1/properties/data/allOf/5"
+                            },
+                            {
+                              "$ref": "#/paths/~1posts~1create/post/responses/201/content/application~1json/schema/allOf/1/properties/data/allOf/7"
+                            }
+                          ]
+                        }
+                      }
+                    }
+                  ]
+                }
+              }
+            }
+          },
+          "400": {
+            "$ref": "#/paths/~1users~1login/post/responses/400"
+          },
+          "404": {
+            "$ref": "#/paths/~1users~1login/post/responses/404"
+          }
+        }
+      }
+    },
+    "/posts/create": {
+      "summary": "",
+      "description": "",
+      "post": {
+        "tags": [
+          "Posts"
+        ],
+        "summary": "Create A New Post",
+        "description": "Create A New Post",
+        "operationId": "post.create-post",
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "requestBody": {
+          "$ref": "#/components/requestBodies/create-post"
+        },
+        "responses": {
+          "201": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "allOf": [
+                    {
+                      "$ref": "#/paths/~1users~1logout/post/responses/200/content/application~1json/schema"
+                    },
+                    {
+                      "type": "object",
+                      "properties": {
+                        "data": {
+                          "allOf": [
+                            {
+                              "type": "object",
+                              "properties": {
+                                "_id": {
+                                  "title": "MongoDb Id of the document",
+                                  "description": "MongoDb Id of the document",
+                                  "type": "string",
+                                  "example": "62ed69679c045c97a63390a4"
+                                },
+                                "createdAt": {
+                                  "title": "Document Creation Date",
+                                  "description": "The `createdAt` value is determined automatically by the API.",
+                                  "type": "string",
+                                  "format": "date-time"
+                                },
+                                "updatedAt": {
+                                  "title": "Document Update Date",
+                                  "description": "The `updatedAt` value is determined automatically by the API.",
+                                  "type": "string",
+                                  "format": "date-time"
+                                }
+                              }
+                            },
+                            {
+                              "type": "object",
+                              "properties": {
+                                "writer": {
+                                  "type": "object",
+                                  "properties": {
+                                    "_id": {
+                                      "title": "Writer id",
+                                      "description": "Writer id",
+                                      "type": "string"
+                                    },
+                                    "first_name": {
+                                      "title": "Writer first name",
+                                      "description": "Writer first name",
+                                      "type": "string"
+                                    },
+                                    "last_name": {
+                                      "title": "Writer last name",
+                                      "description": "Writer last name",
+                                      "type": "string"
+                                    },
+                                    "email": {
+                                      "title": "Writer email address",
+                                      "description": "Writer email address",
+                                      "type": "string",
+                                      "format": "email"
+                                    }
+                                  }
+                                }
+                              }
+                            },
+                            {
+                              "$ref": "#/components/requestBodies/create-post/content/application~1json/schema/allOf/0/allOf/0"
+                            },
+                            {
+                              "type": "object",
+                              "properties": {
+                                "content": {
+                                  "title": "Post content",
+                                  "description": "Post content",
+                                  "type": "string"
+                                }
+                              }
+                            },
+                            {
+                              "type": "object",
+                              "properties": {
+                                "viewers": {
+                                  "type": "array",
+                                  "example": []
+                                }
+                              }
+                            },
+                            {
+                              "type": "object",
+                              "properties": {
+                                "likes": {
+                                  "type": "array",
+                                  "example": []
+                                }
+                              }
+                            },
+                            {
+                              "type": "object",
+                              "properties": {
+                                "comments": {
+                                  "type": "array",
+                                  "example": []
+                                }
+                              }
+                            },
+                            {
+                              "type": "object",
+                              "properties": {
+                                "tags": {
+                                  "type": "array",
+                                  "items": {
+                                    "allOf": [
+                                      {
+                                        "$ref": "#/paths/~1posts~1create/post/responses/201/content/application~1json/schema/allOf/1/properties/data/allOf/0"
+                                      },
+                                      {
+                                        "type": "object",
+                                        "properties": {
+                                          "name": {
+                                            "title": "Tag name",
+                                            "description": "Tag name",
+                                            "type": "string",
+                                            "example": "Tag"
+                                          },
+                                          "post_count": {
+                                            "title": "Tag post count",
+                                            "description": "Tag post count",
+                                            "type": "number",
+                                            "example": 0
+                                          }
+                                        }
+                                      }
+                                    ]
+                                  }
+                                }
+                              }
+                            }
+                          ]
+                        }
+                      }
+                    }
+                  ]
+                }
+              }
+            }
+          },
+          "400": {
+            "$ref": "#/paths/~1users~1login/post/responses/400"
+          },
+          "401": {
+            "$ref": "#/paths/~1users~1logout/post/responses/401"
+          },
+          "403": {
+            "$ref": "#/paths/~1users~1logout/post/responses/403"
+          },
+          "404": {
+            "$ref": "#/paths/~1users~1login/post/responses/404"
+          },
+          "500": {
+            "$ref": "#/paths/~1users~1login/post/responses/500"
+          }
+        }
+      }
+    },
+    "/posts/add-view/{postId}": {
+      "summary": "",
+      "description": "",
+      "post": {
+        "tags": [
+          "Posts"
+        ],
+        "summary": "Add View To Post",
+        "description": "Add View To Post",
+        "operationId": "post.add-view",
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "parameters": [
+          {
+            "$ref": "#/paths/~1posts~1get~1my~1%7BpostId%7D/get/parameters/0"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "allOf": [
+                    {
+                      "$ref": "#/paths/~1users~1logout/post/responses/200/content/application~1json/schema"
+                    },
+                    {
+                      "type": "object",
+                      "properties": {
+                        "data": {
+                          "allOf": [
+                            {
+                              "$ref": "#/paths/~1posts~1create/post/responses/201/content/application~1json/schema/allOf/1/properties/data/allOf/0"
+                            },
+                            {
+                              "$ref": "#/paths/~1posts~1create/post/responses/201/content/application~1json/schema/allOf/1/properties/data/allOf/1"
+                            },
+                            {
+                              "$ref": "#/components/requestBodies/create-post/content/application~1json/schema/allOf/0/allOf/0"
+                            },
+                            {
+                              "type": "object",
+                              "properties": {
+                                "content": {
+                                  "title": "Post content",
+                                  "description": "Post content",
+                                  "type": "string"
+                                }
+                              }
+                            },
+                            {
+                              "$ref": "#/paths/~1posts~1get~1my~1%7BpostId%7D/get/responses/200/content/application~1json/schema/allOf/1/properties/data/allOf/4"
+                            },
+                            {
+                              "$ref": "#/paths/~1posts~1get~1my~1%7BpostId%7D/get/responses/200/content/application~1json/schema/allOf/1/properties/data/allOf/5"
+                            },
+                            {
+                              "$ref": "#/paths/~1posts~1get~1my~1%7BpostId%7D/get/responses/200/content/application~1json/schema/allOf/1/properties/data/allOf/6"
+                            },
+                            {
+                              "$ref": "#/paths/~1posts~1create/post/responses/201/content/application~1json/schema/allOf/1/properties/data/allOf/7"
+                            }
+                          ]
+                        }
+                      }
+                    }
+                  ]
+                }
+              }
+            }
+          },
+          "400": {
+            "$ref": "#/paths/~1users~1login/post/responses/400"
+          },
+          "401": {
+            "$ref": "#/paths/~1users~1logout/post/responses/401"
+          },
+          "403": {
+            "$ref": "#/paths/~1users~1logout/post/responses/403"
+          },
+          "404": {
+            "$ref": "#/paths/~1users~1login/post/responses/404"
+          },
+          "409": {
+            "$ref": "#/paths/~1users~1register/post/responses/409"
+          },
+          "500": {
+            "$ref": "#/paths/~1users~1login/post/responses/500"
+          }
+        }
+      }
+    },
+    "/posts/change-like-status/{postId}": {
+      "summary": "",
+      "description": "",
+      "post": {
+        "tags": [
+          "Posts"
+        ],
+        "summary": "Add Like To Post",
+        "description": "Add Like To Post",
+        "operationId": "post.change-like-status",
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "parameters": [
+          {
+            "$ref": "#/paths/~1posts~1get~1my~1%7BpostId%7D/get/parameters/0"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "allOf": [
+                    {
+                      "$ref": "#/paths/~1users~1logout/post/responses/200/content/application~1json/schema"
+                    },
+                    {
+                      "type": "object",
+                      "properties": {
+                        "data": {
+                          "allOf": [
+                            {
+                              "$ref": "#/paths/~1posts~1create/post/responses/201/content/application~1json/schema/allOf/1/properties/data/allOf/0"
+                            },
+                            {
+                              "$ref": "#/paths/~1posts~1create/post/responses/201/content/application~1json/schema/allOf/1/properties/data/allOf/1"
+                            },
+                            {
+                              "$ref": "#/components/requestBodies/create-post/content/application~1json/schema/allOf/0/allOf/0"
+                            },
+                            {
+                              "type": "object",
+                              "properties": {
+                                "content": {
+                                  "title": "Post content",
+                                  "description": "Post content",
+                                  "type": "string"
+                                }
+                              }
+                            },
+                            {
+                              "$ref": "#/paths/~1posts~1get~1my~1%7BpostId%7D/get/responses/200/content/application~1json/schema/allOf/1/properties/data/allOf/4"
+                            },
+                            {
+                              "$ref": "#/paths/~1posts~1get~1my~1%7BpostId%7D/get/responses/200/content/application~1json/schema/allOf/1/properties/data/allOf/5"
+                            },
+                            {
+                              "$ref": "#/paths/~1posts~1get~1my~1%7BpostId%7D/get/responses/200/content/application~1json/schema/allOf/1/properties/data/allOf/6"
+                            },
+                            {
+                              "$ref": "#/paths/~1posts~1create/post/responses/201/content/application~1json/schema/allOf/1/properties/data/allOf/7"
+                            }
+                          ]
+                        }
+                      }
+                    }
+                  ]
+                }
+              }
+            }
+          },
+          "400": {
+            "$ref": "#/paths/~1users~1login/post/responses/400"
+          },
+          "401": {
+            "$ref": "#/paths/~1users~1logout/post/responses/401"
+          },
+          "403": {
+            "$ref": "#/paths/~1users~1logout/post/responses/403"
+          },
+          "404": {
+            "$ref": "#/paths/~1users~1login/post/responses/404"
+          },
+          "500": {
+            "$ref": "#/paths/~1users~1login/post/responses/500"
+          }
+        }
+      }
+    },
+    "/posts/add-comment/{postId}": {
+      "summary": "",
+      "description": "",
+      "post": {
+        "tags": [
+          "Posts"
+        ],
+        "summary": "Add Comment To Post",
+        "description": "Add Comment To Post",
+        "operationId": "post.add-comment",
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "parameters": [
+          {
+            "$ref": "#/paths/~1posts~1get~1my~1%7BpostId%7D/get/parameters/0"
+          }
+        ],
+        "requestBody": {
+          "description": "",
+          "content": {
+            "application/json": {
+              "schema": {
+                "allOf": [
+                  {
+                    "type": "object",
+                    "properties": {
+                      "comment": {
+                        "title": "Post Comment",
+                        "description": "Post Comment",
+                        "type": "string"
+                      }
+                    }
+                  },
+                  {
+                    "required": [
+                      "comment"
+                    ]
+                  }
+                ]
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "allOf": [
+                    {
+                      "$ref": "#/paths/~1users~1logout/post/responses/200/content/application~1json/schema"
+                    },
+                    {
+                      "type": "object",
+                      "properties": {
+                        "data": {
+                          "allOf": [
+                            {
+                              "$ref": "#/paths/~1posts~1create/post/responses/201/content/application~1json/schema/allOf/1/properties/data/allOf/0"
+                            },
+                            {
+                              "$ref": "#/paths/~1posts~1create/post/responses/201/content/application~1json/schema/allOf/1/properties/data/allOf/1"
+                            },
+                            {
+                              "$ref": "#/components/requestBodies/create-post/content/application~1json/schema/allOf/0/allOf/0"
+                            },
+                            {
+                              "type": "object",
+                              "properties": {
+                                "content": {
+                                  "title": "Post content",
+                                  "description": "Post content",
+                                  "type": "string"
+                                }
+                              }
+                            },
+                            {
+                              "$ref": "#/paths/~1posts~1get~1my~1%7BpostId%7D/get/responses/200/content/application~1json/schema/allOf/1/properties/data/allOf/4"
+                            },
+                            {
+                              "$ref": "#/paths/~1posts~1get~1my~1%7BpostId%7D/get/responses/200/content/application~1json/schema/allOf/1/properties/data/allOf/5"
+                            },
+                            {
+                              "$ref": "#/paths/~1posts~1get~1my~1%7BpostId%7D/get/responses/200/content/application~1json/schema/allOf/1/properties/data/allOf/6"
+                            },
+                            {
+                              "$ref": "#/paths/~1posts~1create/post/responses/201/content/application~1json/schema/allOf/1/properties/data/allOf/7"
+                            }
+                          ]
+                        }
+                      }
+                    }
+                  ]
+                }
+              }
+            }
+          },
+          "400": {
+            "$ref": "#/paths/~1users~1login/post/responses/400"
+          },
+          "401": {
+            "$ref": "#/paths/~1users~1logout/post/responses/401"
+          },
+          "403": {
+            "$ref": "#/paths/~1users~1logout/post/responses/403"
+          },
+          "404": {
+            "$ref": "#/paths/~1users~1login/post/responses/404"
+          },
+          "500": {
+            "$ref": "#/paths/~1users~1login/post/responses/500"
+          }
+        }
+      }
+    },
+    "/posts/add-tag/{postId}": {
+      "summary": "",
+      "description": "",
+      "post": {
+        "tags": [
+          "Posts"
+        ],
+        "summary": "Add Tag To Post",
+        "description": "Add Tag To Post",
+        "operationId": "post.add-tag",
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "parameters": [
+          {
+            "$ref": "#/paths/~1posts~1get~1my~1%7BpostId%7D/get/parameters/0"
+          }
+        ],
+        "requestBody": {
+          "description": "",
+          "content": {
+            "application/json": {
+              "schema": {
+                "allOf": [
+                  {
+                    "type": "object",
+                    "properties": {
+                      "tag_id": {
+                        "title": "Post Tag",
+                        "description": "Post Tag",
+                        "type": "string"
+                      }
+                    }
+                  },
+                  {
+                    "required": [
+                      "tag_id"
+                    ]
+                  }
+                ]
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "allOf": [
+                    {
+                      "$ref": "#/paths/~1users~1logout/post/responses/200/content/application~1json/schema"
+                    },
+                    {
+                      "type": "object",
+                      "properties": {
+                        "data": {
+                          "allOf": [
+                            {
+                              "$ref": "#/paths/~1posts~1create/post/responses/201/content/application~1json/schema/allOf/1/properties/data/allOf/0"
+                            },
+                            {
+                              "$ref": "#/paths/~1posts~1create/post/responses/201/content/application~1json/schema/allOf/1/properties/data/allOf/1"
+                            },
+                            {
+                              "$ref": "#/components/requestBodies/create-post/content/application~1json/schema/allOf/0/allOf/0"
+                            },
+                            {
+                              "type": "object",
+                              "properties": {
+                                "content": {
+                                  "title": "Post content",
+                                  "description": "Post content",
+                                  "type": "string"
+                                }
+                              }
+                            },
+                            {
+                              "$ref": "#/paths/~1posts~1get~1my~1%7BpostId%7D/get/responses/200/content/application~1json/schema/allOf/1/properties/data/allOf/4"
+                            },
+                            {
+                              "$ref": "#/paths/~1posts~1get~1my~1%7BpostId%7D/get/responses/200/content/application~1json/schema/allOf/1/properties/data/allOf/5"
+                            },
+                            {
+                              "$ref": "#/paths/~1posts~1get~1my~1%7BpostId%7D/get/responses/200/content/application~1json/schema/allOf/1/properties/data/allOf/6"
+                            },
+                            {
+                              "$ref": "#/paths/~1posts~1create/post/responses/201/content/application~1json/schema/allOf/1/properties/data/allOf/7"
+                            }
+                          ]
+                        }
+                      }
+                    }
+                  ]
+                }
+              }
+            }
+          },
+          "400": {
+            "$ref": "#/paths/~1users~1login/post/responses/400"
+          },
+          "401": {
+            "$ref": "#/paths/~1users~1logout/post/responses/401"
+          },
+          "403": {
+            "$ref": "#/paths/~1users~1logout/post/responses/403"
+          },
+          "404": {
+            "$ref": "#/paths/~1users~1login/post/responses/404"
           },
           "409": {
             "$ref": "#/paths/~1users~1register/post/responses/409"
@@ -1969,7 +2166,7 @@
         ],
         "parameters": [
           {
-            "$ref": "#/paths/~1post~1get~1my~1%7BpostId%7D/get/parameters/0"
+            "$ref": "#/paths/~1posts~1get~1my~1%7BpostId%7D/get/parameters/0"
           }
         ],
         "requestBody": {
@@ -2042,13 +2239,13 @@
                               }
                             },
                             {
-                              "$ref": "#/paths/~1posts~1add-tag~1%7BpostId%7D/post/responses/200/content/application~1json/schema/allOf/1/properties/data/allOf/4"
+                              "$ref": "#/paths/~1posts~1get~1my~1%7BpostId%7D/get/responses/200/content/application~1json/schema/allOf/1/properties/data/allOf/4"
                             },
                             {
-                              "$ref": "#/paths/~1posts~1add-tag~1%7BpostId%7D/post/responses/200/content/application~1json/schema/allOf/1/properties/data/allOf/5"
+                              "$ref": "#/paths/~1posts~1get~1my~1%7BpostId%7D/get/responses/200/content/application~1json/schema/allOf/1/properties/data/allOf/5"
                             },
                             {
-                              "$ref": "#/paths/~1posts~1add-tag~1%7BpostId%7D/post/responses/200/content/application~1json/schema/allOf/1/properties/data/allOf/6"
+                              "$ref": "#/paths/~1posts~1get~1my~1%7BpostId%7D/get/responses/200/content/application~1json/schema/allOf/1/properties/data/allOf/6"
                             },
                             {
                               "$ref": "#/paths/~1posts~1create/post/responses/201/content/application~1json/schema/allOf/1/properties/data/allOf/7"
@@ -2097,7 +2294,7 @@
         ],
         "parameters": [
           {
-            "$ref": "#/paths/~1post~1get~1my~1%7BpostId%7D/get/parameters/0"
+            "$ref": "#/paths/~1posts~1get~1my~1%7BpostId%7D/get/parameters/0"
           }
         ],
         "responses": {
@@ -2151,7 +2348,7 @@
         ],
         "parameters": [
           {
-            "$ref": "#/paths/~1post~1get~1my~1%7BpostId%7D/get/parameters/0"
+            "$ref": "#/paths/~1posts~1get~1my~1%7BpostId%7D/get/parameters/0"
           }
         ],
         "requestBody": {
@@ -2216,13 +2413,13 @@
                               }
                             },
                             {
-                              "$ref": "#/paths/~1posts~1add-tag~1%7BpostId%7D/post/responses/200/content/application~1json/schema/allOf/1/properties/data/allOf/4"
+                              "$ref": "#/paths/~1posts~1get~1my~1%7BpostId%7D/get/responses/200/content/application~1json/schema/allOf/1/properties/data/allOf/4"
                             },
                             {
-                              "$ref": "#/paths/~1posts~1add-tag~1%7BpostId%7D/post/responses/200/content/application~1json/schema/allOf/1/properties/data/allOf/5"
+                              "$ref": "#/paths/~1posts~1get~1my~1%7BpostId%7D/get/responses/200/content/application~1json/schema/allOf/1/properties/data/allOf/5"
                             },
                             {
-                              "$ref": "#/paths/~1posts~1add-tag~1%7BpostId%7D/post/responses/200/content/application~1json/schema/allOf/1/properties/data/allOf/6"
+                              "$ref": "#/paths/~1posts~1get~1my~1%7BpostId%7D/get/responses/200/content/application~1json/schema/allOf/1/properties/data/allOf/6"
                             },
                             {
                               "$ref": "#/paths/~1posts~1create/post/responses/201/content/application~1json/schema/allOf/1/properties/data/allOf/7"
@@ -2271,7 +2468,7 @@
         ],
         "parameters": [
           {
-            "$ref": "#/paths/~1post~1get~1my~1%7BpostId%7D/get/parameters/0"
+            "$ref": "#/paths/~1posts~1get~1my~1%7BpostId%7D/get/parameters/0"
           }
         ],
         "requestBody": {
@@ -2336,13 +2533,13 @@
                               }
                             },
                             {
-                              "$ref": "#/paths/~1posts~1add-tag~1%7BpostId%7D/post/responses/200/content/application~1json/schema/allOf/1/properties/data/allOf/4"
+                              "$ref": "#/paths/~1posts~1get~1my~1%7BpostId%7D/get/responses/200/content/application~1json/schema/allOf/1/properties/data/allOf/4"
                             },
                             {
-                              "$ref": "#/paths/~1posts~1add-tag~1%7BpostId%7D/post/responses/200/content/application~1json/schema/allOf/1/properties/data/allOf/5"
+                              "$ref": "#/paths/~1posts~1get~1my~1%7BpostId%7D/get/responses/200/content/application~1json/schema/allOf/1/properties/data/allOf/5"
                             },
                             {
-                              "$ref": "#/paths/~1posts~1add-tag~1%7BpostId%7D/post/responses/200/content/application~1json/schema/allOf/1/properties/data/allOf/6"
+                              "$ref": "#/paths/~1posts~1get~1my~1%7BpostId%7D/get/responses/200/content/application~1json/schema/allOf/1/properties/data/allOf/6"
                             },
                             {
                               "$ref": "#/paths/~1posts~1create/post/responses/201/content/application~1json/schema/allOf/1/properties/data/allOf/7"
@@ -2427,13 +2624,13 @@
                                 }
                               },
                               {
-                                "$ref": "#/paths/~1posts~1add-tag~1%7BpostId%7D/post/responses/200/content/application~1json/schema/allOf/1/properties/data/allOf/4"
+                                "$ref": "#/paths/~1posts~1get~1my~1%7BpostId%7D/get/responses/200/content/application~1json/schema/allOf/1/properties/data/allOf/4"
                               },
                               {
-                                "$ref": "#/paths/~1posts~1add-tag~1%7BpostId%7D/post/responses/200/content/application~1json/schema/allOf/1/properties/data/allOf/5"
+                                "$ref": "#/paths/~1posts~1get~1my~1%7BpostId%7D/get/responses/200/content/application~1json/schema/allOf/1/properties/data/allOf/5"
                               },
                               {
-                                "$ref": "#/paths/~1posts~1add-tag~1%7BpostId%7D/post/responses/200/content/application~1json/schema/allOf/1/properties/data/allOf/6"
+                                "$ref": "#/paths/~1posts~1get~1my~1%7BpostId%7D/get/responses/200/content/application~1json/schema/allOf/1/properties/data/allOf/6"
                               },
                               {
                                 "$ref": "#/paths/~1posts~1create/post/responses/201/content/application~1json/schema/allOf/1/properties/data/allOf/7"
@@ -2477,7 +2674,7 @@
         ],
         "parameters": [
           {
-            "$ref": "#/paths/~1post~1get~1my~1%7BpostId%7D/get/parameters/0"
+            "$ref": "#/paths/~1posts~1get~1my~1%7BpostId%7D/get/parameters/0"
           }
         ],
         "responses": {
@@ -2495,39 +2692,36 @@
                       "type": "object",
                       "properties": {
                         "data": {
-                          "type": "object",
-                          "items": {
-                            "allOf": [
-                              {
-                                "$ref": "#/paths/~1posts~1create/post/responses/201/content/application~1json/schema/allOf/1/properties/data/allOf/0"
-                              },
-                              {
-                                "$ref": "#/paths/~1posts~1create/post/responses/201/content/application~1json/schema/allOf/1/properties/data/allOf/1"
-                              },
-                              {
-                                "$ref": "#/components/requestBodies/create-post/content/application~1json/schema/allOf/0/allOf/0"
-                              },
-                              {
-                                "type": "object",
-                                "properties": {
-                                  "content": {
-                                    "title": "Post content",
-                                    "description": "Post content",
-                                    "type": "string"
-                                  }
+                          "allOf": [
+                            {
+                              "$ref": "#/paths/~1posts~1create/post/responses/201/content/application~1json/schema/allOf/1/properties/data/allOf/0"
+                            },
+                            {
+                              "$ref": "#/paths/~1posts~1create/post/responses/201/content/application~1json/schema/allOf/1/properties/data/allOf/1"
+                            },
+                            {
+                              "$ref": "#/components/requestBodies/create-post/content/application~1json/schema/allOf/0/allOf/0"
+                            },
+                            {
+                              "type": "object",
+                              "properties": {
+                                "content": {
+                                  "title": "Post content",
+                                  "description": "Post content",
+                                  "type": "string"
                                 }
-                              },
-                              {
-                                "$ref": "#/paths/~1posts~1add-tag~1%7BpostId%7D/post/responses/200/content/application~1json/schema/allOf/1/properties/data/allOf/4"
-                              },
-                              {
-                                "$ref": "#/paths/~1posts~1add-tag~1%7BpostId%7D/post/responses/200/content/application~1json/schema/allOf/1/properties/data/allOf/5"
-                              },
-                              {
-                                "$ref": "#/paths/~1posts~1create/post/responses/201/content/application~1json/schema/allOf/1/properties/data/allOf/7"
                               }
-                            ]
-                          }
+                            },
+                            {
+                              "$ref": "#/paths/~1posts~1get~1my~1%7BpostId%7D/get/responses/200/content/application~1json/schema/allOf/1/properties/data/allOf/4"
+                            },
+                            {
+                              "$ref": "#/paths/~1posts~1get~1my~1%7BpostId%7D/get/responses/200/content/application~1json/schema/allOf/1/properties/data/allOf/5"
+                            },
+                            {
+                              "$ref": "#/paths/~1posts~1create/post/responses/201/content/application~1json/schema/allOf/1/properties/data/allOf/7"
+                            }
+                          ]
                         }
                       }
                     }
@@ -2568,7 +2762,7 @@
         ],
         "parameters": [
           {
-            "$ref": "#/paths/~1post~1get~1my~1%7BpostId%7D/get/parameters/0"
+            "$ref": "#/paths/~1posts~1get~1my~1%7BpostId%7D/get/parameters/0"
           }
         ],
         "responses": {
@@ -2586,41 +2780,112 @@
                       "type": "object",
                       "properties": {
                         "data": {
-                          "type": "object",
-                          "items": {
-                            "allOf": [
-                              {
-                                "$ref": "#/paths/~1posts~1create/post/responses/201/content/application~1json/schema/allOf/1/properties/data/allOf/0"
-                              },
-                              {
-                                "$ref": "#/paths/~1posts~1create/post/responses/201/content/application~1json/schema/allOf/1/properties/data/allOf/1"
-                              },
-                              {
-                                "$ref": "#/components/requestBodies/create-post/content/application~1json/schema/allOf/0/allOf/0"
-                              },
-                              {
-                                "type": "object",
-                                "properties": {
-                                  "content": {
-                                    "title": "Post content",
-                                    "description": "Post content",
-                                    "type": "string"
-                                  }
+                          "allOf": [
+                            {
+                              "$ref": "#/paths/~1posts~1create/post/responses/201/content/application~1json/schema/allOf/1/properties/data/allOf/0"
+                            },
+                            {
+                              "$ref": "#/paths/~1posts~1create/post/responses/201/content/application~1json/schema/allOf/1/properties/data/allOf/1"
+                            },
+                            {
+                              "$ref": "#/components/requestBodies/create-post/content/application~1json/schema/allOf/0/allOf/0"
+                            },
+                            {
+                              "type": "object",
+                              "properties": {
+                                "content": {
+                                  "title": "Post content",
+                                  "description": "Post content",
+                                  "type": "string"
                                 }
-                              },
-                              {
-                                "$ref": "#/paths/~1posts~1add-tag~1%7BpostId%7D/post/responses/200/content/application~1json/schema/allOf/1/properties/data/allOf/4"
-                              },
-                              {
-                                "$ref": "#/paths/~1posts~1add-tag~1%7BpostId%7D/post/responses/200/content/application~1json/schema/allOf/1/properties/data/allOf/5"
-                              },
-                              {
-                                "$ref": "#/paths/~1posts~1add-tag~1%7BpostId%7D/post/responses/200/content/application~1json/schema/allOf/1/properties/data/allOf/6"
-                              },
-                              {
-                                "$ref": "#/paths/~1posts~1create/post/responses/201/content/application~1json/schema/allOf/1/properties/data/allOf/7"
                               }
-                            ]
+                            },
+                            {
+                              "$ref": "#/paths/~1posts~1get~1my~1%7BpostId%7D/get/responses/200/content/application~1json/schema/allOf/1/properties/data/allOf/4"
+                            },
+                            {
+                              "$ref": "#/paths/~1posts~1get~1my~1%7BpostId%7D/get/responses/200/content/application~1json/schema/allOf/1/properties/data/allOf/5"
+                            },
+                            {
+                              "$ref": "#/paths/~1posts~1get~1my~1%7BpostId%7D/get/responses/200/content/application~1json/schema/allOf/1/properties/data/allOf/6"
+                            },
+                            {
+                              "$ref": "#/paths/~1posts~1create/post/responses/201/content/application~1json/schema/allOf/1/properties/data/allOf/7"
+                            }
+                          ]
+                        }
+                      }
+                    }
+                  ]
+                }
+              }
+            }
+          },
+          "400": {
+            "$ref": "#/paths/~1users~1login/post/responses/400"
+          },
+          "401": {
+            "$ref": "#/paths/~1users~1logout/post/responses/401"
+          },
+          "403": {
+            "$ref": "#/paths/~1users~1logout/post/responses/403"
+          },
+          "404": {
+            "$ref": "#/paths/~1users~1login/post/responses/404"
+          }
+        }
+      }
+    },
+    "/addresses/get-all/country": {
+      "summary": "",
+      "description": "",
+      "get": {
+        "tags": [
+          "Addresses"
+        ],
+        "summary": "Get all countries",
+        "description": "Get all countries",
+        "operationId": "address.get-all-country",
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "allOf": [
+                    {
+                      "$ref": "#/paths/~1users~1logout/post/responses/200/content/application~1json/schema"
+                    },
+                    {
+                      "type": "object",
+                      "properties": {
+                        "data": {
+                          "type": "array",
+                          "items": {
+                            "type": "object",
+                            "properties": {
+                              "_id": {
+                                "title": "MongoDb Id of the country",
+                                "description": "MongoDb Id of the country",
+                                "type": "string",
+                                "length": 24,
+                                "example": "62ed69679c045c97a63390a4"
+                              },
+                              "name": {
+                                "title": "Country name",
+                                "description": "Country name",
+                                "type": "string",
+                                "minLength": 3,
+                                "maxLength": 80,
+                                "example": "Türkiye"
+                              }
+                            }
                           }
                         }
                       }
@@ -2629,6 +2894,1778 @@
                 }
               }
             }
+          },
+          "400": {
+            "$ref": "#/paths/~1users~1login/post/responses/400"
+          },
+          "401": {
+            "$ref": "#/paths/~1users~1logout/post/responses/401"
+          },
+          "403": {
+            "$ref": "#/paths/~1users~1logout/post/responses/403"
+          }
+        }
+      }
+    },
+    "/addresses/get-all/city/{countryId}": {
+      "summary": "",
+      "description": "",
+      "get": {
+        "tags": [
+          "Addresses"
+        ],
+        "summary": "Get all cities by country id",
+        "description": "Get all cities by country id",
+        "operationId": "address.get-all-city",
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "countryId",
+            "schema": {
+              "type": "string"
+            },
+            "required": true,
+            "description": "Country id",
+            "length": 24
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "allOf": [
+                    {
+                      "$ref": "#/paths/~1users~1logout/post/responses/200/content/application~1json/schema"
+                    },
+                    {
+                      "type": "object",
+                      "properties": {
+                        "data": {
+                          "allOf": [
+                            {
+                              "type": "object",
+                              "properties": {
+                                "country": {
+                                  "$ref": "#/paths/~1addresses~1get-all~1country/get/responses/200/content/application~1json/schema/allOf/1/properties/data/items"
+                                }
+                              }
+                            },
+                            {
+                              "type": "object",
+                              "properties": {
+                                "cities": {
+                                  "type": "array",
+                                  "items": {
+                                    "$ref": "#/paths/~1addresses~1get-all~1district~1%7BcityId%7D/get/responses/200/content/application~1json/schema/allOf/1/properties/data/allOf/0/properties/city"
+                                  }
+                                }
+                              }
+                            }
+                          ]
+                        }
+                      }
+                    }
+                  ]
+                }
+              }
+            }
+          },
+          "400": {
+            "$ref": "#/paths/~1users~1login/post/responses/400"
+          },
+          "401": {
+            "$ref": "#/paths/~1users~1logout/post/responses/401"
+          },
+          "403": {
+            "$ref": "#/paths/~1users~1logout/post/responses/403"
+          },
+          "404": {
+            "$ref": "#/paths/~1users~1login/post/responses/404"
+          }
+        }
+      }
+    },
+    "/addresses/get-all/district/{cityId}": {
+      "summary": "",
+      "description": "",
+      "get": {
+        "tags": [
+          "Addresses"
+        ],
+        "summary": "Get all districts by city id",
+        "description": "Get all districts by city id",
+        "operationId": "address.get-all-district",
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "cityId",
+            "schema": {
+              "type": "string"
+            },
+            "required": true,
+            "description": "City id",
+            "length": 24
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "allOf": [
+                    {
+                      "$ref": "#/paths/~1users~1logout/post/responses/200/content/application~1json/schema"
+                    },
+                    {
+                      "type": "object",
+                      "properties": {
+                        "data": {
+                          "allOf": [
+                            {
+                              "type": "object",
+                              "properties": {
+                                "city": {
+                                  "type": "object",
+                                  "properties": {
+                                    "_id": {
+                                      "title": "MongoDb Id of the city",
+                                      "description": "MongoDb Id of the city",
+                                      "type": "string",
+                                      "length": 24,
+                                      "example": "62f8d2ed7eb0550b2715cf1f"
+                                    },
+                                    "country": {
+                                      "title": "MongoDb Id of the country",
+                                      "description": "MongoDb Id of the country",
+                                      "type": "string",
+                                      "length": 24,
+                                      "example": "62ed69679c045c97a63390a4"
+                                    },
+                                    "zip_code": {
+                                      "title": "City zip code",
+                                      "description": "City zip code",
+                                      "type": "string",
+                                      "length": 5,
+                                      "example": "34000"
+                                    },
+                                    "name": {
+                                      "title": "City name",
+                                      "description": "City name",
+                                      "type": "string",
+                                      "minLength": 3,
+                                      "maxLength": 30,
+                                      "example": "İstanbul"
+                                    },
+                                    "region": {
+                                      "title": "City region",
+                                      "description": "City region",
+                                      "type": "string",
+                                      "minLength": 3,
+                                      "maxLength": 60,
+                                      "example": "Marmara"
+                                    }
+                                  }
+                                }
+                              }
+                            },
+                            {
+                              "type": "object",
+                              "properties": {
+                                "districts": {
+                                  "type": "array",
+                                  "items": {
+                                    "type": "object",
+                                    "properties": {
+                                      "_id": {
+                                        "title": "MongoDb Id of the district",
+                                        "description": "MongoDb Id of the district",
+                                        "type": "string",
+                                        "length": 24,
+                                        "example": "62f8d2ee7eb0550b2715cf2b"
+                                      },
+                                      "city": {
+                                        "title": "MongoDb Id of the city",
+                                        "description": "MongoDb Id of the city",
+                                        "type": "string",
+                                        "length": 24,
+                                        "example": "62f8d2ed7eb0550b2715cf1f"
+                                      },
+                                      "zip_code": {
+                                        "title": "District zip code",
+                                        "description": "District zip code",
+                                        "type": "string",
+                                        "length": 5,
+                                        "example": "34500"
+                                      },
+                                      "name": {
+                                        "title": "District name",
+                                        "description": "District name",
+                                        "type": "string",
+                                        "minLength": 3,
+                                        "maxLength": 80,
+                                        "example": "Esenyurt"
+                                      }
+                                    }
+                                  }
+                                }
+                              }
+                            }
+                          ]
+                        }
+                      }
+                    }
+                  ]
+                }
+              }
+            }
+          },
+          "400": {
+            "$ref": "#/paths/~1users~1login/post/responses/400"
+          },
+          "401": {
+            "$ref": "#/paths/~1users~1logout/post/responses/401"
+          },
+          "403": {
+            "$ref": "#/paths/~1users~1logout/post/responses/403"
+          },
+          "404": {
+            "$ref": "#/paths/~1users~1login/post/responses/404"
+          }
+        }
+      }
+    },
+    "/addresses/get-all/my": {
+      "summary": "",
+      "description": "",
+      "get": {
+        "tags": [
+          "Addresses"
+        ],
+        "summary": "Get all addresses of the user",
+        "description": "Get all addresses of the user",
+        "operationId": "address.get-all-my",
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "allOf": [
+                    {
+                      "$ref": "#/paths/~1users~1logout/post/responses/200/content/application~1json/schema"
+                    },
+                    {
+                      "type": "object",
+                      "properties": {
+                        "data": {
+                          "type": "array",
+                          "items": {
+                            "$ref": "#/paths/~1addresses~1get~1my~1%7BaddressId%7D/get/responses/200/content/application~1json/schema/allOf/1/properties/data"
+                          }
+                        }
+                      }
+                    }
+                  ]
+                }
+              }
+            }
+          },
+          "400": {
+            "$ref": "#/paths/~1users~1login/post/responses/400"
+          },
+          "401": {
+            "$ref": "#/paths/~1users~1logout/post/responses/401"
+          },
+          "403": {
+            "$ref": "#/paths/~1users~1logout/post/responses/403"
+          }
+        }
+      }
+    },
+    "/addresses/get/my/{addressId}": {
+      "summary": "",
+      "description": "",
+      "get": {
+        "tags": [
+          "Addresses"
+        ],
+        "summary": "Get user's address by address id",
+        "description": "Get user's address by address id",
+        "operationId": "address.get-my",
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "addressId",
+            "schema": {
+              "type": "string"
+            },
+            "required": true,
+            "description": "Address id",
+            "length": 24
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "allOf": [
+                    {
+                      "$ref": "#/paths/~1users~1logout/post/responses/200/content/application~1json/schema"
+                    },
+                    {
+                      "type": "object",
+                      "properties": {
+                        "data": {
+                          "allOf": [
+                            {
+                              "type": "object",
+                              "properties": {
+                                "_id": {
+                                  "title": "MongoDb Id of the address",
+                                  "description": "MongoDb Id of the address",
+                                  "type": "string",
+                                  "length": 24,
+                                  "example": "62f8d2787eb0550b2715c847"
+                                }
+                              }
+                            },
+                            {
+                              "type": "object",
+                              "properties": {
+                                "country": {
+                                  "$ref": "#/paths/~1addresses~1get-all~1country/get/responses/200/content/application~1json/schema/allOf/1/properties/data/items"
+                                }
+                              }
+                            },
+                            {
+                              "type": "object",
+                              "properties": {
+                                "city": {
+                                  "$ref": "#/paths/~1addresses~1get-all~1district~1%7BcityId%7D/get/responses/200/content/application~1json/schema/allOf/1/properties/data/allOf/0/properties/city"
+                                }
+                              }
+                            },
+                            {
+                              "type": "object",
+                              "properties": {
+                                "district": {
+                                  "$ref": "#/paths/~1addresses~1get-all~1district~1%7BcityId%7D/get/responses/200/content/application~1json/schema/allOf/1/properties/data/allOf/1/properties/districts/items"
+                                }
+                              }
+                            },
+                            {
+                              "type": "object",
+                              "properties": {
+                                "user": {
+                                  "allOf": [
+                                    {
+                                      "type": "object",
+                                      "properties": {
+                                        "_id": {
+                                          "title": "MongoDb Id of the user",
+                                          "description": "MongoDb Id of the user",
+                                          "type": "string",
+                                          "length": 24,
+                                          "example": "62f8d2b77eb0550b2715cbe6"
+                                        }
+                                      }
+                                    },
+                                    {
+                                      "$ref": "#/components/requestBodies/register/content/application~1json/schema/allOf/0/allOf/0"
+                                    },
+                                    {
+                                      "type": "object",
+                                      "properties": {
+                                        "email": {
+                                          "title": "User email",
+                                          "description": "User email",
+                                          "type": "string",
+                                          "format": "email"
+                                        }
+                                      }
+                                    }
+                                  ]
+                                }
+                              }
+                            },
+                            {
+                              "type": "object",
+                              "properties": {
+                                "address_1": {
+                                  "title": "Address line 1",
+                                  "description": "Address line 1",
+                                  "type": "string",
+                                  "minLength": 10,
+                                  "maxLength": 200
+                                }
+                              }
+                            },
+                            {
+                              "type": "object",
+                              "properties": {
+                                "address_2": {
+                                  "title": "Address line 2",
+                                  "description": "Address line 2",
+                                  "type": "string",
+                                  "minLength": 10,
+                                  "maxLength": 200,
+                                  "required": false
+                                }
+                              }
+                            }
+                          ]
+                        }
+                      }
+                    }
+                  ]
+                }
+              }
+            }
+          },
+          "400": {
+            "$ref": "#/paths/~1users~1login/post/responses/400"
+          },
+          "401": {
+            "$ref": "#/paths/~1users~1logout/post/responses/401"
+          },
+          "403": {
+            "$ref": "#/paths/~1users~1logout/post/responses/403"
+          },
+          "404": {
+            "$ref": "#/paths/~1users~1login/post/responses/404"
+          }
+        }
+      }
+    },
+    "/addresses/create": {
+      "summary": "",
+      "description": "",
+      "post": {
+        "tags": [
+          "Addresses"
+        ],
+        "summary": "Create address",
+        "description": "Create address",
+        "operationId": "address.create",
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "requestBody": {
+          "description": "",
+          "content": {
+            "application/json": {
+              "schema": {
+                "allOf": [
+                  {
+                    "allOf": [
+                      {
+                        "type": "object",
+                        "properties": {
+                          "country": {
+                            "title": "MongoDb Id of the country",
+                            "description": "MongoDb Id of the country",
+                            "type": "string",
+                            "length": 24,
+                            "example": "62f8d2787eb0550b2715c84a"
+                          }
+                        }
+                      },
+                      {
+                        "type": "object",
+                        "properties": {
+                          "city": {
+                            "title": "MongoDb Id of the city",
+                            "description": "MongoDb Id of the city",
+                            "type": "string",
+                            "length": 24,
+                            "example": "62f8d2787eb0550b2715c84e"
+                          }
+                        }
+                      },
+                      {
+                        "type": "object",
+                        "properties": {
+                          "district": {
+                            "title": "MongoDb Id of the district",
+                            "description": "MongoDb Id of the district",
+                            "type": "string",
+                            "length": 24,
+                            "example": "62f8d2797eb0550b2715c852"
+                          }
+                        }
+                      }
+                    ]
+                  },
+                  {
+                    "type": "object",
+                    "properties": {
+                      "address_1": {
+                        "title": "Address line 1",
+                        "description": "Address line 1",
+                        "type": "string",
+                        "minLength": 10,
+                        "maxLength": 200
+                      }
+                    }
+                  },
+                  {
+                    "type": "object",
+                    "properties": {
+                      "address_2": {
+                        "title": "Address line 2",
+                        "description": "Address line 2",
+                        "type": "string",
+                        "minLength": 10,
+                        "maxLength": 200
+                      }
+                    }
+                  },
+                  {
+                    "required": [
+                      "country",
+                      "city",
+                      "district",
+                      "address_1"
+                    ]
+                  }
+                ]
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "allOf": [
+                    {
+                      "$ref": "#/paths/~1users~1logout/post/responses/200/content/application~1json/schema"
+                    },
+                    {
+                      "type": "object",
+                      "properties": {
+                        "data": {
+                          "allOf": [
+                            {
+                              "type": "object",
+                              "properties": {
+                                "_id": {
+                                  "title": "MongoDb Id of the address",
+                                  "description": "MongoDb Id of the address",
+                                  "type": "string",
+                                  "length": 24,
+                                  "example": "62f8d2787eb0550b2715c847"
+                                }
+                              }
+                            },
+                            {
+                              "$ref": "#/paths/~1addresses~1create/post/requestBody/content/application~1json/schema/allOf/0"
+                            },
+                            {
+                              "type": "object",
+                              "properties": {
+                                "user": {
+                                  "title": "MongoDb Id of the user",
+                                  "description": "MongoDb Id of the user",
+                                  "type": "string",
+                                  "length": 24,
+                                  "example": "62f8d2787eb0550b2715c847"
+                                }
+                              }
+                            },
+                            {
+                              "type": "object",
+                              "properties": {
+                                "address_1": {
+                                  "title": "Address line 1",
+                                  "description": "Address line 1",
+                                  "type": "string",
+                                  "minLength": 10,
+                                  "maxLength": 200
+                                }
+                              }
+                            },
+                            {
+                              "type": "object",
+                              "properties": {
+                                "address_2": {
+                                  "title": "Address line 2",
+                                  "description": "Address line 2",
+                                  "type": "string",
+                                  "minLength": 10,
+                                  "maxLength": 200,
+                                  "required": false
+                                }
+                              }
+                            }
+                          ]
+                        }
+                      }
+                    }
+                  ]
+                }
+              }
+            }
+          },
+          "400": {
+            "$ref": "#/paths/~1users~1login/post/responses/400"
+          },
+          "401": {
+            "$ref": "#/paths/~1users~1logout/post/responses/401"
+          },
+          "403": {
+            "$ref": "#/paths/~1users~1logout/post/responses/403"
+          },
+          "404": {
+            "$ref": "#/paths/~1users~1login/post/responses/404"
+          },
+          "500": {
+            "$ref": "#/paths/~1users~1login/post/responses/500"
+          }
+        }
+      }
+    },
+    "/addresses/update/{addressId}": {
+      "summary": "",
+      "description": "",
+      "patch": {
+        "tags": [
+          "Addresses"
+        ],
+        "summary": "Update address",
+        "description": "Update address",
+        "operationId": "address.update",
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "parameters": [
+          {
+            "$ref": "#/paths/~1addresses~1get~1my~1%7BaddressId%7D/get/parameters/0"
+          }
+        ],
+        "requestBody": {
+          "description": "",
+          "content": {
+            "application/json": {
+              "schema": {
+                "allOf": [
+                  {
+                    "$ref": "#/paths/~1addresses~1create/post/requestBody/content/application~1json/schema/allOf/0"
+                  },
+                  {
+                    "type": "object",
+                    "properties": {
+                      "address_1": {
+                        "title": "Address line 1",
+                        "description": "Address line 1",
+                        "type": "string",
+                        "minLength": 10,
+                        "maxLength": 200
+                      }
+                    }
+                  },
+                  {
+                    "type": "object",
+                    "properties": {
+                      "address_2": {
+                        "title": "Address line 2",
+                        "description": "Address line 2",
+                        "type": "string",
+                        "minLength": 10,
+                        "maxLength": 200
+                      }
+                    }
+                  }
+                ]
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "allOf": [
+                    {
+                      "$ref": "#/paths/~1users~1logout/post/responses/200/content/application~1json/schema"
+                    },
+                    {
+                      "type": "object",
+                      "properties": {
+                        "data": {
+                          "allOf": [
+                            {
+                              "type": "object",
+                              "properties": {
+                                "_id": {
+                                  "title": "MongoDb Id of the address",
+                                  "description": "MongoDb Id of the address",
+                                  "type": "string",
+                                  "length": 24,
+                                  "example": "62f8d2787eb0550b2715c847"
+                                }
+                              }
+                            },
+                            {
+                              "$ref": "#/paths/~1addresses~1create/post/requestBody/content/application~1json/schema/allOf/0"
+                            },
+                            {
+                              "type": "object",
+                              "properties": {
+                                "user": {
+                                  "title": "MongoDb Id of the user",
+                                  "description": "MongoDb Id of the user",
+                                  "type": "string",
+                                  "length": 24,
+                                  "example": "62f8d2787eb0550b2715c847"
+                                }
+                              }
+                            },
+                            {
+                              "type": "object",
+                              "properties": {
+                                "address_1": {
+                                  "title": "Address line 1",
+                                  "description": "Address line 1",
+                                  "type": "string",
+                                  "minLength": 10,
+                                  "maxLength": 200
+                                }
+                              }
+                            },
+                            {
+                              "type": "object",
+                              "properties": {
+                                "address_2": {
+                                  "title": "Address line 2",
+                                  "description": "Address line 2",
+                                  "type": "string",
+                                  "minLength": 10,
+                                  "maxLength": 200,
+                                  "required": false
+                                }
+                              }
+                            }
+                          ]
+                        }
+                      }
+                    }
+                  ]
+                }
+              }
+            }
+          },
+          "400": {
+            "$ref": "#/paths/~1users~1login/post/responses/400"
+          },
+          "401": {
+            "$ref": "#/paths/~1users~1logout/post/responses/401"
+          },
+          "403": {
+            "$ref": "#/paths/~1users~1logout/post/responses/403"
+          },
+          "404": {
+            "$ref": "#/paths/~1users~1login/post/responses/404"
+          }
+        }
+      }
+    },
+    "/addresses/delete/{addressId}": {
+      "summary": "",
+      "description": "",
+      "delete": {
+        "tags": [
+          "Addresses"
+        ],
+        "summary": "Delete address",
+        "description": "Delete address",
+        "operationId": "address.delete",
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "parameters": [
+          {
+            "$ref": "#/paths/~1addresses~1get~1my~1%7BaddressId%7D/get/parameters/0"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "allOf": [
+                    {
+                      "$ref": "#/paths/~1users~1logout/post/responses/200/content/application~1json/schema"
+                    },
+                    {
+                      "type": "object",
+                      "properties": {
+                        "data": {
+                          "allOf": [
+                            {
+                              "type": "object",
+                              "properties": {
+                                "_id": {
+                                  "title": "MongoDb Id of the address",
+                                  "description": "MongoDb Id of the address",
+                                  "type": "string",
+                                  "length": 24,
+                                  "example": "62f8d2787eb0550b2715c847"
+                                }
+                              }
+                            },
+                            {
+                              "$ref": "#/paths/~1addresses~1create/post/requestBody/content/application~1json/schema/allOf/0"
+                            },
+                            {
+                              "type": "object",
+                              "properties": {
+                                "user": {
+                                  "title": "MongoDb Id of the user",
+                                  "description": "MongoDb Id of the user",
+                                  "type": "string",
+                                  "length": 24,
+                                  "example": "62f8d2787eb0550b2715c847"
+                                }
+                              }
+                            },
+                            {
+                              "type": "object",
+                              "properties": {
+                                "address_1": {
+                                  "title": "Address line 1",
+                                  "description": "Address line 1",
+                                  "type": "string",
+                                  "minLength": 10,
+                                  "maxLength": 200
+                                }
+                              }
+                            },
+                            {
+                              "type": "object",
+                              "properties": {
+                                "address_2": {
+                                  "title": "Address line 2",
+                                  "description": "Address line 2",
+                                  "type": "string",
+                                  "minLength": 10,
+                                  "maxLength": 200,
+                                  "required": false
+                                }
+                              }
+                            }
+                          ]
+                        }
+                      }
+                    }
+                  ]
+                }
+              }
+            }
+          },
+          "400": {
+            "$ref": "#/paths/~1users~1login/post/responses/400"
+          },
+          "401": {
+            "$ref": "#/paths/~1users~1logout/post/responses/401"
+          },
+          "403": {
+            "$ref": "#/paths/~1users~1logout/post/responses/403"
+          },
+          "404": {
+            "$ref": "#/paths/~1users~1login/post/responses/404"
+          }
+        }
+      }
+    },
+    "/admin/addresses/get-all": {
+      "summary": "",
+      "description": "",
+      "get": {
+        "tags": [
+          "Addresses"
+        ],
+        "summary": "Get all addresses",
+        "description": "Get all addresses",
+        "operationId": "address.admin-get-all",
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "allOf": [
+                    {
+                      "$ref": "#/paths/~1users~1logout/post/responses/200/content/application~1json/schema"
+                    },
+                    {
+                      "type": "object",
+                      "properties": {
+                        "data": {
+                          "type": "array",
+                          "items": {
+                            "$ref": "#/paths/~1addresses~1get~1my~1%7BaddressId%7D/get/responses/200/content/application~1json/schema/allOf/1/properties/data"
+                          }
+                        }
+                      }
+                    }
+                  ]
+                }
+              }
+            }
+          },
+          "400": {
+            "$ref": "#/paths/~1users~1login/post/responses/400"
+          },
+          "401": {
+            "$ref": "#/paths/~1users~1logout/post/responses/401"
+          },
+          "403": {
+            "$ref": "#/paths/~1users~1logout/post/responses/403"
+          }
+        }
+      }
+    },
+    "/admin/addresses/get/{addressId}": {
+      "summary": "",
+      "description": "",
+      "get": {
+        "tags": [
+          "Addresses"
+        ],
+        "summary": "Get address by addressId",
+        "description": "Get address by addressId",
+        "operationId": "address.admin-get",
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "parameters": [
+          {
+            "$ref": "#/paths/~1addresses~1get~1my~1%7BaddressId%7D/get/parameters/0"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "allOf": [
+                    {
+                      "$ref": "#/paths/~1users~1logout/post/responses/200/content/application~1json/schema"
+                    },
+                    {
+                      "type": "object",
+                      "properties": {
+                        "data": {
+                          "$ref": "#/paths/~1addresses~1get~1my~1%7BaddressId%7D/get/responses/200/content/application~1json/schema/allOf/1/properties/data"
+                        }
+                      }
+                    }
+                  ]
+                }
+              }
+            }
+          },
+          "400": {
+            "$ref": "#/paths/~1users~1login/post/responses/400"
+          },
+          "401": {
+            "$ref": "#/paths/~1users~1logout/post/responses/401"
+          },
+          "403": {
+            "$ref": "#/paths/~1users~1logout/post/responses/403"
+          },
+          "404": {
+            "$ref": "#/paths/~1users~1login/post/responses/404"
+          }
+        }
+      }
+    },
+    "/admin/roles/get-all": {
+      "summary": "",
+      "description": "",
+      "get": {
+        "tags": [
+          "Roles (Only Admins)"
+        ],
+        "summary": "Get all roles",
+        "description": "Get all roles",
+        "operationId": "roles.admin-get-all",
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "allOf": [
+                    {
+                      "$ref": "#/paths/~1users~1logout/post/responses/200/content/application~1json/schema"
+                    },
+                    {
+                      "type": "object",
+                      "properties": {
+                        "data": {
+                          "type": "array",
+                          "items": {
+                            "$ref": "#/paths/~1admin~1roles~1create/post/responses/201/content/application~1json/schema/allOf/1/properties/data"
+                          }
+                        }
+                      }
+                    }
+                  ]
+                }
+              }
+            }
+          },
+          "400": {
+            "$ref": "#/paths/~1users~1login/post/responses/400"
+          },
+          "401": {
+            "$ref": "#/paths/~1users~1logout/post/responses/401"
+          },
+          "403": {
+            "$ref": "#/paths/~1users~1logout/post/responses/403"
+          }
+        }
+      }
+    },
+    "/admin/roles/get/{roleId}": {
+      "summary": "",
+      "description": "",
+      "get": {
+        "tags": [
+          "Roles (Only Admins)"
+        ],
+        "summary": "Get role by roleId",
+        "description": "Get role by roleId",
+        "operationId": "roles.admin-get",
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "roleId",
+            "schema": {
+              "type": "string"
+            },
+            "required": true,
+            "description": "Role id",
+            "length": 24
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "allOf": [
+                    {
+                      "$ref": "#/paths/~1users~1logout/post/responses/200/content/application~1json/schema"
+                    },
+                    {
+                      "type": "object",
+                      "properties": {
+                        "data": {
+                          "$ref": "#/paths/~1admin~1roles~1create/post/responses/201/content/application~1json/schema/allOf/1/properties/data"
+                        }
+                      }
+                    }
+                  ]
+                }
+              }
+            }
+          },
+          "400": {
+            "$ref": "#/paths/~1users~1login/post/responses/400"
+          },
+          "401": {
+            "$ref": "#/paths/~1users~1logout/post/responses/401"
+          },
+          "403": {
+            "$ref": "#/paths/~1users~1logout/post/responses/403"
+          },
+          "404": {
+            "$ref": "#/paths/~1users~1login/post/responses/404"
+          }
+        }
+      }
+    },
+    "/admin/roles/create": {
+      "summary": "",
+      "description": "",
+      "post": {
+        "tags": [
+          "Roles (Only Admins)"
+        ],
+        "summary": "Create roles",
+        "description": "Create roles",
+        "operationId": "roles.admin-create",
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "requestBody": {
+          "description": "",
+          "content": {
+            "application/json": {
+              "schema": {
+                "allOf": [
+                  {
+                    "type": "object",
+                    "properties": {
+                      "name": {
+                        "title": "Role name",
+                        "description": "Role name",
+                        "type": "string",
+                        "minLength": 3,
+                        "maxLength": 50
+                      }
+                    }
+                  },
+                  {
+                    "type": "object",
+                    "properties": {
+                      "description": {
+                        "title": "Role description",
+                        "description": "Role description",
+                        "type": "string",
+                        "minLength": 3,
+                        "maxLength": 150
+                      }
+                    }
+                  },
+                  {
+                    "required": [
+                      "name",
+                      "description"
+                    ]
+                  }
+                ]
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "allOf": [
+                    {
+                      "$ref": "#/paths/~1users~1logout/post/responses/200/content/application~1json/schema"
+                    },
+                    {
+                      "type": "object",
+                      "properties": {
+                        "data": {
+                          "allOf": [
+                            {
+                              "$ref": "#/paths/~1posts~1create/post/responses/201/content/application~1json/schema/allOf/1/properties/data/allOf/0"
+                            },
+                            {
+                              "type": "object",
+                              "properties": {
+                                "name": {
+                                  "title": "Role name",
+                                  "description": "Role name",
+                                  "type": "string",
+                                  "minLength": 3,
+                                  "maxLength": 50
+                                }
+                              }
+                            },
+                            {
+                              "type": "object",
+                              "properties": {
+                                "description": {
+                                  "title": "Role description",
+                                  "description": "Role description",
+                                  "type": "string",
+                                  "minLength": 3,
+                                  "maxLength": 150
+                                }
+                              }
+                            }
+                          ]
+                        }
+                      }
+                    }
+                  ]
+                }
+              }
+            }
+          },
+          "400": {
+            "$ref": "#/paths/~1users~1login/post/responses/400"
+          },
+          "401": {
+            "$ref": "#/paths/~1users~1logout/post/responses/401"
+          },
+          "403": {
+            "$ref": "#/paths/~1users~1logout/post/responses/403"
+          },
+          "409": {
+            "$ref": "#/paths/~1users~1register/post/responses/409"
+          },
+          "500": {
+            "$ref": "#/paths/~1users~1login/post/responses/500"
+          }
+        }
+      }
+    },
+    "/admin/roles/update/{roleId}": {
+      "summary": "",
+      "description": "",
+      "patch": {
+        "tags": [
+          "Roles (Only Admins)"
+        ],
+        "summary": "Update roles",
+        "description": "Update roles",
+        "operationId": "roles.admin-update",
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "parameters": [
+          {
+            "$ref": "#/paths/~1admin~1roles~1get~1%7BroleId%7D/get/parameters/0"
+          }
+        ],
+        "requestBody": {
+          "description": "",
+          "content": {
+            "application/json": {
+              "schema": {
+                "allOf": [
+                  {
+                    "type": "object",
+                    "properties": {
+                      "name": {
+                        "title": "Role name",
+                        "description": "Role name",
+                        "type": "string",
+                        "minLength": 3,
+                        "maxLength": 50
+                      }
+                    }
+                  },
+                  {
+                    "type": "object",
+                    "properties": {
+                      "description": {
+                        "title": "Role description",
+                        "description": "Role description",
+                        "type": "string",
+                        "minLength": 3,
+                        "maxLength": 150
+                      }
+                    }
+                  }
+                ]
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "allOf": [
+                    {
+                      "$ref": "#/paths/~1users~1logout/post/responses/200/content/application~1json/schema"
+                    },
+                    {
+                      "type": "object",
+                      "properties": {
+                        "data": {
+                          "$ref": "#/paths/~1admin~1roles~1create/post/responses/201/content/application~1json/schema/allOf/1/properties/data"
+                        }
+                      }
+                    }
+                  ]
+                }
+              }
+            }
+          },
+          "400": {
+            "$ref": "#/paths/~1users~1login/post/responses/400"
+          },
+          "401": {
+            "$ref": "#/paths/~1users~1logout/post/responses/401"
+          },
+          "403": {
+            "$ref": "#/paths/~1users~1logout/post/responses/403"
+          },
+          "404": {
+            "$ref": "#/paths/~1users~1login/post/responses/404"
+          },
+          "409": {
+            "$ref": "#/paths/~1users~1register/post/responses/409"
+          },
+          "500": {
+            "$ref": "#/paths/~1users~1login/post/responses/500"
+          }
+        }
+      }
+    },
+    "/admin/roles/delete/{roleId}": {
+      "summary": "",
+      "description": "",
+      "delete": {
+        "tags": [
+          "Roles (Only Admins)"
+        ],
+        "summary": "Delete role",
+        "description": "Delete role",
+        "operationId": "roles.admin-delete",
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "parameters": [
+          {
+            "$ref": "#/paths/~1admin~1roles~1get~1%7BroleId%7D/get/parameters/0"
+          }
+        ],
+        "responses": {
+          "200": {
+            "$ref": "#/paths/~1admin~1roles~1update~1%7BroleId%7D/patch/responses/200"
+          },
+          "400": {
+            "$ref": "#/paths/~1users~1login/post/responses/400"
+          },
+          "401": {
+            "$ref": "#/paths/~1users~1logout/post/responses/401"
+          },
+          "403": {
+            "$ref": "#/paths/~1users~1logout/post/responses/403"
+          },
+          "404": {
+            "$ref": "#/paths/~1users~1login/post/responses/404"
+          }
+        }
+      }
+    },
+    "/admin/plans/get-all": {
+      "summary": "",
+      "description": "",
+      "get": {
+        "tags": [
+          "Plans (Only Admins)"
+        ],
+        "summary": "Get all plans",
+        "description": "Get all plans",
+        "operationId": "plans.admin-get-all",
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "allOf": [
+                    {
+                      "$ref": "#/paths/~1users~1logout/post/responses/200/content/application~1json/schema"
+                    },
+                    {
+                      "type": "object",
+                      "properties": {
+                        "data": {
+                          "type": "array",
+                          "items": {
+                            "$ref": "#/paths/~1admin~1plans~1update~1%7BplanId%7D/patch/requestBody/content/application~1json/schema"
+                          }
+                        }
+                      }
+                    }
+                  ]
+                }
+              }
+            }
+          },
+          "400": {
+            "$ref": "#/paths/~1users~1login/post/responses/400"
+          },
+          "401": {
+            "$ref": "#/paths/~1users~1logout/post/responses/401"
+          },
+          "403": {
+            "$ref": "#/paths/~1users~1logout/post/responses/403"
+          }
+        }
+      }
+    },
+    "/admin/plans/get/{planId}": {
+      "summary": "",
+      "description": "",
+      "get": {
+        "tags": [
+          "Plans (Only Admins)"
+        ],
+        "summary": "Get plan by planId",
+        "description": "Get plan by planId",
+        "operationId": "plans.admin-get",
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "planId",
+            "schema": {
+              "type": "string"
+            },
+            "required": true,
+            "description": "Plan id",
+            "length": 24
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "allOf": [
+                    {
+                      "$ref": "#/paths/~1users~1logout/post/responses/200/content/application~1json/schema"
+                    },
+                    {
+                      "type": "object",
+                      "properties": {
+                        "data": {
+                          "$ref": "#/paths/~1admin~1plans~1update~1%7BplanId%7D/patch/requestBody/content/application~1json/schema"
+                        }
+                      }
+                    }
+                  ]
+                }
+              }
+            }
+          },
+          "400": {
+            "$ref": "#/paths/~1users~1login/post/responses/400"
+          },
+          "401": {
+            "$ref": "#/paths/~1users~1logout/post/responses/401"
+          },
+          "403": {
+            "$ref": "#/paths/~1users~1logout/post/responses/403"
+          },
+          "404": {
+            "$ref": "#/paths/~1users~1login/post/responses/404"
+          }
+        }
+      }
+    },
+    "/admin/plans/create": {
+      "summary": "",
+      "description": "",
+      "post": {
+        "tags": [
+          "Plans (Only Admins)"
+        ],
+        "summary": "Create plan",
+        "description": "Create plan",
+        "operationId": "plans.admin-create",
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "requestBody": {
+          "description": "",
+          "content": {
+            "application/json": {
+              "schema": {
+                "allOf": [
+                  {
+                    "$ref": "#/paths/~1admin~1plans~1update~1%7BplanId%7D/patch/requestBody/content/application~1json/schema"
+                  },
+                  {
+                    "required": [
+                      "name",
+                      "description",
+                      "price",
+                      "right_to_view"
+                    ]
+                  }
+                ]
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "allOf": [
+                    {
+                      "$ref": "#/paths/~1users~1logout/post/responses/200/content/application~1json/schema"
+                    },
+                    {
+                      "type": "object",
+                      "properties": {
+                        "data": {
+                          "$ref": "#/paths/~1admin~1plans~1update~1%7BplanId%7D/patch/requestBody/content/application~1json/schema"
+                        }
+                      }
+                    }
+                  ]
+                }
+              }
+            }
+          },
+          "400": {
+            "$ref": "#/paths/~1users~1login/post/responses/400"
+          },
+          "401": {
+            "$ref": "#/paths/~1users~1logout/post/responses/401"
+          },
+          "403": {
+            "$ref": "#/paths/~1users~1logout/post/responses/403"
+          },
+          "409": {
+            "$ref": "#/paths/~1users~1register/post/responses/409"
+          },
+          "500": {
+            "$ref": "#/paths/~1users~1login/post/responses/500"
+          }
+        }
+      }
+    },
+    "/admin/plans/update/{planId}": {
+      "summary": "",
+      "description": "",
+      "patch": {
+        "tags": [
+          "Plans (Only Admins)"
+        ],
+        "summary": "Update role",
+        "description": "Update role",
+        "operationId": "roles.admin-update",
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "parameters": [
+          {
+            "$ref": "#/paths/~1admin~1plans~1get~1%7BplanId%7D/get/parameters/0"
+          }
+        ],
+        "requestBody": {
+          "description": "",
+          "content": {
+            "application/json": {
+              "schema": {
+                "allOf": [
+                  {
+                    "type": "object",
+                    "properties": {
+                      "name": {
+                        "title": "Plan name",
+                        "description": "Plan name",
+                        "type": "string",
+                        "minLength": 3,
+                        "maxLength": 150,
+                        "example": "Basic Plan"
+                      }
+                    }
+                  },
+                  {
+                    "type": "object",
+                    "properties": {
+                      "description": {
+                        "title": "Plan description",
+                        "description": "Plan description",
+                        "type": "string",
+                        "minLength": 3,
+                        "maxLength": 350
+                      }
+                    }
+                  },
+                  {
+                    "type": "object",
+                    "properties": {
+                      "price": {
+                        "title": "Plan price",
+                        "description": "Plan price",
+                        "type": "number",
+                        "minLength": 0,
+                        "example": "999.90"
+                      }
+                    }
+                  },
+                  {
+                    "type": "object",
+                    "properties": {
+                      "right_to_view": {
+                        "title": "Number of post view rights",
+                        "description": "Number of post view rights",
+                        "type": "number",
+                        "minLength": 1,
+                        "example": "50"
+                      }
+                    }
+                  }
+                ]
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "allOf": [
+                    {
+                      "$ref": "#/paths/~1users~1logout/post/responses/200/content/application~1json/schema"
+                    },
+                    {
+                      "type": "object",
+                      "properties": {
+                        "data": {
+                          "$ref": "#/paths/~1admin~1plans~1update~1%7BplanId%7D/patch/requestBody/content/application~1json/schema"
+                        }
+                      }
+                    }
+                  ]
+                }
+              }
+            }
+          },
+          "400": {
+            "$ref": "#/paths/~1users~1login/post/responses/400"
+          },
+          "401": {
+            "$ref": "#/paths/~1users~1logout/post/responses/401"
+          },
+          "403": {
+            "$ref": "#/paths/~1users~1logout/post/responses/403"
+          },
+          "404": {
+            "$ref": "#/paths/~1users~1login/post/responses/404"
+          },
+          "409": {
+            "$ref": "#/paths/~1users~1register/post/responses/409"
+          },
+          "500": {
+            "$ref": "#/paths/~1users~1login/post/responses/500"
+          }
+        }
+      }
+    },
+    "/admin/plans/delete/{planId}": {
+      "summary": "",
+      "description": "",
+      "delete": {
+        "tags": [
+          "Plans (Only Admins)"
+        ],
+        "summary": "Delete plan",
+        "description": "Delete plan",
+        "operationId": "plans.admin-delete",
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "parameters": [
+          {
+            "$ref": "#/paths/~1admin~1plans~1get~1%7BplanId%7D/get/parameters/0"
+          }
+        ],
+        "responses": {
+          "200": {
+            "$ref": "#/paths/~1admin~1plans~1update~1%7BplanId%7D/patch/responses/200"
           },
           "400": {
             "$ref": "#/paths/~1users~1login/post/responses/400"

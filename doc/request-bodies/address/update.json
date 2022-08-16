@@ -1,0 +1,38 @@
+{
+    "description": "",
+    "content": {
+        "application/json": {
+            "schema": {
+                "allOf": [
+                    {
+                        "$ref": "../../schemas/address/other/country-city-district.json"
+                    },
+                    {
+                        "type": "object",
+                        "properties": {
+                            "address_1": {
+                                "title": "Address line 1",
+                                "description": "Address line 1",
+                                "type": "string",
+                                "minLength": 10,
+                                "maxLength": 200
+                            }
+                        }
+                    },
+                    {
+                        "type": "object",
+                        "properties": {
+                            "address_2": {
+                                "title": "Address line 2",
+                                "description": "Address line 2",
+                                "type": "string",
+                                "minLength": 10,
+                                "maxLength": 200
+                            }
+                        }
+                    }
+                ]
+            }
+        }
+    }
+}

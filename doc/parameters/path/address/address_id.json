@@ -1,0 +1,10 @@
+{
+    "in": "path",
+    "name": "addressId",
+    "schema": {
+        "type": "string"
+    },
+    "required": true,
+    "description": "Address id",
+    "length": 24
+}

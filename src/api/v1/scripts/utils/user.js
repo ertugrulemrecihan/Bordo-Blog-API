@@ -1,3 +1,4 @@
+/* eslint-disable max-len */
 const jwtHelper = require('./jwt');
 // eslint-disable-next-line max-len
 const emailVerificationTokenService = require('../../services/EmailVerificationTokenService');
@@ -67,8 +68,10 @@ const createAndVerifyEmail = async (email) => {
         token: emailVerifyToken,
     });
 
-    // eslint-disable-next-line max-len
-    const verifyUrl = `${process.env.API_URL}:${process.env.API_PORT}/api/v1/user/verify-email/${emailVerifyToken}`;
+    const verifyUrl =
+        process.env.NODE_ENV == 'PRODUCTION'
+            ? `${process.env.API_URL}/users/verify-email/${emailVerifyToken}`
+            : `${process.env.API_URL}:${process.env.PORT}/api/v1/users/verify-email/${emailVerifyToken}`;
 
     eventEmitter.emit('send_email', {
         to: user.email,

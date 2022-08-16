@@ -1,0 +1,10 @@
+{
+    "in": "path",
+    "name": "countryId",
+    "schema": {
+        "type": "string"
+    },
+    "required": true,
+    "description": "Country id",
+    "length": 24
+}

@@ -1,0 +1,10 @@
+{
+    "in": "path",
+    "name": "roleId",
+    "schema": {
+        "type": "string"
+    },
+    "required": true,
+    "description": "Role id",
+    "length": 24
+}
