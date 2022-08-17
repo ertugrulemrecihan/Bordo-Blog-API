@@ -450,21 +450,8 @@ class UserController extends BaseController {
     }
 
     async getMyProfile(req, res, next) {
-        const user = await userService.fetchOneById(req.user._id);
-
-        if (!user) {
-            return next(
-                new ApiError(
-                    'Failed to fetch user profile',
-                    httpStatus.INTERNAL_SERVER_ERROR
-                )
-            );
-        }
-
-        const response = userHelper.deletePasswordAndSaltFields(user);
-
         new ApiDataSuccess(
-            response,
+            req.user,
             'Profile fetched successfully',
             httpStatus.OK
         ).place(res);
@@ -555,15 +542,11 @@ class UserController extends BaseController {
                 }
             });
 
-            const user = await userService.fetchOneByQuery({
-                _id: req.user._id,
-            });
-
-            if (user.avatar != '/uploads/avatars/default-avatar.jpg') {
+            if (req.user.avatar != '/uploads/avatars/default-avatar.jpg') {
                 const currentPath = path.join(
                     __dirname,
                     '../../../../public',
-                    user.avatar
+                    req.user.avatar
                 );
                 if (fs.existsSync(currentPath)) {
                     fs.unlinkSync(currentPath);

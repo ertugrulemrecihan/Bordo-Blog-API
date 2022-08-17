@@ -47,13 +47,11 @@ const UserSchema = Mongoose.Schema(
                 required: true,
             },
         ],
-        packages: [
-            {
-                type: Mongoose.Schema.Types.ObjectId,
-                ref: 'package',
-                required: true,
-            },
-        ],
+        plan: {
+            type: Mongoose.Schema.Types.ObjectId,
+            ref: 'plan',
+            default: null,
+        },
     },
     { timestamps: true, versionKey: false }
 );

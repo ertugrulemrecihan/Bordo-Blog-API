@@ -32,6 +32,7 @@ app.use('/api/v1/users', routes.user);
 app.use('/api/v1/posts', routes.post);
 app.use('/api/v1/addresses', routes.address);
 app.use('/api/v1/tags', routes.tag);
+app.use('/api/v1/plans', routes.plan);
 
 // Admin Routes
 app.use('/api/v1/admin/roles', routes.adminRole);

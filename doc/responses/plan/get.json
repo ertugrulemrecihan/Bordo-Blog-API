@@ -4,7 +4,7 @@
         "application/json": {
             "schema": {
                 "type": "object",
-                "$ref": "../../../schemas/plan/admin/get-all.json"
+                "$ref": "../../schemas/plan/get.json"
             }
         }
     }

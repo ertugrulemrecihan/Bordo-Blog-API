@@ -42,7 +42,7 @@
             "description": "User roles endpoints"
         },
         {
-            "name": "Plans (Only Admins)",
+            "name": "Plans",
             "description": "Plan endpoints"
         }
     ],
@@ -185,20 +185,11 @@
         "/admin/roles/get/{roleId}": {
             "$ref": "./paths/admin/role/get.json"
         },
-        "/admin/roles/create": {
-            "$ref": "./paths/admin/role/create.json"
+        "/plans/get-all": {
+            "$ref": "./paths/plan/get-all.json"
         },
-        "/admin/roles/update/{roleId}": {
-            "$ref": "./paths/admin/role/update.json"
-        },
-        "/admin/roles/delete/{roleId}": {
-            "$ref": "./paths/admin/role/delete.json"
-        },
-        "/admin/plans/get-all": {
-            "$ref": "./paths/admin/plan/get-all.json"
-        },
-        "/admin/plans/get/{planId}": {
-            "$ref": "./paths/admin/plan/get.json"
+        "/plans/get/{planId}": {
+            "$ref": "./paths/plan/get.json"
         },
         "/admin/plans/create": {
             "$ref": "./paths/admin/plan/create.json"

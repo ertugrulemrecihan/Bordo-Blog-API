@@ -9,9 +9,31 @@ const authenticate = async (req, res, next) => {
         return next(new ApiError('Access denied', httpStatus.UNAUTHORIZED));
     }
 
-    const currentAccessToken = await accessTokenService.fetchOneByQuery({
-        token: token,
-    });
+    // ? Kullanıcıyı DB'den getirmek için DB'ye ayrı bir istek atmak yerine
+    // ? accessToken DB'den getirilirken population ile kullanıcıyı da
+    // ? getiriyoruz. Zaten DB'de accessToken yoksa gelen token bilgisi de
+    // ? yanlıştır ve kullanıcıyı getirmemize gerek yoktur.
+    const currentAccessToken = await accessTokenService.fetchOneByQuery(
+        {
+            token: token,
+        },
+        [
+            {
+                path: 'user',
+                select: '-password -salt',
+                populate: [
+                    {
+                        path: 'roles',
+                        select: 'name',
+                    },
+                    {
+                        path: 'plan',
+                        select: 'name right_to_view',
+                    },
+                ],
+            },
+        ]
+    );
 
     if (!currentAccessToken) {
         return next(
@@ -32,13 +54,13 @@ const authenticate = async (req, res, next) => {
             );
         }
 
-        if (decoded.data._id != currentAccessToken.user) {
+        if (decoded.data._id != currentAccessToken.user._id) {
             return next(
                 new ApiError('Invalid access token', httpStatus.BAD_REQUEST)
             );
         }
 
-        req.user = decoded.data;
+        req.user = currentAccessToken.user;
 
         if (!req.user.email_verified) {
             return next(

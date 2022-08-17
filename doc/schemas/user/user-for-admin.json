@@ -7,7 +7,7 @@
             "$ref": "./other/roles.json"
         },
         {
-            "$ref": "./other/packages.json"
+            "$ref": "./other/user-plan.json"
         }
     ]
 }

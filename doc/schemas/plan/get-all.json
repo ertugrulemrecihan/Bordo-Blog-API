@@ -1,7 +1,7 @@
 {
     "allOf": [
         {
-            "$ref": "../../../responses/api-responses/api-success.json"
+            "$ref": "../../responses/api-responses/api-success.json"
         },
         {
             "type": "object",
@@ -9,7 +9,7 @@
                 "data": {
                     "type": "array",
                     "items": {
-                        "$ref": "../other/plan.json"
+                        "$ref": "./other/plan.json"
                     }               
                 }
             }
