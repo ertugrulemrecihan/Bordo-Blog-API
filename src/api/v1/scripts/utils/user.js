@@ -22,6 +22,7 @@ const createResponse = (user) => {
 const deleteProfile = (user) => {
     const userObject = deletePasswordAndSaltFields(user);
 
+    delete userObject.avatar;
     delete userObject.first_name;
     delete userObject.last_name;
     delete userObject.email_notification;
