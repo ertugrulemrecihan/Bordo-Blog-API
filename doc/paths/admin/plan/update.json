@@ -3,7 +3,7 @@
     "description": "",
     "patch": {
         "tags": [
-            "Plans (Only Admins)"
+            "Plans"
         ],
         "summary": "Update role",
         "description": "Update role",
@@ -19,7 +19,7 @@
             }
         ],
         "requestBody": {
-            "$ref": "../../../request-bodies/plan/update.json"
+            "$ref": "../../../request-bodies/admin/plan/update.json"
         },
         "responses": {
             "200": {

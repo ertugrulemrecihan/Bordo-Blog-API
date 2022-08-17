@@ -42,7 +42,7 @@
       "description": "User roles endpoints"
     },
     {
-      "name": "Plans (Only Admins)",
+      "name": "Plans",
       "description": "Plan endpoints"
     }
   ],
@@ -4208,16 +4208,16 @@
         }
       }
     },
-    "/admin/plans/get-all": {
+    "/plans/get-all": {
       "summary": "",
       "description": "",
       "get": {
         "tags": [
-          "Plans (Only Admins)"
+          "Plans"
         ],
         "summary": "Get all plans",
         "description": "Get all plans",
-        "operationId": "plans.admin-get-all",
+        "operationId": "plans.get-all",
         "security": [
           {
             "bearerAuth": []
@@ -4262,16 +4262,16 @@
         }
       }
     },
-    "/admin/plans/get/{planId}": {
+    "/plans/get/{planId}": {
       "summary": "",
       "description": "",
       "get": {
         "tags": [
-          "Plans (Only Admins)"
+          "Plans"
         ],
         "summary": "Get plan by planId",
         "description": "Get plan by planId",
-        "operationId": "plans.admin-get",
+        "operationId": "plans.get",
         "security": [
           {
             "bearerAuth": []
@@ -4333,7 +4333,7 @@
       "description": "",
       "post": {
         "tags": [
-          "Plans (Only Admins)"
+          "Plans"
         ],
         "summary": "Create plan",
         "description": "Create plan",
@@ -4412,7 +4412,7 @@
       "description": "",
       "patch": {
         "tags": [
-          "Plans (Only Admins)"
+          "Plans"
         ],
         "summary": "Update role",
         "description": "Update role",
@@ -4424,7 +4424,7 @@
         ],
         "parameters": [
           {
-            "$ref": "#/paths/~1admin~1plans~1get~1%7BplanId%7D/get/parameters/0"
+            "$ref": "#/paths/~1plans~1get~1%7BplanId%7D/get/parameters/0"
           }
         ],
         "requestBody": {
@@ -4537,7 +4537,7 @@
       "description": "",
       "delete": {
         "tags": [
-          "Plans (Only Admins)"
+          "Plans"
         ],
         "summary": "Delete plan",
         "description": "Delete plan",
@@ -4549,7 +4549,7 @@
         ],
         "parameters": [
           {
-            "$ref": "#/paths/~1admin~1plans~1get~1%7BplanId%7D/get/parameters/0"
+            "$ref": "#/paths/~1plans~1get~1%7BplanId%7D/get/parameters/0"
           }
         ],
         "responses": {

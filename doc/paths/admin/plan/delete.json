@@ -3,7 +3,7 @@
     "description": "",
     "delete": {
         "tags": [
-            "Plans (Only Admins)"
+            "Plans"
         ],
         "summary": "Delete plan",
         "description": "Delete plan",

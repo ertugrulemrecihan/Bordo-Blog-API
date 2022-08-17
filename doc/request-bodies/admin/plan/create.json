@@ -5,7 +5,7 @@
             "schema": {
                 "allOf": [
                     {
-                        "$ref": "../../schemas/plan/other/plan.json"
+                        "$ref": "../../../schemas/plan/other/plan.json"
                     },
                     {
                         "required": [

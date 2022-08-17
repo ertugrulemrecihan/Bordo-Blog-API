@@ -3,8 +3,7 @@
     "content": {
         "application/json": {
             "schema": {
-                "type": "object",
-                "$ref": "../../../schemas/plan/admin/get.json"
+                "$ref": "../../../schemas/plan/other/plan.json"
             }
         }
     }

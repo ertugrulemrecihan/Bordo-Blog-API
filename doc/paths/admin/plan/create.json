@@ -3,7 +3,7 @@
     "description": "",
     "post": {
         "tags": [
-            "Plans (Only Admins)"
+            "Plans"
         ],
         "summary": "Create plan",
         "description": "Create plan",
@@ -14,7 +14,7 @@
             }
         ],
         "requestBody": {
-            "$ref": "../../../request-bodies/plan/create.json"
+            "$ref": "../../../request-bodies/admin/plan/create.json"
         },
         "responses": {
             "201": {
