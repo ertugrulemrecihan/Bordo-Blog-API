@@ -185,15 +185,6 @@
         "/admin/roles/get/{roleId}": {
             "$ref": "./paths/admin/role/get.json"
         },
-        "/admin/roles/create": {
-            "$ref": "./paths/admin/role/create.json"
-        },
-        "/admin/roles/update/{roleId}": {
-            "$ref": "./paths/admin/role/update.json"
-        },
-        "/admin/roles/delete/{roleId}": {
-            "$ref": "./paths/admin/role/delete.json"
-        },
         "/admin/plans/get-all": {
             "$ref": "./paths/admin/plan/get-all.json"
         },
