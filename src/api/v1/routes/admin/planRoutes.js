@@ -8,21 +8,6 @@ const bodyValidator = require('../../middlewares/bodyValidator');
 const paramIdValidator = require('../../middlewares/paramsIdValidator');
 
 router
-    .route('/get-all')
-    .get(
-        authenticate,
-        authorize('Admin'),
-        controller.fetchAllByQuery
-    );
-router
-    .route('/get/:id')
-    .get(
-        authenticate,
-        authorize('Admin'),
-        paramIdValidator,
-        controller.fetchOneByParamsId
-    );
-router
     .route('/create')
     .post(
         authenticate,
