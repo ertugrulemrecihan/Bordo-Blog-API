@@ -181,23 +181,26 @@
                             {
                               "type": "object",
                               "properties": {
-                                "packages": {
-                                  "type": "array",
-                                  "items": {
-                                    "type": "object",
-                                    "properties": {
-                                      "_id": {
-                                        "title": "Package MongoDb Id",
-                                        "description": "Package MongoDb Id",
-                                        "type": "string",
-                                        "example": "62ed69679c045c97a63390a4"
-                                      },
-                                      "name": {
-                                        "title": "Package name",
-                                        "description": "Package name",
-                                        "type": "string",
-                                        "example": "Basic Package"
-                                      }
+                                "plan": {
+                                  "type": "object",
+                                  "properties": {
+                                    "_id": {
+                                      "title": "Plan MongoDb Id",
+                                      "description": "Plan MongoDb Id",
+                                      "type": "string",
+                                      "example": "62ed69679c045c97a63390a4"
+                                    },
+                                    "name": {
+                                      "title": "Plan name",
+                                      "description": "Plan name",
+                                      "type": "string",
+                                      "example": "Basic Plan"
+                                    },
+                                    "right_to_view": {
+                                      "title": "Plan name",
+                                      "description": "Plan name",
+                                      "type": "number",
+                                      "example": 50
                                     }
                                   }
                                 }
