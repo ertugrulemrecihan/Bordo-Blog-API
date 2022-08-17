@@ -194,17 +194,9 @@ class PostController extends BaseController {
             return next(new ApiError('Post not found', httpStatus.NOT_FOUND));
         }
 
-        const user = await userService.fetchOneById(req.user._id);
-        if (!user) {
-            return next(new ApiError('User not found', httpStatus.NOT_FOUND));
-        }
-
         const isExists = post.viewers.some(
-            (u) => u._id.toString() == user._id.toString()
+            (u) => u._id.toString() == req.user._id.toString()
         );
-        console.log(isExists);
-        console.log(post.viewers);
-        console.log(user._id);
 
         if (isExists) {
             return next(
@@ -245,11 +237,6 @@ class PostController extends BaseController {
         const post = await postService.fetchOneById(postId);
         if (!post) {
             return next(new ApiError('Post not found', httpStatus.NOT_FOUND));
-        }
-
-        const user = await userService.fetchOneById(req.user._id);
-        if (!user) {
-            return next(new ApiError('User not found', httpStatus.NOT_FOUND));
         }
 
         const index = post.likes.findIndex((o) => o._id == req.user._id);
