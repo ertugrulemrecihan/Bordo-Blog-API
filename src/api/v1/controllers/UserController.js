@@ -532,28 +532,7 @@ class UserController extends BaseController {
 
     async uploadAvatar(req, res, next) {
         try {
-            const avatar = req.files?.avatar;
-            if (!avatar) {
-                return next(
-                    new ApiError(
-                        'Image file cannot be empty!',
-                        httpStatus.BAD_REQUEST
-                    )
-                );
-            }
-
-            if (
-                avatar.mimetype != 'image/jpeg' &&
-                avatar.mimetype != 'image/png'
-            ) {
-                return next(
-                    new ApiError(
-                        // eslint-disable-next-line max-len
-                        'Please do not go beyond the preferred file formats. (.jpg, .png)',
-                        httpStatus.BAD_REQUEST
-                    )
-                );
-            }
+            const avatar = req.files.avatar;
 
             const newFileName = `${uuidv4()}-${req.user._id}.${mime.extension(
                 avatar.mimetype

@@ -4,6 +4,7 @@ const schemas = require('../validations/user');
 const controller = require('../controllers/UserController');
 const bodyValidator = require('../middlewares/bodyValidator');
 const authenticate = require('../middlewares/authenticate');
+const fileValidator = require('../middlewares/fileValidator');
 
 router
     .route('/login')
@@ -22,7 +23,17 @@ router
     .post(authenticate, controller.logOut);
 router
     .route('/upload-avatar')
-    .post(authenticate, controller.uploadAvatar);
+    .post(
+        authenticate,
+        fileValidator([
+            {
+                field: 'avatar',
+                mimetypes: ['image/jpeg', 'image/png'],
+                max: 1,
+            },
+        ]),
+        controller.uploadAvatar
+    );
 router
     .route('/get-password-reset-email')
     .post(
