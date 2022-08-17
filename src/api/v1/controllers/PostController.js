@@ -1,3 +1,7 @@
+const path = require('path');
+const { v4: uuidv4 } = require('uuid');
+const fs = require('fs');
+const mime = require('mime-types');
 const BaseController = require('./BaseController');
 const postService = require('../services/PostService');
 const userService = require('../services/UserService');
@@ -50,6 +54,8 @@ class PostController extends BaseController {
     create = async (req, res, next) => {
         req.body.writer = req.user._id;
 
+        const coverImage = req.files.cover_image;
+
         const tags = req.body.tags;
 
         if (tags) {
@@ -67,6 +73,29 @@ class PostController extends BaseController {
                 }
             }
         }
+
+        const newCoverImageName = `${uuidv4()}-${req.user._id}.${mime.extension(
+            coverImage.mimetype
+        )}`;
+
+        const coverImagePath = path.join(
+            __dirname,
+            '../../../../public/uploads/post/cover_image/',
+            newCoverImageName
+        );
+
+        const errorMessage =
+            'An error was encountered while uploading the file';
+
+        coverImage.mv(coverImagePath, function (err) {
+            if (err) {
+                return next(
+                    new ApiError(errorMessage, httpStatus.INTERNAL_SERVER_ERROR)
+                );
+            }
+        });
+
+        req.body.cover_image = `/uploads/post/cover_image/${newCoverImageName}`;
 
         const response = await postService.create(req.body);
 
@@ -164,6 +193,47 @@ class PostController extends BaseController {
 
         if (!post) {
             return next(new ApiError('Post not found', httpStatus.NOT_FOUND));
+        }
+
+        const coverImage = req.files?.cover_image;
+
+        if (coverImage) {
+            const currentCoverImagePath = path.join(
+                __dirname,
+                '../../../../public',
+                post.cover_image
+            );
+
+            if (fs.existsSync(currentCoverImagePath)) {
+                fs.unlinkSync(currentCoverImagePath);
+            }
+
+            const newCoverImageName = `${uuidv4()}-${
+                req.user._id
+            }.${mime.extension(coverImage.mimetype)}`;
+
+            const coverImagePath = path.join(
+                __dirname,
+                '../../../../public/uploads/post/cover_image/',
+                newCoverImageName
+            );
+
+            const errorMessage =
+                'An error was encountered while uploading the file';
+
+            coverImage.mv(coverImagePath, function (err) {
+                if (err) {
+                    return next(
+                        new ApiError(
+                            errorMessage,
+                            httpStatus.INTERNAL_SERVER_ERROR
+                        )
+                    );
+                }
+            });
+
+            // eslint-disable-next-line max-len
+            req.body.cover_image = `/uploads/post/cover_image/${newCoverImageName}`;
         }
 
         const result = await postService.updateById(post._id, req.body);

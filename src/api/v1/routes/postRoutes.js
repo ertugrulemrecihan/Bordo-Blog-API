@@ -3,6 +3,7 @@ const router = express.Router();
 const controller = require('../controllers/PostController');
 const authenticate = require('../middlewares/authenticate');
 const bodyValidator = require('../middlewares/bodyValidator');
+const fileValidator = require('../middlewares/fileValidator');
 const paramIdValidator = require('../middlewares/paramsIdValidator');
 const schemas = require('../validations/post');
 
@@ -28,6 +29,14 @@ router
     .post(
         authenticate,
         bodyValidator(schemas.createValidation),
+        fileValidator([
+            {
+                field:'cover_image',
+                mimetypes: ['image/jpeg','image/png'],
+                required: true,
+                max: 1
+            }
+        ]),
         controller.create
     );
 router
@@ -43,6 +52,14 @@ router
         authenticate,
         paramIdValidator,
         bodyValidator(schemas.updateValidation),
+        fileValidator([
+            {
+                field:'cover_image',
+                mimetypes: ['image/jpeg','image/png'],
+                required: false,
+                max: 1
+            }
+        ]),
         controller.updateMyPost
     );
 router

@@ -19,6 +19,10 @@ const PostSchema = mongoose.Schema(
             max: 375,
             required: true,
         },
+        cover_image: {
+            type: String,
+            required: true,
+        },
         content: {
             type: String,
             min: 120,
