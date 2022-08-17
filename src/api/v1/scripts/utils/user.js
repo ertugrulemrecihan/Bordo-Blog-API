@@ -26,7 +26,7 @@ const deleteProfile = (user) => {
     delete userObject.first_name;
     delete userObject.last_name;
     delete userObject.email_notification;
-    delete userObject.packages;
+    delete userObject.plan;
 
     return userObject;
 };
