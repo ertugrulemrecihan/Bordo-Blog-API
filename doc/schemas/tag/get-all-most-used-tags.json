@@ -1,0 +1,39 @@
+{
+    "allOf": [
+        {
+            "$ref": "../../responses/api-responses/api-success.json"
+        },
+        {
+            "type": "object",
+            "properties": {
+                "data": {
+                    "type": "array",
+                    "items": {
+                        "type": "object",
+                        "allOf": [
+                            {
+                                "type": "object",
+                                "properties": {
+                                    "tag":{
+                                        "$ref": "./other/tag.json"
+                                    }
+                                }                                    
+                            },
+                            {
+                                "type": "object",
+                                "properties":{
+                                    "percentile": {
+                                        "title": "Tag usage percentage",
+                                        "description": "Tag usage percentage",
+                                        "type": "number",
+                                        "example": 26.724512
+                                    }
+                                }                                
+                            }
+                        ]                        
+                    }
+                }
+            }
+        }
+    ]
+}

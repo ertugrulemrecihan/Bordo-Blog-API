@@ -4,7 +4,7 @@
         "application/json": {
             "schema": {
                 "type": "object",
-                "$ref": "../../schemas/tag/update-tag.json"
+                "$ref": "../../../schemas/tag/get-all-most-used-tags.json"
             }
         }
     }

@@ -20,7 +20,7 @@
         ],
         "responses": {
             "200": {
-                "$ref": "../../../responses/tag/delete-tag.json"
+                "$ref": "../../../responses/admin/tag/delete-tag.json"
             },
             "400": {
                 "$ref": "../../../responses/api-responses/400.json"

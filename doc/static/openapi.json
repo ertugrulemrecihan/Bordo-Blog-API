@@ -1035,6 +1035,93 @@
         }
       }
     },
+    "/admin/tags/get-all/most-used/{count}": {
+      "summary": "",
+      "description": "",
+      "get": {
+        "tags": [
+          "Tags"
+        ],
+        "summary": "Get all most used tags",
+        "description": "Get all most used tags",
+        "operationId": "tags.get-all-most-used-tags",
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "count",
+            "schema": {
+              "type": "number"
+            },
+            "required": true,
+            "description": "Number of most used tags",
+            "min": 0
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "allOf": [
+                    {
+                      "$ref": "#/paths/~1users~1logout/post/responses/200/content/application~1json/schema"
+                    },
+                    {
+                      "type": "object",
+                      "properties": {
+                        "data": {
+                          "type": "array",
+                          "items": {
+                            "type": "object",
+                            "allOf": [
+                              {
+                                "type": "object",
+                                "properties": {
+                                  "tag": {
+                                    "$ref": "#/paths/~1admin~1tags~1create/post/responses/201/content/application~1json/schema/allOf/1/properties/data"
+                                  }
+                                }
+                              },
+                              {
+                                "type": "object",
+                                "properties": {
+                                  "percentile": {
+                                    "title": "Tag usage percentage",
+                                    "description": "Tag usage percentage",
+                                    "type": "number",
+                                    "example": 26.724512
+                                  }
+                                }
+                              }
+                            ]
+                          }
+                        }
+                      }
+                    }
+                  ]
+                }
+              }
+            }
+          },
+          "400": {
+            "$ref": "#/paths/~1users~1login/post/responses/400"
+          },
+          "401": {
+            "$ref": "#/paths/~1tags~1get-all/get/responses/401"
+          },
+          "403": {
+            "$ref": "#/paths/~1tags~1get-all/get/responses/403"
+          }
+        }
+      }
+    },
     "/admin/tags/create": {
       "summary": "",
       "description": "",
