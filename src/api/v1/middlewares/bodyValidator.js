@@ -7,7 +7,10 @@ const bodyValidator = (schema) => (req, res, next) => {
         abortEarly: false,
     };
 
-    if (Object.keys(req.body).length === 0) {
+    if (
+        Object.keys(req.body).length === 0 &&
+        Object.keys(req.files).length === 0
+    ) {
         return next(
             new ApiError(
                 'Request body must not be empty',
