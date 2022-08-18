@@ -22,6 +22,16 @@
                             {
                                 "type": "object",
                                 "properties": {
+                                    "cover_image": {
+                                        "title": "Post cover image",
+                                        "description": "Post cover image",
+                                        "type": "string"
+                                    }
+                                }
+                            },
+                            {
+                                "type": "object",
+                                "properties": {
                                     "content": {
                                         "title": "Post content",
                                         "description": "Post content",

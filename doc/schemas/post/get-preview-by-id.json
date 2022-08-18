@@ -18,6 +18,16 @@
                             "$ref": "./other/title-description.json"
                         },
                         {
+                            "type": "object",
+                            "properties": {
+                                "cover_image": {
+                                    "title": "Post cover image",
+                                    "description": "Post cover image",
+                                    "type": "string"
+                                }
+                            }
+                        },
+                        {
                             "$ref": "./other/viewers.json"
                         },
                         {

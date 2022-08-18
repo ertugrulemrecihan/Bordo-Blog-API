@@ -1,14 +1,39 @@
 {
     "description": "",
     "content": {
-        "application/json": {
+        "multipart/form-data": {
             "schema": {
                 "allOf": [
                     {
                         "type": "object",
                         "allOf": [
                             {
+                                "type": "object",
+                                "properties": {
+                                    "cover_image": {
+                                        "type": "string",
+                                        "format": "binary"
+                                    }
+                                }
+                            },
+                            {
+                                "required": [
+                                    "cover_image"
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "type": "object",
+                        "allOf": [
+                            {
                                 "$ref": "../../schemas/post/other/title-description.json"
+                            },
+                            {
+                                "required": [
+                                    "title",
+                                    "description"
+                                ]
                             }
                         ]
                     },
@@ -24,6 +49,11 @@
                                         "type": "string"
                                     }
                                 }
+                            },
+                            {
+                                "required": [
+                                    "content"
+                                ]
                             }
                         ]
                     }
