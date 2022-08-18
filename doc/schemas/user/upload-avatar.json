@@ -31,6 +31,16 @@
                         {
                             "type": "object",
                             "properties": {
+                                "last_login": {
+                                    "title": "User Last Login",
+                                    "description": "User Last Login",
+                                    "type": "string"
+                                }
+                            }
+                        },
+                        {
+                            "type": "object",
+                            "properties": {
                                 "email_verified": {
                                     "title": "Email Verified",
                                     "description": "Email Verified",
