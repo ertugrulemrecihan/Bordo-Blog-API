@@ -48,7 +48,7 @@ class TagController extends BaseController {
 
     async fetchAllMostUsedTags(req, res, next) {
         const count = parseInt(req.params.count);
-        if (!count || count < 0) {
+        if (!count || count <= 0) {
             return next(
                 new ApiError(
                     'You must send an integer greater than 0 as a parameter',

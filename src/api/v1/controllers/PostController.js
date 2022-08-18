@@ -527,6 +527,31 @@ class PostController extends BaseController {
 
         return next();
     }
+
+    async fetchAllMostLikedPost(req, res, next) {
+        const count = parseInt(req.params.count);
+
+        if (!count || count <= 0) {
+            return next(
+                new ApiError(
+                    'You must send an integer greater than 0 as a parameter',
+                    httpStatus.BAD_REQUEST
+                )
+            );
+        }
+
+        const posts = await postService.fetchAll({}, '-likes');
+
+        const postWithCount = posts.splice(0, count);
+
+        new ApiDataSuccess(
+            postWithCount,
+            'Posts fetched successfully',
+            httpStatus.OK
+        ).place(res);
+
+        return next();
+    }
 }
 
 module.exports = new PostController();

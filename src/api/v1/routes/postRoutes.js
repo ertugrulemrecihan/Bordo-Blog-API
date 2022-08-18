@@ -109,5 +109,11 @@ router
         bodyValidator(schemas.removeTag),
         controller.removeTag
     );
+router
+    .route('/get-all/most-liked/:count')
+    .get(
+        authenticate,
+        controller.fetchAllMostLikedPost
+    );
 
 module.exports = router;
