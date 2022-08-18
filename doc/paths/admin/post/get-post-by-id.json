@@ -3,11 +3,11 @@
     "description": "",
     "get": {
         "tags": [
-            "Posts"
+            "Admins"
         ],
-        "summary": "Get Post By Id",
-        "description": "Get Post By Id",
-        "operationId": "post.get-post-by-id",
+        "summary": "Get post by id",
+        "description": "Get post by id",
+        "operationId": "admins.posts.get-post-by-id",
         "security": [
             {
                 "bearerAuth": []

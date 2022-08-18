@@ -3,11 +3,11 @@
     "description": "",
     "patch": {
         "tags": [
-            "Tags"
+            "Admins"
         ],
         "summary": "Update tag",
         "description": "Update tag",
-        "operationId": "tags.update-tag",
+        "operationId": "admin.tags.update",
         "security": [
             {
                 "bearerAuth": []

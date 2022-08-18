@@ -3,11 +3,11 @@
     "description": "",
     "post": {
         "tags": [
-            "Tags"
+            "Admins"
         ],
         "summary": "Create tag",
         "description": "Create tag",
-        "operationId": "tags.create-tag",
+        "operationId": "admin.tags.create",
         "security": [
             {
                 "bearerAuth": []

@@ -3,11 +3,11 @@
     "description": "",
     "get": {
         "tags": [
-            "Roles (Only Admins)"
+            "Admins"
         ],
         "summary": "Get all roles",
         "description": "Get all roles",
-        "operationId": "roles.admin-get-all",
+        "operationId": "admin.roles.get-all",
         "security": [
             {
                 "bearerAuth": []

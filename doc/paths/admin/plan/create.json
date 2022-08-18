@@ -3,11 +3,11 @@
     "description": "",
     "post": {
         "tags": [
-            "Plans"
+            "Admins"
         ],
         "summary": "Create plan",
         "description": "Create plan",
-        "operationId": "plans.admin-create",
+        "operationId": "admin.plans.create",
         "security": [
             {
                 "bearerAuth": []

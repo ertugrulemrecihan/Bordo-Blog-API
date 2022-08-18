@@ -38,12 +38,12 @@
       "description": "Address endpoints"
     },
     {
-      "name": "Roles (Only Admins)",
-      "description": "User roles endpoints"
-    },
-    {
       "name": "Plans",
       "description": "Plan endpoints"
+    },
+    {
+      "name": "Admins",
+      "description": "Endpoints for admins only"
     }
   ],
   "paths": {
@@ -731,11 +731,11 @@
       "description": "",
       "get": {
         "tags": [
-          "Users"
+          "Admins"
         ],
         "summary": "Get all users",
         "description": "Get all users",
-        "operationId": "users.admin-get-all",
+        "operationId": "admin.users.get-all",
         "security": [
           {
             "bearerAuth": []
@@ -785,11 +785,11 @@
       "description": "",
       "get": {
         "tags": [
-          "Users"
+          "Admins"
         ],
         "summary": "Get user by userId",
         "description": "Get user by userId",
-        "operationId": "users.admin-get",
+        "operationId": "admin.users.get",
         "security": [
           {
             "bearerAuth": []
@@ -861,11 +861,11 @@
       "description": "",
       "delete": {
         "tags": [
-          "Users"
+          "Admins"
         ],
         "summary": "Delete user",
         "description": "Delete user",
-        "operationId": "users.admin-delete",
+        "operationId": "admin.users.delete",
         "security": [
           {
             "bearerAuth": []
@@ -1141,11 +1141,11 @@
       "description": "",
       "post": {
         "tags": [
-          "Tags"
+          "Admins"
         ],
         "summary": "Create tag",
         "description": "Create tag",
-        "operationId": "tags.create-tag",
+        "operationId": "admin.tags.create",
         "security": [
           {
             "bearerAuth": []
@@ -1223,11 +1223,11 @@
       "description": "",
       "patch": {
         "tags": [
-          "Tags"
+          "Admins"
         ],
         "summary": "Update tag",
         "description": "Update tag",
-        "operationId": "tags.update-tag",
+        "operationId": "admin.tags.update",
         "security": [
           {
             "bearerAuth": []
@@ -1295,11 +1295,11 @@
       "description": "",
       "delete": {
         "tags": [
-          "Tags"
+          "Admins"
         ],
         "summary": "Delete tag",
         "description": "Delete tag",
-        "operationId": "tags.delete-tag",
+        "operationId": "admin.tags.delete",
         "security": [
           {
             "bearerAuth": []
@@ -3190,11 +3190,11 @@
       "description": "",
       "get": {
         "tags": [
-          "Posts"
+          "Admins"
         ],
-        "summary": "Get All Posts",
-        "description": "Get All Posts",
-        "operationId": "post.get-all-posts",
+        "summary": "Get all posts",
+        "description": "Get all posts",
+        "operationId": "admins.posts.get-all",
         "security": [
           {
             "bearerAuth": []
@@ -3286,11 +3286,11 @@
       "description": "",
       "get": {
         "tags": [
-          "Posts"
+          "Admins"
         ],
-        "summary": "Get Post By Id",
-        "description": "Get Post By Id",
-        "operationId": "post.get-post-by-id",
+        "summary": "Get post by id",
+        "description": "Get post by id",
+        "operationId": "admins.posts.get-post-by-id",
         "security": [
           {
             "bearerAuth": []
@@ -3384,11 +3384,11 @@
       "description": "",
       "delete": {
         "tags": [
-          "Posts"
+          "Admins"
         ],
-        "summary": "Delete Users Post",
-        "description": "Delete Users Post",
-        "operationId": "post.delete-post",
+        "summary": "Delete user's post",
+        "description": "Delete user's post",
+        "operationId": "admin.posts.delete",
         "security": [
           {
             "bearerAuth": []
@@ -4470,11 +4470,11 @@
       "description": "",
       "get": {
         "tags": [
-          "Addresses"
+          "Admins"
         ],
         "summary": "Get all addresses",
         "description": "Get all addresses",
-        "operationId": "address.admin-get-all",
+        "operationId": "admin.addresses.get-all",
         "security": [
           {
             "bearerAuth": []
@@ -4524,11 +4524,11 @@
       "description": "",
       "get": {
         "tags": [
-          "Addresses"
+          "Admins"
         ],
         "summary": "Get address by addressId",
         "description": "Get address by addressId",
-        "operationId": "address.admin-get",
+        "operationId": "admin.addresses.get",
         "security": [
           {
             "bearerAuth": []
@@ -4583,11 +4583,11 @@
       "description": "",
       "get": {
         "tags": [
-          "Roles (Only Admins)"
+          "Admins"
         ],
         "summary": "Get all roles",
         "description": "Get all roles",
-        "operationId": "roles.admin-get-all",
+        "operationId": "admin.roles.get-all",
         "security": [
           {
             "bearerAuth": []
@@ -4637,11 +4637,11 @@
       "description": "",
       "get": {
         "tags": [
-          "Roles (Only Admins)"
+          "Admins"
         ],
         "summary": "Get role by roleId",
         "description": "Get role by roleId",
-        "operationId": "roles.admin-get",
+        "operationId": "admin.roles.get",
         "security": [
           {
             "bearerAuth": []
@@ -4851,11 +4851,11 @@
       "description": "",
       "post": {
         "tags": [
-          "Plans"
+          "Admins"
         ],
         "summary": "Create plan",
         "description": "Create plan",
-        "operationId": "plans.admin-create",
+        "operationId": "admin.plans.create",
         "security": [
           {
             "bearerAuth": []
@@ -4930,11 +4930,11 @@
       "description": "",
       "patch": {
         "tags": [
-          "Plans"
+          "Admins"
         ],
-        "summary": "Update role",
-        "description": "Update role",
-        "operationId": "roles.admin-update",
+        "summary": "Update plan",
+        "description": "Update plan",
+        "operationId": "admin.plans.update",
         "security": [
           {
             "bearerAuth": []
@@ -5055,11 +5055,11 @@
       "description": "",
       "delete": {
         "tags": [
-          "Plans"
+          "Admins"
         ],
         "summary": "Delete plan",
         "description": "Delete plan",
-        "operationId": "plans.admin-delete",
+        "operationId": "admin.plans.delete",
         "security": [
           {
             "bearerAuth": []

@@ -3,11 +3,11 @@
     "description": "",
     "get": {
         "tags": [
-            "Users"
+            "Admins"
         ],
         "summary": "Get user by userId",
         "description": "Get user by userId",
-        "operationId": "users.admin-get",
+        "operationId": "admin.users.get",
         "security": [
             {
                 "bearerAuth": []

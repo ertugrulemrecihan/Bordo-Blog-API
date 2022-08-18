@@ -3,11 +3,11 @@
     "description": "",
     "patch": {
         "tags": [
-            "Plans"
+            "Admins"
         ],
-        "summary": "Update role",
-        "description": "Update role",
-        "operationId": "roles.admin-update",
+        "summary": "Update plan",
+        "description": "Update plan",
+        "operationId": "admin.plans.update",
         "security": [
             {
                 "bearerAuth": []

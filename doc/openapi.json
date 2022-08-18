@@ -38,12 +38,12 @@
             "description": "Address endpoints"
         },
         {
-            "name": "Roles (Only Admins)",
-            "description": "User roles endpoints"
-        },
-        {
             "name": "Plans",
             "description": "Plan endpoints"
+        },
+        {
+            "name": "Admins",
+            "description": "Endpoints for admins only"
         }
     ],
     "paths": {

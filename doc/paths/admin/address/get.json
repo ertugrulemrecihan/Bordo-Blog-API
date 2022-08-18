@@ -3,11 +3,11 @@
     "description": "",
     "get": {
         "tags": [
-            "Addresses"
+            "Admins"
         ],
         "summary": "Get address by addressId",
         "description": "Get address by addressId",
-        "operationId": "address.admin-get",
+        "operationId": "admin.addresses.get",
         "security": [
             {
                 "bearerAuth": []

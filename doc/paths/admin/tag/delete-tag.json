@@ -3,11 +3,11 @@
     "description": "",
     "delete": {
         "tags": [
-            "Tags"
+            "Admins"
         ],
         "summary": "Delete tag",
         "description": "Delete tag",
-        "operationId": "tags.delete-tag",
+        "operationId": "admin.tags.delete",
         "security": [
             {
                 "bearerAuth": []
