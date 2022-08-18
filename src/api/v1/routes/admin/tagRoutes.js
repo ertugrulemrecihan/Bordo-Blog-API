@@ -32,12 +32,5 @@ router
         paramIdValidator,
         controller.deleteByParamsId
     );
-router
-    .route('/get-all/most-used/:count')
-    .get(
-        authenticate,
-        authorize('Admin'),
-        controller.fetchAllMostUsedTags
-    );
 
 module.exports = router;

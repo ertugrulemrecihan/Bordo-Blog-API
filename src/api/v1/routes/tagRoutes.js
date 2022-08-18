@@ -17,5 +17,11 @@ router
         paramIdValidator,
         controller.fetchOneByParamsId
     );
+router
+    .route('/get-all/most-used/:count')
+    .get(
+        authenticate,
+        controller.fetchAllMostUsedTags
+    );
 
 module.exports = router;
