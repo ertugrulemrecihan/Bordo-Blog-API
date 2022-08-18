@@ -30,9 +30,6 @@
             "401": {
                 "$ref": "../../responses/api-responses/401.json"
             },
-            "403": {
-                "$ref": "../../responses/api-responses/403.json"
-            },
             "500": {
                 "$ref": "../../responses/api-responses/500.json"
             }

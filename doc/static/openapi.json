@@ -221,9 +221,6 @@
           "401": {
             "$ref": "#/paths/~1tags~1get-all/get/responses/401"
           },
-          "403": {
-            "$ref": "#/paths/~1tags~1get-all/get/responses/403"
-          },
           "500": {
             "$ref": "#/paths/~1users~1login/post/responses/500"
           }
@@ -427,9 +424,6 @@
           },
           "401": {
             "$ref": "#/paths/~1tags~1get-all/get/responses/401"
-          },
-          "403": {
-            "$ref": "#/paths/~1tags~1get-all/get/responses/403"
           },
           "500": {
             "$ref": "#/paths/~1users~1login/post/responses/500"
