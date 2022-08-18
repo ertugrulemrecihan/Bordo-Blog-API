@@ -1029,7 +1029,7 @@
         }
       }
     },
-    "/admin/tags/get-all/most-used/{count}": {
+    "/tags/get-all/most-used/{count}": {
       "summary": "",
       "description": "",
       "get": {
