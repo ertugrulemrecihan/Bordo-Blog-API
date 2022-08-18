@@ -48,6 +48,7 @@ const createAdminUser = async (adminRoleId) => {
             password: password.hashedPassword,
             salt: password.hashedSalt,
             roles: [adminRoleId],
+            last_login: Date.now(),
         });
         newAdmin.save();
     }

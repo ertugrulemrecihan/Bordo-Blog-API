@@ -32,12 +32,14 @@ class UserController extends BaseController {
 
         req.body.password = hashedPassword;
         req.body.salt = hashedSalt;
+        req.body.last_login = Date.now();
 
         try {
             const user = await service.create(req.body);
             if (!user) {
                 throw new Error();
             }
+
             // ! FIXME - Populate ile field sil
             const response = userHelper.createResponse(user);
 
@@ -157,6 +159,8 @@ class UserController extends BaseController {
                 new ApiError('Login Failed', httpStatus.INTERNAL_SERVER_ERROR)
             );
         }
+
+        await userService.updateById(user._id, { last_login: Date.now() });
 
         new ApiDataSuccess(response, 'Login successful', httpStatus.OK).place(
             res
@@ -350,7 +354,7 @@ class UserController extends BaseController {
         });
 
         await userHelper.logOut(req.user._id);
-        
+
         new ApiSuccess('Password has been changed', httpStatus.OK).place(res);
         return next();
     }
