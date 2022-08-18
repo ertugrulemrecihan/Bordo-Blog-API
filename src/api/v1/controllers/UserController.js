@@ -350,7 +350,7 @@ class UserController extends BaseController {
         });
 
         await userHelper.logOut(req.user._id);
-
+        
         new ApiSuccess('Password has been changed', httpStatus.OK).place(res);
         return next();
     }
@@ -429,8 +429,6 @@ class UserController extends BaseController {
                     fullName: user.first_name + ' ' + user.last_name,
                 },
             });
-
-            await userHelper.logOut(user._id);
 
             // ! FIXME - Kullanıcıyı frontend ana sayfaya yönlendir
 
