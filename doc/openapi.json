@@ -119,6 +119,9 @@
         "/posts/get-all/most-liked/{count}": {
             "$ref": "./paths/post/get-all-most-liked-posts.json"
         },
+        "/posts/get-all/most-viewed/{count}": {
+            "$ref": "./paths/post/get-all-most-viewed-posts.json"
+        },
         "/posts/create": {
             "$ref": "./paths/post/create-post.json"
         },

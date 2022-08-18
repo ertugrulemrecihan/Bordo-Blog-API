@@ -5,9 +5,9 @@
         "tags": [
             "Posts"
         ],
-        "summary": "Get all most liked posts",
-        "description": "Get all most liked posts",
-        "operationId": "tags.get-all-most-liked-posts",
+        "summary": "Get all most viewed posts",
+        "description": "Get all most viewed posts",
+        "operationId": "tags.get-all-most-viewed-posts",
         "security": [
             {
                 "bearerAuth": []
@@ -20,7 +20,7 @@
         ],
         "responses": {
             "200": {
-                "$ref": "../../responses/post/get-all-most-liked-posts.json"
+                "$ref": "../../responses/post/get-all-most-viewed-posts.json"
             },
             "400": {
                 "$ref": "../../responses/api-responses/400.json"
