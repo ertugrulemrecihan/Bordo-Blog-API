@@ -92,6 +92,10 @@
         "/tags/get/{tagId}": {
             "$ref": "./paths/tag/get-tag-by-id.json"
         },
+        "/admin/tags/get-all/most-used/{count}": {
+            "$ref": "./paths/admin/tag/get-all-most-used.json"
+        }
+        ,
         "/admin/tags/create": {
             "$ref": "./paths/admin/tag/create-tag.json"
         },

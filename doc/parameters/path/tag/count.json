@@ -1,0 +1,10 @@
+{
+    "in": "path",
+    "name": "count",
+    "schema": {
+        "type": "number"
+    },
+    "required": true,
+    "description": "Number of most used tags",
+    "min": 0
+}

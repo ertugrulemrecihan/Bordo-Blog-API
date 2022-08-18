@@ -1,3 +1,5 @@
+// eslint-disable-next-line max-len
+const emailVerificationWhiteList = require('../../../config/emailVerificationWhiteList');
 const httpStatus = require('http-status');
 const JWT = require('jsonwebtoken');
 const ApiError = require('../responses/error/apiError');
@@ -35,13 +37,7 @@ const authenticate = async (req, res, next) => {
         ]
     );
 
-    if (!currentAccessToken) {
-        return next(
-            new ApiError('Invalid access token', httpStatus.BAD_REQUEST)
-        );
-    }
-
-    if (currentAccessToken.token != token) {
+    if (!currentAccessToken || currentAccessToken.token != token) {
         return next(
             new ApiError('Invalid access token', httpStatus.BAD_REQUEST)
         );
@@ -61,6 +57,12 @@ const authenticate = async (req, res, next) => {
         }
 
         req.user = currentAccessToken.user;
+
+        // ? Email verification check
+
+        if (emailVerificationWhiteList.includes(req.originalUrl)) {
+            return next();
+        }
 
         if (!req.user.email_verified) {
             return next(
