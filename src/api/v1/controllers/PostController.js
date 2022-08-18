@@ -435,7 +435,9 @@ class PostController extends BaseController {
             return next(new ApiError('Tag not found', httpStatus.NOT_FOUND));
         }
 
-        const isExists = post.tags.includes(tagId);
+        const isExists = post.tags.some(
+            (t) => t._id.toString() == tagId.toString()
+        );
 
         if (isExists) {
             return next(
