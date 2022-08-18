@@ -4,7 +4,6 @@ const fs = require('fs');
 const mime = require('mime-types');
 const BaseController = require('./BaseController');
 const postService = require('../services/PostService');
-const userService = require('../services/UserService');
 const tagService = require('../services/TagService');
 const ApiError = require('../responses/error/apiError');
 const ApiDataSuccess = require('../responses/success/apiDataSuccess');
@@ -277,7 +276,7 @@ class PostController extends BaseController {
             );
         }
 
-        post.viewers.push(user);
+        post.viewers.push(req.user);
 
         const updatedPost = await postService.updateById(postId, {
             viewers: post.viewers,
@@ -319,7 +318,7 @@ class PostController extends BaseController {
                 'User has been successfully removed from the list of likes';
         } else {
             // * Like
-            post.likes.push(user);
+            post.likes.push(req.user);
             message = 'User has been successfully added to the list of likes';
         }
 
