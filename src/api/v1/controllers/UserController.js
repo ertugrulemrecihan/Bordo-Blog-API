@@ -350,7 +350,7 @@ class UserController extends BaseController {
         });
 
         await userHelper.logOut(req.user._id);
-        
+
         new ApiSuccess('Password has been changed', httpStatus.OK).place(res);
         return next();
     }
@@ -519,7 +519,7 @@ class UserController extends BaseController {
         try {
             const avatar = req.files.avatar;
 
-            const newFileName = `${uuidv4()}-${req.user._id}.${mime.extension(
+            const newFileName = `${uuidv4()}.${mime.extension(
                 avatar.mimetype
             )}`;
 
@@ -572,7 +572,7 @@ class UserController extends BaseController {
 
             new ApiDataSuccess(
                 newUpdatedUser,
-                'User avatar updated successfuly.',
+                'User avatar updated successfully.',
                 httpStatus.OK
             ).place(res);
             return next();

@@ -74,7 +74,7 @@ class PostController extends BaseController {
             }
         }
 
-        const newCoverImageName = `${uuidv4()}-${req.user._id}.${mime.extension(
+        const newCoverImageName = `${uuidv4()}.${mime.extension(
             coverImage.mimetype
         )}`;
 
@@ -208,9 +208,9 @@ class PostController extends BaseController {
                 fs.unlinkSync(currentCoverImagePath);
             }
 
-            const newCoverImageName = `${uuidv4()}-${
-                req.user._id
-            }.${mime.extension(coverImage.mimetype)}`;
+            const newCoverImageName = `${uuidv4()}.${mime.extension(
+                coverImage.mimetype
+            )}`;
 
             const coverImagePath = path.join(
                 __dirname,
