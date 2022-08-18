@@ -115,5 +115,11 @@ router
         authenticate,
         controller.fetchAllMostLikedPost
     );
+router
+    .route('/get-all/most-viewed/:count')
+    .get(
+        authenticate,
+        controller.fetchAllMostViewedPost
+    );
 
 module.exports = router;
