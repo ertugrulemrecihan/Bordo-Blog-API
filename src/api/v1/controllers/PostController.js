@@ -354,11 +354,11 @@ class PostController extends BaseController {
             comment: req.body.comment,
         });
 
-        const updatedComment = await postService.updateById(postId, {
-            comments: comment,
+        const updatedPost = await postService.updateById(postId, {
+            $push: { comments: comment },
         });
 
-        if (!updatedComment) {
+        if (!updatedPost) {
             return next(
                 new ApiError(
                     'There was a problem adding the comment',
@@ -368,7 +368,7 @@ class PostController extends BaseController {
         }
 
         new ApiDataSuccess(
-            updatedComment,
+            updatedPost,
             'Comment added successfully',
             httpStatus.OK
         ).place(res);
