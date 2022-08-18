@@ -1,7 +1,9 @@
-const connectDb = require('../loaders/dbConnection');
-const dbSeeder = require('../loaders/dbSeeder');
+const connectDb = require('./dbConnection');
+const dbSeeder = require('./dbSeeder');
+const folderBuilder = require('./folderBuilder');
 
 module.exports = () => {
+    folderBuilder();
     connectDb();
     dbSeeder();
 };
