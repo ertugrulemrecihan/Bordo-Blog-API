@@ -94,8 +94,7 @@
         },
         "/tags/get-all/most-used/{count}": {
             "$ref": "./paths/tag/get-all-most-used.json"
-        }
-        ,
+        },
         "/admin/tags/create": {
             "$ref": "./paths/admin/tag/create-tag.json"
         },
@@ -116,6 +115,9 @@
         },
         "/posts/get/preview/{postId}": {
             "$ref": "./paths/post/get-preview-by-id.json"
+        },
+        "/posts/get-all/most-liked/{count}": {
+            "$ref": "./paths/post/get-all-most-liked-posts.json"
         },
         "/posts/create": {
             "$ref": "./paths/post/create-post.json"
