@@ -156,6 +156,16 @@
                             {
                               "type": "object",
                               "properties": {
+                                "last_login": {
+                                  "title": "User Last Login",
+                                  "description": "User Last Login",
+                                  "type": "string"
+                                }
+                              }
+                            },
+                            {
+                              "type": "object",
+                              "properties": {
                                 "roles": {
                                   "type": "array",
                                   "items": {
@@ -508,6 +518,16 @@
                             {
                               "type": "object",
                               "properties": {
+                                "last_login": {
+                                  "title": "User Last Login",
+                                  "description": "User Last Login",
+                                  "type": "string"
+                                }
+                              }
+                            },
+                            {
+                              "type": "object",
+                              "properties": {
                                 "email_verified": {
                                   "title": "Email Verified",
                                   "description": "Email Verified",
@@ -528,10 +548,10 @@
                               }
                             },
                             {
-                              "$ref": "#/paths/~1users~1profile/get/responses/200/content/application~1json/schema/allOf/1/properties/data/allOf/1"
+                              "$ref": "#/paths/~1users~1profile/get/responses/200/content/application~1json/schema/allOf/1/properties/data/allOf/2"
                             },
                             {
-                              "$ref": "#/paths/~1users~1profile/get/responses/200/content/application~1json/schema/allOf/1/properties/data/allOf/2"
+                              "$ref": "#/paths/~1users~1profile/get/responses/200/content/application~1json/schema/allOf/1/properties/data/allOf/3"
                             }
                           ]
                         }
@@ -807,10 +827,10 @@
                               "$ref": "#/paths/~1users~1profile/get/responses/200/content/application~1json/schema/allOf/1/properties/data/allOf/0"
                             },
                             {
-                              "$ref": "#/paths/~1users~1profile/get/responses/200/content/application~1json/schema/allOf/1/properties/data/allOf/1"
+                              "$ref": "#/paths/~1users~1profile/get/responses/200/content/application~1json/schema/allOf/1/properties/data/allOf/2"
                             },
                             {
-                              "$ref": "#/paths/~1users~1profile/get/responses/200/content/application~1json/schema/allOf/1/properties/data/allOf/2"
+                              "$ref": "#/paths/~1users~1profile/get/responses/200/content/application~1json/schema/allOf/1/properties/data/allOf/3"
                             }
                           ]
                         }

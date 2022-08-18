@@ -12,6 +12,16 @@
                             "$ref": "./other/auth-response-without-roles-and-package.json"
                         },
                         {
+                            "type": "object",
+                            "properties": {
+                                "last_login": {
+                                    "title": "User Last Login",
+                                    "description": "User Last Login",
+                                    "type": "string"
+                                }
+                            }
+                        },
+                        {
                             "$ref": "./other/roles.json"
                         },
                         {
