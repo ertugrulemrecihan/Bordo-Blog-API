@@ -448,20 +448,6 @@ class PostController extends BaseController {
 
         post.tags.push(tagId);
 
-        // ! FIXME: Add transaction
-        const updatedPost = await postService.updateById(postId, {
-            tags: post.tags,
-        });
-
-        if (!updatedPost) {
-            return next(
-                new ApiError(
-                    'There was a problem adding the tag',
-                    httpStatus.INTERNAL_SERVER_ERROR
-                )
-            );
-        }
-
         const updatedTag = await tagService.updateById(tagId, {
             post_count: tag.post_count + 1,
         });
@@ -472,6 +458,20 @@ class PostController extends BaseController {
                     updatedPost,
                     // eslint-disable-next-line max-len
                     'Tag added successfully but tag usage count could not be increased',
+                    httpStatus.INTERNAL_SERVER_ERROR
+                )
+            );
+        }
+
+        // ! FIXME: Add transaction
+        const updatedPost = await postService.updateById(postId, {
+            tags: post.tags,
+        });
+
+        if (!updatedPost) {
+            return next(
+                new ApiError(
+                    'There was a problem adding the tag',
                     httpStatus.INTERNAL_SERVER_ERROR
                 )
             );
