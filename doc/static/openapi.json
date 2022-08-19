@@ -1650,6 +1650,12 @@
                                         "type": "string",
                                         "example": "email@email.com",
                                         "format": "email"
+                                      },
+                                      "avatar": {
+                                        "title": "Viewer avatar",
+                                        "description": "Viewer avatar",
+                                        "type": "string",
+                                        "example": "/uploads/aaaa-bbbb-cccc.jpg"
                                       }
                                     }
                                   }
@@ -1665,29 +1671,32 @@
                                     "type": "object",
                                     "properties": {
                                       "_id": {
-                                        "title": "Viewer MongoDb Id",
-                                        "description": "Viewer MongoDb Id",
+                                        "title": "Liker MongoDb Id",
+                                        "description": "Liker MongoDb Id",
                                         "type": "string",
                                         "example": "62ed69679c045c97a63390a4"
                                       },
                                       "first_name": {
-                                        "title": "Viewer first name",
-                                        "description": "Viewer first name",
-                                        "type": "string",
-                                        "example": "Viewer"
+                                        "title": "Liker first name",
+                                        "description": "Liker first name",
+                                        "type": "string"
                                       },
                                       "last_name": {
-                                        "title": "Viewer last name",
-                                        "description": "Viewer last name",
-                                        "type": "string",
-                                        "example": "Viewer"
+                                        "title": "Liker last name",
+                                        "description": "Liker last name",
+                                        "type": "string"
                                       },
                                       "email": {
-                                        "title": "Viewer email name",
-                                        "description": "Viewer email name",
+                                        "title": "Liker email name",
+                                        "description": "Liker email name",
                                         "type": "string",
-                                        "example": "email@email.com",
                                         "format": "email"
+                                      },
+                                      "avatar": {
+                                        "title": "Liker avatar",
+                                        "description": "Liker avatar",
+                                        "type": "string",
+                                        "example": "/uploads/aaaa-bbbb-cccc.jpg"
                                       }
                                     }
                                   }
@@ -1730,6 +1739,12 @@
                                                 "description": "User email address",
                                                 "type": "string",
                                                 "format": "email"
+                                              },
+                                              "avatar": {
+                                                "title": "User avatar",
+                                                "description": "User avatar",
+                                                "type": "string",
+                                                "example": "/uploads/aaaa-bbbb-cccc.jpg"
                                               }
                                             }
                                           }
@@ -2216,6 +2231,12 @@
                                       "description": "Writer email address",
                                       "type": "string",
                                       "format": "email"
+                                    },
+                                    "avatar": {
+                                      "title": "Writer avatar",
+                                      "description": "Writer avatar",
+                                      "type": "string",
+                                      "example": "/uploads/aaaa-bbbb-cccc.jpg"
                                     }
                                   }
                                 }

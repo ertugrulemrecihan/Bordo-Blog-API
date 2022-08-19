@@ -25,6 +25,12 @@
             "type": "string",
             "example": "email@email.com",
             "format": "email"
+        },
+        "avatar": {
+            "title": "Viewer avatar",
+            "description": "Viewer avatar",
+            "type": "string",
+            "example": "/uploads/aaaa-bbbb-cccc.jpg"
         }
     }
 }

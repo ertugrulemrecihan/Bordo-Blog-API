@@ -24,6 +24,12 @@
                     "description": "Writer email address",
                     "type": "string",
                     "format": "email"
+                },
+                "avatar": {
+                    "title": "Writer avatar",
+                    "description": "Writer avatar",
+                    "type": "string",
+                    "example": "/uploads/aaaa-bbbb-cccc.jpg"
                 }
             }
         }
