@@ -24,18 +24,17 @@ const createRole = async (roleName, roleDescription) => {
     return roleId;
 };
 
-const createAdminUser = async (adminRoleId) => {
+const createSuperAdmin = async (superAdminRoleId) => {
     const adminUser = await User.findOne({ email: process.env.ADMIN_EMAIL });
 
     if (adminUser) {
-        // AdminUser._id
         if (
             !adminUser.roles.some(
-                (role) => role._id.toString() === adminRoleId.toString()
+                (role) => role._id.toString() === superAdminRoleId.toString()
             )
         ) {
-            // Admin account only has Admin role
-            adminUser.roles = [adminRoleId];
+            // SuperAdmin account only has SuperAdmin role
+            adminUser.roles = [superAdminRoleId];
             await adminUser.save();
         }
     } else {
@@ -47,8 +46,9 @@ const createAdminUser = async (adminRoleId) => {
             email: process.env.ADMIN_EMAIL,
             password: password.hashedPassword,
             salt: password.hashedSalt,
-            roles: [adminRoleId],
+            roles: [superAdminRoleId],
             last_login: Date.now(),
+            email_verified: true,
         });
         newAdmin.save();
     }
@@ -111,11 +111,19 @@ const createDistrict = async (city, district) => {
 };
 
 module.exports = async () => {
-    const adminRoleId = await createRole(
-        'Admin',
+    // ? Create super admin role
+    const superAdminRoleId = await createRole(
+        'SUPERADMIN',
         'User with access to everything'
     );
-    await createAdminUser(adminRoleId);
+
+    // ? Create super admin user
+    await createSuperAdmin(superAdminRoleId);
+
+    // ? Create admin user
+    await createRole('Admin', 'Admin role');
+
+    // ? Create countries-cities-districts
     const countryId = await createCountry();
 
     const data = fs.readFileSync('src/loaders/data/turkey.json');
