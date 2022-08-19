@@ -19,6 +19,7 @@ const BaseController = require('./BaseController');
 const userService = require('../services/UserService');
 const accessTokenService = require('../services/AccessTokenService');
 const refreshTokenService = require('../services/RefreshTokenService');
+const roleService = require('../services/RoleService');
 
 class UserController extends BaseController {
     constructor() {
@@ -583,6 +584,104 @@ class UserController extends BaseController {
         } catch (error) {
             return new ApiError(error, httpStatus.BAD_REQUEST);
         }
+    }
+
+    async assignAdminRole(req, res, next) {
+        const userId = req.params.userId;
+
+        const adminRole = await roleService.fetchOneByQuery({ name: 'Admin' });
+
+        if (!adminRole) {
+            return next(
+                new ApiError(
+                    'Something went wrong while being assigned the admin role',
+                    httpStatus.INTERNAL_SERVER_ERROR
+                )
+            );
+        }
+
+        const user = await userService.fetchOneById(userId);
+
+        if (!user) {
+            return next(new ApiError('User not found', httpStatus.NOT_FOUND));
+        }
+
+        if (
+            user.roles.some((r) => r._id.toString() == adminRole._id.toString())
+        ) {
+            return next(
+                new ApiError('User is already admin', httpStatus.CONFLICT)
+            );
+        }
+
+        const result = await userService.updateById(user._id, {
+            $push: { roles: adminRole },
+        });
+
+        if (!result) {
+            return next(
+                new ApiError(
+                    'Something went wrong while being assign the admin role',
+                    httpStatus.INTERNAL_SERVER_ERROR
+                )
+            );
+        }
+
+        new ApiSuccess('Role assignment successful', httpStatus.OK).place(res);
+        return next();
+    }
+
+    async unassignAdminRole(req, res, next) {
+        const userId = req.params.userId;
+
+        const adminRole = await roleService.fetchOneByQuery({ name: 'Admin' });
+
+        if (!adminRole) {
+            return next(
+                new ApiError(
+                    'Something went wrong while being unassign the admin role',
+                    httpStatus.INTERNAL_SERVER_ERROR
+                )
+            );
+        }
+
+        const user = await userService.fetchOneById(userId);
+
+        if (!user) {
+            return next(new ApiError('User not found', httpStatus.NOT_FOUND));
+        }
+
+        if (
+            !user.roles.some(
+                (r) => r._id.toString() == adminRole._id.toString()
+            )
+        ) {
+            return next(
+                new ApiError(
+                    'User is not already admin',
+                    httpStatus.BAD_REQUEST
+                )
+            );
+        }
+
+        const result = await userService.updateById(user._id, {
+            $pull: { roles: adminRole._id },
+        });
+
+        if (!result) {
+            return next(
+                new ApiError(
+                    'Something went wrong while being unassign the admin role',
+                    httpStatus.INTERNAL_SERVER_ERROR
+                )
+            );
+        }
+
+        new ApiSuccess(
+            'Role assignment successfully removed',
+            httpStatus.OK
+        ).place(res);
+        return next();
     }
 }
 

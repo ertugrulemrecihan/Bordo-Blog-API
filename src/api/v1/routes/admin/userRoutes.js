@@ -28,5 +28,21 @@ router
         paramsIdValidator,
         controller.deleteByParamsIdForAdmin
     );
+router
+    .route('/assign-admin/:userId')
+    .post(
+        authenticate,
+        authorization('Admin'),
+        paramsIdValidator,
+        controller.assignAdminRole
+    );
+router
+    .route('/unassign-admin/:userId')
+    .post(
+        authenticate,
+        authorization('SUPERADMIN'),
+        paramsIdValidator,
+        controller.unassignAdminRole
+    );
 
 module.exports = router;
