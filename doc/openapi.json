@@ -86,6 +86,12 @@
         "/admin/users/delete/{userId}": {
             "$ref": "./paths/admin/user/delete.json"
         },
+        "/admin/users/assign-admin/{userId}": {
+            "$ref": "./paths/admin/user/assign-admin.json"
+        },
+        "/admin/users/unassign-admin/{userId}": {
+            "$ref": "./paths/admin/user/unassign-admin.json"
+        },
         "/tags/get-all": {
             "$ref": "./paths/tag/get-all-tags.json"
         },
