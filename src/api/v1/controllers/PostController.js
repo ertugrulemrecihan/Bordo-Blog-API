@@ -306,7 +306,9 @@ class PostController extends BaseController {
             return next(new ApiError('Post not found', httpStatus.NOT_FOUND));
         }
 
-        const index = post.likes.findIndex((o) => o._id == req.user._id);
+        const index = post.likes.findIndex(
+            (o) => o._id.toString() == req.user._id.toString()
+        );
         let message = null;
 
         if (index > -1) {
