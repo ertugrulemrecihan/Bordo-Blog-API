@@ -1,11 +1,15 @@
 class ApiSuccess {
-    constructor(message, statusCode) {
-        this.message = message;
-        this.statusCode = statusCode;
+    static toJSON(message, statusCode) {
+        return {
+            message,
+            success: true,
+            statusCode,
+        };
     }
 
-    place(res) {
-        res.locals.apiResponse = this;
+    static send(message, statusCode, res, next) {
+        res.locals.apiResponse = ApiSuccess.toJSON(message, statusCode);
+        next();
     }
 }
 

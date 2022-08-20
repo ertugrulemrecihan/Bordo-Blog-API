@@ -15,13 +15,13 @@ class AddressController extends BaseController {
     async getAllCountries(req, res, next) {
         const countries = await countryService.fetchAll();
 
-        new ApiDataSuccess(
+        ApiDataSuccess.send(
             countries,
             'Countries fetched successfully',
-            httpStatus.OK
-        ).place(res);
-
-        return next();
+            httpStatus.OK,
+            res,
+            next
+        );
     }
 
     async getAllCitiesByCountryId(req, res, next) {
@@ -42,13 +42,13 @@ class AddressController extends BaseController {
             cities: cities,
         };
 
-        new ApiDataSuccess(
+        ApiDataSuccess.send(
             response,
             'Cities fetched successfully',
-            httpStatus.OK
-        ).place(res);
-
-        return next();
+            httpStatus.OK,
+            res,
+            next
+        );
     }
 
     async getAllDistrictsByCityId(req, res, next) {
@@ -67,13 +67,13 @@ class AddressController extends BaseController {
             districts: districts,
         };
 
-        new ApiDataSuccess(
+        ApiDataSuccess.send(
             response,
             'Districts fetched successfully',
-            httpStatus.OK
-        ).place(res);
-
-        return next();
+            httpStatus.OK,
+            res,
+            next
+        );
     }
 
     async getAllMyAddresses(req, res, next) {
@@ -81,13 +81,13 @@ class AddressController extends BaseController {
 
         const addresses = await addressService.fetchAll({ user: userId });
 
-        new ApiDataSuccess(
+        ApiDataSuccess.send(
             addresses,
             'User addresses fetched successfully',
-            httpStatus.OK
-        ).place(res);
-
-        return next();
+            httpStatus.OK,
+            res,
+            next
+        );
     }
 
     async getMyAddress(req, res, next) {
@@ -104,13 +104,13 @@ class AddressController extends BaseController {
             );
         }
 
-        new ApiDataSuccess(
+        ApiDataSuccess.send(
             address,
             'User address fetched successfully',
-            httpStatus.OK
-        ).place(res);
-
-        return next();
+            httpStatus.OK,
+            res,
+            next
+        );
     }
 
     // ! FIXME - Refactor Method
@@ -160,13 +160,13 @@ class AddressController extends BaseController {
             );
         }
 
-        new ApiDataSuccess(
+        ApiDataSuccess.send(
             response,
             'Address created successfully',
-            httpStatus.CREATED
-        ).place(res);
-
-        return next();
+            httpStatus.CREATED,
+            res,
+            next
+        );
     }
 
     async updateMyAddress(req, res, next) {
@@ -182,13 +182,13 @@ class AddressController extends BaseController {
             );
         }
 
-        new ApiDataSuccess(
+        ApiDataSuccess.send(
             response,
             'Address updated successfully',
-            httpStatus.OK
-        ).place(res);
-
-        return next();
+            httpStatus.OK,
+            res,
+            next
+        );
     }
 
     async deleteMyAddress(req, res, next) {
@@ -204,12 +204,13 @@ class AddressController extends BaseController {
             );
         }
 
-        new ApiDataSuccess(
+        ApiDataSuccess.send(
             response,
             'Address deleted successfully',
-            httpStatus.OK
-        ).place(res);
-        return next();
+            httpStatus.OK,
+            res,
+            next
+        );
     }
 }
 

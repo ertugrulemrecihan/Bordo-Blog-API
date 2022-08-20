@@ -1,3 +1,4 @@
+/* eslint-disable max-len */
 const path = require('path');
 const fs = require('fs');
 const { v4: uuidv4 } = require('uuid');
@@ -68,23 +69,22 @@ class UserController extends BaseController {
             try {
                 await userHelper.createAndVerifyEmail(req.body.email);
             } catch (error) {
-                new ApiDataSuccess(
+                ApiDataSuccess.send(
                     response,
-                    // eslint-disable-next-line max-len
                     'Your registration has been created successfully, but the verification link could not be sent',
-                    httpStatus.CREATED
-                ).place(res);
-
-                return next();
+                    httpStatus.CREATED,
+                    res,
+                    next
+                );
             }
 
-            new ApiDataSuccess(
+            ApiDataSuccess.send(
                 response,
                 'Registration successful',
-                httpStatus.CREATED
-            ).place(res);
-
-            return next();
+                httpStatus.CREATED,
+                res,
+                next
+            );
         } catch (error) {
             if (error.code === 11000) {
                 return next(
@@ -163,11 +163,13 @@ class UserController extends BaseController {
 
         await userService.updateById(user._id, { last_login: Date.now() });
 
-        new ApiDataSuccess(response, 'Login successful', httpStatus.OK).place(
-            res
+        ApiDataSuccess.send(
+            response,
+            'Login successful',
+            httpStatus.OK,
+            res,
+            next
         );
-
-        return next();
     }
 
     async logOut(req, res, next) {
@@ -179,8 +181,7 @@ class UserController extends BaseController {
             );
         }
 
-        new ApiSuccess('Log out successfully', httpStatus.OK).place(res);
-        return next();
+        ApiSuccess.send('Log out successfully', httpStatus.OK, res, next);
     }
 
     async getPasswordResetEmail(req, res, next) {
@@ -225,12 +226,12 @@ class UserController extends BaseController {
             },
         });
 
-        new ApiSuccess(
+        ApiSuccess.send(
             'Your password reset link has been sent as email',
-            httpStatus.OK
-        ).place(res);
-
-        return next();
+            httpStatus.OK,
+            res,
+            next
+        );
     }
 
     async resetPassword(req, res, next) {
@@ -291,8 +292,12 @@ class UserController extends BaseController {
 
             await userHelper.logOut(user._id);
 
-            new ApiSuccess('Password has been reset', httpStatus.OK).place(res);
-            return next();
+            ApiSuccess.send(
+                'Password has been reset',
+                httpStatus.OK,
+                res,
+                next
+            );
         } catch {
             return next(
                 new ApiError(
@@ -356,8 +361,7 @@ class UserController extends BaseController {
 
         await userHelper.logOut(req.user._id);
 
-        new ApiSuccess('Password has been changed', httpStatus.OK).place(res);
-        return next();
+        ApiSuccess.send('Password has been changed', httpStatus.OK, res, next);
     }
 
     async getEmailVerificationEmail(req, res, next) {
@@ -365,8 +369,12 @@ class UserController extends BaseController {
             const successResult = await userHelper.createAndVerifyEmail(
                 req.body.email
             );
-            successResult.place(res);
-            return next();
+            ApiSuccess.send(
+                successResult.message,
+                successResult.statusCode,
+                res,
+                next
+            );
         } catch (error) {
             return next(error);
         }
@@ -437,11 +445,12 @@ class UserController extends BaseController {
 
             // ! FIXME - Kullanıcıyı frontend ana sayfaya yönlendir
 
-            new ApiSuccess('Email successfully verified', httpStatus.OK).place(
-                res
+            ApiSuccess.send(
+                'Email successfully verified',
+                httpStatus.OK,
+                res,
+                next
             );
-
-            return next();
         } catch (error) {
             return next(
                 new ApiError(
@@ -453,13 +462,13 @@ class UserController extends BaseController {
     }
 
     async getMyProfile(req, res, next) {
-        new ApiDataSuccess(
+        ApiDataSuccess.send(
             req.user,
             'Profile fetched successfully',
-            httpStatus.OK
-        ).place(res);
-
-        return next();
+            httpStatus.OK,
+            res,
+            next
+        );
     }
 
     async fetchAllForAdmin(req, res, next) {
@@ -471,13 +480,13 @@ class UserController extends BaseController {
             userHelper.deletePasswordAndSaltFields(u)
         );
 
-        new ApiDataSuccess(
+        ApiDataSuccess.send(
             result,
             'Users fetched successfully',
-            httpStatus.OK
-        ).place(res);
-
-        return next();
+            httpStatus.OK,
+            res,
+            next
+        );
     }
 
     async fetchOneByParamsIdForAdmin(req, res, next) {
@@ -491,13 +500,13 @@ class UserController extends BaseController {
         // ! eklendiğinde burayı güncelle
         const result = userHelper.deletePasswordAndSaltFields(response);
 
-        new ApiDataSuccess(
+        ApiDataSuccess.send(
             result,
             'User fetched successfully',
-            httpStatus.OK
-        ).place(res);
-
-        return next();
+            httpStatus.OK,
+            res,
+            next
+        );
     }
 
     async deleteByParamsIdForAdmin(req, res, next) {
@@ -511,13 +520,13 @@ class UserController extends BaseController {
         // ! eklendiğinde burayı güncelle
         const result = userHelper.deletePasswordAndSaltFields(response);
 
-        new ApiDataSuccess(
+        ApiDataSuccess.send(
             result,
             'User deleted successfully',
-            httpStatus.OK
-        ).place(res);
-
-        return next();
+            httpStatus.OK,
+            res,
+            next
+        );
     }
 
     async uploadAvatar(req, res, next) {
@@ -575,12 +584,13 @@ class UserController extends BaseController {
                 );
             }
 
-            new ApiDataSuccess(
+            ApiDataSuccess.send(
                 newUpdatedUser,
                 'User avatar updated successfully.',
-                httpStatus.OK
-            ).place(res);
-            return next();
+                httpStatus.OK,
+                res,
+                next
+            );
         } catch (error) {
             return new ApiError(error, httpStatus.BAD_REQUEST);
         }
@@ -627,8 +637,7 @@ class UserController extends BaseController {
             );
         }
 
-        new ApiSuccess('Role assignment successful', httpStatus.OK).place(res);
-        return next();
+        ApiSuccess.send('Role assignment successful', httpStatus.OK, res, next);
     }
 
     async unassignAdminRole(req, res, next) {
@@ -677,11 +686,12 @@ class UserController extends BaseController {
             );
         }
 
-        new ApiSuccess(
+        ApiSuccess.send(
             'Role assignment successfully removed',
-            httpStatus.OK
-        ).place(res);
-        return next();
+            httpStatus.OK,
+            res,
+            next
+        );
     }
 }
 

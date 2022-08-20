@@ -1,12 +1,10 @@
 /* eslint-disable max-len */
 const jwtHelper = require('./jwt');
-// eslint-disable-next-line max-len
 const emailVerificationTokenService = require('../../services/EmailVerificationTokenService');
 const httpStatus = require('http-status');
 const userService = require('../../services/UserService');
 const ApiError = require('../../responses/error/apiError');
 const eventEmitter = require('../events/eventEmitter');
-const ApiSuccess = require('../../responses/success/apiSuccess');
 const accessTokenService = require('../../services/AccessTokenService');
 const refreshTokenService = require('../../services/RefreshTokenService');
 
@@ -86,10 +84,10 @@ const createAndVerifyEmail = async (email) => {
         },
     });
 
-    return new ApiSuccess(
-        'Email verification link successfully sent to email',
-        httpStatus.OK
-    );
+    return {
+        message: 'Email verification link successfully sent to email',
+        statusCode: httpStatus.OK,
+    };
 };
 
 const logOut = async (userId) => {

@@ -18,25 +18,25 @@ class BaseController {
     fetchAll = async (req, res, next) => {
         const response = await this.service.fetchAll();
 
-        new ApiDataSuccess(
+        ApiDataSuccess.send(
             response,
             `${this.pluralModelName} fetched successfully`,
-            httpStatus.OK
-        ).place(res);
-
-        return next();
+            httpStatus.OK,
+            res,
+            next
+        );
     };
 
     fetchAllByQuery = async (req, res, next) => {
         const response = await this.service.fetchAll(req.query);
 
-        new ApiDataSuccess(
+        ApiDataSuccess.send(
             response,
             `${this.pluralModelName} fetched successfully`,
-            httpStatus.OK
-        ).place(res);
-
-        return next();
+            httpStatus.OK,
+            res,
+            next
+        );
     };
 
     fetchOneByQuery = async (req, res, next) => {
@@ -51,13 +51,13 @@ class BaseController {
             );
         }
 
-        new ApiDataSuccess(
+        ApiDataSuccess.send(
             response,
             `${this.singleModelName} fetched successfully`,
-            httpStatus.OK
-        ).place(res);
-
-        return next();
+            httpStatus.OK,
+            res,
+            next
+        );
     };
 
     fetchOneByParamsId = async (req, res, next) => {
@@ -72,13 +72,13 @@ class BaseController {
             );
         }
 
-        new ApiDataSuccess(
+        ApiDataSuccess.send(
             response,
             `${this.singleModelName} fetched successfully`,
-            httpStatus.OK
-        ).place(res);
-
-        return next();
+            httpStatus.OK,
+            res,
+            next
+        );
     };
 
     create = async (req, res, next) => {
@@ -94,13 +94,13 @@ class BaseController {
                 );
             }
 
-            new ApiDataSuccess(
+            ApiDataSuccess.send(
                 response,
                 `${this.singleModelName} created successfully`,
-                httpStatus.CREATED
-            ).place(res);
-
-            return next();
+                httpStatus.CREATED,
+                res,
+                next
+            );
         } catch (err) {
             if (err.code === 11000) {
                 return next(
@@ -135,13 +135,13 @@ class BaseController {
                 );
             }
 
-            new ApiDataSuccess(
+            ApiDataSuccess.send(
                 response,
                 `${this.singleModelName} updated successfully`,
-                httpStatus.OK
-            ).place(res);
-
-            return next();
+                httpStatus.OK,
+                res,
+                next
+            );
         } catch (err) {
             if (err.code === 11000) {
                 return next(
@@ -176,13 +176,13 @@ class BaseController {
                 );
             }
 
-            new ApiDataSuccess(
+            ApiDataSuccess.send(
                 response,
                 `${this.singleModelName} updated successfully`,
-                httpStatus.OK
-            ).place(res);
-
-            return next();
+                httpStatus.OK,
+                res,
+                next
+            );
         } catch (err) {
             if (err.code === 11000) {
                 return next(
@@ -213,13 +213,13 @@ class BaseController {
             );
         }
 
-        new ApiDataSuccess(
+        ApiDataSuccess.send(
             response,
             `${this.singleModelName} deleted successfully`,
-            httpStatus.OK
-        ).place(res);
-
-        return next();
+            httpStatus.OK,
+            res,
+            next
+        );
     };
 
     deleteByParamsId = async (req, res, next) => {
@@ -234,13 +234,13 @@ class BaseController {
             );
         }
 
-        new ApiDataSuccess(
+        ApiDataSuccess.send(
             response,
             `${this.singleModelName} deleted successfully`,
-            httpStatus.OK
-        ).place(res);
-
-        return next();
+            httpStatus.OK,
+            res,
+            next
+        );
     };
 }
 

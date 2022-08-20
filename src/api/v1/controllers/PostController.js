@@ -19,13 +19,13 @@ class PostController extends BaseController {
     async fetchAllMyPosts(req, res, next) {
         const response = await postService.fetchAll({ writer: req.user._id });
 
-        new ApiDataSuccess(
+        ApiDataSuccess.send(
             response,
             'Blogs that user is the author of have been successfully fetched',
-            httpStatus.OK
-        ).place(res);
-
-        return next();
+            httpStatus.OK,
+            res,
+            next
+        );
     }
 
     async fetchOneMyPost(req, res, next) {
@@ -40,13 +40,13 @@ class PostController extends BaseController {
             return next(new ApiError('Post not found', httpStatus.NOT_FOUND));
         }
 
-        new ApiDataSuccess(
+        ApiDataSuccess.send(
             post,
             'Post fetched successfully',
-            httpStatus.OK
-        ).place(res);
-
-        return next();
+            httpStatus.OK,
+            res,
+            next
+        );
     }
 
     // Override
@@ -107,13 +107,13 @@ class PostController extends BaseController {
             );
         }
 
-        new ApiDataSuccess(
+        ApiDataSuccess.send(
             response,
             'Post created successfully',
-            httpStatus.CREATED
-        ).place(res);
-
-        return next();
+            httpStatus.CREATED,
+            res,
+            next
+        );
     };
 
     async fetchAllPreviews(req, res, next) {
@@ -123,13 +123,13 @@ class PostController extends BaseController {
             '-comments',
         ]);
 
-        new ApiDataSuccess(
+        ApiDataSuccess.send(
             response,
             'Posts previews fetched successfully',
-            httpStatus.OK
-        ).place(res);
-
-        return next();
+            httpStatus.OK,
+            res,
+            next
+        );
     }
 
     async fetchOnePreview(req, res, next) {
@@ -145,13 +145,13 @@ class PostController extends BaseController {
             return next(new ApiError('Post not found', httpStatus.NOT_FOUND));
         }
 
-        new ApiDataSuccess(
+        ApiDataSuccess.send(
             response,
             'Post preview fetched successfully',
-            httpStatus.OK
-        ).place(res);
-
-        return next();
+            httpStatus.OK,
+            res,
+            next
+        );
     }
 
     async deleteMyPost(req, res, next) {
@@ -177,9 +177,7 @@ class PostController extends BaseController {
             );
         }
 
-        new ApiSuccess('Post deletion successfully', httpStatus.OK).place(res);
-
-        return next();
+        ApiSuccess.send('Post deletion successfully', httpStatus.OK, res, next);
     }
 
     async updateMyPost(req, res, next) {
@@ -246,13 +244,13 @@ class PostController extends BaseController {
             );
         }
 
-        new ApiDataSuccess(
+        ApiDataSuccess.send(
             result,
             'Post update successfully',
-            httpStatus.OK
-        ).place(res);
-
-        return next();
+            httpStatus.OK,
+            res,
+            next
+        );
     }
 
     async addView(req, res, next) {
@@ -291,13 +289,13 @@ class PostController extends BaseController {
             );
         }
 
-        new ApiDataSuccess(
+        ApiDataSuccess.send(
             updatedPost,
             'User successfully added to post as viewer',
-            httpStatus.OK
-        ).place(res);
-
-        return next();
+            httpStatus.OK,
+            res,
+            next
+        );
     }
 
     async changeLikeStatus(req, res, next) {
@@ -335,9 +333,7 @@ class PostController extends BaseController {
             );
         }
 
-        new ApiDataSuccess(updatedPost, message, httpStatus.OK).place(res);
-
-        return next();
+        ApiDataSuccess.send(updatedPost, message, httpStatus.OK, res, next);
     }
 
     async addComment(req, res, next) {
@@ -366,13 +362,13 @@ class PostController extends BaseController {
             );
         }
 
-        new ApiDataSuccess(
+        ApiDataSuccess.send(
             updatedPost,
             'Comment added successfully',
-            httpStatus.OK
-        ).place(res);
-
-        return next();
+            httpStatus.OK,
+            res,
+            next
+        );
     }
 
     async deleteComment(req, res, next) {
@@ -408,13 +404,13 @@ class PostController extends BaseController {
             );
         }
 
-        new ApiDataSuccess(
+        ApiDataSuccess.send(
             deletedComment,
             'Comment deleted successfully',
-            httpStatus.OK
-        ).place(res);
-
-        return next();
+            httpStatus.OK,
+            res,
+            next
+        );
     }
 
     async addTag(req, res, next) {
@@ -455,13 +451,13 @@ class PostController extends BaseController {
         });
 
         if (!updatedTag) {
-            return next(
-                new ApiDataSuccess(
-                    updatedPost,
-                    // eslint-disable-next-line max-len
-                    'Tag added successfully but tag usage count could not be increased',
-                    httpStatus.INTERNAL_SERVER_ERROR
-                )
+            ApiDataSuccess.send(
+                updatedPost,
+                // eslint-disable-next-line max-len
+                'Tag added successfully but tag usage count could not be increased',
+                httpStatus.INTERNAL_SERVER_ERROR,
+                res,
+                next
             );
         }
 
@@ -479,13 +475,13 @@ class PostController extends BaseController {
             );
         }
 
-        new ApiDataSuccess(
+        ApiDataSuccess.send(
             updatedPost,
             'Tag added successfully',
-            httpStatus.OK
-        ).place(res);
-
-        return next();
+            httpStatus.OK,
+            res,
+            next
+        );
     }
 
     async removeTag(req, res, next) {
@@ -521,13 +517,13 @@ class PostController extends BaseController {
             );
         }
 
-        new ApiDataSuccess(
+        ApiDataSuccess.send(
             updatedPost,
             'Tag removed successfully',
-            httpStatus.OK
-        ).place(res);
-
-        return next();
+            httpStatus.OK,
+            res,
+            next
+        );
     }
 
     async fetchAllMostLikedPost(req, res, next) {
@@ -546,13 +542,13 @@ class PostController extends BaseController {
 
         const postWithCount = posts.splice(0, count);
 
-        new ApiDataSuccess(
+        ApiDataSuccess.send(
             postWithCount,
             'Posts fetched successfully',
-            httpStatus.OK
-        ).place(res);
-
-        return next();
+            httpStatus.OK,
+            res,
+            next
+        );
     }
 
     async fetchAllMostViewedPost(req, res, next) {
@@ -571,13 +567,13 @@ class PostController extends BaseController {
 
         const postWithCount = posts.splice(0, count);
 
-        new ApiDataSuccess(
+        ApiDataSuccess.send(
             postWithCount,
             'Posts fetched successfully',
-            httpStatus.OK
-        ).place(res);
-
-        return next();
+            httpStatus.OK,
+            res,
+            next
+        );
     }
 }
 

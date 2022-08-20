@@ -24,13 +24,13 @@ class TagController extends BaseController {
                 );
             }
 
-            new ApiDataSuccess(
+            ApiDataSuccess.send(
                 response,
                 'Tag created successfully',
-                httpStatus.CREATED
-            ).place(res);
-
-            return next();
+                httpStatus.CREATED,
+                res,
+                next
+            );
         } catch (err) {
             if (err.code === 11000) {
                 return next(
@@ -71,13 +71,13 @@ class TagController extends BaseController {
                     : 0,
         }));
 
-        new ApiDataSuccess(
+        ApiDataSuccess.send(
             tagsWithPercentile,
             'Tags fetched successfully',
-            httpStatus.OK
-        ).place(res);
-
-        return next();
+            httpStatus.OK,
+            res,
+            next
+        );
     }
 }
 
