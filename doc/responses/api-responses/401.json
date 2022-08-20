@@ -3,7 +3,20 @@
     "content": {
         "application/json": {
             "schema": {
-                "$ref": "./api-error.json"
+                "allOf": [
+                    {
+                        "$ref": "./api-error.json"
+                    },
+                    {
+                        "type": "object",
+                        "properties": {
+                            "statusCode": {
+                                "type": "number",
+                                "default": 401
+                            }
+                        }
+                    }
+                ]
             }
         }
     }

@@ -2,9 +2,7 @@
     "summary": "",
     "description": "",
     "get": {
-        "tags": [
-            "Users"
-        ],
+        "tags": ["Users"],
         "summary": "Verify email",
         "description": "Verify email",
         "operationId": "users.verify.email",
@@ -19,7 +17,20 @@
                 "content": {
                     "application/json": {
                         "schema": {
-                            "$ref": "../../responses/api-responses/api-success.json"
+                            "allOf": [
+                                {
+                                    "$ref": "../../responses/api-responses/api-success.json"
+                                },
+                                {
+                                    "type": "object",
+                                    "properties": {
+                                        "statusCode": {
+                                            "type": "number",
+                                            "default": 200
+                                        }
+                                    }
+                                }
+                            ]
                         }
                     }
                 }

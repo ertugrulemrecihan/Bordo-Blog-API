@@ -6,8 +6,17 @@
         {
             "type": "object",
             "properties": {
+                "statusCode": {
+                    "type": "number",
+                    "default": 200
+                }
+            }
+        },
+        {
+            "type": "object",
+            "properties": {
                 "data": {
-                    "$ref": "./other/address.json"               
+                    "$ref": "./other/address.json"
                 }
             }
         }

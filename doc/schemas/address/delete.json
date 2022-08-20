@@ -6,6 +6,15 @@
         {
             "type": "object",
             "properties": {
+                "statusCode": {
+                    "type": "number",
+                    "default": 200
+                }
+            }
+        },
+        {
+            "type": "object",
+            "properties": {
                 "data": {
                     "allOf": [
                         {
@@ -21,7 +30,7 @@
                             }
                         },
                         {
-                            "$ref": "./other/country-city-district.json"  
+                            "$ref": "./other/country-city-district.json"
                         },
                         {
                             "type": "object",

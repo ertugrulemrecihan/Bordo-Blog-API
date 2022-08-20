@@ -2,9 +2,7 @@
     "summary": "",
     "description": "",
     "post": {
-        "tags": [
-            "Admins"
-        ],
+        "tags": ["Admins"],
         "summary": "Assign admin role to users",
         "description": "Assign admin role to users",
         "operationId": "admin.users.assign-admin",
@@ -12,7 +10,7 @@
             {
                 "bearerAuth": []
             }
-        ],     
+        ],
         "parameters": [
             {
                 "$ref": "../../../parameters/path/user/user_id.json"
@@ -24,10 +22,24 @@
                 "content": {
                     "application/json": {
                         "schema": {
-                            "$ref": "../../../responses/api-responses/api-success.json"
+                            "allOf": [
+                                {
+                                    "$ref": "../../../responses/api-responses/api-success.json"
+                                },
+
+                                {
+                                    "type": "object",
+                                    "properties": {
+                                        "statusCode": {
+                                            "type": "number",
+                                            "default": 200
+                                        }
+                                    }
+                                }
+                            ]
                         }
                     }
-                }                
+                }
             },
             "400": {
                 "$ref": "../../../responses/api-responses/400.json"

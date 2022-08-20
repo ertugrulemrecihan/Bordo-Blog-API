@@ -6,6 +6,15 @@
         {
             "type": "object",
             "properties": {
+                "statusCode": {
+                    "type": "number",
+                    "default": 200
+                }
+            }
+        },
+        {
+            "type": "object",
+            "properties": {
                 "data": {
                     "type": "array",
                     "items": {
@@ -14,23 +23,23 @@
                             {
                                 "type": "object",
                                 "properties": {
-                                    "tag":{
+                                    "tag": {
                                         "$ref": "./other/tag.json"
                                     }
-                                }                                    
+                                }
                             },
                             {
                                 "type": "object",
-                                "properties":{
+                                "properties": {
                                     "percentile": {
                                         "title": "Tag usage percentage",
                                         "description": "Tag usage percentage",
                                         "type": "number",
                                         "example": 26.724512
                                     }
-                                }                                
+                                }
                             }
-                        ]                        
+                        ]
                     }
                 }
             }

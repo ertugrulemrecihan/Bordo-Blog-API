@@ -2,9 +2,7 @@
     "summary": "",
     "description": "",
     "post": {
-        "tags": [
-            "Users"
-        ],
+        "tags": ["Users"],
         "summary": "Verify email address",
         "description": "With the token received from this endpoint, a request can be made to the `user/verify-email` endpoint.",
         "operationId": "users.get-email-verification-email",
@@ -17,7 +15,20 @@
                 "content": {
                     "application/json": {
                         "schema": {
-                            "$ref": "../../responses/api-responses/api-success.json"
+                            "allOf": [
+                                {
+                                    "$ref": "../../responses/api-responses/api-success.json"
+                                },
+                                {
+                                    "type": "object",
+                                    "properties": {
+                                        "statusCode": {
+                                            "type": "number",
+                                            "default": 200
+                                        }
+                                    }
+                                }
+                            ]
                         }
                     }
                 }

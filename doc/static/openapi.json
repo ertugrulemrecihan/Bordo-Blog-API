@@ -74,7 +74,20 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/paths/~1users~1logout/post/responses/200/content/application~1json/schema"
+                  "allOf": [
+                    {
+                      "$ref": "#/paths/~1users~1logout/post/responses/200/content/application~1json/schema/allOf/0"
+                    },
+                    {
+                      "type": "object",
+                      "properties": {
+                        "statusCode": {
+                          "type": "number",
+                          "default": 200
+                        }
+                      }
+                    }
+                  ]
                 }
               }
             }
@@ -112,7 +125,16 @@
                   "type": "object",
                   "allOf": [
                     {
-                      "$ref": "#/paths/~1users~1logout/post/responses/200/content/application~1json/schema"
+                      "$ref": "#/paths/~1users~1logout/post/responses/200/content/application~1json/schema/allOf/0"
+                    },
+                    {
+                      "type": "object",
+                      "properties": {
+                        "statusCode": {
+                          "type": "number",
+                          "default": 200
+                        }
+                      }
                     },
                     {
                       "type": "object",
@@ -123,7 +145,7 @@
                               "type": "object",
                               "allOf": [
                                 {
-                                  "$ref": "#/paths/~1posts~1create/post/responses/201/content/application~1json/schema/allOf/1/properties/data/allOf/0"
+                                  "$ref": "#/paths/~1posts~1create/post/responses/201/content/application~1json/schema/allOf/2/properties/data/allOf/0"
                                 },
                                 {
                                   "$ref": "#/components/requestBodies/register/content/application~1json/schema/allOf/0/allOf/0"
@@ -259,7 +281,16 @@
                   "type": "object",
                   "allOf": [
                     {
-                      "$ref": "#/paths/~1users~1logout/post/responses/200/content/application~1json/schema"
+                      "$ref": "#/paths/~1users~1logout/post/responses/200/content/application~1json/schema/allOf/0"
+                    },
+                    {
+                      "type": "object",
+                      "properties": {
+                        "statusCode": {
+                          "type": "number",
+                          "default": 200
+                        }
+                      }
                     },
                     {
                       "type": "object",
@@ -293,20 +324,33 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "type": "object",
-                  "properties": {
-                    "error": {
+                  "allOf": [
+                    {
+                      "type": "object",
                       "properties": {
-                        "message": {
-                          "type": "string"
+                        "error": {
+                          "properties": {
+                            "message": {
+                              "type": "string"
+                            }
+                          }
+                        },
+                        "success": {
+                          "type": "boolean",
+                          "default": false
                         }
                       }
                     },
-                    "success": {
-                      "type": "boolean",
-                      "default": false
+                    {
+                      "type": "object",
+                      "properties": {
+                        "statusCode": {
+                          "type": "number",
+                          "default": 400
+                        }
+                      }
                     }
-                  }
+                  ]
                 }
               }
             }
@@ -316,7 +360,20 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/paths/~1users~1login/post/responses/400/content/application~1json/schema"
+                  "allOf": [
+                    {
+                      "$ref": "#/paths/~1users~1login/post/responses/400/content/application~1json/schema/allOf/0"
+                    },
+                    {
+                      "type": "object",
+                      "properties": {
+                        "statusCode": {
+                          "type": "number",
+                          "default": 404
+                        }
+                      }
+                    }
+                  ]
                 }
               }
             }
@@ -326,7 +383,20 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/paths/~1users~1login/post/responses/400/content/application~1json/schema"
+                  "allOf": [
+                    {
+                      "$ref": "#/paths/~1users~1login/post/responses/400/content/application~1json/schema/allOf/0"
+                    },
+                    {
+                      "type": "object",
+                      "properties": {
+                        "statusCode": {
+                          "type": "number",
+                          "default": 500
+                        }
+                      }
+                    }
+                  ]
                 }
               }
             }
@@ -356,13 +426,22 @@
                   "type": "object",
                   "allOf": [
                     {
-                      "$ref": "#/paths/~1users~1logout/post/responses/200/content/application~1json/schema"
+                      "$ref": "#/paths/~1users~1logout/post/responses/200/content/application~1json/schema/allOf/0"
+                    },
+                    {
+                      "type": "object",
+                      "properties": {
+                        "statusCode": {
+                          "type": "number",
+                          "default": 201
+                        }
+                      }
                     },
                     {
                       "type": "object",
                       "properties": {
                         "data": {
-                          "$ref": "#/paths/~1users~1login/post/responses/200/content/application~1json/schema/allOf/1/properties/data"
+                          "$ref": "#/paths/~1users~1login/post/responses/200/content/application~1json/schema/allOf/2/properties/data"
                         }
                       }
                     }
@@ -379,7 +458,20 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/paths/~1users~1login/post/responses/400/content/application~1json/schema"
+                  "allOf": [
+                    {
+                      "$ref": "#/paths/~1users~1login/post/responses/400/content/application~1json/schema/allOf/0"
+                    },
+                    {
+                      "type": "object",
+                      "properties": {
+                        "statusCode": {
+                          "type": "number",
+                          "default": 409
+                        }
+                      }
+                    }
+                  ]
                 }
               }
             }
@@ -411,20 +503,33 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "type": "object",
-                  "properties": {
-                    "message": {
-                      "title": "Response message",
-                      "description": "Response message",
-                      "type": "string"
+                  "allOf": [
+                    {
+                      "type": "object",
+                      "properties": {
+                        "message": {
+                          "title": "Response message",
+                          "description": "Response message",
+                          "type": "string"
+                        },
+                        "success": {
+                          "title": "Response success status",
+                          "description": "Response success status",
+                          "type": "boolean",
+                          "default": true
+                        }
+                      }
                     },
-                    "success": {
-                      "title": "Response success status",
-                      "description": "Response success status",
-                      "type": "boolean",
-                      "default": true
+                    {
+                      "type": "object",
+                      "properties": {
+                        "statusCode": {
+                          "type": "number",
+                          "default": 200
+                        }
+                      }
                     }
-                  }
+                  ]
                 }
               }
             }
@@ -481,7 +586,16 @@
                   "type": "object",
                   "allOf": [
                     {
-                      "$ref": "#/paths/~1users~1logout/post/responses/200/content/application~1json/schema"
+                      "$ref": "#/paths/~1users~1logout/post/responses/200/content/application~1json/schema/allOf/0"
+                    },
+                    {
+                      "type": "object",
+                      "properties": {
+                        "statusCode": {
+                          "type": "number",
+                          "default": 200
+                        }
+                      }
                     },
                     {
                       "type": "object",
@@ -489,7 +603,7 @@
                         "data": {
                           "allOf": [
                             {
-                              "$ref": "#/paths/~1posts~1create/post/responses/201/content/application~1json/schema/allOf/1/properties/data/allOf/0"
+                              "$ref": "#/paths/~1posts~1create/post/responses/201/content/application~1json/schema/allOf/2/properties/data/allOf/0"
                             },
                             {
                               "$ref": "#/components/requestBodies/register/content/application~1json/schema/allOf/0/allOf/0"
@@ -548,10 +662,10 @@
                               }
                             },
                             {
-                              "$ref": "#/paths/~1users~1profile/get/responses/200/content/application~1json/schema/allOf/1/properties/data/allOf/2"
+                              "$ref": "#/paths/~1users~1profile/get/responses/200/content/application~1json/schema/allOf/2/properties/data/allOf/2"
                             },
                             {
-                              "$ref": "#/paths/~1users~1profile/get/responses/200/content/application~1json/schema/allOf/1/properties/data/allOf/3"
+                              "$ref": "#/paths/~1users~1profile/get/responses/200/content/application~1json/schema/allOf/2/properties/data/allOf/3"
                             }
                           ]
                         }
@@ -596,7 +710,20 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/paths/~1users~1logout/post/responses/200/content/application~1json/schema"
+                  "allOf": [
+                    {
+                      "$ref": "#/paths/~1users~1logout/post/responses/200/content/application~1json/schema/allOf/0"
+                    },
+                    {
+                      "type": "object",
+                      "properties": {
+                        "statusCode": {
+                          "type": "number",
+                          "default": 200
+                        }
+                      }
+                    }
+                  ]
                 }
               }
             }
@@ -629,7 +756,20 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/paths/~1users~1logout/post/responses/200/content/application~1json/schema"
+                  "allOf": [
+                    {
+                      "$ref": "#/paths/~1users~1logout/post/responses/200/content/application~1json/schema/allOf/0"
+                    },
+                    {
+                      "type": "object",
+                      "properties": {
+                        "statusCode": {
+                          "type": "number",
+                          "default": 200
+                        }
+                      }
+                    }
+                  ]
                 }
               }
             }
@@ -662,7 +802,20 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/paths/~1users~1logout/post/responses/200/content/application~1json/schema"
+                  "allOf": [
+                    {
+                      "$ref": "#/paths/~1users~1logout/post/responses/200/content/application~1json/schema/allOf/0"
+                    },
+                    {
+                      "type": "object",
+                      "properties": {
+                        "statusCode": {
+                          "type": "number",
+                          "default": 200
+                        }
+                      }
+                    }
+                  ]
                 }
               }
             }
@@ -703,7 +856,20 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/paths/~1users~1logout/post/responses/200/content/application~1json/schema"
+                  "allOf": [
+                    {
+                      "$ref": "#/paths/~1users~1logout/post/responses/200/content/application~1json/schema/allOf/0"
+                    },
+                    {
+                      "type": "object",
+                      "properties": {
+                        "statusCode": {
+                          "type": "number",
+                          "default": 200
+                        }
+                      }
+                    }
+                  ]
                 }
               }
             }
@@ -750,7 +916,16 @@
                   "type": "object",
                   "allOf": [
                     {
-                      "$ref": "#/paths/~1users~1logout/post/responses/200/content/application~1json/schema"
+                      "$ref": "#/paths/~1users~1logout/post/responses/200/content/application~1json/schema/allOf/0"
+                    },
+                    {
+                      "type": "object",
+                      "properties": {
+                        "statusCode": {
+                          "type": "number",
+                          "default": 200
+                        }
+                      }
                     },
                     {
                       "type": "object",
@@ -758,7 +933,7 @@
                         "data": {
                           "type": "array",
                           "items": {
-                            "$ref": "#/paths/~1admin~1users~1get~1%7BuserId%7D/get/responses/200/content/application~1json/schema/allOf/1/properties/data"
+                            "$ref": "#/paths/~1admin~1users~1get~1%7BuserId%7D/get/responses/200/content/application~1json/schema/allOf/2/properties/data"
                           }
                         }
                       }
@@ -816,7 +991,16 @@
                   "type": "object",
                   "allOf": [
                     {
-                      "$ref": "#/paths/~1users~1logout/post/responses/200/content/application~1json/schema"
+                      "$ref": "#/paths/~1users~1logout/post/responses/200/content/application~1json/schema/allOf/0"
+                    },
+                    {
+                      "type": "object",
+                      "properties": {
+                        "statusCode": {
+                          "type": "number",
+                          "default": 200
+                        }
+                      }
                     },
                     {
                       "type": "object",
@@ -824,13 +1008,13 @@
                         "data": {
                           "allOf": [
                             {
-                              "$ref": "#/paths/~1users~1profile/get/responses/200/content/application~1json/schema/allOf/1/properties/data/allOf/0"
+                              "$ref": "#/paths/~1users~1profile/get/responses/200/content/application~1json/schema/allOf/2/properties/data/allOf/0"
                             },
                             {
-                              "$ref": "#/paths/~1users~1profile/get/responses/200/content/application~1json/schema/allOf/1/properties/data/allOf/2"
+                              "$ref": "#/paths/~1users~1profile/get/responses/200/content/application~1json/schema/allOf/2/properties/data/allOf/2"
                             },
                             {
-                              "$ref": "#/paths/~1users~1profile/get/responses/200/content/application~1json/schema/allOf/1/properties/data/allOf/3"
+                              "$ref": "#/paths/~1users~1profile/get/responses/200/content/application~1json/schema/allOf/2/properties/data/allOf/3"
                             }
                           ]
                         }
@@ -885,13 +1069,22 @@
                   "type": "object",
                   "allOf": [
                     {
-                      "$ref": "#/paths/~1users~1logout/post/responses/200/content/application~1json/schema"
+                      "$ref": "#/paths/~1users~1logout/post/responses/200/content/application~1json/schema/allOf/0"
+                    },
+                    {
+                      "type": "object",
+                      "properties": {
+                        "statusCode": {
+                          "type": "number",
+                          "default": 200
+                        }
+                      }
                     },
                     {
                       "type": "object",
                       "properties": {
                         "data": {
-                          "$ref": "#/paths/~1admin~1users~1get~1%7BuserId%7D/get/responses/200/content/application~1json/schema/allOf/1/properties/data"
+                          "$ref": "#/paths/~1admin~1users~1get~1%7BuserId%7D/get/responses/200/content/application~1json/schema/allOf/2/properties/data"
                         }
                       }
                     }
@@ -941,7 +1134,20 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/paths/~1users~1logout/post/responses/200/content/application~1json/schema"
+                  "allOf": [
+                    {
+                      "$ref": "#/paths/~1users~1logout/post/responses/200/content/application~1json/schema/allOf/0"
+                    },
+                    {
+                      "type": "object",
+                      "properties": {
+                        "statusCode": {
+                          "type": "number",
+                          "default": 200
+                        }
+                      }
+                    }
+                  ]
                 }
               }
             }
@@ -993,7 +1199,20 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/paths/~1users~1logout/post/responses/200/content/application~1json/schema"
+                  "allOf": [
+                    {
+                      "$ref": "#/paths/~1users~1logout/post/responses/200/content/application~1json/schema/allOf/0"
+                    },
+                    {
+                      "type": "object",
+                      "properties": {
+                        "statusCode": {
+                          "type": "number",
+                          "default": 200
+                        }
+                      }
+                    }
+                  ]
                 }
               }
             }
@@ -1040,7 +1259,16 @@
                   "type": "object",
                   "allOf": [
                     {
-                      "$ref": "#/paths/~1users~1logout/post/responses/200/content/application~1json/schema"
+                      "$ref": "#/paths/~1users~1logout/post/responses/200/content/application~1json/schema/allOf/0"
+                    },
+                    {
+                      "type": "object",
+                      "properties": {
+                        "statusCode": {
+                          "type": "number",
+                          "default": 200
+                        }
+                      }
                     },
                     {
                       "type": "object",
@@ -1048,7 +1276,7 @@
                         "data": {
                           "type": "array",
                           "items": {
-                            "$ref": "#/paths/~1admin~1tags~1create/post/responses/201/content/application~1json/schema/allOf/1/properties/data"
+                            "$ref": "#/paths/~1admin~1tags~1create/post/responses/201/content/application~1json/schema/allOf/2/properties/data"
                           }
                         }
                       }
@@ -1066,7 +1294,20 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/paths/~1users~1login/post/responses/400/content/application~1json/schema"
+                  "allOf": [
+                    {
+                      "$ref": "#/paths/~1users~1login/post/responses/400/content/application~1json/schema/allOf/0"
+                    },
+                    {
+                      "type": "object",
+                      "properties": {
+                        "statusCode": {
+                          "type": "number",
+                          "default": 401
+                        }
+                      }
+                    }
+                  ]
                 }
               }
             }
@@ -1076,7 +1317,20 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/paths/~1users~1login/post/responses/400/content/application~1json/schema"
+                  "allOf": [
+                    {
+                      "$ref": "#/paths/~1users~1login/post/responses/400/content/application~1json/schema/allOf/0"
+                    },
+                    {
+                      "type": "object",
+                      "properties": {
+                        "statusCode": {
+                          "type": "number",
+                          "default": 403
+                        }
+                      }
+                    }
+                  ]
                 }
               }
             }
@@ -1120,13 +1374,22 @@
                   "type": "object",
                   "allOf": [
                     {
-                      "$ref": "#/paths/~1users~1logout/post/responses/200/content/application~1json/schema"
+                      "$ref": "#/paths/~1users~1logout/post/responses/200/content/application~1json/schema/allOf/0"
+                    },
+                    {
+                      "type": "object",
+                      "properties": {
+                        "statusCode": {
+                          "type": "number",
+                          "default": 200
+                        }
+                      }
                     },
                     {
                       "type": "object",
                       "properties": {
                         "data": {
-                          "$ref": "#/paths/~1admin~1tags~1create/post/responses/201/content/application~1json/schema/allOf/1/properties/data"
+                          "$ref": "#/paths/~1admin~1tags~1create/post/responses/201/content/application~1json/schema/allOf/2/properties/data"
                         }
                       }
                     }
@@ -1186,7 +1449,16 @@
                   "type": "object",
                   "allOf": [
                     {
-                      "$ref": "#/paths/~1users~1logout/post/responses/200/content/application~1json/schema"
+                      "$ref": "#/paths/~1users~1logout/post/responses/200/content/application~1json/schema/allOf/0"
+                    },
+                    {
+                      "type": "object",
+                      "properties": {
+                        "statusCode": {
+                          "type": "number",
+                          "default": 200
+                        }
+                      }
                     },
                     {
                       "type": "object",
@@ -1200,7 +1472,7 @@
                                 "type": "object",
                                 "properties": {
                                   "tag": {
-                                    "$ref": "#/paths/~1admin~1tags~1create/post/responses/201/content/application~1json/schema/allOf/1/properties/data"
+                                    "$ref": "#/paths/~1admin~1tags~1create/post/responses/201/content/application~1json/schema/allOf/2/properties/data"
                                   }
                                 }
                               },
@@ -1264,7 +1536,16 @@
                   "type": "object",
                   "allOf": [
                     {
-                      "$ref": "#/paths/~1users~1logout/post/responses/200/content/application~1json/schema"
+                      "$ref": "#/paths/~1users~1logout/post/responses/200/content/application~1json/schema/allOf/0"
+                    },
+                    {
+                      "type": "object",
+                      "properties": {
+                        "statusCode": {
+                          "type": "number",
+                          "default": 201
+                        }
+                      }
                     },
                     {
                       "type": "object",
@@ -1290,7 +1571,7 @@
                               }
                             },
                             {
-                              "$ref": "#/paths/~1posts~1create/post/responses/201/content/application~1json/schema/allOf/1/properties/data/allOf/0"
+                              "$ref": "#/paths/~1posts~1create/post/responses/201/content/application~1json/schema/allOf/2/properties/data/allOf/0"
                             }
                           ]
                         }
@@ -1351,7 +1632,16 @@
                   "type": "object",
                   "allOf": [
                     {
-                      "$ref": "#/paths/~1users~1logout/post/responses/200/content/application~1json/schema"
+                      "$ref": "#/paths/~1users~1logout/post/responses/200/content/application~1json/schema/allOf/0"
+                    },
+                    {
+                      "type": "object",
+                      "properties": {
+                        "statusCode": {
+                          "type": "number",
+                          "default": 200
+                        }
+                      }
                     },
                     {
                       "type": "object",
@@ -1359,7 +1649,7 @@
                         "data": {
                           "allOf": [
                             {
-                              "$ref": "#/paths/~1admin~1tags~1create/post/responses/201/content/application~1json/schema/allOf/1/properties/data"
+                              "$ref": "#/paths/~1admin~1tags~1create/post/responses/201/content/application~1json/schema/allOf/2/properties/data"
                             }
                           ]
                         }
@@ -1420,13 +1710,22 @@
                   "type": "object",
                   "allOf": [
                     {
-                      "$ref": "#/paths/~1users~1logout/post/responses/200/content/application~1json/schema"
+                      "$ref": "#/paths/~1users~1logout/post/responses/200/content/application~1json/schema/allOf/0"
+                    },
+                    {
+                      "type": "object",
+                      "properties": {
+                        "statusCode": {
+                          "type": "number",
+                          "default": 200
+                        }
+                      }
                     },
                     {
                       "type": "object",
                       "properties": {
                         "data": {
-                          "$ref": "#/paths/~1admin~1tags~1create/post/responses/201/content/application~1json/schema/allOf/1/properties/data"
+                          "$ref": "#/paths/~1admin~1tags~1create/post/responses/201/content/application~1json/schema/allOf/2/properties/data"
                         }
                       }
                     }
@@ -1474,7 +1773,16 @@
                   "type": "object",
                   "allOf": [
                     {
-                      "$ref": "#/paths/~1users~1logout/post/responses/200/content/application~1json/schema"
+                      "$ref": "#/paths/~1users~1logout/post/responses/200/content/application~1json/schema/allOf/0"
+                    },
+                    {
+                      "type": "object",
+                      "properties": {
+                        "statusCode": {
+                          "type": "number",
+                          "default": 200
+                        }
+                      }
                     },
                     {
                       "type": "object",
@@ -1484,10 +1792,10 @@
                           "items": {
                             "allOf": [
                               {
-                                "$ref": "#/paths/~1posts~1create/post/responses/201/content/application~1json/schema/allOf/1/properties/data/allOf/0"
+                                "$ref": "#/paths/~1posts~1create/post/responses/201/content/application~1json/schema/allOf/2/properties/data/allOf/0"
                               },
                               {
-                                "$ref": "#/paths/~1posts~1create/post/responses/201/content/application~1json/schema/allOf/1/properties/data/allOf/1"
+                                "$ref": "#/paths/~1posts~1create/post/responses/201/content/application~1json/schema/allOf/2/properties/data/allOf/1"
                               },
                               {
                                 "$ref": "#/components/requestBodies/create-post/content/multipart~1form-data/schema/allOf/1/allOf/0"
@@ -1513,16 +1821,16 @@
                                 }
                               },
                               {
-                                "$ref": "#/paths/~1posts~1get~1my~1%7BpostId%7D/get/responses/200/content/application~1json/schema/allOf/1/properties/data/allOf/5"
+                                "$ref": "#/paths/~1posts~1get~1my~1%7BpostId%7D/get/responses/200/content/application~1json/schema/allOf/2/properties/data/allOf/5"
                               },
                               {
-                                "$ref": "#/paths/~1posts~1get~1my~1%7BpostId%7D/get/responses/200/content/application~1json/schema/allOf/1/properties/data/allOf/6"
+                                "$ref": "#/paths/~1posts~1get~1my~1%7BpostId%7D/get/responses/200/content/application~1json/schema/allOf/2/properties/data/allOf/6"
                               },
                               {
-                                "$ref": "#/paths/~1posts~1get~1my~1%7BpostId%7D/get/responses/200/content/application~1json/schema/allOf/1/properties/data/allOf/7"
+                                "$ref": "#/paths/~1posts~1get~1my~1%7BpostId%7D/get/responses/200/content/application~1json/schema/allOf/2/properties/data/allOf/7"
                               },
                               {
-                                "$ref": "#/paths/~1posts~1create/post/responses/201/content/application~1json/schema/allOf/1/properties/data/allOf/8"
+                                "$ref": "#/paths/~1posts~1create/post/responses/201/content/application~1json/schema/allOf/2/properties/data/allOf/8"
                               }
                             ]
                           }
@@ -1582,7 +1890,16 @@
                   "type": "object",
                   "allOf": [
                     {
-                      "$ref": "#/paths/~1users~1logout/post/responses/200/content/application~1json/schema"
+                      "$ref": "#/paths/~1users~1logout/post/responses/200/content/application~1json/schema/allOf/0"
+                    },
+                    {
+                      "type": "object",
+                      "properties": {
+                        "statusCode": {
+                          "type": "number",
+                          "default": 200
+                        }
+                      }
                     },
                     {
                       "type": "object",
@@ -1590,10 +1907,10 @@
                         "data": {
                           "allOf": [
                             {
-                              "$ref": "#/paths/~1posts~1create/post/responses/201/content/application~1json/schema/allOf/1/properties/data/allOf/0"
+                              "$ref": "#/paths/~1posts~1create/post/responses/201/content/application~1json/schema/allOf/2/properties/data/allOf/0"
                             },
                             {
-                              "$ref": "#/paths/~1posts~1create/post/responses/201/content/application~1json/schema/allOf/1/properties/data/allOf/1"
+                              "$ref": "#/paths/~1posts~1create/post/responses/201/content/application~1json/schema/allOf/2/properties/data/allOf/1"
                             },
                             {
                               "$ref": "#/components/requestBodies/create-post/content/multipart~1form-data/schema/allOf/1/allOf/0"
@@ -1711,7 +2028,7 @@
                                   "items": {
                                     "allOf": [
                                       {
-                                        "$ref": "#/paths/~1posts~1create/post/responses/201/content/application~1json/schema/allOf/1/properties/data/allOf/0"
+                                        "$ref": "#/paths/~1posts~1create/post/responses/201/content/application~1json/schema/allOf/2/properties/data/allOf/0"
                                       },
                                       {
                                         "type": "object",
@@ -1767,7 +2084,7 @@
                               }
                             },
                             {
-                              "$ref": "#/paths/~1posts~1create/post/responses/201/content/application~1json/schema/allOf/1/properties/data/allOf/8"
+                              "$ref": "#/paths/~1posts~1create/post/responses/201/content/application~1json/schema/allOf/2/properties/data/allOf/8"
                             }
                           ]
                         }
@@ -1812,7 +2129,16 @@
                   "type": "object",
                   "allOf": [
                     {
-                      "$ref": "#/paths/~1users~1logout/post/responses/200/content/application~1json/schema"
+                      "$ref": "#/paths/~1users~1logout/post/responses/200/content/application~1json/schema/allOf/0"
+                    },
+                    {
+                      "type": "object",
+                      "properties": {
+                        "statusCode": {
+                          "type": "number",
+                          "default": 200
+                        }
+                      }
                     },
                     {
                       "type": "object",
@@ -1822,10 +2148,10 @@
                           "items": {
                             "allOf": [
                               {
-                                "$ref": "#/paths/~1posts~1create/post/responses/201/content/application~1json/schema/allOf/1/properties/data/allOf/0"
+                                "$ref": "#/paths/~1posts~1create/post/responses/201/content/application~1json/schema/allOf/2/properties/data/allOf/0"
                               },
                               {
-                                "$ref": "#/paths/~1posts~1create/post/responses/201/content/application~1json/schema/allOf/1/properties/data/allOf/1"
+                                "$ref": "#/paths/~1posts~1create/post/responses/201/content/application~1json/schema/allOf/2/properties/data/allOf/1"
                               },
                               {
                                 "$ref": "#/components/requestBodies/create-post/content/multipart~1form-data/schema/allOf/1/allOf/0"
@@ -1841,13 +2167,13 @@
                                 }
                               },
                               {
-                                "$ref": "#/paths/~1posts~1get~1my~1%7BpostId%7D/get/responses/200/content/application~1json/schema/allOf/1/properties/data/allOf/5"
+                                "$ref": "#/paths/~1posts~1get~1my~1%7BpostId%7D/get/responses/200/content/application~1json/schema/allOf/2/properties/data/allOf/5"
                               },
                               {
-                                "$ref": "#/paths/~1posts~1get~1my~1%7BpostId%7D/get/responses/200/content/application~1json/schema/allOf/1/properties/data/allOf/6"
+                                "$ref": "#/paths/~1posts~1get~1my~1%7BpostId%7D/get/responses/200/content/application~1json/schema/allOf/2/properties/data/allOf/6"
                               },
                               {
-                                "$ref": "#/paths/~1posts~1create/post/responses/201/content/application~1json/schema/allOf/1/properties/data/allOf/8"
+                                "$ref": "#/paths/~1posts~1create/post/responses/201/content/application~1json/schema/allOf/2/properties/data/allOf/8"
                               }
                             ]
                           }
@@ -1886,7 +2212,16 @@
                   "type": "object",
                   "allOf": [
                     {
-                      "$ref": "#/paths/~1users~1logout/post/responses/200/content/application~1json/schema"
+                      "$ref": "#/paths/~1users~1logout/post/responses/200/content/application~1json/schema/allOf/0"
+                    },
+                    {
+                      "type": "object",
+                      "properties": {
+                        "statusCode": {
+                          "type": "number",
+                          "default": 200
+                        }
+                      }
                     },
                     {
                       "type": "object",
@@ -1894,10 +2229,10 @@
                         "data": {
                           "allOf": [
                             {
-                              "$ref": "#/paths/~1posts~1create/post/responses/201/content/application~1json/schema/allOf/1/properties/data/allOf/0"
+                              "$ref": "#/paths/~1posts~1create/post/responses/201/content/application~1json/schema/allOf/2/properties/data/allOf/0"
                             },
                             {
-                              "$ref": "#/paths/~1posts~1create/post/responses/201/content/application~1json/schema/allOf/1/properties/data/allOf/1"
+                              "$ref": "#/paths/~1posts~1create/post/responses/201/content/application~1json/schema/allOf/2/properties/data/allOf/1"
                             },
                             {
                               "$ref": "#/components/requestBodies/create-post/content/multipart~1form-data/schema/allOf/1/allOf/0"
@@ -1913,13 +2248,13 @@
                               }
                             },
                             {
-                              "$ref": "#/paths/~1posts~1get~1my~1%7BpostId%7D/get/responses/200/content/application~1json/schema/allOf/1/properties/data/allOf/5"
+                              "$ref": "#/paths/~1posts~1get~1my~1%7BpostId%7D/get/responses/200/content/application~1json/schema/allOf/2/properties/data/allOf/5"
                             },
                             {
-                              "$ref": "#/paths/~1posts~1get~1my~1%7BpostId%7D/get/responses/200/content/application~1json/schema/allOf/1/properties/data/allOf/6"
+                              "$ref": "#/paths/~1posts~1get~1my~1%7BpostId%7D/get/responses/200/content/application~1json/schema/allOf/2/properties/data/allOf/6"
                             },
                             {
-                              "$ref": "#/paths/~1posts~1create/post/responses/201/content/application~1json/schema/allOf/1/properties/data/allOf/8"
+                              "$ref": "#/paths/~1posts~1create/post/responses/201/content/application~1json/schema/allOf/2/properties/data/allOf/8"
                             }
                           ]
                         }
@@ -1975,7 +2310,16 @@
                   "type": "object",
                   "allOf": [
                     {
-                      "$ref": "#/paths/~1users~1logout/post/responses/200/content/application~1json/schema"
+                      "$ref": "#/paths/~1users~1logout/post/responses/200/content/application~1json/schema/allOf/0"
+                    },
+                    {
+                      "type": "object",
+                      "properties": {
+                        "statusCode": {
+                          "type": "number",
+                          "default": 200
+                        }
+                      }
                     },
                     {
                       "type": "object",
@@ -1985,10 +2329,10 @@
                           "items": {
                             "allOf": [
                               {
-                                "$ref": "#/paths/~1posts~1create/post/responses/201/content/application~1json/schema/allOf/1/properties/data/allOf/0"
+                                "$ref": "#/paths/~1posts~1create/post/responses/201/content/application~1json/schema/allOf/2/properties/data/allOf/0"
                               },
                               {
-                                "$ref": "#/paths/~1posts~1create/post/responses/201/content/application~1json/schema/allOf/1/properties/data/allOf/1"
+                                "$ref": "#/paths/~1posts~1create/post/responses/201/content/application~1json/schema/allOf/2/properties/data/allOf/1"
                               },
                               {
                                 "$ref": "#/components/requestBodies/create-post/content/multipart~1form-data/schema/allOf/1/allOf/0"
@@ -2014,16 +2358,16 @@
                                 }
                               },
                               {
-                                "$ref": "#/paths/~1posts~1get~1my~1%7BpostId%7D/get/responses/200/content/application~1json/schema/allOf/1/properties/data/allOf/5"
+                                "$ref": "#/paths/~1posts~1get~1my~1%7BpostId%7D/get/responses/200/content/application~1json/schema/allOf/2/properties/data/allOf/5"
                               },
                               {
-                                "$ref": "#/paths/~1posts~1get~1my~1%7BpostId%7D/get/responses/200/content/application~1json/schema/allOf/1/properties/data/allOf/6"
+                                "$ref": "#/paths/~1posts~1get~1my~1%7BpostId%7D/get/responses/200/content/application~1json/schema/allOf/2/properties/data/allOf/6"
                               },
                               {
-                                "$ref": "#/paths/~1posts~1get~1my~1%7BpostId%7D/get/responses/200/content/application~1json/schema/allOf/1/properties/data/allOf/7"
+                                "$ref": "#/paths/~1posts~1get~1my~1%7BpostId%7D/get/responses/200/content/application~1json/schema/allOf/2/properties/data/allOf/7"
                               },
                               {
-                                "$ref": "#/paths/~1posts~1create/post/responses/201/content/application~1json/schema/allOf/1/properties/data/allOf/8"
+                                "$ref": "#/paths/~1posts~1create/post/responses/201/content/application~1json/schema/allOf/2/properties/data/allOf/8"
                               }
                             ]
                           }
@@ -2076,7 +2420,16 @@
                   "type": "object",
                   "allOf": [
                     {
-                      "$ref": "#/paths/~1users~1logout/post/responses/200/content/application~1json/schema"
+                      "$ref": "#/paths/~1users~1logout/post/responses/200/content/application~1json/schema/allOf/0"
+                    },
+                    {
+                      "type": "object",
+                      "properties": {
+                        "statusCode": {
+                          "type": "number",
+                          "default": 200
+                        }
+                      }
                     },
                     {
                       "type": "object",
@@ -2086,10 +2439,10 @@
                           "items": {
                             "allOf": [
                               {
-                                "$ref": "#/paths/~1posts~1create/post/responses/201/content/application~1json/schema/allOf/1/properties/data/allOf/0"
+                                "$ref": "#/paths/~1posts~1create/post/responses/201/content/application~1json/schema/allOf/2/properties/data/allOf/0"
                               },
                               {
-                                "$ref": "#/paths/~1posts~1create/post/responses/201/content/application~1json/schema/allOf/1/properties/data/allOf/1"
+                                "$ref": "#/paths/~1posts~1create/post/responses/201/content/application~1json/schema/allOf/2/properties/data/allOf/1"
                               },
                               {
                                 "$ref": "#/components/requestBodies/create-post/content/multipart~1form-data/schema/allOf/1/allOf/0"
@@ -2115,16 +2468,16 @@
                                 }
                               },
                               {
-                                "$ref": "#/paths/~1posts~1get~1my~1%7BpostId%7D/get/responses/200/content/application~1json/schema/allOf/1/properties/data/allOf/5"
+                                "$ref": "#/paths/~1posts~1get~1my~1%7BpostId%7D/get/responses/200/content/application~1json/schema/allOf/2/properties/data/allOf/5"
                               },
                               {
-                                "$ref": "#/paths/~1posts~1get~1my~1%7BpostId%7D/get/responses/200/content/application~1json/schema/allOf/1/properties/data/allOf/6"
+                                "$ref": "#/paths/~1posts~1get~1my~1%7BpostId%7D/get/responses/200/content/application~1json/schema/allOf/2/properties/data/allOf/6"
                               },
                               {
-                                "$ref": "#/paths/~1posts~1get~1my~1%7BpostId%7D/get/responses/200/content/application~1json/schema/allOf/1/properties/data/allOf/7"
+                                "$ref": "#/paths/~1posts~1get~1my~1%7BpostId%7D/get/responses/200/content/application~1json/schema/allOf/2/properties/data/allOf/7"
                               },
                               {
-                                "$ref": "#/paths/~1posts~1create/post/responses/201/content/application~1json/schema/allOf/1/properties/data/allOf/8"
+                                "$ref": "#/paths/~1posts~1create/post/responses/201/content/application~1json/schema/allOf/2/properties/data/allOf/8"
                               }
                             ]
                           }
@@ -2175,7 +2528,16 @@
                   "type": "object",
                   "allOf": [
                     {
-                      "$ref": "#/paths/~1users~1logout/post/responses/200/content/application~1json/schema"
+                      "$ref": "#/paths/~1users~1logout/post/responses/200/content/application~1json/schema/allOf/0"
+                    },
+                    {
+                      "type": "object",
+                      "properties": {
+                        "statusCode": {
+                          "type": "number",
+                          "default": 201
+                        }
+                      }
                     },
                     {
                       "type": "object",
@@ -2300,7 +2662,7 @@
                                   "items": {
                                     "allOf": [
                                       {
-                                        "$ref": "#/paths/~1posts~1create/post/responses/201/content/application~1json/schema/allOf/1/properties/data/allOf/0"
+                                        "$ref": "#/paths/~1posts~1create/post/responses/201/content/application~1json/schema/allOf/2/properties/data/allOf/0"
                                       },
                                       {
                                         "type": "object",
@@ -2380,7 +2742,16 @@
                   "type": "object",
                   "allOf": [
                     {
-                      "$ref": "#/paths/~1users~1logout/post/responses/200/content/application~1json/schema"
+                      "$ref": "#/paths/~1users~1logout/post/responses/200/content/application~1json/schema/allOf/0"
+                    },
+                    {
+                      "type": "object",
+                      "properties": {
+                        "statusCode": {
+                          "type": "number",
+                          "default": 200
+                        }
+                      }
                     },
                     {
                       "type": "object",
@@ -2388,10 +2759,10 @@
                         "data": {
                           "allOf": [
                             {
-                              "$ref": "#/paths/~1posts~1create/post/responses/201/content/application~1json/schema/allOf/1/properties/data/allOf/0"
+                              "$ref": "#/paths/~1posts~1create/post/responses/201/content/application~1json/schema/allOf/2/properties/data/allOf/0"
                             },
                             {
-                              "$ref": "#/paths/~1posts~1create/post/responses/201/content/application~1json/schema/allOf/1/properties/data/allOf/1"
+                              "$ref": "#/paths/~1posts~1create/post/responses/201/content/application~1json/schema/allOf/2/properties/data/allOf/1"
                             },
                             {
                               "$ref": "#/components/requestBodies/create-post/content/multipart~1form-data/schema/allOf/1/allOf/0"
@@ -2417,16 +2788,16 @@
                               }
                             },
                             {
-                              "$ref": "#/paths/~1posts~1get~1my~1%7BpostId%7D/get/responses/200/content/application~1json/schema/allOf/1/properties/data/allOf/5"
+                              "$ref": "#/paths/~1posts~1get~1my~1%7BpostId%7D/get/responses/200/content/application~1json/schema/allOf/2/properties/data/allOf/5"
                             },
                             {
-                              "$ref": "#/paths/~1posts~1get~1my~1%7BpostId%7D/get/responses/200/content/application~1json/schema/allOf/1/properties/data/allOf/6"
+                              "$ref": "#/paths/~1posts~1get~1my~1%7BpostId%7D/get/responses/200/content/application~1json/schema/allOf/2/properties/data/allOf/6"
                             },
                             {
-                              "$ref": "#/paths/~1posts~1get~1my~1%7BpostId%7D/get/responses/200/content/application~1json/schema/allOf/1/properties/data/allOf/7"
+                              "$ref": "#/paths/~1posts~1get~1my~1%7BpostId%7D/get/responses/200/content/application~1json/schema/allOf/2/properties/data/allOf/7"
                             },
                             {
-                              "$ref": "#/paths/~1posts~1create/post/responses/201/content/application~1json/schema/allOf/1/properties/data/allOf/8"
+                              "$ref": "#/paths/~1posts~1create/post/responses/201/content/application~1json/schema/allOf/2/properties/data/allOf/8"
                             }
                           ]
                         }
@@ -2487,7 +2858,16 @@
                   "type": "object",
                   "allOf": [
                     {
-                      "$ref": "#/paths/~1users~1logout/post/responses/200/content/application~1json/schema"
+                      "$ref": "#/paths/~1users~1logout/post/responses/200/content/application~1json/schema/allOf/0"
+                    },
+                    {
+                      "type": "object",
+                      "properties": {
+                        "statusCode": {
+                          "type": "number",
+                          "default": 200
+                        }
+                      }
                     },
                     {
                       "type": "object",
@@ -2495,10 +2875,10 @@
                         "data": {
                           "allOf": [
                             {
-                              "$ref": "#/paths/~1posts~1create/post/responses/201/content/application~1json/schema/allOf/1/properties/data/allOf/0"
+                              "$ref": "#/paths/~1posts~1create/post/responses/201/content/application~1json/schema/allOf/2/properties/data/allOf/0"
                             },
                             {
-                              "$ref": "#/paths/~1posts~1create/post/responses/201/content/application~1json/schema/allOf/1/properties/data/allOf/1"
+                              "$ref": "#/paths/~1posts~1create/post/responses/201/content/application~1json/schema/allOf/2/properties/data/allOf/1"
                             },
                             {
                               "$ref": "#/components/requestBodies/create-post/content/multipart~1form-data/schema/allOf/1/allOf/0"
@@ -2524,16 +2904,16 @@
                               }
                             },
                             {
-                              "$ref": "#/paths/~1posts~1get~1my~1%7BpostId%7D/get/responses/200/content/application~1json/schema/allOf/1/properties/data/allOf/5"
+                              "$ref": "#/paths/~1posts~1get~1my~1%7BpostId%7D/get/responses/200/content/application~1json/schema/allOf/2/properties/data/allOf/5"
                             },
                             {
-                              "$ref": "#/paths/~1posts~1get~1my~1%7BpostId%7D/get/responses/200/content/application~1json/schema/allOf/1/properties/data/allOf/6"
+                              "$ref": "#/paths/~1posts~1get~1my~1%7BpostId%7D/get/responses/200/content/application~1json/schema/allOf/2/properties/data/allOf/6"
                             },
                             {
-                              "$ref": "#/paths/~1posts~1get~1my~1%7BpostId%7D/get/responses/200/content/application~1json/schema/allOf/1/properties/data/allOf/7"
+                              "$ref": "#/paths/~1posts~1get~1my~1%7BpostId%7D/get/responses/200/content/application~1json/schema/allOf/2/properties/data/allOf/7"
                             },
                             {
-                              "$ref": "#/paths/~1posts~1create/post/responses/201/content/application~1json/schema/allOf/1/properties/data/allOf/8"
+                              "$ref": "#/paths/~1posts~1create/post/responses/201/content/application~1json/schema/allOf/2/properties/data/allOf/8"
                             }
                           ]
                         }
@@ -2617,7 +2997,16 @@
                   "type": "object",
                   "allOf": [
                     {
-                      "$ref": "#/paths/~1users~1logout/post/responses/200/content/application~1json/schema"
+                      "$ref": "#/paths/~1users~1logout/post/responses/200/content/application~1json/schema/allOf/0"
+                    },
+                    {
+                      "type": "object",
+                      "properties": {
+                        "statusCode": {
+                          "type": "number",
+                          "default": 200
+                        }
+                      }
                     },
                     {
                       "type": "object",
@@ -2625,10 +3014,10 @@
                         "data": {
                           "allOf": [
                             {
-                              "$ref": "#/paths/~1posts~1create/post/responses/201/content/application~1json/schema/allOf/1/properties/data/allOf/0"
+                              "$ref": "#/paths/~1posts~1create/post/responses/201/content/application~1json/schema/allOf/2/properties/data/allOf/0"
                             },
                             {
-                              "$ref": "#/paths/~1posts~1create/post/responses/201/content/application~1json/schema/allOf/1/properties/data/allOf/1"
+                              "$ref": "#/paths/~1posts~1create/post/responses/201/content/application~1json/schema/allOf/2/properties/data/allOf/1"
                             },
                             {
                               "$ref": "#/components/requestBodies/create-post/content/multipart~1form-data/schema/allOf/1/allOf/0"
@@ -2654,16 +3043,16 @@
                               }
                             },
                             {
-                              "$ref": "#/paths/~1posts~1get~1my~1%7BpostId%7D/get/responses/200/content/application~1json/schema/allOf/1/properties/data/allOf/5"
+                              "$ref": "#/paths/~1posts~1get~1my~1%7BpostId%7D/get/responses/200/content/application~1json/schema/allOf/2/properties/data/allOf/5"
                             },
                             {
-                              "$ref": "#/paths/~1posts~1get~1my~1%7BpostId%7D/get/responses/200/content/application~1json/schema/allOf/1/properties/data/allOf/6"
+                              "$ref": "#/paths/~1posts~1get~1my~1%7BpostId%7D/get/responses/200/content/application~1json/schema/allOf/2/properties/data/allOf/6"
                             },
                             {
-                              "$ref": "#/paths/~1posts~1get~1my~1%7BpostId%7D/get/responses/200/content/application~1json/schema/allOf/1/properties/data/allOf/7"
+                              "$ref": "#/paths/~1posts~1get~1my~1%7BpostId%7D/get/responses/200/content/application~1json/schema/allOf/2/properties/data/allOf/7"
                             },
                             {
-                              "$ref": "#/paths/~1posts~1create/post/responses/201/content/application~1json/schema/allOf/1/properties/data/allOf/8"
+                              "$ref": "#/paths/~1posts~1create/post/responses/201/content/application~1json/schema/allOf/2/properties/data/allOf/8"
                             }
                           ]
                         }
@@ -2747,7 +3136,16 @@
                   "type": "object",
                   "allOf": [
                     {
-                      "$ref": "#/paths/~1users~1logout/post/responses/200/content/application~1json/schema"
+                      "$ref": "#/paths/~1users~1logout/post/responses/200/content/application~1json/schema/allOf/0"
+                    },
+                    {
+                      "type": "object",
+                      "properties": {
+                        "statusCode": {
+                          "type": "number",
+                          "default": 200
+                        }
+                      }
                     },
                     {
                       "type": "object",
@@ -2755,10 +3153,10 @@
                         "data": {
                           "allOf": [
                             {
-                              "$ref": "#/paths/~1posts~1create/post/responses/201/content/application~1json/schema/allOf/1/properties/data/allOf/0"
+                              "$ref": "#/paths/~1posts~1create/post/responses/201/content/application~1json/schema/allOf/2/properties/data/allOf/0"
                             },
                             {
-                              "$ref": "#/paths/~1posts~1create/post/responses/201/content/application~1json/schema/allOf/1/properties/data/allOf/1"
+                              "$ref": "#/paths/~1posts~1create/post/responses/201/content/application~1json/schema/allOf/2/properties/data/allOf/1"
                             },
                             {
                               "$ref": "#/components/requestBodies/create-post/content/multipart~1form-data/schema/allOf/1/allOf/0"
@@ -2784,16 +3182,16 @@
                               }
                             },
                             {
-                              "$ref": "#/paths/~1posts~1get~1my~1%7BpostId%7D/get/responses/200/content/application~1json/schema/allOf/1/properties/data/allOf/5"
+                              "$ref": "#/paths/~1posts~1get~1my~1%7BpostId%7D/get/responses/200/content/application~1json/schema/allOf/2/properties/data/allOf/5"
                             },
                             {
-                              "$ref": "#/paths/~1posts~1get~1my~1%7BpostId%7D/get/responses/200/content/application~1json/schema/allOf/1/properties/data/allOf/6"
+                              "$ref": "#/paths/~1posts~1get~1my~1%7BpostId%7D/get/responses/200/content/application~1json/schema/allOf/2/properties/data/allOf/6"
                             },
                             {
-                              "$ref": "#/paths/~1posts~1get~1my~1%7BpostId%7D/get/responses/200/content/application~1json/schema/allOf/1/properties/data/allOf/7"
+                              "$ref": "#/paths/~1posts~1get~1my~1%7BpostId%7D/get/responses/200/content/application~1json/schema/allOf/2/properties/data/allOf/7"
                             },
                             {
-                              "$ref": "#/paths/~1posts~1create/post/responses/201/content/application~1json/schema/allOf/1/properties/data/allOf/8"
+                              "$ref": "#/paths/~1posts~1create/post/responses/201/content/application~1json/schema/allOf/2/properties/data/allOf/8"
                             }
                           ]
                         }
@@ -2918,7 +3316,16 @@
                   "type": "object",
                   "allOf": [
                     {
-                      "$ref": "#/paths/~1users~1logout/post/responses/200/content/application~1json/schema"
+                      "$ref": "#/paths/~1users~1logout/post/responses/200/content/application~1json/schema/allOf/0"
+                    },
+                    {
+                      "type": "object",
+                      "properties": {
+                        "statusCode": {
+                          "type": "number",
+                          "default": 200
+                        }
+                      }
                     },
                     {
                       "type": "object",
@@ -2926,10 +3333,10 @@
                         "data": {
                           "allOf": [
                             {
-                              "$ref": "#/paths/~1posts~1create/post/responses/201/content/application~1json/schema/allOf/1/properties/data/allOf/0"
+                              "$ref": "#/paths/~1posts~1create/post/responses/201/content/application~1json/schema/allOf/2/properties/data/allOf/0"
                             },
                             {
-                              "$ref": "#/paths/~1posts~1create/post/responses/201/content/application~1json/schema/allOf/1/properties/data/allOf/1"
+                              "$ref": "#/paths/~1posts~1create/post/responses/201/content/application~1json/schema/allOf/2/properties/data/allOf/1"
                             },
                             {
                               "$ref": "#/components/requestBodies/create-post/content/multipart~1form-data/schema/allOf/1/allOf/0"
@@ -2955,16 +3362,16 @@
                               }
                             },
                             {
-                              "$ref": "#/paths/~1posts~1get~1my~1%7BpostId%7D/get/responses/200/content/application~1json/schema/allOf/1/properties/data/allOf/5"
+                              "$ref": "#/paths/~1posts~1get~1my~1%7BpostId%7D/get/responses/200/content/application~1json/schema/allOf/2/properties/data/allOf/5"
                             },
                             {
-                              "$ref": "#/paths/~1posts~1get~1my~1%7BpostId%7D/get/responses/200/content/application~1json/schema/allOf/1/properties/data/allOf/6"
+                              "$ref": "#/paths/~1posts~1get~1my~1%7BpostId%7D/get/responses/200/content/application~1json/schema/allOf/2/properties/data/allOf/6"
                             },
                             {
-                              "$ref": "#/paths/~1posts~1get~1my~1%7BpostId%7D/get/responses/200/content/application~1json/schema/allOf/1/properties/data/allOf/7"
+                              "$ref": "#/paths/~1posts~1get~1my~1%7BpostId%7D/get/responses/200/content/application~1json/schema/allOf/2/properties/data/allOf/7"
                             },
                             {
-                              "$ref": "#/paths/~1posts~1create/post/responses/201/content/application~1json/schema/allOf/1/properties/data/allOf/8"
+                              "$ref": "#/paths/~1posts~1create/post/responses/201/content/application~1json/schema/allOf/2/properties/data/allOf/8"
                             }
                           ]
                         }
@@ -3022,7 +3429,16 @@
                   "type": "object",
                   "allOf": [
                     {
-                      "$ref": "#/paths/~1users~1logout/post/responses/200/content/application~1json/schema"
+                      "$ref": "#/paths/~1users~1logout/post/responses/200/content/application~1json/schema/allOf/0"
+                    },
+                    {
+                      "type": "object",
+                      "properties": {
+                        "statusCode": {
+                          "type": "number",
+                          "default": 200
+                        }
+                      }
                     }
                   ]
                 }
@@ -3102,7 +3518,16 @@
                   "type": "object",
                   "allOf": [
                     {
-                      "$ref": "#/paths/~1users~1logout/post/responses/200/content/application~1json/schema"
+                      "$ref": "#/paths/~1users~1logout/post/responses/200/content/application~1json/schema/allOf/0"
+                    },
+                    {
+                      "type": "object",
+                      "properties": {
+                        "statusCode": {
+                          "type": "number",
+                          "default": 200
+                        }
+                      }
                     },
                     {
                       "type": "object",
@@ -3110,10 +3535,10 @@
                         "data": {
                           "allOf": [
                             {
-                              "$ref": "#/paths/~1posts~1create/post/responses/201/content/application~1json/schema/allOf/1/properties/data/allOf/0"
+                              "$ref": "#/paths/~1posts~1create/post/responses/201/content/application~1json/schema/allOf/2/properties/data/allOf/0"
                             },
                             {
-                              "$ref": "#/paths/~1posts~1create/post/responses/201/content/application~1json/schema/allOf/1/properties/data/allOf/1"
+                              "$ref": "#/paths/~1posts~1create/post/responses/201/content/application~1json/schema/allOf/2/properties/data/allOf/1"
                             },
                             {
                               "$ref": "#/components/requestBodies/create-post/content/multipart~1form-data/schema/allOf/1/allOf/0"
@@ -3139,16 +3564,16 @@
                               }
                             },
                             {
-                              "$ref": "#/paths/~1posts~1get~1my~1%7BpostId%7D/get/responses/200/content/application~1json/schema/allOf/1/properties/data/allOf/5"
+                              "$ref": "#/paths/~1posts~1get~1my~1%7BpostId%7D/get/responses/200/content/application~1json/schema/allOf/2/properties/data/allOf/5"
                             },
                             {
-                              "$ref": "#/paths/~1posts~1get~1my~1%7BpostId%7D/get/responses/200/content/application~1json/schema/allOf/1/properties/data/allOf/6"
+                              "$ref": "#/paths/~1posts~1get~1my~1%7BpostId%7D/get/responses/200/content/application~1json/schema/allOf/2/properties/data/allOf/6"
                             },
                             {
-                              "$ref": "#/paths/~1posts~1get~1my~1%7BpostId%7D/get/responses/200/content/application~1json/schema/allOf/1/properties/data/allOf/7"
+                              "$ref": "#/paths/~1posts~1get~1my~1%7BpostId%7D/get/responses/200/content/application~1json/schema/allOf/2/properties/data/allOf/7"
                             },
                             {
-                              "$ref": "#/paths/~1posts~1create/post/responses/201/content/application~1json/schema/allOf/1/properties/data/allOf/8"
+                              "$ref": "#/paths/~1posts~1create/post/responses/201/content/application~1json/schema/allOf/2/properties/data/allOf/8"
                             }
                           ]
                         }
@@ -3232,7 +3657,16 @@
                   "type": "object",
                   "allOf": [
                     {
-                      "$ref": "#/paths/~1users~1logout/post/responses/200/content/application~1json/schema"
+                      "$ref": "#/paths/~1users~1logout/post/responses/200/content/application~1json/schema/allOf/0"
+                    },
+                    {
+                      "type": "object",
+                      "properties": {
+                        "statusCode": {
+                          "type": "number",
+                          "default": 200
+                        }
+                      }
                     },
                     {
                       "type": "object",
@@ -3240,10 +3674,10 @@
                         "data": {
                           "allOf": [
                             {
-                              "$ref": "#/paths/~1posts~1create/post/responses/201/content/application~1json/schema/allOf/1/properties/data/allOf/0"
+                              "$ref": "#/paths/~1posts~1create/post/responses/201/content/application~1json/schema/allOf/2/properties/data/allOf/0"
                             },
                             {
-                              "$ref": "#/paths/~1posts~1create/post/responses/201/content/application~1json/schema/allOf/1/properties/data/allOf/1"
+                              "$ref": "#/paths/~1posts~1create/post/responses/201/content/application~1json/schema/allOf/2/properties/data/allOf/1"
                             },
                             {
                               "$ref": "#/components/requestBodies/create-post/content/multipart~1form-data/schema/allOf/1/allOf/0"
@@ -3269,16 +3703,16 @@
                               }
                             },
                             {
-                              "$ref": "#/paths/~1posts~1get~1my~1%7BpostId%7D/get/responses/200/content/application~1json/schema/allOf/1/properties/data/allOf/5"
+                              "$ref": "#/paths/~1posts~1get~1my~1%7BpostId%7D/get/responses/200/content/application~1json/schema/allOf/2/properties/data/allOf/5"
                             },
                             {
-                              "$ref": "#/paths/~1posts~1get~1my~1%7BpostId%7D/get/responses/200/content/application~1json/schema/allOf/1/properties/data/allOf/6"
+                              "$ref": "#/paths/~1posts~1get~1my~1%7BpostId%7D/get/responses/200/content/application~1json/schema/allOf/2/properties/data/allOf/6"
                             },
                             {
-                              "$ref": "#/paths/~1posts~1get~1my~1%7BpostId%7D/get/responses/200/content/application~1json/schema/allOf/1/properties/data/allOf/7"
+                              "$ref": "#/paths/~1posts~1get~1my~1%7BpostId%7D/get/responses/200/content/application~1json/schema/allOf/2/properties/data/allOf/7"
                             },
                             {
-                              "$ref": "#/paths/~1posts~1create/post/responses/201/content/application~1json/schema/allOf/1/properties/data/allOf/8"
+                              "$ref": "#/paths/~1posts~1create/post/responses/201/content/application~1json/schema/allOf/2/properties/data/allOf/8"
                             }
                           ]
                         }
@@ -3331,7 +3765,16 @@
                   "type": "object",
                   "allOf": [
                     {
-                      "$ref": "#/paths/~1users~1logout/post/responses/200/content/application~1json/schema"
+                      "$ref": "#/paths/~1users~1logout/post/responses/200/content/application~1json/schema/allOf/0"
+                    },
+                    {
+                      "type": "object",
+                      "properties": {
+                        "statusCode": {
+                          "type": "number",
+                          "default": 200
+                        }
+                      }
                     },
                     {
                       "type": "object",
@@ -3341,10 +3784,10 @@
                           "items": {
                             "allOf": [
                               {
-                                "$ref": "#/paths/~1posts~1create/post/responses/201/content/application~1json/schema/allOf/1/properties/data/allOf/0"
+                                "$ref": "#/paths/~1posts~1create/post/responses/201/content/application~1json/schema/allOf/2/properties/data/allOf/0"
                               },
                               {
-                                "$ref": "#/paths/~1posts~1create/post/responses/201/content/application~1json/schema/allOf/1/properties/data/allOf/1"
+                                "$ref": "#/paths/~1posts~1create/post/responses/201/content/application~1json/schema/allOf/2/properties/data/allOf/1"
                               },
                               {
                                 "$ref": "#/components/requestBodies/create-post/content/multipart~1form-data/schema/allOf/1/allOf/0"
@@ -3370,16 +3813,16 @@
                                 }
                               },
                               {
-                                "$ref": "#/paths/~1posts~1get~1my~1%7BpostId%7D/get/responses/200/content/application~1json/schema/allOf/1/properties/data/allOf/5"
+                                "$ref": "#/paths/~1posts~1get~1my~1%7BpostId%7D/get/responses/200/content/application~1json/schema/allOf/2/properties/data/allOf/5"
                               },
                               {
-                                "$ref": "#/paths/~1posts~1get~1my~1%7BpostId%7D/get/responses/200/content/application~1json/schema/allOf/1/properties/data/allOf/6"
+                                "$ref": "#/paths/~1posts~1get~1my~1%7BpostId%7D/get/responses/200/content/application~1json/schema/allOf/2/properties/data/allOf/6"
                               },
                               {
-                                "$ref": "#/paths/~1posts~1get~1my~1%7BpostId%7D/get/responses/200/content/application~1json/schema/allOf/1/properties/data/allOf/7"
+                                "$ref": "#/paths/~1posts~1get~1my~1%7BpostId%7D/get/responses/200/content/application~1json/schema/allOf/2/properties/data/allOf/7"
                               },
                               {
-                                "$ref": "#/paths/~1posts~1create/post/responses/201/content/application~1json/schema/allOf/1/properties/data/allOf/8"
+                                "$ref": "#/paths/~1posts~1create/post/responses/201/content/application~1json/schema/allOf/2/properties/data/allOf/8"
                               }
                             ]
                           }
@@ -3432,7 +3875,16 @@
                   "type": "object",
                   "allOf": [
                     {
-                      "$ref": "#/paths/~1users~1logout/post/responses/200/content/application~1json/schema"
+                      "$ref": "#/paths/~1users~1logout/post/responses/200/content/application~1json/schema/allOf/0"
+                    },
+                    {
+                      "type": "object",
+                      "properties": {
+                        "statusCode": {
+                          "type": "number",
+                          "default": 200
+                        }
+                      }
                     },
                     {
                       "type": "object",
@@ -3440,10 +3892,10 @@
                         "data": {
                           "allOf": [
                             {
-                              "$ref": "#/paths/~1posts~1create/post/responses/201/content/application~1json/schema/allOf/1/properties/data/allOf/0"
+                              "$ref": "#/paths/~1posts~1create/post/responses/201/content/application~1json/schema/allOf/2/properties/data/allOf/0"
                             },
                             {
-                              "$ref": "#/paths/~1posts~1create/post/responses/201/content/application~1json/schema/allOf/1/properties/data/allOf/1"
+                              "$ref": "#/paths/~1posts~1create/post/responses/201/content/application~1json/schema/allOf/2/properties/data/allOf/1"
                             },
                             {
                               "$ref": "#/components/requestBodies/create-post/content/multipart~1form-data/schema/allOf/1/allOf/0"
@@ -3469,13 +3921,13 @@
                               }
                             },
                             {
-                              "$ref": "#/paths/~1posts~1get~1my~1%7BpostId%7D/get/responses/200/content/application~1json/schema/allOf/1/properties/data/allOf/5"
+                              "$ref": "#/paths/~1posts~1get~1my~1%7BpostId%7D/get/responses/200/content/application~1json/schema/allOf/2/properties/data/allOf/5"
                             },
                             {
-                              "$ref": "#/paths/~1posts~1get~1my~1%7BpostId%7D/get/responses/200/content/application~1json/schema/allOf/1/properties/data/allOf/6"
+                              "$ref": "#/paths/~1posts~1get~1my~1%7BpostId%7D/get/responses/200/content/application~1json/schema/allOf/2/properties/data/allOf/6"
                             },
                             {
-                              "$ref": "#/paths/~1posts~1create/post/responses/201/content/application~1json/schema/allOf/1/properties/data/allOf/8"
+                              "$ref": "#/paths/~1posts~1create/post/responses/201/content/application~1json/schema/allOf/2/properties/data/allOf/8"
                             }
                           ]
                         }
@@ -3530,7 +3982,16 @@
                   "type": "object",
                   "allOf": [
                     {
-                      "$ref": "#/paths/~1users~1logout/post/responses/200/content/application~1json/schema"
+                      "$ref": "#/paths/~1users~1logout/post/responses/200/content/application~1json/schema/allOf/0"
+                    },
+                    {
+                      "type": "object",
+                      "properties": {
+                        "statusCode": {
+                          "type": "number",
+                          "default": 200
+                        }
+                      }
                     },
                     {
                       "type": "object",
@@ -3538,10 +3999,10 @@
                         "data": {
                           "allOf": [
                             {
-                              "$ref": "#/paths/~1posts~1create/post/responses/201/content/application~1json/schema/allOf/1/properties/data/allOf/0"
+                              "$ref": "#/paths/~1posts~1create/post/responses/201/content/application~1json/schema/allOf/2/properties/data/allOf/0"
                             },
                             {
-                              "$ref": "#/paths/~1posts~1create/post/responses/201/content/application~1json/schema/allOf/1/properties/data/allOf/1"
+                              "$ref": "#/paths/~1posts~1create/post/responses/201/content/application~1json/schema/allOf/2/properties/data/allOf/1"
                             },
                             {
                               "$ref": "#/components/requestBodies/create-post/content/multipart~1form-data/schema/allOf/1/allOf/0"
@@ -3567,16 +4028,16 @@
                               }
                             },
                             {
-                              "$ref": "#/paths/~1posts~1get~1my~1%7BpostId%7D/get/responses/200/content/application~1json/schema/allOf/1/properties/data/allOf/5"
+                              "$ref": "#/paths/~1posts~1get~1my~1%7BpostId%7D/get/responses/200/content/application~1json/schema/allOf/2/properties/data/allOf/5"
                             },
                             {
-                              "$ref": "#/paths/~1posts~1get~1my~1%7BpostId%7D/get/responses/200/content/application~1json/schema/allOf/1/properties/data/allOf/6"
+                              "$ref": "#/paths/~1posts~1get~1my~1%7BpostId%7D/get/responses/200/content/application~1json/schema/allOf/2/properties/data/allOf/6"
                             },
                             {
-                              "$ref": "#/paths/~1posts~1get~1my~1%7BpostId%7D/get/responses/200/content/application~1json/schema/allOf/1/properties/data/allOf/7"
+                              "$ref": "#/paths/~1posts~1get~1my~1%7BpostId%7D/get/responses/200/content/application~1json/schema/allOf/2/properties/data/allOf/7"
                             },
                             {
-                              "$ref": "#/paths/~1posts~1create/post/responses/201/content/application~1json/schema/allOf/1/properties/data/allOf/8"
+                              "$ref": "#/paths/~1posts~1create/post/responses/201/content/application~1json/schema/allOf/2/properties/data/allOf/8"
                             }
                           ]
                         }
@@ -3626,7 +4087,16 @@
                   "type": "object",
                   "allOf": [
                     {
-                      "$ref": "#/paths/~1users~1logout/post/responses/200/content/application~1json/schema"
+                      "$ref": "#/paths/~1users~1logout/post/responses/200/content/application~1json/schema/allOf/0"
+                    },
+                    {
+                      "type": "object",
+                      "properties": {
+                        "statusCode": {
+                          "type": "number",
+                          "default": 200
+                        }
+                      }
                     },
                     {
                       "type": "object",
@@ -3709,7 +4179,16 @@
                   "type": "object",
                   "allOf": [
                     {
-                      "$ref": "#/paths/~1users~1logout/post/responses/200/content/application~1json/schema"
+                      "$ref": "#/paths/~1users~1logout/post/responses/200/content/application~1json/schema/allOf/0"
+                    },
+                    {
+                      "type": "object",
+                      "properties": {
+                        "statusCode": {
+                          "type": "number",
+                          "default": 200
+                        }
+                      }
                     },
                     {
                       "type": "object",
@@ -3720,7 +4199,7 @@
                               "type": "object",
                               "properties": {
                                 "country": {
-                                  "$ref": "#/paths/~1addresses~1get-all~1country/get/responses/200/content/application~1json/schema/allOf/1/properties/data/items"
+                                  "$ref": "#/paths/~1addresses~1get-all~1country/get/responses/200/content/application~1json/schema/allOf/2/properties/data/items"
                                 }
                               }
                             },
@@ -3730,7 +4209,7 @@
                                 "cities": {
                                   "type": "array",
                                   "items": {
-                                    "$ref": "#/paths/~1addresses~1get-all~1district~1%7BcityId%7D/get/responses/200/content/application~1json/schema/allOf/1/properties/data/allOf/0/properties/city"
+                                    "$ref": "#/paths/~1addresses~1get-all~1district~1%7BcityId%7D/get/responses/200/content/application~1json/schema/allOf/2/properties/data/allOf/0/properties/city"
                                   }
                                 }
                               }
@@ -3795,7 +4274,16 @@
                   "type": "object",
                   "allOf": [
                     {
-                      "$ref": "#/paths/~1users~1logout/post/responses/200/content/application~1json/schema"
+                      "$ref": "#/paths/~1users~1logout/post/responses/200/content/application~1json/schema/allOf/0"
+                    },
+                    {
+                      "type": "object",
+                      "properties": {
+                        "statusCode": {
+                          "type": "number",
+                          "default": 200
+                        }
+                      }
                     },
                     {
                       "type": "object",
@@ -3939,7 +4427,16 @@
                   "type": "object",
                   "allOf": [
                     {
-                      "$ref": "#/paths/~1users~1logout/post/responses/200/content/application~1json/schema"
+                      "$ref": "#/paths/~1users~1logout/post/responses/200/content/application~1json/schema/allOf/0"
+                    },
+                    {
+                      "type": "object",
+                      "properties": {
+                        "statusCode": {
+                          "type": "number",
+                          "default": 200
+                        }
+                      }
                     },
                     {
                       "type": "object",
@@ -3947,7 +4444,7 @@
                         "data": {
                           "type": "array",
                           "items": {
-                            "$ref": "#/paths/~1addresses~1get~1my~1%7BaddressId%7D/get/responses/200/content/application~1json/schema/allOf/1/properties/data"
+                            "$ref": "#/paths/~1addresses~1get~1my~1%7BaddressId%7D/get/responses/200/content/application~1json/schema/allOf/2/properties/data"
                           }
                         }
                       }
@@ -4005,7 +4502,16 @@
                   "type": "object",
                   "allOf": [
                     {
-                      "$ref": "#/paths/~1users~1logout/post/responses/200/content/application~1json/schema"
+                      "$ref": "#/paths/~1users~1logout/post/responses/200/content/application~1json/schema/allOf/0"
+                    },
+                    {
+                      "type": "object",
+                      "properties": {
+                        "statusCode": {
+                          "type": "number",
+                          "default": 200
+                        }
+                      }
                     },
                     {
                       "type": "object",
@@ -4028,7 +4534,7 @@
                               "type": "object",
                               "properties": {
                                 "country": {
-                                  "$ref": "#/paths/~1addresses~1get-all~1country/get/responses/200/content/application~1json/schema/allOf/1/properties/data/items"
+                                  "$ref": "#/paths/~1addresses~1get-all~1country/get/responses/200/content/application~1json/schema/allOf/2/properties/data/items"
                                 }
                               }
                             },
@@ -4036,7 +4542,7 @@
                               "type": "object",
                               "properties": {
                                 "city": {
-                                  "$ref": "#/paths/~1addresses~1get-all~1district~1%7BcityId%7D/get/responses/200/content/application~1json/schema/allOf/1/properties/data/allOf/0/properties/city"
+                                  "$ref": "#/paths/~1addresses~1get-all~1district~1%7BcityId%7D/get/responses/200/content/application~1json/schema/allOf/2/properties/data/allOf/0/properties/city"
                                 }
                               }
                             },
@@ -4044,7 +4550,7 @@
                               "type": "object",
                               "properties": {
                                 "district": {
-                                  "$ref": "#/paths/~1addresses~1get-all~1district~1%7BcityId%7D/get/responses/200/content/application~1json/schema/allOf/1/properties/data/allOf/1/properties/districts/items"
+                                  "$ref": "#/paths/~1addresses~1get-all~1district~1%7BcityId%7D/get/responses/200/content/application~1json/schema/allOf/2/properties/data/allOf/1/properties/districts/items"
                                 }
                               }
                             },
@@ -4239,7 +4745,16 @@
                   "type": "object",
                   "allOf": [
                     {
-                      "$ref": "#/paths/~1users~1logout/post/responses/200/content/application~1json/schema"
+                      "$ref": "#/paths/~1users~1logout/post/responses/200/content/application~1json/schema/allOf/0"
+                    },
+                    {
+                      "type": "object",
+                      "properties": {
+                        "statusCode": {
+                          "type": "number",
+                          "default": 201
+                        }
+                      }
                     },
                     {
                       "type": "object",
@@ -4392,7 +4907,16 @@
                   "type": "object",
                   "allOf": [
                     {
-                      "$ref": "#/paths/~1users~1logout/post/responses/200/content/application~1json/schema"
+                      "$ref": "#/paths/~1users~1logout/post/responses/200/content/application~1json/schema/allOf/0"
+                    },
+                    {
+                      "type": "object",
+                      "properties": {
+                        "statusCode": {
+                          "type": "number",
+                          "default": 200
+                        }
+                      }
                     },
                     {
                       "type": "object",
@@ -4504,7 +5028,16 @@
                   "type": "object",
                   "allOf": [
                     {
-                      "$ref": "#/paths/~1users~1logout/post/responses/200/content/application~1json/schema"
+                      "$ref": "#/paths/~1users~1logout/post/responses/200/content/application~1json/schema/allOf/0"
+                    },
+                    {
+                      "type": "object",
+                      "properties": {
+                        "statusCode": {
+                          "type": "number",
+                          "default": 200
+                        }
+                      }
                     },
                     {
                       "type": "object",
@@ -4611,7 +5144,16 @@
                   "type": "object",
                   "allOf": [
                     {
-                      "$ref": "#/paths/~1users~1logout/post/responses/200/content/application~1json/schema"
+                      "$ref": "#/paths/~1users~1logout/post/responses/200/content/application~1json/schema/allOf/0"
+                    },
+                    {
+                      "type": "object",
+                      "properties": {
+                        "statusCode": {
+                          "type": "number",
+                          "default": 200
+                        }
+                      }
                     },
                     {
                       "type": "object",
@@ -4619,7 +5161,7 @@
                         "data": {
                           "type": "array",
                           "items": {
-                            "$ref": "#/paths/~1addresses~1get~1my~1%7BaddressId%7D/get/responses/200/content/application~1json/schema/allOf/1/properties/data"
+                            "$ref": "#/paths/~1addresses~1get~1my~1%7BaddressId%7D/get/responses/200/content/application~1json/schema/allOf/2/properties/data"
                           }
                         }
                       }
@@ -4670,13 +5212,22 @@
                   "type": "object",
                   "allOf": [
                     {
-                      "$ref": "#/paths/~1users~1logout/post/responses/200/content/application~1json/schema"
+                      "$ref": "#/paths/~1users~1logout/post/responses/200/content/application~1json/schema/allOf/0"
+                    },
+                    {
+                      "type": "object",
+                      "properties": {
+                        "statusCode": {
+                          "type": "number",
+                          "default": 200
+                        }
+                      }
                     },
                     {
                       "type": "object",
                       "properties": {
                         "data": {
-                          "$ref": "#/paths/~1addresses~1get~1my~1%7BaddressId%7D/get/responses/200/content/application~1json/schema/allOf/1/properties/data"
+                          "$ref": "#/paths/~1addresses~1get~1my~1%7BaddressId%7D/get/responses/200/content/application~1json/schema/allOf/2/properties/data"
                         }
                       }
                     }
@@ -4724,7 +5275,16 @@
                   "type": "object",
                   "allOf": [
                     {
-                      "$ref": "#/paths/~1users~1logout/post/responses/200/content/application~1json/schema"
+                      "$ref": "#/paths/~1users~1logout/post/responses/200/content/application~1json/schema/allOf/0"
+                    },
+                    {
+                      "type": "object",
+                      "properties": {
+                        "statusCode": {
+                          "type": "number",
+                          "default": 200
+                        }
+                      }
                     },
                     {
                       "type": "object",
@@ -4732,7 +5292,7 @@
                         "data": {
                           "type": "array",
                           "items": {
-                            "$ref": "#/paths/~1admin~1roles~1get~1%7BroleId%7D/get/responses/200/content/application~1json/schema/allOf/1/properties/data"
+                            "$ref": "#/paths/~1admin~1roles~1get~1%7BroleId%7D/get/responses/200/content/application~1json/schema/allOf/2/properties/data"
                           }
                         }
                       }
@@ -4790,7 +5350,16 @@
                   "type": "object",
                   "allOf": [
                     {
-                      "$ref": "#/paths/~1users~1logout/post/responses/200/content/application~1json/schema"
+                      "$ref": "#/paths/~1users~1logout/post/responses/200/content/application~1json/schema/allOf/0"
+                    },
+                    {
+                      "type": "object",
+                      "properties": {
+                        "statusCode": {
+                          "type": "number",
+                          "default": 200
+                        }
+                      }
                     },
                     {
                       "type": "object",
@@ -4798,7 +5367,7 @@
                         "data": {
                           "allOf": [
                             {
-                              "$ref": "#/paths/~1posts~1create/post/responses/201/content/application~1json/schema/allOf/1/properties/data/allOf/0"
+                              "$ref": "#/paths/~1posts~1create/post/responses/201/content/application~1json/schema/allOf/2/properties/data/allOf/0"
                             },
                             {
                               "type": "object",
@@ -4872,7 +5441,16 @@
                   "type": "object",
                   "allOf": [
                     {
-                      "$ref": "#/paths/~1users~1logout/post/responses/200/content/application~1json/schema"
+                      "$ref": "#/paths/~1users~1logout/post/responses/200/content/application~1json/schema/allOf/0"
+                    },
+                    {
+                      "type": "object",
+                      "properties": {
+                        "statusCode": {
+                          "type": "number",
+                          "default": 200
+                        }
+                      }
                     },
                     {
                       "type": "object",
@@ -4938,7 +5516,16 @@
                   "type": "object",
                   "allOf": [
                     {
-                      "$ref": "#/paths/~1users~1logout/post/responses/200/content/application~1json/schema"
+                      "$ref": "#/paths/~1users~1logout/post/responses/200/content/application~1json/schema/allOf/0"
+                    },
+                    {
+                      "type": "object",
+                      "properties": {
+                        "statusCode": {
+                          "type": "number",
+                          "default": 200
+                        }
+                      }
                     },
                     {
                       "type": "object",
@@ -5014,7 +5601,16 @@
                   "type": "object",
                   "allOf": [
                     {
-                      "$ref": "#/paths/~1users~1logout/post/responses/200/content/application~1json/schema"
+                      "$ref": "#/paths/~1users~1logout/post/responses/200/content/application~1json/schema/allOf/0"
+                    },
+                    {
+                      "type": "object",
+                      "properties": {
+                        "statusCode": {
+                          "type": "number",
+                          "default": 201
+                        }
+                      }
                     },
                     {
                       "type": "object",
@@ -5136,7 +5732,16 @@
                   "type": "object",
                   "allOf": [
                     {
-                      "$ref": "#/paths/~1users~1logout/post/responses/200/content/application~1json/schema"
+                      "$ref": "#/paths/~1users~1logout/post/responses/200/content/application~1json/schema/allOf/0"
+                    },
+                    {
+                      "type": "object",
+                      "properties": {
+                        "statusCode": {
+                          "type": "number",
+                          "default": 200
+                        }
+                      }
                     },
                     {
                       "type": "object",

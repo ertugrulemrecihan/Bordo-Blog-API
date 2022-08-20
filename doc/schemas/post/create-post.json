@@ -6,6 +6,15 @@
         {
             "type": "object",
             "properties": {
+                "statusCode": {
+                    "type": "number",
+                    "default": 201
+                }
+            }
+        },
+        {
+            "type": "object",
+            "properties": {
                 "data": {
                     "allOf": [
                         {

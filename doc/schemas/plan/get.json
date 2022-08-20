@@ -6,8 +6,17 @@
         {
             "type": "object",
             "properties": {
+                "statusCode": {
+                    "type": "number",
+                    "default": 200
+                }
+            }
+        },
+        {
+            "type": "object",
+            "properties": {
                 "data": {
-                    "$ref": "./other/plan.json"             
+                    "$ref": "./other/plan.json"
                 }
             }
         }
