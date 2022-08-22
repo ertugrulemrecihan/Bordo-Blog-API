@@ -6,6 +6,10 @@ const fileValidator = (rules) => (req, res, next) => {
     const uploadedFiles = req.files;
     const isLeastOneRequired = rules.some((rule) => rule?.required);
 
+    if (!isLeastOneRequired) {
+        return next();
+    }
+
     if (isLeastOneRequired && !uploadedFiles) {
         const message = rules.map((d) => d.field).join(', ');
         return next(
