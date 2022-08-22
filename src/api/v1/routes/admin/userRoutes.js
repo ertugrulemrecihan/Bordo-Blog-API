@@ -13,6 +13,22 @@ router
         controller.fetchAllForAdmin
     );
 router
+    .route('/get-all/sort')
+    .get(
+        authenticate,
+        authorization('Admin'),
+        paramsIdValidator,
+        controller.fetchAllUserSortByQuery
+    );
+router
+    .route('/get-by-limit')
+    .get(
+        authenticate,
+        authorization('Admin'),
+        paramsIdValidator,
+        controller.fetchUsersByLimit
+    );    
+router
     .route('/get/:id')
     .get(
         authenticate,

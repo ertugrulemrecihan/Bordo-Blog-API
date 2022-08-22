@@ -4,13 +4,20 @@ class BaseService {
         this.populate = populate;
     }
 
-    #getFinalQuery(query, { sortQuery, limit, populate, select, session }) {
+    #getFinalQuery(
+        query,
+        { sortQuery, limit, skip, populate, select, session }
+    ) {
         if (sortQuery) {
             query.sort(sortQuery);
         }
 
         if (limit) {
             query.limit(limit);
+        }
+
+        if (skip) {
+            query.skip(skip);
         }
 
         if (populate || this.populate) {
@@ -28,12 +35,13 @@ class BaseService {
         return query;
     }
 
-    fetchAll(query, sortQuery, limit, populate, select, session) {
+    fetchAll(query, sortQuery, limit, skip, populate, select, session) {
         const dbQuery = this.model.find(query || {});
 
         const finalQuery = this.#getFinalQuery(dbQuery, {
             sortQuery,
             limit,
+            skip,
             populate,
             select,
             session,

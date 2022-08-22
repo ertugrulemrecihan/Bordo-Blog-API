@@ -693,6 +693,78 @@ class UserController extends BaseController {
             next
         );
     }
+
+    async fetchAllUserSortByQuery(req, res, next) {
+        const fieldName = req.query.fieldName;
+
+        const fields = Object.keys(userService.model.schema.paths);
+
+        const isExistField = userHelper.isValidSortField(fieldName, fields);
+
+        if (!isExistField) {
+            return next(
+                new ApiError(
+                    'The field specified in the query was not found',
+                    httpStatus.NOT_FOUND
+                )
+            );
+        }
+
+        const users = await userService.fetchAll(
+            {},
+            fieldName,
+            null,
+            null,
+            null,
+            '-password -salt'
+        );
+
+        ApiDataSuccess.send(
+            users,
+            'Users fetched successfully',
+            httpStatus.OK,
+            res,
+            next
+        );
+    }
+
+    async fetchUsersByLimit(req, res, next) {
+        const fieldName = req.query?.fieldName;
+
+        if (fieldName) {
+            const fields = Object.keys(userService.model.schema.paths);
+
+            const isExistField = userHelper.isValidSortField(fieldName, fields);
+
+            if (!isExistField) {
+                return next(
+                    new ApiError(
+                        'The field specified in the query was not found',
+                        httpStatus.NOT_FOUND
+                    )
+                );
+            }
+        }
+
+        const pageMaxItem = req.query.limit == null ? 10 : req.query.limit;
+        const pageNumber = req.query.page == null ? 1 : req.query.page;
+        const startPage = (pageNumber - 1) * pageMaxItem;
+
+        const users = await userService.fetchAll(
+            {},
+            fieldName,
+            pageMaxItem,
+            startPage
+        );
+
+        ApiDataSuccess.send(
+            users,
+            'Users fetched successfully',
+            httpStatus.OK,
+            res,
+            next
+        );
+    }
 }
 
 module.exports = new UserController();
