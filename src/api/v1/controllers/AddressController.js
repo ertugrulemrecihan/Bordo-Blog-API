@@ -35,7 +35,9 @@ class AddressController extends BaseController {
             );
         }
 
-        const cities = await cityService.fetchAll({ country: countryId });
+        const cities = await cityService.fetchAll({
+            query: { country: countryId },
+        });
 
         const response = {
             country: country,
@@ -60,7 +62,9 @@ class AddressController extends BaseController {
             return next(new ApiError('City not found', httpStatus.NOT_FOUND));
         }
 
-        const districts = await districtService.fetchAll({ city: cityId });
+        const districts = await districtService.fetchAll({
+            query: { city: cityId },
+        });
 
         const response = {
             city: city,
@@ -79,7 +83,9 @@ class AddressController extends BaseController {
     async getAllMyAddresses(req, res, next) {
         const userId = await req.user._id;
 
-        const addresses = await addressService.fetchAll({ user: userId });
+        const addresses = await addressService.fetchAll({
+            query: { user: userId },
+        });
 
         ApiDataSuccess.send(
             addresses,

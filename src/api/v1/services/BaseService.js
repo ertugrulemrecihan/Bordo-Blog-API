@@ -4,38 +4,7 @@ class BaseService {
         this.populate = populate;
     }
 
-    #getFinalQuery(
-        query,
-        { sortQuery, limit, skip, populate, select, session }
-    ) {
-        if (sortQuery) {
-            query.sort(sortQuery);
-        }
-
-        if (limit) {
-            query.limit(limit);
-        }
-
-        if (skip) {
-            query.skip(skip);
-        }
-
-        if (populate || this.populate) {
-            query.populate(populate || this.populate);
-        }
-
-        if (select) {
-            query.select(select);
-        }
-
-        if (session) {
-            query.session(session);
-        }
-
-        return query;
-    }
-
-    fetchAll(query, sortQuery, limit, skip, populate, select, session) {
+    fetchAll({ query, sortQuery, limit, skip, populate, select, session } = {}){
         const dbQuery = this.model.find(query || {});
 
         const finalQuery = this.#getFinalQuery(dbQuery, {
@@ -50,7 +19,7 @@ class BaseService {
         return finalQuery.exec();
     }
 
-    fetchOneById(id, populate, select, session) {
+    fetchOneById(id, { populate, select, session } = {}) {
         const dbQuery = this.model.findById(id);
 
         const finalQuery = this.#getFinalQuery(dbQuery, {
@@ -62,7 +31,7 @@ class BaseService {
         return finalQuery.exec();
     }
 
-    fetchOneByQuery(query, populate, select, session) {
+    fetchOneByQuery(query, { populate, select, session } = {}) {
         const dbQuery = this.model.findOne(query);
 
         const finalQuery = this.#getFinalQuery(dbQuery, {
@@ -130,6 +99,37 @@ class BaseService {
         });
 
         return finalQuery.exec();
+    }
+
+    #getFinalQuery(
+        query,
+        { sortQuery, limit, skip, populate, select, session }
+    ) {
+        if (sortQuery) {
+            query.sort(sortQuery);
+        }
+
+        if (limit) {
+            query.limit(limit);
+        }
+
+        if (skip) {
+            query.skip(skip);
+        }
+
+        if (populate || this.populate) {
+            query.populate(populate || this.populate);
+        }
+
+        if (select) {
+            query.select(select);
+        }
+
+        if (session) {
+            query.session(session);
+        }
+
+        return query;
     }
 }
 

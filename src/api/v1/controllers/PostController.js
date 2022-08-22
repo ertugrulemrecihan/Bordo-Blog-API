@@ -19,7 +19,9 @@ class PostController extends BaseController {
     }
 
     async fetchAllMyPosts(req, res, next) {
-        const posts = await postService.fetchAll({ writer: req.user._id });
+        const posts = await postService.fetchAll({
+            query: { writer: req.user._id },
+        });
 
         const postsStatistics = statisticHelper.postStatistics(posts);
 
@@ -126,6 +128,7 @@ class PostController extends BaseController {
     };
 
     async fetchAllPreviews(req, res, next) {
+        // ! FIXME - BaseService bu desteği artık sağlıyor
         const response = await postService.fetchAllBySelect([
             '-content',
             '-images',
@@ -549,7 +552,7 @@ class PostController extends BaseController {
             );
         }
 
-        const posts = await postService.fetchAll({}, '-likes');
+        const posts = await postService.fetchAll({ sortQuery: '-likes' });
 
         const postWithCount = posts.splice(0, count);
 
@@ -574,7 +577,7 @@ class PostController extends BaseController {
             );
         }
 
-        const posts = await postService.fetchAll({}, '-viewers');
+        const posts = await postService.fetchAll({ sortQuery: '-viewers' });
 
         const postWithCount = posts.splice(0, count);
 
@@ -606,7 +609,7 @@ class PostController extends BaseController {
             );
         }
 
-        const posts = await postService.fetchAll({}, fieldName);
+        const posts = await postService.fetchAll({ sortQuery: fieldName });
 
         ApiDataSuccess.send(
             posts,
@@ -642,12 +645,11 @@ class PostController extends BaseController {
         const pageNumber = req.query.page == null ? 1 : req.query.page;
         const startPage = (pageNumber - 1) * pageMaxItem;
 
-        const posts = await postService.fetchAll(
-            {},
-            fieldName,
-            pageMaxItem,
-            startPage
-        );
+        const posts = await postService.fetchAll({
+            sortQuery: fieldName,
+            limit: pageMaxItem,
+            skip: startPage,
+        });
 
         ApiDataSuccess.send(
             posts,

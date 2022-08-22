@@ -28,7 +28,7 @@ class BaseController {
     };
 
     fetchAllByQuery = async (req, res, next) => {
-        const response = await this.service.fetchAll(req.query);
+        const response = await this.service.fetchAll({ query: req.query });
 
         ApiDataSuccess.send(
             response,

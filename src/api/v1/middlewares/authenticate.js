@@ -19,22 +19,24 @@ const authenticate = async (req, res, next) => {
         {
             token: token,
         },
-        [
-            {
-                path: 'user',
-                select: '-password -salt',
-                populate: [
-                    {
-                        path: 'roles',
-                        select: 'name',
-                    },
-                    {
-                        path: 'plan',
-                        select: 'name right_to_view',
-                    },
-                ],
-            },
-        ]
+        {
+            populate: [
+                {
+                    path: 'user',
+                    select: '-password -salt',
+                    populate: [
+                        {
+                            path: 'roles',
+                            select: 'name',
+                        },
+                        {
+                            path: 'plan',
+                            select: 'name right_to_view',
+                        },
+                    ],
+                },
+            ],
+        }
     );
 
     if (!currentAccessToken || currentAccessToken.token != token) {

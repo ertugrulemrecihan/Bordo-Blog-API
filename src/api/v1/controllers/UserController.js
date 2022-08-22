@@ -475,22 +475,24 @@ class UserController extends BaseController {
     }
 
     async fetchAllForAdmin(req, res, next) {
-        const posts = await postService.fetchAll({}, null, null, null, [
-            {
-                path: 'writer',
-                select: '-password -salt',
-                populate: [
-                    {
-                        path: 'roles',
-                        select: 'name',
-                    },
-                    {
-                        path: 'plan',
-                        select: 'name right_to_view',
-                    },
-                ],
-            },
-        ]);
+        const posts = await postService.fetchAll({
+            populate: [
+                {
+                    path: 'writer',
+                    select: '-password -salt',
+                    populate: [
+                        {
+                            path: 'roles',
+                            select: 'name',
+                        },
+                        {
+                            path: 'plan',
+                            select: 'name right_to_view',
+                        },
+                    ],
+                },
+            ],
+        });
 
         // eslint-disable-next-line no-undef
         const users = [...new Set(posts.map((post) => post.writer))];
@@ -519,17 +521,17 @@ class UserController extends BaseController {
     }
 
     async fetchOneByParamsIdForAdmin(req, res, next) {
-        const user = await service.fetchOneById(
-            req.params.id,
-            null,
-            '-password -salt'
-        );
+        const user = await service.fetchOneById(req.params.id, {
+            select: '-password -salt',
+        });
 
         if (!user) {
             return next(new ApiError('User not found', httpStatus.NOT_FOUND));
         }
 
-        const userPosts = await postService.fetchAll({ writer: user._id });
+        const userPosts = await postService.fetchAll({
+            query: { writer: user._id },
+        });
 
         const postStatistics = statisticHelper.postStatistics(userPosts);
 
@@ -751,14 +753,10 @@ class UserController extends BaseController {
             );
         }
 
-        const users = await userService.fetchAll(
-            {},
-            fieldName,
-            null,
-            null,
-            null,
-            '-password -salt'
-        );
+        const users = await userService.fetchAll({
+            sortQuery: fieldName,
+            select: '-password -salt',
+        });
 
         ApiDataSuccess.send(
             users,
@@ -794,12 +792,11 @@ class UserController extends BaseController {
         const pageNumber = req.query.page == null ? 1 : req.query.page;
         const startPage = (pageNumber - 1) * pageMaxItem;
 
-        const users = await userService.fetchAll(
-            {},
-            fieldName,
-            pageMaxItem,
-            startPage
-        );
+        const users = await userService.fetchAll({
+            sortQuery: fieldName,
+            limit: pageMaxItem,
+            skip: startPage,
+        });
 
         ApiDataSuccess.send(
             users,

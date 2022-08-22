@@ -58,7 +58,7 @@ class TagController extends BaseController {
             );
         }
 
-        const tags = await tagService.fetchAll({}, '-post_count');
+        const tags = await tagService.fetchAll({ sortQuery: '-post_count' });
         const totalUsageCount = tags.reduce(
             (partialSum, tag) => partialSum + tag.post_count,
             0
@@ -100,7 +100,7 @@ class TagController extends BaseController {
             );
         }
 
-        const tags = await tagService.fetchAll({}, fieldName);
+        const tags = await tagService.fetchAll({ sortQuery: fieldName });
 
         ApiDataSuccess.send(
             tags,
@@ -136,12 +136,11 @@ class TagController extends BaseController {
         const pageNumber = req.query.page == null ? 1 : req.query.page;
         const startPage = (pageNumber - 1) * pageMaxItem;
 
-        const tags = await tagService.fetchAll(
-            {},
-            fieldName,
-            pageMaxItem,
-            startPage
-        );
+        const tags = await tagService.fetchAll({
+            sortQuery: fieldName,
+            limit: pageMaxItem,
+            skip: startPage,
+        });
 
         ApiDataSuccess.send(
             tags,
