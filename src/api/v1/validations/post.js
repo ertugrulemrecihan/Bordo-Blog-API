@@ -6,13 +6,13 @@ const createValidation = Joi.object({
     content: Joi.string().required().min(120),
     tags: Joi.array().items(Joi.string().required().length(24)),
     cover_image: Joi.allow(),
-    content_images: Joi.allow(),
 });
 
 const updateValidation = Joi.object({
     title: Joi.string().min(10).max(200),
     description: Joi.string().min(10).max(375),
     content: Joi.string().min(120),
+    cover_image: Joi.allow(),
 });
 
 const addComment = Joi.object({
