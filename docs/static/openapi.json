@@ -181,7 +181,8 @@
                                 "last_login": {
                                   "title": "User Last Login",
                                   "description": "User Last Login",
-                                  "type": "string"
+                                  "type": "string",
+                                  "format": "date-time"
                                 }
                               }
                             },
@@ -635,7 +636,8 @@
                                 "last_login": {
                                   "title": "User Last Login",
                                   "description": "User Last Login",
-                                  "type": "string"
+                                  "type": "string",
+                                  "format": "date-time"
                                 }
                               }
                             },
