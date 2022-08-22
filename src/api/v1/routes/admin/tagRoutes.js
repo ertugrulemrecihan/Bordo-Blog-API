@@ -2,6 +2,7 @@ const express = require('express');
 const router = express.Router();
 const controller = require('../../controllers/TagController');
 const authenticate = require('../../middlewares/authenticate');
+const authorization = require('../../middlewares/authorization');
 const authorize = require('../../middlewares/authorization');
 const bodyValidator = require('../../middlewares/bodyValidator');
 const paramIdValidator = require('../../middlewares/paramsIdValidator');
@@ -24,6 +25,20 @@ router
         bodyValidator(schemas.updateValidation),
         controller.updateByParamsId
     );
+router
+    .route('/get-all/sort')
+    .get(
+        authenticate,
+        authorization('Admin'),
+        controller.fetchAllTagsSortByQuery
+    );
+router
+    .route('/get-by-limit')
+    .get(
+        authenticate,
+        authorization('Admin'),
+        controller.fetchTagsByLimit
+    );     
 router
     .route('/delete/:id')
     .delete(
