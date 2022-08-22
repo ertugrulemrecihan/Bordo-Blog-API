@@ -101,20 +101,9 @@ const logOut = async (userId) => {
     return !deletedAccessTokenResult || !deletedRefreshTokenResult;
 };
 
-const isValidSortField = (fieldName, fields) => {
-    const isExistField = fields.some(
-        (f) =>
-            f.toLowerCase() == fieldName.toLowerCase() ||
-            `-${f.toLowerCase()}` == fieldName.toLowerCase()
-    );
-
-    return isExistField;
-};
-
 module.exports = {
     createResponse,
     deletePasswordAndSaltFields,
     createAndVerifyEmail,
     logOut,
-    isValidSortField,
 };

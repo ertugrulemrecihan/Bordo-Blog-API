@@ -8,6 +8,7 @@ const service = require('../services/UserService');
 const passwordHelper = require('../scripts/utils/password');
 const jwtHelper = require('../scripts/utils/jwt');
 const userHelper = require('../scripts/utils/user');
+const paginationHelper = require('../scripts/utils/pagination');
 const ApiDataSuccess = require('../responses/success/apiDataSuccess');
 const ApiError = require('../responses/error/apiError');
 const eventEmitter = require('../scripts/events/eventEmitter');
@@ -699,7 +700,10 @@ class UserController extends BaseController {
 
         const fields = Object.keys(userService.model.schema.paths);
 
-        const isExistField = userHelper.isValidSortField(fieldName, fields);
+        const isExistField = paginationHelper.isValidSortField(
+            fieldName,
+            fields
+        );
 
         if (!isExistField) {
             return next(
@@ -734,7 +738,10 @@ class UserController extends BaseController {
         if (fieldName) {
             const fields = Object.keys(userService.model.schema.paths);
 
-            const isExistField = userHelper.isValidSortField(fieldName, fields);
+            const isExistField = paginationHelper.isValidSortField(
+                fieldName,
+                fields
+            );
 
             if (!isExistField) {
                 return next(
