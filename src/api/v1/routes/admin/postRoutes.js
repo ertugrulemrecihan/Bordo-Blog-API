@@ -21,7 +21,7 @@ router
     .get(
         authenticate,
         authorization('Admin'),
-        controller.fetchAllPostSortByQuery
+        controller.fetchAllPostsSortByQuery
     );
 router
     .route('/get-by-limit')

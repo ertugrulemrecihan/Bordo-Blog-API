@@ -579,7 +579,7 @@ class PostController extends BaseController {
         );
     }
 
-    async fetchAllPostSortByQuery(req, res, next) {
+    async fetchAllPostsSortByQuery(req, res, next) {
         const fieldName = req.query.fieldName;
 
         const fields = Object.keys(postService.model.schema.paths);
