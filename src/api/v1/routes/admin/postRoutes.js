@@ -17,6 +17,20 @@ router
         controller.fetchOneByParamsId
     );
 router
+    .route('/get-all/sort')
+    .get(
+        authenticate,
+        authorization('Admin'),
+        controller.fetchAllPostSortByQuery
+    );
+router
+    .route('/get-by-limit')
+    .get(
+        authenticate,
+        authorization('Admin'),
+        controller.fetchPostsByLimit
+    );     
+router
     .route('/delete/:id')
     .delete(
         authenticate,

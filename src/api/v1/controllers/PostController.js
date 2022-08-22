@@ -5,6 +5,7 @@ const mime = require('mime-types');
 const BaseController = require('./BaseController');
 const postService = require('../services/PostService');
 const tagService = require('../services/TagService');
+const paginationHelper = require('../scripts/utils/pagination');
 const ApiError = require('../responses/error/apiError');
 const ApiDataSuccess = require('../responses/success/apiDataSuccess');
 const httpStatus = require('http-status');
@@ -571,6 +572,77 @@ class PostController extends BaseController {
 
         ApiDataSuccess.send(
             postWithCount,
+            'Posts fetched successfully',
+            httpStatus.OK,
+            res,
+            next
+        );
+    }
+
+    async fetchAllPostSortByQuery(req, res, next) {
+        const fieldName = req.query.fieldName;
+
+        const fields = Object.keys(postService.model.schema.paths);
+
+        const isExistField = paginationHelper.isValidSortField(
+            fieldName,
+            fields
+        );
+
+        if (!isExistField) {
+            return next(
+                new ApiError(
+                    'The field specified in the query was not found',
+                    httpStatus.NOT_FOUND
+                )
+            );
+        }
+
+        const posts = await postService.fetchAll({}, fieldName);
+
+        ApiDataSuccess.send(
+            posts,
+            'Posts fetched successfully',
+            httpStatus.OK,
+            res,
+            next
+        );
+    }
+
+    async fetchPostsByLimit(req, res, next) {
+        const fieldName = req.query?.fieldName;
+
+        if (fieldName) {
+            const fields = Object.keys(postService.model.schema.paths);
+
+            const isExistField = paginationHelper.isValidSortField(
+                fieldName,
+                fields
+            );
+
+            if (!isExistField) {
+                return next(
+                    new ApiError(
+                        'The field specified in the query was not found',
+                        httpStatus.NOT_FOUND
+                    )
+                );
+            }
+        }
+
+        const pageMaxItem = req.query.limit == null ? 10 : req.query.limit;
+        const pageNumber = req.query.page == null ? 1 : req.query.page;
+        const startPage = (pageNumber - 1) * pageMaxItem;
+
+        const posts = await postService.fetchAll(
+            {},
+            fieldName,
+            pageMaxItem,
+            startPage
+        );
+
+        ApiDataSuccess.send(
+            posts,
             'Posts fetched successfully',
             httpStatus.OK,
             res,
