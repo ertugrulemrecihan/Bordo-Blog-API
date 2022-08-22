@@ -1,0 +1,45 @@
+{
+    "summary": "",
+    "description": "",
+    "get": {
+        "tags": [
+            "Posts"
+        ],
+        "summary": "Post's get all by sort",
+        "description": "Post's get all by sort",
+        "operationId": "posts.get-all-by-sort",
+        "security": [
+            {
+                "bearerAuth": []
+            }
+        ],
+        "parameters": [
+            {
+                "name": "fieldName",
+                "in": "query",
+                "description": "Post field name for sorting",
+                "required": true,
+                "schema": {
+                    "type": "string"
+                }
+            }
+        ],
+        "responses": {
+            "200": {
+                "$ref": "../../responses/post/get-all-sort.json"
+            },
+            "400": {
+                "$ref": "../../responses/api-responses/400.json"
+            },
+            "401": {
+                "$ref": "../../responses/api-responses/401.json"
+            },
+            "403": {
+                "$ref": "../../responses/api-responses/403.json"
+            },
+            "404": {
+                "$ref": "../../responses/api-responses/404.json"
+            }
+        }
+    }
+}

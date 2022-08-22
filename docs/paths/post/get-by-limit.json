@@ -1,0 +1,57 @@
+{
+    "summary": "",
+    "description": "",
+    "get": {
+        "tags": [
+            "Posts"
+        ],
+        "summary": "Post's get all by sort",
+        "description": "Post's get all by sort",
+        "operationId": "posts.get-by-limit",
+        "security": [
+            {
+                "bearerAuth": []
+            }
+        ],
+        "parameters": [
+            {
+                "name": "limit",
+                "in": "query",
+                "description": "Maximum post",
+                "required": true,
+                "schema": {
+                    "type": "string"
+                }
+            },
+            {
+                "name": "page",
+                "in": "query",
+                "description": "Page number",
+                "type": "string"
+            },
+            {
+                "name": "fieldName",
+                "in": "query",
+                "description": "Post's field name for sorting",
+                "type": "string"
+            }
+        ],
+        "responses": {
+            "200": {
+                "$ref": "../../responses/post/get-by-limit.json"
+            },
+            "400": {
+                "$ref": "../../responses/api-responses/400.json"
+            },
+            "401": {
+                "$ref": "../../responses/api-responses/401.json"
+            },
+            "403": {
+                "$ref": "../../responses/api-responses/403.json"
+            },
+            "404": {
+                "$ref": "../../responses/api-responses/404.json"
+            }
+        }
+    }
+}

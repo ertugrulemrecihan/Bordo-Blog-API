@@ -2903,6 +2903,206 @@
         }
       }
     },
+    "/posts/get-all/my/sort": {
+      "summary": "",
+      "description": "",
+      "get": {
+        "tags": [
+          "Posts"
+        ],
+        "summary": "Post's get all by sort",
+        "description": "Post's get all by sort",
+        "operationId": "posts.get-all-by-sort",
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "fieldName",
+            "in": "query",
+            "description": "Post field name for sorting",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "allOf": [
+                    {
+                      "$ref": "#/paths/~1users~1logout/post/responses/200/content/application~1json/schema/allOf/0"
+                    },
+                    {
+                      "type": "object",
+                      "properties": {
+                        "statusCode": {
+                          "type": "number",
+                          "default": 200
+                        }
+                      }
+                    },
+                    {
+                      "type": "object",
+                      "properties": {
+                        "data": {
+                          "allOf": [
+                            {
+                              "type": "object",
+                              "properties": {
+                                "posts": {
+                                  "type": "array",
+                                  "items": {
+                                    "$ref": "#/paths/~1posts~1get-all~1my/get/responses/200/content/application~1json/schema/allOf/2/properties/data/allOf/0/properties/posts/items"
+                                  }
+                                }
+                              }
+                            },
+                            {
+                              "type": "object",
+                              "properties": {
+                                "statistics": {
+                                  "$ref": "#/paths/~1posts~1get-all~1my/get/responses/200/content/application~1json/schema/allOf/2/properties/data/allOf/1/properties/statistics"
+                                }
+                              }
+                            }
+                          ]
+                        }
+                      }
+                    }
+                  ]
+                }
+              }
+            }
+          },
+          "400": {
+            "$ref": "#/paths/~1users~1login/post/responses/400"
+          },
+          "401": {
+            "$ref": "#/paths/~1tags~1get-all/get/responses/401"
+          },
+          "403": {
+            "$ref": "#/paths/~1tags~1get-all/get/responses/403"
+          },
+          "404": {
+            "$ref": "#/paths/~1users~1login/post/responses/404"
+          }
+        }
+      }
+    },
+    "/posts/get-by-limit": {
+      "summary": "",
+      "description": "",
+      "get": {
+        "tags": [
+          "Posts"
+        ],
+        "summary": "Post's get all by sort",
+        "description": "Post's get all by sort",
+        "operationId": "posts.get-by-limit",
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "limit",
+            "in": "query",
+            "description": "Maximum post",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "page",
+            "in": "query",
+            "description": "Page number",
+            "type": "string"
+          },
+          {
+            "name": "fieldName",
+            "in": "query",
+            "description": "Post's field name for sorting",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "allOf": [
+                    {
+                      "$ref": "#/paths/~1users~1logout/post/responses/200/content/application~1json/schema/allOf/0"
+                    },
+                    {
+                      "type": "object",
+                      "properties": {
+                        "statusCode": {
+                          "type": "number",
+                          "default": 200
+                        }
+                      }
+                    },
+                    {
+                      "type": "object",
+                      "properties": {
+                        "data": {
+                          "allOf": [
+                            {
+                              "type": "object",
+                              "properties": {
+                                "posts": {
+                                  "type": "array",
+                                  "items": {
+                                    "$ref": "#/paths/~1posts~1get-all~1my/get/responses/200/content/application~1json/schema/allOf/2/properties/data/allOf/0/properties/posts/items"
+                                  }
+                                }
+                              }
+                            },
+                            {
+                              "type": "object",
+                              "properties": {
+                                "statistics": {
+                                  "$ref": "#/paths/~1posts~1get-all~1my/get/responses/200/content/application~1json/schema/allOf/2/properties/data/allOf/1/properties/statistics"
+                                }
+                              }
+                            }
+                          ]
+                        }
+                      }
+                    }
+                  ]
+                }
+              }
+            }
+          },
+          "400": {
+            "$ref": "#/paths/~1users~1login/post/responses/400"
+          },
+          "401": {
+            "$ref": "#/paths/~1tags~1get-all/get/responses/401"
+          },
+          "403": {
+            "$ref": "#/paths/~1tags~1get-all/get/responses/403"
+          },
+          "404": {
+            "$ref": "#/paths/~1users~1login/post/responses/404"
+          }
+        }
+      }
+    },
     "/posts/create": {
       "summary": "",
       "description": "",

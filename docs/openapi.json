@@ -140,6 +140,12 @@
         "/posts/get-all/most-viewed/{count}": {
             "$ref": "./paths/post/get-all-most-viewed-posts.json"
         },
+        "/posts/get-all/my/sort": {
+            "$ref": "./paths/post/get-all-sort.json"
+        },
+        "/posts/get-by-limit": {
+            "$ref": "./paths/post/get-by-limit.json"
+        },
         "/posts/create": {
             "$ref": "./paths/post/create-post.json"
         },
