@@ -1,0 +1,15 @@
+{
+    "allOf": [
+        {
+            "type": "object",
+            "properties": {
+                "user": {
+                    "$ref": "../user-for-admin.json"
+                }
+            }
+        },
+        {
+            "$ref": "./user-statistics.json"
+        }
+    ]
+}

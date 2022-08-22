@@ -18,7 +18,7 @@
                 "data": {
                     "type": "array",
                     "items": {
-                        "$ref": "../user-for-admin.json"
+                        "$ref": "../other/users-with-statistics.json"
                     }
                 }
             }

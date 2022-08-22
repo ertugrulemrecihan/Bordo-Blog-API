@@ -16,7 +16,7 @@
             "type": "object",
             "properties": {
                 "data": {
-                    "$ref": "../user-for-admin.json"
+                    "$ref": "../other/users-with-statistics.json"
                 }
             }
         }

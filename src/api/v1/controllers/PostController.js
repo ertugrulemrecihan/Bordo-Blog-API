@@ -11,6 +11,7 @@ const ApiDataSuccess = require('../responses/success/apiDataSuccess');
 const httpStatus = require('http-status');
 const ApiSuccess = require('../responses/success/apiSuccess');
 const commentService = require('../services/CommentService');
+const statisticHelper = require('../scripts/utils/statistics');
 
 class PostController extends BaseController {
     constructor() {
@@ -18,7 +19,14 @@ class PostController extends BaseController {
     }
 
     async fetchAllMyPosts(req, res, next) {
-        const response = await postService.fetchAll({ writer: req.user._id });
+        const posts = await postService.fetchAll({ writer: req.user._id });
+
+        const postsStatistics = statisticHelper.postStatistics(posts);
+
+        const response = {
+            posts,
+            statistics: postsStatistics,
+        };
 
         ApiDataSuccess.send(
             response,

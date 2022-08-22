@@ -5,6 +5,8 @@ const { v4: uuidv4 } = require('uuid');
 const mime = require('mime-types');
 const httpStatus = require('http-status');
 const service = require('../services/UserService');
+const postService = require('../services/PostService');
+const statisticHelper = require('../scripts/utils/statistics');
 const passwordHelper = require('../scripts/utils/password');
 const jwtHelper = require('../scripts/utils/jwt');
 const userHelper = require('../scripts/utils/user');
@@ -473,16 +475,42 @@ class UserController extends BaseController {
     }
 
     async fetchAllForAdmin(req, res, next) {
-        const response = await service.fetchAll();
+        const posts = await postService.fetchAll({}, null, null, null, [
+            {
+                path: 'writer',
+                select: '-password -salt',
+                populate: [
+                    {
+                        path: 'roles',
+                        select: 'name',
+                    },
+                    {
+                        path: 'plan',
+                        select: 'name right_to_view',
+                    },
+                ],
+            },
+        ]);
 
-        // ! FIXME - BaseService'e metod bazlı popülasyon
-        // ! eklendiğinde burayı güncelle
-        const result = response.map((u) =>
-            userHelper.deletePasswordAndSaltFields(u)
-        );
+        // eslint-disable-next-line no-undef
+        const users = [...new Set(posts.map((post) => post.writer))];
+
+        const response = [];
+
+        for (const user of users) {
+            const userPosts = posts.filter(
+                (post) => post.writer._id.toString() == user._id.toString()
+            );
+
+            const postStatistics = statisticHelper.postStatistics(userPosts);
+            response.push({
+                user,
+                ...postStatistics,
+            });
+        }
 
         ApiDataSuccess.send(
-            result,
+            response,
             'Users fetched successfully',
             httpStatus.OK,
             res,
@@ -491,18 +519,27 @@ class UserController extends BaseController {
     }
 
     async fetchOneByParamsIdForAdmin(req, res, next) {
-        const response = await service.fetchOneById(req.params.id);
+        const user = await service.fetchOneById(
+            req.params.id,
+            null,
+            '-password -salt'
+        );
 
-        if (!response) {
+        if (!user) {
             return next(new ApiError('User not found', httpStatus.NOT_FOUND));
         }
 
-        // ! FIXME - BaseService'e metod bazlı popülasyon
-        // ! eklendiğinde burayı güncelle
-        const result = userHelper.deletePasswordAndSaltFields(response);
+        const userPosts = await postService.fetchAll({ writer: user._id });
+
+        const postStatistics = statisticHelper.postStatistics(userPosts);
+
+        const response = {
+            user,
+            ...postStatistics,
+        };
 
         ApiDataSuccess.send(
-            result,
+            response,
             'User fetched successfully',
             httpStatus.OK,
             res,

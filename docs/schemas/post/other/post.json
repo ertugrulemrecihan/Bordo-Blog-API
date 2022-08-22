@@ -1,0 +1,45 @@
+{
+    "allOf": [
+        {
+            "$ref": "../../../responses/api-responses/data-response-base.json"
+        },
+        {
+            "$ref": "./writer.json"
+        },
+        {
+            "$ref": "./title-description.json"
+        },
+        {
+            "type": "object",
+            "properties": {
+                "cover_image": {
+                    "title": "Post cover image",
+                    "description": "Post cover image",
+                    "type": "string"
+                }
+            }
+        },
+        {
+            "type": "object",
+            "properties": {
+                "content": {
+                    "title": "Post content",
+                    "description": "Post content",
+                    "type": "string"
+                }
+            }
+        },
+        {
+            "$ref": "./viewers.json"
+        },
+        {
+            "$ref": "./likes.json"
+        },
+        {
+            "$ref": "./comments.json"
+        },
+        {
+            "$ref": "./tags.json"
+        }
+    ]
+}

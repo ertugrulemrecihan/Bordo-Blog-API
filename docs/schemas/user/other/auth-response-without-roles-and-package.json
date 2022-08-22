@@ -13,6 +13,17 @@
         {
             "type": "object",
             "properties": {
+                "last_login": {
+                    "title": "User Last Login",
+                    "description": "User Last Login",
+                    "type": "string",
+                    "format": "date-time"
+                }
+            }
+        },
+        {
+            "type": "object",
+            "properties": {
                 "email": {
                     "title": "User email address",
                     "description": "User email address",

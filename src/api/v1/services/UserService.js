@@ -8,6 +8,7 @@ class UserService extends BaseService {
                 path: 'roles',
                 select: 'name',
             },
+            { path: 'plan', select: 'name right_to_view' },
         ]);
     }
 }

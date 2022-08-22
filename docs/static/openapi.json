@@ -156,6 +156,17 @@
                                 {
                                   "type": "object",
                                   "properties": {
+                                    "last_login": {
+                                      "title": "User Last Login",
+                                      "description": "User Last Login",
+                                      "type": "string",
+                                      "format": "date-time"
+                                    }
+                                  }
+                                },
+                                {
+                                  "type": "object",
+                                  "properties": {
                                     "email": {
                                       "title": "User email address",
                                       "description": "User email address",
@@ -1000,7 +1011,7 @@
                         "data": {
                           "type": "array",
                           "items": {
-                            "$ref": "#/paths/~1admin~1users~1get~1%7BuserId%7D/get/responses/200/content/application~1json/schema/allOf/2/properties/data"
+                            "$ref": "#/paths/~1admin~1users~1delete~1%7BuserId%7D/delete/responses/200/content/application~1json/schema/allOf/2/properties/data"
                           }
                         }
                       }
@@ -1077,7 +1088,7 @@
                         "data": {
                           "type": "array",
                           "items": {
-                            "$ref": "#/paths/~1admin~1users~1get~1%7BuserId%7D/get/responses/200/content/application~1json/schema/allOf/2/properties/data"
+                            "$ref": "#/paths/~1admin~1users~1delete~1%7BuserId%7D/delete/responses/200/content/application~1json/schema/allOf/2/properties/data"
                           }
                         }
                       }
@@ -1155,13 +1166,15 @@
                         "data": {
                           "allOf": [
                             {
-                              "$ref": "#/paths/~1users~1profile/get/responses/200/content/application~1json/schema/allOf/2/properties/data/allOf/0"
+                              "type": "object",
+                              "properties": {
+                                "user": {
+                                  "$ref": "#/paths/~1admin~1users~1delete~1%7BuserId%7D/delete/responses/200/content/application~1json/schema/allOf/2/properties/data"
+                                }
+                              }
                             },
                             {
-                              "$ref": "#/paths/~1users~1profile/get/responses/200/content/application~1json/schema/allOf/2/properties/data/allOf/2"
-                            },
-                            {
-                              "$ref": "#/paths/~1users~1profile/get/responses/200/content/application~1json/schema/allOf/2/properties/data/allOf/3"
+                              "$ref": "#/paths/~1posts~1get-all~1my/get/responses/200/content/application~1json/schema/allOf/2/properties/data/allOf/1/properties/statistics"
                             }
                           ]
                         }
@@ -1231,7 +1244,17 @@
                       "type": "object",
                       "properties": {
                         "data": {
-                          "$ref": "#/paths/~1admin~1users~1get~1%7BuserId%7D/get/responses/200/content/application~1json/schema/allOf/2/properties/data"
+                          "allOf": [
+                            {
+                              "$ref": "#/paths/~1users~1profile/get/responses/200/content/application~1json/schema/allOf/2/properties/data/allOf/0"
+                            },
+                            {
+                              "$ref": "#/paths/~1users~1profile/get/responses/200/content/application~1json/schema/allOf/2/properties/data/allOf/2"
+                            },
+                            {
+                              "$ref": "#/paths/~1users~1profile/get/responses/200/content/application~1json/schema/allOf/2/properties/data/allOf/3"
+                            }
+                          ]
                         }
                       }
                     }
@@ -2097,52 +2120,106 @@
                       "type": "object",
                       "properties": {
                         "data": {
-                          "type": "array",
-                          "items": {
-                            "allOf": [
-                              {
-                                "$ref": "#/paths/~1posts~1create/post/responses/201/content/application~1json/schema/allOf/2/properties/data/allOf/0"
-                              },
-                              {
-                                "$ref": "#/paths/~1posts~1create/post/responses/201/content/application~1json/schema/allOf/2/properties/data/allOf/1"
-                              },
-                              {
-                                "$ref": "#/components/requestBodies/create-post/content/multipart~1form-data/schema/allOf/1/allOf/0"
-                              },
-                              {
-                                "type": "object",
-                                "properties": {
-                                  "cover_image": {
-                                    "title": "Post cover image",
-                                    "description": "Post cover image",
-                                    "type": "string"
+                          "allOf": [
+                            {
+                              "type": "object",
+                              "properties": {
+                                "posts": {
+                                  "type": "array",
+                                  "items": {
+                                    "allOf": [
+                                      {
+                                        "$ref": "#/paths/~1posts~1create/post/responses/201/content/application~1json/schema/allOf/2/properties/data/allOf/0"
+                                      },
+                                      {
+                                        "$ref": "#/paths/~1posts~1create/post/responses/201/content/application~1json/schema/allOf/2/properties/data/allOf/1"
+                                      },
+                                      {
+                                        "$ref": "#/components/requestBodies/create-post/content/multipart~1form-data/schema/allOf/1/allOf/0"
+                                      },
+                                      {
+                                        "type": "object",
+                                        "properties": {
+                                          "cover_image": {
+                                            "title": "Post cover image",
+                                            "description": "Post cover image",
+                                            "type": "string"
+                                          }
+                                        }
+                                      },
+                                      {
+                                        "type": "object",
+                                        "properties": {
+                                          "content": {
+                                            "title": "Post content",
+                                            "description": "Post content",
+                                            "type": "string"
+                                          }
+                                        }
+                                      },
+                                      {
+                                        "$ref": "#/paths/~1posts~1get~1my~1%7BpostId%7D/get/responses/200/content/application~1json/schema/allOf/2/properties/data/allOf/5"
+                                      },
+                                      {
+                                        "$ref": "#/paths/~1posts~1get~1my~1%7BpostId%7D/get/responses/200/content/application~1json/schema/allOf/2/properties/data/allOf/6"
+                                      },
+                                      {
+                                        "$ref": "#/paths/~1posts~1get~1my~1%7BpostId%7D/get/responses/200/content/application~1json/schema/allOf/2/properties/data/allOf/7"
+                                      },
+                                      {
+                                        "$ref": "#/paths/~1posts~1create/post/responses/201/content/application~1json/schema/allOf/2/properties/data/allOf/8"
+                                      }
+                                    ]
                                   }
                                 }
-                              },
-                              {
-                                "type": "object",
-                                "properties": {
-                                  "content": {
-                                    "title": "Post content",
-                                    "description": "Post content",
-                                    "type": "string"
-                                  }
-                                }
-                              },
-                              {
-                                "$ref": "#/paths/~1posts~1get~1my~1%7BpostId%7D/get/responses/200/content/application~1json/schema/allOf/2/properties/data/allOf/5"
-                              },
-                              {
-                                "$ref": "#/paths/~1posts~1get~1my~1%7BpostId%7D/get/responses/200/content/application~1json/schema/allOf/2/properties/data/allOf/6"
-                              },
-                              {
-                                "$ref": "#/paths/~1posts~1get~1my~1%7BpostId%7D/get/responses/200/content/application~1json/schema/allOf/2/properties/data/allOf/7"
-                              },
-                              {
-                                "$ref": "#/paths/~1posts~1create/post/responses/201/content/application~1json/schema/allOf/2/properties/data/allOf/8"
                               }
-                            ]
-                          }
+                            },
+                            {
+                              "type": "object",
+                              "properties": {
+                                "statistics": {
+                                  "allOf": [
+                                    {
+                                      "type": "object",
+                                      "properties": {
+                                        "postCount": {
+                                          "title": "User's total number of posts",
+                                          "description": "User's total number of posts",
+                                          "type": "number",
+                                          "min": 0,
+                                          "example": 7
+                                        }
+                                      }
+                                    },
+                                    {
+                                      "type": "object",
+                                      "properties": {
+                                        "likesCount": {
+                                          "title": "Total likes of the user's posts",
+                                          "description": "Total likes of the user's posts",
+                                          "type": "number",
+                                          "min": 0,
+                                          "example": 16
+                                        }
+                                      }
+                                    },
+                                    {
+                                      "type": "object",
+                                      "properties": {
+                                        "viewsCount": {
+                                          "title": "Total views of the user's posts",
+                                          "description": "Total views of the user's posts",
+                                          "type": "number",
+                                          "min": 0,
+                                          "example": 47
+                                        }
+                                      }
+                                    }
+                                  ]
+                                }
+                              }
+                            }
+                          ]
                         }
                       }
                     }
