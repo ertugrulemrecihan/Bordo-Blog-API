@@ -4,6 +4,7 @@ const controller = require('../../controllers/UserController');
 const authenticate = require('../../middlewares/authenticate');
 const authorization = require('../../middlewares/authorization');
 const paramsIdValidator = require('../../middlewares/paramsIdValidator');
+const queryValidator = require('../../middlewares/queryValidator');
 
 router
     .route('/get-all')
@@ -13,11 +14,16 @@ router
     .get(
         authenticate,
         authorization('Admin'),
+        queryValidator('fieldName'),
         controller.fetchAllUserSortByQuery
     );
 router
     .route('/get-by-limit')
-    .get(authenticate, authorization('Admin'), controller.fetchUsersByLimit);
+    .get(
+        authenticate,
+        authorization('Admin'),
+        controller.fetchUsersByLimit
+    );
 router
     .route('/get/:id')
     .get(

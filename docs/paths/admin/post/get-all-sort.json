@@ -2,9 +2,7 @@
     "summary": "",
     "description": "",
     "get": {
-        "tags": [
-            "Admins"
-        ],
+        "tags": ["Admins"],
         "summary": "Post's get all by sort",
         "description": "Post's get all by sort",
         "operationId": "posts.get-all-by-sort",
@@ -17,7 +15,7 @@
             {
                 "name": "fieldName",
                 "in": "query",
-                "description": "Post field name",
+                "description": "Post field name for sorting",
                 "required": true,
                 "type": "string"
             }

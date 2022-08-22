@@ -6,6 +6,7 @@ const authorization = require('../../middlewares/authorization');
 const authorize = require('../../middlewares/authorization');
 const bodyValidator = require('../../middlewares/bodyValidator');
 const paramIdValidator = require('../../middlewares/paramsIdValidator');
+const queryValidator = require('../../middlewares/queryValidator');
 const schemas = require('../../validations/tag');
 
 router
@@ -30,6 +31,7 @@ router
     .get(
         authenticate,
         authorization('Admin'),
+        queryValidator('fieldName'),
         controller.fetchAllTagsSortByQuery
     );
 router

@@ -4,6 +4,7 @@ const controller = require('../../controllers/PostController');
 const authenticate = require('../../middlewares/authenticate');
 const authorization = require('../../middlewares/authorization');
 const paramIdValidator = require('../../middlewares/paramsIdValidator');
+const queryValidator = require('../../middlewares/queryValidator');
 
 router
     .route('/get-all')
@@ -21,6 +22,7 @@ router
     .get(
         authenticate,
         authorization('Admin'),
+        queryValidator('fieldName'),
         controller.fetchAllPostsSortByQuery
     );
 router

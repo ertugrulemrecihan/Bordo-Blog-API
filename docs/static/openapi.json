@@ -979,7 +979,7 @@
           {
             "name": "fieldName",
             "in": "query",
-            "description": "User's field names",
+            "description": "User's field name for sorting",
             "required": true,
             "type": "string"
           }
@@ -1057,7 +1057,7 @@
           {
             "name": "fieldName",
             "in": "query",
-            "description": "User's field names",
+            "description": "User's field name for sorting",
             "type": "string"
           }
         ],
@@ -1675,7 +1675,7 @@
           {
             "name": "fieldName",
             "in": "query",
-            "description": "Tag field name",
+            "description": "Tag field name for sorting",
             "required": true,
             "type": "string"
           }
@@ -1763,7 +1763,7 @@
           {
             "name": "fieldName",
             "in": "query",
-            "description": "Tag field name",
+            "description": "Tag field name for sorting",
             "type": "string"
           }
         ],
@@ -4281,7 +4281,7 @@
           {
             "name": "fieldName",
             "in": "query",
-            "description": "Post field name",
+            "description": "Post field name for sorting",
             "required": true,
             "type": "string"
           }
@@ -4411,7 +4411,7 @@
           {
             "name": "fieldName",
             "in": "query",
-            "description": "Post field name",
+            "description": "Post field name for sorting",
             "type": "string"
           }
         ],

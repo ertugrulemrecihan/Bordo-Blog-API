@@ -2,9 +2,7 @@
     "summary": "",
     "description": "",
     "get": {
-        "tags": [
-            "Admins"
-        ],
+        "tags": ["Admins"],
         "summary": "User's get all by sort",
         "description": "User's get all by sort",
         "operationId": "users.get-all-by-sort",
@@ -17,7 +15,7 @@
             {
                 "name": "fieldName",
                 "in": "query",
-                "description": "User's field names",
+                "description": "User's field name for sorting",
                 "required": true,
                 "type": "string"
             }

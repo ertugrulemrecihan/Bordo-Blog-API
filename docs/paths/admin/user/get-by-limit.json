@@ -2,9 +2,7 @@
     "summary": "",
     "description": "",
     "get": {
-        "tags": [
-            "Admins"
-        ],
+        "tags": ["Admins"],
         "summary": "User's get by limit",
         "description": "User's get by limit",
         "operationId": "users.get-by-limit",
@@ -30,7 +28,7 @@
             {
                 "name": "fieldName",
                 "in": "query",
-                "description": "User's field names",
+                "description": "User's field name for sorting",
                 "type": "string"
             }
         ],
