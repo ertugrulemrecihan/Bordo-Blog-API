@@ -13,11 +13,13 @@
         ],
         "parameters": [
             {
-                "name": "fieldName",
                 "in": "query",
-                "description": "User's field name for sorting",
+                "name": "fieldName",
+                "schema": {
+                    "type": "string"
+                },
                 "required": true,
-                "type": "string"
+                "description": "User's field name for sorting"
             }
         ],
         "responses": {

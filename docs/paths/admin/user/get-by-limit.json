@@ -17,19 +17,25 @@
                 "in": "query",
                 "description": "Maximum user",
                 "required": true,
-                "type": "string"
+                "schema": {
+                    "type": "string"
+                }
             },
             {
                 "name": "page",
                 "in": "query",
                 "description": "Page number",
-                "type": "string"
+                "schema": {
+                    "type": "string"
+                }
             },
             {
                 "name": "fieldName",
                 "in": "query",
                 "description": "User's field name for sorting",
-                "type": "string"
+                "schema": {
+                    "type": "string"
+                }
             }
         ],
         "responses": {
