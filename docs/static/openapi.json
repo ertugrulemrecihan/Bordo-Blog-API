@@ -955,6 +955,149 @@
         }
       }
     },
+    "/admin/users/get-all/sort": {
+      "summary": "",
+      "description": "",
+      "get": {
+        "tags": [
+          "Admins"
+        ],
+        "summary": "User's get all by sort",
+        "description": "User's get all by sort",
+        "operationId": "users.get-all-by-sort",
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "fieldName",
+            "in": "query",
+            "description": "User's field names",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Unexpected error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "allOf": [
+                    {
+                      "$ref": "#/paths/~1users~1logout/post/responses/200/content/application~1json/schema/allOf/0"
+                    },
+                    {
+                      "type": "object",
+                      "properties": {
+                        "data": {
+                          "type": "array",
+                          "items": {
+                            "$ref": "#/paths/~1admin~1users~1get~1%7BuserId%7D/get/responses/200/content/application~1json/schema/allOf/2/properties/data"
+                          }
+                        }
+                      }
+                    }
+                  ]
+                }
+              }
+            }
+          },
+          "400": {
+            "$ref": "#/paths/~1users~1login/post/responses/400"
+          },
+          "401": {
+            "$ref": "#/paths/~1tags~1get-all/get/responses/401"
+          },
+          "403": {
+            "$ref": "#/paths/~1tags~1get-all/get/responses/403"
+          },
+          "404": {
+            "$ref": "#/paths/~1users~1login/post/responses/404"
+          }
+        }
+      }
+    },
+    "/admin/users/get-by-limit": {
+      "summary": "",
+      "description": "",
+      "get": {
+        "tags": [
+          "Admins"
+        ],
+        "summary": "User's get by limit",
+        "description": "User's get by limit",
+        "operationId": "users.get-by-limit",
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "limit",
+            "in": "query",
+            "description": "Maximum user",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "page",
+            "in": "query",
+            "description": "Page number",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "fieldName",
+            "in": "query",
+            "description": "User's field names",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Unexpected error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "allOf": [
+                    {
+                      "$ref": "#/paths/~1users~1logout/post/responses/200/content/application~1json/schema/allOf/0"
+                    },
+                    {
+                      "type": "object",
+                      "properties": {
+                        "data": {
+                          "type": "array",
+                          "items": {
+                            "$ref": "#/paths/~1admin~1users~1get~1%7BuserId%7D/get/responses/200/content/application~1json/schema/allOf/2/properties/data"
+                          }
+                        }
+                      }
+                    }
+                  ]
+                }
+              }
+            }
+          },
+          "400": {
+            "$ref": "#/paths/~1users~1login/post/responses/400"
+          },
+          "401": {
+            "$ref": "#/paths/~1tags~1get-all/get/responses/401"
+          },
+          "403": {
+            "$ref": "#/paths/~1tags~1get-all/get/responses/403"
+          },
+          "404": {
+            "$ref": "#/paths/~1users~1login/post/responses/404"
+          }
+        }
+      }
+    },
     "/admin/users/get/{userId}": {
       "summary": "",
       "description": "",

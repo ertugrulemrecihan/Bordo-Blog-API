@@ -80,6 +80,12 @@
         "/admin/users/get-all": {
             "$ref": "./paths/admin/user/get-all.json"
         },
+        "/admin/users/get-all/sort": {
+            "$ref": "./paths/admin/user/get-all-sort.json"
+        },
+        "/admin/users/get-by-limit": {
+            "$ref": "./paths/admin/user/get-by-limit.json"
+        },
         "/admin/users/get/{userId}": {
             "$ref": "./paths/admin/user/get.json"
         },

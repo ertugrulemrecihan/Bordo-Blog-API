@@ -1,0 +1,56 @@
+{
+    "summary": "",
+    "description": "",
+    "get": {
+        "tags": [
+            "Admins"
+        ],
+        "summary": "User's get by limit",
+        "description": "User's get by limit",
+        "operationId": "users.get-by-limit",
+        "security": [
+            {
+                "bearerAuth": []
+            }
+        ],
+        "parameters": [
+            {
+                "name": "limit",
+                "in": "query",
+                "description": "Maximum user",
+                "required": true,
+                "type": "string"
+            },
+            {
+                "name": "page",
+                "in": "query",
+                "description": "Page number",
+                "required": true,
+                "type": "string"
+            },
+            {
+                "name": "fieldName",
+                "in": "query",
+                "description": "User's field names",
+                "type": "string"
+            }
+        ],
+        "responses": {
+            "200": {
+                "$ref": "../../../responses/admin/user/get-by-limit.json"
+            },
+            "400": {
+                "$ref": "../../../responses/api-responses/400.json"
+            },
+            "401": {
+                "$ref": "../../../responses/api-responses/401.json"
+            },
+            "403": {
+                "$ref": "../../../responses/api-responses/403.json"
+            },
+            "404": {
+                "$ref": "../../../responses/api-responses/404.json"
+            }
+        }
+    }
+}
