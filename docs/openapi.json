@@ -167,6 +167,12 @@
         "/admin/posts/get/{postId}": {
             "$ref": "./paths/admin/post/get-post-by-id.json"
         },
+        "/admin/posts/get-all/sort": {
+            "$ref": "./paths/admin/post/get-all-sort.json"
+        },
+        "/admin/posts/get-by-limit": {
+            "$ref": "./paths/admin/post/get-by-limit.json"
+        },
         "/admin/posts/delete/{postId}": {
             "$ref": "./paths/admin/post/delete-users-post.json"
         },
