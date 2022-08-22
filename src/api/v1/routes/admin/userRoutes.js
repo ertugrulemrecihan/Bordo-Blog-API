@@ -7,27 +7,17 @@ const paramsIdValidator = require('../../middlewares/paramsIdValidator');
 
 router
     .route('/get-all')
-    .get(
-        authenticate,
-        authorization('Admin'),
-        controller.fetchAllForAdmin
-    );
+    .get(authenticate, authorization('Admin'), controller.fetchAllForAdmin);
 router
     .route('/get-all/sort')
     .get(
         authenticate,
         authorization('Admin'),
-        paramsIdValidator,
         controller.fetchAllUserSortByQuery
     );
 router
     .route('/get-by-limit')
-    .get(
-        authenticate,
-        authorization('Admin'),
-        paramsIdValidator,
-        controller.fetchUsersByLimit
-    );    
+    .get(authenticate, authorization('Admin'), controller.fetchUsersByLimit);
 router
     .route('/get/:id')
     .get(
