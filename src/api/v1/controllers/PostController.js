@@ -659,6 +659,80 @@ class PostController extends BaseController {
             next
         );
     }
+
+    async fetchMyPostsSortByQuery(req, res, next) {
+        const fieldName = req.query.fieldName;
+
+        const fields = Object.keys(postService.model.schema.paths);
+
+        const isExistField = paginationHelper.isValidSortField(
+            fieldName,
+            fields
+        );
+
+        if (!isExistField) {
+            return next(
+                new ApiError(
+                    'The field specified in the query was not found',
+                    httpStatus.NOT_FOUND
+                )
+            );
+        }
+
+        const posts = await postService.fetchAll({
+            query: { writer: req.user._id },
+            sortQuery: fieldName,
+        });
+
+        ApiDataSuccess.send(
+            posts,
+            'Posts fetched successfully',
+            httpStatus.OK,
+            res,
+            next
+        );
+    }
+
+    async fetchMyPostsByLimit(req, res, next) {
+        const fieldName = req.query?.fieldName;
+
+        if (fieldName) {
+            const fields = Object.keys(postService.model.schema.paths);
+
+            const isExistField = paginationHelper.isValidSortField(
+                fieldName,
+                fields
+            );
+
+            if (!isExistField) {
+                return next(
+                    new ApiError(
+                        'The field specified in the query was not found',
+                        httpStatus.NOT_FOUND
+                    )
+                );
+            }
+        }
+
+        const pageMaxItem = req.query.limit == null ? 10 : req.query.limit;
+        const pageNumber = req.query.page == null ? 1 : req.query.page;
+        const startPage = (pageNumber - 1) * pageMaxItem;
+
+        const posts = await postService.fetchAll({
+            query: { writer: req.user._id },
+            sortQuery: fieldName,
+            limit: pageMaxItem,
+            skip: startPage,
+        });
+
+        ApiDataSuccess.send(
+            posts,
+            'Posts fetched successfully',
+            httpStatus.OK,
+            res,
+            next
+        );
+    }
 }
 
 module.exports = new PostController();

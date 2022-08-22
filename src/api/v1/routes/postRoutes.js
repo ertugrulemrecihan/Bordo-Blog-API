@@ -5,6 +5,7 @@ const authenticate = require('../middlewares/authenticate');
 const bodyValidator = require('../middlewares/bodyValidator');
 const fileValidator = require('../middlewares/fileValidator');
 const paramIdValidator = require('../middlewares/paramsIdValidator');
+const queryValidator = require('../middlewares/queryValidator');
 const schemas = require('../validations/post');
 
 // TODO: Kullanıcının aboneliği varsa getir
@@ -24,6 +25,19 @@ router
 router
     .route('/get/preview/:id')
     .get(paramIdValidator, controller.fetchOnePreview);
+router
+    .route('/get-all/my/sort')
+    .get(
+        authenticate,
+        queryValidator('fieldName'),
+        controller.fetchMyPostsSortByQuery
+    );
+router
+    .route('/get-by-limit')
+    .get(
+        authenticate,
+        controller.fetchMyPostsByLimit
+    );      
 router
     .route('/create')
     .post(
