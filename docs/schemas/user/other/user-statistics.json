@@ -1,40 +1,45 @@
 {
-    "allOf": [
-        {
-            "type": "object",
-            "properties": {
-                "postCount": {
-                    "title": "User's total number of posts",
-                    "description": "User's total number of posts",
-                    "type": "number",
-                    "min": 0,
-                    "example": 7
+    "type": "object",
+    "properties":{
+        "statistics": {
+            "allOf": [
+                {
+                    "type": "object",
+                    "properties": {
+                        "postCount": {
+                            "title": "User's total number of posts",
+                            "description": "User's total number of posts",
+                            "type": "number",
+                            "min": 0,
+                            "example": 7
+                        }
+                    }
+                },
+                {
+                    "type": "object",
+                    "properties": {
+                        "likesCount": {
+                            "title": "Total likes of the user's posts",
+                            "description": "Total likes of the user's posts",
+                            "type": "number",
+                            "min": 0,
+                            "example": 16
+                        }
+                    }
+                },
+                {
+                    "type": "object",
+                    "properties": {
+                        "viewsCount": {
+                            "title": "Total views of the user's posts",
+                            "description": "Total views of the user's posts",
+                            "type": "number",
+                            "min": 0,
+                            "example": 47
+                        }
+                    }
                 }
-            }
-        },
-        {
-            "type": "object",
-            "properties": {
-                "likesCount": {
-                    "title": "Total likes of the user's posts",
-                    "description": "Total likes of the user's posts",
-                    "type": "number",
-                    "min": 0,
-                    "example": 16
-                }
-            }
-        },
-        {
-            "type": "object",
-            "properties": {
-                "viewsCount": {
-                    "title": "Total views of the user's posts",
-                    "description": "Total views of the user's posts",
-                    "type": "number",
-                    "min": 0,
-                    "example": 47
-                }
-            }
+            ]
         }
-    ]
+    }
 }

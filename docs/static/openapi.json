@@ -1182,7 +1182,7 @@
                               }
                             },
                             {
-                              "$ref": "#/paths/~1posts~1get-all~1my/get/responses/200/content/application~1json/schema/allOf/2/properties/data/allOf/1/properties/statistics"
+                              "$ref": "#/paths/~1posts~1get-all~1my/get/responses/200/content/application~1json/schema/allOf/2/properties/data/allOf/1"
                             }
                           ]
                         }
@@ -2969,7 +2969,7 @@
                               "type": "object",
                               "properties": {
                                 "statistics": {
-                                  "$ref": "#/paths/~1posts~1get-all~1my/get/responses/200/content/application~1json/schema/allOf/2/properties/data/allOf/1/properties/statistics"
+                                  "$ref": "#/paths/~1posts~1get-all~1my/get/responses/200/content/application~1json/schema/allOf/2/properties/data/allOf/1"
                                 }
                               }
                             }
@@ -3075,7 +3075,7 @@
                               "type": "object",
                               "properties": {
                                 "statistics": {
-                                  "$ref": "#/paths/~1posts~1get-all~1my/get/responses/200/content/application~1json/schema/allOf/2/properties/data/allOf/1/properties/statistics"
+                                  "$ref": "#/paths/~1posts~1get-all~1my/get/responses/200/content/application~1json/schema/allOf/2/properties/data/allOf/1"
                                 }
                               }
                             }

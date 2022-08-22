@@ -505,9 +505,10 @@ class UserController extends BaseController {
             );
 
             const postStatistics = statisticHelper.postStatistics(userPosts);
+
             response.push({
                 user,
-                ...postStatistics,
+                statistics: postStatistics
             });
         }
 
@@ -537,7 +538,7 @@ class UserController extends BaseController {
 
         const response = {
             user,
-            ...postStatistics,
+            statistics: postStatistics,
         };
 
         ApiDataSuccess.send(
