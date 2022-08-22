@@ -8,6 +8,9 @@
             "$ref": "./first-name-last-name.json"
         },
         {
+            "$ref": "./avatar.json"
+        },
+        {
             "type": "object",
             "properties": {
                 "email": {
