@@ -10,14 +10,7 @@
             "$ref": "./title-description.json"
         },
         {
-            "type": "object",
-            "properties": {
-                "cover_image": {
-                    "title": "Post cover image",
-                    "description": "Post cover image",
-                    "type": "string"
-                }
-            }
+            "$ref": "./cover_image.json"
         },
         {
             "type": "object",

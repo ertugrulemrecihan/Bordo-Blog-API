@@ -20,8 +20,18 @@ const UserSchema = Mongoose.Schema(
             unique: true,
         },
         avatar: {
-            type: String,
-            default: '/uploads/avatars/default-avatar.jpg',
+            file_id: {
+                type: String,
+                default: '-1',
+            },
+            url: {
+                type: String,
+                default: null,
+            },
+            name: {
+                type: String,
+                default: null,
+            },
         },
         last_login: {
             type: Date,

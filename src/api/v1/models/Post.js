@@ -20,8 +20,18 @@ const PostSchema = mongoose.Schema(
             required: true,
         },
         cover_image: {
-            type: String,
-            required: true,
+            file_id: {
+                type: String,
+                default: '-1',
+            },
+            url: {
+                type: String,
+                default: null,
+            },
+            name: {
+                type: String,
+                default: null,
+            },
         },
         content: {
             type: String,

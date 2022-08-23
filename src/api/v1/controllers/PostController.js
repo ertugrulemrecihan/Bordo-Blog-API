@@ -1,9 +1,6 @@
-const path = require('path');
-const { v4: uuidv4 } = require('uuid');
-const fs = require('fs');
-const mime = require('mime-types');
 const BaseController = require('./BaseController');
 const postService = require('../services/PostService');
+const googleDriveHelper = require('../scripts/utils/googleDrive');
 const tagService = require('../services/TagService');
 const paginationHelper = require('../scripts/utils/pagination');
 const ApiError = require('../responses/error/apiError');
@@ -84,28 +81,18 @@ class PostController extends BaseController {
             }
         }
 
-        const newCoverImageName = `${uuidv4()}.${mime.extension(
-            coverImage.mimetype
-        )}`;
-
-        const coverImagePath = path.join(
-            __dirname,
-            '../../../../public/uploads/post/cover_image/',
-            newCoverImageName
+        const uploadResponse = await googleDriveHelper.uploadFile(
+            coverImage,
+            process.env.GOOGLE_POSTS_COVER_IMAGES_FOLDER
         );
 
-        const errorMessage =
-            'An error was encountered while uploading the file';
+        const coverImageBody = {
+            url: uploadResponse.imageUrl,
+            file_id: uploadResponse.id,
+            name: uploadResponse.name,
+        };
 
-        coverImage.mv(coverImagePath, function (err) {
-            if (err) {
-                return next(
-                    new ApiError(errorMessage, httpStatus.INTERNAL_SERVER_ERROR)
-                );
-            }
-        });
-
-        req.body.cover_image = `/uploads/post/cover_image/${newCoverImageName}`;
+        req.body.cover_image = coverImageBody;
 
         const response = await postService.create(req.body);
 
@@ -205,42 +192,22 @@ class PostController extends BaseController {
         const coverImage = req.files?.cover_image;
 
         if (coverImage) {
-            const currentCoverImagePath = path.join(
-                __dirname,
-                '../../../../public',
-                post.cover_image
-            );
-
-            if (fs.existsSync(currentCoverImagePath)) {
-                fs.unlinkSync(currentCoverImagePath);
+            if (post.cover_image.url) {
+                await googleDriveHelper.deleteFile(post.cover_image.file_id);
             }
 
-            const newCoverImageName = `${uuidv4()}.${mime.extension(
-                coverImage.mimetype
-            )}`;
-
-            const coverImagePath = path.join(
-                __dirname,
-                '../../../../public/uploads/post/cover_image/',
-                newCoverImageName
+            const uploadResponse = await googleDriveHelper.uploadFile(
+                coverImage,
+                process.env.GOOGLE_POSTS_COVER_IMAGES_FOLDER
             );
 
-            const errorMessage =
-                'An error was encountered while uploading the file';
+            const coverImageBody = {
+                url: uploadResponse.imageUrl,
+                file_id: uploadResponse.id,
+                name: uploadResponse.name,
+            };
 
-            coverImage.mv(coverImagePath, function (err) {
-                if (err) {
-                    return next(
-                        new ApiError(
-                            errorMessage,
-                            httpStatus.INTERNAL_SERVER_ERROR
-                        )
-                    );
-                }
-            });
-
-            // eslint-disable-next-line max-len
-            req.body.cover_image = `/uploads/post/cover_image/${newCoverImageName}`;
+            req.body.cover_image = coverImageBody;
         }
 
         const result = await postService.updateById(post._id, req.body);

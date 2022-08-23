@@ -25,6 +25,7 @@
     "dotenv": "^16.0.1",
     "express": "^4.18.1",
     "express-fileupload": "^1.4.0",
+    "googleapis": "^107.0.0",
     "http-status": "^1.5.2",
     "iyzipay": "^2.0.48",
     "joi": "^17.6.0",

@@ -1,0 +1,28 @@
+{
+    "type": "object",
+    "properties": {
+        "cover_image": {
+            "type": "object",
+            "properties": {
+                "file_id": {
+                    "title": "ID of post cover image file",
+                    "description": "ID of post cover image file. \n\n NOTE: if the cover_image has not been uploaded, this value is \"-1\"",
+                    "type": "string",
+                    "example": "26uKh1lnasQQWdssWPdDbb41tHhsaEPa"
+                },
+                "url": {
+                    "title": "Url of post cover image file",
+                    "description": "Url of post cover image file. \n\n NOTE: if the cover_image has not been uploaded, this value is null",
+                    "type": "string",
+                    "example": "https://example.com/"
+                },
+                "name": {
+                    "title": "Name of post cover image file",
+                    "description": "Name of post cover image file. \n\n NOTE: if the cover_image has not been uploaded, this value is null",
+                    "type": "string",
+                    "example": "f694dd5f-8a6c-440a-83bd-1a550d3960a0.png"
+                }
+            }
+        }
+    }
+}

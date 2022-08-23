@@ -1,8 +1,4 @@
 /* eslint-disable max-len */
-const path = require('path');
-const fs = require('fs');
-const { v4: uuidv4 } = require('uuid');
-const mime = require('mime-types');
 const httpStatus = require('http-status');
 const service = require('../services/UserService');
 const postService = require('../services/PostService');
@@ -10,6 +6,7 @@ const statisticHelper = require('../scripts/utils/statistics');
 const passwordHelper = require('../scripts/utils/password');
 const jwtHelper = require('../scripts/utils/jwt');
 const userHelper = require('../scripts/utils/user');
+const googleDriveHelper = require('../scripts/utils/googleDrive');
 const paginationHelper = require('../scripts/utils/pagination');
 const ApiDataSuccess = require('../responses/success/apiDataSuccess');
 const ApiError = require('../responses/error/apiError');
@@ -557,57 +554,27 @@ class UserController extends BaseController {
     async uploadAvatar(req, res, next) {
         try {
             const avatar = req.files.avatar;
+            const user = req.user;
 
-            const newFileName = `${uuidv4()}.${mime.extension(
-                avatar.mimetype
-            )}`;
-
-            const uploadPath = path.join(
-                __dirname,
-                '../../../../public/uploads/avatars/',
-                newFileName
-            );
-
-            avatar.mv(uploadPath, function (err) {
-                if (err) {
-                    return next(
-                        new ApiError(
-                            'An error was encountered while uploading the file',
-                            httpStatus.INTERNAL_SERVER_ERROR
-                        )
-                    );
-                }
-            });
-
-            if (req.user.avatar != '/uploads/avatars/default-avatar.jpg') {
-                const currentPath = path.join(
-                    __dirname,
-                    '../../../../public',
-                    req.user.avatar
-                );
-                if (fs.existsSync(currentPath)) {
-                    fs.unlinkSync(currentPath);
-                }
+            if (user.avatar.url) {
+                await googleDriveHelper.deleteFile(user.avatar.file_id);
             }
 
+            const uploadResponse = await googleDriveHelper.uploadFile(
+                avatar,
+                process.env.GOOGLE_AVATARS_FOLDER
+            );
+
             const updatedUser = await userService.updateById(req.user._id, {
-                avatar: '/uploads/avatars/' + newFileName,
+                avatar: {
+                    url: uploadResponse.imageUrl,
+                    file_id: uploadResponse.id,
+                    name: uploadResponse.name,
+                },
             });
 
             const newUpdatedUser =
                 userHelper.deletePasswordAndSaltFields(updatedUser);
-
-            if (!newUpdatedUser) {
-                if (fs.existsSync(uploadPath)) {
-                    fs.unlinkSync(uploadPath);
-                }
-                return next(
-                    new ApiError(
-                        'An error was encountered while uploading the file',
-                        httpStatus.INTERNAL_SERVER_ERROR
-                    )
-                );
-            }
 
             ApiDataSuccess.send(
                 newUpdatedUser,

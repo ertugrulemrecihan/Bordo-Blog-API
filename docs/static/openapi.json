@@ -638,9 +638,27 @@
                               "type": "object",
                               "properties": {
                                 "avatar": {
-                                  "title": "User Profile Picture",
-                                  "description": "User Profile Picture",
-                                  "type": "string"
+                                  "type": "object",
+                                  "properties": {
+                                    "file_id": {
+                                      "title": "ID of user profile image file",
+                                      "description": "ID of user profile image file. \n\n NOTE: if the avatar has not been uploaded, this value is \"-1\"",
+                                      "type": "string",
+                                      "example": "26uKh1lnasQQWdssWPdDbb41tHhsaEPa"
+                                    },
+                                    "url": {
+                                      "title": "Url of user profile image file",
+                                      "description": "Url of user profile image file. \n\n NOTE: if the avatar has not been uploaded, this value is null",
+                                      "type": "string",
+                                      "example": "https://example.com/"
+                                    },
+                                    "name": {
+                                      "title": "Name of user profile image file",
+                                      "description": "Name of user profile image file. \n\n NOTE: if the avatar has not been uploaded, this value is null",
+                                      "type": "string",
+                                      "example": "f694dd5f-8a6c-440a-83bd-1a550d3960a0.png"
+                                    }
+                                  }
                                 }
                               }
                             },
@@ -2178,14 +2196,7 @@
                                         "$ref": "#/components/requestBodies/create-post/content/multipart~1form-data/schema/allOf/1/allOf/0"
                                       },
                                       {
-                                        "type": "object",
-                                        "properties": {
-                                          "cover_image": {
-                                            "title": "Post cover image",
-                                            "description": "Post cover image",
-                                            "type": "string"
-                                          }
-                                        }
+                                        "$ref": "#/paths/~1posts~1create/post/responses/201/content/application~1json/schema/allOf/2/properties/data/allOf/3"
                                       },
                                       {
                                         "type": "object",
@@ -2342,14 +2353,7 @@
                               "$ref": "#/components/requestBodies/create-post/content/multipart~1form-data/schema/allOf/1/allOf/0"
                             },
                             {
-                              "type": "object",
-                              "properties": {
-                                "cover_image": {
-                                  "title": "Post cover image",
-                                  "description": "Post cover image",
-                                  "type": "string"
-                                }
-                              }
+                              "$ref": "#/paths/~1posts~1create/post/responses/201/content/application~1json/schema/allOf/2/properties/data/allOf/3"
                             },
                             {
                               "type": "object",
@@ -2583,14 +2587,7 @@
                                 "$ref": "#/components/requestBodies/create-post/content/multipart~1form-data/schema/allOf/1/allOf/0"
                               },
                               {
-                                "type": "object",
-                                "properties": {
-                                  "cover_image": {
-                                    "title": "Post cover image",
-                                    "description": "Post cover image",
-                                    "type": "string"
-                                  }
-                                }
+                                "$ref": "#/paths/~1posts~1create/post/responses/201/content/application~1json/schema/allOf/2/properties/data/allOf/3"
                               },
                               {
                                 "$ref": "#/paths/~1posts~1get~1my~1%7BpostId%7D/get/responses/200/content/application~1json/schema/allOf/2/properties/data/allOf/5"
@@ -2664,14 +2661,7 @@
                               "$ref": "#/components/requestBodies/create-post/content/multipart~1form-data/schema/allOf/1/allOf/0"
                             },
                             {
-                              "type": "object",
-                              "properties": {
-                                "cover_image": {
-                                  "title": "Post cover image",
-                                  "description": "Post cover image",
-                                  "type": "string"
-                                }
-                              }
+                              "$ref": "#/paths/~1posts~1create/post/responses/201/content/application~1json/schema/allOf/2/properties/data/allOf/3"
                             },
                             {
                               "$ref": "#/paths/~1posts~1get~1my~1%7BpostId%7D/get/responses/200/content/application~1json/schema/allOf/2/properties/data/allOf/5"
@@ -2764,14 +2754,7 @@
                                 "$ref": "#/components/requestBodies/create-post/content/multipart~1form-data/schema/allOf/1/allOf/0"
                               },
                               {
-                                "type": "object",
-                                "properties": {
-                                  "cover_image": {
-                                    "title": "Post cover image",
-                                    "description": "Post cover image",
-                                    "type": "string"
-                                  }
-                                }
+                                "$ref": "#/paths/~1posts~1create/post/responses/201/content/application~1json/schema/allOf/2/properties/data/allOf/3"
                               },
                               {
                                 "type": "object",
@@ -2874,14 +2857,7 @@
                                 "$ref": "#/components/requestBodies/create-post/content/multipart~1form-data/schema/allOf/1/allOf/0"
                               },
                               {
-                                "type": "object",
-                                "properties": {
-                                  "cover_image": {
-                                    "title": "Post cover image",
-                                    "description": "Post cover image",
-                                    "type": "string"
-                                  }
-                                }
+                                "$ref": "#/paths/~1posts~1create/post/responses/201/content/application~1json/schema/allOf/2/properties/data/allOf/3"
                               },
                               {
                                 "type": "object",
@@ -3211,10 +3187,27 @@
                                       "format": "email"
                                     },
                                     "avatar": {
-                                      "title": "Writer avatar",
-                                      "description": "Writer avatar",
-                                      "type": "string",
-                                      "example": "/uploads/aaaa-bbbb-cccc.jpg"
+                                      "type": "object",
+                                      "properties": {
+                                        "file_id": {
+                                          "title": "ID of user profile image file",
+                                          "description": "ID of user profile image file. \n\n NOTE: if the avatar has not been uploaded, this value is \"-1\"",
+                                          "type": "string",
+                                          "example": "26uKh1lnasQQWdssWPdDbb41tHhsaEPa"
+                                        },
+                                        "url": {
+                                          "title": "Url of user profile image file",
+                                          "description": "Url of user profile image file. \n\n NOTE: if the avatar has not been uploaded, this value is null",
+                                          "type": "string",
+                                          "example": "https://example.com/"
+                                        },
+                                        "name": {
+                                          "title": "Name of user profile image file",
+                                          "description": "Name of user profile image file. \n\n NOTE: if the avatar has not been uploaded, this value is null",
+                                          "type": "string",
+                                          "example": "f694dd5f-8a6c-440a-83bd-1a550d3960a0.png"
+                                        }
+                                      }
                                     }
                                   }
                                 }
@@ -3227,9 +3220,27 @@
                               "type": "object",
                               "properties": {
                                 "cover_image": {
-                                  "title": "Post cover image",
-                                  "description": "Post cover image",
-                                  "type": "string"
+                                  "type": "object",
+                                  "properties": {
+                                    "file_id": {
+                                      "title": "ID of post cover image file",
+                                      "description": "ID of post cover image file. \n\n NOTE: if the cover_image has not been uploaded, this value is \"-1\"",
+                                      "type": "string",
+                                      "example": "26uKh1lnasQQWdssWPdDbb41tHhsaEPa"
+                                    },
+                                    "url": {
+                                      "title": "Url of post cover image file",
+                                      "description": "Url of post cover image file. \n\n NOTE: if the cover_image has not been uploaded, this value is null",
+                                      "type": "string",
+                                      "example": "https://example.com/"
+                                    },
+                                    "name": {
+                                      "title": "Name of post cover image file",
+                                      "description": "Name of post cover image file. \n\n NOTE: if the cover_image has not been uploaded, this value is null",
+                                      "type": "string",
+                                      "example": "f694dd5f-8a6c-440a-83bd-1a550d3960a0.png"
+                                    }
+                                  }
                                 }
                               }
                             },
@@ -3384,14 +3395,7 @@
                               "$ref": "#/components/requestBodies/create-post/content/multipart~1form-data/schema/allOf/1/allOf/0"
                             },
                             {
-                              "type": "object",
-                              "properties": {
-                                "cover_image": {
-                                  "title": "Post cover image",
-                                  "description": "Post cover image",
-                                  "type": "string"
-                                }
-                              }
+                              "$ref": "#/paths/~1posts~1create/post/responses/201/content/application~1json/schema/allOf/2/properties/data/allOf/3"
                             },
                             {
                               "type": "object",
@@ -3500,14 +3504,7 @@
                               "$ref": "#/components/requestBodies/create-post/content/multipart~1form-data/schema/allOf/1/allOf/0"
                             },
                             {
-                              "type": "object",
-                              "properties": {
-                                "cover_image": {
-                                  "title": "Post cover image",
-                                  "description": "Post cover image",
-                                  "type": "string"
-                                }
-                              }
+                              "$ref": "#/paths/~1posts~1create/post/responses/201/content/application~1json/schema/allOf/2/properties/data/allOf/3"
                             },
                             {
                               "type": "object",
@@ -3639,14 +3636,7 @@
                               "$ref": "#/components/requestBodies/create-post/content/multipart~1form-data/schema/allOf/1/allOf/0"
                             },
                             {
-                              "type": "object",
-                              "properties": {
-                                "cover_image": {
-                                  "title": "Post cover image",
-                                  "description": "Post cover image",
-                                  "type": "string"
-                                }
-                              }
+                              "$ref": "#/paths/~1posts~1create/post/responses/201/content/application~1json/schema/allOf/2/properties/data/allOf/3"
                             },
                             {
                               "type": "object",
@@ -3778,14 +3768,7 @@
                               "$ref": "#/components/requestBodies/create-post/content/multipart~1form-data/schema/allOf/1/allOf/0"
                             },
                             {
-                              "type": "object",
-                              "properties": {
-                                "cover_image": {
-                                  "title": "Post cover image",
-                                  "description": "Post cover image",
-                                  "type": "string"
-                                }
-                              }
+                              "$ref": "#/paths/~1posts~1create/post/responses/201/content/application~1json/schema/allOf/2/properties/data/allOf/3"
                             },
                             {
                               "type": "object",
@@ -3958,14 +3941,7 @@
                               "$ref": "#/components/requestBodies/create-post/content/multipart~1form-data/schema/allOf/1/allOf/0"
                             },
                             {
-                              "type": "object",
-                              "properties": {
-                                "cover_image": {
-                                  "title": "Post cover image",
-                                  "description": "Post cover image",
-                                  "type": "string"
-                                }
-                              }
+                              "$ref": "#/paths/~1posts~1create/post/responses/201/content/application~1json/schema/allOf/2/properties/data/allOf/3"
                             },
                             {
                               "type": "object",
@@ -4160,14 +4136,7 @@
                               "$ref": "#/components/requestBodies/create-post/content/multipart~1form-data/schema/allOf/1/allOf/0"
                             },
                             {
-                              "type": "object",
-                              "properties": {
-                                "cover_image": {
-                                  "title": "Post cover image",
-                                  "description": "Post cover image",
-                                  "type": "string"
-                                }
-                              }
+                              "$ref": "#/paths/~1posts~1create/post/responses/201/content/application~1json/schema/allOf/2/properties/data/allOf/3"
                             },
                             {
                               "type": "object",
@@ -4299,14 +4268,7 @@
                               "$ref": "#/components/requestBodies/create-post/content/multipart~1form-data/schema/allOf/1/allOf/0"
                             },
                             {
-                              "type": "object",
-                              "properties": {
-                                "cover_image": {
-                                  "title": "Post cover image",
-                                  "description": "Post cover image",
-                                  "type": "string"
-                                }
-                              }
+                              "$ref": "#/paths/~1posts~1create/post/responses/201/content/application~1json/schema/allOf/2/properties/data/allOf/3"
                             },
                             {
                               "type": "object",
@@ -4487,14 +4449,7 @@
                               "$ref": "#/components/requestBodies/create-post/content/multipart~1form-data/schema/allOf/1/allOf/0"
                             },
                             {
-                              "type": "object",
-                              "properties": {
-                                "cover_image": {
-                                  "title": "Post cover image",
-                                  "description": "Post cover image",
-                                  "type": "string"
-                                }
-                              }
+                              "$ref": "#/paths/~1posts~1create/post/responses/201/content/application~1json/schema/allOf/2/properties/data/allOf/3"
                             },
                             {
                               "type": "object",
@@ -4788,14 +4743,7 @@
                               "$ref": "#/components/requestBodies/create-post/content/multipart~1form-data/schema/allOf/1/allOf/0"
                             },
                             {
-                              "type": "object",
-                              "properties": {
-                                "cover_image": {
-                                  "title": "Post cover image",
-                                  "description": "Post cover image",
-                                  "type": "string"
-                                }
-                              }
+                              "$ref": "#/paths/~1posts~1create/post/responses/201/content/application~1json/schema/allOf/2/properties/data/allOf/3"
                             },
                             {
                               "type": "object",

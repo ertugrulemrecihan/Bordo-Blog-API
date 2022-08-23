@@ -23,7 +23,7 @@ router
     .post(authenticate, controller.logOut);
 router
     .route('/upload-avatar')
-    .post(
+    .patch(
         authenticate,
         fileValidator([
             {
