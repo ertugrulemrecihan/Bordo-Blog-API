@@ -151,7 +151,7 @@
                                   "$ref": "#/components/requestBodies/register/content/application~1json/schema/allOf/0/allOf/0"
                                 },
                                 {
-                                  "$ref": "#/paths/~1users~1upload-avatar/post/responses/200/content/application~1json/schema/allOf/2/properties/data/allOf/3"
+                                  "$ref": "#/paths/~1users~1upload-avatar/patch/responses/200/content/application~1json/schema/allOf/2/properties/data/allOf/3"
                                 },
                                 {
                                   "type": "object",
@@ -564,7 +564,7 @@
     "/users/upload-avatar": {
       "summary": "",
       "description": "",
-      "post": {
+      "patch": {
         "tags": [
           "Users"
         ],

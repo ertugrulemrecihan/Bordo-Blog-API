@@ -1,10 +1,8 @@
 {
     "summary": "",
     "description": "",
-    "post": {
-        "tags": [
-            "Users"
-        ],
+    "patch": {
+        "tags": ["Users"],
         "summary": "Upload Avatar",
         "description": "Upload Avatar",
         "operationId": "users.upload-avatar",
