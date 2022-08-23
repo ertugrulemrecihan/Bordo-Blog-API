@@ -128,12 +128,9 @@ class PostController extends BaseController {
     };
 
     async fetchAllPreviews(req, res, next) {
-        // ! FIXME - BaseService bu desteği artık sağlıyor
-        const response = await postService.fetchAllBySelect([
-            '-content',
-            '-images',
-            '-comments',
-        ]);
+        const response = await postService.fetchAll({
+            select: ['-content', '-images', '-comments'],
+        });
 
         ApiDataSuccess.send(
             response,
@@ -147,11 +144,12 @@ class PostController extends BaseController {
     async fetchOnePreview(req, res, next) {
         const postId = req.params.id;
 
-        let response = await postService.fetchOneBySelect({ _id: postId }, [
-            '-content',
-            '-images',
-            '-comments',
-        ]);
+        let response = await postService.fetchOneByQuery(
+            { _id: postId },
+            {
+                select: ['-content', '-images', '-comments'],
+            }
+        );
 
         if (!response) {
             return next(new ApiError('Post not found', httpStatus.NOT_FOUND));
@@ -611,8 +609,15 @@ class PostController extends BaseController {
 
         const posts = await postService.fetchAll({ sortQuery: fieldName });
 
-        ApiDataSuccess.send(
+        const postStatistics = statisticHelper.postStatistics(posts);
+
+        const response = {
             posts,
+            statistics: postStatistics,
+        };
+
+        ApiDataSuccess.send(
+            response,
             'Posts fetched successfully',
             httpStatus.OK,
             res,
@@ -651,8 +656,15 @@ class PostController extends BaseController {
             skip: startPage,
         });
 
-        ApiDataSuccess.send(
+        const postStatistics = statisticHelper.postStatistics(posts);
+
+        const response = {
             posts,
+            statistics: postStatistics,
+        };
+
+        ApiDataSuccess.send(
+            response,
             'Posts fetched successfully',
             httpStatus.OK,
             res,
@@ -684,8 +696,15 @@ class PostController extends BaseController {
             sortQuery: fieldName,
         });
 
-        ApiDataSuccess.send(
+        const postsStatistics = statisticHelper.postStatistics(posts);
+
+        const response = {
             posts,
+            statistics: postsStatistics,
+        };
+
+        ApiDataSuccess.send(
+            response,
             'Posts fetched successfully',
             httpStatus.OK,
             res,
@@ -725,8 +744,34 @@ class PostController extends BaseController {
             skip: startPage,
         });
 
-        ApiDataSuccess.send(
+        const postStatistics = statisticHelper.postStatistics(posts);
+
+        const response = {
             posts,
+            statistics: postStatistics,
+        };
+
+        ApiDataSuccess.send(
+            response,
+            'Posts fetched successfully',
+            httpStatus.OK,
+            res,
+            next
+        );
+    }
+
+    async fetchAllForAdmin(req, res, next) {
+        const posts = await postService.fetchAll();
+
+        const postsStatistics = statisticHelper.postStatistics(posts);
+
+        const response = {
+            posts,
+            statistics: postsStatistics,
+        };
+
+        ApiDataSuccess.send(
+            response,
             'Posts fetched successfully',
             httpStatus.OK,
             res,

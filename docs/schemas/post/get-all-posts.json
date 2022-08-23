@@ -16,52 +16,22 @@
             "type": "object",
             "properties": {
                 "data": {
-                    "type": "array",
-                    "items": {
-                        "allOf": [
-                            {
-                                "$ref": "../../responses/api-responses/data-response-base.json"
-                            },
-                            {
-                                "$ref": "./other/writer.json"
-                            },
-                            {
-                                "$ref": "./other/title-description.json"
-                            },
-                            {
-                                "type": "object",
-                                "properties": {
-                                    "cover_image": {
-                                        "title": "Post cover image",
-                                        "description": "Post cover image",
-                                        "type": "string"
+                    "allOf": [
+                        {
+                            "type": "object",
+                            "properties": {
+                                "posts": {
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "./other/post.json"
                                     }
                                 }
-                            },
-                            {
-                                "type": "object",
-                                "properties": {
-                                    "content": {
-                                        "title": "Post content",
-                                        "description": "Post content",
-                                        "type": "string"
-                                    }
-                                }
-                            },
-                            {
-                                "$ref": "./other/viewers.json"
-                            },
-                            {
-                                "$ref": "./other/likes.json"
-                            },
-                            {
-                                "$ref": "./other/comments.json"
-                            },
-                            {
-                                "$ref": "./other/tags.json"
                             }
-                        ]
-                    }
+                        },
+                        {
+                            "$ref": "../user/other/user-statistics.json"
+                        }
+                    ]
                 }
             }
         }

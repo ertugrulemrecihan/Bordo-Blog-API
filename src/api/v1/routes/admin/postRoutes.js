@@ -8,7 +8,7 @@ const queryValidator = require('../../middlewares/queryValidator');
 
 router
     .route('/get-all')
-    .get(authenticate, authorization('Admin'), controller.fetchAll);
+    .get(authenticate, authorization('Admin'), controller.fetchAllForAdmin);
 router
     .route('/get/:id')
     .get(

@@ -29,12 +29,7 @@
                             }
                         },
                         {
-                            "type": "object",
-                            "properties": {
-                                "statistics": {
-                                    "$ref": "../user/other/user-statistics.json"
-                                }
-                            }
+                            "$ref": "../user/other/user-statistics.json"
                         }
                     ]
                 }

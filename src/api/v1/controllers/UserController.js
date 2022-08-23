@@ -475,27 +475,11 @@ class UserController extends BaseController {
     }
 
     async fetchAllForAdmin(req, res, next) {
-        const posts = await postService.fetchAll({
-            populate: [
-                {
-                    path: 'writer',
-                    select: '-password -salt',
-                    populate: [
-                        {
-                            path: 'roles',
-                            select: 'name',
-                        },
-                        {
-                            path: 'plan',
-                            select: 'name right_to_view',
-                        },
-                    ],
-                },
-            ],
-        });
+        const posts = await postService.fetchAll();
 
-        // eslint-disable-next-line no-undef
-        const users = [...new Set(posts.map((post) => post.writer))];
+        const users = await userService.fetchAll({
+            select: '-password -salt',
+        });
 
         const response = [];
 
@@ -508,7 +492,7 @@ class UserController extends BaseController {
 
             response.push({
                 user,
-                statistics: postStatistics
+                statistics: postStatistics,
             });
         }
 
@@ -759,8 +743,25 @@ class UserController extends BaseController {
             select: '-password -salt',
         });
 
+        const posts = await postService.fetchAll();
+
+        const response = [];
+
+        for (const user of users) {
+            const userPosts = posts.filter(
+                (post) => post.writer._id.toString() == user._id.toString()
+            );
+
+            const postStatistics = statisticHelper.postStatistics(userPosts);
+
+            response.push({
+                user,
+                statistics: postStatistics,
+            });
+        }
+
         ApiDataSuccess.send(
-            users,
+            response,
             'Users fetched successfully',
             httpStatus.OK,
             res,
@@ -799,8 +800,25 @@ class UserController extends BaseController {
             skip: startPage,
         });
 
+        const posts = await postService.fetchAll();
+
+        const response = [];
+
+        for (const user of users) {
+            const userPosts = posts.filter(
+                (post) => post.writer._id.toString() == user._id.toString()
+            );
+
+            const postStatistics = statisticHelper.postStatistics(userPosts);
+
+            response.push({
+                user,
+                statistics: postStatistics,
+            });
+        }
+
         ApiDataSuccess.send(
-            users,
+            response,
             'Users fetched successfully',
             httpStatus.OK,
             res,

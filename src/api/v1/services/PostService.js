@@ -30,14 +30,6 @@ class PostService extends BaseService {
         super(Post, populate);
         this.populate = populate;
     }
-
-    fetchAllBySelect(select) {
-        return Post.find().select(select).populate(this.populate);
-    }
-
-    fetchOneBySelect(query, select) {
-        return Post.findOne(query).select(select).populate(this.populate);
-    }
 }
 
 module.exports = new PostService();
