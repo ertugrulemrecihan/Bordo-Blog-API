@@ -32,14 +32,14 @@ router
         authenticate,
         authorization('Admin'),
         queryValidator('fieldName'),
-        controller.fetchAllTagsSortByQuery
+        controller.fetchAllTagsWithSortByQuery
     );
 router
-    .route('/get-by-limit')
+    .route('/get-all/limit')
     .get(
         authenticate,
         authorization('Admin'),
-        controller.fetchTagsByLimit
+        controller.fetchAllTagsByLimit
     );     
 router
     .route('/delete/:id')

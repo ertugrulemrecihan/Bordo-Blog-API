@@ -719,7 +719,7 @@ class UserController extends BaseController {
         );
     }
 
-    async fetchAllUserSortByQuery(req, res, next) {
+    async fetchAllUserWithSortByQuery(req, res, next) {
         const fieldName = req.query.fieldName;
 
         const fields = Object.keys(userService.model.schema.paths);
@@ -769,7 +769,7 @@ class UserController extends BaseController {
         );
     }
 
-    async fetchUsersByLimit(req, res, next) {
+    async fetchAllUsersByLimit(req, res, next) {
         const fieldName = req.query?.fieldName;
 
         if (fieldName) {

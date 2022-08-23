@@ -3,9 +3,9 @@
     "description": "",
     "get": {
         "tags": ["Admins"],
-        "summary": "Post's get by limit",
-        "description": "Post's get by limit",
-        "operationId": "posts.get-by-limit",
+        "summary": "Get all users by limit",
+        "description": "Get all tags by limit",
+        "operationId": "admin.users.get-all-limit",
         "security": [
             {
                 "bearerAuth": []
@@ -15,7 +15,7 @@
             {
                 "name": "limit",
                 "in": "query",
-                "description": "Maximum Post",
+                "description": "Maximum user count",
                 "required": true,
                 "schema": {
                     "type": "string"
@@ -32,7 +32,7 @@
             {
                 "name": "fieldName",
                 "in": "query",
-                "description": "Post field name for sorting",
+                "description": "User's field name for sorting",
                 "schema": {
                     "type": "string"
                 }
@@ -40,7 +40,7 @@
         ],
         "responses": {
             "200": {
-                "$ref": "../../../responses/admin/post/get-by-limit.json"
+                "$ref": "../../../responses/admin/user/get-by-limit.json"
             },
             "400": {
                 "$ref": "../../../responses/api-responses/400.json"

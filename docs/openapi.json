@@ -83,8 +83,8 @@
         "/admin/users/get-all/sort": {
             "$ref": "./paths/admin/user/get-all-sort.json"
         },
-        "/admin/users/get-by-limit": {
-            "$ref": "./paths/admin/user/get-by-limit.json"
+        "/admin/users/get-all/limit": {
+            "$ref": "./paths/admin/user/get-all-limit.json"
         },
         "/admin/users/get/{userId}": {
             "$ref": "./paths/admin/user/get.json"
@@ -110,8 +110,8 @@
         "/admin/tags/get-all/sort": {
             "$ref": "./paths/admin/tag/get-all-sort.json"
         },
-        "/admin/tags/get-by-limit": {
-            "$ref": "./paths/admin/tag/get-by-limit.json"
+        "/admin/tags/get-all/limit": {
+            "$ref": "./paths/admin/tag/get-all-limit.json"
         },
         "/admin/tags/create": {
             "$ref": "./paths/admin/tag/create-tag.json"
@@ -141,10 +141,10 @@
             "$ref": "./paths/post/get-all-most-viewed-posts.json"
         },
         "/posts/get-all/my/sort": {
-            "$ref": "./paths/post/get-all-sort.json"
+            "$ref": "./paths/post/get-all-my-sort.json"
         },
-        "/posts/get-by-limit": {
-            "$ref": "./paths/post/get-by-limit.json"
+        "/posts/get-all/my/limit": {
+            "$ref": "./paths/post/get-all-my-limit.json"
         },
         "/posts/create": {
             "$ref": "./paths/post/create-post.json"
@@ -182,8 +182,8 @@
         "/admin/posts/get-all/sort": {
             "$ref": "./paths/admin/post/get-all-sort.json"
         },
-        "/admin/posts/get-by-limit": {
-            "$ref": "./paths/admin/post/get-by-limit.json"
+        "/admin/posts/get-all/limit": {
+            "$ref": "./paths/admin/post/get-all-limit.json"
         },
         "/admin/posts/delete/{postId}": {
             "$ref": "./paths/admin/post/delete-users-post.json"

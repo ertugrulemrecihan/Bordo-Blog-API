@@ -23,14 +23,14 @@ router
         authenticate,
         authorization('Admin'),
         queryValidator('fieldName'),
-        controller.fetchAllPostsSortByQuery
+        controller.fetchAllPostsWithSortByQuery
     );
 router
-    .route('/get-by-limit')
+    .route('/get-all/limit')
     .get(
         authenticate,
         authorization('Admin'),
-        controller.fetchPostsByLimit
+        controller.fetchAllPostsByLimit
     );     
 router
     .route('/delete/:id')

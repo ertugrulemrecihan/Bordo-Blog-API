@@ -2,10 +2,12 @@
     "summary": "",
     "description": "",
     "get": {
-        "tags": ["Admins"],
-        "summary": "Get all tags by sort",
-        "description": "Get all tags by sort",
-        "operationId": "admin.tags.get-all-sort",
+        "tags": [
+            "Posts"
+        ],
+        "summary": "Get all posts of the user by sorting",
+        "description": "Get all posts of the user by sorting",
+        "operationId": "posts.get-all-my-sort",
         "security": [
             {
                 "bearerAuth": []
@@ -15,7 +17,7 @@
             {
                 "name": "fieldName",
                 "in": "query",
-                "description": "Tag field name for sorting",
+                "description": "Post field name for sorting",
                 "required": true,
                 "schema": {
                     "type": "string"
@@ -24,19 +26,19 @@
         ],
         "responses": {
             "200": {
-                "$ref": "../../../responses/admin/tag/get-all-sort.json"
+                "$ref": "../../responses/post/get-all-sort.json"
             },
             "400": {
-                "$ref": "../../../responses/api-responses/400.json"
+                "$ref": "../../responses/api-responses/400.json"
             },
             "401": {
-                "$ref": "../../../responses/api-responses/401.json"
+                "$ref": "../../responses/api-responses/401.json"
             },
             "403": {
-                "$ref": "../../../responses/api-responses/403.json"
+                "$ref": "../../responses/api-responses/403.json"
             },
             "404": {
-                "$ref": "../../../responses/api-responses/404.json"
+                "$ref": "../../responses/api-responses/404.json"
             }
         }
     }

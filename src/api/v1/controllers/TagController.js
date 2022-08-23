@@ -81,7 +81,7 @@ class TagController extends BaseController {
         );
     }
 
-    async fetchAllTagsSortByQuery(req, res, next) {
+    async fetchAllTagsWithSortByQuery(req, res, next) {
         const fieldName = req.query.fieldName;
 
         const fields = Object.keys(tagService.model.schema.paths);
@@ -111,7 +111,7 @@ class TagController extends BaseController {
         );
     }
 
-    async fetchTagsByLimit(req, res, next) {
+    async fetchAllTagsByLimit(req, res, next) {
         const fieldName = req.query?.fieldName;
 
         if (fieldName) {

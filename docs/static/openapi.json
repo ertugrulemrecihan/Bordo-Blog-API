@@ -978,9 +978,9 @@
         "tags": [
           "Admins"
         ],
-        "summary": "User's get all by sort",
-        "description": "User's get all by sort",
-        "operationId": "users.get-all-by-sort",
+        "summary": "Get all users by sort",
+        "description": "Get all users by sort",
+        "operationId": "admin.users.get-all-sort",
         "security": [
           {
             "bearerAuth": []
@@ -1050,16 +1050,16 @@
         }
       }
     },
-    "/admin/users/get-by-limit": {
+    "/admin/users/get-all/limit": {
       "summary": "",
       "description": "",
       "get": {
         "tags": [
           "Admins"
         ],
-        "summary": "User's get by limit",
-        "description": "User's get by limit",
-        "operationId": "users.get-by-limit",
+        "summary": "Get all users by limit",
+        "description": "Get all tags by limit",
+        "operationId": "admin.users.get-all-limit",
         "security": [
           {
             "bearerAuth": []
@@ -1069,7 +1069,7 @@
           {
             "name": "limit",
             "in": "query",
-            "description": "Maximum user",
+            "description": "Maximum user count",
             "required": true,
             "schema": {
               "type": "string"
@@ -1718,9 +1718,9 @@
         "tags": [
           "Admins"
         ],
-        "summary": "Tag's get all by sort",
-        "description": "Tag's get all by sort",
-        "operationId": "tags.get-all-by-sort",
+        "summary": "Get all tags by sort",
+        "description": "Get all tags by sort",
+        "operationId": "admin.tags.get-all-sort",
         "security": [
           {
             "bearerAuth": []
@@ -1788,16 +1788,16 @@
         }
       }
     },
-    "/admin/tags/get-by-limit": {
+    "/admin/tags/get-all/limit": {
       "summary": "",
       "description": "",
       "get": {
         "tags": [
           "Admins"
         ],
-        "summary": "Tag's get by limit",
-        "description": "Tag's get by limit",
-        "operationId": "tags.get-by-limit",
+        "summary": "Get all tags by limit",
+        "description": "Get all tags by limit",
+        "operationId": "admin.tags.get-all-limit",
         "security": [
           {
             "bearerAuth": []
@@ -1807,7 +1807,7 @@
           {
             "name": "limit",
             "in": "query",
-            "description": "Maximum Tag",
+            "description": "Maximum tag count",
             "required": true,
             "schema": {
               "type": "string"
@@ -2934,9 +2934,9 @@
         "tags": [
           "Posts"
         ],
-        "summary": "Post's get all by sort",
-        "description": "Post's get all by sort",
-        "operationId": "posts.get-all-by-sort",
+        "summary": "Get all posts of the user by sorting",
+        "description": "Get all posts of the user by sorting",
+        "operationId": "posts.get-all-my-sort",
         "security": [
           {
             "bearerAuth": []
@@ -3016,16 +3016,16 @@
         }
       }
     },
-    "/posts/get-by-limit": {
+    "/posts/get-all/my/limit": {
       "summary": "",
       "description": "",
       "get": {
         "tags": [
           "Posts"
         ],
-        "summary": "Post's get all by sort",
-        "description": "Post's get all by sort",
-        "operationId": "posts.get-by-limit",
+        "summary": "Get all posts of the user by limiting",
+        "description": "Get all posts of the user by limiting",
+        "operationId": "posts.get-all-my-limit",
         "security": [
           {
             "bearerAuth": []
@@ -3035,7 +3035,7 @@
           {
             "name": "limit",
             "in": "query",
-            "description": "Maximum post",
+            "description": "Maximum post count",
             "required": true,
             "schema": {
               "type": "string"
@@ -4546,9 +4546,9 @@
         "tags": [
           "Admins"
         ],
-        "summary": "Post's get all by sort",
-        "description": "Post's get all by sort",
-        "operationId": "posts.get-all-by-sort",
+        "summary": "Get all posts by sort",
+        "description": "Get all posts by sort",
+        "operationId": "admin.posts.get-all-sort",
         "security": [
           {
             "bearerAuth": []
@@ -4628,16 +4628,16 @@
         }
       }
     },
-    "/admin/posts/get-by-limit": {
+    "/admin/posts/get-all/limit": {
       "summary": "",
       "description": "",
       "get": {
         "tags": [
           "Admins"
         ],
-        "summary": "Post's get by limit",
-        "description": "Post's get by limit",
-        "operationId": "posts.get-by-limit",
+        "summary": "Get all posts by limit",
+        "description": "Get all posts by limit",
+        "operationId": "admin.posts.get-all-limit",
         "security": [
           {
             "bearerAuth": []
@@ -4647,7 +4647,7 @@
           {
             "name": "limit",
             "in": "query",
-            "description": "Maximum Post",
+            "description": "Maximum post count",
             "required": true,
             "schema": {
               "type": "string"

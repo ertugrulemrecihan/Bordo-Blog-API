@@ -588,7 +588,7 @@ class PostController extends BaseController {
         );
     }
 
-    async fetchAllPostsSortByQuery(req, res, next) {
+    async fetchAllPostsWithSortByQuery(req, res, next) {
         const fieldName = req.query.fieldName;
 
         const fields = Object.keys(postService.model.schema.paths);
@@ -625,7 +625,7 @@ class PostController extends BaseController {
         );
     }
 
-    async fetchPostsByLimit(req, res, next) {
+    async fetchAllPostsByLimit(req, res, next) {
         const fieldName = req.query?.fieldName;
 
         if (fieldName) {
@@ -672,7 +672,7 @@ class PostController extends BaseController {
         );
     }
 
-    async fetchMyPostsSortByQuery(req, res, next) {
+    async fetchAllMyPostsWithSortByQuery(req, res, next) {
         const fieldName = req.query.fieldName;
 
         const fields = Object.keys(postService.model.schema.paths);
@@ -712,7 +712,7 @@ class PostController extends BaseController {
         );
     }
 
-    async fetchMyPostsByLimit(req, res, next) {
+    async fetchAllMyPostsByLimit(req, res, next) {
         const fieldName = req.query?.fieldName;
 
         if (fieldName) {

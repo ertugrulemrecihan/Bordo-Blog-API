@@ -2,12 +2,10 @@
     "summary": "",
     "description": "",
     "get": {
-        "tags": [
-            "Posts"
-        ],
-        "summary": "Post's get all by sort",
-        "description": "Post's get all by sort",
-        "operationId": "posts.get-by-limit",
+        "tags": ["Admins"],
+        "summary": "Get all tags by limit",
+        "description": "Get all tags by limit",
+        "operationId": "admin.tags.get-all-limit",
         "security": [
             {
                 "bearerAuth": []
@@ -17,7 +15,7 @@
             {
                 "name": "limit",
                 "in": "query",
-                "description": "Maximum post",
+                "description": "Maximum tag count",
                 "required": true,
                 "schema": {
                     "type": "string"
@@ -27,30 +25,34 @@
                 "name": "page",
                 "in": "query",
                 "description": "Page number",
-                "type": "string"
+                "schema": {
+                    "type": "string"
+                }
             },
             {
                 "name": "fieldName",
                 "in": "query",
-                "description": "Post's field name for sorting",
-                "type": "string"
+                "description": "Tag field name for sorting",
+                "schema": {
+                    "type": "string"
+                }
             }
         ],
         "responses": {
             "200": {
-                "$ref": "../../responses/post/get-by-limit.json"
+                "$ref": "../../../responses/admin/tag/get-by-limit.json"
             },
             "400": {
-                "$ref": "../../responses/api-responses/400.json"
+                "$ref": "../../../responses/api-responses/400.json"
             },
             "401": {
-                "$ref": "../../responses/api-responses/401.json"
+                "$ref": "../../../responses/api-responses/401.json"
             },
             "403": {
-                "$ref": "../../responses/api-responses/403.json"
+                "$ref": "../../../responses/api-responses/403.json"
             },
             "404": {
-                "$ref": "../../responses/api-responses/404.json"
+                "$ref": "../../../responses/api-responses/404.json"
             }
         }
     }

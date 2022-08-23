@@ -3,9 +3,9 @@
     "description": "",
     "get": {
         "tags": ["Admins"],
-        "summary": "User's get all by sort",
-        "description": "User's get all by sort",
-        "operationId": "users.get-all-by-sort",
+        "summary": "Get all users by sort",
+        "description": "Get all users by sort",
+        "operationId": "admin.users.get-all-sort",
         "security": [
             {
                 "bearerAuth": []

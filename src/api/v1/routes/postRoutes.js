@@ -30,13 +30,13 @@ router
     .get(
         authenticate,
         queryValidator('fieldName'),
-        controller.fetchMyPostsSortByQuery
+        controller.fetchAllMyPostsWithSortByQuery
     );
 router
-    .route('/get-by-limit')
+    .route('/get-all/my/limit')
     .get(
         authenticate,
-        controller.fetchMyPostsByLimit
+        controller.fetchAllMyPostsByLimit
     );      
 router
     .route('/create')

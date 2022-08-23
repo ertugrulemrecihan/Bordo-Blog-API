@@ -5,9 +5,9 @@
         "tags": [
             "Posts"
         ],
-        "summary": "Post's get all by sort",
-        "description": "Post's get all by sort",
-        "operationId": "posts.get-all-by-sort",
+        "summary": "Get all posts of the user by limiting",
+        "description": "Get all posts of the user by limiting",
+        "operationId": "posts.get-all-my-limit",
         "security": [
             {
                 "bearerAuth": []
@@ -15,18 +15,30 @@
         ],
         "parameters": [
             {
-                "name": "fieldName",
+                "name": "limit",
                 "in": "query",
-                "description": "Post field name for sorting",
+                "description": "Maximum post count",
                 "required": true,
                 "schema": {
                     "type": "string"
                 }
+            },
+            {
+                "name": "page",
+                "in": "query",
+                "description": "Page number",
+                "type": "string"
+            },
+            {
+                "name": "fieldName",
+                "in": "query",
+                "description": "Post's field name for sorting",
+                "type": "string"
             }
         ],
         "responses": {
             "200": {
-                "$ref": "../../responses/post/get-all-sort.json"
+                "$ref": "../../responses/post/get-by-limit.json"
             },
             "400": {
                 "$ref": "../../responses/api-responses/400.json"

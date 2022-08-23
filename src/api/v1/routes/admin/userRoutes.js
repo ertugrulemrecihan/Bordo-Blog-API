@@ -8,21 +8,25 @@ const queryValidator = require('../../middlewares/queryValidator');
 
 router
     .route('/get-all')
-    .get(authenticate, authorization('Admin'), controller.fetchAllForAdmin);
+    .get(
+        authenticate,
+        authorization('Admin'),
+        controller.fetchAllForAdmin
+    );
 router
     .route('/get-all/sort')
     .get(
         authenticate,
         authorization('Admin'),
         queryValidator('fieldName'),
-        controller.fetchAllUserSortByQuery
+        controller.fetchAllUserWithSortByQuery
     );
 router
-    .route('/get-by-limit')
+    .route('/get-all/limit')
     .get(
         authenticate,
         authorization('Admin'),
-        controller.fetchUsersByLimit
+        controller.fetchAllUsersByLimit
     );
 router
     .route('/get/:id')
