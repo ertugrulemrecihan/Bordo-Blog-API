@@ -1,0 +1,9 @@
+{
+    "in": "path",
+    "name": "changeEmailToken",
+    "schema": {
+        "type": "string"
+    },
+    "required": true,
+    "description": ""
+}

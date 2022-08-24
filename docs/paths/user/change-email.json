@@ -1,0 +1,51 @@
+{
+    "summary": "",
+    "description": "",
+    "get": {
+        "tags": [
+            "Users"
+        ],
+        "summary": "Change Email",
+        "description": "Change Email",
+        "operationId": "users.change-email",
+        "parameters": [
+            {
+                "$ref": "../../parameters/path/user/change-email-token.json"
+            }
+        ],
+        "responses": {
+            "200": {
+                "description": "Email changed successfully",
+                "content": {
+                    "application/json": {
+                        "schema": {
+                            "allOf": [
+                                {
+                                    "$ref": "../../responses/api-responses/api-success.json"
+                                },
+                                {
+                                    "type": "object",
+                                    "properties": {
+                                        "statusCode": {
+                                            "type": "number",
+                                            "default": 200
+                                        }
+                                    }
+                                }
+                            ]
+                        }
+                    }
+                }
+            },
+            "400": {
+                "$ref": "../../responses/api-responses/400.json"
+            },
+            "409": {
+                "$ref": "../../responses/api-responses/409.json"
+            },
+            "500": {
+                "$ref": "../../responses/api-responses/500.json"
+            }
+        }
+    }
+}

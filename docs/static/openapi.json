@@ -497,6 +497,135 @@
         }
       }
     },
+    "/users/change-email-get-email": {
+      "summary": "",
+      "description": "",
+      "patch": {
+        "tags": [
+          "Users"
+        ],
+        "summary": "Change Email",
+        "description": "Change Email",
+        "operationId": "users.change-email-get-email",
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "requestBody": {
+          "description": "",
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "new_email": {
+                    "title": "Change Email Get Email",
+                    "description": "Change Email Get Email",
+                    "type": "string",
+                    "format": "email"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "allOf": [
+                    {
+                      "$ref": "#/paths/~1users~1logout/post/responses/200/content/application~1json/schema/allOf/0"
+                    },
+                    {
+                      "type": "object",
+                      "properties": {
+                        "statusCode": {
+                          "type": "number",
+                          "default": 200
+                        }
+                      }
+                    }
+                  ]
+                }
+              }
+            }
+          },
+          "400": {
+            "$ref": "#/paths/~1users~1login/post/responses/400"
+          },
+          "401": {
+            "$ref": "#/paths/~1tags~1get-all/get/responses/401"
+          },
+          "403": {
+            "$ref": "#/paths/~1tags~1get-all/get/responses/403"
+          },
+          "409": {
+            "$ref": "#/paths/~1users~1register/post/responses/409"
+          }
+        }
+      }
+    },
+    "/users/change-email/{changeEmailToken}": {
+      "summary": "",
+      "description": "",
+      "get": {
+        "tags": [
+          "Users"
+        ],
+        "summary": "Change Email",
+        "description": "Change Email",
+        "operationId": "users.change-email",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "changeEmailToken",
+            "schema": {
+              "type": "string"
+            },
+            "required": true,
+            "description": ""
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Email changed successfully",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "allOf": [
+                    {
+                      "$ref": "#/paths/~1users~1logout/post/responses/200/content/application~1json/schema/allOf/0"
+                    },
+                    {
+                      "type": "object",
+                      "properties": {
+                        "statusCode": {
+                          "type": "number",
+                          "default": 200
+                        }
+                      }
+                    }
+                  ]
+                }
+              }
+            }
+          },
+          "400": {
+            "$ref": "#/paths/~1users~1login/post/responses/400"
+          },
+          "409": {
+            "$ref": "#/paths/~1users~1register/post/responses/409"
+          },
+          "500": {
+            "$ref": "#/paths/~1users~1login/post/responses/500"
+          }
+        }
+      }
+    },
     "/users/logout": {
       "summary": "",
       "description": "",

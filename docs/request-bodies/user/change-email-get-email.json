@@ -1,0 +1,18 @@
+{
+    "description": "",
+    "content": {
+        "application/json": {
+            "schema": {
+                "type": "object",
+                "properties": {
+                    "new_email": {
+                        "title": "Change Email Get Email",
+                        "description": "Change Email Get Email",
+                        "type": "string",
+                        "format": "email"
+                    }
+                }
+            }
+        }
+    }
+}

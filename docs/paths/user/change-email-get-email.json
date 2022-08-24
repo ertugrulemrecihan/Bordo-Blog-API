@@ -1,0 +1,57 @@
+{
+    "summary": "",
+    "description": "",
+    "patch": {
+        "tags": [
+            "Users"
+        ],
+        "summary": "Change Email",
+        "description": "Change Email",
+        "operationId": "users.change-email-get-email",
+        "security": [
+            {
+                "bearerAuth": []
+            }
+        ],
+        "requestBody": {
+            "$ref": "../../request-bodies/user/change-email-get-email.json"
+        },
+        "responses": {
+            "200": {
+                "description": "",
+                "content": {
+                    "application/json": {
+                        "schema": {
+                            "allOf": [
+                                {
+                                    "$ref": "../../responses/api-responses/api-success.json"
+                                },
+                                {
+                                    "type": "object",
+                                    "properties": {
+                                        "statusCode": {
+                                            "type": "number",
+                                            "default": 200
+                                        }
+                                    }
+                                }
+                            ]
+                        }
+                    }
+                }
+            },
+            "400": {
+                "$ref": "../../responses/api-responses/400.json"
+            },
+            "401": {
+                "$ref": "../../responses/api-responses/401.json"
+            },
+            "403": {
+                "$ref": "../../responses/api-responses/403.json"
+            },
+            "409": {
+                "$ref": "../../responses/api-responses/409.json"
+            }
+        }
+    }
+}

@@ -59,6 +59,12 @@
         "/users/register": {
             "$ref": "./paths/user/register.json"
         },
+        "/users/change-email-get-email": {
+            "$ref": "./paths/user/change-email-get-email.json"
+        },
+        "/users/change-email/{changeEmailToken}": {
+            "$ref": "./paths/user/change-email.json"
+        },
         "/users/logout": {
             "$ref": "./paths/user/logout.json"
         },
