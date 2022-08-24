@@ -23,19 +23,9 @@ const deleteComment = Joi.object({
     comment_id: Joi.string().required().length(24),
 });
 
-const addTag = Joi.object({
-    tag_id: Joi.string().required().length(24),
-});
-
-const removeTag = Joi.object({
-    tag_id: Joi.string().required().length(24),
-});
-
 module.exports = {
     createValidation,
     updateValidation,
     addComment,
-    addTag,
-    removeTag,
     deleteComment,
 };

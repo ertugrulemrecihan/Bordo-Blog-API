@@ -23,9 +23,6 @@ router
     .route('/get-all/previews')
     .get(controller.fetchAllPreviews);
 router
-    .route('/get/preview/:id')
-    .get(paramIdValidator, controller.fetchOnePreview);
-router
     .route('/get-all/my/sort')
     .get(
         authenticate,
@@ -107,33 +104,5 @@ router
         controller.deleteComment
     );
 // TODO: Comment silme ekle
-router
-    .route('/add-tag/:id')
-    .post(
-        authenticate,
-        paramIdValidator,
-        bodyValidator(schemas.addTag),
-        controller.addTag
-    );
-router
-    .route('/delete-tag/:id')
-    .delete(
-        authenticate,
-        paramIdValidator,
-        bodyValidator(schemas.removeTag),
-        controller.removeTag
-    );
-router
-    .route('/get-all/most-liked/:count')
-    .get(
-        authenticate,
-        controller.fetchAllMostLikedPost
-    );
-router
-    .route('/get-all/most-viewed/:count')
-    .get(
-        authenticate,
-        controller.fetchAllMostViewedPost
-    );
 
 module.exports = router;

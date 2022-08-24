@@ -101,9 +101,6 @@
         "/tags/get-all": {
             "$ref": "./paths/tag/get-all-tags.json"
         },
-        "/tags/get/{tagId}": {
-            "$ref": "./paths/tag/get-tag-by-id.json"
-        },
         "/tags/get-all/most-used/{count}": {
             "$ref": "./paths/tag/get-all-most-used.json"
         },
@@ -116,9 +113,6 @@
         "/admin/tags/create": {
             "$ref": "./paths/admin/tag/create-tag.json"
         },
-        "/admin/tags/update/{tagId}": {
-            "$ref": "./paths/admin/tag/update-tag.json"
-        },
         "/admin/tags/delete/{tagId}": {
             "$ref": "./paths/admin/tag/delete-tag.json"
         },
@@ -130,15 +124,6 @@
         },
         "/posts/get-all/previews": {
             "$ref": "./paths/post/get-all-previews.json"
-        },
-        "/posts/get/preview/{postId}": {
-            "$ref": "./paths/post/get-preview-by-id.json"
-        },
-        "/posts/get-all/most-liked/{count}": {
-            "$ref": "./paths/post/get-all-most-liked-posts.json"
-        },
-        "/posts/get-all/most-viewed/{count}": {
-            "$ref": "./paths/post/get-all-most-viewed-posts.json"
         },
         "/posts/get-all/my/sort": {
             "$ref": "./paths/post/get-all-my-sort.json"
@@ -158,9 +143,6 @@
         "/posts/add-comment/{postId}": {
             "$ref": "./paths/post/add-comment.json"
         },
-        "/posts/add-tag/{postId}": {
-            "$ref": "./paths/post/add-tag.json"
-        },
         "/posts/update/my/{postId}": {
             "$ref": "./paths/post/update-post.json"
         },
@@ -169,9 +151,6 @@
         },
         "/posts/delete-comment/{postId}": {
             "$ref": "./paths/post/delete-comment.json"
-        },
-        "/posts/delete-tag/{postId}": {
-            "$ref": "./paths/post/delete-tag.json"
         },
         "/admin/posts/get-all": {
             "$ref": "./paths/admin/post/get-all-posts.json"
@@ -212,18 +191,6 @@
         "/addresses/delete/{addressId}": {
             "$ref": "./paths/address/delete.json"
         },
-        "/admin/addresses/get-all": {
-            "$ref": "./paths/admin/address/get-all.json"
-        },
-        "/admin/addresses/get/{addressId}": {
-            "$ref": "./paths/admin/address/get.json"
-        },
-        "/admin/roles/get-all": {
-            "$ref": "./paths/admin/role/get-all.json"
-        },
-        "/admin/roles/get/{roleId}": {
-            "$ref": "./paths/admin/role/get.json"
-        },
         "/plans/get-all": {
             "$ref": "./paths/plan/get-all.json"
         },
@@ -262,9 +229,6 @@
             },
             "create-tag": {
                 "$ref": "./request-bodies/admin/tag/create-tag.json"
-            },
-            "update-tag": {
-                "$ref": "./request-bodies/admin/tag/update-tag.json"
             },
             "create-post": {
                 "$ref": "./request-bodies/post/create-post.json"

@@ -18,15 +18,6 @@ router
         controller.create
     );
 router
-    .route('/update/:id')
-    .patch(
-        authenticate,
-        authorize('Admin'),
-        paramIdValidator,
-        bodyValidator(schemas.updateValidation),
-        controller.updateByParamsId
-    );
-router
     .route('/get-all/sort')
     .get(
         authenticate,
