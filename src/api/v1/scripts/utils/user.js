@@ -39,6 +39,7 @@ const deletePasswordAndSaltFields = (user) => {
     return newObject;
 };
 
+// ! FIXME: yeni sisteme göre düzenle
 const createAndVerifyEmail = async (email) => {
     const user = await userService.fetchOneByQuery({ email: email });
     if (!user) {
@@ -106,4 +107,5 @@ module.exports = {
     deletePasswordAndSaltFields,
     createAndVerifyEmail,
     logOut,
+    deleteProfile,
 };

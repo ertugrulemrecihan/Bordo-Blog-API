@@ -35,6 +35,15 @@ router
         controller.uploadAvatar
     );
 router
+    .route('/change-email-get-email')
+    .patch(
+        authenticate,
+        bodyValidator(
+            schemas.createChangeEmailTokenValidation
+        ),
+        controller.changeEmailGetEmail
+    );    
+router
     .route('/get-password-reset-email')
     .post(
         bodyValidator(
@@ -66,6 +75,9 @@ router
 router
     .route('/verify-email/:emailVerifyToken')
     .get(controller.verifyEmail);
+router
+    .route('/change-email/:changeEmailToken')
+    .get(controller.changeEmail);    
 router
     .route('/profile')
     .get(authenticate, controller.getMyProfile);

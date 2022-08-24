@@ -172,6 +172,150 @@ class UserController extends BaseController {
         );
     }
 
+    async changeEmailGetEmail(req, res, next) {
+        const newEmailAddress = req.body.new_email;
+
+        if (newEmailAddress == req.user.email) {
+            return next(
+                new ApiError(
+                    'Your email address is already registered',
+                    httpStatus.BAD_REQUEST
+                )
+            );
+        }
+
+        const currentNewEmailUser = await service.fetchOneByQuery({
+            email: newEmailAddress,
+        });
+
+        if (currentNewEmailUser) {
+            return next(
+                new ApiError('Email is already in use', httpStatus.CONFLICT)
+            );
+        }
+
+        const currentVerifyToken =
+            await emailVerificationTokenService.fetchOneByQuery({
+                user: req.user._id,
+            });
+        if (currentVerifyToken) {
+            await emailVerificationTokenService.deleteById(
+                currentVerifyToken._id
+            );
+        }
+
+        const jwtUser = userHelper.deleteProfile(req.user);
+        const jwtObject = {
+            ...jwtUser,
+            newEmailAddress,
+        };
+        const changeEmailToken = jwtHelper.generateEmailVerifyToken(jwtObject);
+
+        await emailVerificationTokenService.create({
+            user_id: req.user._id,
+            token: changeEmailToken,
+        });
+
+        const verifyUrl =
+            process.env.NODE_ENV == 'PRODUCTION'
+                ? `${process.env.API_URL}/users/change-email/${changeEmailToken}`
+                : `${process.env.API_URL}:${process.env.PORT}/api/v1/users/change-email/${changeEmailToken}`;
+
+        eventEmitter.emit('send_email', {
+            to: newEmailAddress,
+            subject: 'Change Email Address',
+            template: 'changeEmail',
+            context: {
+                fullName: req.user.first_name + ' ' + req.user.last_name,
+                validationUrl: verifyUrl,
+                expires: process.env.JWT_EMAIL_VERIFY_EXP,
+            },
+        });
+
+        ApiSuccess.send(
+            'Email change link sent successfully.',
+            httpStatus.OK,
+            res,
+            next
+        );
+    }
+
+    async changeEmail(req, res, next) {
+        const changeEmailToken = req.params.changeEmailToken;
+
+        try {
+            const decodedToken =
+                jwtHelper.decodeEmailVerifyToken(changeEmailToken);
+
+            const user = await service.fetchOneByQuery({
+                _id: decodedToken.data._id,
+                email: decodedToken.data.email,
+            });
+
+            if (!user) {
+                throw new Error();
+            }
+
+            const currentChangeEmailToken =
+                await emailVerificationTokenService.fetchOneByQuery({
+                    user_id: user._id,
+                });
+
+            if (!currentChangeEmailToken) {
+                throw new Error();
+            }
+
+            if (currentChangeEmailToken.token !== changeEmailToken) {
+                throw new Error();
+            }
+
+            const result = await service.updateById(user._id, {
+                email: decodedToken.data.newEmailAddress,
+            });
+
+            if (!result) {
+                return next(
+                    new ApiError(
+                        'Could not change email',
+                        httpStatus.INTERNAL_SERVER_ERROR
+                    )
+                );
+            }
+
+            await emailVerificationTokenService.deleteById(
+                currentChangeEmailToken._id
+            );
+
+            eventEmitter.emit('send_email', {
+                to: user.email,
+                subject: 'Email Change Successful',
+                template: 'emailChangeSuccess',
+                context: {
+                    fullName: user.first_name + ' ' + user.last_name,
+                },
+            });
+
+            ApiSuccess.send(
+                'Email successfully changed',
+                httpStatus.OK,
+                res,
+                next
+            );
+        } catch (error) {
+            if (error.code === 11000) {
+                return next(
+                    new ApiError('Email is already in use', httpStatus.CONFLICT)
+                );
+            }
+            return next(
+                new ApiError(
+                    'Invalid or expired change email token',
+                    httpStatus.BAD_REQUEST
+                )
+            );
+        }
+    }
+
     async logOut(req, res, next) {
         const result = await userHelper.logOut(req.user._id);
 

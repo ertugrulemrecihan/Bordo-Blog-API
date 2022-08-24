@@ -22,6 +22,10 @@ const registerValidation = Joi.object({
     last_name: Joi.string().required().min(3).max(100),
 });
 
+const createChangeEmailTokenValidation = Joi.object({
+    new_email: Joi.string().required().email(),
+});
+
 const createPasswordResetTokenValidation = Joi.object({
     email: Joi.string().required().email(),
 });
@@ -64,4 +68,5 @@ module.exports = {
     resetPasswordValidation,
     changePasswordValidation,
     createEmailVerificationTokenValidation,
+    createChangeEmailTokenValidation,
 };
