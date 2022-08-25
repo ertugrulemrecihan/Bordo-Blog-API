@@ -1,6 +1,7 @@
 const ApiDataSuccess = require('../responses/success/apiDataSuccess');
 const ApiError = require('../responses/error/apiError');
 const httpStatus = require('http-status');
+const redisHelper = require('../scripts/utils/redis');
 
 class BaseController {
     constructor(service) {
@@ -18,6 +19,10 @@ class BaseController {
     fetchAll = async (req, res, next) => {
         const response = await this.service.fetchAll();
 
+        if (response.length > 0) {
+            await redisHelper.cache(req, response);
+        }
+
         ApiDataSuccess.send(
             response,
             `${this.pluralModelName} fetched successfully`,
@@ -29,6 +34,10 @@ class BaseController {
 
     fetchAllByQuery = async (req, res, next) => {
         const response = await this.service.fetchAll({ query: req.query });
+
+        if (response.length > 0) {
+            await redisHelper.cache(req, response);
+        }
 
         ApiDataSuccess.send(
             response,
@@ -51,6 +60,8 @@ class BaseController {
             );
         }
 
+        await redisHelper.cache(req, response);
+
         ApiDataSuccess.send(
             response,
             `${this.singleModelName} fetched successfully`,
@@ -71,6 +82,8 @@ class BaseController {
                 )
             );
         }
+
+        await redisHelper.cache(req, response);
 
         ApiDataSuccess.send(
             response,
@@ -93,6 +106,8 @@ class BaseController {
                     )
                 );
             }
+
+            await redisHelper.removeByClassName(this.constructor.name);
 
             ApiDataSuccess.send(
                 response,
@@ -135,6 +150,8 @@ class BaseController {
                 );
             }
 
+            await redisHelper.removeByClassName(this.constructor.name);
+
             ApiDataSuccess.send(
                 response,
                 `${this.singleModelName} updated successfully`,
@@ -176,6 +193,8 @@ class BaseController {
                 );
             }
 
+            await redisHelper.removeByClassName(this.constructor.name);
+
             ApiDataSuccess.send(
                 response,
                 `${this.singleModelName} updated successfully`,
@@ -213,6 +232,8 @@ class BaseController {
             );
         }
 
+        await redisHelper.removeByClassName(this.constructor.name);
+
         ApiDataSuccess.send(
             response,
             `${this.singleModelName} deleted successfully`,
@@ -233,6 +254,8 @@ class BaseController {
                 )
             );
         }
+
+        await redisHelper.removeByClassName(this.constructor.name);
 
         ApiDataSuccess.send(
             response,

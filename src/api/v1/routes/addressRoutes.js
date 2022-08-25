@@ -5,11 +5,13 @@ const authenticate = require('../middlewares/authenticate');
 const bodyValidator = require('../middlewares/bodyValidator');
 const paramIdValidator = require('../middlewares/paramsIdValidator');
 const schemas = require('../validations/address');
+const cache = require('../middlewares/cache');
 
 router
     .route('/get-all/country')
     .get(
         authenticate,
+        cache(controller),
         controller.getAllCountries
     );
 router
@@ -17,6 +19,7 @@ router
     .get(
         authenticate,
         paramIdValidator,
+        cache(controller),
         controller.getAllCitiesByCountryId
     );
 router
@@ -24,6 +27,7 @@ router
     .get(
         authenticate,
         paramIdValidator,
+        cache(controller),
         controller.getAllDistrictsByCityId
     );
 router

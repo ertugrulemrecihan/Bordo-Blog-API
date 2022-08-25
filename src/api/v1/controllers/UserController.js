@@ -21,6 +21,7 @@ const userService = require('../services/UserService');
 const accessTokenService = require('../services/AccessTokenService');
 const refreshTokenService = require('../services/RefreshTokenService');
 const roleService = require('../services/RoleService');
+const redisHelper = require('../scripts/utils/redis');
 
 class UserController extends BaseController {
     constructor() {
@@ -68,6 +69,7 @@ class UserController extends BaseController {
             try {
                 await userHelper.createAndVerifyEmail(req.body.email);
             } catch (error) {
+                await redisHelper.removeByClassName(this.constructor.name);
                 ApiDataSuccess.send(
                     response,
                     'Your registration has been created successfully, but the verification link could not be sent',
@@ -76,6 +78,8 @@ class UserController extends BaseController {
                     next
                 );
             }
+
+            await redisHelper.removeByClassName(this.constructor.name);
 
             ApiDataSuccess.send(
                 response,
@@ -636,6 +640,10 @@ class UserController extends BaseController {
             });
         }
 
+        if (response.length > 0) {
+            await redisHelper.cache(req, response);
+        }
+
         ApiDataSuccess.send(
             response,
             'Users fetched successfully',
@@ -665,6 +673,8 @@ class UserController extends BaseController {
             statistics: postStatistics,
         };
 
+        await redisHelper.cache(req, response);
+
         ApiDataSuccess.send(
             response,
             'User fetched successfully',
@@ -682,6 +692,8 @@ class UserController extends BaseController {
         }
 
         const result = userHelper.deletePasswordAndSaltFields(response);
+
+        await redisHelper.removeByClassName(this.constructor.name);
 
         ApiDataSuccess.send(
             result,
@@ -716,6 +728,8 @@ class UserController extends BaseController {
 
             const newUpdatedUser =
                 userHelper.deletePasswordAndSaltFields(updatedUser);
+
+            await redisHelper.removeByClassName(this.constructor.name);
 
             ApiDataSuccess.send(
                 newUpdatedUser,
@@ -770,6 +784,8 @@ class UserController extends BaseController {
             );
         }
 
+        await redisHelper.removeByClassName(this.constructor.name);
+
         ApiSuccess.send('Role assignment successful', httpStatus.OK, res, next);
     }
 
@@ -819,6 +835,8 @@ class UserController extends BaseController {
             );
         }
 
+        await redisHelper.removeByClassName(this.constructor.name);
+
         ApiSuccess.send(
             'Role assignment successfully removed',
             httpStatus.OK,
@@ -866,6 +884,10 @@ class UserController extends BaseController {
                 user,
                 statistics: postStatistics,
             });
+        }
+
+        if (response.length > 0) {
+            await redisHelper.cache(req, response);
         }
 
         ApiDataSuccess.send(
@@ -923,6 +945,10 @@ class UserController extends BaseController {
                 user,
                 statistics: postStatistics,
             });
+        }
+
+        if (response.length > 0) {
+            await redisHelper.cache(req, response);
         }
 
         ApiDataSuccess.send(

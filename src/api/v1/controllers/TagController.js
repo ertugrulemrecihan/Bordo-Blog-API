@@ -4,6 +4,7 @@ const BaseController = require('./BaseController');
 const paginationHelper = require('../scripts/utils/pagination');
 const ApiError = require('../responses/error/apiError');
 const ApiDataSuccess = require('../responses/success/apiDataSuccess');
+const redisHelper = require('../scripts/utils/redis');
 
 class TagController extends BaseController {
     constructor() {
@@ -24,6 +25,8 @@ class TagController extends BaseController {
                     )
                 );
             }
+
+            await redisHelper.removeByClassName(this.constructor.name);
 
             ApiDataSuccess.send(
                 response,
@@ -72,6 +75,10 @@ class TagController extends BaseController {
                     : 0,
         }));
 
+        if (tagsWithPercentile.length > 0) {
+            await redisHelper.cache(req, tagsWithPercentile);
+        }
+
         ApiDataSuccess.send(
             tagsWithPercentile,
             'Tags fetched successfully',
@@ -101,6 +108,10 @@ class TagController extends BaseController {
         }
 
         const tags = await tagService.fetchAll({ sortQuery: fieldName });
+
+        if (tags.length > 0) {
+            await redisHelper.cache(req, tags);
+        }
 
         ApiDataSuccess.send(
             tags,
@@ -141,6 +152,10 @@ class TagController extends BaseController {
             limit: pageMaxItem,
             skip: startPage,
         });
+
+        if (tags.length > 0) {
+            await redisHelper.cache(req, tags);
+        }
 
         ApiDataSuccess.send(
             tags,

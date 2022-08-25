@@ -5,12 +5,14 @@ const authenticate = require('../../middlewares/authenticate');
 const authorization = require('../../middlewares/authorization');
 const paramsIdValidator = require('../../middlewares/paramsIdValidator');
 const queryValidator = require('../../middlewares/queryValidator');
+const cache = require('../../middlewares/cache');
 
 router
     .route('/get-all')
     .get(
         authenticate,
         authorization('Admin'),
+        cache(controller),
         controller.fetchAllForAdmin
     );
 router
@@ -19,6 +21,7 @@ router
         authenticate,
         authorization('Admin'),
         queryValidator('fieldName'),
+        cache(controller),
         controller.fetchAllUserWithSortByQuery
     );
 router
@@ -26,6 +29,7 @@ router
     .get(
         authenticate,
         authorization('Admin'),
+        cache(controller),
         controller.fetchAllUsersByLimit
     );
 router
@@ -34,6 +38,7 @@ router
         authenticate,
         authorization('Admin'),
         paramsIdValidator,
+        cache(controller),
         controller.fetchOneByParamsIdForAdmin
     );
 router

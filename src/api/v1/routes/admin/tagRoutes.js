@@ -8,6 +8,7 @@ const bodyValidator = require('../../middlewares/bodyValidator');
 const paramIdValidator = require('../../middlewares/paramsIdValidator');
 const queryValidator = require('../../middlewares/queryValidator');
 const schemas = require('../../validations/tag');
+const cache = require('../../middlewares/cache');
 
 router
     .route('/create')
@@ -23,6 +24,7 @@ router
         authenticate,
         authorization('Admin'),
         queryValidator('fieldName'),
+        cache(controller),
         controller.fetchAllTagsWithSortByQuery
     );
 router
@@ -30,6 +32,7 @@ router
     .get(
         authenticate,
         authorization('Admin'),
+        cache(controller),
         controller.fetchAllTagsByLimit
     );     
 router

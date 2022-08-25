@@ -6,6 +6,7 @@ const countryService = require('../services/CountryService');
 const cityService = require('../services/CityService');
 const districtService = require('../services/DistrictService');
 const BaseController = require('./BaseController');
+const redisHelper = require('../scripts/utils/redis');
 
 class AddressController extends BaseController {
     constructor() {
@@ -14,6 +15,10 @@ class AddressController extends BaseController {
 
     async getAllCountries(req, res, next) {
         const countries = await countryService.fetchAll();
+
+        if (countries.length > 0) {
+            await redisHelper.cache(req, countries);
+        }
 
         ApiDataSuccess.send(
             countries,
@@ -44,6 +49,8 @@ class AddressController extends BaseController {
             cities: cities,
         };
 
+        await redisHelper.cache(req, response);
+
         ApiDataSuccess.send(
             response,
             'Cities fetched successfully',
@@ -70,6 +77,8 @@ class AddressController extends BaseController {
             city: city,
             districts: districts,
         };
+
+        await redisHelper.cache(req, response);
 
         ApiDataSuccess.send(
             response,
