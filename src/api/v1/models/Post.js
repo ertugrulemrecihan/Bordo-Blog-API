@@ -19,6 +19,13 @@ const PostSchema = mongoose.Schema(
             max: 375,
             required: true,
         },
+        slug: {
+            type: String,
+            min: 10,
+            max: 300,
+            required: true,
+            unique: true,
+        },
         cover_image: {
             file_id: {
                 type: String,

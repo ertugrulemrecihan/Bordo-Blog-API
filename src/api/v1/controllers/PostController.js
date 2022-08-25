@@ -6,6 +6,8 @@ const paginationHelper = require('../scripts/utils/pagination');
 const ApiError = require('../responses/error/apiError');
 const ApiDataSuccess = require('../responses/success/apiDataSuccess');
 const httpStatus = require('http-status');
+const slug = require('slug');
+const random = require('random-gen');
 const ApiSuccess = require('../responses/success/apiSuccess');
 const commentService = require('../services/CommentService');
 const statisticHelper = require('../scripts/utils/statistics');
@@ -94,9 +96,39 @@ class PostController extends BaseController {
 
         req.body.cover_image = coverImageBody;
 
-        const response = await postService.create(req.body);
+        const slugRandom = random.alphaNum(12).toLowerCase();
+        const postSlug = slug(`${req.body.title}-${slugRandom}`);
 
-        if (!response) {
+        req.body.slug = postSlug;
+
+        try {
+            const response = await postService.create(req.body);
+
+            if (!response) {
+                return next(
+                    new ApiError(
+                        'Post creation failed',
+                        httpStatus.INTERNAL_SERVER_ERROR
+                    )
+                );
+            }
+
+            ApiDataSuccess.send(
+                response,
+                'Post created successfully',
+                httpStatus.CREATED,
+                res,
+                next
+            );
+        } catch (err) {
+            if (err.code === 11000) {
+                return next(
+                    new ApiError(
+                        'Post slug already exists',
+                        httpStatus.CONFLICT
+                    )
+                );
+            }
             return next(
                 new ApiError(
                     'Post creation failed',
@@ -104,14 +136,6 @@ class PostController extends BaseController {
                 )
             );
         }
-
-        ApiDataSuccess.send(
-            response,
-            'Post created successfully',
-            httpStatus.CREATED,
-            res,
-            next
-        );
     };
 
     async fetchAllPreviews(req, res, next) {
@@ -185,6 +209,13 @@ class PostController extends BaseController {
             };
 
             req.body.cover_image = coverImageBody;
+        }
+
+        if (req.body.title) {
+            const slugRandom = random.alphaNum(12).toLowerCase();
+            const postSlug = slug(`${req.body.title}-${slugRandom}`);
+
+            req.body.slug = postSlug;
         }
 
         const result = await postService.updateById(post._id, req.body);

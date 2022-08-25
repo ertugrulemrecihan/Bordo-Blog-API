@@ -10,6 +10,11 @@
             "title": "Post description",
             "description": "Post description",
             "type": "string"
+        },
+        "slug": {
+            "title": "Post slug (unique)",
+            "description": "Post slug (unique)",
+            "type": "string"
         }
     }
 }

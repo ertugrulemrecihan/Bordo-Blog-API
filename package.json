@@ -36,6 +36,7 @@
     "nodemailer-express-handlebars": "^5.0.0",
     "random-gen": "^0.1.0",
     "redis": "^4.3.0",
+    "slug": "^6.0.0",
     "swagger-ui-express": "^4.5.0",
     "uuid": "^8.3.2"
   },
