@@ -11,12 +11,16 @@ class ApiDataSuccess extends ApiSuccess {
     }
 
     static send(data, message, statusCode, res, next) {
+        ApiDataSuccess.place(data, message, statusCode, res);
+        next();
+    }
+
+    static place(data, message, statusCode, res) {
         res.locals.apiResponse = ApiDataSuccess.toJSON(
             data,
             message,
             statusCode
         );
-        next();
     }
 }
 
