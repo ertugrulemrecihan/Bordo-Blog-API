@@ -39,9 +39,11 @@ const deletePasswordAndSaltFields = (user) => {
     return newObject;
 };
 
-// ! FIXME: yeni sisteme göre düzenle
 const createAndVerifyEmail = async (email) => {
-    const user = await userService.fetchOneByQuery({ email: email });
+    const user = await userService.fetchOneByQuery(
+        { email: email },
+        { select: '-password -salt' }
+    );
     if (!user) {
         throw new ApiError(
             'No user found associated with this email',
@@ -61,8 +63,7 @@ const createAndVerifyEmail = async (email) => {
         await emailVerificationTokenService.deleteById(currentVerifyToken._id);
     }
 
-    const jwtUser = deletePasswordAndSaltFields(user);
-    const emailVerifyToken = jwtHelper.generateEmailVerifyToken(jwtUser);
+    const emailVerifyToken = jwtHelper.generateEmailVerifyToken(user);
 
     await emailVerificationTokenService.create({
         user_id: user._id,

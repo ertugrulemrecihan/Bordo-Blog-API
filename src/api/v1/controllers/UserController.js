@@ -42,7 +42,6 @@ class UserController extends BaseController {
                 throw new Error();
             }
 
-            // ! FIXME - Populate ile field sil
             const response = userHelper.createResponse(user);
 
             const accessToken = response.access_token;
@@ -682,8 +681,6 @@ class UserController extends BaseController {
             return next(new ApiError('User not found', httpStatus.NOT_FOUND));
         }
 
-        // ! FIXME - BaseService'e metod bazlı popülasyon
-        // ! eklendiğinde burayı güncelle
         const result = userHelper.deletePasswordAndSaltFields(response);
 
         ApiDataSuccess.send(
