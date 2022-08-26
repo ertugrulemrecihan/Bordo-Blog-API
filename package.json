@@ -1,8 +1,8 @@
 {
-  "name": "bordo.io-staj-back-end",
+  "name": "bordo-blog",
   "version": "0.0.0",
   "description": "",
-  "main": "app.js",
+  "main": "src/app.js",
   "scripts": {
     "start": "node src/app.js",
     "dev" : "nodemon src/app.js",
@@ -11,15 +11,24 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/ertugrulchn/Bordo.io-Staj-Back-End.git"
+    "url": "git+https://github.com/ertugrulchn/Bordo-Blog-API.git"
   },
   "keywords": [],
-  "author": "",
-  "license": "ISC",
+  "contributors": [
+    {
+      "name": "Furkan Ogutcu",
+      "url": "https://github.com/furkanogutcu"
+    },
+    {
+      "name": "Ertugrul Emre Cihan",
+      "url": "https://github.com/ertugrulchn"
+    }
+  ],
+  "license": "MIT",
   "bugs": {
-    "url": "https://github.com/ertugrulchn/Bordo.io-Staj-Back-End/issues"
+    "url": "https://github.com/ertugrulchn/Bordo-Blog-API/issues"
   },
-  "homepage": "https://github.com/ertugrulchn/Bordo.io-Staj-Back-End#readme",
+  "homepage": "https://github.com/ertugrulchn/Bordo-Blog-API#readme",
   "dependencies": {
     "cors": "^2.8.5",
     "crypto-js": "^4.1.1",
