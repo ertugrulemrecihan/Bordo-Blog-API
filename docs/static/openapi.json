@@ -5279,11 +5279,6 @@
         "summary": "Get all plans",
         "description": "Get all plans",
         "operationId": "plans.get-all",
-        "security": [
-          {
-            "bearerAuth": []
-          }
-        ],
         "responses": {
           "200": {
             "description": "",
@@ -5342,11 +5337,6 @@
         "summary": "Get plan by planId",
         "description": "Get plan by planId",
         "operationId": "plans.get",
-        "security": [
-          {
-            "bearerAuth": []
-          }
-        ],
         "parameters": [
           {
             "in": "path",
