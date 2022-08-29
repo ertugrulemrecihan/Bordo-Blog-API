@@ -164,6 +164,8 @@ class PostController extends BaseController {
             return next(new ApiError('Post not found', httpStatus.NOT_FOUND));
         }
 
+        await googleDriveHelper.deleteFile(post.cover_image.file_id);
+
         const result = await postService.deleteById(post._id);
 
         if (!result) {
