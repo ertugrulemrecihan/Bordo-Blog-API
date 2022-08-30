@@ -24,10 +24,27 @@
             "format": "email"
         },
         "avatar": {
-            "title": "Liker avatar",
-            "description": "Liker avatar",
-            "type": "string",
-            "example": "/uploads/aaaa-bbbb-cccc.jpg"
+            "type": "object",
+            "properties": {
+                "file_id": {
+                    "title": "ID of user profile image file",
+                    "description": "ID of user profile image file. \n\n NOTE: if the avatar has not been uploaded, this value is \"-1\"",
+                    "type": "string",
+                    "example": "26uKh1lnasQQWdssWPdDbb41tHhsaEPa"
+                },
+                "url": {
+                    "title": "Url of user profile image file",
+                    "description": "Url of user profile image file. \n\n NOTE: if the avatar has not been uploaded, this value is null",
+                    "type": "string",
+                    "example": "https://example.com/"
+                },
+                "name": {
+                    "title": "Name of user profile image file",
+                    "description": "Name of user profile image file. \n\n NOTE: if the avatar has not been uploaded, this value is null",
+                    "type": "string",
+                    "example": "f694dd5f-8a6c-440a-83bd-1a550d3960a0.png"
+                }
+            }
         }
     }
 }

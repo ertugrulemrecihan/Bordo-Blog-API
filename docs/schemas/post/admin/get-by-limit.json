@@ -18,6 +18,12 @@
                 "data": {
                     "allOf": [
                         {
+                            "$ref": "../../user/other/user-statistics.json"
+                        },
+                        {
+                            "$ref": "../../others/pagination-info.json"
+                        },
+                        {
                             "type": "object",
                             "properties": {
                                 "posts": {
@@ -27,12 +33,6 @@
                                     }
                                 }
                             }
-                        },
-                        {
-                            "$ref": "../../user/other/user-statistics.json"
-                        },
-                        {
-                            "$ref": "../../others/pagination-info.json"
                         }
                     ]
                 }

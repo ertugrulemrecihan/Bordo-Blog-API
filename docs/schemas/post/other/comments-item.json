@@ -10,10 +10,10 @@
             "type": "object",
             "properties": {
                 "comment": {
-                    "title": "Viewer first name",
-                    "description": "Viewer first name",
+                    "title": "Comment content",
+                    "description": "Comment content",
                     "type": "string",
-                    "example": "Viewer"
+                    "example": "Nice post!"
                 }
             }
         }
