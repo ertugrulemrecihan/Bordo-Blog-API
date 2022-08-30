@@ -131,6 +131,9 @@
         "/posts/get-all/previews": {
             "$ref": "./paths/post/get-all-previews.json"
         },
+        "/posts/get-all/previews/limit": {
+            "$ref": "./paths/post/get-all-previews-by-limit.json"
+        },
         "/posts/get-all/my/sort": {
             "$ref": "./paths/post/get-all-my-sort.json"
         },

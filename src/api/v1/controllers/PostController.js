@@ -152,6 +152,71 @@ class PostController extends BaseController {
         );
     }
 
+    async fetchAllPreviewsWithLimit(req, res, next) {
+        const fieldName = req.query?.fieldName;
+
+        if (fieldName) {
+            const fields = Object.keys(postService.model.schema.paths);
+
+            const isExistField = paginationHelper.isValidSortField(
+                fieldName,
+                fields
+            );
+
+            if (!isExistField) {
+                return next(
+                    new ApiError(
+                        'The field specified in the query was not found',
+                        httpStatus.NOT_FOUND
+                    )
+                );
+            }
+        }
+
+        const pageSize =
+            req.query.limit < 1 ? 10 : parseInt(req.query.limit) || 10;
+        const pageNumber =
+            req.query.page < 1 ? 1 : parseInt(req.query.page) || 1;
+        const startPage = (pageNumber - 1) * pageSize;
+
+        const posts = await postService.fetchAll({
+            sortQuery: fieldName,
+            limit: pageSize,
+            skip: startPage,
+            select: ['-content', '-images', '-comments'],
+        });
+
+        const totalItemCount = await postService.count();
+
+        const paginationInfo = paginationHelper.getPaginationInfo(
+            totalItemCount,
+            pageSize,
+            pageNumber
+        );
+
+        if (paginationInfo.error) {
+            return next(
+                new ApiError(
+                    paginationInfo.error.message,
+                    paginationInfo.error.code
+                )
+            );
+        }
+
+        const response = {
+            paginationInfo: paginationInfo.data,
+            posts,
+        };
+
+        ApiDataSuccess.send(
+            response,
+            'Posts previews fetched successfully',
+            httpStatus.OK,
+            res,
+            next
+        );
+    }
+
     async deleteMyPost(req, res, next) {
         const postId = req.params.id;
 

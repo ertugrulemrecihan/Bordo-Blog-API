@@ -2613,6 +2613,121 @@
         }
       }
     },
+    "/posts/get-all/previews/limit": {
+      "summary": "",
+      "description": "",
+      "get": {
+        "tags": [
+          "Posts"
+        ],
+        "summary": "Get previews of all posts by limiting",
+        "description": "Get previews of all posts by limiting",
+        "operationId": "posts.get-all-previews-by-limit",
+        "parameters": [
+          {
+            "name": "limit",
+            "in": "query",
+            "description": "Maximum post count (Default: 10)",
+            "schema": {
+              "type": "number"
+            }
+          },
+          {
+            "name": "page",
+            "in": "query",
+            "description": "Page number (Default: 1)",
+            "schema": {
+              "type": "number"
+            }
+          },
+          {
+            "name": "fieldName",
+            "in": "query",
+            "description": "Post's field name for sorting",
+            "schema": {
+              "type": "number"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "allOf": [
+                    {
+                      "$ref": "#/paths/~1users~1logout/post/responses/200/content/application~1json/schema/allOf/0"
+                    },
+                    {
+                      "type": "object",
+                      "properties": {
+                        "statusCode": {
+                          "type": "number",
+                          "default": 200
+                        }
+                      }
+                    },
+                    {
+                      "type": "object",
+                      "properties": {
+                        "data": {
+                          "allOf": [
+                            {
+                              "$ref": "#/paths/~1posts~1get-all~1my~1limit/get/responses/200/content/application~1json/schema/allOf/2/properties/data/allOf/1"
+                            },
+                            {
+                              "type": "object",
+                              "properties": {
+                                "posts": {
+                                  "type": "array",
+                                  "items": {
+                                    "allOf": [
+                                      {
+                                        "$ref": "#/paths/~1posts~1create/post/responses/201/content/application~1json/schema/allOf/2/properties/data/allOf/0"
+                                      },
+                                      {
+                                        "$ref": "#/paths/~1posts~1create/post/responses/201/content/application~1json/schema/allOf/2/properties/data/allOf/1"
+                                      },
+                                      {
+                                        "$ref": "#/components/requestBodies/create-post/content/multipart~1form-data/schema/allOf/1/allOf/0"
+                                      },
+                                      {
+                                        "$ref": "#/paths/~1posts~1create/post/responses/201/content/application~1json/schema/allOf/2/properties/data/allOf/3"
+                                      },
+                                      {
+                                        "$ref": "#/paths/~1posts~1get~1my~1%7BpostId%7D/get/responses/200/content/application~1json/schema/allOf/2/properties/data/allOf/5"
+                                      },
+                                      {
+                                        "$ref": "#/paths/~1posts~1get~1my~1%7BpostId%7D/get/responses/200/content/application~1json/schema/allOf/2/properties/data/allOf/6"
+                                      },
+                                      {
+                                        "$ref": "#/paths/~1posts~1create/post/responses/201/content/application~1json/schema/allOf/2/properties/data/allOf/8"
+                                      }
+                                    ]
+                                  }
+                                }
+                              }
+                            }
+                          ]
+                        }
+                      }
+                    }
+                  ]
+                }
+              }
+            }
+          },
+          "400": {
+            "$ref": "#/paths/~1users~1login/post/responses/400"
+          },
+          "404": {
+            "$ref": "#/paths/~1users~1login/post/responses/404"
+          }
+        }
+      }
+    },
     "/posts/get-all/my/sort": {
       "summary": "",
       "description": "",
