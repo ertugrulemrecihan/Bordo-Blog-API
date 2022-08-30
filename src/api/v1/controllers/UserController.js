@@ -920,19 +920,38 @@ class UserController extends BaseController {
             }
         }
 
-        const pageMaxItem = req.query.limit == null ? 10 : req.query.limit;
-        const pageNumber = req.query.page == null ? 1 : req.query.page;
-        const startPage = (pageNumber - 1) * pageMaxItem;
+        const pageSize =
+            req.query.limit < 1 ? 10 : parseInt(req.query.limit) || 10;
+        const pageNumber =
+            req.query.page < 1 ? 1 : parseInt(req.query.page) || 1;
+        const startPage = (pageNumber - 1) * pageSize;
 
         const users = await userService.fetchAll({
             sortQuery: fieldName,
-            limit: pageMaxItem,
+            limit: pageSize,
             skip: startPage,
         });
 
+        const totalItemCount = await userService.count();
+
+        const paginationInfo = paginationHelper.getPaginationInfo(
+            totalItemCount,
+            pageSize,
+            pageNumber
+        );
+
+        if (paginationInfo.error) {
+            return next(
+                new ApiError(
+                    paginationInfo.error.message,
+                    paginationInfo.error.code
+                )
+            );
+        }
+
         const posts = await postService.fetchAll();
 
-        const response = [];
+        const usersWithStatistics = [];
 
         for (const user of users) {
             const userPosts = posts.filter(
@@ -941,15 +960,20 @@ class UserController extends BaseController {
 
             const postStatistics = statisticHelper.postStatistics(userPosts);
 
-            response.push({
+            usersWithStatistics.push({
                 user,
                 statistics: postStatistics,
             });
         }
 
-        if (response.length > 0) {
-            await redisHelper.cache(req, response);
+        if (usersWithStatistics.length > 0) {
+            await redisHelper.cache(req, usersWithStatistics);
         }
+
+        const response = {
+            paginationInfo: paginationInfo.data,
+            users: usersWithStatistics,
+        };
 
         ApiDataSuccess.send(
             response,

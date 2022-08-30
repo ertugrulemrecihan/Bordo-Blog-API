@@ -18,7 +18,19 @@
                 "data": {
                     "type": "array",
                     "items": {
-                        "$ref": "../other/tag.json"
+                        "allOf": [
+                            {
+                                "type": "object",
+                                "properties": {
+                                    "tags": {
+                                        "$ref": "../other/tag.json"
+                                    }
+                                }
+                            },
+                            {
+                                "$ref": "../../others/pagination-info.json"
+                            }
+                        ]
                     }
                 }
             }

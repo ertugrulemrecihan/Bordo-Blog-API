@@ -15,18 +15,17 @@
             {
                 "name": "limit",
                 "in": "query",
-                "description": "Maximum tag count",
-                "required": true,
+                "description": "Maximum tag count (Default: 10)",
                 "schema": {
-                    "type": "string"
+                    "type": "number"
                 }
             },
             {
                 "name": "page",
                 "in": "query",
-                "description": "Page number",
+                "description": "Page number (Default: 1)",
                 "schema": {
-                    "type": "string"
+                    "type": "number"
                 }
             },
             {
@@ -34,7 +33,7 @@
                 "in": "query",
                 "description": "Tag field name for sorting",
                 "schema": {
-                    "type": "string"
+                    "type": "number"
                 }
             }
         ],

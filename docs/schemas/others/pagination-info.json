@@ -1,0 +1,57 @@
+{
+    "type": "object",
+    "properties": {
+        "paginationInfo": {
+            "allOf": [
+                {
+                    "type": "object",
+                    "properties": {
+                        "pageSize": {
+                            "title": "Number of items on each page",
+                            "description": "Number of items on each page",
+                            "type": "number",
+                            "min": 1,
+                            "example": 3
+                        }
+                    }
+                },
+                {
+                    "type": "object",
+                    "properties": {
+                        "totalItemCount": {
+                            "title": "Total number of items",
+                            "description": "Total number of items",
+                            "type": "number",
+                            "min": 0,
+                            "example": 16
+                        }
+                    }
+                },
+                {
+                    "type": "object",
+                    "properties": {
+                        "pageNumber": {
+                            "title": "Displayed page number",
+                            "description": "Displayed page number",
+                            "type": "number",
+                            "min": 0,
+                            "example": 2
+                        }
+                    }
+                },
+                {
+                    "type": "object",
+                    "properties": {
+                        "totalPageCount": {
+                            "title": "Total number of pages",
+                            "description": "Total number of pages",
+                            "type": "number",
+                            "min": 0,
+                            "example": 6
+                        }
+                    }
+                }
+            ]
+        }
+    }
+}

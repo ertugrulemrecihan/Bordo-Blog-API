@@ -143,13 +143,15 @@ class TagController extends BaseController {
             }
         }
 
-        const pageMaxItem = req.query.limit == null ? 10 : req.query.limit;
-        const pageNumber = req.query.page == null ? 1 : req.query.page;
-        const startPage = (pageNumber - 1) * pageMaxItem;
+        const pageSize =
+            req.query.limit < 1 ? 10 : parseInt(req.query.limit) || 10;
+        const pageNumber =
+            req.query.page < 1 ? 1 : parseInt(req.query.page) || 1;
+        const startPage = (pageNumber - 1) * pageSize;
 
         const tags = await tagService.fetchAll({
             sortQuery: fieldName,
-            limit: pageMaxItem,
+            limit: pageSize,
             skip: startPage,
         });
 
@@ -157,8 +159,30 @@ class TagController extends BaseController {
             await redisHelper.cache(req, tags);
         }
 
-        ApiDataSuccess.send(
+        const totalItemCount = await tagService.count();
+
+        const paginationInfo = paginationHelper.getPaginationInfo(
+            totalItemCount,
+            pageSize,
+            pageNumber
+        );
+
+        if (paginationInfo.error) {
+            return next(
+                new ApiError(
+                    paginationInfo.error.message,
+                    paginationInfo.error.code
+                )
+            );
+        }
+
+        const response = {
+            paginationInfo: paginationInfo.data,
             tags,
+        };
+
+        ApiDataSuccess.send(
+            response,
             'Tags fetched successfully',
             httpStatus.OK,
             res,

@@ -460,21 +460,41 @@ class PostController extends BaseController {
             }
         }
 
-        const pageMaxItem = req.query.limit == null ? 10 : req.query.limit;
-        const pageNumber = req.query.page == null ? 1 : req.query.page;
-        const startPage = (pageNumber - 1) * pageMaxItem;
+        const pageSize =
+            req.query.limit < 1 ? 10 : parseInt(req.query.limit) || 10;
+        const pageNumber =
+            req.query.page < 1 ? 1 : parseInt(req.query.page) || 1;
+        const startPage = (pageNumber - 1) * pageSize;
 
         const posts = await postService.fetchAll({
             sortQuery: fieldName,
-            limit: pageMaxItem,
+            limit: pageSize,
             skip: startPage,
         });
+
+        const totalItemCount = await postService.count();
+
+        const paginationInfo = paginationHelper.getPaginationInfo(
+            totalItemCount,
+            pageSize,
+            pageNumber
+        );
+
+        if (paginationInfo.error) {
+            return next(
+                new ApiError(
+                    paginationInfo.error.message,
+                    paginationInfo.error.code
+                )
+            );
+        }
 
         const postStatistics = statisticHelper.postStatistics(posts);
 
         const response = {
-            posts,
             statistics: postStatistics,
+            paginationInfo: paginationInfo.data,
+            posts,
         };
 
         ApiDataSuccess.send(
@@ -547,22 +567,44 @@ class PostController extends BaseController {
             }
         }
 
-        const pageMaxItem = req.query.limit == null ? 10 : req.query.limit;
-        const pageNumber = req.query.page == null ? 1 : req.query.page;
-        const startPage = (pageNumber - 1) * pageMaxItem;
+        const pageSize =
+            req.query.limit < 1 ? 10 : parseInt(req.query.limit) || 10;
+        const pageNumber =
+            req.query.page < 1 ? 1 : parseInt(req.query.page) || 1;
+        const startPage = (pageNumber - 1) * pageSize;
 
         const posts = await postService.fetchAll({
             query: { writer: req.user._id },
             sortQuery: fieldName,
-            limit: pageMaxItem,
+            limit: pageSize,
             skip: startPage,
         });
+
+        const totalItemCount = await postService.count({
+            writer: req.user._id,
+        });
+
+        const paginationInfo = paginationHelper.getPaginationInfo(
+            totalItemCount,
+            pageSize,
+            pageNumber
+        );
+
+        if (paginationInfo.error) {
+            return next(
+                new ApiError(
+                    paginationInfo.error.message,
+                    paginationInfo.error.code
+                )
+            );
+        }
 
         const postStatistics = statisticHelper.postStatistics(posts);
 
         const response = {
-            posts,
             statistics: postStatistics,
+            paginationInfo: paginationInfo.data,
+            posts,
         };
 
         ApiDataSuccess.send(

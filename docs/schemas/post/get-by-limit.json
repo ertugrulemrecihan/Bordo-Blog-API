@@ -30,6 +30,9 @@
                         },
                         {
                             "$ref": "../user/other/user-statistics.json"
+                        },
+                        {
+                            "$ref": "../others/pagination-info.json"
                         }
                     ]
                 }

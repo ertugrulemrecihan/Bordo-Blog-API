@@ -101,6 +101,10 @@ class BaseService {
         return finalQuery.exec();
     }
 
+    count(query){
+        return this.model.count(query || {});
+    }
+
     #getFinalQuery(
         query,
         { sortQuery, limit, skip, populate, select, session }

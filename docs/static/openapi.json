@@ -1216,18 +1216,17 @@
           {
             "name": "limit",
             "in": "query",
-            "description": "Maximum user count",
-            "required": true,
+            "description": "Maximum user count (Default: 10)",
             "schema": {
-              "type": "string"
+              "type": "number"
             }
           },
           {
             "name": "page",
             "in": "query",
-            "description": "Page number",
+            "description": "Page number (Default: 1)",
             "schema": {
-              "type": "string"
+              "type": "number"
             }
           },
           {
@@ -1235,7 +1234,7 @@
             "in": "query",
             "description": "User's field name for sorting",
             "schema": {
-              "type": "string"
+              "type": "number"
             }
           }
         ],
@@ -1266,6 +1265,9 @@
                               },
                               {
                                 "$ref": "#/paths/~1posts~1get-all~1my/get/responses/200/content/application~1json/schema/allOf/2/properties/data/allOf/1"
+                              },
+                              {
+                                "$ref": "#/paths/~1posts~1get-all~1my~1limit/get/responses/200/content/application~1json/schema/allOf/2/properties/data/allOf/2"
                               }
                             ]
                           }
@@ -1879,18 +1881,17 @@
           {
             "name": "limit",
             "in": "query",
-            "description": "Maximum tag count",
-            "required": true,
+            "description": "Maximum tag count (Default: 10)",
             "schema": {
-              "type": "string"
+              "type": "number"
             }
           },
           {
             "name": "page",
             "in": "query",
-            "description": "Page number",
+            "description": "Page number (Default: 1)",
             "schema": {
-              "type": "string"
+              "type": "number"
             }
           },
           {
@@ -1898,7 +1899,7 @@
             "in": "query",
             "description": "Tag field name for sorting",
             "schema": {
-              "type": "string"
+              "type": "number"
             }
           }
         ],
@@ -1928,7 +1929,19 @@
                         "data": {
                           "type": "array",
                           "items": {
-                            "$ref": "#/paths/~1admin~1tags~1create/post/responses/201/content/application~1json/schema/allOf/2/properties/data"
+                            "allOf": [
+                              {
+                                "type": "object",
+                                "properties": {
+                                  "tags": {
+                                    "$ref": "#/paths/~1admin~1tags~1create/post/responses/201/content/application~1json/schema/allOf/2/properties/data"
+                                  }
+                                }
+                              },
+                              {
+                                "$ref": "#/paths/~1posts~1get-all~1my~1limit/get/responses/200/content/application~1json/schema/allOf/2/properties/data/allOf/2"
+                              }
+                            ]
                           }
                         }
                       }
@@ -2699,23 +2712,26 @@
           {
             "name": "limit",
             "in": "query",
-            "description": "Maximum post count",
-            "required": true,
+            "description": "Maximum post count (Default: 10)",
             "schema": {
-              "type": "string"
+              "type": "number"
             }
           },
           {
             "name": "page",
             "in": "query",
-            "description": "Page number",
-            "type": "string"
+            "description": "Page number (Default: 1)",
+            "schema": {
+              "type": "number"
+            }
           },
           {
             "name": "fieldName",
             "in": "query",
             "description": "Post's field name for sorting",
-            "type": "string"
+            "schema": {
+              "type": "number"
+            }
           }
         ],
         "responses": {
@@ -2756,6 +2772,63 @@
                             },
                             {
                               "$ref": "#/paths/~1posts~1get-all~1my/get/responses/200/content/application~1json/schema/allOf/2/properties/data/allOf/1"
+                            },
+                            {
+                              "type": "object",
+                              "properties": {
+                                "paginationInfo": {
+                                  "allOf": [
+                                    {
+                                      "type": "object",
+                                      "properties": {
+                                        "pageSize": {
+                                          "title": "Number of items on each page",
+                                          "description": "Number of items on each page",
+                                          "type": "number",
+                                          "min": 1,
+                                          "example": 3
+                                        }
+                                      }
+                                    },
+                                    {
+                                      "type": "object",
+                                      "properties": {
+                                        "totalItemCount": {
+                                          "title": "Total number of items",
+                                          "description": "Total number of items",
+                                          "type": "number",
+                                          "min": 0,
+                                          "example": 16
+                                        }
+                                      }
+                                    },
+                                    {
+                                      "type": "object",
+                                      "properties": {
+                                        "pageNumber": {
+                                          "title": "Displayed page number",
+                                          "description": "Displayed page number",
+                                          "type": "number",
+                                          "min": 0,
+                                          "example": 2
+                                        }
+                                      }
+                                    },
+                                    {
+                                      "type": "object",
+                                      "properties": {
+                                        "totalPageCount": {
+                                          "title": "Total number of pages",
+                                          "description": "Total number of pages",
+                                          "type": "number",
+                                          "min": 0,
+                                          "example": 6
+                                        }
+                                      }
+                                    }
+                                  ]
+                                }
+                              }
                             }
                           ]
                         }
@@ -4023,18 +4096,17 @@
           {
             "name": "limit",
             "in": "query",
-            "description": "Maximum post count",
-            "required": true,
+            "description": "Maximum post count (Default: 10)",
             "schema": {
-              "type": "string"
+              "type": "number"
             }
           },
           {
             "name": "page",
             "in": "query",
-            "description": "Page number",
+            "description": "Page number (Default: 1)",
             "schema": {
-              "type": "string"
+              "type": "number"
             }
           },
           {
@@ -4042,7 +4114,7 @@
             "in": "query",
             "description": "Post field name for sorting",
             "schema": {
-              "type": "string"
+              "type": "number"
             }
           }
         ],
@@ -4084,6 +4156,9 @@
                             },
                             {
                               "$ref": "#/paths/~1posts~1get-all~1my/get/responses/200/content/application~1json/schema/allOf/2/properties/data/allOf/1"
+                            },
+                            {
+                              "$ref": "#/paths/~1posts~1get-all~1my~1limit/get/responses/200/content/application~1json/schema/allOf/2/properties/data/allOf/2"
                             }
                           ]
                         }
