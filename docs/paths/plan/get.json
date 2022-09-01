@@ -2,17 +2,10 @@
     "summary": "",
     "description": "",
     "get": {
-        "tags": [
-            "Plans"
-        ],
+        "tags": ["Plans"],
         "summary": "Get plan by planId",
         "description": "Get plan by planId",
         "operationId": "plans.get",
-        "security": [
-            {
-                "bearerAuth": []
-            }
-        ],     
         "parameters": [
             {
                 "$ref": "../../parameters/path/plan/plan_id.json"

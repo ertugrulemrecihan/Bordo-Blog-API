@@ -2,9 +2,7 @@
     "summary": "",
     "description": "",
     "get": {
-        "tags": [
-            "Posts"
-        ],
+        "tags": ["Posts"],
         "summary": "Get all posts of the user by limiting",
         "description": "Get all posts of the user by limiting",
         "operationId": "posts.get-all-my-limit",
@@ -17,23 +15,26 @@
             {
                 "name": "limit",
                 "in": "query",
-                "description": "Maximum post count",
-                "required": true,
+                "description": "Maximum post count (Default: 10)",
                 "schema": {
-                    "type": "string"
+                    "type": "number"
                 }
             },
             {
                 "name": "page",
                 "in": "query",
-                "description": "Page number",
-                "type": "string"
+                "description": "Page number (Default: 1)",
+                "schema": {
+                    "type": "number"
+                }
             },
             {
                 "name": "fieldName",
                 "in": "query",
                 "description": "Post's field name for sorting",
-                "type": "string"
+                "schema": {
+                    "type": "number"
+                }
             }
         ],
         "responses": {

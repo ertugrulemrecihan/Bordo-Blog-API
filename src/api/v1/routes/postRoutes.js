@@ -12,6 +12,7 @@ const schemas = require('../validations/post');
 router
     .route('/get-all/my')
     .get(authenticate, controller.fetchAllMyPosts); // ! FIXME: Abone olmalı
+
 router
     .route('/get/my/:id')
     .get(
@@ -19,9 +20,15 @@ router
         paramIdValidator,
         controller.fetchOneMyPost
     ); // ! FIXME: Abone olmalı
+
 router
     .route('/get-all/previews')
     .get(controller.fetchAllPreviews);
+
+router
+    .route('/get-all/previews/limit')
+    .get(controller.fetchAllPreviewsWithLimit);
+
 router
     .route('/get-all/my/sort')
     .get(
@@ -29,12 +36,14 @@ router
         queryValidator('fieldName'),
         controller.fetchAllMyPostsWithSortByQuery
     );
+
 router
     .route('/get-all/my/limit')
     .get(
         authenticate,
         controller.fetchAllMyPostsByLimit
     );      
+
 router
     .route('/create')
     .post(
@@ -50,6 +59,7 @@ router
         ]),
         controller.create
     );
+
 router
     .route('/delete/my/:id')
     .delete(
@@ -57,6 +67,7 @@ router
         paramIdValidator,
         controller.deleteMyPost
     );
+
 router
     .route('/update/my/:id')
     .patch(
@@ -73,6 +84,7 @@ router
         ]),
         controller.updateMyPost
     );
+
 router
     .route('/add-view/:id')
     .post(
@@ -80,6 +92,7 @@ router
         paramIdValidator,
         controller.addView
     ); // ! FIXME: Abone olmalı
+
 router
     .route('/change-like-status/:id')
     .post(
@@ -87,6 +100,7 @@ router
         paramIdValidator,
         controller.changeLikeStatus
     ); // ! FIXME: Abone olmalı
+
 router
     .route('/add-comment/:id')
     .post(
@@ -95,6 +109,7 @@ router
         bodyValidator(schemas.addComment),
         controller.addComment
     );
+
 router
     .route('/delete-comment/:id')
     .delete(

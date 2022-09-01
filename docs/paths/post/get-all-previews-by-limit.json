@@ -2,20 +2,15 @@
     "summary": "",
     "description": "",
     "get": {
-        "tags": ["Admins"],
-        "summary": "Get all users by limit",
-        "description": "Get all tags by limit",
-        "operationId": "admin.users.get-all-limit",
-        "security": [
-            {
-                "bearerAuth": []
-            }
-        ],
+        "tags": ["Posts"],
+        "summary": "Get previews of all posts by limiting",
+        "description": "Get previews of all posts by limiting",
+        "operationId": "posts.get-all-previews-by-limit",
         "parameters": [
             {
                 "name": "limit",
                 "in": "query",
-                "description": "Maximum user count (Default: 10)",
+                "description": "Maximum post count (Default: 10)",
                 "schema": {
                     "type": "number"
                 }
@@ -31,7 +26,7 @@
             {
                 "name": "fieldName",
                 "in": "query",
-                "description": "User's field name for sorting",
+                "description": "Post's field name for sorting",
                 "schema": {
                     "type": "number"
                 }
@@ -39,19 +34,13 @@
         ],
         "responses": {
             "200": {
-                "$ref": "../../../responses/admin/user/get-by-limit.json"
+                "$ref": "../../responses/post/get-all-previews-by-limit.json"
             },
             "400": {
-                "$ref": "../../../responses/api-responses/400.json"
-            },
-            "401": {
-                "$ref": "../../../responses/api-responses/401.json"
-            },
-            "403": {
-                "$ref": "../../../responses/api-responses/403.json"
+                "$ref": "../../responses/api-responses/400.json"
             },
             "404": {
-                "$ref": "../../../responses/api-responses/404.json"
+                "$ref": "../../responses/api-responses/404.json"
             }
         }
     }

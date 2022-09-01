@@ -18,18 +18,88 @@
                 "data": {
                     "allOf": [
                         {
+                            "$ref": "../user/other/user-statistics.json"
+                        },
+                        {
+                            "$ref": "../others/pagination-info.json"
+                        },
+                        {
                             "type": "object",
                             "properties": {
                                 "posts": {
                                     "type": "array",
                                     "items": {
-                                        "$ref": "./other/post.json"
+                                        "allOf": [
+                                            {
+                                                "$ref": "./other/post.json"
+                                            },
+                                            {
+                                                "type": "object",
+                                                "properties": {
+                                                    "comments": {
+                                                        "type": "array",
+                                                        "items": {
+                                                            "type": "object",
+                                                            "allOf": [
+                                                                {
+                                                                    "$ref": "../../responses/api-responses/data-response-base.json"
+                                                                },
+                                                                {
+                                                                    "$ref": "./other/comment-user.json"
+                                                                },
+                                                                {
+                                                                    "type": "object",
+                                                                    "properties": {
+                                                                        "comment": {
+                                                                            "title": "Comment content",
+                                                                            "description": "Comment content",
+                                                                            "type": "string",
+                                                                            "example": "Nice post!"
+                                                                        }
+                                                                    }
+                                                                }
+                                                            ]
+                                                        }
+                                                    }
+                                                }
+                                            },
+                                            {
+                                                "type": "object",
+                                                "properties": {
+                                                    "tags": {
+                                                        "type": "array",
+                                                        "items": {
+                                                            "type": "object",
+                                                            "allOf": [
+                                                                {
+                                                                    "$ref": "../../responses/api-responses/data-response-base.json"
+                                                                },
+                                                                {
+                                                                    "type": "object",
+                                                                    "properties": {
+                                                                        "name": {
+                                                                            "title": "Tag name",
+                                                                            "description": "Tag name",
+                                                                            "type": "string",
+                                                                            "example": "Tag"
+                                                                        },
+                                                                        "post_count": {
+                                                                            "title": "Tag post count",
+                                                                            "description": "Tag post count",
+                                                                            "type": "number",
+                                                                            "example": 0
+                                                                        }
+                                                                    }
+                                                                }
+                                                            ]
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                        ]
                                     }
                                 }
                             }
-                        },
-                        {
-                            "$ref": "../user/other/user-statistics.json"
                         }
                     ]
                 }

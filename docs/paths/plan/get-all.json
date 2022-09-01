@@ -2,17 +2,10 @@
     "summary": "",
     "description": "",
     "get": {
-        "tags": [
-            "Plans"
-        ],
+        "tags": ["Plans"],
         "summary": "Get all plans",
         "description": "Get all plans",
         "operationId": "plans.get-all",
-        "security": [
-            {
-                "bearerAuth": []
-            }
-        ],
         "responses": {
             "200": {
                 "$ref": "../../responses/plan/get-all.json"

@@ -1,0 +1,61 @@
+{
+    "allOf": [
+        {
+            "$ref": "../../responses/api-responses/api-success.json"
+        },
+        {
+            "type": "object",
+            "properties": {
+                "statusCode": {
+                    "type": "number",
+                    "default": 200
+                }
+            }
+        },
+        {
+            "type": "object",
+            "properties": {
+                "data": {
+                    "allOf": [
+                        {
+                            "$ref": "../others/pagination-info.json"
+                        },
+                        {
+                            "type": "object",
+                            "properties": {
+                                "posts": {
+                                    "type": "array",
+                                    "items": {
+                                        "allOf": [
+                                            {
+                                                "$ref": "../../responses/api-responses/data-response-base.json"
+                                            },
+                                            {
+                                                "$ref": "./other/writer.json"
+                                            },
+                                            {
+                                                "$ref": "./other/title-description.json"
+                                            },
+                                            {
+                                                "$ref": "./other/cover_image.json"
+                                            },
+                                            {
+                                                "$ref": "./other/viewers.json"
+                                            },
+                                            {
+                                                "$ref": "./other/likes.json"
+                                            },
+                                            {
+                                                "$ref": "./other/tags.json"
+                                            }
+                                        ]
+                                    }
+                                }
+                            }
+                        }
+                    ]
+                }
+            }
+        }
+    ]
+}
