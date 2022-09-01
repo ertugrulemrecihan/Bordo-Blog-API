@@ -4,7 +4,7 @@ const moment = require('moment');
 
 const queryOptions = (req, res, next) => {
     const sortField = req.query.sortField;
-    const sortOrder = req.query.sortOrder;
+    const sortOrder = req.query.sortOrder || 1;
 
     let limit = parseInt(req.query.limit);
     let page = parseInt(req.query.page);

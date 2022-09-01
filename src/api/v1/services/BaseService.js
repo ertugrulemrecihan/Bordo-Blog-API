@@ -4,8 +4,17 @@ class BaseService {
         this.populate = populate;
     }
 
-    fetchAll({ query, sortQuery, limit, skip, populate, select, session } = {}){
+    fetchAll({ query, sortQuery, limit, skip, populate, select, queryOptions, session } = {}){
+        query = {
+            ...query,
+            ...queryOptions?.filtering,
+        };
+        
         const dbQuery = this.model.find(query || {});
+
+        sortQuery = sortQuery || queryOptions?.sorting?.sortQuery;
+        limit = limit || queryOptions?.pagination?.limit;
+        skip = skip || queryOptions?.pagination?.skip;
 
         const finalQuery = this.#getFinalQuery(dbQuery, {
             sortQuery,

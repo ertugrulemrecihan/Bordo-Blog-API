@@ -5,13 +5,17 @@ const authenticate = require('../middlewares/authenticate');
 const bodyValidator = require('../middlewares/bodyValidator');
 const fileValidator = require('../middlewares/fileValidator');
 const paramIdValidator = require('../middlewares/paramsIdValidator');
-const queryValidator = require('../middlewares/queryValidator');
+const queryOptions = require('../middlewares/queryOptions');
 const schemas = require('../validations/post');
 
 // TODO: Kullanıcının aboneliği varsa getir
 router
     .route('/get-all/my')
-    .get(authenticate, controller.fetchAllMyPosts); // ! FIXME: Abone olmalı
+    .get(
+        authenticate,
+        queryOptions,
+        controller.fetchAllMyPosts
+    ); // ! FIXME: Abone olmalı
 
 router
     .route('/get/my/:id')
@@ -23,26 +27,7 @@ router
 
 router
     .route('/get-all/previews')
-    .get(controller.fetchAllPreviews);
-
-router
-    .route('/get-all/previews/limit')
-    .get(controller.fetchAllPreviewsWithLimit);
-
-router
-    .route('/get-all/my/sort')
-    .get(
-        authenticate,
-        queryValidator('fieldName'),
-        controller.fetchAllMyPostsWithSortByQuery
-    );
-
-router
-    .route('/get-all/my/limit')
-    .get(
-        authenticate,
-        controller.fetchAllMyPostsByLimit
-    );      
+    .get(controller.fetchAllPreviews);    
 
 router
     .route('/create')

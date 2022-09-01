@@ -20,6 +20,7 @@ class PostController extends BaseController {
     async fetchAllMyPosts(req, res, next) {
         const posts = await postService.fetchAll({
             query: { writer: req.user._id },
+            queryOptions: req?.queryOptions,
         });
 
         const postsStatistics = statisticHelper.postStatistics(posts);
@@ -28,6 +29,27 @@ class PostController extends BaseController {
             posts,
             statistics: postsStatistics,
         };
+
+        if (req?.queryOptions?.pagination?.limit) {
+            const totalItemCount = await postService.count();
+
+            const paginationInfo = paginationHelper.getPaginationInfo(
+                totalItemCount,
+                req.queryOptions.pagination?.limit,
+                req.queryOptions.pagination?.page
+            );
+
+            if (paginationInfo.error) {
+                return next(
+                    new ApiError(
+                        paginationInfo.error.message,
+                        paginationInfo.error.code
+                    )
+                );
+            }
+
+            response.paginationInfo = paginationInfo.data;
+        }
 
         ApiDataSuccess.send(
             response,
@@ -142,71 +164,6 @@ class PostController extends BaseController {
         const response = await postService.fetchAll({
             select: ['-content', '-images', '-comments'],
         });
-
-        ApiDataSuccess.send(
-            response,
-            'Posts previews fetched successfully',
-            httpStatus.OK,
-            res,
-            next
-        );
-    }
-
-    async fetchAllPreviewsWithLimit(req, res, next) {
-        const fieldName = req.query?.fieldName;
-
-        if (fieldName) {
-            const fields = Object.keys(postService.model.schema.paths);
-
-            const isExistField = paginationHelper.isValidSortField(
-                fieldName,
-                fields
-            );
-
-            if (!isExistField) {
-                return next(
-                    new ApiError(
-                        'The field specified in the query was not found',
-                        httpStatus.NOT_FOUND
-                    )
-                );
-            }
-        }
-
-        const pageSize =
-            req.query.limit < 1 ? 10 : parseInt(req.query.limit) || 10;
-        const pageNumber =
-            req.query.page < 1 ? 1 : parseInt(req.query.page) || 1;
-        const startPage = (pageNumber - 1) * pageSize;
-
-        const posts = await postService.fetchAll({
-            sortQuery: fieldName,
-            limit: pageSize,
-            skip: startPage,
-            select: ['-content', '-images', '-comments'],
-        });
-
-        const totalItemCount = await postService.count();
-
-        const paginationInfo = paginationHelper.getPaginationInfo(
-            totalItemCount,
-            pageSize,
-            pageNumber
-        );
-
-        if (paginationInfo.error) {
-            return next(
-                new ApiError(
-                    paginationInfo.error.message,
-                    paginationInfo.error.code
-                )
-            );
-        }
-
-        const response = {
-            paginationInfo: paginationInfo.data,
-            posts,
-        };
 
         ApiDataSuccess.send(
             response,
@@ -560,46 +517,6 @@ class PostController extends BaseController {
             statistics: postStatistics,
             paginationInfo: paginationInfo.data,
             posts,
-        };
-
-        ApiDataSuccess.send(
-            response,
-            'Posts fetched successfully',
-            httpStatus.OK,
-            res,
-            next
-        );
-    }
-
-    async fetchAllMyPostsWithSortByQuery(req, res, next) {
-        const fieldName = req.query.fieldName;
-
-        const fields = Object.keys(postService.model.schema.paths);
-
-        const isExistField = paginationHelper.isValidSortField(
-            fieldName,
-            fields
-        );
-
-        if (!isExistField) {
-            return next(
-                new ApiError(
-                    'The field specified in the query was not found',
-                    httpStatus.NOT_FOUND
-                )
-            );
-        }
-
-        const posts = await postService.fetchAll({
-            query: { writer: req.user._id },
-            sortQuery: fieldName,
-        });
-
-        const postsStatistics = statisticHelper.postStatistics(posts);
-
-        const response = {
-            posts,
-            statistics: postsStatistics,
         };
 
         ApiDataSuccess.send(
