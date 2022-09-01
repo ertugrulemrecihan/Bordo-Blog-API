@@ -5,7 +5,7 @@
   "main": "src/app.js",
   "scripts": {
     "start": "node src/app.js",
-    "dev" : "nodemon src/app.js",
+    "dev": "nodemon src/app.js",
     "lint": "eslint src/**/*.js",
     "lint-fix": "eslint src/**/*.js --fix"
   },
@@ -41,6 +41,7 @@
     "joi": "^17.6.0",
     "jsonwebtoken": "^8.5.1",
     "mime-types": "^2.1.35",
+    "moment": "^2.29.4",
     "mongoose": "^6.5.0",
     "nodemailer": "^6.7.7",
     "nodemailer-express-handlebars": "^5.0.0",
