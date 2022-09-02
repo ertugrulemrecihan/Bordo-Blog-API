@@ -424,182 +424,10 @@ class PostController extends BaseController {
         );
     }
 
-    async fetchAllPostsWithSortByQuery(req, res, next) {
-        const fieldName = req.query.fieldName;
-
-        const fields = Object.keys(postService.model.schema.paths);
-
-        const isExistField = paginationHelper.isValidSortField(
-            fieldName,
-            fields
-        );
-
-        if (!isExistField) {
-            return next(
-                new ApiError(
-                    'The field specified in the query was not found',
-                    httpStatus.NOT_FOUND
-                )
-            );
-        }
-
-        const posts = await postService.fetchAll({ sortQuery: fieldName });
-
-        const postStatistics = statisticHelper.postStatistics(posts);
-
-        const response = {
-            posts,
-            statistics: postStatistics,
-        };
-
-        ApiDataSuccess.send(
-            response,
-            'Posts fetched successfully',
-            httpStatus.OK,
-            res,
-            next
-        );
-    }
-
-    async fetchAllPostsByLimit(req, res, next) {
-        const fieldName = req.query?.fieldName;
-
-        if (fieldName) {
-            const fields = Object.keys(postService.model.schema.paths);
-
-            const isExistField = paginationHelper.isValidSortField(
-                fieldName,
-                fields
-            );
-
-            if (!isExistField) {
-                return next(
-                    new ApiError(
-                        'The field specified in the query was not found',
-                        httpStatus.NOT_FOUND
-                    )
-                );
-            }
-        }
-
-        const pageSize =
-            req.query.limit < 1 ? 10 : parseInt(req.query.limit) || 10;
-        const pageNumber =
-            req.query.page < 1 ? 1 : parseInt(req.query.page) || 1;
-        const startPage = (pageNumber - 1) * pageSize;
-
-        const posts = await postService.fetchAll({
-            sortQuery: fieldName,
-            limit: pageSize,
-            skip: startPage,
-        });
-
-        const totalItemCount = await postService.count();
-
-        const paginationInfo = paginationHelper.getPaginationInfo(
-            totalItemCount,
-            pageSize,
-            pageNumber
-        );
-
-        if (paginationInfo.error) {
-            return next(
-                new ApiError(
-                    paginationInfo.error.message,
-                    paginationInfo.error.code
-                )
-            );
-        }
-
-        const postStatistics = statisticHelper.postStatistics(posts);
-
-        const response = {
-            statistics: postStatistics,
-            paginationInfo: paginationInfo.data,
-            posts,
-        };
-
-        ApiDataSuccess.send(
-            response,
-            'Posts fetched successfully',
-            httpStatus.OK,
-            res,
-            next
-        );
-    }
-
-    async fetchAllMyPostsByLimit(req, res, next) {
-        const fieldName = req.query?.fieldName;
-
-        if (fieldName) {
-            const fields = Object.keys(postService.model.schema.paths);
-
-            const isExistField = paginationHelper.isValidSortField(
-                fieldName,
-                fields
-            );
-
-            if (!isExistField) {
-                return next(
-                    new ApiError(
-                        'The field specified in the query was not found',
-                        httpStatus.NOT_FOUND
-                    )
-                );
-            }
-        }
-
-        const pageSize =
-            req.query.limit < 1 ? 10 : parseInt(req.query.limit) || 10;
-        const pageNumber =
-            req.query.page < 1 ? 1 : parseInt(req.query.page) || 1;
-        const startPage = (pageNumber - 1) * pageSize;
-
-        const posts = await postService.fetchAll({
-            query: { writer: req.user._id },
-            sortQuery: fieldName,
-            limit: pageSize,
-            skip: startPage,
-        });
-
-        const totalItemCount = await postService.count({
-            writer: req.user._id,
-        });
-
-        const paginationInfo = paginationHelper.getPaginationInfo(
-            totalItemCount,
-            pageSize,
-            pageNumber
-        );
-
-        if (paginationInfo.error) {
-            return next(
-                new ApiError(
-                    paginationInfo.error.message,
-                    paginationInfo.error.code
-                )
-            );
-        }
-
-        const postStatistics = statisticHelper.postStatistics(posts);
-
-        const response = {
-            statistics: postStatistics,
-            paginationInfo: paginationInfo.data,
-            posts,
-        };
-
-        ApiDataSuccess.send(
-            response,
-            'Posts fetched successfully',
-            httpStatus.OK,
-            res,
-            next
-        );
-    }
-
     async fetchAllForAdmin(req, res, next) {
-        const posts = await postService.fetchAll();
+        const posts = await postService.fetchAll({
+            queryOptions: req?.queryOptions,
+        });
 
         const postsStatistics = statisticHelper.postStatistics(posts);
 
@@ -607,6 +435,27 @@ class PostController extends BaseController {
             posts,
             statistics: postsStatistics,
         };
+
+        if (req?.queryOptions?.pagination?.limit) {
+            const totalItemCount = await postService.count();
+
+            const paginationInfo = paginationHelper.getPaginationInfo(
+                totalItemCount,
+                req.queryOptions.pagination?.limit,
+                req.queryOptions.pagination?.page
+            );
+
+            if (paginationInfo.error) {
+                return next(
+                    new ApiError(
+                        paginationInfo.error.message,
+                        paginationInfo.error.code
+                    )
+                );
+            }
+
+            response.paginationInfo = paginationInfo.data;
+        }
 
         ApiDataSuccess.send(
             response,

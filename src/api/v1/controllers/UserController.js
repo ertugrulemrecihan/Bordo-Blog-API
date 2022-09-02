@@ -622,6 +622,7 @@ class UserController extends BaseController {
         const posts = await postService.fetchAll();
 
         const users = await userService.fetchAll({
+            queryOptions: req?.queryOptions,
             select: '-password -salt',
         });
 
@@ -642,6 +643,27 @@ class UserController extends BaseController {
 
         if (response.length > 0) {
             await redisHelper.cache(req, response);
+        }
+
+        if (req?.queryOptions?.pagination?.limit) {
+            const totalItemCount = await userService.count();
+
+            const paginationInfo = paginationHelper.getPaginationInfo(
+                totalItemCount,
+                req.queryOptions.pagination?.limit,
+                req.queryOptions.pagination?.page
+            );
+
+            if (paginationInfo.error) {
+                return next(
+                    new ApiError(
+                        paginationInfo.error.message,
+                        paginationInfo.error.code
+                    )
+                );
+            }
+
+            response.push(paginationInfo.data);
         }
 
         ApiDataSuccess.send(
@@ -839,145 +861,6 @@ class UserController extends BaseController {
 
         ApiSuccess.send(
             'Role assignment successfully removed',
-            httpStatus.OK,
-            res,
-            next
-        );
-    }
-
-    async fetchAllUserWithSortByQuery(req, res, next) {
-        const fieldName = req.query.fieldName;
-
-        const fields = Object.keys(userService.model.schema.paths);
-
-        const isExistField = paginationHelper.isValidSortField(
-            fieldName,
-            fields
-        );
-
-        if (!isExistField) {
-            return next(
-                new ApiError(
-                    'The field specified in the query was not found',
-                    httpStatus.NOT_FOUND
-                )
-            );
-        }
-
-        const users = await userService.fetchAll({
-            sortQuery: fieldName,
-            select: '-password -salt',
-        });
-
-        const posts = await postService.fetchAll();
-
-        const response = [];
-
-        for (const user of users) {
-            const userPosts = posts.filter(
-                (post) => post.writer._id.toString() == user._id.toString()
-            );
-
-            const postStatistics = statisticHelper.postStatistics(userPosts);
-
-            response.push({
-                user,
-                statistics: postStatistics,
-            });
-        }
-
-        if (response.length > 0) {
-            await redisHelper.cache(req, response);
-        }
-
-        ApiDataSuccess.send(
-            response,
-            'Users fetched successfully',
-            httpStatus.OK,
-            res,
-            next
-        );
-    }
-
-    async fetchAllUsersByLimit(req, res, next) {
-        const fieldName = req.query?.fieldName;
-
-        if (fieldName) {
-            const fields = Object.keys(userService.model.schema.paths);
-
-            const isExistField = paginationHelper.isValidSortField(
-                fieldName,
-                fields
-            );
-
-            if (!isExistField) {
-                return next(
-                    new ApiError(
-                        'The field specified in the query was not found',
-                        httpStatus.NOT_FOUND
-                    )
-                );
-            }
-        }
-
-        const pageSize =
-            req.query.limit < 1 ? 10 : parseInt(req.query.limit) || 10;
-        const pageNumber =
-            req.query.page < 1 ? 1 : parseInt(req.query.page) || 1;
-        const startPage = (pageNumber - 1) * pageSize;
-
-        const users = await userService.fetchAll({
-            sortQuery: fieldName,
-            limit: pageSize,
-            skip: startPage,
-        });
-
-        const totalItemCount = await userService.count();
-
-        const paginationInfo = paginationHelper.getPaginationInfo(
-            totalItemCount,
-            pageSize,
-            pageNumber
-        );
-
-        if (paginationInfo.error) {
-            return next(
-                new ApiError(
-                    paginationInfo.error.message,
-                    paginationInfo.error.code
-                )
-            );
-        }
-
-        const posts = await postService.fetchAll();
-
-        const usersWithStatistics = [];
-
-        for (const user of users) {
-            const userPosts = posts.filter(
-                (post) => post.writer._id.toString() == user._id.toString()
-            );
-
-            const postStatistics = statisticHelper.postStatistics(userPosts);
-
-            usersWithStatistics.push({
-                user,
-                statistics: postStatistics,
-            });
-        }
-
-        if (usersWithStatistics.length > 0) {
-            await redisHelper.cache(req, usersWithStatistics);
-        }
-
-        const response = {
-            paginationInfo: paginationInfo.data,
-            users: usersWithStatistics,
-        };
-
-        ApiDataSuccess.send(
-            response,
-            'Users fetched successfully',
             httpStatus.OK,
             res,
             next

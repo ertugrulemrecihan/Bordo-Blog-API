@@ -1,10 +1,10 @@
 const httpStatus = require('http-status');
 const tagService = require('../services/TagService');
 const BaseController = require('./BaseController');
-const paginationHelper = require('../scripts/utils/pagination');
 const ApiError = require('../responses/error/apiError');
 const ApiDataSuccess = require('../responses/success/apiDataSuccess');
 const redisHelper = require('../scripts/utils/redis');
+const paginationHelper = require('../scripts/utils/pagination');
 
 class TagController extends BaseController {
     constructor() {
@@ -50,6 +50,50 @@ class TagController extends BaseController {
         }
     };
 
+    // Override
+    fetchAll = async (req, res, next) => {
+        const tags = await tagService.fetchAll({
+            queryOptions: req?.queryOptions,
+        });
+
+        if (tags.length > 0) {
+            await redisHelper.cache(req, tags);
+        }
+
+        const response = {
+            tags,
+        };
+
+        if (req?.queryOptions?.pagination?.limit) {
+            const totalItemCount = await tagService.count();
+
+            const paginationInfo = paginationHelper.getPaginationInfo(
+                totalItemCount,
+                req.queryOptions.pagination?.limit,
+                req.queryOptions.pagination?.page
+            );
+
+            if (paginationInfo.error) {
+                return next(
+                    new ApiError(
+                        paginationInfo.error.message,
+                        paginationInfo.error.code
+                    )
+                );
+            }
+
+            response.paginationInfo = paginationInfo.data;
+        }
+
+        ApiDataSuccess.send(
+            response,
+            'Tags fetched successfully',
+            httpStatus.OK,
+            res,
+            next
+        );
+    };
+
     async fetchAllMostUsedTags(req, res, next) {
         const count = parseInt(req.params.count);
         if (!count || count <= 0) {
@@ -81,108 +125,6 @@ class TagController extends BaseController {
 
         ApiDataSuccess.send(
             tagsWithPercentile,
-            'Tags fetched successfully',
-            httpStatus.OK,
-            res,
-            next
-        );
-    }
-
-    async fetchAllTagsWithSortByQuery(req, res, next) {
-        const fieldName = req.query.fieldName;
-
-        const fields = Object.keys(tagService.model.schema.paths);
-
-        const isExistField = paginationHelper.isValidSortField(
-            fieldName,
-            fields
-        );
-
-        if (!isExistField) {
-            return next(
-                new ApiError(
-                    'The field specified in the query was not found',
-                    httpStatus.NOT_FOUND
-                )
-            );
-        }
-
-        const tags = await tagService.fetchAll({ sortQuery: fieldName });
-
-        if (tags.length > 0) {
-            await redisHelper.cache(req, tags);
-        }
-
-        ApiDataSuccess.send(
-            tags,
-            'Posts fetched successfully',
-            httpStatus.OK,
-            res,
-            next
-        );
-    }
-
-    async fetchAllTagsByLimit(req, res, next) {
-        const fieldName = req.query?.fieldName;
-
-        if (fieldName) {
-            const fields = Object.keys(tagService.model.schema.paths);
-
-            const isExistField = paginationHelper.isValidSortField(
-                fieldName,
-                fields
-            );
-
-            if (!isExistField) {
-                return next(
-                    new ApiError(
-                        'The field specified in the query was not found',
-                        httpStatus.NOT_FOUND
-                    )
-                );
-            }
-        }
-
-        const pageSize =
-            req.query.limit < 1 ? 10 : parseInt(req.query.limit) || 10;
-        const pageNumber =
-            req.query.page < 1 ? 1 : parseInt(req.query.page) || 1;
-        const startPage = (pageNumber - 1) * pageSize;
-
-        const tags = await tagService.fetchAll({
-            sortQuery: fieldName,
-            limit: pageSize,
-            skip: startPage,
-        });
-
-        if (tags.length > 0) {
-            await redisHelper.cache(req, tags);
-        }
-
-        const totalItemCount = await tagService.count();
-
-        const paginationInfo = paginationHelper.getPaginationInfo(
-            totalItemCount,
-            pageSize,
-            pageNumber
-        );
-
-        if (paginationInfo.error) {
-            return next(
-                new ApiError(
-                    paginationInfo.error.message,
-                    paginationInfo.error.code
-                )
-            );
-        }
-
-        const response = {
-            paginationInfo: paginationInfo.data,
-            tags,
-        };
-
-        ApiDataSuccess.send(
-            response,
             'Tags fetched successfully',
             httpStatus.OK,
             res,

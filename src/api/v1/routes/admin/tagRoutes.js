@@ -7,6 +7,7 @@ const authorize = require('../../middlewares/authorization');
 const bodyValidator = require('../../middlewares/bodyValidator');
 const paramIdValidator = require('../../middlewares/paramsIdValidator');
 const queryValidator = require('../../middlewares/queryValidator');
+const queryOptions = require('../../middlewares/queryOptions');
 const schemas = require('../../validations/tag');
 const cache = require('../../middlewares/cache');
 
@@ -18,23 +19,23 @@ router
         bodyValidator(schemas.createValidation),
         controller.create
     );
-router
-    .route('/get-all/sort')
-    .get(
-        authenticate,
-        authorization('Admin'),
-        queryValidator('fieldName'),
-        cache(controller),
-        controller.fetchAllTagsWithSortByQuery
-    );
-router
-    .route('/get-all/limit')
-    .get(
-        authenticate,
-        authorization('Admin'),
-        cache(controller),
-        controller.fetchAllTagsByLimit
-    );     
+// router
+//     .route('/get-all/sort')
+//     .get(
+//         authenticate,
+//         authorization('Admin'),
+//         queryValidator('fieldName'),
+//         cache(controller),
+//         controller.fetchAllTagsWithSortByQuery
+//     );
+// router
+//     .route('/get-all/limit')
+//     .get(
+//         authenticate,
+//         authorization('Admin'),
+//         cache(controller),
+//         controller.fetchAllTagsByLimit
+//     );
 router
     .route('/delete/:id')
     .delete(

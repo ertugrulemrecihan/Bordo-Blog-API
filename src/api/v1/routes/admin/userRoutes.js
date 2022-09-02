@@ -4,7 +4,7 @@ const controller = require('../../controllers/UserController');
 const authenticate = require('../../middlewares/authenticate');
 const authorization = require('../../middlewares/authorization');
 const paramsIdValidator = require('../../middlewares/paramsIdValidator');
-const queryValidator = require('../../middlewares/queryValidator');
+const queryOptions = require('../../middlewares/queryOptions');
 const cache = require('../../middlewares/cache');
 
 router
@@ -12,26 +12,27 @@ router
     .get(
         authenticate,
         authorization('Admin'),
+        queryOptions,
         cache(controller),
         controller.fetchAllForAdmin
     );
-router
-    .route('/get-all/sort')
-    .get(
-        authenticate,
-        authorization('Admin'),
-        queryValidator('fieldName'),
-        cache(controller),
-        controller.fetchAllUserWithSortByQuery
-    );
-router
-    .route('/get-all/limit')
-    .get(
-        authenticate,
-        authorization('Admin'),
-        cache(controller),
-        controller.fetchAllUsersByLimit
-    );
+// router
+//     .route('/get-all/sort')
+//     .get(
+//         authenticate,
+//         authorization('Admin'),
+//         queryValidator('fieldName'),
+//         cache(controller),
+//         controller.fetchAllUserWithSortByQuery
+//     );
+// router
+//     .route('/get-all/limit')
+//     .get(
+//         authenticate,
+//         authorization('Admin'),
+//         cache(controller),
+//         controller.fetchAllUsersByLimit
+//     );
 router
     .route('/get/:id')
     .get(
