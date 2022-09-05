@@ -15,7 +15,7 @@ const cache = (controller) => async (req, res, next) => {
                 ? `${controller.pluralModelName} fetched successfully`
                 : `${controller.singleModelName} fetched successfully`;
 
-            ApiDataSuccess.send(cachedData, message, httpStatus.OK, res);
+            return ApiDataSuccess.send(cachedData, message, httpStatus.OK, res);
         }
         return next();
     } else {
