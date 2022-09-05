@@ -93,7 +93,7 @@
             }
           },
           "400": {
-            "$ref": "#/paths/~1tags~1/get/responses/400"
+            "$ref": "#/paths/~1plans/get/responses/400"
           },
           "500": {
             "$ref": "#/paths/~1addresses/post/responses/500"
@@ -263,10 +263,10 @@
             }
           },
           "400": {
-            "$ref": "#/paths/~1tags~1/get/responses/400"
+            "$ref": "#/paths/~1plans/get/responses/400"
           },
           "401": {
-            "$ref": "#/paths/~1tags~1/get/responses/401"
+            "$ref": "#/paths/~1plans/get/responses/401"
           },
           "500": {
             "$ref": "#/paths/~1addresses/post/responses/500"
@@ -335,7 +335,7 @@
             }
           },
           "400": {
-            "$ref": "#/paths/~1tags~1/get/responses/400"
+            "$ref": "#/paths/~1plans/get/responses/400"
           },
           "404": {
             "$ref": "#/paths/~1addresses/post/responses/404"
@@ -393,7 +393,7 @@
             }
           },
           "400": {
-            "$ref": "#/paths/~1tags~1/get/responses/400"
+            "$ref": "#/paths/~1plans/get/responses/400"
           },
           "409": {
             "$ref": "#/paths/~1tags~1admin/post/responses/409"
@@ -462,13 +462,13 @@
             }
           },
           "400": {
-            "$ref": "#/paths/~1tags~1/get/responses/400"
+            "$ref": "#/paths/~1plans/get/responses/400"
           },
           "401": {
-            "$ref": "#/paths/~1tags~1/get/responses/401"
+            "$ref": "#/paths/~1plans/get/responses/401"
           },
           "403": {
-            "$ref": "#/paths/~1tags~1/get/responses/403"
+            "$ref": "#/paths/~1plans/get/responses/403"
           },
           "409": {
             "$ref": "#/paths/~1tags~1admin/post/responses/409"
@@ -522,7 +522,7 @@
             }
           },
           "400": {
-            "$ref": "#/paths/~1tags~1/get/responses/400"
+            "$ref": "#/paths/~1plans/get/responses/400"
           },
           "409": {
             "$ref": "#/paths/~1tags~1admin/post/responses/409"
@@ -586,10 +586,10 @@
             }
           },
           "400": {
-            "$ref": "#/paths/~1tags~1/get/responses/400"
+            "$ref": "#/paths/~1plans/get/responses/400"
           },
           "401": {
-            "$ref": "#/paths/~1tags~1/get/responses/401"
+            "$ref": "#/paths/~1plans/get/responses/401"
           },
           "500": {
             "$ref": "#/paths/~1addresses/post/responses/500"
@@ -747,13 +747,13 @@
             }
           },
           "400": {
-            "$ref": "#/paths/~1tags~1/get/responses/400"
+            "$ref": "#/paths/~1plans/get/responses/400"
           },
           "401": {
-            "$ref": "#/paths/~1tags~1/get/responses/401"
+            "$ref": "#/paths/~1plans/get/responses/401"
           },
           "403": {
-            "$ref": "#/paths/~1tags~1/get/responses/403"
+            "$ref": "#/paths/~1plans/get/responses/403"
           },
           "500": {
             "$ref": "#/paths/~1addresses/post/responses/500"
@@ -799,7 +799,7 @@
             }
           },
           "400": {
-            "$ref": "#/paths/~1tags~1/get/responses/400"
+            "$ref": "#/paths/~1plans/get/responses/400"
           },
           "404": {
             "$ref": "#/paths/~1addresses/post/responses/404"
@@ -845,7 +845,7 @@
             }
           },
           "400": {
-            "$ref": "#/paths/~1tags~1/get/responses/400"
+            "$ref": "#/paths/~1plans/get/responses/400"
           },
           "500": {
             "$ref": "#/paths/~1addresses/post/responses/500"
@@ -891,7 +891,7 @@
             }
           },
           "400": {
-            "$ref": "#/paths/~1tags~1/get/responses/400"
+            "$ref": "#/paths/~1plans/get/responses/400"
           },
           "404": {
             "$ref": "#/paths/~1addresses/post/responses/404"
@@ -945,13 +945,13 @@
             }
           },
           "400": {
-            "$ref": "#/paths/~1tags~1/get/responses/400"
+            "$ref": "#/paths/~1plans/get/responses/400"
           },
           "401": {
-            "$ref": "#/paths/~1tags~1/get/responses/401"
+            "$ref": "#/paths/~1plans/get/responses/401"
           },
           "403": {
-            "$ref": "#/paths/~1tags~1/get/responses/403"
+            "$ref": "#/paths/~1plans/get/responses/403"
           },
           "404": {
             "$ref": "#/paths/~1addresses/post/responses/404"
@@ -1091,13 +1091,13 @@
             }
           },
           "400": {
-            "$ref": "#/paths/~1tags~1/get/responses/400"
+            "$ref": "#/paths/~1plans/get/responses/400"
           },
           "401": {
-            "$ref": "#/paths/~1tags~1/get/responses/401"
+            "$ref": "#/paths/~1plans/get/responses/401"
           },
           "403": {
-            "$ref": "#/paths/~1tags~1/get/responses/403"
+            "$ref": "#/paths/~1plans/get/responses/403"
           }
         }
       }
@@ -1175,13 +1175,13 @@
             }
           },
           "400": {
-            "$ref": "#/paths/~1tags~1/get/responses/400"
+            "$ref": "#/paths/~1plans/get/responses/400"
           },
           "401": {
-            "$ref": "#/paths/~1tags~1/get/responses/401"
+            "$ref": "#/paths/~1plans/get/responses/401"
           },
           "403": {
-            "$ref": "#/paths/~1tags~1/get/responses/403"
+            "$ref": "#/paths/~1plans/get/responses/403"
           },
           "404": {
             "$ref": "#/paths/~1addresses/post/responses/404"
@@ -1249,13 +1249,13 @@
             }
           },
           "400": {
-            "$ref": "#/paths/~1tags~1/get/responses/400"
+            "$ref": "#/paths/~1plans/get/responses/400"
           },
           "401": {
-            "$ref": "#/paths/~1tags~1/get/responses/401"
+            "$ref": "#/paths/~1plans/get/responses/401"
           },
           "403": {
-            "$ref": "#/paths/~1tags~1/get/responses/403"
+            "$ref": "#/paths/~1plans/get/responses/403"
           },
           "404": {
             "$ref": "#/paths/~1addresses/post/responses/404"
@@ -1308,13 +1308,13 @@
             }
           },
           "400": {
-            "$ref": "#/paths/~1tags~1/get/responses/400"
+            "$ref": "#/paths/~1plans/get/responses/400"
           },
           "401": {
-            "$ref": "#/paths/~1tags~1/get/responses/401"
+            "$ref": "#/paths/~1plans/get/responses/401"
           },
           "403": {
-            "$ref": "#/paths/~1tags~1/get/responses/403"
+            "$ref": "#/paths/~1plans/get/responses/403"
           },
           "404": {
             "$ref": "#/paths/~1addresses/post/responses/404"
@@ -1369,13 +1369,13 @@
             }
           },
           "400": {
-            "$ref": "#/paths/~1tags~1/get/responses/400"
+            "$ref": "#/paths/~1plans/get/responses/400"
           },
           "401": {
-            "$ref": "#/paths/~1tags~1/get/responses/401"
+            "$ref": "#/paths/~1plans/get/responses/401"
           },
           "403": {
-            "$ref": "#/paths/~1tags~1/get/responses/403"
+            "$ref": "#/paths/~1plans/get/responses/403"
           },
           "404": {
             "$ref": "#/paths/~1addresses/post/responses/404"
@@ -1603,86 +1603,13 @@
             }
           },
           "400": {
-            "description": "Bad request error",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "allOf": [
-                    {
-                      "type": "object",
-                      "properties": {
-                        "error": {
-                          "properties": {
-                            "message": {
-                              "type": "string"
-                            }
-                          }
-                        },
-                        "success": {
-                          "type": "boolean",
-                          "default": false
-                        }
-                      }
-                    },
-                    {
-                      "type": "object",
-                      "properties": {
-                        "statusCode": {
-                          "type": "number",
-                          "default": 400
-                        }
-                      }
-                    }
-                  ]
-                }
-              }
-            }
+            "$ref": "#/paths/~1plans/get/responses/400"
           },
           "401": {
-            "description": "Unauthorized error",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "allOf": [
-                    {
-                      "$ref": "#/paths/~1tags~1/get/responses/400/content/application~1json/schema/allOf/0"
-                    },
-                    {
-                      "type": "object",
-                      "properties": {
-                        "statusCode": {
-                          "type": "number",
-                          "default": 401
-                        }
-                      }
-                    }
-                  ]
-                }
-              }
-            }
+            "$ref": "#/paths/~1plans/get/responses/401"
           },
           "403": {
-            "description": "Forbidden error",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "allOf": [
-                    {
-                      "$ref": "#/paths/~1tags~1/get/responses/400/content/application~1json/schema/allOf/0"
-                    },
-                    {
-                      "type": "object",
-                      "properties": {
-                        "statusCode": {
-                          "type": "number",
-                          "default": 403
-                        }
-                      }
-                    }
-                  ]
-                }
-              }
-            }
+            "$ref": "#/paths/~1plans/get/responses/403"
           }
         }
       }
@@ -1772,13 +1699,13 @@
             }
           },
           "400": {
-            "$ref": "#/paths/~1tags~1/get/responses/400"
+            "$ref": "#/paths/~1plans/get/responses/400"
           },
           "401": {
-            "$ref": "#/paths/~1tags~1/get/responses/401"
+            "$ref": "#/paths/~1plans/get/responses/401"
           },
           "403": {
-            "$ref": "#/paths/~1tags~1/get/responses/403"
+            "$ref": "#/paths/~1plans/get/responses/403"
           }
         }
       }
@@ -1857,13 +1784,13 @@
             }
           },
           "400": {
-            "$ref": "#/paths/~1tags~1/get/responses/400"
+            "$ref": "#/paths/~1plans/get/responses/400"
           },
           "401": {
-            "$ref": "#/paths/~1tags~1/get/responses/401"
+            "$ref": "#/paths/~1plans/get/responses/401"
           },
           "403": {
-            "$ref": "#/paths/~1tags~1/get/responses/403"
+            "$ref": "#/paths/~1plans/get/responses/403"
           },
           "409": {
             "description": "Conflict error",
@@ -1955,13 +1882,13 @@
             }
           },
           "400": {
-            "$ref": "#/paths/~1tags~1/get/responses/400"
+            "$ref": "#/paths/~1plans/get/responses/400"
           },
           "401": {
-            "$ref": "#/paths/~1tags~1/get/responses/401"
+            "$ref": "#/paths/~1plans/get/responses/401"
           },
           "403": {
-            "$ref": "#/paths/~1tags~1/get/responses/403"
+            "$ref": "#/paths/~1plans/get/responses/403"
           },
           "404": {
             "$ref": "#/paths/~1addresses/post/responses/404"
@@ -2147,13 +2074,13 @@
             }
           },
           "400": {
-            "$ref": "#/paths/~1tags~1/get/responses/400"
+            "$ref": "#/paths/~1plans/get/responses/400"
           },
           "401": {
-            "$ref": "#/paths/~1tags~1/get/responses/401"
+            "$ref": "#/paths/~1plans/get/responses/401"
           },
           "403": {
-            "$ref": "#/paths/~1tags~1/get/responses/403"
+            "$ref": "#/paths/~1plans/get/responses/403"
           }
         }
       }
@@ -2324,13 +2251,13 @@
             }
           },
           "400": {
-            "$ref": "#/paths/~1tags~1/get/responses/400"
+            "$ref": "#/paths/~1plans/get/responses/400"
           },
           "401": {
-            "$ref": "#/paths/~1tags~1/get/responses/401"
+            "$ref": "#/paths/~1plans/get/responses/401"
           },
           "403": {
-            "$ref": "#/paths/~1tags~1/get/responses/403"
+            "$ref": "#/paths/~1plans/get/responses/403"
           },
           "404": {
             "$ref": "#/paths/~1addresses/post/responses/404"
@@ -2639,13 +2566,13 @@
             }
           },
           "400": {
-            "$ref": "#/paths/~1tags~1/get/responses/400"
+            "$ref": "#/paths/~1plans/get/responses/400"
           },
           "401": {
-            "$ref": "#/paths/~1tags~1/get/responses/401"
+            "$ref": "#/paths/~1plans/get/responses/401"
           },
           "403": {
-            "$ref": "#/paths/~1tags~1/get/responses/403"
+            "$ref": "#/paths/~1plans/get/responses/403"
           },
           "404": {
             "$ref": "#/paths/~1addresses/post/responses/404"
@@ -2745,13 +2672,13 @@
             }
           },
           "400": {
-            "$ref": "#/paths/~1tags~1/get/responses/400"
+            "$ref": "#/paths/~1plans/get/responses/400"
           },
           "401": {
-            "$ref": "#/paths/~1tags~1/get/responses/401"
+            "$ref": "#/paths/~1plans/get/responses/401"
           },
           "403": {
-            "$ref": "#/paths/~1tags~1/get/responses/403"
+            "$ref": "#/paths/~1plans/get/responses/403"
           },
           "404": {
             "$ref": "#/paths/~1addresses/post/responses/404"
@@ -2854,13 +2781,13 @@
             }
           },
           "400": {
-            "$ref": "#/paths/~1tags~1/get/responses/400"
+            "$ref": "#/paths/~1plans/get/responses/400"
           },
           "401": {
-            "$ref": "#/paths/~1tags~1/get/responses/401"
+            "$ref": "#/paths/~1plans/get/responses/401"
           },
           "403": {
-            "$ref": "#/paths/~1tags~1/get/responses/403"
+            "$ref": "#/paths/~1plans/get/responses/403"
           },
           "404": {
             "$ref": "#/paths/~1addresses/post/responses/404"
@@ -2986,13 +2913,13 @@
             }
           },
           "400": {
-            "$ref": "#/paths/~1tags~1/get/responses/400"
+            "$ref": "#/paths/~1plans/get/responses/400"
           },
           "401": {
-            "$ref": "#/paths/~1tags~1/get/responses/401"
+            "$ref": "#/paths/~1plans/get/responses/401"
           },
           "403": {
-            "$ref": "#/paths/~1tags~1/get/responses/403"
+            "$ref": "#/paths/~1plans/get/responses/403"
           },
           "404": {
             "$ref": "#/paths/~1addresses/post/responses/404"
@@ -3156,13 +3083,13 @@
             }
           },
           "400": {
-            "$ref": "#/paths/~1tags~1/get/responses/400"
+            "$ref": "#/paths/~1plans/get/responses/400"
           },
           "401": {
-            "$ref": "#/paths/~1tags~1/get/responses/401"
+            "$ref": "#/paths/~1plans/get/responses/401"
           },
           "403": {
-            "$ref": "#/paths/~1tags~1/get/responses/403"
+            "$ref": "#/paths/~1plans/get/responses/403"
           },
           "404": {
             "$ref": "#/paths/~1addresses/post/responses/404"
@@ -3219,13 +3146,13 @@
             }
           },
           "400": {
-            "$ref": "#/paths/~1tags~1/get/responses/400"
+            "$ref": "#/paths/~1plans/get/responses/400"
           },
           "401": {
-            "$ref": "#/paths/~1tags~1/get/responses/401"
+            "$ref": "#/paths/~1plans/get/responses/401"
           },
           "403": {
-            "$ref": "#/paths/~1tags~1/get/responses/403"
+            "$ref": "#/paths/~1plans/get/responses/403"
           },
           "404": {
             "$ref": "#/paths/~1addresses/post/responses/404"
@@ -3351,13 +3278,13 @@
             }
           },
           "400": {
-            "$ref": "#/paths/~1tags~1/get/responses/400"
+            "$ref": "#/paths/~1plans/get/responses/400"
           },
           "401": {
-            "$ref": "#/paths/~1tags~1/get/responses/401"
+            "$ref": "#/paths/~1plans/get/responses/401"
           },
           "403": {
-            "$ref": "#/paths/~1tags~1/get/responses/403"
+            "$ref": "#/paths/~1plans/get/responses/403"
           },
           "404": {
             "$ref": "#/paths/~1addresses/post/responses/404"
@@ -3582,13 +3509,13 @@
             }
           },
           "400": {
-            "$ref": "#/paths/~1tags~1/get/responses/400"
+            "$ref": "#/paths/~1plans/get/responses/400"
           },
           "401": {
-            "$ref": "#/paths/~1tags~1/get/responses/401"
+            "$ref": "#/paths/~1plans/get/responses/401"
           },
           "403": {
-            "$ref": "#/paths/~1tags~1/get/responses/403"
+            "$ref": "#/paths/~1plans/get/responses/403"
           }
         }
       }
@@ -3799,13 +3726,13 @@
             }
           },
           "400": {
-            "$ref": "#/paths/~1tags~1/get/responses/400"
+            "$ref": "#/paths/~1plans/get/responses/400"
           },
           "401": {
-            "$ref": "#/paths/~1tags~1/get/responses/401"
+            "$ref": "#/paths/~1plans/get/responses/401"
           },
           "403": {
-            "$ref": "#/paths/~1tags~1/get/responses/403"
+            "$ref": "#/paths/~1plans/get/responses/403"
           },
           "404": {
             "$ref": "#/paths/~1addresses/post/responses/404"
@@ -3898,13 +3825,13 @@
             }
           },
           "400": {
-            "$ref": "#/paths/~1tags~1/get/responses/400"
+            "$ref": "#/paths/~1plans/get/responses/400"
           },
           "401": {
-            "$ref": "#/paths/~1tags~1/get/responses/401"
+            "$ref": "#/paths/~1plans/get/responses/401"
           },
           "403": {
-            "$ref": "#/paths/~1tags~1/get/responses/403"
+            "$ref": "#/paths/~1plans/get/responses/403"
           },
           "404": {
             "$ref": "#/paths/~1addresses/post/responses/404"
@@ -3981,13 +3908,13 @@
             }
           },
           "400": {
-            "$ref": "#/paths/~1tags~1/get/responses/400"
+            "$ref": "#/paths/~1plans/get/responses/400"
           },
           "401": {
-            "$ref": "#/paths/~1tags~1/get/responses/401"
+            "$ref": "#/paths/~1plans/get/responses/401"
           },
           "403": {
-            "$ref": "#/paths/~1tags~1/get/responses/403"
+            "$ref": "#/paths/~1plans/get/responses/403"
           }
         }
       }
@@ -4073,13 +4000,13 @@
             }
           },
           "400": {
-            "$ref": "#/paths/~1tags~1/get/responses/400"
+            "$ref": "#/paths/~1plans/get/responses/400"
           },
           "401": {
-            "$ref": "#/paths/~1tags~1/get/responses/401"
+            "$ref": "#/paths/~1plans/get/responses/401"
           },
           "403": {
-            "$ref": "#/paths/~1tags~1/get/responses/403"
+            "$ref": "#/paths/~1plans/get/responses/403"
           },
           "404": {
             "$ref": "#/paths/~1addresses/post/responses/404"
@@ -4238,13 +4165,13 @@
             }
           },
           "400": {
-            "$ref": "#/paths/~1tags~1/get/responses/400"
+            "$ref": "#/paths/~1plans/get/responses/400"
           },
           "401": {
-            "$ref": "#/paths/~1tags~1/get/responses/401"
+            "$ref": "#/paths/~1plans/get/responses/401"
           },
           "403": {
-            "$ref": "#/paths/~1tags~1/get/responses/403"
+            "$ref": "#/paths/~1plans/get/responses/403"
           },
           "404": {
             "$ref": "#/paths/~1addresses/post/responses/404"
@@ -4304,13 +4231,13 @@
             }
           },
           "400": {
-            "$ref": "#/paths/~1tags~1/get/responses/400"
+            "$ref": "#/paths/~1plans/get/responses/400"
           },
           "401": {
-            "$ref": "#/paths/~1tags~1/get/responses/401"
+            "$ref": "#/paths/~1plans/get/responses/401"
           },
           "403": {
-            "$ref": "#/paths/~1tags~1/get/responses/403"
+            "$ref": "#/paths/~1plans/get/responses/403"
           }
         }
       },
@@ -4496,13 +4423,13 @@
             }
           },
           "400": {
-            "$ref": "#/paths/~1tags~1/get/responses/400"
+            "$ref": "#/paths/~1plans/get/responses/400"
           },
           "401": {
-            "$ref": "#/paths/~1tags~1/get/responses/401"
+            "$ref": "#/paths/~1plans/get/responses/401"
           },
           "403": {
-            "$ref": "#/paths/~1tags~1/get/responses/403"
+            "$ref": "#/paths/~1plans/get/responses/403"
           },
           "404": {
             "description": "Not found error",
@@ -4711,13 +4638,13 @@
             }
           },
           "400": {
-            "$ref": "#/paths/~1tags~1/get/responses/400"
+            "$ref": "#/paths/~1plans/get/responses/400"
           },
           "401": {
-            "$ref": "#/paths/~1tags~1/get/responses/401"
+            "$ref": "#/paths/~1plans/get/responses/401"
           },
           "403": {
-            "$ref": "#/paths/~1tags~1/get/responses/403"
+            "$ref": "#/paths/~1plans/get/responses/403"
           },
           "404": {
             "$ref": "#/paths/~1addresses/post/responses/404"
@@ -4866,13 +4793,13 @@
             }
           },
           "400": {
-            "$ref": "#/paths/~1tags~1/get/responses/400"
+            "$ref": "#/paths/~1plans/get/responses/400"
           },
           "401": {
-            "$ref": "#/paths/~1tags~1/get/responses/401"
+            "$ref": "#/paths/~1plans/get/responses/401"
           },
           "403": {
-            "$ref": "#/paths/~1tags~1/get/responses/403"
+            "$ref": "#/paths/~1plans/get/responses/403"
           },
           "404": {
             "$ref": "#/paths/~1addresses/post/responses/404"
@@ -4983,13 +4910,13 @@
             }
           },
           "400": {
-            "$ref": "#/paths/~1tags~1/get/responses/400"
+            "$ref": "#/paths/~1plans/get/responses/400"
           },
           "401": {
-            "$ref": "#/paths/~1tags~1/get/responses/401"
+            "$ref": "#/paths/~1plans/get/responses/401"
           },
           "403": {
-            "$ref": "#/paths/~1tags~1/get/responses/403"
+            "$ref": "#/paths/~1plans/get/responses/403"
           },
           "404": {
             "$ref": "#/paths/~1addresses/post/responses/404"
@@ -4997,7 +4924,7 @@
         }
       }
     },
-    "/plans/get-all": {
+    "/plans": {
       "summary": "",
       "description": "",
       "get": {
@@ -5044,18 +4971,91 @@
             }
           },
           "400": {
-            "$ref": "#/paths/~1tags~1/get/responses/400"
+            "description": "Bad request error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "allOf": [
+                    {
+                      "type": "object",
+                      "properties": {
+                        "error": {
+                          "properties": {
+                            "message": {
+                              "type": "string"
+                            }
+                          }
+                        },
+                        "success": {
+                          "type": "boolean",
+                          "default": false
+                        }
+                      }
+                    },
+                    {
+                      "type": "object",
+                      "properties": {
+                        "statusCode": {
+                          "type": "number",
+                          "default": 400
+                        }
+                      }
+                    }
+                  ]
+                }
+              }
+            }
           },
           "401": {
-            "$ref": "#/paths/~1tags~1/get/responses/401"
+            "description": "Unauthorized error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "allOf": [
+                    {
+                      "$ref": "#/paths/~1tags~1/get/responses/400/content/application~1json/schema/allOf/0"
+                    },
+                    {
+                      "type": "object",
+                      "properties": {
+                        "statusCode": {
+                          "type": "number",
+                          "default": 401
+                        }
+                      }
+                    }
+                  ]
+                }
+              }
+            }
           },
           "403": {
-            "$ref": "#/paths/~1tags~1/get/responses/403"
+            "description": "Forbidden error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "allOf": [
+                    {
+                      "$ref": "#/paths/~1tags~1/get/responses/400/content/application~1json/schema/allOf/0"
+                    },
+                    {
+                      "type": "object",
+                      "properties": {
+                        "statusCode": {
+                          "type": "number",
+                          "default": 403
+                        }
+                      }
+                    }
+                  ]
+                }
+              }
+            }
           }
         }
       }
     },
-    "/plans/get/{planId}": {
+    "/plans/{planId}": {
       "summary": "",
       "description": "",
       "get": {
@@ -5111,13 +5111,13 @@
             }
           },
           "400": {
-            "$ref": "#/paths/~1tags~1/get/responses/400"
+            "$ref": "#/paths/~1plans/get/responses/400"
           },
           "401": {
-            "$ref": "#/paths/~1tags~1/get/responses/401"
+            "$ref": "#/paths/~1plans/get/responses/401"
           },
           "403": {
-            "$ref": "#/paths/~1tags~1/get/responses/403"
+            "$ref": "#/paths/~1plans/get/responses/403"
           },
           "404": {
             "$ref": "#/paths/~1addresses/post/responses/404"
@@ -5196,13 +5196,13 @@
             }
           },
           "400": {
-            "$ref": "#/paths/~1tags~1/get/responses/400"
+            "$ref": "#/paths/~1plans/get/responses/400"
           },
           "401": {
-            "$ref": "#/paths/~1tags~1/get/responses/401"
+            "$ref": "#/paths/~1plans/get/responses/401"
           },
           "403": {
-            "$ref": "#/paths/~1tags~1/get/responses/403"
+            "$ref": "#/paths/~1plans/get/responses/403"
           },
           "409": {
             "$ref": "#/paths/~1tags~1admin/post/responses/409"
@@ -5230,7 +5230,7 @@
         ],
         "parameters": [
           {
-            "$ref": "#/paths/~1plans~1get~1%7BplanId%7D/get/parameters/0"
+            "$ref": "#/paths/~1plans~1%7BplanId%7D/get/parameters/0"
           }
         ],
         "requestBody": {
@@ -5327,13 +5327,13 @@
             }
           },
           "400": {
-            "$ref": "#/paths/~1tags~1/get/responses/400"
+            "$ref": "#/paths/~1plans/get/responses/400"
           },
           "401": {
-            "$ref": "#/paths/~1tags~1/get/responses/401"
+            "$ref": "#/paths/~1plans/get/responses/401"
           },
           "403": {
-            "$ref": "#/paths/~1tags~1/get/responses/403"
+            "$ref": "#/paths/~1plans/get/responses/403"
           },
           "404": {
             "$ref": "#/paths/~1addresses/post/responses/404"
@@ -5360,7 +5360,7 @@
         ],
         "parameters": [
           {
-            "$ref": "#/paths/~1plans~1get~1%7BplanId%7D/get/parameters/0"
+            "$ref": "#/paths/~1plans~1%7BplanId%7D/get/parameters/0"
           }
         ],
         "responses": {
@@ -5368,13 +5368,13 @@
             "$ref": "#/paths/~1plans~1admin~1%7BplanId%7D/patch/responses/200"
           },
           "400": {
-            "$ref": "#/paths/~1tags~1/get/responses/400"
+            "$ref": "#/paths/~1plans/get/responses/400"
           },
           "401": {
-            "$ref": "#/paths/~1tags~1/get/responses/401"
+            "$ref": "#/paths/~1plans/get/responses/401"
           },
           "403": {
-            "$ref": "#/paths/~1tags~1/get/responses/403"
+            "$ref": "#/paths/~1plans/get/responses/403"
           },
           "404": {
             "$ref": "#/paths/~1addresses/post/responses/404"

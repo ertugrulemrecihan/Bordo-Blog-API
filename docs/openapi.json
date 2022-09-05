@@ -155,10 +155,10 @@
         "/addresses/{addressId}": {
             "$ref": "./paths/address/get-my.json"
         },
-        "/plans/get-all": {
+        "/plans": {
             "$ref": "./paths/plan/get-all.json"
         },
-        "/plans/get/{planId}": {
+        "/plans/{planId}": {
             "$ref": "./paths/plan/get.json"
         },
         "/plans/admin/": {
