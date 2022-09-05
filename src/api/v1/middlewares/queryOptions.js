@@ -36,42 +36,18 @@ const queryOptions = (req, res, next) => {
         }
 
         if (['gt', 'lt', 'lte', 'gte'].includes(splitedKey[1])) {
-            const regex = new RegExp(
-                /^([1-2]\d{3})\-([0]\d|[1][0-2])\-([0-2]\d|[3][0-1])(?:(?:T([0-1]\d|[2][0-3])\:([0-5]\d)(?::([0-5]\d)))?)$/
-            );
+            const checked = parseInt(queryValue);
 
-            const isValidDateFormat = regex.test(queryValue);
-
-            let newValue;
-
-            if (isValidDateFormat) {
-                const queryDate = new Date(queryValue);
-
-                if (queryDate == 'Invalid Date') {
-                    return next(
-                        new ApiError(
-                            'Invalid date format',
-                            httpStatus.BAD_REQUEST
-                        )
-                    );
-                }
-
-                newValue = queryDate;
-            } else {
-                const intValue = parseInt(queryValue);
-                if (!intValue) {
-                    return next(
-                        new ApiError(
-                            'Invalid integer format',
-                            httpStatus.BAD_REQUEST
-                        )
-                    );
-                }
-
-                newValue = intValue;
+            if (!checked) {
+                return next(
+                    new ApiError(
+                        'Invalid integer format',
+                        httpStatus.BAD_REQUEST
+                    )
+                );
             }
 
-            const queryObject = { [`$${splitedKey[1]}`]: newValue };
+            const queryObject = { [`$${splitedKey[1]}`]: queryValue };
             mongoQuery[splitedKey[0]] = queryObject;
         } else if (['eqd'].includes(splitedKey[1])) {
             const dateEnum = {
@@ -83,7 +59,11 @@ const queryOptions = (req, res, next) => {
                 19: 'second',
             };
 
-            const gtValue = moment(queryValue).format('YYYY-MM-DDTHH:mm:ss');
+            const replacedQueryValue = queryValue.replaceAll('.', ':');
+
+            const gtValue = moment(replacedQueryValue).format(
+                'YYYY-MM-DDTHH:mm:ss'
+            );
 
             const queryDate = new Date(gtValue);
 
@@ -98,7 +78,7 @@ const queryOptions = (req, res, next) => {
             };
             const ltObject = {
                 $lt:
-                    moment(queryValue)
+                    moment(replacedQueryValue)
                         .add(1, dateEnum[queryValue.length])
                         .format('YYYY-MM-DDTHH:mm:ss') + '.000Z',
             };
@@ -139,7 +119,6 @@ const queryOptions = (req, res, next) => {
     }
 
     req.queryOptions.filtering = mongoQuery;
-
     next();
 };
 

@@ -16,23 +16,6 @@ router
         cache(controller),
         controller.fetchAllForAdmin
     );
-// router
-//     .route('/get-all/sort')
-//     .get(
-//         authenticate,
-//         authorization('Admin'),
-//         queryValidator('fieldName'),
-//         cache(controller),
-//         controller.fetchAllUserWithSortByQuery
-//     );
-// router
-//     .route('/get-all/limit')
-//     .get(
-//         authenticate,
-//         authorization('Admin'),
-//         cache(controller),
-//         controller.fetchAllUsersByLimit
-//     );
 router
     .route('/get/:id')
     .get(
