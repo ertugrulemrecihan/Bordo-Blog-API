@@ -2,9 +2,7 @@
     "summary": "",
     "description": "",
     "get": {
-        "tags": [
-            "Addresses"
-        ],
+        "tags": ["Addresses"],
         "summary": "Get user's address by address id",
         "description": "Get user's address by address id",
         "operationId": "address.get-my",
@@ -12,7 +10,7 @@
             {
                 "bearerAuth": []
             }
-        ],     
+        ],
         "parameters": [
             {
                 "$ref": "../../parameters/path/address/address_id.json"
@@ -21,6 +19,79 @@
         "responses": {
             "200": {
                 "$ref": "../../responses/address/get-my.json"
+            },
+            "400": {
+                "$ref": "../../responses/api-responses/400.json"
+            },
+            "401": {
+                "$ref": "../../responses/api-responses/401.json"
+            },
+            "403": {
+                "$ref": "../../responses/api-responses/403.json"
+            },
+            "404": {
+                "$ref": "../../responses/api-responses/404.json"
+            }
+        }
+    },
+    "summary": "",
+    "description": "",
+    "patch": {
+        "tags": ["Addresses"],
+        "summary": "Update address",
+        "description": "Update address",
+        "operationId": "address.update",
+        "security": [
+            {
+                "bearerAuth": []
+            }
+        ],
+        "parameters": [
+            {
+                "$ref": "../../parameters/path/address/address_id.json"
+            }
+        ],
+        "requestBody": {
+            "$ref": "../../request-bodies/address/update.json"
+        },
+        "responses": {
+            "200": {
+                "$ref": "../../responses/address/update.json"
+            },
+            "400": {
+                "$ref": "../../responses/api-responses/400.json"
+            },
+            "401": {
+                "$ref": "../../responses/api-responses/401.json"
+            },
+            "403": {
+                "$ref": "../../responses/api-responses/403.json"
+            },
+            "404": {
+                "$ref": "../../responses/api-responses/404.json"
+            }
+        }
+    },
+    "summary": "",
+    "description": "",
+    "delete": {
+        "tags": ["Addresses"],
+        "summary": "Delete address",
+        "description": "Delete address",
+        "operationId": "address.delete",
+        "security": [
+            {
+                "bearerAuth": []
+            }
+        ],
+        "parameters": [
+            {
+                "$ref": "../../parameters/path/address/address_id.json"
+            }
+        ],
+        "responses": {
+            "200": {
+                "$ref": "../../responses/address/delete.json"
             },
             "400": {
                 "$ref": "../../responses/api-responses/400.json"

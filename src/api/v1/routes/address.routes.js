@@ -9,11 +9,11 @@ const cache = require('../middlewares/cache.middleware');
 const paramIdValidator = require('../middlewares/params-id-validator.middleware');
 
 router
-    .route('/get-all/country')
+    .route('/countries')
     .get(authenticate, cache(controller), controller.getAllCountries);
 
 router
-    .route('/get-all/city/:countryId')
+    .route('/:countryId/cities')
     .get(
         authenticate,
         paramIdValidator,
@@ -22,7 +22,7 @@ router
     );
 
 router
-    .route('/get-all/district/:cityId')
+    .route('/:cityId/districts')
     .get(
         authenticate,
         paramIdValidator,
@@ -30,14 +30,14 @@ router
         controller.getAllDistrictsByCityId
     );
 
-router.route('/get-all/my').get(authenticate, controller.getAllMyAddresses);
+router.route('/').get(authenticate, controller.getAllMyAddresses);
 
 router
-    .route('/get/my/:id')
+    .route('/:id')
     .get(authenticate, paramIdValidator, controller.getMyAddress);
 
 router
-    .route('/create')
+    .route('/')
     .post(
         authenticate,
         bodyValidator(schemas.createValidation),
@@ -45,7 +45,7 @@ router
     );
 
 router
-    .route('/update/:id')
+    .route('/:id')
     .patch(
         authenticate,
         paramIdValidator,
@@ -54,7 +54,7 @@ router
     );
 
 router
-    .route('/delete/:id')
+    .route('/:id')
     .delete(authenticate, paramIdValidator, controller.deleteMyAddress);
 
 module.exports = router;

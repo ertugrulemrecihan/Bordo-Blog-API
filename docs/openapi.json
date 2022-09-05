@@ -140,29 +140,20 @@
         "/posts/admin/{postId}": {
             "$ref": "./paths/admin/post/get-post-by-id.json"
         },
-        "/addresses/get-all/country": {
+        "/addresses/countries": {
             "$ref": "./paths/address/get-all-country.json"
         },
-        "/addresses/get-all/city/{countryId}": {
+        "/addresses/{countryId}/cities": {
             "$ref": "./paths/address/get-all-city.json"
         },
-        "/addresses/get-all/district/{cityId}": {
+        "/addresses/{cityId}/districts": {
             "$ref": "./paths/address/get-all-district.json"
         },
-        "/addresses/get-all/my": {
+        "/addresses": {
             "$ref": "./paths/address/get-all-my.json"
         },
-        "/addresses/get/my/{addressId}": {
+        "/addresses/{addressId}": {
             "$ref": "./paths/address/get-my.json"
-        },
-        "/addresses/create": {
-            "$ref": "./paths/address/create.json"
-        },
-        "/addresses/update/{addressId}": {
-            "$ref": "./paths/address/update.json"
-        },
-        "/addresses/delete/{addressId}": {
-            "$ref": "./paths/address/delete.json"
         },
         "/plans/get-all": {
             "$ref": "./paths/plan/get-all.json"

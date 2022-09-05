@@ -96,7 +96,7 @@
             "$ref": "#/paths/~1tags~1/get/responses/400"
           },
           "500": {
-            "$ref": "#/paths/~1tags~1admin/post/responses/500"
+            "$ref": "#/paths/~1addresses/post/responses/500"
           }
         }
       }
@@ -269,7 +269,7 @@
             "$ref": "#/paths/~1tags~1/get/responses/401"
           },
           "500": {
-            "$ref": "#/paths/~1tags~1admin/post/responses/500"
+            "$ref": "#/paths/~1addresses/post/responses/500"
           }
         }
       }
@@ -338,30 +338,10 @@
             "$ref": "#/paths/~1tags~1/get/responses/400"
           },
           "404": {
-            "description": "Not found error",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "allOf": [
-                    {
-                      "$ref": "#/paths/~1tags~1/get/responses/400/content/application~1json/schema/allOf/0"
-                    },
-                    {
-                      "type": "object",
-                      "properties": {
-                        "statusCode": {
-                          "type": "number",
-                          "default": 404
-                        }
-                      }
-                    }
-                  ]
-                }
-              }
-            }
+            "$ref": "#/paths/~1addresses/post/responses/404"
           },
           "500": {
-            "$ref": "#/paths/~1tags~1admin/post/responses/500"
+            "$ref": "#/paths/~1addresses/post/responses/500"
           }
         }
       }
@@ -419,7 +399,7 @@
             "$ref": "#/paths/~1tags~1admin/post/responses/409"
           },
           "500": {
-            "$ref": "#/paths/~1tags~1admin/post/responses/500"
+            "$ref": "#/paths/~1addresses/post/responses/500"
           }
         }
       }
@@ -548,7 +528,7 @@
             "$ref": "#/paths/~1tags~1admin/post/responses/409"
           },
           "500": {
-            "$ref": "#/paths/~1tags~1admin/post/responses/500"
+            "$ref": "#/paths/~1addresses/post/responses/500"
           }
         }
       }
@@ -612,7 +592,7 @@
             "$ref": "#/paths/~1tags~1/get/responses/401"
           },
           "500": {
-            "$ref": "#/paths/~1tags~1admin/post/responses/500"
+            "$ref": "#/paths/~1addresses/post/responses/500"
           }
         }
       }
@@ -776,7 +756,7 @@
             "$ref": "#/paths/~1tags~1/get/responses/403"
           },
           "500": {
-            "$ref": "#/paths/~1tags~1admin/post/responses/500"
+            "$ref": "#/paths/~1addresses/post/responses/500"
           }
         }
       }
@@ -822,7 +802,7 @@
             "$ref": "#/paths/~1tags~1/get/responses/400"
           },
           "404": {
-            "$ref": "#/paths/~1users~1login/post/responses/404"
+            "$ref": "#/paths/~1addresses/post/responses/404"
           }
         }
       }
@@ -868,7 +848,7 @@
             "$ref": "#/paths/~1tags~1/get/responses/400"
           },
           "500": {
-            "$ref": "#/paths/~1tags~1admin/post/responses/500"
+            "$ref": "#/paths/~1addresses/post/responses/500"
           }
         }
       }
@@ -914,10 +894,10 @@
             "$ref": "#/paths/~1tags~1/get/responses/400"
           },
           "404": {
-            "$ref": "#/paths/~1users~1login/post/responses/404"
+            "$ref": "#/paths/~1addresses/post/responses/404"
           },
           "500": {
-            "$ref": "#/paths/~1tags~1admin/post/responses/500"
+            "$ref": "#/paths/~1addresses/post/responses/500"
           }
         }
       }
@@ -974,10 +954,10 @@
             "$ref": "#/paths/~1tags~1/get/responses/403"
           },
           "404": {
-            "$ref": "#/paths/~1users~1login/post/responses/404"
+            "$ref": "#/paths/~1addresses/post/responses/404"
           },
           "500": {
-            "$ref": "#/paths/~1tags~1admin/post/responses/500"
+            "$ref": "#/paths/~1addresses/post/responses/500"
           }
         }
       }
@@ -1204,7 +1184,7 @@
             "$ref": "#/paths/~1tags~1/get/responses/403"
           },
           "404": {
-            "$ref": "#/paths/~1users~1login/post/responses/404"
+            "$ref": "#/paths/~1addresses/post/responses/404"
           }
         }
       },
@@ -1278,7 +1258,7 @@
             "$ref": "#/paths/~1tags~1/get/responses/403"
           },
           "404": {
-            "$ref": "#/paths/~1users~1login/post/responses/404"
+            "$ref": "#/paths/~1addresses/post/responses/404"
           }
         }
       }
@@ -1337,13 +1317,13 @@
             "$ref": "#/paths/~1tags~1/get/responses/403"
           },
           "404": {
-            "$ref": "#/paths/~1users~1login/post/responses/404"
+            "$ref": "#/paths/~1addresses/post/responses/404"
           },
           "409": {
             "$ref": "#/paths/~1tags~1admin/post/responses/409"
           },
           "500": {
-            "$ref": "#/paths/~1tags~1admin/post/responses/500"
+            "$ref": "#/paths/~1addresses/post/responses/500"
           }
         }
       },
@@ -1398,10 +1378,10 @@
             "$ref": "#/paths/~1tags~1/get/responses/403"
           },
           "404": {
-            "$ref": "#/paths/~1users~1login/post/responses/404"
+            "$ref": "#/paths/~1addresses/post/responses/404"
           },
           "500": {
-            "$ref": "#/paths/~1tags~1admin/post/responses/500"
+            "$ref": "#/paths/~1addresses/post/responses/500"
           }
         }
       }
@@ -1909,27 +1889,7 @@
             }
           },
           "500": {
-            "description": "Internal server error",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "allOf": [
-                    {
-                      "$ref": "#/paths/~1tags~1/get/responses/400/content/application~1json/schema/allOf/0"
-                    },
-                    {
-                      "type": "object",
-                      "properties": {
-                        "statusCode": {
-                          "type": "number",
-                          "default": 500
-                        }
-                      }
-                    }
-                  ]
-                }
-              }
-            }
+            "$ref": "#/paths/~1addresses/post/responses/500"
           }
         }
       }
@@ -2004,7 +1964,7 @@
             "$ref": "#/paths/~1tags~1/get/responses/403"
           },
           "404": {
-            "$ref": "#/paths/~1users~1login/post/responses/404"
+            "$ref": "#/paths/~1addresses/post/responses/404"
           }
         }
       }
@@ -2373,7 +2333,7 @@
             "$ref": "#/paths/~1tags~1/get/responses/403"
           },
           "404": {
-            "$ref": "#/paths/~1users~1login/post/responses/404"
+            "$ref": "#/paths/~1addresses/post/responses/404"
           }
         }
       }
@@ -2688,10 +2648,10 @@
             "$ref": "#/paths/~1tags~1/get/responses/403"
           },
           "404": {
-            "$ref": "#/paths/~1users~1login/post/responses/404"
+            "$ref": "#/paths/~1addresses/post/responses/404"
           },
           "500": {
-            "$ref": "#/paths/~1tags~1admin/post/responses/500"
+            "$ref": "#/paths/~1addresses/post/responses/500"
           }
         }
       }
@@ -2794,13 +2754,13 @@
             "$ref": "#/paths/~1tags~1/get/responses/403"
           },
           "404": {
-            "$ref": "#/paths/~1users~1login/post/responses/404"
+            "$ref": "#/paths/~1addresses/post/responses/404"
           },
           "409": {
             "$ref": "#/paths/~1tags~1admin/post/responses/409"
           },
           "500": {
-            "$ref": "#/paths/~1tags~1admin/post/responses/500"
+            "$ref": "#/paths/~1addresses/post/responses/500"
           }
         }
       }
@@ -2903,10 +2863,10 @@
             "$ref": "#/paths/~1tags~1/get/responses/403"
           },
           "404": {
-            "$ref": "#/paths/~1users~1login/post/responses/404"
+            "$ref": "#/paths/~1addresses/post/responses/404"
           },
           "500": {
-            "$ref": "#/paths/~1tags~1admin/post/responses/500"
+            "$ref": "#/paths/~1addresses/post/responses/500"
           }
         }
       }
@@ -3035,10 +2995,10 @@
             "$ref": "#/paths/~1tags~1/get/responses/403"
           },
           "404": {
-            "$ref": "#/paths/~1users~1login/post/responses/404"
+            "$ref": "#/paths/~1addresses/post/responses/404"
           },
           "500": {
-            "$ref": "#/paths/~1tags~1admin/post/responses/500"
+            "$ref": "#/paths/~1addresses/post/responses/500"
           }
         }
       }
@@ -3205,10 +3165,10 @@
             "$ref": "#/paths/~1tags~1/get/responses/403"
           },
           "404": {
-            "$ref": "#/paths/~1users~1login/post/responses/404"
+            "$ref": "#/paths/~1addresses/post/responses/404"
           },
           "500": {
-            "$ref": "#/paths/~1tags~1admin/post/responses/500"
+            "$ref": "#/paths/~1addresses/post/responses/500"
           }
         }
       }
@@ -3268,10 +3228,10 @@
             "$ref": "#/paths/~1tags~1/get/responses/403"
           },
           "404": {
-            "$ref": "#/paths/~1users~1login/post/responses/404"
+            "$ref": "#/paths/~1addresses/post/responses/404"
           },
           "500": {
-            "$ref": "#/paths/~1tags~1admin/post/responses/500"
+            "$ref": "#/paths/~1addresses/post/responses/500"
           }
         }
       }
@@ -3400,10 +3360,10 @@
             "$ref": "#/paths/~1tags~1/get/responses/403"
           },
           "404": {
-            "$ref": "#/paths/~1users~1login/post/responses/404"
+            "$ref": "#/paths/~1addresses/post/responses/404"
           },
           "500": {
-            "$ref": "#/paths/~1tags~1admin/post/responses/500"
+            "$ref": "#/paths/~1addresses/post/responses/500"
           }
         }
       }
@@ -3848,7 +3808,7 @@
             "$ref": "#/paths/~1tags~1/get/responses/403"
           },
           "404": {
-            "$ref": "#/paths/~1users~1login/post/responses/404"
+            "$ref": "#/paths/~1addresses/post/responses/404"
           }
         }
       },
@@ -3947,12 +3907,12 @@
             "$ref": "#/paths/~1tags~1/get/responses/403"
           },
           "404": {
-            "$ref": "#/paths/~1users~1login/post/responses/404"
+            "$ref": "#/paths/~1addresses/post/responses/404"
           }
         }
       }
     },
-    "/addresses/get-all/country": {
+    "/addresses/countries": {
       "summary": "",
       "description": "",
       "get": {
@@ -4032,7 +3992,7 @@
         }
       }
     },
-    "/addresses/get-all/city/{countryId}": {
+    "/addresses/{countryId}/cities": {
       "summary": "",
       "description": "",
       "get": {
@@ -4088,7 +4048,7 @@
                               "type": "object",
                               "properties": {
                                 "country": {
-                                  "$ref": "#/paths/~1addresses~1get-all~1country/get/responses/200/content/application~1json/schema/allOf/2/properties/data/items"
+                                  "$ref": "#/paths/~1addresses~1countries/get/responses/200/content/application~1json/schema/allOf/2/properties/data/items"
                                 }
                               }
                             },
@@ -4098,7 +4058,7 @@
                                 "cities": {
                                   "type": "array",
                                   "items": {
-                                    "$ref": "#/paths/~1addresses~1get-all~1district~1%7BcityId%7D/get/responses/200/content/application~1json/schema/allOf/2/properties/data/allOf/0/properties/city"
+                                    "$ref": "#/paths/~1addresses~1%7BcityId%7D~1districts/get/responses/200/content/application~1json/schema/allOf/2/properties/data/allOf/0/properties/city"
                                   }
                                 }
                               }
@@ -4122,12 +4082,12 @@
             "$ref": "#/paths/~1tags~1/get/responses/403"
           },
           "404": {
-            "$ref": "#/paths/~1users~1login/post/responses/404"
+            "$ref": "#/paths/~1addresses/post/responses/404"
           }
         }
       }
     },
-    "/addresses/get-all/district/{cityId}": {
+    "/addresses/{cityId}/districts": {
       "summary": "",
       "description": "",
       "get": {
@@ -4287,12 +4247,12 @@
             "$ref": "#/paths/~1tags~1/get/responses/403"
           },
           "404": {
-            "$ref": "#/paths/~1users~1login/post/responses/404"
+            "$ref": "#/paths/~1addresses/post/responses/404"
           }
         }
       }
     },
-    "/addresses/get-all/my": {
+    "/addresses": {
       "summary": "",
       "description": "",
       "get": {
@@ -4333,7 +4293,7 @@
                         "data": {
                           "type": "array",
                           "items": {
-                            "$ref": "#/paths/~1addresses~1get~1my~1%7BaddressId%7D/get/responses/200/content/application~1json/schema/allOf/2/properties/data"
+                            "$ref": "#/paths/~1addresses~1%7BaddressId%7D/get/responses/200/content/application~1json/schema/allOf/2/properties/data"
                           }
                         }
                       }
@@ -4353,183 +4313,7 @@
             "$ref": "#/paths/~1tags~1/get/responses/403"
           }
         }
-      }
-    },
-    "/addresses/get/my/{addressId}": {
-      "summary": "",
-      "description": "",
-      "get": {
-        "tags": [
-          "Addresses"
-        ],
-        "summary": "Get user's address by address id",
-        "description": "Get user's address by address id",
-        "operationId": "address.get-my",
-        "security": [
-          {
-            "bearerAuth": []
-          }
-        ],
-        "parameters": [
-          {
-            "in": "path",
-            "name": "addressId",
-            "schema": {
-              "type": "string"
-            },
-            "required": true,
-            "description": "Address id",
-            "length": 24
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "type": "object",
-                  "allOf": [
-                    {
-                      "$ref": "#/paths/~1users~1logout/post/responses/200/content/application~1json/schema/allOf/0"
-                    },
-                    {
-                      "type": "object",
-                      "properties": {
-                        "statusCode": {
-                          "type": "number",
-                          "default": 200
-                        }
-                      }
-                    },
-                    {
-                      "type": "object",
-                      "properties": {
-                        "data": {
-                          "allOf": [
-                            {
-                              "type": "object",
-                              "properties": {
-                                "_id": {
-                                  "title": "MongoDb Id of the address",
-                                  "description": "MongoDb Id of the address",
-                                  "type": "string",
-                                  "length": 24,
-                                  "example": "62f8d2787eb0550b2715c847"
-                                }
-                              }
-                            },
-                            {
-                              "type": "object",
-                              "properties": {
-                                "country": {
-                                  "$ref": "#/paths/~1addresses~1get-all~1country/get/responses/200/content/application~1json/schema/allOf/2/properties/data/items"
-                                }
-                              }
-                            },
-                            {
-                              "type": "object",
-                              "properties": {
-                                "city": {
-                                  "$ref": "#/paths/~1addresses~1get-all~1district~1%7BcityId%7D/get/responses/200/content/application~1json/schema/allOf/2/properties/data/allOf/0/properties/city"
-                                }
-                              }
-                            },
-                            {
-                              "type": "object",
-                              "properties": {
-                                "district": {
-                                  "$ref": "#/paths/~1addresses~1get-all~1district~1%7BcityId%7D/get/responses/200/content/application~1json/schema/allOf/2/properties/data/allOf/1/properties/districts/items"
-                                }
-                              }
-                            },
-                            {
-                              "type": "object",
-                              "properties": {
-                                "user": {
-                                  "allOf": [
-                                    {
-                                      "type": "object",
-                                      "properties": {
-                                        "_id": {
-                                          "title": "MongoDb Id of the user",
-                                          "description": "MongoDb Id of the user",
-                                          "type": "string",
-                                          "length": 24,
-                                          "example": "62f8d2b77eb0550b2715cbe6"
-                                        }
-                                      }
-                                    },
-                                    {
-                                      "$ref": "#/components/requestBodies/register/content/application~1json/schema/allOf/0/allOf/0"
-                                    },
-                                    {
-                                      "type": "object",
-                                      "properties": {
-                                        "email": {
-                                          "title": "User email",
-                                          "description": "User email",
-                                          "type": "string",
-                                          "format": "email"
-                                        }
-                                      }
-                                    }
-                                  ]
-                                }
-                              }
-                            },
-                            {
-                              "type": "object",
-                              "properties": {
-                                "address_1": {
-                                  "title": "Address line 1",
-                                  "description": "Address line 1",
-                                  "type": "string",
-                                  "minLength": 10,
-                                  "maxLength": 200
-                                }
-                              }
-                            },
-                            {
-                              "type": "object",
-                              "properties": {
-                                "address_2": {
-                                  "title": "Address line 2",
-                                  "description": "Address line 2",
-                                  "type": "string",
-                                  "minLength": 10,
-                                  "maxLength": 200,
-                                  "required": false
-                                }
-                              }
-                            }
-                          ]
-                        }
-                      }
-                    }
-                  ]
-                }
-              }
-            }
-          },
-          "400": {
-            "$ref": "#/paths/~1tags~1/get/responses/400"
-          },
-          "401": {
-            "$ref": "#/paths/~1tags~1/get/responses/401"
-          },
-          "403": {
-            "$ref": "#/paths/~1tags~1/get/responses/403"
-          },
-          "404": {
-            "$ref": "#/paths/~1users~1login/post/responses/404"
-          }
-        }
-      }
-    },
-    "/addresses/create": {
-      "summary": "",
-      "description": "",
+      },
       "post": {
         "tags": [
           "Addresses"
@@ -4663,7 +4447,7 @@
                               }
                             },
                             {
-                              "$ref": "#/paths/~1addresses~1create/post/requestBody/content/application~1json/schema/allOf/0"
+                              "$ref": "#/paths/~1addresses/post/requestBody/content/application~1json/schema/allOf/0"
                             },
                             {
                               "type": "object",
@@ -4721,17 +4505,225 @@
             "$ref": "#/paths/~1tags~1/get/responses/403"
           },
           "404": {
-            "$ref": "#/paths/~1users~1login/post/responses/404"
+            "description": "Not found error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "allOf": [
+                    {
+                      "$ref": "#/paths/~1tags~1/get/responses/400/content/application~1json/schema/allOf/0"
+                    },
+                    {
+                      "type": "object",
+                      "properties": {
+                        "statusCode": {
+                          "type": "number",
+                          "default": 404
+                        }
+                      }
+                    }
+                  ]
+                }
+              }
+            }
           },
           "500": {
-            "$ref": "#/paths/~1tags~1admin/post/responses/500"
+            "description": "Internal server error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "allOf": [
+                    {
+                      "$ref": "#/paths/~1tags~1/get/responses/400/content/application~1json/schema/allOf/0"
+                    },
+                    {
+                      "type": "object",
+                      "properties": {
+                        "statusCode": {
+                          "type": "number",
+                          "default": 500
+                        }
+                      }
+                    }
+                  ]
+                }
+              }
+            }
           }
         }
       }
     },
-    "/addresses/update/{addressId}": {
+    "/addresses/{addressId}": {
       "summary": "",
       "description": "",
+      "get": {
+        "tags": [
+          "Addresses"
+        ],
+        "summary": "Get user's address by address id",
+        "description": "Get user's address by address id",
+        "operationId": "address.get-my",
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "addressId",
+            "schema": {
+              "type": "string"
+            },
+            "required": true,
+            "description": "Address id",
+            "length": 24
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "allOf": [
+                    {
+                      "$ref": "#/paths/~1users~1logout/post/responses/200/content/application~1json/schema/allOf/0"
+                    },
+                    {
+                      "type": "object",
+                      "properties": {
+                        "statusCode": {
+                          "type": "number",
+                          "default": 200
+                        }
+                      }
+                    },
+                    {
+                      "type": "object",
+                      "properties": {
+                        "data": {
+                          "allOf": [
+                            {
+                              "type": "object",
+                              "properties": {
+                                "_id": {
+                                  "title": "MongoDb Id of the address",
+                                  "description": "MongoDb Id of the address",
+                                  "type": "string",
+                                  "length": 24,
+                                  "example": "62f8d2787eb0550b2715c847"
+                                }
+                              }
+                            },
+                            {
+                              "type": "object",
+                              "properties": {
+                                "country": {
+                                  "$ref": "#/paths/~1addresses~1countries/get/responses/200/content/application~1json/schema/allOf/2/properties/data/items"
+                                }
+                              }
+                            },
+                            {
+                              "type": "object",
+                              "properties": {
+                                "city": {
+                                  "$ref": "#/paths/~1addresses~1%7BcityId%7D~1districts/get/responses/200/content/application~1json/schema/allOf/2/properties/data/allOf/0/properties/city"
+                                }
+                              }
+                            },
+                            {
+                              "type": "object",
+                              "properties": {
+                                "district": {
+                                  "$ref": "#/paths/~1addresses~1%7BcityId%7D~1districts/get/responses/200/content/application~1json/schema/allOf/2/properties/data/allOf/1/properties/districts/items"
+                                }
+                              }
+                            },
+                            {
+                              "type": "object",
+                              "properties": {
+                                "user": {
+                                  "allOf": [
+                                    {
+                                      "type": "object",
+                                      "properties": {
+                                        "_id": {
+                                          "title": "MongoDb Id of the user",
+                                          "description": "MongoDb Id of the user",
+                                          "type": "string",
+                                          "length": 24,
+                                          "example": "62f8d2b77eb0550b2715cbe6"
+                                        }
+                                      }
+                                    },
+                                    {
+                                      "$ref": "#/components/requestBodies/register/content/application~1json/schema/allOf/0/allOf/0"
+                                    },
+                                    {
+                                      "type": "object",
+                                      "properties": {
+                                        "email": {
+                                          "title": "User email",
+                                          "description": "User email",
+                                          "type": "string",
+                                          "format": "email"
+                                        }
+                                      }
+                                    }
+                                  ]
+                                }
+                              }
+                            },
+                            {
+                              "type": "object",
+                              "properties": {
+                                "address_1": {
+                                  "title": "Address line 1",
+                                  "description": "Address line 1",
+                                  "type": "string",
+                                  "minLength": 10,
+                                  "maxLength": 200
+                                }
+                              }
+                            },
+                            {
+                              "type": "object",
+                              "properties": {
+                                "address_2": {
+                                  "title": "Address line 2",
+                                  "description": "Address line 2",
+                                  "type": "string",
+                                  "minLength": 10,
+                                  "maxLength": 200,
+                                  "required": false
+                                }
+                              }
+                            }
+                          ]
+                        }
+                      }
+                    }
+                  ]
+                }
+              }
+            }
+          },
+          "400": {
+            "$ref": "#/paths/~1tags~1/get/responses/400"
+          },
+          "401": {
+            "$ref": "#/paths/~1tags~1/get/responses/401"
+          },
+          "403": {
+            "$ref": "#/paths/~1tags~1/get/responses/403"
+          },
+          "404": {
+            "$ref": "#/paths/~1addresses/post/responses/404"
+          }
+        }
+      },
       "patch": {
         "tags": [
           "Addresses"
@@ -4746,7 +4738,7 @@
         ],
         "parameters": [
           {
-            "$ref": "#/paths/~1addresses~1get~1my~1%7BaddressId%7D/get/parameters/0"
+            "$ref": "#/paths/~1addresses~1%7BaddressId%7D/get/parameters/0"
           }
         ],
         "requestBody": {
@@ -4756,7 +4748,7 @@
               "schema": {
                 "allOf": [
                   {
-                    "$ref": "#/paths/~1addresses~1create/post/requestBody/content/application~1json/schema/allOf/0"
+                    "$ref": "#/paths/~1addresses/post/requestBody/content/application~1json/schema/allOf/0"
                   },
                   {
                     "type": "object",
@@ -4825,7 +4817,7 @@
                               }
                             },
                             {
-                              "$ref": "#/paths/~1addresses~1create/post/requestBody/content/application~1json/schema/allOf/0"
+                              "$ref": "#/paths/~1addresses/post/requestBody/content/application~1json/schema/allOf/0"
                             },
                             {
                               "type": "object",
@@ -4883,14 +4875,10 @@
             "$ref": "#/paths/~1tags~1/get/responses/403"
           },
           "404": {
-            "$ref": "#/paths/~1users~1login/post/responses/404"
+            "$ref": "#/paths/~1addresses/post/responses/404"
           }
         }
-      }
-    },
-    "/addresses/delete/{addressId}": {
-      "summary": "",
-      "description": "",
+      },
       "delete": {
         "tags": [
           "Addresses"
@@ -4905,7 +4893,7 @@
         ],
         "parameters": [
           {
-            "$ref": "#/paths/~1addresses~1get~1my~1%7BaddressId%7D/get/parameters/0"
+            "$ref": "#/paths/~1addresses~1%7BaddressId%7D/get/parameters/0"
           }
         ],
         "responses": {
@@ -4946,7 +4934,7 @@
                               }
                             },
                             {
-                              "$ref": "#/paths/~1addresses~1create/post/requestBody/content/application~1json/schema/allOf/0"
+                              "$ref": "#/paths/~1addresses/post/requestBody/content/application~1json/schema/allOf/0"
                             },
                             {
                               "type": "object",
@@ -5004,7 +4992,7 @@
             "$ref": "#/paths/~1tags~1/get/responses/403"
           },
           "404": {
-            "$ref": "#/paths/~1users~1login/post/responses/404"
+            "$ref": "#/paths/~1addresses/post/responses/404"
           }
         }
       }
@@ -5132,7 +5120,7 @@
             "$ref": "#/paths/~1tags~1/get/responses/403"
           },
           "404": {
-            "$ref": "#/paths/~1users~1login/post/responses/404"
+            "$ref": "#/paths/~1addresses/post/responses/404"
           }
         }
       }
@@ -5220,7 +5208,7 @@
             "$ref": "#/paths/~1tags~1admin/post/responses/409"
           },
           "500": {
-            "$ref": "#/paths/~1tags~1admin/post/responses/500"
+            "$ref": "#/paths/~1addresses/post/responses/500"
           }
         }
       }
@@ -5348,13 +5336,13 @@
             "$ref": "#/paths/~1tags~1/get/responses/403"
           },
           "404": {
-            "$ref": "#/paths/~1users~1login/post/responses/404"
+            "$ref": "#/paths/~1addresses/post/responses/404"
           },
           "409": {
             "$ref": "#/paths/~1tags~1admin/post/responses/409"
           },
           "500": {
-            "$ref": "#/paths/~1tags~1admin/post/responses/500"
+            "$ref": "#/paths/~1addresses/post/responses/500"
           }
         }
       },
@@ -5389,7 +5377,7 @@
             "$ref": "#/paths/~1tags~1/get/responses/403"
           },
           "404": {
-            "$ref": "#/paths/~1users~1login/post/responses/404"
+            "$ref": "#/paths/~1addresses/post/responses/404"
           }
         }
       }
