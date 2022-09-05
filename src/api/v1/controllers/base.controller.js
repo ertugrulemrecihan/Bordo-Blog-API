@@ -18,7 +18,7 @@ class BaseController {
             pluralModelName.charAt(0).toUpperCase() + pluralModelName.slice(1);
     }
 
-    fetchAll = async (req, res, next) => {
+    fetchAll = async (req, res) => {
         const response = await this.service.fetchAll();
 
         if (response.length > 0) {
@@ -29,12 +29,11 @@ class BaseController {
             response,
             `${this.pluralModelName} fetched successfully`,
             httpStatus.OK,
-            res,
-            next
+            res
         );
     };
 
-    fetchAllByQuery = async (req, res, next) => {
+    fetchAllByQuery = async (req, res) => {
         const response = await this.service.fetchAll({ query: req.query });
 
         if (response.length > 0) {
@@ -45,8 +44,7 @@ class BaseController {
             response,
             `${this.pluralModelName} fetched successfully`,
             httpStatus.OK,
-            res,
-            next
+            res
         );
     };
 
@@ -68,8 +66,7 @@ class BaseController {
             response,
             `${this.singleModelName} fetched successfully`,
             httpStatus.OK,
-            res,
-            next
+            res
         );
     };
 
@@ -91,8 +88,7 @@ class BaseController {
             response,
             `${this.singleModelName} fetched successfully`,
             httpStatus.OK,
-            res,
-            next
+            res
         );
     };
 
@@ -115,8 +111,7 @@ class BaseController {
                 response,
                 `${this.singleModelName} created successfully`,
                 httpStatus.CREATED,
-                res,
-                next
+                res
             );
         } catch (err) {
             if (err.code === 11000) {
@@ -159,8 +154,7 @@ class BaseController {
                 response,
                 `${this.singleModelName} updated successfully`,
                 httpStatus.OK,
-                res,
-                next
+                res
             );
         } catch (err) {
             if (err.code === 11000) {
@@ -203,8 +197,7 @@ class BaseController {
                 response,
                 `${this.singleModelName} updated successfully`,
                 httpStatus.OK,
-                res,
-                next
+                res
             );
         } catch (err) {
             if (err.code === 11000) {
@@ -243,8 +236,7 @@ class BaseController {
             response,
             `${this.singleModelName} deleted successfully`,
             httpStatus.OK,
-            res,
-            next
+            res
         );
     };
 
@@ -266,8 +258,7 @@ class BaseController {
             response,
             `${this.singleModelName} deleted successfully`,
             httpStatus.OK,
-            res,
-            next
+            res
         );
     };
 }

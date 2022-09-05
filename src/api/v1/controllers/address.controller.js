@@ -14,7 +14,7 @@ class AddressController extends BaseController {
         super(addressService);
     }
 
-    getAllCountries = async (req, res, next) => {
+    getAllCountries = async (req, res) => {
         const countries = await countryService.fetchAll();
 
         if (countries.length > 0) {
@@ -25,8 +25,7 @@ class AddressController extends BaseController {
             countries,
             'Countries fetched successfully',
             httpStatus.OK,
-            res,
-            next
+            res
         );
     };
 
@@ -56,8 +55,7 @@ class AddressController extends BaseController {
             response,
             'Cities fetched successfully',
             httpStatus.OK,
-            res,
-            next
+            res
         );
     };
 
@@ -85,12 +83,11 @@ class AddressController extends BaseController {
             response,
             'Districts fetched successfully',
             httpStatus.OK,
-            res,
-            next
+            res
         );
     };
 
-    getAllMyAddresses = async (req, res, next) => {
+    getAllMyAddresses = async (req, res) => {
         const userId = await req.user._id;
 
         const addresses = await addressService.fetchAll({
@@ -101,8 +98,7 @@ class AddressController extends BaseController {
             addresses,
             'User addresses fetched successfully',
             httpStatus.OK,
-            res,
-            next
+            res
         );
     };
 
@@ -124,8 +120,7 @@ class AddressController extends BaseController {
             address,
             'User address fetched successfully',
             httpStatus.OK,
-            res,
-            next
+            res
         );
     };
 
@@ -180,8 +175,7 @@ class AddressController extends BaseController {
             response,
             'Address created successfully',
             httpStatus.CREATED,
-            res,
-            next
+            res
         );
     };
 
@@ -203,8 +197,7 @@ class AddressController extends BaseController {
             response,
             'Address updated successfully',
             httpStatus.OK,
-            res,
-            next
+            res
         );
     };
 
@@ -226,8 +219,7 @@ class AddressController extends BaseController {
             response,
             'Address deleted successfully',
             httpStatus.OK,
-            res,
-            next
+            res
         );
     };
 }

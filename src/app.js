@@ -9,8 +9,6 @@ const routes = require('./api/v1/routes');
 const swaggerUi = require('swagger-ui-express');
 const swaggerDocument = require('../docs/static/openapi.json');
 const fileUploader = require('express-fileupload');
-// eslint-disable-next-line max-len
-const successHandler = require('./api/v1/middlewares/success-handler.middleware');
 
 configs();
 loaders();
@@ -40,7 +38,6 @@ app.use('/api/v1/posts/admin', routes.adminPost);
 app.use('/api/v1/users/admin', routes.adminUser);
 app.use('/api/v1/plans/admin', routes.adminPlan);
 
-app.use(successHandler);
 app.use(errorHandler);
 
 const PORT = process.env.PORT || 3000;

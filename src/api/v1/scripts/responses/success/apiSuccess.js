@@ -7,10 +7,10 @@ class ApiSuccess {
         };
     }
 
-    static send(message, statusCode, res, next) {
-        res.locals.apiResponse = ApiSuccess.toJSON(message, statusCode);
-
-        next();
+    static send(message, statusCode, res) {
+        return res
+            .status(statusCode)
+            .json(ApiSuccess.toJSON(message, statusCode));
     }
 }
 

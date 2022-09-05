@@ -33,8 +33,7 @@ class TagController extends BaseController {
                 response,
                 'Tag created successfully',
                 httpStatus.CREATED,
-                res,
-                next
+                res
             );
         } catch (err) {
             if (err.code === 11000) {
@@ -91,8 +90,7 @@ class TagController extends BaseController {
             response,
             'Tags fetched successfully',
             httpStatus.OK,
-            res,
-            next
+            res
         );
     };
 
@@ -129,8 +127,7 @@ class TagController extends BaseController {
             tagsWithPercentile,
             'Tags fetched successfully',
             httpStatus.OK,
-            res,
-            next
+            res
         );
     };
 }

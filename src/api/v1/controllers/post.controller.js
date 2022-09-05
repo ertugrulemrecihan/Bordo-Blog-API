@@ -56,8 +56,7 @@ class PostController extends BaseController {
             response,
             'Blogs that user is the author of have been successfully fetched',
             httpStatus.OK,
-            res,
-            next
+            res
         );
     };
 
@@ -77,8 +76,7 @@ class PostController extends BaseController {
             post,
             'Post fetched successfully',
             httpStatus.OK,
-            res,
-            next
+            res
         );
     };
 
@@ -140,8 +138,7 @@ class PostController extends BaseController {
                 response,
                 'Post created successfully',
                 httpStatus.CREATED,
-                res,
-                next
+                res
             );
         } catch (err) {
             if (err.code === 11000) {
@@ -162,7 +159,7 @@ class PostController extends BaseController {
         }
     };
 
-    fetchAllPreviews = async (req, res, next) => {
+    fetchAllPreviews = async (req, res) => {
         const response = await postService.fetchAll({
             select: ['-content', '-images', '-comments'],
         });
@@ -171,8 +168,7 @@ class PostController extends BaseController {
             response,
             'Posts previews fetched successfully',
             httpStatus.OK,
-            res,
-            next
+            res
         );
     };
 
@@ -201,7 +197,7 @@ class PostController extends BaseController {
             );
         }
 
-        ApiSuccess.send('Post deletion successfully', httpStatus.OK, res, next);
+        ApiSuccess.send('Post deletion successfully', httpStatus.OK, res);
     };
 
     updateMyPost = async (req, res, next) => {
@@ -259,8 +255,7 @@ class PostController extends BaseController {
             result,
             'Post update successfully',
             httpStatus.OK,
-            res,
-            next
+            res
         );
     };
 
@@ -304,8 +299,7 @@ class PostController extends BaseController {
             updatedPost,
             'User successfully added to post as viewer',
             httpStatus.OK,
-            res,
-            next
+            res
         );
     };
 
@@ -346,7 +340,7 @@ class PostController extends BaseController {
             );
         }
 
-        ApiDataSuccess.send(updatedPost, message, httpStatus.OK, res, next);
+        ApiDataSuccess.send(updatedPost, message, httpStatus.OK, res);
     };
 
     addComment = async (req, res, next) => {
@@ -379,8 +373,7 @@ class PostController extends BaseController {
             updatedPost,
             'Comment added successfully',
             httpStatus.OK,
-            res,
-            next
+            res
         );
     };
 
@@ -421,8 +414,7 @@ class PostController extends BaseController {
             deletedComment,
             'Comment deleted successfully',
             httpStatus.OK,
-            res,
-            next
+            res
         );
     };
 
@@ -463,8 +455,7 @@ class PostController extends BaseController {
             response,
             'Posts fetched successfully',
             httpStatus.OK,
-            res,
-            next
+            res
         );
     };
 }

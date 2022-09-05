@@ -3,7 +3,6 @@ const httpStatus = require('http-status');
 const ApiDataSuccess = require('../scripts/responses/success/apiDataSuccess');
 const client = require('../scripts/redis/redis-client');
 const redisHelper = require('../scripts/helpers/redis.helper');
-const successHandler = require('./success-handler.middleware');
 
 const cache = (controller) => async (req, res, next) => {
     if (client.isReady) {
@@ -16,9 +15,7 @@ const cache = (controller) => async (req, res, next) => {
                 ? `${controller.pluralModelName} fetched successfully`
                 : `${controller.singleModelName} fetched successfully`;
 
-            ApiDataSuccess.place(cachedData, message, httpStatus.OK, res);
-
-            return successHandler(req, res, next);
+            ApiDataSuccess.send(cachedData, message, httpStatus.OK, res);
         }
         return next();
     } else {

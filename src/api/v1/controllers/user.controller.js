@@ -75,8 +75,7 @@ class UserController extends BaseController {
                     response,
                     'Your registration has been created successfully, but the verification link could not be sent',
                     httpStatus.CREATED,
-                    res,
-                    next
+                    res
                 );
             }
 
@@ -86,8 +85,7 @@ class UserController extends BaseController {
                 response,
                 'Registration successful',
                 httpStatus.CREATED,
-                res,
-                next
+                res
             );
         } catch (error) {
             if (error.code === 11000) {
@@ -168,13 +166,7 @@ class UserController extends BaseController {
 
         await userService.updateById(user._id, { last_login: Date.now() });
 
-        ApiDataSuccess.send(
-            response,
-            'Login successful',
-            httpStatus.OK,
-            res,
-            next
-        );
+        ApiDataSuccess.send(response, 'Login successful', httpStatus.OK, res);
     };
 
     changeEmailGetEmail = async (req, res, next) => {
@@ -241,8 +233,7 @@ class UserController extends BaseController {
         ApiSuccess.send(
             'Email change link sent successfully.',
             httpStatus.OK,
-            res,
-            next
+            res
         );
     };
 
@@ -301,12 +292,7 @@ class UserController extends BaseController {
                 },
             });
 
-            ApiSuccess.send(
-                'Email successfully changed',
-                httpStatus.OK,
-                res,
-                next
-            );
+            ApiSuccess.send('Email successfully changed', httpStatus.OK, res);
         } catch (error) {
             if (error.code === 11000) {
                 return next(
@@ -332,7 +318,7 @@ class UserController extends BaseController {
             );
         }
 
-        ApiSuccess.send('Log out successfully', httpStatus.OK, res, next);
+        ApiSuccess.send('Log out successfully', httpStatus.OK, res);
     };
 
     getPasswordResetEmail = async (req, res, next) => {
@@ -380,8 +366,7 @@ class UserController extends BaseController {
         ApiSuccess.send(
             'Your password reset link has been sent as email',
             httpStatus.OK,
-            res,
-            next
+            res
         );
     };
 
@@ -443,12 +428,7 @@ class UserController extends BaseController {
 
             await userHelper.logOut(user._id);
 
-            ApiSuccess.send(
-                'Password has been reset',
-                httpStatus.OK,
-                res,
-                next
-            );
+            ApiSuccess.send('Password has been reset', httpStatus.OK, res);
         } catch {
             return next(
                 new ApiError(
@@ -512,7 +492,7 @@ class UserController extends BaseController {
 
         await userHelper.logOut(req.user._id);
 
-        ApiSuccess.send('Password has been changed', httpStatus.OK, res, next);
+        ApiSuccess.send('Password has been changed', httpStatus.OK, res);
     };
 
     getEmailVerificationEmail = async (req, res, next) => {
@@ -524,8 +504,7 @@ class UserController extends BaseController {
             ApiSuccess.send(
                 successResult.message,
                 successResult.statusCode,
-                res,
-                next
+                res
             );
         } catch (error) {
             return next(error);
@@ -598,12 +577,7 @@ class UserController extends BaseController {
 
             // ! FIXME - Kullanıcıyı frontend ana sayfaya yönlendir
 
-            ApiSuccess.send(
-                'Email successfully verified',
-                httpStatus.OK,
-                res,
-                next
-            );
+            ApiSuccess.send('Email successfully verified', httpStatus.OK, res);
         } catch (error) {
             return next(
                 new ApiError(
@@ -614,13 +588,12 @@ class UserController extends BaseController {
         }
     };
 
-    getMyProfile = async (req, res, next) => {
+    getMyProfile = async (req, res) => {
         ApiDataSuccess.send(
             req.user,
             'Profile fetched successfully',
             httpStatus.OK,
-            res,
-            next
+            res
         );
     };
 
@@ -676,8 +649,7 @@ class UserController extends BaseController {
             response,
             'Users fetched successfully',
             httpStatus.OK,
-            res,
-            next
+            res
         );
     };
 
@@ -707,8 +679,7 @@ class UserController extends BaseController {
             response,
             'User fetched successfully',
             httpStatus.OK,
-            res,
-            next
+            res
         );
     };
 
@@ -727,8 +698,7 @@ class UserController extends BaseController {
             result,
             'User deleted successfully',
             httpStatus.OK,
-            res,
-            next
+            res
         );
     };
 
@@ -763,8 +733,7 @@ class UserController extends BaseController {
                 newUpdatedUser,
                 'User avatar updated successfully.',
                 httpStatus.OK,
-                res,
-                next
+                res
             );
         } catch (error) {
             return next(new ApiError(error, httpStatus.BAD_REQUEST));
@@ -814,7 +783,7 @@ class UserController extends BaseController {
 
         await redisHelper.removeByClassName(this.constructor.name);
 
-        ApiSuccess.send('Role assignment successful', httpStatus.OK, res, next);
+        ApiSuccess.send('Role assignment successful', httpStatus.OK, res);
     };
 
     unassignAdminRole = async (req, res, next) => {
@@ -868,8 +837,7 @@ class UserController extends BaseController {
         ApiSuccess.send(
             'Role assignment successfully removed',
             httpStatus.OK,
-            res,
-            next
+            res
         );
     };
 }
