@@ -8,8 +8,8 @@ const bodyValidator = (schema) => (req, res, next) => {
     };
 
     if (
-        Object.keys(req.body).length === 0 &&
-        Object.keys(req.files).length === 0
+        Object.keys(req.body || {}).length === 0 &&
+        Object.keys(req.files || {}).length === 0
     ) {
         return next(
             new ApiError(
