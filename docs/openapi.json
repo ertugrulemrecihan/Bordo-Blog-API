@@ -98,10 +98,10 @@
         "/admin/users/unassign-admin/{userId}": {
             "$ref": "./paths/admin/user/unassign-admin.json"
         },
-        "/tags/get-all": {
+        "/tags/": {
             "$ref": "./paths/tag/get-all-tags.json"
         },
-        "/tags/get-all/most-used/{count}": {
+        "/tags/most-used/{count}": {
             "$ref": "./paths/tag/get-all-most-used.json"
         },
         "/admin/tags/create": {

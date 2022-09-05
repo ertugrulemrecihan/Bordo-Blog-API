@@ -6,11 +6,11 @@ const cache = require('../middlewares/cache.middleware');
 const queryOptions = require('../middlewares/query-options.middleware');
 
 router
-    .route('/get-all')
+    .route('/')
     .get(authenticate, queryOptions, cache(controller), controller.fetchAll);
 
 router
-    .route('/get-all/most-used/:count')
+    .route('/most-used/:count')
     .get(authenticate, cache(controller), controller.fetchAllMostUsedTags);
 
 module.exports = router;
