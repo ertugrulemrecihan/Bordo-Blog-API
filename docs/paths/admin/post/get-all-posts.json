@@ -13,6 +13,79 @@
                 "bearerAuth": []
             }
         ],
+        "parameters": [
+            {
+                "name": "limit",
+                "in": "query",
+                "description": "Maximum tag count (Default: 10)",
+                "schema": {
+                    "type": "number"
+                }
+            },
+            {
+                "name": "page",
+                "in": "query",
+                "description": "Page number (Default: 1)",
+                "schema": {
+                    "type": "number"
+                }
+            },
+            {
+                "in": "query",
+                "name": "props",
+                "schema": {
+                    "type": "object",
+                    "properties": {
+                        "title.eq": {
+                            "type": "string",
+                            "example": "blogger"
+                        },
+                        "createdAt.eqd": {
+                            "type": "string",
+                            "example": "2023 & 2023-03 & 2023-03-12 & 2023-03-12T18 & 2023-03-12T18:20 & 2023-03-12T18:20:45"
+                        },
+                        "createdAt.gt": {
+                            "type": "string",
+                            "example": "2023 & 2023-03 & 2023-03-12 & 2023-03-12T18 & 2023-03-12T18:20 & 2023-03-12T18:20:45"
+                        },
+                        "createdAt.lt": {
+                            "type": "string",
+                            "example": "2023 & 2023-03 & 2023-03-12 & 2023-03-12T18 & 2023-03-12T18:20 & 2023-03-12T18:20:45"
+                        },
+                        "createdAt.gte": {
+                            "type": "string",
+                            "example": "2023 & 2023-03 & 2023-03-12 & 2023-03-12T18 & 2023-03-12T18:20 & 2023-03-12T18:20:45"
+                        },
+                        "createdAt.lte": {
+                            "type": "string",
+                            "example": "2023 & 2023-03 & 2023-03-12 & 2023-03-12T18 & 2023-03-12T18:20 & 2023-03-12T18:20:45"
+                        },
+                        "tags.in": {
+                            "type": "string",
+                            "example": "movie"
+                        }
+                    }
+                },
+                "style": "form",
+                "explode": true
+            },
+            {
+                "name": "sortField",
+                "in": "query",
+                "description": "Post field name for sorting",
+                "schema": {
+                    "type": "string"
+                }
+            },
+            {
+                "name": "sortOrder",
+                "in": "query",
+                "description": "Sorting number (-1 | 1)",
+                "schema": {
+                    "type": "number"
+                }
+            }
+        ],
         "responses": {
             "200": {
                 "$ref": "../../../responses/post/get-all-posts.json"

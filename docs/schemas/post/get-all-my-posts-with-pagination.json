@@ -1,7 +1,7 @@
 {
     "allOf": [
         {
-            "$ref": "../../../responses/api-responses/api-success.json"
+            "$ref": "../../responses/api-responses/api-success.json"
         },
         {
             "type": "object",
@@ -18,18 +18,21 @@
                 "data": {
                     "allOf": [
                         {
-                            "$ref": "../../others/pagination-info.json"
-                        },
-                        {
                             "type": "object",
                             "properties": {
-                                "tags": {
+                                "posts": {
                                     "type": "array",
                                     "items": {
-                                        "$ref": "../other/tag.json"
+                                        "$ref": "./other/post.json"
                                     }
                                 }
                             }
+                        },
+                        {
+                            "$ref": "../user/other/user-statistics.json"
+                        },
+                        {
+                            "$ref": "../others/pagination-info.json"
                         }
                     ]
                 }

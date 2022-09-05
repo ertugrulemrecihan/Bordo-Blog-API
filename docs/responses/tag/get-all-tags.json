@@ -3,8 +3,14 @@
     "content": {
         "application/json": {
             "schema": {
-                "type": "object",
-                "$ref": "../../schemas/tag/get-all-tags.json"
+                "oneOf": [
+                    {
+                        "$ref": "../../schemas/tag/get-all-tags-with-pagination.json"
+                    },
+                    {
+                        "$ref": "../../schemas/tag/get-all-tags.json"
+                    }
+                ]
             }
         }
     }

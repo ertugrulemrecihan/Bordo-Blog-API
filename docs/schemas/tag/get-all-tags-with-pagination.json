@@ -1,7 +1,7 @@
 {
     "allOf": [
         {
-            "$ref": "../../../responses/api-responses/api-success.json"
+            "$ref": "../../responses/api-responses/api-success.json"
         },
         {
             "type": "object",
@@ -20,16 +20,16 @@
                         {
                             "type": "object",
                             "properties": {
-                                "posts": {
+                                "tags": {
                                     "type": "array",
                                     "items": {
-                                        "$ref": "../other/post.json"
+                                        "$ref": "./other/tag.json"
                                     }
                                 }
                             }
                         },
                         {
-                            "$ref": "../../user/other/user-statistics.json"
+                            "$ref": "../others/pagination-info.json"
                         }
                     ]
                 }

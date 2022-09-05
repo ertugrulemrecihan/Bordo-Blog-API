@@ -86,12 +86,6 @@
         "/admin/users/get-all": {
             "$ref": "./paths/admin/user/get-all.json"
         },
-        "/admin/users/get-all/sort": {
-            "$ref": "./paths/admin/user/get-all-sort.json"
-        },
-        "/admin/users/get-all/limit": {
-            "$ref": "./paths/admin/user/get-all-limit.json"
-        },
         "/admin/users/get/{userId}": {
             "$ref": "./paths/admin/user/get.json"
         },
@@ -109,12 +103,6 @@
         },
         "/tags/get-all/most-used/{count}": {
             "$ref": "./paths/tag/get-all-most-used.json"
-        },
-        "/admin/tags/get-all/sort": {
-            "$ref": "./paths/admin/tag/get-all-sort.json"
-        },
-        "/admin/tags/get-all/limit": {
-            "$ref": "./paths/admin/tag/get-all-limit.json"
         },
         "/admin/tags/create": {
             "$ref": "./paths/admin/tag/create-tag.json"
@@ -157,12 +145,6 @@
         },
         "/admin/posts/get/{postId}": {
             "$ref": "./paths/admin/post/get-post-by-id.json"
-        },
-        "/admin/posts/get-all/sort": {
-            "$ref": "./paths/admin/post/get-all-sort.json"
-        },
-        "/admin/posts/get-all/limit": {
-            "$ref": "./paths/admin/post/get-all-limit.json"
         },
         "/admin/posts/delete/{postId}": {
             "$ref": "./paths/admin/post/delete-users-post.json"

@@ -1070,6 +1070,83 @@
             "bearerAuth": []
           }
         ],
+        "parameters": [
+          {
+            "name": "limit",
+            "in": "query",
+            "description": "Maximum tag count (Default: 10)",
+            "schema": {
+              "type": "number"
+            }
+          },
+          {
+            "name": "page",
+            "in": "query",
+            "description": "Page number (Default: 1)",
+            "schema": {
+              "type": "number"
+            }
+          },
+          {
+            "in": "query",
+            "name": "props",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "first_name.eq": {
+                  "type": "string",
+                  "example": "Ertuğrul"
+                },
+                "createdAt.eqd": {
+                  "type": "string",
+                  "example": "2023  or  2023-03  or  2023-03-12  or  2023-03-12T18  or  2023-03-12T18:20  or  2023-03-12T18:20:45"
+                },
+                "createdAt.gt": {
+                  "type": "string",
+                  "example": "1662361877178"
+                },
+                "createdAt.lt": {
+                  "type": "string",
+                  "example": "1662361877178"
+                },
+                "createdAt.gte": {
+                  "type": "string",
+                  "example": "1662361877178"
+                },
+                "createdAt.lte": {
+                  "type": "string",
+                  "example": "1662361877178"
+                },
+                "roles.in": {
+                  "type": "string",
+                  "example": "Writer"
+                },
+                "email_verified.is": {
+                  "type": "string",
+                  "example": true
+                }
+              }
+            },
+            "style": "form",
+            "explode": true
+          },
+          {
+            "name": "sortField",
+            "in": "query",
+            "description": "Post field name for sorting",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "sortOrder",
+            "in": "query",
+            "description": "Sorting number (-1 | 1)",
+            "schema": {
+              "type": "number"
+            }
+          }
+        ],
         "responses": {
           "200": {
             "description": "",
@@ -1114,191 +1191,6 @@
           },
           "403": {
             "$ref": "#/paths/~1tags~1get-all/get/responses/403"
-          }
-        }
-      }
-    },
-    "/admin/users/get-all/sort": {
-      "summary": "",
-      "description": "",
-      "get": {
-        "tags": [
-          "Admins"
-        ],
-        "summary": "Get all users by sort",
-        "description": "Get all users by sort",
-        "operationId": "admin.users.get-all-sort",
-        "security": [
-          {
-            "bearerAuth": []
-          }
-        ],
-        "parameters": [
-          {
-            "in": "query",
-            "name": "fieldName",
-            "schema": {
-              "type": "string"
-            },
-            "required": true,
-            "description": "User's field name for sorting"
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "allOf": [
-                    {
-                      "$ref": "#/paths/~1users~1logout/post/responses/200/content/application~1json/schema/allOf/0"
-                    },
-                    {
-                      "type": "object",
-                      "properties": {
-                        "data": {
-                          "type": "array",
-                          "items": {
-                            "allOf": [
-                              {
-                                "type": "object",
-                                "properties": {
-                                  "user": {
-                                    "$ref": "#/paths/~1admin~1users~1delete~1%7BuserId%7D/delete/responses/200/content/application~1json/schema/allOf/2/properties/data"
-                                  }
-                                }
-                              },
-                              {
-                                "$ref": "#/paths/~1posts~1get-all~1my/get/responses/200/content/application~1json/schema/allOf/2/properties/data/allOf/1"
-                              }
-                            ]
-                          }
-                        }
-                      }
-                    }
-                  ]
-                }
-              }
-            }
-          },
-          "400": {
-            "$ref": "#/paths/~1users~1login/post/responses/400"
-          },
-          "401": {
-            "$ref": "#/paths/~1tags~1get-all/get/responses/401"
-          },
-          "403": {
-            "$ref": "#/paths/~1tags~1get-all/get/responses/403"
-          },
-          "404": {
-            "$ref": "#/paths/~1users~1login/post/responses/404"
-          }
-        }
-      }
-    },
-    "/admin/users/get-all/limit": {
-      "summary": "",
-      "description": "",
-      "get": {
-        "tags": [
-          "Admins"
-        ],
-        "summary": "Get all users by limit",
-        "description": "Get all tags by limit",
-        "operationId": "admin.users.get-all-limit",
-        "security": [
-          {
-            "bearerAuth": []
-          }
-        ],
-        "parameters": [
-          {
-            "name": "limit",
-            "in": "query",
-            "description": "Maximum user count (Default: 10)",
-            "schema": {
-              "type": "number"
-            }
-          },
-          {
-            "name": "page",
-            "in": "query",
-            "description": "Page number (Default: 1)",
-            "schema": {
-              "type": "number"
-            }
-          },
-          {
-            "name": "fieldName",
-            "in": "query",
-            "description": "User's field name for sorting",
-            "schema": {
-              "type": "number"
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "allOf": [
-                    {
-                      "$ref": "#/paths/~1users~1logout/post/responses/200/content/application~1json/schema/allOf/0"
-                    },
-                    {
-                      "type": "object",
-                      "properties": {
-                        "data": {
-                          "allOf": [
-                            {
-                              "$ref": "#/paths/~1admin~1tags~1get-all~1limit/get/responses/200/content/application~1json/schema/allOf/2/properties/data/allOf/0"
-                            },
-                            {
-                              "type": "object",
-                              "properties": {
-                                "users": {
-                                  "type": "array",
-                                  "items": {
-                                    "allOf": [
-                                      {
-                                        "type": "object",
-                                        "properties": {
-                                          "user": {
-                                            "$ref": "#/paths/~1admin~1users~1delete~1%7BuserId%7D/delete/responses/200/content/application~1json/schema/allOf/2/properties/data"
-                                          }
-                                        }
-                                      },
-                                      {
-                                        "$ref": "#/paths/~1posts~1get-all~1my/get/responses/200/content/application~1json/schema/allOf/2/properties/data/allOf/1"
-                                      }
-                                    ]
-                                  }
-                                }
-                              }
-                            }
-                          ]
-                        }
-                      }
-                    }
-                  ]
-                }
-              }
-            }
-          },
-          "400": {
-            "$ref": "#/paths/~1users~1login/post/responses/400"
-          },
-          "401": {
-            "$ref": "#/paths/~1tags~1get-all/get/responses/401"
-          },
-          "403": {
-            "$ref": "#/paths/~1tags~1get-all/get/responses/403"
-          },
-          "404": {
-            "$ref": "#/paths/~1users~1login/post/responses/404"
           }
         }
       }
@@ -1364,7 +1256,7 @@
                               }
                             },
                             {
-                              "$ref": "#/paths/~1posts~1get-all~1my/get/responses/200/content/application~1json/schema/allOf/2/properties/data/allOf/1"
+                              "$ref": "#/paths/~1admin~1posts~1get-all/get/responses/200/content/application~1json/schema/allOf/2/properties/data/allOf/1"
                             }
                           ]
                         }
@@ -1610,36 +1502,201 @@
             "bearerAuth": []
           }
         ],
+        "parameters": [
+          {
+            "name": "limit",
+            "in": "query",
+            "description": "Maximum tag count (Default: 10)",
+            "schema": {
+              "type": "number"
+            }
+          },
+          {
+            "name": "page",
+            "in": "query",
+            "description": "Page number (Default: 1)",
+            "schema": {
+              "type": "number"
+            }
+          },
+          {
+            "in": "query",
+            "name": "props",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "name.eq": {
+                  "type": "string",
+                  "example": "movies"
+                },
+                "createdAt.eqd": {
+                  "type": "string",
+                  "example": "2023  or  2023-03  or  2023-03-12  or  2023-03-12T18  or  2023-03-12T18:20  or  2023-03-12T18:20:45"
+                },
+                "createdAt.gt": {
+                  "type": "string",
+                  "example": "2023  or  2023-03  or  2023-03-12  or  2023-03-12T18  or  2023-03-12T18:20  or  2023-03-12T18:20:45"
+                },
+                "createdAt.lt": {
+                  "type": "string",
+                  "example": "2023  or  2023-03  or  2023-03-12  or  2023-03-12T18  or  2023-03-12T18:20  or  2023-03-12T18:20:45"
+                },
+                "createdAt.gte": {
+                  "type": "string",
+                  "example": "2023  or  2023-03  or  2023-03-12  or  2023-03-12T18  or  2023-03-12T18:20  or  2023-03-12T18:20:45"
+                },
+                "createdAt.lte": {
+                  "type": "string",
+                  "example": "2023  or  2023-03  or  2023-03-12  or  2023-03-12T18  or  2023-03-12T18:20  or  2023-03-12T18:20:45"
+                }
+              }
+            },
+            "style": "form",
+            "explode": true
+          },
+          {
+            "name": "sortField",
+            "in": "query",
+            "description": "Post field name for sorting",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "sortOrder",
+            "in": "query",
+            "description": "Sorting number (-1 | 1)",
+            "schema": {
+              "type": "number"
+            }
+          }
+        ],
         "responses": {
           "200": {
             "description": "",
             "content": {
               "application/json": {
                 "schema": {
-                  "type": "object",
-                  "allOf": [
+                  "oneOf": [
                     {
-                      "$ref": "#/paths/~1users~1logout/post/responses/200/content/application~1json/schema/allOf/0"
-                    },
-                    {
-                      "type": "object",
-                      "properties": {
-                        "statusCode": {
-                          "type": "number",
-                          "default": 200
-                        }
-                      }
-                    },
-                    {
-                      "type": "object",
-                      "properties": {
-                        "data": {
-                          "type": "array",
-                          "items": {
-                            "$ref": "#/paths/~1admin~1tags~1create/post/responses/201/content/application~1json/schema/allOf/2/properties/data"
+                      "allOf": [
+                        {
+                          "$ref": "#/paths/~1users~1logout/post/responses/200/content/application~1json/schema/allOf/0"
+                        },
+                        {
+                          "type": "object",
+                          "properties": {
+                            "statusCode": {
+                              "type": "number",
+                              "default": 200
+                            }
+                          }
+                        },
+                        {
+                          "type": "object",
+                          "properties": {
+                            "data": {
+                              "allOf": [
+                                {
+                                  "type": "object",
+                                  "properties": {
+                                    "tags": {
+                                      "type": "array",
+                                      "items": {
+                                        "$ref": "#/paths/~1admin~1tags~1create/post/responses/201/content/application~1json/schema/allOf/2/properties/data"
+                                      }
+                                    }
+                                  }
+                                },
+                                {
+                                  "type": "object",
+                                  "properties": {
+                                    "paginationInfo": {
+                                      "allOf": [
+                                        {
+                                          "type": "object",
+                                          "properties": {
+                                            "pageSize": {
+                                              "title": "Number of items on each page",
+                                              "description": "Number of items on each page",
+                                              "type": "number",
+                                              "min": 1,
+                                              "example": 3
+                                            }
+                                          }
+                                        },
+                                        {
+                                          "type": "object",
+                                          "properties": {
+                                            "totalItemCount": {
+                                              "title": "Total number of items",
+                                              "description": "Total number of items",
+                                              "type": "number",
+                                              "min": 0,
+                                              "example": 16
+                                            }
+                                          }
+                                        },
+                                        {
+                                          "type": "object",
+                                          "properties": {
+                                            "pageNumber": {
+                                              "title": "Displayed page number",
+                                              "description": "Displayed page number",
+                                              "type": "number",
+                                              "min": 0,
+                                              "example": 2
+                                            }
+                                          }
+                                        },
+                                        {
+                                          "type": "object",
+                                          "properties": {
+                                            "totalPageCount": {
+                                              "title": "Total number of pages",
+                                              "description": "Total number of pages",
+                                              "type": "number",
+                                              "min": 0,
+                                              "example": 6
+                                            }
+                                          }
+                                        }
+                                      ]
+                                    }
+                                  }
+                                }
+                              ]
+                            }
                           }
                         }
-                      }
+                      ]
+                    },
+                    {
+                      "allOf": [
+                        {
+                          "$ref": "#/paths/~1users~1logout/post/responses/200/content/application~1json/schema/allOf/0"
+                        },
+                        {
+                          "type": "object",
+                          "properties": {
+                            "statusCode": {
+                              "type": "number",
+                              "default": 200
+                            }
+                          }
+                        },
+                        {
+                          "type": "object",
+                          "properties": {
+                            "data": {
+                              "type": "array",
+                              "items": {
+                                "$ref": "#/paths/~1admin~1tags~1create/post/responses/201/content/application~1json/schema/allOf/2/properties/data"
+                              }
+                            }
+                          }
+                        }
+                      ]
                     }
                   ]
                 }
@@ -1790,241 +1847,6 @@
           },
           "403": {
             "$ref": "#/paths/~1tags~1get-all/get/responses/403"
-          }
-        }
-      }
-    },
-    "/admin/tags/get-all/sort": {
-      "summary": "",
-      "description": "",
-      "get": {
-        "tags": [
-          "Admins"
-        ],
-        "summary": "Get all tags by sort",
-        "description": "Get all tags by sort",
-        "operationId": "admin.tags.get-all-sort",
-        "security": [
-          {
-            "bearerAuth": []
-          }
-        ],
-        "parameters": [
-          {
-            "name": "fieldName",
-            "in": "query",
-            "description": "Tag field name for sorting",
-            "required": true,
-            "schema": {
-              "type": "string"
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "type": "object",
-                  "allOf": [
-                    {
-                      "$ref": "#/paths/~1users~1logout/post/responses/200/content/application~1json/schema/allOf/0"
-                    },
-                    {
-                      "type": "object",
-                      "properties": {
-                        "statusCode": {
-                          "type": "number",
-                          "default": 200
-                        }
-                      }
-                    },
-                    {
-                      "type": "object",
-                      "properties": {
-                        "data": {
-                          "type": "array",
-                          "items": {
-                            "$ref": "#/paths/~1admin~1tags~1create/post/responses/201/content/application~1json/schema/allOf/2/properties/data"
-                          }
-                        }
-                      }
-                    }
-                  ]
-                }
-              }
-            }
-          },
-          "400": {
-            "$ref": "#/paths/~1users~1login/post/responses/400"
-          },
-          "401": {
-            "$ref": "#/paths/~1tags~1get-all/get/responses/401"
-          },
-          "403": {
-            "$ref": "#/paths/~1tags~1get-all/get/responses/403"
-          },
-          "404": {
-            "$ref": "#/paths/~1users~1login/post/responses/404"
-          }
-        }
-      }
-    },
-    "/admin/tags/get-all/limit": {
-      "summary": "",
-      "description": "",
-      "get": {
-        "tags": [
-          "Admins"
-        ],
-        "summary": "Get all tags by limit",
-        "description": "Get all tags by limit",
-        "operationId": "admin.tags.get-all-limit",
-        "security": [
-          {
-            "bearerAuth": []
-          }
-        ],
-        "parameters": [
-          {
-            "name": "limit",
-            "in": "query",
-            "description": "Maximum tag count (Default: 10)",
-            "schema": {
-              "type": "number"
-            }
-          },
-          {
-            "name": "page",
-            "in": "query",
-            "description": "Page number (Default: 1)",
-            "schema": {
-              "type": "number"
-            }
-          },
-          {
-            "name": "fieldName",
-            "in": "query",
-            "description": "Tag field name for sorting",
-            "schema": {
-              "type": "number"
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "type": "object",
-                  "allOf": [
-                    {
-                      "$ref": "#/paths/~1users~1logout/post/responses/200/content/application~1json/schema/allOf/0"
-                    },
-                    {
-                      "type": "object",
-                      "properties": {
-                        "statusCode": {
-                          "type": "number",
-                          "default": 200
-                        }
-                      }
-                    },
-                    {
-                      "type": "object",
-                      "properties": {
-                        "data": {
-                          "allOf": [
-                            {
-                              "type": "object",
-                              "properties": {
-                                "paginationInfo": {
-                                  "allOf": [
-                                    {
-                                      "type": "object",
-                                      "properties": {
-                                        "pageSize": {
-                                          "title": "Number of items on each page",
-                                          "description": "Number of items on each page",
-                                          "type": "number",
-                                          "min": 1,
-                                          "example": 3
-                                        }
-                                      }
-                                    },
-                                    {
-                                      "type": "object",
-                                      "properties": {
-                                        "totalItemCount": {
-                                          "title": "Total number of items",
-                                          "description": "Total number of items",
-                                          "type": "number",
-                                          "min": 0,
-                                          "example": 16
-                                        }
-                                      }
-                                    },
-                                    {
-                                      "type": "object",
-                                      "properties": {
-                                        "pageNumber": {
-                                          "title": "Displayed page number",
-                                          "description": "Displayed page number",
-                                          "type": "number",
-                                          "min": 0,
-                                          "example": 2
-                                        }
-                                      }
-                                    },
-                                    {
-                                      "type": "object",
-                                      "properties": {
-                                        "totalPageCount": {
-                                          "title": "Total number of pages",
-                                          "description": "Total number of pages",
-                                          "type": "number",
-                                          "min": 0,
-                                          "example": 6
-                                        }
-                                      }
-                                    }
-                                  ]
-                                }
-                              }
-                            },
-                            {
-                              "type": "object",
-                              "properties": {
-                                "tags": {
-                                  "type": "array",
-                                  "items": {
-                                    "$ref": "#/paths/~1admin~1tags~1create/post/responses/201/content/application~1json/schema/allOf/2/properties/data"
-                                  }
-                                }
-                              }
-                            }
-                          ]
-                        }
-                      }
-                    }
-                  ]
-                }
-              }
-            }
-          },
-          "400": {
-            "$ref": "#/paths/~1users~1login/post/responses/400"
-          },
-          "401": {
-            "$ref": "#/paths/~1tags~1get-all/get/responses/401"
-          },
-          "403": {
-            "$ref": "#/paths/~1tags~1get-all/get/responses/403"
-          },
-          "404": {
-            "$ref": "#/paths/~1users~1login/post/responses/404"
           }
         }
       }
@@ -2210,125 +2032,162 @@
             "bearerAuth": []
           }
         ],
+        "parameters": [
+          {
+            "name": "limit",
+            "in": "query",
+            "description": "Maximum tag count (Default: 10)",
+            "schema": {
+              "type": "number"
+            }
+          },
+          {
+            "name": "page",
+            "in": "query",
+            "description": "Page number (Default: 1)",
+            "schema": {
+              "type": "number"
+            }
+          },
+          {
+            "in": "query",
+            "name": "props",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "title.eq": {
+                  "type": "string",
+                  "example": "blogger"
+                },
+                "createdAt.eqd": {
+                  "type": "string",
+                  "example": "2023 & 2023-03 & 2023-03-12 & 2023-03-12T18 & 2023-03-12T18:20 & 2023-03-12T18:20:45"
+                },
+                "createdAt.gt": {
+                  "type": "string",
+                  "example": "2023 & 2023-03 & 2023-03-12 & 2023-03-12T18 & 2023-03-12T18:20 & 2023-03-12T18:20:45"
+                },
+                "createdAt.lt": {
+                  "type": "string",
+                  "example": "2023 & 2023-03 & 2023-03-12 & 2023-03-12T18 & 2023-03-12T18:20 & 2023-03-12T18:20:45"
+                },
+                "createdAt.gte": {
+                  "type": "string",
+                  "example": "2023 & 2023-03 & 2023-03-12 & 2023-03-12T18 & 2023-03-12T18:20 & 2023-03-12T18:20:45"
+                },
+                "createdAt.lte": {
+                  "type": "string",
+                  "example": "2023 & 2023-03 & 2023-03-12 & 2023-03-12T18 & 2023-03-12T18:20 & 2023-03-12T18:20:45"
+                }
+              }
+            },
+            "style": "form",
+            "explode": true
+          },
+          {
+            "name": "sortField",
+            "in": "query",
+            "description": "Post field name for sorting",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "sortOrder",
+            "in": "query",
+            "description": "Sorting number (-1 | 1)",
+            "schema": {
+              "type": "number"
+            }
+          }
+        ],
         "responses": {
           "200": {
             "description": "",
             "content": {
               "application/json": {
                 "schema": {
-                  "type": "object",
-                  "allOf": [
+                  "oneOf": [
                     {
-                      "$ref": "#/paths/~1users~1logout/post/responses/200/content/application~1json/schema/allOf/0"
-                    },
-                    {
-                      "type": "object",
-                      "properties": {
-                        "statusCode": {
-                          "type": "number",
-                          "default": 200
-                        }
-                      }
-                    },
-                    {
-                      "type": "object",
-                      "properties": {
-                        "data": {
-                          "allOf": [
-                            {
-                              "type": "object",
-                              "properties": {
-                                "posts": {
-                                  "type": "array",
-                                  "items": {
-                                    "allOf": [
-                                      {
-                                        "$ref": "#/paths/~1posts~1create/post/responses/201/content/application~1json/schema/allOf/2/properties/data/allOf/0"
-                                      },
-                                      {
-                                        "$ref": "#/paths/~1posts~1create/post/responses/201/content/application~1json/schema/allOf/2/properties/data/allOf/1"
-                                      },
-                                      {
-                                        "$ref": "#/components/requestBodies/create-post/content/multipart~1form-data/schema/allOf/1/allOf/0"
-                                      },
-                                      {
-                                        "$ref": "#/paths/~1posts~1create/post/responses/201/content/application~1json/schema/allOf/2/properties/data/allOf/3"
-                                      },
-                                      {
-                                        "type": "object",
-                                        "properties": {
-                                          "content": {
-                                            "title": "Post content",
-                                            "description": "Post content",
-                                            "type": "string"
-                                          }
-                                        }
-                                      },
-                                      {
-                                        "$ref": "#/paths/~1posts~1get~1my~1%7BpostId%7D/get/responses/200/content/application~1json/schema/allOf/2/properties/data/allOf/5"
-                                      },
-                                      {
-                                        "$ref": "#/paths/~1posts~1get~1my~1%7BpostId%7D/get/responses/200/content/application~1json/schema/allOf/2/properties/data/allOf/6"
-                                      },
-                                      {
-                                        "$ref": "#/paths/~1posts~1get~1my~1%7BpostId%7D/get/responses/200/content/application~1json/schema/allOf/2/properties/data/allOf/7"
-                                      },
-                                      {
-                                        "$ref": "#/paths/~1posts~1create/post/responses/201/content/application~1json/schema/allOf/2/properties/data/allOf/8"
-                                      }
-                                    ]
-                                  }
-                                }
-                              }
-                            },
-                            {
-                              "type": "object",
-                              "properties": {
-                                "statistics": {
-                                  "allOf": [
-                                    {
-                                      "type": "object",
-                                      "properties": {
-                                        "postCount": {
-                                          "title": "User's total number of posts",
-                                          "description": "User's total number of posts",
-                                          "type": "number",
-                                          "min": 0,
-                                          "example": 7
-                                        }
-                                      }
-                                    },
-                                    {
-                                      "type": "object",
-                                      "properties": {
-                                        "likesCount": {
-                                          "title": "Total likes of the user's posts",
-                                          "description": "Total likes of the user's posts",
-                                          "type": "number",
-                                          "min": 0,
-                                          "example": 16
-                                        }
-                                      }
-                                    },
-                                    {
-                                      "type": "object",
-                                      "properties": {
-                                        "viewsCount": {
-                                          "title": "Total views of the user's posts",
-                                          "description": "Total views of the user's posts",
-                                          "type": "number",
-                                          "min": 0,
-                                          "example": 47
-                                        }
+                      "allOf": [
+                        {
+                          "$ref": "#/paths/~1users~1logout/post/responses/200/content/application~1json/schema/allOf/0"
+                        },
+                        {
+                          "type": "object",
+                          "properties": {
+                            "statusCode": {
+                              "type": "number",
+                              "default": 200
+                            }
+                          }
+                        },
+                        {
+                          "type": "object",
+                          "properties": {
+                            "data": {
+                              "allOf": [
+                                {
+                                  "type": "object",
+                                  "properties": {
+                                    "posts": {
+                                      "type": "array",
+                                      "items": {
+                                        "$ref": "#/paths/~1admin~1posts~1get-all/get/responses/200/content/application~1json/schema/allOf/2/properties/data/allOf/0/properties/posts/items"
                                       }
                                     }
-                                  ]
+                                  }
+                                },
+                                {
+                                  "$ref": "#/paths/~1admin~1posts~1get-all/get/responses/200/content/application~1json/schema/allOf/2/properties/data/allOf/1"
+                                },
+                                {
+                                  "$ref": "#/paths/~1tags~1get-all/get/responses/200/content/application~1json/schema/oneOf/0/allOf/2/properties/data/allOf/1"
                                 }
-                              }
+                              ]
                             }
-                          ]
+                          }
                         }
-                      }
+                      ]
+                    },
+                    {
+                      "allOf": [
+                        {
+                          "$ref": "#/paths/~1users~1logout/post/responses/200/content/application~1json/schema/allOf/0"
+                        },
+                        {
+                          "type": "object",
+                          "properties": {
+                            "statusCode": {
+                              "type": "number",
+                              "default": 200
+                            }
+                          }
+                        },
+                        {
+                          "type": "object",
+                          "properties": {
+                            "data": {
+                              "allOf": [
+                                {
+                                  "type": "object",
+                                  "properties": {
+                                    "posts": {
+                                      "type": "array",
+                                      "items": {
+                                        "$ref": "#/paths/~1admin~1posts~1get-all/get/responses/200/content/application~1json/schema/allOf/2/properties/data/allOf/0/properties/posts/items"
+                                      }
+                                    }
+                                  }
+                                },
+                                {
+                                  "$ref": "#/paths/~1admin~1posts~1get-all/get/responses/200/content/application~1json/schema/allOf/2/properties/data/allOf/1"
+                                }
+                              ]
+                            }
+                          }
+                        }
+                      ]
                     }
                   ]
                 }
@@ -3692,6 +3551,79 @@
             "bearerAuth": []
           }
         ],
+        "parameters": [
+          {
+            "name": "limit",
+            "in": "query",
+            "description": "Maximum tag count (Default: 10)",
+            "schema": {
+              "type": "number"
+            }
+          },
+          {
+            "name": "page",
+            "in": "query",
+            "description": "Page number (Default: 1)",
+            "schema": {
+              "type": "number"
+            }
+          },
+          {
+            "in": "query",
+            "name": "props",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "title.eq": {
+                  "type": "string",
+                  "example": "blogger"
+                },
+                "createdAt.eqd": {
+                  "type": "string",
+                  "example": "2023 & 2023-03 & 2023-03-12 & 2023-03-12T18 & 2023-03-12T18:20 & 2023-03-12T18:20:45"
+                },
+                "createdAt.gt": {
+                  "type": "string",
+                  "example": "2023 & 2023-03 & 2023-03-12 & 2023-03-12T18 & 2023-03-12T18:20 & 2023-03-12T18:20:45"
+                },
+                "createdAt.lt": {
+                  "type": "string",
+                  "example": "2023 & 2023-03 & 2023-03-12 & 2023-03-12T18 & 2023-03-12T18:20 & 2023-03-12T18:20:45"
+                },
+                "createdAt.gte": {
+                  "type": "string",
+                  "example": "2023 & 2023-03 & 2023-03-12 & 2023-03-12T18 & 2023-03-12T18:20 & 2023-03-12T18:20:45"
+                },
+                "createdAt.lte": {
+                  "type": "string",
+                  "example": "2023 & 2023-03 & 2023-03-12 & 2023-03-12T18 & 2023-03-12T18:20 & 2023-03-12T18:20:45"
+                },
+                "tags.in": {
+                  "type": "string",
+                  "example": "movie"
+                }
+              }
+            },
+            "style": "form",
+            "explode": true
+          },
+          {
+            "name": "sortField",
+            "in": "query",
+            "description": "Post field name for sorting",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "sortOrder",
+            "in": "query",
+            "description": "Sorting number (-1 | 1)",
+            "schema": {
+              "type": "number"
+            }
+          }
+        ],
         "responses": {
           "200": {
             "description": "",
@@ -3723,13 +3655,90 @@
                                 "posts": {
                                   "type": "array",
                                   "items": {
-                                    "$ref": "#/paths/~1posts~1get-all~1my/get/responses/200/content/application~1json/schema/allOf/2/properties/data/allOf/0/properties/posts/items"
+                                    "allOf": [
+                                      {
+                                        "$ref": "#/paths/~1posts~1create/post/responses/201/content/application~1json/schema/allOf/2/properties/data/allOf/0"
+                                      },
+                                      {
+                                        "$ref": "#/paths/~1posts~1create/post/responses/201/content/application~1json/schema/allOf/2/properties/data/allOf/1"
+                                      },
+                                      {
+                                        "$ref": "#/components/requestBodies/create-post/content/multipart~1form-data/schema/allOf/1/allOf/0"
+                                      },
+                                      {
+                                        "$ref": "#/paths/~1posts~1create/post/responses/201/content/application~1json/schema/allOf/2/properties/data/allOf/3"
+                                      },
+                                      {
+                                        "type": "object",
+                                        "properties": {
+                                          "content": {
+                                            "title": "Post content",
+                                            "description": "Post content",
+                                            "type": "string"
+                                          }
+                                        }
+                                      },
+                                      {
+                                        "$ref": "#/paths/~1posts~1get~1my~1%7BpostId%7D/get/responses/200/content/application~1json/schema/allOf/2/properties/data/allOf/5"
+                                      },
+                                      {
+                                        "$ref": "#/paths/~1posts~1get~1my~1%7BpostId%7D/get/responses/200/content/application~1json/schema/allOf/2/properties/data/allOf/6"
+                                      },
+                                      {
+                                        "$ref": "#/paths/~1posts~1get~1my~1%7BpostId%7D/get/responses/200/content/application~1json/schema/allOf/2/properties/data/allOf/7"
+                                      },
+                                      {
+                                        "$ref": "#/paths/~1posts~1create/post/responses/201/content/application~1json/schema/allOf/2/properties/data/allOf/8"
+                                      }
+                                    ]
                                   }
                                 }
                               }
                             },
                             {
-                              "$ref": "#/paths/~1posts~1get-all~1my/get/responses/200/content/application~1json/schema/allOf/2/properties/data/allOf/1"
+                              "type": "object",
+                              "properties": {
+                                "statistics": {
+                                  "allOf": [
+                                    {
+                                      "type": "object",
+                                      "properties": {
+                                        "postCount": {
+                                          "title": "User's total number of posts",
+                                          "description": "User's total number of posts",
+                                          "type": "number",
+                                          "min": 0,
+                                          "example": 7
+                                        }
+                                      }
+                                    },
+                                    {
+                                      "type": "object",
+                                      "properties": {
+                                        "likesCount": {
+                                          "title": "Total likes of the user's posts",
+                                          "description": "Total likes of the user's posts",
+                                          "type": "number",
+                                          "min": 0,
+                                          "example": 16
+                                        }
+                                      }
+                                    },
+                                    {
+                                      "type": "object",
+                                      "properties": {
+                                        "viewsCount": {
+                                          "title": "Total views of the user's posts",
+                                          "description": "Total views of the user's posts",
+                                          "type": "number",
+                                          "min": 0,
+                                          "example": 47
+                                        }
+                                      }
+                                    }
+                                  ]
+                                }
+                              }
                             }
                           ]
                         }
@@ -3827,202 +3836,6 @@
                             },
                             {
                               "$ref": "#/paths/~1posts~1create/post/responses/201/content/application~1json/schema/allOf/2/properties/data/allOf/8"
-                            }
-                          ]
-                        }
-                      }
-                    }
-                  ]
-                }
-              }
-            }
-          },
-          "400": {
-            "$ref": "#/paths/~1users~1login/post/responses/400"
-          },
-          "401": {
-            "$ref": "#/paths/~1tags~1get-all/get/responses/401"
-          },
-          "403": {
-            "$ref": "#/paths/~1tags~1get-all/get/responses/403"
-          },
-          "404": {
-            "$ref": "#/paths/~1users~1login/post/responses/404"
-          }
-        }
-      }
-    },
-    "/admin/posts/get-all/sort": {
-      "summary": "",
-      "description": "",
-      "get": {
-        "tags": [
-          "Admins"
-        ],
-        "summary": "Get all posts by sort",
-        "description": "Get all posts by sort",
-        "operationId": "admin.posts.get-all-sort",
-        "security": [
-          {
-            "bearerAuth": []
-          }
-        ],
-        "parameters": [
-          {
-            "name": "fieldName",
-            "in": "query",
-            "description": "Post field name for sorting",
-            "required": true,
-            "schema": {
-              "type": "string"
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "type": "object",
-                  "allOf": [
-                    {
-                      "$ref": "#/paths/~1users~1logout/post/responses/200/content/application~1json/schema/allOf/0"
-                    },
-                    {
-                      "type": "object",
-                      "properties": {
-                        "statusCode": {
-                          "type": "number",
-                          "default": 200
-                        }
-                      }
-                    },
-                    {
-                      "type": "object",
-                      "properties": {
-                        "data": {
-                          "allOf": [
-                            {
-                              "type": "object",
-                              "properties": {
-                                "posts": {
-                                  "type": "array",
-                                  "items": {
-                                    "$ref": "#/paths/~1posts~1get-all~1my/get/responses/200/content/application~1json/schema/allOf/2/properties/data/allOf/0/properties/posts/items"
-                                  }
-                                }
-                              }
-                            },
-                            {
-                              "$ref": "#/paths/~1posts~1get-all~1my/get/responses/200/content/application~1json/schema/allOf/2/properties/data/allOf/1"
-                            }
-                          ]
-                        }
-                      }
-                    }
-                  ]
-                }
-              }
-            }
-          },
-          "400": {
-            "$ref": "#/paths/~1users~1login/post/responses/400"
-          },
-          "401": {
-            "$ref": "#/paths/~1tags~1get-all/get/responses/401"
-          },
-          "403": {
-            "$ref": "#/paths/~1tags~1get-all/get/responses/403"
-          },
-          "404": {
-            "$ref": "#/paths/~1users~1login/post/responses/404"
-          }
-        }
-      }
-    },
-    "/admin/posts/get-all/limit": {
-      "summary": "",
-      "description": "",
-      "get": {
-        "tags": [
-          "Admins"
-        ],
-        "summary": "Get all posts by limit",
-        "description": "Get all posts by limit",
-        "operationId": "admin.posts.get-all-limit",
-        "security": [
-          {
-            "bearerAuth": []
-          }
-        ],
-        "parameters": [
-          {
-            "name": "limit",
-            "in": "query",
-            "description": "Maximum post count (Default: 10)",
-            "schema": {
-              "type": "number"
-            }
-          },
-          {
-            "name": "page",
-            "in": "query",
-            "description": "Page number (Default: 1)",
-            "schema": {
-              "type": "number"
-            }
-          },
-          {
-            "name": "fieldName",
-            "in": "query",
-            "description": "Post field name for sorting",
-            "schema": {
-              "type": "number"
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "type": "object",
-                  "allOf": [
-                    {
-                      "$ref": "#/paths/~1users~1logout/post/responses/200/content/application~1json/schema/allOf/0"
-                    },
-                    {
-                      "type": "object",
-                      "properties": {
-                        "statusCode": {
-                          "type": "number",
-                          "default": 200
-                        }
-                      }
-                    },
-                    {
-                      "type": "object",
-                      "properties": {
-                        "data": {
-                          "allOf": [
-                            {
-                              "$ref": "#/paths/~1posts~1get-all~1my/get/responses/200/content/application~1json/schema/allOf/2/properties/data/allOf/1"
-                            },
-                            {
-                              "$ref": "#/paths/~1admin~1tags~1get-all~1limit/get/responses/200/content/application~1json/schema/allOf/2/properties/data/allOf/0"
-                            },
-                            {
-                              "type": "object",
-                              "properties": {
-                                "posts": {
-                                  "type": "array",
-                                  "items": {
-                                    "$ref": "#/paths/~1posts~1get-all~1my/get/responses/200/content/application~1json/schema/allOf/2/properties/data/allOf/0/properties/posts/items"
-                                  }
-                                }
-                              }
                             }
                           ]
                         }
