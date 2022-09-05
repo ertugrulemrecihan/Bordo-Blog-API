@@ -140,14 +140,11 @@
         "/posts/delete-comment/{postId}": {
             "$ref": "./paths/post/delete-comment.json"
         },
-        "/admin/posts/get-all": {
+        "/posts/admin/": {
             "$ref": "./paths/admin/post/get-all-posts.json"
         },
-        "/admin/posts/get/{postId}": {
+        "/posts/admin/{postId}": {
             "$ref": "./paths/admin/post/get-post-by-id.json"
-        },
-        "/admin/posts/delete/{postId}": {
-            "$ref": "./paths/admin/post/delete-users-post.json"
         },
         "/addresses/get-all/country": {
             "$ref": "./paths/address/get-all-country.json"

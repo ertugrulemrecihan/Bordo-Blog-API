@@ -8,7 +8,7 @@ const queryOptions = require('../../middlewares/query-options.middleware');
 const paramIdValidator = require('../../middlewares/params-id-validator.middleware');
 
 router
-    .route('/get-all')
+    .route('/')
     .get(
         authenticate,
         authorization('Admin'),
@@ -17,7 +17,7 @@ router
     );
 
 router
-    .route('/get/:id')
+    .route('/:id')
     .get(
         authenticate,
         authorization('Admin'),
@@ -26,7 +26,7 @@ router
     );
 
 router
-    .route('/delete/:id')
+    .route('/:id')
     .delete(
         authenticate,
         authorization('Admin'),
