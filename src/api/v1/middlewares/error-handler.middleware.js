@@ -1,5 +1,5 @@
 const httpStatus = require('http-status');
-const ApiError = require('../responses/error/apiError');
+const ApiError = require('../scripts/responses/error/apiError');
 
 // eslint-disable-next-line no-unused-vars
 const ErrorHandler = (err, req, res, next) => {

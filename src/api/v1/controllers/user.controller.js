@@ -8,10 +8,10 @@ const jwtHelper = require('../scripts/helpers/jwt.helper');
 const userHelper = require('../scripts/helpers/user.helper');
 const googleDriveHelper = require('../scripts/helpers/google-drive.helper');
 const paginationHelper = require('../scripts/helpers/pagination.helper');
-const ApiDataSuccess = require('../responses/success/apiDataSuccess');
-const ApiError = require('../responses/error/apiError');
+const ApiDataSuccess = require('../scripts/responses/success/apiDataSuccess');
+const ApiError = require('../scripts/responses/error/apiError');
 const eventEmitter = require('../scripts/events/event-emitter.event');
-const ApiSuccess = require('../responses/success/apiSuccess');
+const ApiSuccess = require('../scripts/responses/success/apiSuccess');
 // eslint-disable-next-line max-len
 const passwordResetTokenService = require('../services/password-reset-token.service');
 // eslint-disable-next-line max-len

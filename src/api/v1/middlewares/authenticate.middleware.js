@@ -2,7 +2,7 @@
 const emailVerificationWhiteList = require('../../../configs/email-verification-whitelist.config');
 const httpStatus = require('http-status');
 const JWT = require('jsonwebtoken');
-const ApiError = require('../responses/error/apiError');
+const ApiError = require('../scripts/responses/error/apiError');
 const accessTokenService = require('../services/access-token.service');
 
 const authenticate = async (req, res, next) => {

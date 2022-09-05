@@ -1,6 +1,6 @@
 const httpStatus = require('http-status');
 const mongoose = require('mongoose');
-const ApiError = require('../responses/error/apiError');
+const ApiError = require('../scripts/responses/error/apiError');
 
 const paramIdValidator = (req, res, next) => {
     const keyList = Object.keys(req.params);

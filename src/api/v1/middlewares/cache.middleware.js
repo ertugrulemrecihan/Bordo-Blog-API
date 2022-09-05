@@ -1,5 +1,6 @@
 const httpStatus = require('http-status');
-const ApiDataSuccess = require('../responses/success/apiDataSuccess');
+// eslint-disable-next-line max-len
+const ApiDataSuccess = require('../scripts/responses/success/apiDataSuccess');
 const client = require('../scripts/redis/redis-client');
 const redisHelper = require('../scripts/helpers/redis.helper');
 const successHandler = require('./success-handler.middleware');

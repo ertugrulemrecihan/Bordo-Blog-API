@@ -1,5 +1,6 @@
-const ApiDataSuccess = require('../responses/success/apiDataSuccess');
-const ApiError = require('../responses/error/apiError');
+// eslint-disable-next-line max-len
+const ApiDataSuccess = require('../scripts/responses/success/apiDataSuccess');
+const ApiError = require('../scripts/responses/error/apiError');
 const httpStatus = require('http-status');
 const redisHelper = require('../scripts/helpers/redis.helper');
 

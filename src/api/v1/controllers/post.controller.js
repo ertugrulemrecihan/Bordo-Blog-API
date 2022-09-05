@@ -3,12 +3,13 @@ const postService = require('../services/post.service');
 const googleDriveHelper = require('../scripts/helpers/google-drive.helper');
 const tagService = require('../services/tag.service');
 const paginationHelper = require('../scripts/helpers/pagination.helper');
-const ApiError = require('../responses/error/apiError');
-const ApiDataSuccess = require('../responses/success/apiDataSuccess');
+const ApiError = require('../scripts/responses/error/apiError');
+// eslint-disable-next-line max-len
+const ApiDataSuccess = require('../scripts/responses/success/apiDataSuccess');
 const httpStatus = require('http-status');
 const slug = require('slug');
 const random = require('random-gen');
-const ApiSuccess = require('../responses/success/apiSuccess');
+const ApiSuccess = require('../scripts/responses/success/apiSuccess');
 const commentService = require('../services/comment.service');
 const statisticHelper = require('../scripts/helpers/statistics.helper');
 

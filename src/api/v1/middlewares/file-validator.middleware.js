@@ -1,6 +1,6 @@
 /* eslint-disable max-len */
 const httpStatus = require('http-status');
-const ApiError = require('../responses/error/apiError');
+const ApiError = require('../scripts/responses/error/apiError');
 
 const fileValidator = (rules) => (req, res, next) => {
     const uploadedFiles = req.files;

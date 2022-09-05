@@ -1,5 +1,5 @@
 const httpStatus = require('http-status');
-const ApiError = require('../responses/error/apiError');
+const ApiError = require('../scripts/responses/error/apiError');
 
 const authorization = (...roles) => (req, res, next) => {
     const userRoles = req.user.roles.map((role) => role.name.toLowerCase());

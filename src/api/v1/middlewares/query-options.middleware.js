@@ -1,4 +1,4 @@
-const ApiError = require('../responses/error/apiError');
+const ApiError = require('../scripts/responses/error/apiError');
 const httpStatus = require('http-status');
 const moment = require('moment');
 

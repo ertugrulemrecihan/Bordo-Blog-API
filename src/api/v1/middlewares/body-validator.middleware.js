@@ -1,5 +1,5 @@
 const httpStatus = require('http-status');
-const ApiError = require('../responses/error/apiError');
+const ApiError = require('../scripts/responses//error/apiError');
 
 const bodyValidator = (schema) => (req, res, next) => {
     const options = {

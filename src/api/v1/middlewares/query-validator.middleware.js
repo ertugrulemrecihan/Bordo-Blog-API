@@ -1,5 +1,5 @@
 const httpStatus = require('http-status');
-const ApiError = require('../responses/error/apiError');
+const ApiError = require('../scripts/responses/error/apiError');
 
 const queryValidator = (...fields) => (req, res, next) => {
     const queryFields = Object.keys(req.query);

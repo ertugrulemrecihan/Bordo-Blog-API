@@ -1,6 +1,7 @@
 const httpStatus = require('http-status');
-const ApiError = require('../responses/error/apiError');
-const ApiDataSuccess = require('../responses/success/apiDataSuccess');
+const ApiError = require('../scripts/responses/error/apiError');
+// eslint-disable-next-line max-len
+const ApiDataSuccess = require('../scripts/responses/success/apiDataSuccess');
 const addressService = require('../services/address.service');
 const countryService = require('../services/country.service');
 const cityService = require('../services/city.service');
