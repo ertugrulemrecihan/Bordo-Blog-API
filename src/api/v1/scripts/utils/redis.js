@@ -6,9 +6,11 @@ const createKey = (req) => {
     const methodName = req.route.stack[req.route.stack.length - 1].name;
     const redisKey = `${process.env.APP_NAME}.${
         req.controllerName
-    }.${methodName}.${JSON.stringify(req.query)}.${JSON.stringify(
+    }.${methodName}${JSON.stringify(req.query)}${JSON.stringify(
         req.params
-    )}.${JSON.stringify(req.body)}`;
+    )}${JSON.stringify(req.body)}${
+        req.queryOptions ? JSON.stringify(req.queryOptions) : '{}'
+    }`;
 
     return redisKey;
 };
