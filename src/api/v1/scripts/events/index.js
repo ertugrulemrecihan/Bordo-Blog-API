@@ -1,4 +1,4 @@
-const emailSender = require('./emailSender');
+const emailSender = require('./email-sender.event');
 
 module.exports = () => {
     emailSender();

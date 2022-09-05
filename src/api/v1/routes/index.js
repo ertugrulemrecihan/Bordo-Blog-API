@@ -1,11 +1,11 @@
-module.exports.user = require('./userRoutes');
-module.exports.post = require('./postRoutes');
-module.exports.address = require('./addressRoutes');
-module.exports.tag = require('./tagRoutes');
-module.exports.plan = require('./planRoutes');
+module.exports.user = require('./user.routes');
+module.exports.post = require('./post.routes');
+module.exports.address = require('./address.routes');
+module.exports.tag = require('./tag.routes');
+module.exports.plan = require('./plan.routes');
 
 // Admin Routes
-module.exports.adminTag = require('./admin/tagRoutes');
-module.exports.adminPost = require('./admin/postRoutes');
-module.exports.adminUser = require('./admin/userRoutes');
-module.exports.adminPlan = require('./admin/planRoutes');
+module.exports.adminTag = require('./admin/tag.routes');
+module.exports.adminPost = require('./admin/post.routes');
+module.exports.adminUser = require('./admin/user.routes');
+module.exports.adminPlan = require('./admin/plan.routes');

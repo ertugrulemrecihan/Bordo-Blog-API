@@ -1,6 +1,6 @@
-const connectDb = require('./dbConnection');
-const dbSeeder = require('./dbSeeder');
-const connectRedis = require('./redis');
+const connectDb = require('./db-connection.loader');
+const dbSeeder = require('./db-seeder.loader');
+const connectRedis = require('./redis.loader');
 
 module.exports = () => {
     connectDb();
