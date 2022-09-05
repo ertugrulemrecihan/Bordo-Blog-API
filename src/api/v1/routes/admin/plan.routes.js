@@ -9,7 +9,7 @@ const bodyValidator = require('../../middlewares/body-validator.middleware');
 const paramIdValidator = require('../../middlewares/params-id-validator.middleware');
 
 router
-    .route('/create')
+    .route('/')
     .post(
         authenticate,
         authorize('Admin'),
@@ -18,7 +18,7 @@ router
     );
 
 router
-    .route('/update/:id')
+    .route('/:id')
     .patch(
         authenticate,
         authorize('Admin'),
@@ -28,7 +28,7 @@ router
     );
 
 router
-    .route('/delete/:id')
+    .route('/:id')
     .delete(
         authenticate,
         authorize('Admin'),

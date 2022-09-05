@@ -179,14 +179,11 @@
         "/plans/get/{planId}": {
             "$ref": "./paths/plan/get.json"
         },
-        "/admin/plans/create": {
+        "/plans/admin/": {
             "$ref": "./paths/admin/plan/create.json"
         },
-        "/admin/plans/update/{planId}": {
+        "/plans/admin/{planId}": {
             "$ref": "./paths/admin/plan/update.json"
-        },
-        "/admin/plans/delete/{planId}": {
-            "$ref": "./paths/admin/plan/delete.json"
         }
     },
     "components": {

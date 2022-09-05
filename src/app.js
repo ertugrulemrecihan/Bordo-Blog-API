@@ -35,10 +35,10 @@ app.use('/api/v1/tags', routes.tag);
 app.use('/api/v1/plans', routes.plan);
 
 // Admin Routes
-app.use('/api/v1/admin/tags', routes.adminTag);
-app.use('/api/v1/admin/posts', routes.adminPost);
-app.use('/api/v1/admin/users', routes.adminUser);
-app.use('/api/v1/admin/plans', routes.adminPlan);
+app.use('/api/v1/tags/admin', routes.adminTag);
+app.use('/api/v1/posts/admin', routes.adminPost);
+app.use('/api/v1/users/admin', routes.adminUser);
+app.use('/api/v1/plans/admin', routes.adminPlan);
 
 app.use(successHandler);
 app.use(errorHandler);

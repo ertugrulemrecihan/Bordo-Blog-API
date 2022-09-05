@@ -12,7 +12,7 @@
             {
                 "bearerAuth": []
             }
-        ],     
+        ],
         "parameters": [
             {
                 "$ref": "../../../parameters/path/plan/plan_id.json"
@@ -42,6 +42,43 @@
             },
             "500": {
                 "$ref": "../../../responses/api-responses/500.json"
+            }
+        }
+    },
+    "summary": "",
+    "description": "",
+    "delete": {
+        "tags": [
+            "Admins"
+        ],
+        "summary": "Delete plan",
+        "description": "Delete plan",
+        "operationId": "admin.plans.delete",
+        "security": [
+            {
+                "bearerAuth": []
+            }
+        ],
+        "parameters": [
+            {
+                "$ref": "../../../parameters/path/plan/plan_id.json"
+            }
+        ],
+        "responses": {
+            "200": {
+                "$ref": "../../../responses/admin/plan/update.json"
+            },
+            "400": {
+                "$ref": "../../../responses/api-responses/400.json"
+            },
+            "401": {
+                "$ref": "../../../responses/api-responses/401.json"
+            },
+            "403": {
+                "$ref": "../../../responses/api-responses/403.json"
+            },
+            "404": {
+                "$ref": "../../../responses/api-responses/404.json"
             }
         }
     }

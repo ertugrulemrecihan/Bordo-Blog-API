@@ -436,27 +436,7 @@
             "$ref": "#/paths/~1tags~1/get/responses/400"
           },
           "409": {
-            "description": "Conflict error",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "allOf": [
-                    {
-                      "$ref": "#/paths/~1tags~1/get/responses/400/content/application~1json/schema/allOf/0"
-                    },
-                    {
-                      "type": "object",
-                      "properties": {
-                        "statusCode": {
-                          "type": "number",
-                          "default": 409
-                        }
-                      }
-                    }
-                  ]
-                }
-              }
-            }
+            "$ref": "#/paths/~1plans~1admin~1/post/responses/409"
           },
           "500": {
             "$ref": "#/paths/~1users~1login/post/responses/500"
@@ -531,7 +511,7 @@
             "$ref": "#/paths/~1tags~1/get/responses/403"
           },
           "409": {
-            "$ref": "#/paths/~1users~1register/post/responses/409"
+            "$ref": "#/paths/~1plans~1admin~1/post/responses/409"
           }
         }
       }
@@ -585,7 +565,7 @@
             "$ref": "#/paths/~1tags~1/get/responses/400"
           },
           "409": {
-            "$ref": "#/paths/~1users~1register/post/responses/409"
+            "$ref": "#/paths/~1plans~1admin~1/post/responses/409"
           },
           "500": {
             "$ref": "#/paths/~1users~1login/post/responses/500"
@@ -1384,7 +1364,7 @@
             "$ref": "#/paths/~1users~1login/post/responses/404"
           },
           "409": {
-            "$ref": "#/paths/~1users~1register/post/responses/409"
+            "$ref": "#/paths/~1plans~1admin~1/post/responses/409"
           },
           "500": {
             "$ref": "#/paths/~1users~1login/post/responses/500"
@@ -1934,7 +1914,7 @@
             "$ref": "#/paths/~1tags~1/get/responses/403"
           },
           "409": {
-            "$ref": "#/paths/~1users~1register/post/responses/409"
+            "$ref": "#/paths/~1plans~1admin~1/post/responses/409"
           },
           "500": {
             "$ref": "#/paths/~1users~1login/post/responses/500"
@@ -2925,7 +2905,7 @@
             "$ref": "#/paths/~1users~1login/post/responses/404"
           },
           "409": {
-            "$ref": "#/paths/~1users~1register/post/responses/409"
+            "$ref": "#/paths/~1plans~1admin~1/post/responses/409"
           },
           "500": {
             "$ref": "#/paths/~1users~1login/post/responses/500"
@@ -5057,7 +5037,7 @@
                         "data": {
                           "type": "array",
                           "items": {
-                            "$ref": "#/paths/~1admin~1plans~1update~1%7BplanId%7D/patch/requestBody/content/application~1json/schema"
+                            "$ref": "#/paths/~1plans~1admin~1%7BplanId%7D/patch/requestBody/content/application~1json/schema"
                           }
                         }
                       }
@@ -5125,7 +5105,7 @@
                       "type": "object",
                       "properties": {
                         "data": {
-                          "$ref": "#/paths/~1admin~1plans~1update~1%7BplanId%7D/patch/requestBody/content/application~1json/schema"
+                          "$ref": "#/paths/~1plans~1admin~1%7BplanId%7D/patch/requestBody/content/application~1json/schema"
                         }
                       }
                     }
@@ -5149,7 +5129,7 @@
         }
       }
     },
-    "/admin/plans/create": {
+    "/plans/admin/": {
       "summary": "",
       "description": "",
       "post": {
@@ -5171,7 +5151,7 @@
               "schema": {
                 "allOf": [
                   {
-                    "$ref": "#/paths/~1admin~1plans~1update~1%7BplanId%7D/patch/requestBody/content/application~1json/schema"
+                    "$ref": "#/paths/~1plans~1admin~1%7BplanId%7D/patch/requestBody/content/application~1json/schema"
                   },
                   {
                     "required": [
@@ -5210,7 +5190,7 @@
                       "type": "object",
                       "properties": {
                         "data": {
-                          "$ref": "#/paths/~1admin~1plans~1update~1%7BplanId%7D/patch/requestBody/content/application~1json/schema"
+                          "$ref": "#/paths/~1plans~1admin~1%7BplanId%7D/patch/requestBody/content/application~1json/schema"
                         }
                       }
                     }
@@ -5229,7 +5209,27 @@
             "$ref": "#/paths/~1tags~1/get/responses/403"
           },
           "409": {
-            "$ref": "#/paths/~1users~1register/post/responses/409"
+            "description": "Conflict error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "allOf": [
+                    {
+                      "$ref": "#/paths/~1tags~1/get/responses/400/content/application~1json/schema/allOf/0"
+                    },
+                    {
+                      "type": "object",
+                      "properties": {
+                        "statusCode": {
+                          "type": "number",
+                          "default": 409
+                        }
+                      }
+                    }
+                  ]
+                }
+              }
+            }
           },
           "500": {
             "$ref": "#/paths/~1users~1login/post/responses/500"
@@ -5237,7 +5237,7 @@
         }
       }
     },
-    "/admin/plans/update/{planId}": {
+    "/plans/admin/{planId}": {
       "summary": "",
       "description": "",
       "patch": {
@@ -5341,7 +5341,7 @@
                       "type": "object",
                       "properties": {
                         "data": {
-                          "$ref": "#/paths/~1admin~1plans~1update~1%7BplanId%7D/patch/requestBody/content/application~1json/schema"
+                          "$ref": "#/paths/~1plans~1admin~1%7BplanId%7D/patch/requestBody/content/application~1json/schema"
                         }
                       }
                     }
@@ -5363,17 +5363,13 @@
             "$ref": "#/paths/~1users~1login/post/responses/404"
           },
           "409": {
-            "$ref": "#/paths/~1users~1register/post/responses/409"
+            "$ref": "#/paths/~1plans~1admin~1/post/responses/409"
           },
           "500": {
             "$ref": "#/paths/~1users~1login/post/responses/500"
           }
         }
-      }
-    },
-    "/admin/plans/delete/{planId}": {
-      "summary": "",
-      "description": "",
+      },
       "delete": {
         "tags": [
           "Admins"
@@ -5393,7 +5389,7 @@
         ],
         "responses": {
           "200": {
-            "$ref": "#/paths/~1admin~1plans~1update~1%7BplanId%7D/patch/responses/200"
+            "$ref": "#/paths/~1plans~1admin~1%7BplanId%7D/patch/responses/200"
           },
           "400": {
             "$ref": "#/paths/~1tags~1/get/responses/400"
