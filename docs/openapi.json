@@ -104,10 +104,10 @@
         "/tags/most-used/{count}": {
             "$ref": "./paths/tag/get-all-most-used.json"
         },
-        "/admin/tags/create": {
+        "/tags/admin": {
             "$ref": "./paths/admin/tag/create-tag.json"
         },
-        "/admin/tags/delete/{tagId}": {
+        "/tags/admin/{tagId}": {
             "$ref": "./paths/admin/tag/delete-tag.json"
         },
         "/posts/get-all/my": {

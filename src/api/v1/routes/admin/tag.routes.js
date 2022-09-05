@@ -9,7 +9,7 @@ const schemas = require('../../validations/tag.validations');
 const paramIdValidator = require('../../middlewares/params-id-validator.middleware');
 
 router
-    .route('/create')
+    .route('/')
     .post(
         authenticate,
         authorize('Admin'),
@@ -18,7 +18,7 @@ router
     );
 
 router
-    .route('/delete/:id')
+    .route('/:id')
     .delete(
         authenticate,
         authorize('Admin'),
