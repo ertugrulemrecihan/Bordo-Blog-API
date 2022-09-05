@@ -12,7 +12,7 @@
             {
                 "bearerAuth": []
             }
-        ],     
+        ],
         "parameters": [
             {
                 "$ref": "../../../parameters/path/user/user_id.json"
@@ -21,6 +21,43 @@
         "responses": {
             "200": {
                 "$ref": "../../../responses/admin/user/get.json"
+            },
+            "400": {
+                "$ref": "../../../responses/api-responses/400.json"
+            },
+            "401": {
+                "$ref": "../../../responses/api-responses/401.json"
+            },
+            "403": {
+                "$ref": "../../../responses/api-responses/403.json"
+            },
+            "404": {
+                "$ref": "../../../responses/api-responses/404.json"
+            }
+        }
+    },
+    "summary": "",
+    "description": "",
+    "delete": {
+        "tags": [
+            "Admins"
+        ],
+        "summary": "Delete user",
+        "description": "Delete user",
+        "operationId": "admin.users.delete",
+        "security": [
+            {
+                "bearerAuth": []
+            }
+        ],
+        "parameters": [
+            {
+                "$ref": "../../../parameters/path/user/user_id.json"
+            }
+        ],
+        "responses": {
+            "200": {
+                "$ref": "../../../responses/admin/user/delete.json"
             },
             "400": {
                 "$ref": "../../../responses/api-responses/400.json"

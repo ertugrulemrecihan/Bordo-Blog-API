@@ -982,7 +982,7 @@
         }
       }
     },
-    "/admin/users/get-all": {
+    "/users/admin/": {
       "summary": "",
       "description": "",
       "get": {
@@ -1100,7 +1100,7 @@
                         "data": {
                           "type": "array",
                           "items": {
-                            "$ref": "#/paths/~1admin~1users~1get~1%7BuserId%7D/get/responses/200/content/application~1json/schema/allOf/2/properties/data"
+                            "$ref": "#/paths/~1users~1admin~1%7BuserId%7D/get/responses/200/content/application~1json/schema/allOf/2/properties/data"
                           }
                         }
                       }
@@ -1122,7 +1122,7 @@
         }
       }
     },
-    "/admin/users/get/{userId}": {
+    "/users/admin/{userId}": {
       "summary": "",
       "description": "",
       "get": {
@@ -1178,7 +1178,7 @@
                               "type": "object",
                               "properties": {
                                 "user": {
-                                  "$ref": "#/paths/~1admin~1users~1delete~1%7BuserId%7D/delete/responses/200/content/application~1json/schema/allOf/2/properties/data"
+                                  "$ref": "#/paths/~1users~1admin~1%7BuserId%7D/delete/responses/200/content/application~1json/schema/allOf/2/properties/data"
                                 }
                               }
                             },
@@ -1207,11 +1207,7 @@
             "$ref": "#/paths/~1users~1login/post/responses/404"
           }
         }
-      }
-    },
-    "/admin/users/delete/{userId}": {
-      "summary": "",
-      "description": "",
+      },
       "delete": {
         "tags": [
           "Admins"
@@ -1226,7 +1222,7 @@
         ],
         "parameters": [
           {
-            "$ref": "#/paths/~1admin~1users~1get~1%7BuserId%7D/get/parameters/0"
+            "$ref": "#/paths/~1users~1admin~1%7BuserId%7D/get/parameters/0"
           }
         ],
         "responses": {
@@ -1287,7 +1283,7 @@
         }
       }
     },
-    "/admin/users/assign-admin/{userId}": {
+    "/users/admin/assign/{userId}": {
       "summary": "",
       "description": "",
       "post": {
@@ -1304,7 +1300,7 @@
         ],
         "parameters": [
           {
-            "$ref": "#/paths/~1admin~1users~1get~1%7BuserId%7D/get/parameters/0"
+            "$ref": "#/paths/~1users~1admin~1%7BuserId%7D/get/parameters/0"
           }
         ],
         "responses": {
@@ -1350,12 +1346,8 @@
             "$ref": "#/paths/~1tags~1admin/post/responses/500"
           }
         }
-      }
-    },
-    "/admin/users/unassign-admin/{userId}": {
-      "summary": "",
-      "description": "",
-      "post": {
+      },
+      "delete": {
         "tags": [
           "Admins"
         ],
@@ -1369,7 +1361,7 @@
         ],
         "parameters": [
           {
-            "$ref": "#/paths/~1admin~1users~1get~1%7BuserId%7D/get/parameters/0"
+            "$ref": "#/paths/~1users~1admin~1%7BuserId%7D/get/parameters/0"
           }
         ],
         "responses": {

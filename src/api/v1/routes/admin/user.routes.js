@@ -9,7 +9,7 @@ const cache = require('../../middlewares/cache.middleware');
 const paramsIdValidator = require('../../middlewares/params-id-validator.middleware');
 
 router
-    .route('/get-all')
+    .route('/')
     .get(
         authenticate,
         authorization('Admin'),
@@ -19,7 +19,7 @@ router
     );
 
 router
-    .route('/get/:id')
+    .route('/:id')
     .get(
         authenticate,
         authorization('Admin'),
@@ -29,7 +29,7 @@ router
     );
 
 router
-    .route('/delete/:id')
+    .route('/:id')
     .delete(
         authenticate,
         authorization('Admin'),
@@ -38,7 +38,7 @@ router
     );
 
 router
-    .route('/assign-admin/:userId')
+    .route('/assign/:userId')
     .post(
         authenticate,
         authorization('Admin'),
@@ -47,8 +47,8 @@ router
     );
 
 router
-    .route('/unassign-admin/:userId')
-    .post(
+    .route('/assign/:userId')
+    .delete(
         authenticate,
         authorization('SUPERADMIN'),
         paramsIdValidator,
