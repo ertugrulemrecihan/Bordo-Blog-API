@@ -21,7 +21,7 @@ const getPaginationInfo = (totalItemCount, pageSize, pageNumber) => {
         totalPageCount = parseInt(totalItemCount / pageSize);
     }
 
-    if (pageNumber > totalPageCount) {
+    if (pageNumber > totalPageCount && totalItemCount > 0) {
         error = {
             // eslint-disable-next-line max-len
             message: `Page number cannot be greater than the total number of pages(${pageNumber}/${totalPageCount}).`,

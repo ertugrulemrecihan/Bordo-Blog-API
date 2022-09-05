@@ -12,7 +12,7 @@ class BaseService {
         
         const dbQuery = this.model.find(query || {});
 
-        sortQuery = sortQuery || queryOptions?.sorting?.sortQuery;
+        sortQuery = sortQuery || queryOptions?.sorting;
         limit = limit || queryOptions?.pagination?.limit;
         skip = skip || queryOptions?.pagination?.skip;
 

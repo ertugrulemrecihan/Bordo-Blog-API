@@ -3,8 +3,16 @@ const httpStatus = require('http-status');
 const moment = require('moment');
 
 const queryOptions = (req, res, next) => {
+    req.queryOptions = {};
+
     const sortField = req.query.sortField;
-    const sortOrder = req.query.sortOrder || 1;
+    let sortOrder = req.query.sortOrder || 1;
+
+    if (sortOrder > 1) {
+        sortOrder = 1;
+    } else if (sortOrder < -1) {
+        sortOrder = -1;
+    }
 
     let limit = parseInt(req.query.limit);
     let page = parseInt(req.query.page);
@@ -108,17 +116,20 @@ const queryOptions = (req, res, next) => {
 
     const skip = page && limit ? (page - 1) * limit : null;
 
-    req.queryOptions = {
-        pagination: { limit, page, skip },
-    };
-
-    if ((sortOrder == -1 || sortOrder == 1) && sortField) {
-        req.queryOptions.sorting = {
-            sortQuery: { [sortField]: parseInt(sortOrder) },
+    if (page || limit || skip) {
+        req.queryOptions = {
+            pagination: { limit, page, skip },
         };
     }
 
-    req.queryOptions.filtering = mongoQuery;
+    if ((sortOrder == -1 || sortOrder == 1) && sortField) {
+        req.queryOptions.sorting = { [sortField]: parseInt(sortOrder) };
+    }
+
+    if (Object.keys(mongoQuery) > 0) {
+        req.queryOptions.filtering = mongoQuery;
+    }
+
     next();
 };
 
