@@ -152,6 +152,7 @@ class PostController extends BaseController {
                     )
                 );
             }
+
             return next(
                 new ApiError(
                     'Post creation failed',

@@ -48,6 +48,7 @@ const fileValidator = (rules) => (req, res, next) => {
                         )
                     );
                 }
+
                 if (file.size > 2097152) {
                     return next(
                         new ApiError(
@@ -66,6 +67,7 @@ const fileValidator = (rules) => (req, res, next) => {
                     )
                 );
             }
+
             if (files.size > 2097152) {
                 return next(
                     new ApiError(
@@ -76,6 +78,7 @@ const fileValidator = (rules) => (req, res, next) => {
             }
         }
     }
+
     next();
 };
 

@@ -12,6 +12,7 @@ class ApiDataSuccess extends ApiSuccess {
 
     static send(data, message, statusCode, res, next) {
         ApiDataSuccess.place(data, message, statusCode, res);
+
         next();
     }
 

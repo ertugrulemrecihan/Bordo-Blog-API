@@ -84,12 +84,14 @@ const queryOptions = (req, res, next) => {
             const gtObject = {
                 $gt: gtValue + '.000Z',
             };
+
             const ltObject = {
                 $lt:
                     moment(replacedQueryValue)
                         .add(1, dateEnum[queryValue.length])
                         .format('YYYY-MM-DDTHH:mm:ss') + '.000Z',
             };
+
             mongoQuery[splitedKey[0]] = { ...gtObject, ...ltObject };
         } else if (['eq'].includes(splitedKey[1])) {
             mongoQuery[splitedKey[0]] = queryValue;

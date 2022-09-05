@@ -13,6 +13,7 @@ const passwordToHash = (plainPassword) => {
 
     //  Hash the password with the salt
     const hashedPassword = passwordToHashWithSalt(plainPassword, hashedSalt);
+
     return {
         hashedPassword,
         hashedSalt,

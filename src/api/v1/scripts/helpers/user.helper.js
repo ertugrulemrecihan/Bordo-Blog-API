@@ -44,12 +44,14 @@ const createAndVerifyEmail = async (email) => {
         { email: email },
         { select: '-password -salt' }
     );
+
     if (!user) {
         throw new ApiError(
             'No user found associated with this email',
             httpStatus.NOT_FOUND
         );
     }
+
     if (user.email_verified) {
         throw new ApiError(
             "User's email address is already verified",
@@ -96,6 +98,7 @@ const logOut = async (userId) => {
     const deletedAccessTokenResult = await accessTokenService.deleteByQuery({
         user: userId,
     });
+
     const deletedRefreshTokenResult = await refreshTokenService.deleteByQuery({
         user: userId,
     });

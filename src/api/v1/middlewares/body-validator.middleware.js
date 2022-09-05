@@ -25,6 +25,7 @@ const bodyValidator = (schema) => (req, res, next) => {
         const errorMessage = error.details
             .map((detail) => detail.message)
             .join(', ');
+
         throw new ApiError(errorMessage, httpStatus.BAD_REQUEST);
     }
 

@@ -21,6 +21,7 @@ const createRole = async (roleName, roleDescription) => {
     } else {
         roleId = role._id;
     }
+
     return roleId;
 };
 
@@ -50,6 +51,7 @@ const createSuperAdmin = async (superAdminRoleId) => {
             last_login: Date.now(),
             email_verified: true,
         });
+
         newAdmin.save();
     }
 };
@@ -68,6 +70,7 @@ const createCountry = async () => {
     } else {
         countryId = currentCity._id;
     }
+
     return countryId;
 };
 
@@ -88,6 +91,7 @@ const createCity = async (country, city) => {
     } else {
         cityId = currentCity._id;
     }
+
     return cityId;
 };
 
@@ -107,6 +111,7 @@ const createDistrict = async (city, district) => {
     } else {
         districtId = currentDistrict._id;
     }
+
     return districtId;
 };
 
@@ -129,6 +134,7 @@ module.exports = async () => {
     const data = fs.readFileSync('src/loaders/data/turkey.json');
 
     const cities = JSON.parse(data.toString()).data;
+
     for (const city of cities) {
         const cityId = await createCity(countryId, city);
 

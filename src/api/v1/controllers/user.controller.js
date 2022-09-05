@@ -70,6 +70,7 @@ class UserController extends BaseController {
                 await userHelper.createAndVerifyEmail(req.body.email);
             } catch (error) {
                 await redisHelper.removeByClassName(this.constructor.name);
+
                 ApiDataSuccess.send(
                     response,
                     'Your registration has been created successfully, but the verification link could not be sent',
@@ -94,6 +95,7 @@ class UserController extends BaseController {
                     new ApiError('Email already exists', httpStatus.CONFLICT)
                 );
             }
+
             return next(
                 new ApiError(
                     'Registration failed',
@@ -201,6 +203,7 @@ class UserController extends BaseController {
             await emailVerificationTokenService.fetchOneByQuery({
                 user: req.user._id,
             });
+
         if (currentVerifyToken) {
             await emailVerificationTokenService.deleteById(
                 currentVerifyToken._id
@@ -310,6 +313,7 @@ class UserController extends BaseController {
                     new ApiError('Email is already in use', httpStatus.CONFLICT)
                 );
             }
+
             return next(
                 new ApiError(
                     'Invalid or expired change email token',
@@ -516,6 +520,7 @@ class UserController extends BaseController {
             const successResult = await userHelper.createAndVerifyEmail(
                 req.body.email
             );
+
             ApiSuccess.send(
                 successResult.message,
                 successResult.statusCode,
@@ -528,8 +533,9 @@ class UserController extends BaseController {
     };
 
     verifyEmail = async (req, res, next) => {
-        const emailVerifyToken = req.params.emailVerifyToken;
         try {
+            const emailVerifyToken = req.params.emailVerifyToken;
+
             const decodedToken =
                 jwtHelper.decodeEmailVerifyToken(emailVerifyToken);
 
@@ -761,7 +767,7 @@ class UserController extends BaseController {
                 next
             );
         } catch (error) {
-            return new ApiError(error, httpStatus.BAD_REQUEST);
+            return next(new ApiError(error, httpStatus.BAD_REQUEST));
         }
     };
 

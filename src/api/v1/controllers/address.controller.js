@@ -187,6 +187,7 @@ class AddressController extends BaseController {
 
     updateMyAddress = async (req, res, next) => {
         const userId = req.user._id;
+
         const response = await addressService.updateByQuery(
             { user: userId, _id: req.params.id },
             req.body
@@ -209,6 +210,7 @@ class AddressController extends BaseController {
 
     deleteMyAddress = async (req, res, next) => {
         const userId = req.user._id;
+
         const response = await addressService.deleteByQuery({
             user: userId,
             _id: req.params.id,

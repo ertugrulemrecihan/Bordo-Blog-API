@@ -10,6 +10,7 @@ class BaseController {
 
         const singleModelName = this.service.model.modelName;
         const pluralModelName = this.service.model.collection.name;
+
         // Capitalize first letters
         this.singleModelName =
             singleModelName.charAt(0).toUpperCase() + singleModelName.slice(1);
@@ -126,6 +127,7 @@ class BaseController {
                     )
                 );
             }
+
             return next(
                 new ApiError(
                     `${this.singleModelName} creation failed`,
@@ -169,6 +171,7 @@ class BaseController {
                     )
                 );
             }
+
             return next(
                 new ApiError(
                     `${this.singleModelName} update failed`,
@@ -212,6 +215,7 @@ class BaseController {
                     )
                 );
             }
+
             return next(
                 new ApiError(
                     `${this.singleModelName} update failed`,

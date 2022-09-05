@@ -25,6 +25,7 @@ const uploadFile = async (file, folder) => {
             })
             .then(async (res) => {
                 const fileId = res.data.id;
+
                 await drive.permissions.create({
                     fileId: fileId,
                     requestBody: {
@@ -32,6 +33,7 @@ const uploadFile = async (file, folder) => {
                         type: 'anyone',
                     },
                 });
+
                 const fileResponse = await drive.files.get({
                     fileId: fileId,
                     fields: 'webViewLink, webContentLink',
@@ -46,6 +48,7 @@ const uploadFile = async (file, folder) => {
                     ...res.data,
                     imageUrl,
                 };
+
                 resolve(resolveObject);
             })
             .catch((err) => {

@@ -42,6 +42,7 @@ class TagController extends BaseController {
                     new ApiError('Tag already exists', httpStatus.CONFLICT)
                 );
             }
+
             return next(
                 new ApiError(
                     'Tag creation failed',
