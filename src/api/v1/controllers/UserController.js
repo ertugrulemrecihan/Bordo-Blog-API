@@ -28,7 +28,7 @@ class UserController extends BaseController {
         super(userService);
     }
 
-    async register(req, res, next) {
+    register = async (req, res, next) => {
         const { hashedPassword, hashedSalt } = passwordHelper.passwordToHash(
             req.body.password
         );
@@ -101,9 +101,9 @@ class UserController extends BaseController {
                 )
             );
         }
-    }
+    };
 
-    async login(req, res, next) {
+    login = async (req, res, next) => {
         const user = await service.fetchOneByQuery({ email: req.body.email });
 
         if (!user) {
@@ -173,9 +173,9 @@ class UserController extends BaseController {
             res,
             next
         );
-    }
+    };
 
-    async changeEmailGetEmail(req, res, next) {
+    changeEmailGetEmail = async (req, res, next) => {
         const newEmailAddress = req.body.new_email;
 
         if (newEmailAddress == req.user.email) {
@@ -241,9 +241,9 @@ class UserController extends BaseController {
             res,
             next
         );
-    }
+    };
 
-    async changeEmail(req, res, next) {
+    changeEmail = async (req, res, next) => {
         const changeEmailToken = req.params.changeEmailToken;
 
         try {
@@ -317,9 +317,9 @@ class UserController extends BaseController {
                 )
             );
         }
-    }
+    };
 
-    async logOut(req, res, next) {
+    logOut = async (req, res, next) => {
         const result = await userHelper.logOut(req.user._id);
 
         if (result) {
@@ -329,9 +329,9 @@ class UserController extends BaseController {
         }
 
         ApiSuccess.send('Log out successfully', httpStatus.OK, res, next);
-    }
+    };
 
-    async getPasswordResetEmail(req, res, next) {
+    getPasswordResetEmail = async (req, res, next) => {
         const user = await service.fetchOneByQuery({ email: req.body.email });
         if (!user) {
             return next(
@@ -379,9 +379,9 @@ class UserController extends BaseController {
             res,
             next
         );
-    }
+    };
 
-    async resetPassword(req, res, next) {
+    resetPassword = async (req, res, next) => {
         try {
             const decodedToken = jwtHelper.decodePasswordResetToken(
                 req.body.token
@@ -453,9 +453,9 @@ class UserController extends BaseController {
                 )
             );
         }
-    }
+    };
 
-    async changePassword(req, res, next) {
+    changePassword = async (req, res, next) => {
         // Validate old password
         const user = await service.fetchOneByQuery({ email: req.user.email });
         if (!user) {
@@ -509,9 +509,9 @@ class UserController extends BaseController {
         await userHelper.logOut(req.user._id);
 
         ApiSuccess.send('Password has been changed', httpStatus.OK, res, next);
-    }
+    };
 
-    async getEmailVerificationEmail(req, res, next) {
+    getEmailVerificationEmail = async (req, res, next) => {
         try {
             const successResult = await userHelper.createAndVerifyEmail(
                 req.body.email
@@ -525,9 +525,9 @@ class UserController extends BaseController {
         } catch (error) {
             return next(error);
         }
-    }
+    };
 
-    async verifyEmail(req, res, next) {
+    verifyEmail = async (req, res, next) => {
         const emailVerifyToken = req.params.emailVerifyToken;
         try {
             const decodedToken =
@@ -606,9 +606,9 @@ class UserController extends BaseController {
                 )
             );
         }
-    }
+    };
 
-    async getMyProfile(req, res, next) {
+    getMyProfile = async (req, res, next) => {
         ApiDataSuccess.send(
             req.user,
             'Profile fetched successfully',
@@ -616,9 +616,9 @@ class UserController extends BaseController {
             res,
             next
         );
-    }
+    };
 
-    async fetchAllForAdmin(req, res, next) {
+    fetchAllForAdmin = async (req, res, next) => {
         const posts = await postService.fetchAll();
 
         const users = await userService.fetchAll({
@@ -673,9 +673,9 @@ class UserController extends BaseController {
             res,
             next
         );
-    }
+    };
 
-    async fetchOneByParamsIdForAdmin(req, res, next) {
+    fetchOneByParamsIdForAdmin = async (req, res, next) => {
         const user = await service.fetchOneById(req.params.id, {
             select: '-password -salt',
         });
@@ -704,9 +704,9 @@ class UserController extends BaseController {
             res,
             next
         );
-    }
+    };
 
-    async deleteByParamsIdForAdmin(req, res, next) {
+    deleteByParamsIdForAdmin = async (req, res, next) => {
         const response = await service.deleteById(req.params.id);
 
         if (!response) {
@@ -724,9 +724,9 @@ class UserController extends BaseController {
             res,
             next
         );
-    }
+    };
 
-    async uploadAvatar(req, res, next) {
+    uploadAvatar = async (req, res, next) => {
         try {
             const avatar = req.files.avatar;
             const user = req.user;
@@ -763,9 +763,9 @@ class UserController extends BaseController {
         } catch (error) {
             return new ApiError(error, httpStatus.BAD_REQUEST);
         }
-    }
+    };
 
-    async assignAdminRole(req, res, next) {
+    assignAdminRole = async (req, res, next) => {
         const userId = req.params.userId;
 
         const adminRole = await roleService.fetchOneByQuery({ name: 'Admin' });
@@ -809,9 +809,9 @@ class UserController extends BaseController {
         await redisHelper.removeByClassName(this.constructor.name);
 
         ApiSuccess.send('Role assignment successful', httpStatus.OK, res, next);
-    }
+    };
 
-    async unassignAdminRole(req, res, next) {
+    unassignAdminRole = async (req, res, next) => {
         const userId = req.params.userId;
 
         const adminRole = await roleService.fetchOneByQuery({ name: 'Admin' });
@@ -865,7 +865,7 @@ class UserController extends BaseController {
             res,
             next
         );
-    }
+    };
 }
 
 module.exports = new UserController();

@@ -13,7 +13,7 @@ class AddressController extends BaseController {
         super(addressService);
     }
 
-    async getAllCountries(req, res, next) {
+    getAllCountries = async (req, res, next) => {
         const countries = await countryService.fetchAll();
 
         if (countries.length > 0) {
@@ -27,9 +27,9 @@ class AddressController extends BaseController {
             res,
             next
         );
-    }
+    };
 
-    async getAllCitiesByCountryId(req, res, next) {
+    getAllCitiesByCountryId = async (req, res, next) => {
         const countryId = req.params.countryId;
 
         const country = await countryService.fetchOneById(countryId);
@@ -58,9 +58,9 @@ class AddressController extends BaseController {
             res,
             next
         );
-    }
+    };
 
-    async getAllDistrictsByCityId(req, res, next) {
+    getAllDistrictsByCityId = async (req, res, next) => {
         const cityId = req.params.cityId;
 
         const city = await cityService.fetchOneById(cityId);
@@ -87,9 +87,9 @@ class AddressController extends BaseController {
             res,
             next
         );
-    }
+    };
 
-    async getAllMyAddresses(req, res, next) {
+    getAllMyAddresses = async (req, res, next) => {
         const userId = await req.user._id;
 
         const addresses = await addressService.fetchAll({
@@ -103,9 +103,9 @@ class AddressController extends BaseController {
             res,
             next
         );
-    }
+    };
 
-    async getMyAddress(req, res, next) {
+    getMyAddress = async (req, res, next) => {
         const userId = await req.user._id;
 
         const address = await addressService.fetchOneByQuery({
@@ -126,10 +126,10 @@ class AddressController extends BaseController {
             res,
             next
         );
-    }
+    };
 
     // ! FIXME - Refactor Method
-    async createMyAddress(req, res, next) {
+    createMyAddress = async (req, res, next) => {
         req.body.user = req.user._id;
         const countryId = req.body.country;
         const cityId = req.body.city;
@@ -182,9 +182,9 @@ class AddressController extends BaseController {
             res,
             next
         );
-    }
+    };
 
-    async updateMyAddress(req, res, next) {
+    updateMyAddress = async (req, res, next) => {
         const userId = req.user._id;
         const response = await addressService.updateByQuery(
             { user: userId, _id: req.params.id },
@@ -204,9 +204,9 @@ class AddressController extends BaseController {
             res,
             next
         );
-    }
+    };
 
-    async deleteMyAddress(req, res, next) {
+    deleteMyAddress = async (req, res, next) => {
         const userId = req.user._id;
         const response = await addressService.deleteByQuery({
             user: userId,
@@ -226,7 +226,7 @@ class AddressController extends BaseController {
             res,
             next
         );
-    }
+    };
 }
 
 module.exports = new AddressController();

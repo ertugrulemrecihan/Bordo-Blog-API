@@ -17,7 +17,7 @@ class PostController extends BaseController {
         super(postService);
     }
 
-    async fetchAllMyPosts(req, res, next) {
+    fetchAllMyPosts = async (req, res, next) => {
         const posts = await postService.fetchAll({
             query: { writer: req.user._id },
             queryOptions: req?.queryOptions,
@@ -58,9 +58,9 @@ class PostController extends BaseController {
             res,
             next
         );
-    }
+    };
 
-    async fetchOneMyPost(req, res, next) {
+    fetchOneMyPost = async (req, res, next) => {
         const postId = req.params.id;
 
         const post = await postService.fetchOneByQuery({
@@ -79,7 +79,7 @@ class PostController extends BaseController {
             res,
             next
         );
-    }
+    };
 
     // Override
     create = async (req, res, next) => {
@@ -160,7 +160,7 @@ class PostController extends BaseController {
         }
     };
 
-    async fetchAllPreviews(req, res, next) {
+    fetchAllPreviews = async (req, res, next) => {
         const response = await postService.fetchAll({
             select: ['-content', '-images', '-comments'],
         });
@@ -172,9 +172,9 @@ class PostController extends BaseController {
             res,
             next
         );
-    }
+    };
 
-    async deleteMyPost(req, res, next) {
+    deleteMyPost = async (req, res, next) => {
         const postId = req.params.id;
 
         const post = await postService.fetchOneByQuery({
@@ -200,9 +200,9 @@ class PostController extends BaseController {
         }
 
         ApiSuccess.send('Post deletion successfully', httpStatus.OK, res, next);
-    }
+    };
 
-    async updateMyPost(req, res, next) {
+    updateMyPost = async (req, res, next) => {
         const postId = req.params.id;
 
         const post = await postService.fetchOneByQuery({
@@ -260,9 +260,9 @@ class PostController extends BaseController {
             res,
             next
         );
-    }
+    };
 
-    async addView(req, res, next) {
+    addView = async (req, res, next) => {
         const postId = req.params.id;
 
         const post = await postService.fetchOneById(postId);
@@ -305,9 +305,9 @@ class PostController extends BaseController {
             res,
             next
         );
-    }
+    };
 
-    async changeLikeStatus(req, res, next) {
+    changeLikeStatus = async (req, res, next) => {
         const postId = req.params.id;
 
         const post = await postService.fetchOneById(postId);
@@ -345,9 +345,9 @@ class PostController extends BaseController {
         }
 
         ApiDataSuccess.send(updatedPost, message, httpStatus.OK, res, next);
-    }
+    };
 
-    async addComment(req, res, next) {
+    addComment = async (req, res, next) => {
         const postId = req.params.id;
 
         const post = await postService.fetchOneById(postId);
@@ -380,9 +380,9 @@ class PostController extends BaseController {
             res,
             next
         );
-    }
+    };
 
-    async deleteComment(req, res, next) {
+    deleteComment = async (req, res, next) => {
         const postId = req.params.id;
         const commentId = req.body.comment_id;
 
@@ -422,9 +422,9 @@ class PostController extends BaseController {
             res,
             next
         );
-    }
+    };
 
-    async fetchAllForAdmin(req, res, next) {
+    fetchAllForAdmin = async (req, res, next) => {
         const posts = await postService.fetchAll({
             queryOptions: req?.queryOptions,
         });
@@ -464,7 +464,7 @@ class PostController extends BaseController {
             res,
             next
         );
-    }
+    };
 }
 
 module.exports = new PostController();

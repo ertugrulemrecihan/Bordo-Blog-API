@@ -94,7 +94,7 @@ class TagController extends BaseController {
         );
     };
 
-    async fetchAllMostUsedTags(req, res, next) {
+    fetchAllMostUsedTags = async (req, res, next) => {
         const count = parseInt(req.params.count);
         if (!count || count <= 0) {
             return next(
@@ -130,7 +130,7 @@ class TagController extends BaseController {
             res,
             next
         );
-    }
+    };
 }
 
 module.exports = new TagController();
