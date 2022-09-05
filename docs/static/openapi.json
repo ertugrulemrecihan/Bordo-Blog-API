@@ -47,7 +47,7 @@
     }
   ],
   "paths": {
-    "/users/verify-email/{emailVerifyToken}": {
+    "/users/redirects/verify-email/{emailVerifyToken}": {
       "summary": "",
       "description": "",
       "get": {
@@ -93,7 +93,7 @@
             }
           },
           "400": {
-            "$ref": "#/paths/~1users~1login/post/responses/400"
+            "$ref": "#/paths/~1tags~1/get/responses/400"
           },
           "500": {
             "$ref": "#/paths/~1users~1login/post/responses/500"
@@ -263,10 +263,10 @@
             }
           },
           "400": {
-            "$ref": "#/paths/~1users~1login/post/responses/400"
+            "$ref": "#/paths/~1tags~1/get/responses/400"
           },
           "401": {
-            "$ref": "#/paths/~1tags~1get-all/get/responses/401"
+            "$ref": "#/paths/~1tags~1/get/responses/401"
           },
           "500": {
             "$ref": "#/paths/~1users~1login/post/responses/500"
@@ -335,40 +335,7 @@
             }
           },
           "400": {
-            "description": "Bad request error",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "allOf": [
-                    {
-                      "type": "object",
-                      "properties": {
-                        "error": {
-                          "properties": {
-                            "message": {
-                              "type": "string"
-                            }
-                          }
-                        },
-                        "success": {
-                          "type": "boolean",
-                          "default": false
-                        }
-                      }
-                    },
-                    {
-                      "type": "object",
-                      "properties": {
-                        "statusCode": {
-                          "type": "number",
-                          "default": 400
-                        }
-                      }
-                    }
-                  ]
-                }
-              }
-            }
+            "$ref": "#/paths/~1tags~1/get/responses/400"
           },
           "404": {
             "description": "Not found error",
@@ -377,7 +344,7 @@
                 "schema": {
                   "allOf": [
                     {
-                      "$ref": "#/paths/~1users~1login/post/responses/400/content/application~1json/schema/allOf/0"
+                      "$ref": "#/paths/~1tags~1/get/responses/400/content/application~1json/schema/allOf/0"
                     },
                     {
                       "type": "object",
@@ -400,7 +367,7 @@
                 "schema": {
                   "allOf": [
                     {
-                      "$ref": "#/paths/~1users~1login/post/responses/400/content/application~1json/schema/allOf/0"
+                      "$ref": "#/paths/~1tags~1/get/responses/400/content/application~1json/schema/allOf/0"
                     },
                     {
                       "type": "object",
@@ -466,7 +433,7 @@
             }
           },
           "400": {
-            "$ref": "#/paths/~1users~1login/post/responses/400"
+            "$ref": "#/paths/~1tags~1/get/responses/400"
           },
           "409": {
             "description": "Conflict error",
@@ -475,7 +442,7 @@
                 "schema": {
                   "allOf": [
                     {
-                      "$ref": "#/paths/~1users~1login/post/responses/400/content/application~1json/schema/allOf/0"
+                      "$ref": "#/paths/~1tags~1/get/responses/400/content/application~1json/schema/allOf/0"
                     },
                     {
                       "type": "object",
@@ -497,7 +464,7 @@
         }
       }
     },
-    "/users/change-email-get-email": {
+    "/users/emails/email-change": {
       "summary": "",
       "description": "",
       "patch": {
@@ -555,13 +522,13 @@
             }
           },
           "400": {
-            "$ref": "#/paths/~1users~1login/post/responses/400"
+            "$ref": "#/paths/~1tags~1/get/responses/400"
           },
           "401": {
-            "$ref": "#/paths/~1tags~1get-all/get/responses/401"
+            "$ref": "#/paths/~1tags~1/get/responses/401"
           },
           "403": {
-            "$ref": "#/paths/~1tags~1get-all/get/responses/403"
+            "$ref": "#/paths/~1tags~1/get/responses/403"
           },
           "409": {
             "$ref": "#/paths/~1users~1register/post/responses/409"
@@ -569,7 +536,7 @@
         }
       }
     },
-    "/users/change-email/{changeEmailToken}": {
+    "/users/redirects/change-email/{changeEmailToken}": {
       "summary": "",
       "description": "",
       "get": {
@@ -615,7 +582,7 @@
             }
           },
           "400": {
-            "$ref": "#/paths/~1users~1login/post/responses/400"
+            "$ref": "#/paths/~1tags~1/get/responses/400"
           },
           "409": {
             "$ref": "#/paths/~1users~1register/post/responses/409"
@@ -679,10 +646,10 @@
             }
           },
           "400": {
-            "$ref": "#/paths/~1users~1login/post/responses/400"
+            "$ref": "#/paths/~1tags~1/get/responses/400"
           },
           "401": {
-            "$ref": "#/paths/~1tags~1get-all/get/responses/401"
+            "$ref": "#/paths/~1tags~1/get/responses/401"
           },
           "500": {
             "$ref": "#/paths/~1users~1login/post/responses/500"
@@ -840,13 +807,13 @@
             }
           },
           "400": {
-            "$ref": "#/paths/~1users~1login/post/responses/400"
+            "$ref": "#/paths/~1tags~1/get/responses/400"
           },
           "401": {
-            "$ref": "#/paths/~1tags~1get-all/get/responses/401"
+            "$ref": "#/paths/~1tags~1/get/responses/401"
           },
           "403": {
-            "$ref": "#/paths/~1tags~1get-all/get/responses/403"
+            "$ref": "#/paths/~1tags~1/get/responses/403"
           },
           "500": {
             "$ref": "#/paths/~1users~1login/post/responses/500"
@@ -854,7 +821,7 @@
         }
       }
     },
-    "/users/get-password-reset-email": {
+    "/users/emails/password-reset": {
       "summary": "",
       "description": "",
       "post": {
@@ -892,7 +859,7 @@
             }
           },
           "400": {
-            "$ref": "#/paths/~1users~1login/post/responses/400"
+            "$ref": "#/paths/~1tags~1/get/responses/400"
           },
           "404": {
             "$ref": "#/paths/~1users~1login/post/responses/404"
@@ -900,7 +867,7 @@
         }
       }
     },
-    "/users/reset-password": {
+    "/users/redirects/password-reset": {
       "summary": "",
       "description": "",
       "post": {
@@ -938,7 +905,7 @@
             }
           },
           "400": {
-            "$ref": "#/paths/~1users~1login/post/responses/400"
+            "$ref": "#/paths/~1tags~1/get/responses/400"
           },
           "500": {
             "$ref": "#/paths/~1users~1login/post/responses/500"
@@ -946,7 +913,7 @@
         }
       }
     },
-    "/users/get-email-verification-email": {
+    "/users/emails/email-verification": {
       "summary": "",
       "description": "",
       "post": {
@@ -984,7 +951,7 @@
             }
           },
           "400": {
-            "$ref": "#/paths/~1users~1login/post/responses/400"
+            "$ref": "#/paths/~1tags~1/get/responses/400"
           },
           "404": {
             "$ref": "#/paths/~1users~1login/post/responses/404"
@@ -995,7 +962,7 @@
         }
       }
     },
-    "/users/change-password": {
+    "/users/password-change": {
       "summary": "",
       "description": "",
       "post": {
@@ -1038,13 +1005,13 @@
             }
           },
           "400": {
-            "$ref": "#/paths/~1users~1login/post/responses/400"
+            "$ref": "#/paths/~1tags~1/get/responses/400"
           },
           "401": {
-            "$ref": "#/paths/~1tags~1get-all/get/responses/401"
+            "$ref": "#/paths/~1tags~1/get/responses/401"
           },
           "403": {
-            "$ref": "#/paths/~1tags~1get-all/get/responses/403"
+            "$ref": "#/paths/~1tags~1/get/responses/403"
           },
           "404": {
             "$ref": "#/paths/~1users~1login/post/responses/404"
@@ -1184,13 +1151,13 @@
             }
           },
           "400": {
-            "$ref": "#/paths/~1users~1login/post/responses/400"
+            "$ref": "#/paths/~1tags~1/get/responses/400"
           },
           "401": {
-            "$ref": "#/paths/~1tags~1get-all/get/responses/401"
+            "$ref": "#/paths/~1tags~1/get/responses/401"
           },
           "403": {
-            "$ref": "#/paths/~1tags~1get-all/get/responses/403"
+            "$ref": "#/paths/~1tags~1/get/responses/403"
           }
         }
       }
@@ -1268,13 +1235,13 @@
             }
           },
           "400": {
-            "$ref": "#/paths/~1users~1login/post/responses/400"
+            "$ref": "#/paths/~1tags~1/get/responses/400"
           },
           "401": {
-            "$ref": "#/paths/~1tags~1get-all/get/responses/401"
+            "$ref": "#/paths/~1tags~1/get/responses/401"
           },
           "403": {
-            "$ref": "#/paths/~1tags~1get-all/get/responses/403"
+            "$ref": "#/paths/~1tags~1/get/responses/403"
           },
           "404": {
             "$ref": "#/paths/~1users~1login/post/responses/404"
@@ -1346,13 +1313,13 @@
             }
           },
           "400": {
-            "$ref": "#/paths/~1users~1login/post/responses/400"
+            "$ref": "#/paths/~1tags~1/get/responses/400"
           },
           "401": {
-            "$ref": "#/paths/~1tags~1get-all/get/responses/401"
+            "$ref": "#/paths/~1tags~1/get/responses/401"
           },
           "403": {
-            "$ref": "#/paths/~1tags~1get-all/get/responses/403"
+            "$ref": "#/paths/~1tags~1/get/responses/403"
           },
           "404": {
             "$ref": "#/paths/~1users~1login/post/responses/404"
@@ -1405,13 +1372,13 @@
             }
           },
           "400": {
-            "$ref": "#/paths/~1users~1login/post/responses/400"
+            "$ref": "#/paths/~1tags~1/get/responses/400"
           },
           "401": {
-            "$ref": "#/paths/~1tags~1get-all/get/responses/401"
+            "$ref": "#/paths/~1tags~1/get/responses/401"
           },
           "403": {
-            "$ref": "#/paths/~1tags~1get-all/get/responses/403"
+            "$ref": "#/paths/~1tags~1/get/responses/403"
           },
           "404": {
             "$ref": "#/paths/~1users~1login/post/responses/404"
@@ -1470,13 +1437,13 @@
             }
           },
           "400": {
-            "$ref": "#/paths/~1users~1login/post/responses/400"
+            "$ref": "#/paths/~1tags~1/get/responses/400"
           },
           "401": {
-            "$ref": "#/paths/~1tags~1get-all/get/responses/401"
+            "$ref": "#/paths/~1tags~1/get/responses/401"
           },
           "403": {
-            "$ref": "#/paths/~1tags~1get-all/get/responses/403"
+            "$ref": "#/paths/~1tags~1/get/responses/403"
           },
           "404": {
             "$ref": "#/paths/~1users~1login/post/responses/404"
@@ -1487,7 +1454,7 @@
         }
       }
     },
-    "/tags/get-all": {
+    "/tags/": {
       "summary": "",
       "description": "",
       "get": {
@@ -1704,7 +1671,40 @@
             }
           },
           "400": {
-            "$ref": "#/paths/~1users~1login/post/responses/400"
+            "description": "Bad request error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "allOf": [
+                    {
+                      "type": "object",
+                      "properties": {
+                        "error": {
+                          "properties": {
+                            "message": {
+                              "type": "string"
+                            }
+                          }
+                        },
+                        "success": {
+                          "type": "boolean",
+                          "default": false
+                        }
+                      }
+                    },
+                    {
+                      "type": "object",
+                      "properties": {
+                        "statusCode": {
+                          "type": "number",
+                          "default": 400
+                        }
+                      }
+                    }
+                  ]
+                }
+              }
+            }
           },
           "401": {
             "description": "Unauthorized error",
@@ -1713,7 +1713,7 @@
                 "schema": {
                   "allOf": [
                     {
-                      "$ref": "#/paths/~1users~1login/post/responses/400/content/application~1json/schema/allOf/0"
+                      "$ref": "#/paths/~1tags~1/get/responses/400/content/application~1json/schema/allOf/0"
                     },
                     {
                       "type": "object",
@@ -1736,7 +1736,7 @@
                 "schema": {
                   "allOf": [
                     {
-                      "$ref": "#/paths/~1users~1login/post/responses/400/content/application~1json/schema/allOf/0"
+                      "$ref": "#/paths/~1tags~1/get/responses/400/content/application~1json/schema/allOf/0"
                     },
                     {
                       "type": "object",
@@ -1755,7 +1755,7 @@
         }
       }
     },
-    "/tags/get-all/most-used/{count}": {
+    "/tags/most-used/{count}": {
       "summary": "",
       "description": "",
       "get": {
@@ -1840,13 +1840,13 @@
             }
           },
           "400": {
-            "$ref": "#/paths/~1users~1login/post/responses/400"
+            "$ref": "#/paths/~1tags~1/get/responses/400"
           },
           "401": {
-            "$ref": "#/paths/~1tags~1get-all/get/responses/401"
+            "$ref": "#/paths/~1tags~1/get/responses/401"
           },
           "403": {
-            "$ref": "#/paths/~1tags~1get-all/get/responses/403"
+            "$ref": "#/paths/~1tags~1/get/responses/403"
           }
         }
       }
@@ -1925,13 +1925,13 @@
             }
           },
           "400": {
-            "$ref": "#/paths/~1users~1login/post/responses/400"
+            "$ref": "#/paths/~1tags~1/get/responses/400"
           },
           "401": {
-            "$ref": "#/paths/~1tags~1get-all/get/responses/401"
+            "$ref": "#/paths/~1tags~1/get/responses/401"
           },
           "403": {
-            "$ref": "#/paths/~1tags~1get-all/get/responses/403"
+            "$ref": "#/paths/~1tags~1/get/responses/403"
           },
           "409": {
             "$ref": "#/paths/~1users~1register/post/responses/409"
@@ -2003,13 +2003,13 @@
             }
           },
           "400": {
-            "$ref": "#/paths/~1users~1login/post/responses/400"
+            "$ref": "#/paths/~1tags~1/get/responses/400"
           },
           "401": {
-            "$ref": "#/paths/~1tags~1get-all/get/responses/401"
+            "$ref": "#/paths/~1tags~1/get/responses/401"
           },
           "403": {
-            "$ref": "#/paths/~1tags~1get-all/get/responses/403"
+            "$ref": "#/paths/~1tags~1/get/responses/403"
           },
           "404": {
             "$ref": "#/paths/~1users~1login/post/responses/404"
@@ -2142,7 +2142,7 @@
                                   "$ref": "#/paths/~1admin~1posts~1get-all/get/responses/200/content/application~1json/schema/allOf/2/properties/data/allOf/1"
                                 },
                                 {
-                                  "$ref": "#/paths/~1tags~1get-all/get/responses/200/content/application~1json/schema/oneOf/0/allOf/2/properties/data/allOf/1"
+                                  "$ref": "#/paths/~1tags~1/get/responses/200/content/application~1json/schema/oneOf/0/allOf/2/properties/data/allOf/1"
                                 }
                               ]
                             }
@@ -2195,13 +2195,13 @@
             }
           },
           "400": {
-            "$ref": "#/paths/~1users~1login/post/responses/400"
+            "$ref": "#/paths/~1tags~1/get/responses/400"
           },
           "401": {
-            "$ref": "#/paths/~1tags~1get-all/get/responses/401"
+            "$ref": "#/paths/~1tags~1/get/responses/401"
           },
           "403": {
-            "$ref": "#/paths/~1tags~1get-all/get/responses/403"
+            "$ref": "#/paths/~1tags~1/get/responses/403"
           }
         }
       }
@@ -2492,13 +2492,13 @@
             }
           },
           "400": {
-            "$ref": "#/paths/~1users~1login/post/responses/400"
+            "$ref": "#/paths/~1tags~1/get/responses/400"
           },
           "401": {
-            "$ref": "#/paths/~1tags~1get-all/get/responses/401"
+            "$ref": "#/paths/~1tags~1/get/responses/401"
           },
           "403": {
-            "$ref": "#/paths/~1tags~1get-all/get/responses/403"
+            "$ref": "#/paths/~1tags~1/get/responses/403"
           },
           "404": {
             "$ref": "#/paths/~1users~1login/post/responses/404"
@@ -2807,13 +2807,13 @@
             }
           },
           "400": {
-            "$ref": "#/paths/~1users~1login/post/responses/400"
+            "$ref": "#/paths/~1tags~1/get/responses/400"
           },
           "401": {
-            "$ref": "#/paths/~1tags~1get-all/get/responses/401"
+            "$ref": "#/paths/~1tags~1/get/responses/401"
           },
           "403": {
-            "$ref": "#/paths/~1tags~1get-all/get/responses/403"
+            "$ref": "#/paths/~1tags~1/get/responses/403"
           },
           "404": {
             "$ref": "#/paths/~1users~1login/post/responses/404"
@@ -2913,13 +2913,13 @@
             }
           },
           "400": {
-            "$ref": "#/paths/~1users~1login/post/responses/400"
+            "$ref": "#/paths/~1tags~1/get/responses/400"
           },
           "401": {
-            "$ref": "#/paths/~1tags~1get-all/get/responses/401"
+            "$ref": "#/paths/~1tags~1/get/responses/401"
           },
           "403": {
-            "$ref": "#/paths/~1tags~1get-all/get/responses/403"
+            "$ref": "#/paths/~1tags~1/get/responses/403"
           },
           "404": {
             "$ref": "#/paths/~1users~1login/post/responses/404"
@@ -3022,13 +3022,13 @@
             }
           },
           "400": {
-            "$ref": "#/paths/~1users~1login/post/responses/400"
+            "$ref": "#/paths/~1tags~1/get/responses/400"
           },
           "401": {
-            "$ref": "#/paths/~1tags~1get-all/get/responses/401"
+            "$ref": "#/paths/~1tags~1/get/responses/401"
           },
           "403": {
-            "$ref": "#/paths/~1tags~1get-all/get/responses/403"
+            "$ref": "#/paths/~1tags~1/get/responses/403"
           },
           "404": {
             "$ref": "#/paths/~1users~1login/post/responses/404"
@@ -3154,13 +3154,13 @@
             }
           },
           "400": {
-            "$ref": "#/paths/~1users~1login/post/responses/400"
+            "$ref": "#/paths/~1tags~1/get/responses/400"
           },
           "401": {
-            "$ref": "#/paths/~1tags~1get-all/get/responses/401"
+            "$ref": "#/paths/~1tags~1/get/responses/401"
           },
           "403": {
-            "$ref": "#/paths/~1tags~1get-all/get/responses/403"
+            "$ref": "#/paths/~1tags~1/get/responses/403"
           },
           "404": {
             "$ref": "#/paths/~1users~1login/post/responses/404"
@@ -3324,13 +3324,13 @@
             }
           },
           "400": {
-            "$ref": "#/paths/~1users~1login/post/responses/400"
+            "$ref": "#/paths/~1tags~1/get/responses/400"
           },
           "401": {
-            "$ref": "#/paths/~1tags~1get-all/get/responses/401"
+            "$ref": "#/paths/~1tags~1/get/responses/401"
           },
           "403": {
-            "$ref": "#/paths/~1tags~1get-all/get/responses/403"
+            "$ref": "#/paths/~1tags~1/get/responses/403"
           },
           "404": {
             "$ref": "#/paths/~1users~1login/post/responses/404"
@@ -3387,13 +3387,13 @@
             }
           },
           "400": {
-            "$ref": "#/paths/~1users~1login/post/responses/400"
+            "$ref": "#/paths/~1tags~1/get/responses/400"
           },
           "401": {
-            "$ref": "#/paths/~1tags~1get-all/get/responses/401"
+            "$ref": "#/paths/~1tags~1/get/responses/401"
           },
           "403": {
-            "$ref": "#/paths/~1tags~1get-all/get/responses/403"
+            "$ref": "#/paths/~1tags~1/get/responses/403"
           },
           "404": {
             "$ref": "#/paths/~1users~1login/post/responses/404"
@@ -3519,13 +3519,13 @@
             }
           },
           "400": {
-            "$ref": "#/paths/~1users~1login/post/responses/400"
+            "$ref": "#/paths/~1tags~1/get/responses/400"
           },
           "401": {
-            "$ref": "#/paths/~1tags~1get-all/get/responses/401"
+            "$ref": "#/paths/~1tags~1/get/responses/401"
           },
           "403": {
-            "$ref": "#/paths/~1tags~1get-all/get/responses/403"
+            "$ref": "#/paths/~1tags~1/get/responses/403"
           },
           "404": {
             "$ref": "#/paths/~1users~1login/post/responses/404"
@@ -3750,13 +3750,13 @@
             }
           },
           "400": {
-            "$ref": "#/paths/~1users~1login/post/responses/400"
+            "$ref": "#/paths/~1tags~1/get/responses/400"
           },
           "401": {
-            "$ref": "#/paths/~1tags~1get-all/get/responses/401"
+            "$ref": "#/paths/~1tags~1/get/responses/401"
           },
           "403": {
-            "$ref": "#/paths/~1tags~1get-all/get/responses/403"
+            "$ref": "#/paths/~1tags~1/get/responses/403"
           }
         }
       }
@@ -3847,13 +3847,13 @@
             }
           },
           "400": {
-            "$ref": "#/paths/~1users~1login/post/responses/400"
+            "$ref": "#/paths/~1tags~1/get/responses/400"
           },
           "401": {
-            "$ref": "#/paths/~1tags~1get-all/get/responses/401"
+            "$ref": "#/paths/~1tags~1/get/responses/401"
           },
           "403": {
-            "$ref": "#/paths/~1tags~1get-all/get/responses/403"
+            "$ref": "#/paths/~1tags~1/get/responses/403"
           },
           "404": {
             "$ref": "#/paths/~1users~1login/post/responses/404"
@@ -3950,13 +3950,13 @@
             }
           },
           "400": {
-            "$ref": "#/paths/~1users~1login/post/responses/400"
+            "$ref": "#/paths/~1tags~1/get/responses/400"
           },
           "401": {
-            "$ref": "#/paths/~1tags~1get-all/get/responses/401"
+            "$ref": "#/paths/~1tags~1/get/responses/401"
           },
           "403": {
-            "$ref": "#/paths/~1tags~1get-all/get/responses/403"
+            "$ref": "#/paths/~1tags~1/get/responses/403"
           },
           "404": {
             "$ref": "#/paths/~1users~1login/post/responses/404"
@@ -4033,13 +4033,13 @@
             }
           },
           "400": {
-            "$ref": "#/paths/~1users~1login/post/responses/400"
+            "$ref": "#/paths/~1tags~1/get/responses/400"
           },
           "401": {
-            "$ref": "#/paths/~1tags~1get-all/get/responses/401"
+            "$ref": "#/paths/~1tags~1/get/responses/401"
           },
           "403": {
-            "$ref": "#/paths/~1tags~1get-all/get/responses/403"
+            "$ref": "#/paths/~1tags~1/get/responses/403"
           }
         }
       }
@@ -4125,13 +4125,13 @@
             }
           },
           "400": {
-            "$ref": "#/paths/~1users~1login/post/responses/400"
+            "$ref": "#/paths/~1tags~1/get/responses/400"
           },
           "401": {
-            "$ref": "#/paths/~1tags~1get-all/get/responses/401"
+            "$ref": "#/paths/~1tags~1/get/responses/401"
           },
           "403": {
-            "$ref": "#/paths/~1tags~1get-all/get/responses/403"
+            "$ref": "#/paths/~1tags~1/get/responses/403"
           },
           "404": {
             "$ref": "#/paths/~1users~1login/post/responses/404"
@@ -4290,13 +4290,13 @@
             }
           },
           "400": {
-            "$ref": "#/paths/~1users~1login/post/responses/400"
+            "$ref": "#/paths/~1tags~1/get/responses/400"
           },
           "401": {
-            "$ref": "#/paths/~1tags~1get-all/get/responses/401"
+            "$ref": "#/paths/~1tags~1/get/responses/401"
           },
           "403": {
-            "$ref": "#/paths/~1tags~1get-all/get/responses/403"
+            "$ref": "#/paths/~1tags~1/get/responses/403"
           },
           "404": {
             "$ref": "#/paths/~1users~1login/post/responses/404"
@@ -4356,13 +4356,13 @@
             }
           },
           "400": {
-            "$ref": "#/paths/~1users~1login/post/responses/400"
+            "$ref": "#/paths/~1tags~1/get/responses/400"
           },
           "401": {
-            "$ref": "#/paths/~1tags~1get-all/get/responses/401"
+            "$ref": "#/paths/~1tags~1/get/responses/401"
           },
           "403": {
-            "$ref": "#/paths/~1tags~1get-all/get/responses/403"
+            "$ref": "#/paths/~1tags~1/get/responses/403"
           }
         }
       }
@@ -4525,13 +4525,13 @@
             }
           },
           "400": {
-            "$ref": "#/paths/~1users~1login/post/responses/400"
+            "$ref": "#/paths/~1tags~1/get/responses/400"
           },
           "401": {
-            "$ref": "#/paths/~1tags~1get-all/get/responses/401"
+            "$ref": "#/paths/~1tags~1/get/responses/401"
           },
           "403": {
-            "$ref": "#/paths/~1tags~1get-all/get/responses/403"
+            "$ref": "#/paths/~1tags~1/get/responses/403"
           },
           "404": {
             "$ref": "#/paths/~1users~1login/post/responses/404"
@@ -4724,13 +4724,13 @@
             }
           },
           "400": {
-            "$ref": "#/paths/~1users~1login/post/responses/400"
+            "$ref": "#/paths/~1tags~1/get/responses/400"
           },
           "401": {
-            "$ref": "#/paths/~1tags~1get-all/get/responses/401"
+            "$ref": "#/paths/~1tags~1/get/responses/401"
           },
           "403": {
-            "$ref": "#/paths/~1tags~1get-all/get/responses/403"
+            "$ref": "#/paths/~1tags~1/get/responses/403"
           },
           "404": {
             "$ref": "#/paths/~1users~1login/post/responses/404"
@@ -4886,13 +4886,13 @@
             }
           },
           "400": {
-            "$ref": "#/paths/~1users~1login/post/responses/400"
+            "$ref": "#/paths/~1tags~1/get/responses/400"
           },
           "401": {
-            "$ref": "#/paths/~1tags~1get-all/get/responses/401"
+            "$ref": "#/paths/~1tags~1/get/responses/401"
           },
           "403": {
-            "$ref": "#/paths/~1tags~1get-all/get/responses/403"
+            "$ref": "#/paths/~1tags~1/get/responses/403"
           },
           "404": {
             "$ref": "#/paths/~1users~1login/post/responses/404"
@@ -5007,13 +5007,13 @@
             }
           },
           "400": {
-            "$ref": "#/paths/~1users~1login/post/responses/400"
+            "$ref": "#/paths/~1tags~1/get/responses/400"
           },
           "401": {
-            "$ref": "#/paths/~1tags~1get-all/get/responses/401"
+            "$ref": "#/paths/~1tags~1/get/responses/401"
           },
           "403": {
-            "$ref": "#/paths/~1tags~1get-all/get/responses/403"
+            "$ref": "#/paths/~1tags~1/get/responses/403"
           },
           "404": {
             "$ref": "#/paths/~1users~1login/post/responses/404"
@@ -5068,13 +5068,13 @@
             }
           },
           "400": {
-            "$ref": "#/paths/~1users~1login/post/responses/400"
+            "$ref": "#/paths/~1tags~1/get/responses/400"
           },
           "401": {
-            "$ref": "#/paths/~1tags~1get-all/get/responses/401"
+            "$ref": "#/paths/~1tags~1/get/responses/401"
           },
           "403": {
-            "$ref": "#/paths/~1tags~1get-all/get/responses/403"
+            "$ref": "#/paths/~1tags~1/get/responses/403"
           }
         }
       }
@@ -5135,13 +5135,13 @@
             }
           },
           "400": {
-            "$ref": "#/paths/~1users~1login/post/responses/400"
+            "$ref": "#/paths/~1tags~1/get/responses/400"
           },
           "401": {
-            "$ref": "#/paths/~1tags~1get-all/get/responses/401"
+            "$ref": "#/paths/~1tags~1/get/responses/401"
           },
           "403": {
-            "$ref": "#/paths/~1tags~1get-all/get/responses/403"
+            "$ref": "#/paths/~1tags~1/get/responses/403"
           },
           "404": {
             "$ref": "#/paths/~1users~1login/post/responses/404"
@@ -5220,13 +5220,13 @@
             }
           },
           "400": {
-            "$ref": "#/paths/~1users~1login/post/responses/400"
+            "$ref": "#/paths/~1tags~1/get/responses/400"
           },
           "401": {
-            "$ref": "#/paths/~1tags~1get-all/get/responses/401"
+            "$ref": "#/paths/~1tags~1/get/responses/401"
           },
           "403": {
-            "$ref": "#/paths/~1tags~1get-all/get/responses/403"
+            "$ref": "#/paths/~1tags~1/get/responses/403"
           },
           "409": {
             "$ref": "#/paths/~1users~1register/post/responses/409"
@@ -5351,13 +5351,13 @@
             }
           },
           "400": {
-            "$ref": "#/paths/~1users~1login/post/responses/400"
+            "$ref": "#/paths/~1tags~1/get/responses/400"
           },
           "401": {
-            "$ref": "#/paths/~1tags~1get-all/get/responses/401"
+            "$ref": "#/paths/~1tags~1/get/responses/401"
           },
           "403": {
-            "$ref": "#/paths/~1tags~1get-all/get/responses/403"
+            "$ref": "#/paths/~1tags~1/get/responses/403"
           },
           "404": {
             "$ref": "#/paths/~1users~1login/post/responses/404"
@@ -5396,13 +5396,13 @@
             "$ref": "#/paths/~1admin~1plans~1update~1%7BplanId%7D/patch/responses/200"
           },
           "400": {
-            "$ref": "#/paths/~1users~1login/post/responses/400"
+            "$ref": "#/paths/~1tags~1/get/responses/400"
           },
           "401": {
-            "$ref": "#/paths/~1tags~1get-all/get/responses/401"
+            "$ref": "#/paths/~1tags~1/get/responses/401"
           },
           "403": {
-            "$ref": "#/paths/~1tags~1get-all/get/responses/403"
+            "$ref": "#/paths/~1tags~1/get/responses/403"
           },
           "404": {
             "$ref": "#/paths/~1users~1login/post/responses/404"

@@ -47,7 +47,7 @@
         }
     ],
     "paths": {
-        "/users/verify-email/{emailVerifyToken}": {
+        "/users/redirects/verify-email/{emailVerifyToken}": {
             "$ref": "./paths/user/verify-email.json"
         },
         "/users/profile": {
@@ -59,10 +59,10 @@
         "/users/register": {
             "$ref": "./paths/user/register.json"
         },
-        "/users/change-email-get-email": {
+        "/users/emails/email-change": {
             "$ref": "./paths/user/change-email-get-email.json"
         },
-        "/users/change-email/{changeEmailToken}": {
+        "/users/redirects/change-email/{changeEmailToken}": {
             "$ref": "./paths/user/change-email.json"
         },
         "/users/logout": {
@@ -71,16 +71,16 @@
         "/users/upload-avatar": {
             "$ref": "./paths/user/upload-avatar.json"
         },
-        "/users/get-password-reset-email": {
+        "/users/emails/password-reset": {
             "$ref": "./paths/user/get-password-reset-email.json"
         },
-        "/users/reset-password": {
+        "/users/redirects/password-reset": {
             "$ref": "./paths/user/reset-password.json"
         },
-        "/users/get-email-verification-email": {
+        "/users/emails/email-verification": {
             "$ref": "./paths/user/get-email-verification-email.json"
         },
-        "/users/change-password": {
+        "/users/password-change": {
             "$ref": "./paths/user/change-password.json"
         },
         "/admin/users/get-all": {

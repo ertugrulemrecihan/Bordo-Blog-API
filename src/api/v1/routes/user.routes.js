@@ -29,7 +29,7 @@ router.route('/upload-avatar').patch(
 );
 
 router
-    .route('/change-email-get-email')
+    .route('/emails/email-change')
     .patch(
         authenticate,
         bodyValidator(schemas.createChangeEmailTokenValidation),
@@ -37,37 +37,41 @@ router
     );
 
 router
-    .route('/get-password-reset-email')
+    .route('/emails/password-reset')
     .post(
         bodyValidator(schemas.createPasswordResetTokenValidation),
         controller.getPasswordResetEmail
     );
 
 router
-    .route('/get-email-verification-email')
+    .route('/emails/email-verification')
     .post(
         bodyValidator(schemas.createEmailVerificationTokenValidation),
         controller.getEmailVerificationEmail
     );
 
 router
-    .route('/reset-password')
+    .route('/redirects/password-reset')
     .post(
         bodyValidator(schemas.resetPasswordValidation),
         controller.resetPassword
     );
 
 router
-    .route('/change-password')
+    .route('/password-change')
     .post(
         authenticate,
         bodyValidator(schemas.changePasswordValidation),
         controller.changePassword
     );
 
-router.route('/verify-email/:emailVerifyToken').get(controller.verifyEmail);
+router
+    .route('/redirects/verify-email/:emailVerifyToken')
+    .get(controller.verifyEmail);
 
-router.route('/change-email/:changeEmailToken').get(controller.changeEmail);
+router
+    .route('/redirects/change-email/:changeEmailToken')
+    .get(controller.changeEmail);
 
 router.route('/profile').get(authenticate, controller.getMyProfile);
 
