@@ -15,7 +15,7 @@ router
     .route('/my/:id')
     .get(authenticate, paramIdValidator, controller.fetchOneMyPost);
 
-router.route('/previews').get(controller.fetchAllPreviews);
+router.route('/previews').get(queryOptions, controller.fetchAllPreviews);
 
 router.route('/').post(
     authenticate,
