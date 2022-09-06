@@ -216,7 +216,7 @@ class UserController extends BaseController {
 
         const verifyUrl =
             process.env.NODE_ENV == 'PRODUCTION'
-                ? `${process.env.API_URL}/users/change-email/${changeEmailToken}`
+                ? `${process.env.API_URL}/api/v1/users/change-email/${changeEmailToken}`
                 : `${process.env.API_URL}:${process.env.PORT}/api/v1/users/change-email/${changeEmailToken}`;
 
         eventEmitter.emit('send_email', {

@@ -187,10 +187,36 @@ class PostController extends BaseController {
         }
     };
 
-    fetchAllPreviews = async (req, res) => {
-        const response = await postService.fetchAll({
+    fetchAllPreviews = async (req, res, next) => {
+        const posts = await postService.fetchAll({
+            queryOptions: req?.queryOptions,
             select: ['-content', '-images', '-comments'],
         });
+
+        const response = {
+            posts,
+        };
+
+        if (req?.queryOptions?.pagination?.limit) {
+            const totalItemCount = await postService.count();
+
+            const paginationInfo = paginationHelper.getPaginationInfo(
+                totalItemCount,
+                req.queryOptions.pagination?.limit,
+                req.queryOptions.pagination?.page
+            );
+
+            if (paginationInfo.error) {
+                return next(
+                    new ApiError(
+                        paginationInfo.error.message,
+                        paginationInfo.error.code
+                    )
+                );
+            }
+
+            response.paginationInfo = paginationInfo.data;
+        }
 
         ApiDataSuccess.send(
             response,

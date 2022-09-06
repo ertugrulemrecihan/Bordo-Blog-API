@@ -4,40 +4,128 @@
 <head>
     <title></title>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <style type="text/css">
         @media screen {
+
+            /* cyrillic-ext */
             @font-face {
-                font-family: 'Lato';
+                font-family: 'Nunito';
                 font-style: normal;
-                font-weight: 400;
-                src: local('Lato Regular'), local('Lato-Regular'), url(https://fonts.gstatic.com/s/lato/v11/qIIYRU-oROkIk8vfvxw6QvesZW2xOQ-xsNqO47m55DA.woff) format('woff');
+                font-weight: 600;
+                font-display: swap;
+                src: url(https://fonts.gstatic.com/s/nunito/v25/XRXV3I6Li01BKofIOOaBXso.woff2) format('woff2');
+                unicode-range: U+0460-052F, U+1C80-1C88, U+20B4, U+2DE0-2DFF,
+                    U+A640-A69F, U+FE2E-FE2F;
             }
 
+            /* cyrillic */
             @font-face {
-                font-family: 'Lato';
+                font-family: 'Nunito';
                 font-style: normal;
-                font-weight: 700;
-                src: local('Lato Bold'), local('Lato-Bold'), url(https://fonts.gstatic.com/s/lato/v11/qdgUG4U09HnJwhYI-uK18wLUuEpTyoUstqEm5AMlJo4.woff) format('woff');
+                font-weight: 600;
+                font-display: swap;
+                src: url(https://fonts.gstatic.com/s/nunito/v25/XRXV3I6Li01BKofIMeaBXso.woff2) format('woff2');
+                unicode-range: U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1,
+                    U+2116;
             }
 
+            /* vietnamese */
             @font-face {
-                font-family: 'Lato';
-                font-style: italic;
-                font-weight: 400;
-                src: local('Lato Italic'), local('Lato-Italic'), url(https://fonts.gstatic.com/s/lato/v11/RYyZNoeFgb0l7W3Vu1aSWOvvDin1pK8aKteLpeZ5c0A.woff) format('woff');
+                font-family: 'Nunito';
+                font-style: normal;
+                font-weight: 600;
+                font-display: swap;
+                src: url(https://fonts.gstatic.com/s/nunito/v25/XRXV3I6Li01BKofIOuaBXso.woff2) format('woff2');
+                unicode-range: U+0102-0103, U+0110-0111, U+0128-0129,
+                    U+0168-0169, U+01A0-01A1, U+01AF-01B0, U+1EA0-1EF9,
+                    U+20AB;
             }
 
+            /* latin-ext */
             @font-face {
-                font-family: 'Lato';
-                font-style: italic;
-                font-weight: 700;
-                src: local('Lato Bold Italic'), local('Lato-BoldItalic'), url(https://fonts.gstatic.com/s/lato/v11/HkF_qI1x_noxlxhrhMQYELO3LdcAZYWl9Si6vvxL-qU.woff) format('woff');
+                font-family: 'Nunito';
+                font-style: normal;
+                font-weight: 600;
+                font-display: swap;
+                src: url(https://fonts.gstatic.com/s/nunito/v25/XRXV3I6Li01BKofIO-aBXso.woff2) format('woff2');
+                unicode-range: U+0100-024F, U+0259, U+1E00-1EFF, U+2020,
+                    U+20A0-20AB, U+20AD-20CF, U+2113, U+2C60-2C7F,
+                    U+A720-A7FF;
+            }
+
+            /* latin */
+            @font-face {
+                font-family: 'Nunito';
+                font-style: normal;
+                font-weight: 600;
+                font-display: swap;
+                src: url(https://fonts.gstatic.com/s/nunito/v25/XRXV3I6Li01BKofINeaB.woff2) format('woff2');
+                unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC,
+                    U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC,
+                    U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+            }
+
+            /* cyrillic-ext */
+            @font-face {
+                font-family: 'Nunito';
+                font-style: normal;
+                font-weight: 800;
+                font-display: swap;
+                src: url(https://fonts.gstatic.com/s/nunito/v25/XRXV3I6Li01BKofIOOaBXso.woff2) format('woff2');
+                unicode-range: U+0460-052F, U+1C80-1C88, U+20B4, U+2DE0-2DFF,
+                    U+A640-A69F, U+FE2E-FE2F;
+            }
+
+            /* cyrillic */
+            @font-face {
+                font-family: 'Nunito';
+                font-style: normal;
+                font-weight: 800;
+                font-display: swap;
+                src: url(https://fonts.gstatic.com/s/nunito/v25/XRXV3I6Li01BKofIMeaBXso.woff2) format('woff2');
+                unicode-range: U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1,
+                    U+2116;
+            }
+
+            /* vietnamese */
+            @font-face {
+                font-family: 'Nunito';
+                font-style: normal;
+                font-weight: 800;
+                font-display: swap;
+                src: url(https://fonts.gstatic.com/s/nunito/v25/XRXV3I6Li01BKofIOuaBXso.woff2) format('woff2');
+                unicode-range: U+0102-0103, U+0110-0111, U+0128-0129,
+                    U+0168-0169, U+01A0-01A1, U+01AF-01B0, U+1EA0-1EF9,
+                    U+20AB;
+            }
+
+            /* latin-ext */
+            @font-face {
+                font-family: 'Nunito';
+                font-style: normal;
+                font-weight: 800;
+                font-display: swap;
+                src: url(https://fonts.gstatic.com/s/nunito/v25/XRXV3I6Li01BKofIO-aBXso.woff2) format('woff2');
+                unicode-range: U+0100-024F, U+0259, U+1E00-1EFF, U+2020,
+                    U+20A0-20AB, U+20AD-20CF, U+2113, U+2C60-2C7F,
+                    U+A720-A7FF;
+            }
+
+            /* latin */
+            @font-face {
+                font-family: 'Nunito';
+                font-style: normal;
+                font-weight: 800;
+                font-display: swap;
+                src: url(https://fonts.gstatic.com/s/nunito/v25/XRXV3I6Li01BKofINeaB.woff2) format('woff2');
+                unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC,
+                    U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC,
+                    U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
             }
         }
 
-        /* CLIENT-SPECIFIC STYLES */
         body,
         table,
         td,
@@ -56,7 +144,6 @@
             -ms-interpolation-mode: bicubic;
         }
 
-        /* RESET STYLES */
         img {
             border: 0;
             height: auto;
@@ -76,7 +163,6 @@
             width: 100% !important;
         }
 
-        /* iOS BLUE LINKS */
         a[x-apple-data-detectors] {
             color: inherit !important;
             text-decoration: none !important;
@@ -86,89 +172,161 @@
             line-height: inherit !important;
         }
 
-        /* MOBILE STYLES */
-        @media screen and (max-width:600px) {
+        @media screen and (max-width: 600px) {
             h1 {
                 font-size: 32px !important;
                 line-height: 32px !important;
             }
         }
 
-        /* ANDROID CENTER FIX */
-        div[style*="margin: 16px 0;"] {
+        div[style*='margin: 16px 0;'] {
             margin: 0 !important;
         }
     </style>
 </head>
 
-<body style="background-color: #f4f4f4; margin: 0 !important; padding: 0 !important;">
-    <!-- HIDDEN PREHEADER TEXT -->
-    <div style="display: none; font-size: 1px; color: #fefefe; line-height: 1px; font-family: 'Lato', Helvetica, Arial, sans-serif; max-height: 0px; max-width: 0px; opacity: 0; overflow: hidden;"> We're thrilled to have you here! Get ready to dive into your new account.
-    </div>
-    <table border="0" cellpadding="0" cellspacing="0" width="100%">
-        <!-- LOGO -->
+<body style="
+            background-color: #fff;
+            margin: 0 !important;
+            padding: 0 !important;
+        ">
+    <table border="0" cellpadding="0" cellspacing="0" width="100%" style="">
         <tr>
-            <td bgcolor="#FFA73B" align="center">
-                <table border="0" cellpadding="0" cellspacing="0" width="100%" style="max-width: 600px;">
+            <td bgcolor="#fff" align="center">
+                <table border="0" cellpadding="0" cellspacing="0" width="100%" style="max-width: 600px">
                     <tr>
-                        <td align="center" valign="top" style="padding: 40px 10px 40px 10px;"> </td>
+                        <td align="center" valign="top" style="padding: 40px 10px 40px 10px"></td>
                     </tr>
                 </table>
             </td>
         </tr>
         <tr>
-            <td bgcolor="#FFA73B" align="center" style="padding: 0px 10px 0px 10px;">
-                <table border="0" cellpadding="0" cellspacing="0" width="100%" style="max-width: 600px;">
+            <td bgcolor="#fff" align="center" style="padding: 0px 10px 0px 10px">
+                <table border="0" cellpadding="0" cellspacing="0" width="100%" style="max-width: 640px">
                     <tr>
-                        <td bgcolor="#ffffff" align="center" valign="top" style="padding: 40px 20px 20px 20px; border-radius: 4px 4px 0px 0px; color: #111111; font-family: 'Lato', Helvetica, Arial, sans-serif; font-size: 48px; font-weight: 400; letter-spacing: 4px; line-height: 48px;">
-                            <h1 style="font-size: 48px; font-weight: 400; margin: 2;">Welcome! {{fullName}}</h1> <img src=" https://img.icons8.com/clouds/100/000000/handshake.png" width="125" height="120" style="display: block; border: 0px;" />
+                        <td bgcolor="#610000" align="center" valign="top" style="
+                                    padding: 30px;
+                                    border-radius: 4px 4px 0px 0px;
+                                    color: #fff;
+                                    font-family: 'Nunito', sans-serif;
+                                    font-size: 48px;
+                                    font-weight: 400;
+                                    letter-spacing: 4px;
+                                    line-height: 48px;
+                                    border-radius: 15px 15px 0 0;
+                                ">
+                            <img src="https://lh3.googleusercontent.com/fife/AAbDypBrLAQoc-Wu7ytfYd5_ErGRrZUDHrNg5fcCiEAf7t7aGzQpHtkt4_DZqkMxZgSttfHccBVp38--2EChhzko0PYf156X5xRF1fEXHe5rDt9SYKl0X0c6F0orDAM1E3ibBrFyZRuRznBt-g4cAqJiZtIiFofSNeJ9EhUXiVHDHwCpF6uEDRSkMwFx-q1xvCZiU_nK5l8Qiu8XQSfYtChW4S_Yd3QzGr1WNyEyl4sujo9lu37AHQnmuB9g4rB8WI5GMp9XlrfUfuuxgLoFzMivyVMJN4Iq4iHeUh9AEPRDy-hwBHhYth63nt97TKWgU_pMVNHMTQrlFfacZIoBRt2OHuowtD9PRWmG4xj42r9-RIdfd0tILctjrtstZtSMhr_kXCv2FnLptowylMrselZBt5yTqvdDVR9zV4Ot54dl5Oo7e4Faqpi2usMyj6tfvQ6fHhhndKLsEPgHYtHmKQik1UAGpUgm4FXY8WTlxMzqeKQaPRDkBC7jqQZSa-RcOEM9_wfND4a4-_oiuYo6am8VgDmIyRzN6iGlXFcBMiBaqBOlY5sbH4-H6iZDvFoHdPEgjbUi4QcUWbKMz2T4pDFoowAZn1Q8hsUH2utguLsM_bg0-oiSOsBSIyEkf9gU-dqFummAekbOPbUkdX8_FAenc5DQ6tvU8psqVkm-WpcaoAjtVXVp0HZihQYVCug_wdEb5vc8AvkFADx57VDSYuAc9sSJrFDzkdadT-nXGqhqCURqxvKqS1LZupWofLctntAJ7pww-fo_1GHU4LF0dZ7pqq6gFA9vIg03dUNRaVIUSKx01XM6ovEBlbik9FvfEHA0wKiMpbqtUCiMqIoNvUZIlcUiyb17TdRImIJz4xZWuyufhsZ_KC4mopVZ24tVN4aOJCnFOZ8oDFUTmC1gNTMuZLWq0B9jK3q10HBBfBx7N2qw8-vIU5zZuisHgu2kbU4oMa4_yiQ6L_1DbIFFc2Tyr6zctp86YlB-sLZU2IlDGqMfmIA58ngJTxyio_agviZxy92ipxOMryUNSWKhREDZ_NNnj_xdhBWo08wBM5KTo8Pp957FEEjzCMqzkHaFChRoAPtZ_6yyjOcFtgE3WBrWBfTJJOAqQbeZ58p5VNiNr_sHXgNVXq_4Cs_ZM6qWfpY-EIauCbWRFNhlOdPtbrWziNbr_ou6yuBRcJb9LAhsI7CFVPMcr-_YBYViGtsbAAIk52UJ1PM5Zx0z4qxNPFfaNuY-OTatwHVbc9Pxd_QHXXfsqODpbX_rjL3TrXkPjczQPnbVHCpCeNd-BWUcVxru98dhaR_swOl8nuqSHs_XqBGqEXPKmbpYYsi0K2yLsyaOIjsuihF9vi91zP0DMpRPWWK15eMcaHkIQRMiUREUmX8HvmPMDtI=w1920-h933"
+                                style="display: block; border: 0px" />
                         </td>
                     </tr>
                 </table>
             </td>
         </tr>
         <tr>
-            <td bgcolor="#f4f4f4" align="center" style="padding: 0px 10px 0px 10px;">
-                <table border="0" cellpadding="0" cellspacing="0" width="100%" style="max-width: 600px;">
+            <td bgcolor="#fff" align="center" style="padding: 0px 10px 0px 10px">
+                <table border="0" cellpadding="0" cellspacing="0" width="100%"
+                    style="max-width: 640px; border: 1px solid #8282821c">
                     <tr>
-                        <td bgcolor="#ffffff" align="left" style="padding: 20px 30px 40px 30px; color: #666666; font-family: 'Lato', Helvetica, Arial, sans-serif; font-size: 18px; font-weight: 400; line-height: 25px;">
-                            <p style="margin: 0;">We're excited to have you get started. First, you need to confirm your account. Just press the button below.</p>
+                        <td bgcolor="#ffffff" align="center" style="
+                                    padding: 20px 30px 20px 30px;
+                                    color: #333333;
+                                    font-family: 'Nunito', sans-serif;
+                                    font-size: 18px;
+                                    font-weight: 400;
+                                    line-height: 25px;
+                                ">
+                            <h2 style="margin: 0">Hi {{fullName}}!</h2>
                         </td>
                     </tr>
                     <tr>
-                        <td bgcolor="#ffffff" align="left">
+                        <td bgcolor="#ffffff" align="center" style="
+                                    padding: 0px 30px 0px 30px;
+                                    color: #828282;
+                                    font-family: 'Nunito', sans-serif;
+                                    font-size: 18px;
+                                    font-weight: 400;
+                                    line-height: 25px;
+                                ">
+                            <p style="margin-bottom: 15px">
+                                Welcome to the Bordo Blog. <br /><br />
+                                You can start making money quickly by
+                                publish the post you want in Bordo Blog.
+                            </p>
+                            <p style="margin-bottom: 15px">
+                                Don't forget to verify your email address if
+                                you're ready. <br /><br />
+                                You can use the button below to verify your
+                                account.
+                            </p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td bgcolor="#ffffff" align="center">
                             <table width="100%" border="0" cellspacing="0" cellpadding="0">
                                 <tr>
-                                    <td bgcolor="#ffffff" align="center" style="padding: 20px 30px 60px 30px;">
+                                    <td bgcolor="#ffffff" align="center" style="padding: 20px">
                                         <table border="0" cellspacing="0" cellpadding="0">
                                             <tr>
-                                                <td align="center" style="border-radius: 3px;" bgcolor="#FFA73B"><a href="{{validationUrl}}" target="_blank" style="font-size: 20px; font-family: Helvetica, Arial, sans-serif; color: #ffffff; text-decoration: none; color: #ffffff; text-decoration: none; padding: 15px 25px; border-radius: 2px; border: 1px solid #FFA73B; display: inline-block;">Confirm Account</a></td>
+                                                <td style="
+                                                            border-radius: 10px;
+                                                        " bgcolor="#610000">
+                                                    <a href="{{validationUrl}}" target="_blank" style="
+                                                                font-size: 20px;
+                                                                font-family: 'Nunito',
+                                                                    sans-serif;
+                                                                color: #ffffff;
+                                                                text-decoration: none;
+                                                                color: #ffffff;
+                                                                text-decoration: none;
+                                                                padding: 15px
+                                                                    25px;
+                                                                border-radius: 2px;
+                                                                display: inline-block;
+                                                            ">Verify My Email</a>
+                                                </td>
                                             </tr>
                                         </table>
                                     </td>
                                 </tr>
                             </table>
                         </td>
-                    </tr> <!-- COPY -->
+                    </tr>
+                    <!-- COPY -->
                     <tr>
-                        <td bgcolor="#ffffff" align="left" style="padding: 0px 30px 0px 30px; color: #666666; font-family: 'Lato', Helvetica, Arial, sans-serif; font-size: 18px; font-weight: 400; line-height: 25px;">
-                            <p style="margin: 0;">If that doesn't work, copy and paste the following link in your browser:</p>
-                        </td>
-                    </tr> <!-- COPY -->
-                    <tr>
-                        <td bgcolor="#ffffff" align="left" style="padding: 20px 30px 20px 30px; color: #666666; font-family: 'Lato', Helvetica, Arial, sans-serif; font-size: 18px; font-weight: 400; line-height: 25px;">
-                            <p style="margin: 0;"><a href="{{validationUrl}}" target="_blank" style="color: #FFA73B;">{{validationUrl}}</a></p>
+                        <td bgcolor="#ffffff" align="center" style="
+                                    padding: 0px 30px 0px 30px;
+                                    color: #666666;
+                                    font-family: 'Nunito', sans-serif;
+                                    font-size: 18px;
+                                    font-weight: 400;
+                                    line-height: 25px;
+                                ">
+                            <p style="margin-bottom: 10px; font-size: 16px">
+                                This link is valid for {{expires}} minutes
+                            </p>
+                            <p style="margin-bottom: 20px">Bordo Blog</p>
                         </td>
                     </tr>
                 </table>
             </td>
         </tr>
         <tr>
-            <td bgcolor="#f4f4f4" align="center" style="padding: 30px 10px 0px 10px;">
-                <table border="0" cellpadding="0" cellspacing="0" width="100%" style="max-width: 600px;">
+            <td bgcolor="#fff" align="center" style="padding: 0 10px 0px 10px">
+                <table border="0" cellpadding="0" cellspacing="0" width="100%" style="max-width: 640px">
                     <tr>
-                        <td bgcolor="#FFECD1" align="center" style="padding: 30px 30px 30px 30px; border-radius: 4px 4px 4px 4px; color: #666666; font-family: 'Lato', Helvetica, Arial, sans-serif; font-size: 18px; font-weight: 400; line-height: 25px;">
-                            <p style="margin: 0;"><p style="color: #FFA73B;">Bu bağlantı {{expires}} dakika içinde sona erecektir.</p></p>
+                        <td bgcolor="#E9F1FD" style="
+                                    padding: 30px;
+                                    border-radius: 0 0 15px 15px;
+                                    color: #828282;
+                                    font-family: 'Nunito', sans-serif;
+                                    font-size: 18px;
+                                    font-weight: 400;
+                                    line-height: 25px;
+                                    text-align: center;
+                                ">
+                            <p style="margin-bottom: 10px; color: #9bc3ff">
+                                Bordo Blog All Rights Reserved &copy; 2022
+                            </p>
                         </td>
                     </tr>
                 </table>

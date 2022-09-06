@@ -14,6 +14,14 @@ module.exports = () => {
         });
 
         if (emailData.template) {
+            emailData.context = {
+                ...emailData.context,
+                baseUrl:
+                    process.env.NODE_ENV == 'PRODUCTION'
+                        ? `${process.env.API_URL}`
+                        : `${process.env.API_URL}:${process.env.PORT}`,
+            };
+
             transporter.use(
                 'compile',
                 hbs({
