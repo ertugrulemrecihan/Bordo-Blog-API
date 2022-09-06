@@ -259,45 +259,32 @@ class PostController extends BaseController {
         );
     };
 
-    addView = async (req, res, next) => {
+    fetchOtherUsersPost = async (req, res, next) => {
         const postId = req.params.id;
 
-        const post = await postService.fetchOneById(postId);
+        const post = await postService.fetchOneByQuery({
+            writer: { $ne: req.user._id },
+            _id: postId,
+        });
         if (!post) {
             return next(new ApiError('Post not found', httpStatus.NOT_FOUND));
         }
 
-        const isExists = post.viewers.some(
-            (u) => u._id.toString() == req.user._id.toString()
-        );
+        let addViewerResult = null;
 
-        if (isExists) {
-            return next(
-                new ApiError(
-                    'User has already viewed this post',
-                    httpStatus.CONFLICT
-                )
-            );
-        }
-
-        post.viewers.push(req.user);
-
-        const updatedPost = await postService.updateById(postId, {
-            viewers: post.viewers,
-        });
-
-        if (!updatedPost) {
-            return next(
-                new ApiError(
-                    'There was a problem adding the viewer',
-                    httpStatus.INTERNAL_SERVER_ERROR
-                )
-            );
+        if (
+            !post.viewers.some(
+                (user) => user._id.toString() == req.user._id.toString()
+            )
+        ) {
+            addViewerResult = await postService.updateById(post._id, {
+                $push: { viewers: req.user._id },
+            });
         }
 
         ApiDataSuccess.send(
-            updatedPost,
-            'User successfully added to post as viewer',
+            addViewerResult || post,
+            'Post fetched successfully',
             httpStatus.OK,
             res
         );

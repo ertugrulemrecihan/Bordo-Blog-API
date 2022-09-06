@@ -96,7 +96,7 @@
             "$ref": "#/paths/~1plans/get/responses/400"
           },
           "500": {
-            "$ref": "#/paths/~1addresses/post/responses/500"
+            "$ref": "#/paths/~1posts/post/responses/500"
           }
         }
       }
@@ -145,7 +145,7 @@
                               "type": "object",
                               "allOf": [
                                 {
-                                  "$ref": "#/paths/~1posts~1create/post/responses/201/content/application~1json/schema/allOf/2/properties/data/allOf/0"
+                                  "$ref": "#/paths/~1posts/post/responses/201/content/application~1json/schema/allOf/2/properties/data/allOf/0"
                                 },
                                 {
                                   "$ref": "#/components/requestBodies/register/content/application~1json/schema/allOf/0/allOf/0"
@@ -266,10 +266,43 @@
             "$ref": "#/paths/~1plans/get/responses/400"
           },
           "401": {
-            "$ref": "#/paths/~1plans/get/responses/401"
+            "description": "Unauthorized error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "allOf": [
+                    {
+                      "type": "object",
+                      "properties": {
+                        "error": {
+                          "properties": {
+                            "message": {
+                              "type": "string"
+                            }
+                          }
+                        },
+                        "success": {
+                          "type": "boolean",
+                          "default": false
+                        }
+                      }
+                    },
+                    {
+                      "type": "object",
+                      "properties": {
+                        "statusCode": {
+                          "type": "number",
+                          "default": 401
+                        }
+                      }
+                    }
+                  ]
+                }
+              }
+            }
           },
           "500": {
-            "$ref": "#/paths/~1addresses/post/responses/500"
+            "$ref": "#/paths/~1posts/post/responses/500"
           }
         }
       }
@@ -338,10 +371,10 @@
             "$ref": "#/paths/~1plans/get/responses/400"
           },
           "404": {
-            "$ref": "#/paths/~1addresses/post/responses/404"
+            "$ref": "#/paths/~1posts/post/responses/404"
           },
           "500": {
-            "$ref": "#/paths/~1addresses/post/responses/500"
+            "$ref": "#/paths/~1posts/post/responses/500"
           }
         }
       }
@@ -399,7 +432,7 @@
             "$ref": "#/paths/~1tags~1admin/post/responses/409"
           },
           "500": {
-            "$ref": "#/paths/~1addresses/post/responses/500"
+            "$ref": "#/paths/~1posts/post/responses/500"
           }
         }
       }
@@ -528,7 +561,7 @@
             "$ref": "#/paths/~1tags~1admin/post/responses/409"
           },
           "500": {
-            "$ref": "#/paths/~1addresses/post/responses/500"
+            "$ref": "#/paths/~1posts/post/responses/500"
           }
         }
       }
@@ -592,7 +625,7 @@
             "$ref": "#/paths/~1plans/get/responses/401"
           },
           "500": {
-            "$ref": "#/paths/~1addresses/post/responses/500"
+            "$ref": "#/paths/~1posts/post/responses/500"
           }
         }
       }
@@ -654,7 +687,7 @@
                         "data": {
                           "allOf": [
                             {
-                              "$ref": "#/paths/~1posts~1create/post/responses/201/content/application~1json/schema/allOf/2/properties/data/allOf/0"
+                              "$ref": "#/paths/~1posts/post/responses/201/content/application~1json/schema/allOf/2/properties/data/allOf/0"
                             },
                             {
                               "$ref": "#/components/requestBodies/register/content/application~1json/schema/allOf/0/allOf/0"
@@ -756,7 +789,7 @@
             "$ref": "#/paths/~1plans/get/responses/403"
           },
           "500": {
-            "$ref": "#/paths/~1addresses/post/responses/500"
+            "$ref": "#/paths/~1posts/post/responses/500"
           }
         }
       }
@@ -802,7 +835,7 @@
             "$ref": "#/paths/~1plans/get/responses/400"
           },
           "404": {
-            "$ref": "#/paths/~1addresses/post/responses/404"
+            "$ref": "#/paths/~1posts/post/responses/404"
           }
         }
       }
@@ -848,7 +881,7 @@
             "$ref": "#/paths/~1plans/get/responses/400"
           },
           "500": {
-            "$ref": "#/paths/~1addresses/post/responses/500"
+            "$ref": "#/paths/~1posts/post/responses/500"
           }
         }
       }
@@ -894,10 +927,10 @@
             "$ref": "#/paths/~1plans/get/responses/400"
           },
           "404": {
-            "$ref": "#/paths/~1addresses/post/responses/404"
+            "$ref": "#/paths/~1posts/post/responses/404"
           },
           "500": {
-            "$ref": "#/paths/~1addresses/post/responses/500"
+            "$ref": "#/paths/~1posts/post/responses/500"
           }
         }
       }
@@ -954,10 +987,10 @@
             "$ref": "#/paths/~1plans/get/responses/403"
           },
           "404": {
-            "$ref": "#/paths/~1addresses/post/responses/404"
+            "$ref": "#/paths/~1posts/post/responses/404"
           },
           "500": {
-            "$ref": "#/paths/~1addresses/post/responses/500"
+            "$ref": "#/paths/~1posts/post/responses/500"
           }
         }
       }
@@ -1184,7 +1217,7 @@
             "$ref": "#/paths/~1plans/get/responses/403"
           },
           "404": {
-            "$ref": "#/paths/~1addresses/post/responses/404"
+            "$ref": "#/paths/~1posts/post/responses/404"
           }
         }
       },
@@ -1258,7 +1291,7 @@
             "$ref": "#/paths/~1plans/get/responses/403"
           },
           "404": {
-            "$ref": "#/paths/~1addresses/post/responses/404"
+            "$ref": "#/paths/~1posts/post/responses/404"
           }
         }
       }
@@ -1317,13 +1350,13 @@
             "$ref": "#/paths/~1plans/get/responses/403"
           },
           "404": {
-            "$ref": "#/paths/~1addresses/post/responses/404"
+            "$ref": "#/paths/~1posts/post/responses/404"
           },
           "409": {
             "$ref": "#/paths/~1tags~1admin/post/responses/409"
           },
           "500": {
-            "$ref": "#/paths/~1addresses/post/responses/500"
+            "$ref": "#/paths/~1posts/post/responses/500"
           }
         }
       },
@@ -1378,10 +1411,10 @@
             "$ref": "#/paths/~1plans/get/responses/403"
           },
           "404": {
-            "$ref": "#/paths/~1addresses/post/responses/404"
+            "$ref": "#/paths/~1posts/post/responses/404"
           },
           "500": {
-            "$ref": "#/paths/~1addresses/post/responses/500"
+            "$ref": "#/paths/~1posts/post/responses/500"
           }
         }
       }
@@ -1772,7 +1805,7 @@
                               }
                             },
                             {
-                              "$ref": "#/paths/~1posts~1create/post/responses/201/content/application~1json/schema/allOf/2/properties/data/allOf/0"
+                              "$ref": "#/paths/~1posts/post/responses/201/content/application~1json/schema/allOf/2/properties/data/allOf/0"
                             }
                           ]
                         }
@@ -1799,7 +1832,7 @@
                 "schema": {
                   "allOf": [
                     {
-                      "$ref": "#/paths/~1tags~1/get/responses/400/content/application~1json/schema/allOf/0"
+                      "$ref": "#/paths/~1users~1profile/get/responses/401/content/application~1json/schema/allOf/0"
                     },
                     {
                       "type": "object",
@@ -1816,7 +1849,7 @@
             }
           },
           "500": {
-            "$ref": "#/paths/~1addresses/post/responses/500"
+            "$ref": "#/paths/~1posts/post/responses/500"
           }
         }
       }
@@ -1891,12 +1924,12 @@
             "$ref": "#/paths/~1plans/get/responses/403"
           },
           "404": {
-            "$ref": "#/paths/~1addresses/post/responses/404"
+            "$ref": "#/paths/~1posts/post/responses/404"
           }
         }
       }
     },
-    "/posts/get-all/my": {
+    "/posts/my": {
       "summary": "",
       "description": "",
       "get": {
@@ -2085,7 +2118,7 @@
         }
       }
     },
-    "/posts/get/my/{postId}": {
+    "/posts/my/{postId}": {
       "summary": "",
       "description": "",
       "get": {
@@ -2102,7 +2135,7 @@
         ],
         "parameters": [
           {
-            "$ref": "#/paths/~1posts~1admin~1%7BpostId%7D/get/parameters/0"
+            "$ref": "#/paths/~1posts~1%7BpostId%7D/get/parameters/0"
           }
         ],
         "responses": {
@@ -2131,16 +2164,16 @@
                         "data": {
                           "allOf": [
                             {
-                              "$ref": "#/paths/~1posts~1create/post/responses/201/content/application~1json/schema/allOf/2/properties/data/allOf/0"
+                              "$ref": "#/paths/~1posts/post/responses/201/content/application~1json/schema/allOf/2/properties/data/allOf/0"
                             },
                             {
-                              "$ref": "#/paths/~1posts~1create/post/responses/201/content/application~1json/schema/allOf/2/properties/data/allOf/1"
+                              "$ref": "#/paths/~1posts/post/responses/201/content/application~1json/schema/allOf/2/properties/data/allOf/1"
                             },
                             {
-                              "$ref": "#/components/requestBodies/create-post/content/multipart~1form-data/schema/allOf/1/allOf/0"
+                              "$ref": "#/paths/~1posts~1%7BpostId%7D/patch/requestBody/content/multipart~1form-data/schema/allOf/1/allOf/0"
                             },
                             {
-                              "$ref": "#/paths/~1posts~1create/post/responses/201/content/application~1json/schema/allOf/2/properties/data/allOf/3"
+                              "$ref": "#/paths/~1posts/post/responses/201/content/application~1json/schema/allOf/2/properties/data/allOf/3"
                             },
                             {
                               "type": "object",
@@ -2153,93 +2186,16 @@
                               }
                             },
                             {
-                              "$ref": "#/paths/~1posts~1admin~1%7BpostId%7D/get/responses/200/content/application~1json/schema/allOf/2/properties/data/allOf/5"
+                              "$ref": "#/paths/~1posts~1%7BpostId%7D/get/responses/200/content/application~1json/schema/allOf/2/properties/data/allOf/5"
                             },
                             {
-                              "$ref": "#/paths/~1posts~1admin~1%7BpostId%7D/get/responses/200/content/application~1json/schema/allOf/2/properties/data/allOf/6"
+                              "$ref": "#/paths/~1posts~1%7BpostId%7D/get/responses/200/content/application~1json/schema/allOf/2/properties/data/allOf/6"
                             },
                             {
-                              "type": "object",
-                              "properties": {
-                                "comments": {
-                                  "type": "array",
-                                  "items": {
-                                    "allOf": [
-                                      {
-                                        "$ref": "#/paths/~1posts~1create/post/responses/201/content/application~1json/schema/allOf/2/properties/data/allOf/0"
-                                      },
-                                      {
-                                        "type": "object",
-                                        "properties": {
-                                          "user_id": {
-                                            "type": "object",
-                                            "properties": {
-                                              "_id": {
-                                                "title": "User id",
-                                                "description": "User id",
-                                                "type": "string"
-                                              },
-                                              "first_name": {
-                                                "title": "User first name",
-                                                "description": "User first name",
-                                                "type": "string"
-                                              },
-                                              "last_name": {
-                                                "title": "User last name",
-                                                "description": "User last name",
-                                                "type": "string"
-                                              },
-                                              "email": {
-                                                "title": "User email address",
-                                                "description": "User email address",
-                                                "type": "string",
-                                                "format": "email"
-                                              },
-                                              "avatar": {
-                                                "type": "object",
-                                                "properties": {
-                                                  "file_id": {
-                                                    "title": "ID of user profile image file",
-                                                    "description": "ID of user profile image file. \n\n NOTE: if the avatar has not been uploaded, this value is \"-1\"",
-                                                    "type": "string",
-                                                    "example": "26uKh1lnasQQWdssWPdDbb41tHhsaEPa"
-                                                  },
-                                                  "url": {
-                                                    "title": "Url of user profile image file",
-                                                    "description": "Url of user profile image file. \n\n NOTE: if the avatar has not been uploaded, this value is null",
-                                                    "type": "string",
-                                                    "example": "https://example.com/"
-                                                  },
-                                                  "name": {
-                                                    "title": "Name of user profile image file",
-                                                    "description": "Name of user profile image file. \n\n NOTE: if the avatar has not been uploaded, this value is null",
-                                                    "type": "string",
-                                                    "example": "f694dd5f-8a6c-440a-83bd-1a550d3960a0.png"
-                                                  }
-                                                }
-                                              }
-                                            }
-                                          }
-                                        }
-                                      },
-                                      {
-                                        "type": "object",
-                                        "properties": {
-                                          "comment": {
-                                            "title": "Comment content",
-                                            "description": "Comment content",
-                                            "type": "string",
-                                            "example": "Nice post!"
-                                          }
-                                        }
-                                      }
-                                    ]
-                                  }
-                                }
-                              }
+                              "$ref": "#/paths/~1posts~1%7BpostId%7D/patch/responses/200/content/application~1json/schema/allOf/2/properties/data/allOf/7"
                             },
                             {
-                              "$ref": "#/paths/~1posts~1create/post/responses/201/content/application~1json/schema/allOf/2/properties/data/allOf/8"
+                              "$ref": "#/paths/~1posts/post/responses/201/content/application~1json/schema/allOf/2/properties/data/allOf/8"
                             }
                           ]
                         }
@@ -2260,12 +2216,12 @@
             "$ref": "#/paths/~1plans/get/responses/403"
           },
           "404": {
-            "$ref": "#/paths/~1addresses/post/responses/404"
+            "$ref": "#/paths/~1posts/post/responses/404"
           }
         }
       }
     },
-    "/posts/get-all/previews": {
+    "/posts/previews": {
       "summary": "",
       "description": "",
       "get": {
@@ -2303,25 +2259,25 @@
                           "items": {
                             "allOf": [
                               {
-                                "$ref": "#/paths/~1posts~1create/post/responses/201/content/application~1json/schema/allOf/2/properties/data/allOf/0"
+                                "$ref": "#/paths/~1posts/post/responses/201/content/application~1json/schema/allOf/2/properties/data/allOf/0"
                               },
                               {
-                                "$ref": "#/paths/~1posts~1create/post/responses/201/content/application~1json/schema/allOf/2/properties/data/allOf/1"
+                                "$ref": "#/paths/~1posts/post/responses/201/content/application~1json/schema/allOf/2/properties/data/allOf/1"
                               },
                               {
-                                "$ref": "#/components/requestBodies/create-post/content/multipart~1form-data/schema/allOf/1/allOf/0"
+                                "$ref": "#/paths/~1posts~1%7BpostId%7D/patch/requestBody/content/multipart~1form-data/schema/allOf/1/allOf/0"
                               },
                               {
-                                "$ref": "#/paths/~1posts~1create/post/responses/201/content/application~1json/schema/allOf/2/properties/data/allOf/3"
+                                "$ref": "#/paths/~1posts/post/responses/201/content/application~1json/schema/allOf/2/properties/data/allOf/3"
                               },
                               {
-                                "$ref": "#/paths/~1posts~1admin~1%7BpostId%7D/get/responses/200/content/application~1json/schema/allOf/2/properties/data/allOf/5"
+                                "$ref": "#/paths/~1posts~1%7BpostId%7D/get/responses/200/content/application~1json/schema/allOf/2/properties/data/allOf/5"
                               },
                               {
-                                "$ref": "#/paths/~1posts~1admin~1%7BpostId%7D/get/responses/200/content/application~1json/schema/allOf/2/properties/data/allOf/6"
+                                "$ref": "#/paths/~1posts~1%7BpostId%7D/get/responses/200/content/application~1json/schema/allOf/2/properties/data/allOf/6"
                               },
                               {
-                                "$ref": "#/paths/~1posts~1create/post/responses/201/content/application~1json/schema/allOf/2/properties/data/allOf/8"
+                                "$ref": "#/paths/~1posts/post/responses/201/content/application~1json/schema/allOf/2/properties/data/allOf/8"
                               }
                             ]
                           }
@@ -2336,7 +2292,7 @@
         }
       }
     },
-    "/posts/create": {
+    "/posts": {
       "summary": "",
       "description": "",
       "post": {
@@ -2457,7 +2413,7 @@
                               }
                             },
                             {
-                              "$ref": "#/components/requestBodies/create-post/content/multipart~1form-data/schema/allOf/1/allOf/0"
+                              "$ref": "#/paths/~1posts~1%7BpostId%7D/patch/requestBody/content/multipart~1form-data/schema/allOf/1/allOf/0"
                             },
                             {
                               "type": "object",
@@ -2532,7 +2488,7 @@
                                   "items": {
                                     "allOf": [
                                       {
-                                        "$ref": "#/paths/~1posts~1create/post/responses/201/content/application~1json/schema/allOf/2/properties/data/allOf/0"
+                                        "$ref": "#/paths/~1posts/post/responses/201/content/application~1json/schema/allOf/2/properties/data/allOf/0"
                                       },
                                       {
                                         "type": "object",
@@ -2575,94 +2531,20 @@
             "$ref": "#/paths/~1plans/get/responses/403"
           },
           "404": {
-            "$ref": "#/paths/~1addresses/post/responses/404"
-          },
-          "500": {
-            "$ref": "#/paths/~1addresses/post/responses/500"
-          }
-        }
-      }
-    },
-    "/posts/add-view/{postId}": {
-      "summary": "",
-      "description": "",
-      "post": {
-        "tags": [
-          "Posts"
-        ],
-        "summary": "Add View To Post",
-        "description": "Add View To Post",
-        "operationId": "post.add-view",
-        "security": [
-          {
-            "bearerAuth": []
-          }
-        ],
-        "parameters": [
-          {
-            "$ref": "#/paths/~1posts~1admin~1%7BpostId%7D/get/parameters/0"
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "",
+            "description": "Not found error",
             "content": {
               "application/json": {
                 "schema": {
-                  "type": "object",
                   "allOf": [
                     {
-                      "$ref": "#/paths/~1users~1logout/post/responses/200/content/application~1json/schema/allOf/0"
+                      "$ref": "#/paths/~1users~1profile/get/responses/401/content/application~1json/schema/allOf/0"
                     },
                     {
                       "type": "object",
                       "properties": {
                         "statusCode": {
                           "type": "number",
-                          "default": 200
-                        }
-                      }
-                    },
-                    {
-                      "type": "object",
-                      "properties": {
-                        "data": {
-                          "allOf": [
-                            {
-                              "$ref": "#/paths/~1posts~1create/post/responses/201/content/application~1json/schema/allOf/2/properties/data/allOf/0"
-                            },
-                            {
-                              "$ref": "#/paths/~1posts~1create/post/responses/201/content/application~1json/schema/allOf/2/properties/data/allOf/1"
-                            },
-                            {
-                              "$ref": "#/components/requestBodies/create-post/content/multipart~1form-data/schema/allOf/1/allOf/0"
-                            },
-                            {
-                              "$ref": "#/paths/~1posts~1create/post/responses/201/content/application~1json/schema/allOf/2/properties/data/allOf/3"
-                            },
-                            {
-                              "type": "object",
-                              "properties": {
-                                "content": {
-                                  "title": "Post content",
-                                  "description": "Post content",
-                                  "type": "string"
-                                }
-                              }
-                            },
-                            {
-                              "$ref": "#/paths/~1posts~1admin~1%7BpostId%7D/get/responses/200/content/application~1json/schema/allOf/2/properties/data/allOf/5"
-                            },
-                            {
-                              "$ref": "#/paths/~1posts~1admin~1%7BpostId%7D/get/responses/200/content/application~1json/schema/allOf/2/properties/data/allOf/6"
-                            },
-                            {
-                              "$ref": "#/paths/~1posts~1get~1my~1%7BpostId%7D/get/responses/200/content/application~1json/schema/allOf/2/properties/data/allOf/7"
-                            },
-                            {
-                              "$ref": "#/paths/~1posts~1create/post/responses/201/content/application~1json/schema/allOf/2/properties/data/allOf/8"
-                            }
-                          ]
+                          "default": 404
                         }
                       }
                     }
@@ -2671,107 +2553,21 @@
               }
             }
           },
-          "400": {
-            "$ref": "#/paths/~1plans/get/responses/400"
-          },
-          "401": {
-            "$ref": "#/paths/~1plans/get/responses/401"
-          },
-          "403": {
-            "$ref": "#/paths/~1plans/get/responses/403"
-          },
-          "404": {
-            "$ref": "#/paths/~1addresses/post/responses/404"
-          },
-          "409": {
-            "$ref": "#/paths/~1tags~1admin/post/responses/409"
-          },
           "500": {
-            "$ref": "#/paths/~1addresses/post/responses/500"
-          }
-        }
-      }
-    },
-    "/posts/change-like-status/{postId}": {
-      "summary": "",
-      "description": "",
-      "post": {
-        "tags": [
-          "Posts"
-        ],
-        "summary": "Add Like To Post",
-        "description": "Add Like To Post",
-        "operationId": "post.change-like-status",
-        "security": [
-          {
-            "bearerAuth": []
-          }
-        ],
-        "parameters": [
-          {
-            "$ref": "#/paths/~1posts~1admin~1%7BpostId%7D/get/parameters/0"
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "",
+            "description": "Internal server error",
             "content": {
               "application/json": {
                 "schema": {
-                  "type": "object",
                   "allOf": [
                     {
-                      "$ref": "#/paths/~1users~1logout/post/responses/200/content/application~1json/schema/allOf/0"
+                      "$ref": "#/paths/~1users~1profile/get/responses/401/content/application~1json/schema/allOf/0"
                     },
                     {
                       "type": "object",
                       "properties": {
                         "statusCode": {
                           "type": "number",
-                          "default": 200
-                        }
-                      }
-                    },
-                    {
-                      "type": "object",
-                      "properties": {
-                        "data": {
-                          "allOf": [
-                            {
-                              "$ref": "#/paths/~1posts~1create/post/responses/201/content/application~1json/schema/allOf/2/properties/data/allOf/0"
-                            },
-                            {
-                              "$ref": "#/paths/~1posts~1create/post/responses/201/content/application~1json/schema/allOf/2/properties/data/allOf/1"
-                            },
-                            {
-                              "$ref": "#/components/requestBodies/create-post/content/multipart~1form-data/schema/allOf/1/allOf/0"
-                            },
-                            {
-                              "$ref": "#/paths/~1posts~1create/post/responses/201/content/application~1json/schema/allOf/2/properties/data/allOf/3"
-                            },
-                            {
-                              "type": "object",
-                              "properties": {
-                                "content": {
-                                  "title": "Post content",
-                                  "description": "Post content",
-                                  "type": "string"
-                                }
-                              }
-                            },
-                            {
-                              "$ref": "#/paths/~1posts~1admin~1%7BpostId%7D/get/responses/200/content/application~1json/schema/allOf/2/properties/data/allOf/5"
-                            },
-                            {
-                              "$ref": "#/paths/~1posts~1admin~1%7BpostId%7D/get/responses/200/content/application~1json/schema/allOf/2/properties/data/allOf/6"
-                            },
-                            {
-                              "$ref": "#/paths/~1posts~1get~1my~1%7BpostId%7D/get/responses/200/content/application~1json/schema/allOf/2/properties/data/allOf/7"
-                            },
-                            {
-                              "$ref": "#/paths/~1posts~1create/post/responses/201/content/application~1json/schema/allOf/2/properties/data/allOf/8"
-                            }
-                          ]
+                          "default": 500
                         }
                       }
                     }
@@ -2779,158 +2575,11 @@
                 }
               }
             }
-          },
-          "400": {
-            "$ref": "#/paths/~1plans/get/responses/400"
-          },
-          "401": {
-            "$ref": "#/paths/~1plans/get/responses/401"
-          },
-          "403": {
-            "$ref": "#/paths/~1plans/get/responses/403"
-          },
-          "404": {
-            "$ref": "#/paths/~1addresses/post/responses/404"
-          },
-          "500": {
-            "$ref": "#/paths/~1addresses/post/responses/500"
           }
         }
       }
     },
-    "/posts/add-comment/{postId}": {
-      "summary": "",
-      "description": "",
-      "post": {
-        "tags": [
-          "Posts"
-        ],
-        "summary": "Add Comment To Post",
-        "description": "Add Comment To Post",
-        "operationId": "post.add-comment",
-        "security": [
-          {
-            "bearerAuth": []
-          }
-        ],
-        "parameters": [
-          {
-            "$ref": "#/paths/~1posts~1admin~1%7BpostId%7D/get/parameters/0"
-          }
-        ],
-        "requestBody": {
-          "description": "",
-          "content": {
-            "application/json": {
-              "schema": {
-                "allOf": [
-                  {
-                    "type": "object",
-                    "properties": {
-                      "comment": {
-                        "title": "Post Comment",
-                        "description": "Post Comment",
-                        "type": "string"
-                      }
-                    }
-                  },
-                  {
-                    "required": [
-                      "comment"
-                    ]
-                  }
-                ]
-              }
-            }
-          }
-        },
-        "responses": {
-          "200": {
-            "description": "",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "type": "object",
-                  "allOf": [
-                    {
-                      "$ref": "#/paths/~1users~1logout/post/responses/200/content/application~1json/schema/allOf/0"
-                    },
-                    {
-                      "type": "object",
-                      "properties": {
-                        "statusCode": {
-                          "type": "number",
-                          "default": 200
-                        }
-                      }
-                    },
-                    {
-                      "type": "object",
-                      "properties": {
-                        "data": {
-                          "allOf": [
-                            {
-                              "$ref": "#/paths/~1posts~1create/post/responses/201/content/application~1json/schema/allOf/2/properties/data/allOf/0"
-                            },
-                            {
-                              "$ref": "#/paths/~1posts~1create/post/responses/201/content/application~1json/schema/allOf/2/properties/data/allOf/1"
-                            },
-                            {
-                              "$ref": "#/components/requestBodies/create-post/content/multipart~1form-data/schema/allOf/1/allOf/0"
-                            },
-                            {
-                              "$ref": "#/paths/~1posts~1create/post/responses/201/content/application~1json/schema/allOf/2/properties/data/allOf/3"
-                            },
-                            {
-                              "type": "object",
-                              "properties": {
-                                "content": {
-                                  "title": "Post content",
-                                  "description": "Post content",
-                                  "type": "string"
-                                }
-                              }
-                            },
-                            {
-                              "$ref": "#/paths/~1posts~1admin~1%7BpostId%7D/get/responses/200/content/application~1json/schema/allOf/2/properties/data/allOf/5"
-                            },
-                            {
-                              "$ref": "#/paths/~1posts~1admin~1%7BpostId%7D/get/responses/200/content/application~1json/schema/allOf/2/properties/data/allOf/6"
-                            },
-                            {
-                              "$ref": "#/paths/~1posts~1get~1my~1%7BpostId%7D/get/responses/200/content/application~1json/schema/allOf/2/properties/data/allOf/7"
-                            },
-                            {
-                              "$ref": "#/paths/~1posts~1create/post/responses/201/content/application~1json/schema/allOf/2/properties/data/allOf/8"
-                            }
-                          ]
-                        }
-                      }
-                    }
-                  ]
-                }
-              }
-            }
-          },
-          "400": {
-            "$ref": "#/paths/~1plans/get/responses/400"
-          },
-          "401": {
-            "$ref": "#/paths/~1plans/get/responses/401"
-          },
-          "403": {
-            "$ref": "#/paths/~1plans/get/responses/403"
-          },
-          "404": {
-            "$ref": "#/paths/~1addresses/post/responses/404"
-          },
-          "500": {
-            "$ref": "#/paths/~1addresses/post/responses/500"
-          }
-        }
-      }
-    },
-    "/posts/update/my/{postId}": {
+    "/posts/{postId}": {
       "summary": "",
       "description": "",
       "patch": {
@@ -2947,7 +2596,7 @@
         ],
         "parameters": [
           {
-            "$ref": "#/paths/~1posts~1admin~1%7BpostId%7D/get/parameters/0"
+            "$ref": "#/paths/~1posts~1%7BpostId%7D/get/parameters/0"
           }
         ],
         "requestBody": {
@@ -2979,7 +2628,24 @@
                     "type": "object",
                     "allOf": [
                       {
-                        "$ref": "#/components/requestBodies/create-post/content/multipart~1form-data/schema/allOf/1/allOf/0"
+                        "type": "object",
+                        "properties": {
+                          "title": {
+                            "title": "Post title",
+                            "description": "Post title",
+                            "type": "string"
+                          },
+                          "description": {
+                            "title": "Post description",
+                            "description": "Post description",
+                            "type": "string"
+                          },
+                          "slug": {
+                            "title": "Post slug (unique)",
+                            "description": "Post slug (unique)",
+                            "type": "string"
+                          }
+                        }
                       },
                       {
                         "required": [
@@ -3040,16 +2706,16 @@
                         "data": {
                           "allOf": [
                             {
-                              "$ref": "#/paths/~1posts~1create/post/responses/201/content/application~1json/schema/allOf/2/properties/data/allOf/0"
+                              "$ref": "#/paths/~1posts/post/responses/201/content/application~1json/schema/allOf/2/properties/data/allOf/0"
                             },
                             {
-                              "$ref": "#/paths/~1posts~1create/post/responses/201/content/application~1json/schema/allOf/2/properties/data/allOf/1"
+                              "$ref": "#/paths/~1posts/post/responses/201/content/application~1json/schema/allOf/2/properties/data/allOf/1"
                             },
                             {
-                              "$ref": "#/components/requestBodies/create-post/content/multipart~1form-data/schema/allOf/1/allOf/0"
+                              "$ref": "#/paths/~1posts~1%7BpostId%7D/patch/requestBody/content/multipart~1form-data/schema/allOf/1/allOf/0"
                             },
                             {
-                              "$ref": "#/paths/~1posts~1create/post/responses/201/content/application~1json/schema/allOf/2/properties/data/allOf/3"
+                              "$ref": "#/paths/~1posts/post/responses/201/content/application~1json/schema/allOf/2/properties/data/allOf/3"
                             },
                             {
                               "type": "object",
@@ -3062,16 +2728,93 @@
                               }
                             },
                             {
-                              "$ref": "#/paths/~1posts~1admin~1%7BpostId%7D/get/responses/200/content/application~1json/schema/allOf/2/properties/data/allOf/5"
+                              "$ref": "#/paths/~1posts~1%7BpostId%7D/get/responses/200/content/application~1json/schema/allOf/2/properties/data/allOf/5"
                             },
                             {
-                              "$ref": "#/paths/~1posts~1admin~1%7BpostId%7D/get/responses/200/content/application~1json/schema/allOf/2/properties/data/allOf/6"
+                              "$ref": "#/paths/~1posts~1%7BpostId%7D/get/responses/200/content/application~1json/schema/allOf/2/properties/data/allOf/6"
                             },
                             {
-                              "$ref": "#/paths/~1posts~1get~1my~1%7BpostId%7D/get/responses/200/content/application~1json/schema/allOf/2/properties/data/allOf/7"
+                              "type": "object",
+                              "properties": {
+                                "comments": {
+                                  "type": "array",
+                                  "items": {
+                                    "allOf": [
+                                      {
+                                        "$ref": "#/paths/~1posts/post/responses/201/content/application~1json/schema/allOf/2/properties/data/allOf/0"
+                                      },
+                                      {
+                                        "type": "object",
+                                        "properties": {
+                                          "user_id": {
+                                            "type": "object",
+                                            "properties": {
+                                              "_id": {
+                                                "title": "User id",
+                                                "description": "User id",
+                                                "type": "string"
+                                              },
+                                              "first_name": {
+                                                "title": "User first name",
+                                                "description": "User first name",
+                                                "type": "string"
+                                              },
+                                              "last_name": {
+                                                "title": "User last name",
+                                                "description": "User last name",
+                                                "type": "string"
+                                              },
+                                              "email": {
+                                                "title": "User email address",
+                                                "description": "User email address",
+                                                "type": "string",
+                                                "format": "email"
+                                              },
+                                              "avatar": {
+                                                "type": "object",
+                                                "properties": {
+                                                  "file_id": {
+                                                    "title": "ID of user profile image file",
+                                                    "description": "ID of user profile image file. \n\n NOTE: if the avatar has not been uploaded, this value is \"-1\"",
+                                                    "type": "string",
+                                                    "example": "26uKh1lnasQQWdssWPdDbb41tHhsaEPa"
+                                                  },
+                                                  "url": {
+                                                    "title": "Url of user profile image file",
+                                                    "description": "Url of user profile image file. \n\n NOTE: if the avatar has not been uploaded, this value is null",
+                                                    "type": "string",
+                                                    "example": "https://example.com/"
+                                                  },
+                                                  "name": {
+                                                    "title": "Name of user profile image file",
+                                                    "description": "Name of user profile image file. \n\n NOTE: if the avatar has not been uploaded, this value is null",
+                                                    "type": "string",
+                                                    "example": "f694dd5f-8a6c-440a-83bd-1a550d3960a0.png"
+                                                  }
+                                                }
+                                              }
+                                            }
+                                          }
+                                        }
+                                      },
+                                      {
+                                        "type": "object",
+                                        "properties": {
+                                          "comment": {
+                                            "title": "Comment content",
+                                            "description": "Comment content",
+                                            "type": "string",
+                                            "example": "Nice post!"
+                                          }
+                                        }
+                                      }
+                                    ]
+                                  }
+                                }
+                              }
                             },
                             {
-                              "$ref": "#/paths/~1posts~1create/post/responses/201/content/application~1json/schema/allOf/2/properties/data/allOf/8"
+                              "$ref": "#/paths/~1posts/post/responses/201/content/application~1json/schema/allOf/2/properties/data/allOf/8"
                             }
                           ]
                         }
@@ -3092,17 +2835,13 @@
             "$ref": "#/paths/~1plans/get/responses/403"
           },
           "404": {
-            "$ref": "#/paths/~1addresses/post/responses/404"
+            "$ref": "#/paths/~1posts/post/responses/404"
           },
           "500": {
-            "$ref": "#/paths/~1addresses/post/responses/500"
+            "$ref": "#/paths/~1posts/post/responses/500"
           }
         }
-      }
-    },
-    "/posts/delete/my/{postId}": {
-      "summary": "",
-      "description": "",
+      },
       "delete": {
         "tags": [
           "Posts"
@@ -3117,7 +2856,7 @@
         ],
         "parameters": [
           {
-            "$ref": "#/paths/~1posts~1admin~1%7BpostId%7D/get/parameters/0"
+            "$ref": "#/paths/~1posts~1%7BpostId%7D/get/parameters/0"
           }
         ],
         "responses": {
@@ -3155,381 +2894,20 @@
             "$ref": "#/paths/~1plans/get/responses/403"
           },
           "404": {
-            "$ref": "#/paths/~1addresses/post/responses/404"
+            "$ref": "#/paths/~1posts/post/responses/404"
           },
           "500": {
-            "$ref": "#/paths/~1addresses/post/responses/500"
+            "$ref": "#/paths/~1posts/post/responses/500"
           }
         }
-      }
-    },
-    "/posts/delete-comment/{postId}": {
-      "summary": "",
-      "description": "",
-      "delete": {
+      },
+      "get": {
         "tags": [
           "Posts"
         ],
-        "summary": "Delete Comment To Post",
-        "description": "Delete Comment To Post",
-        "operationId": "post.delete-comment",
-        "security": [
-          {
-            "bearerAuth": []
-          }
-        ],
-        "parameters": [
-          {
-            "$ref": "#/paths/~1posts~1admin~1%7BpostId%7D/get/parameters/0"
-          }
-        ],
-        "requestBody": {
-          "description": "",
-          "content": {
-            "application/json": {
-              "schema": {
-                "allOf": [
-                  {
-                    "type": "object",
-                    "properties": {
-                      "comment_id": {
-                        "title": "Post Comment Id",
-                        "description": "Post Comment Id",
-                        "type": "string"
-                      }
-                    }
-                  },
-                  {
-                    "required": [
-                      "comment_id"
-                    ]
-                  }
-                ]
-              }
-            }
-          }
-        },
-        "responses": {
-          "200": {
-            "description": "",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "type": "object",
-                  "allOf": [
-                    {
-                      "$ref": "#/paths/~1users~1logout/post/responses/200/content/application~1json/schema/allOf/0"
-                    },
-                    {
-                      "type": "object",
-                      "properties": {
-                        "statusCode": {
-                          "type": "number",
-                          "default": 200
-                        }
-                      }
-                    },
-                    {
-                      "type": "object",
-                      "properties": {
-                        "data": {
-                          "allOf": [
-                            {
-                              "$ref": "#/paths/~1posts~1create/post/responses/201/content/application~1json/schema/allOf/2/properties/data/allOf/0"
-                            },
-                            {
-                              "$ref": "#/paths/~1posts~1create/post/responses/201/content/application~1json/schema/allOf/2/properties/data/allOf/1"
-                            },
-                            {
-                              "$ref": "#/components/requestBodies/create-post/content/multipart~1form-data/schema/allOf/1/allOf/0"
-                            },
-                            {
-                              "$ref": "#/paths/~1posts~1create/post/responses/201/content/application~1json/schema/allOf/2/properties/data/allOf/3"
-                            },
-                            {
-                              "type": "object",
-                              "properties": {
-                                "content": {
-                                  "title": "Post content",
-                                  "description": "Post content",
-                                  "type": "string"
-                                }
-                              }
-                            },
-                            {
-                              "$ref": "#/paths/~1posts~1admin~1%7BpostId%7D/get/responses/200/content/application~1json/schema/allOf/2/properties/data/allOf/5"
-                            },
-                            {
-                              "$ref": "#/paths/~1posts~1admin~1%7BpostId%7D/get/responses/200/content/application~1json/schema/allOf/2/properties/data/allOf/6"
-                            },
-                            {
-                              "$ref": "#/paths/~1posts~1get~1my~1%7BpostId%7D/get/responses/200/content/application~1json/schema/allOf/2/properties/data/allOf/7"
-                            },
-                            {
-                              "$ref": "#/paths/~1posts~1create/post/responses/201/content/application~1json/schema/allOf/2/properties/data/allOf/8"
-                            }
-                          ]
-                        }
-                      }
-                    }
-                  ]
-                }
-              }
-            }
-          },
-          "400": {
-            "$ref": "#/paths/~1plans/get/responses/400"
-          },
-          "401": {
-            "$ref": "#/paths/~1plans/get/responses/401"
-          },
-          "403": {
-            "$ref": "#/paths/~1plans/get/responses/403"
-          },
-          "404": {
-            "$ref": "#/paths/~1addresses/post/responses/404"
-          },
-          "500": {
-            "$ref": "#/paths/~1addresses/post/responses/500"
-          }
-        }
-      }
-    },
-    "/posts/admin/": {
-      "summary": "",
-      "description": "",
-      "get": {
-        "tags": [
-          "Admins"
-        ],
-        "summary": "Get all posts",
-        "description": "Get all posts",
-        "operationId": "admins.posts.get-all",
-        "security": [
-          {
-            "bearerAuth": []
-          }
-        ],
-        "parameters": [
-          {
-            "name": "limit",
-            "in": "query",
-            "description": "Maximum tag count (Default: 10)",
-            "schema": {
-              "type": "number"
-            }
-          },
-          {
-            "name": "page",
-            "in": "query",
-            "description": "Page number (Default: 1)",
-            "schema": {
-              "type": "number"
-            }
-          },
-          {
-            "in": "query",
-            "name": "props",
-            "schema": {
-              "type": "object",
-              "properties": {
-                "title.eq": {
-                  "type": "string",
-                  "example": "blogger"
-                },
-                "createdAt.eqd": {
-                  "type": "string",
-                  "example": "2023 & 2023-03 & 2023-03-12 & 2023-03-12T18 & 2023-03-12T18:20 & 2023-03-12T18:20:45"
-                },
-                "createdAt.gt": {
-                  "type": "string",
-                  "example": "2023 & 2023-03 & 2023-03-12 & 2023-03-12T18 & 2023-03-12T18:20 & 2023-03-12T18:20:45"
-                },
-                "createdAt.lt": {
-                  "type": "string",
-                  "example": "2023 & 2023-03 & 2023-03-12 & 2023-03-12T18 & 2023-03-12T18:20 & 2023-03-12T18:20:45"
-                },
-                "createdAt.gte": {
-                  "type": "string",
-                  "example": "2023 & 2023-03 & 2023-03-12 & 2023-03-12T18 & 2023-03-12T18:20 & 2023-03-12T18:20:45"
-                },
-                "createdAt.lte": {
-                  "type": "string",
-                  "example": "2023 & 2023-03 & 2023-03-12 & 2023-03-12T18 & 2023-03-12T18:20 & 2023-03-12T18:20:45"
-                },
-                "tags.in": {
-                  "type": "string",
-                  "example": "movie"
-                }
-              }
-            },
-            "style": "form",
-            "explode": true
-          },
-          {
-            "name": "sortField",
-            "in": "query",
-            "description": "Post field name for sorting",
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "sortOrder",
-            "in": "query",
-            "description": "Sorting number (-1 | 1)",
-            "schema": {
-              "type": "number"
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "type": "object",
-                  "allOf": [
-                    {
-                      "$ref": "#/paths/~1users~1logout/post/responses/200/content/application~1json/schema/allOf/0"
-                    },
-                    {
-                      "type": "object",
-                      "properties": {
-                        "statusCode": {
-                          "type": "number",
-                          "default": 200
-                        }
-                      }
-                    },
-                    {
-                      "type": "object",
-                      "properties": {
-                        "data": {
-                          "allOf": [
-                            {
-                              "type": "object",
-                              "properties": {
-                                "posts": {
-                                  "type": "array",
-                                  "items": {
-                                    "allOf": [
-                                      {
-                                        "$ref": "#/paths/~1posts~1create/post/responses/201/content/application~1json/schema/allOf/2/properties/data/allOf/0"
-                                      },
-                                      {
-                                        "$ref": "#/paths/~1posts~1create/post/responses/201/content/application~1json/schema/allOf/2/properties/data/allOf/1"
-                                      },
-                                      {
-                                        "$ref": "#/components/requestBodies/create-post/content/multipart~1form-data/schema/allOf/1/allOf/0"
-                                      },
-                                      {
-                                        "$ref": "#/paths/~1posts~1create/post/responses/201/content/application~1json/schema/allOf/2/properties/data/allOf/3"
-                                      },
-                                      {
-                                        "type": "object",
-                                        "properties": {
-                                          "content": {
-                                            "title": "Post content",
-                                            "description": "Post content",
-                                            "type": "string"
-                                          }
-                                        }
-                                      },
-                                      {
-                                        "$ref": "#/paths/~1posts~1admin~1%7BpostId%7D/get/responses/200/content/application~1json/schema/allOf/2/properties/data/allOf/5"
-                                      },
-                                      {
-                                        "$ref": "#/paths/~1posts~1admin~1%7BpostId%7D/get/responses/200/content/application~1json/schema/allOf/2/properties/data/allOf/6"
-                                      },
-                                      {
-                                        "$ref": "#/paths/~1posts~1get~1my~1%7BpostId%7D/get/responses/200/content/application~1json/schema/allOf/2/properties/data/allOf/7"
-                                      },
-                                      {
-                                        "$ref": "#/paths/~1posts~1create/post/responses/201/content/application~1json/schema/allOf/2/properties/data/allOf/8"
-                                      }
-                                    ]
-                                  }
-                                }
-                              }
-                            },
-                            {
-                              "type": "object",
-                              "properties": {
-                                "statistics": {
-                                  "allOf": [
-                                    {
-                                      "type": "object",
-                                      "properties": {
-                                        "postCount": {
-                                          "title": "User's total number of posts",
-                                          "description": "User's total number of posts",
-                                          "type": "number",
-                                          "min": 0,
-                                          "example": 7
-                                        }
-                                      }
-                                    },
-                                    {
-                                      "type": "object",
-                                      "properties": {
-                                        "likesCount": {
-                                          "title": "Total likes of the user's posts",
-                                          "description": "Total likes of the user's posts",
-                                          "type": "number",
-                                          "min": 0,
-                                          "example": 16
-                                        }
-                                      }
-                                    },
-                                    {
-                                      "type": "object",
-                                      "properties": {
-                                        "viewsCount": {
-                                          "title": "Total views of the user's posts",
-                                          "description": "Total views of the user's posts",
-                                          "type": "number",
-                                          "min": 0,
-                                          "example": 47
-                                        }
-                                      }
-                                    }
-                                  ]
-                                }
-                              }
-                            }
-                          ]
-                        }
-                      }
-                    }
-                  ]
-                }
-              }
-            }
-          },
-          "400": {
-            "$ref": "#/paths/~1plans/get/responses/400"
-          },
-          "401": {
-            "$ref": "#/paths/~1plans/get/responses/401"
-          },
-          "403": {
-            "$ref": "#/paths/~1plans/get/responses/403"
-          }
-        }
-      }
-    },
-    "/posts/admin/{postId}": {
-      "summary": "",
-      "description": "",
-      "get": {
-        "tags": [
-          "Admins"
-        ],
-        "summary": "Get post by id",
-        "description": "Get post by id",
-        "operationId": "admins.posts.get-post-by-id",
+        "summary": "Get other user's post",
+        "description": "Get other user's post",
+        "operationId": "post.get-other-users-post",
         "security": [
           {
             "bearerAuth": []
@@ -3573,16 +2951,16 @@
                         "data": {
                           "allOf": [
                             {
-                              "$ref": "#/paths/~1posts~1create/post/responses/201/content/application~1json/schema/allOf/2/properties/data/allOf/0"
+                              "$ref": "#/paths/~1posts/post/responses/201/content/application~1json/schema/allOf/2/properties/data/allOf/0"
                             },
                             {
-                              "$ref": "#/paths/~1posts~1create/post/responses/201/content/application~1json/schema/allOf/2/properties/data/allOf/1"
+                              "$ref": "#/paths/~1posts/post/responses/201/content/application~1json/schema/allOf/2/properties/data/allOf/1"
                             },
                             {
-                              "$ref": "#/components/requestBodies/create-post/content/multipart~1form-data/schema/allOf/1/allOf/0"
+                              "$ref": "#/paths/~1posts~1%7BpostId%7D/patch/requestBody/content/multipart~1form-data/schema/allOf/1/allOf/0"
                             },
                             {
-                              "$ref": "#/paths/~1posts~1create/post/responses/201/content/application~1json/schema/allOf/2/properties/data/allOf/3"
+                              "$ref": "#/paths/~1posts/post/responses/201/content/application~1json/schema/allOf/2/properties/data/allOf/3"
                             },
                             {
                               "type": "object",
@@ -3714,7 +3092,7 @@
                               }
                             },
                             {
-                              "$ref": "#/paths/~1posts~1create/post/responses/201/content/application~1json/schema/allOf/2/properties/data/allOf/8"
+                              "$ref": "#/paths/~1posts/post/responses/201/content/application~1json/schema/allOf/2/properties/data/allOf/8"
                             }
                           ]
                         }
@@ -3735,17 +3113,21 @@
             "$ref": "#/paths/~1plans/get/responses/403"
           },
           "404": {
-            "$ref": "#/paths/~1addresses/post/responses/404"
+            "$ref": "#/paths/~1posts/post/responses/404"
           }
         }
-      },
-      "delete": {
+      }
+    },
+    "/posts/add-view/{postId}": {
+      "summary": "",
+      "description": "",
+      "post": {
         "tags": [
-          "Admins"
+          "Posts"
         ],
-        "summary": "Delete user's post",
-        "description": "Delete user's post",
-        "operationId": "admin.posts.delete",
+        "summary": "Add View To Post",
+        "description": "Add View To Post",
+        "operationId": "post.add-view",
         "security": [
           {
             "bearerAuth": []
@@ -3753,7 +3135,7 @@
         ],
         "parameters": [
           {
-            "$ref": "#/paths/~1posts~1admin~1%7BpostId%7D/get/parameters/0"
+            "$ref": "#/paths/~1posts~1%7BpostId%7D/get/parameters/0"
           }
         ],
         "responses": {
@@ -3782,16 +3164,16 @@
                         "data": {
                           "allOf": [
                             {
-                              "$ref": "#/paths/~1posts~1create/post/responses/201/content/application~1json/schema/allOf/2/properties/data/allOf/0"
+                              "$ref": "#/paths/~1posts/post/responses/201/content/application~1json/schema/allOf/2/properties/data/allOf/0"
                             },
                             {
-                              "$ref": "#/paths/~1posts~1create/post/responses/201/content/application~1json/schema/allOf/2/properties/data/allOf/1"
+                              "$ref": "#/paths/~1posts/post/responses/201/content/application~1json/schema/allOf/2/properties/data/allOf/1"
                             },
                             {
-                              "$ref": "#/components/requestBodies/create-post/content/multipart~1form-data/schema/allOf/1/allOf/0"
+                              "$ref": "#/paths/~1posts~1%7BpostId%7D/patch/requestBody/content/multipart~1form-data/schema/allOf/1/allOf/0"
                             },
                             {
-                              "$ref": "#/paths/~1posts~1create/post/responses/201/content/application~1json/schema/allOf/2/properties/data/allOf/3"
+                              "$ref": "#/paths/~1posts/post/responses/201/content/application~1json/schema/allOf/2/properties/data/allOf/3"
                             },
                             {
                               "type": "object",
@@ -3804,16 +3186,16 @@
                               }
                             },
                             {
-                              "$ref": "#/paths/~1posts~1admin~1%7BpostId%7D/get/responses/200/content/application~1json/schema/allOf/2/properties/data/allOf/5"
+                              "$ref": "#/paths/~1posts~1%7BpostId%7D/get/responses/200/content/application~1json/schema/allOf/2/properties/data/allOf/5"
                             },
                             {
-                              "$ref": "#/paths/~1posts~1admin~1%7BpostId%7D/get/responses/200/content/application~1json/schema/allOf/2/properties/data/allOf/6"
+                              "$ref": "#/paths/~1posts~1%7BpostId%7D/get/responses/200/content/application~1json/schema/allOf/2/properties/data/allOf/6"
                             },
                             {
-                              "$ref": "#/paths/~1posts~1get~1my~1%7BpostId%7D/get/responses/200/content/application~1json/schema/allOf/2/properties/data/allOf/7"
+                              "$ref": "#/paths/~1posts~1%7BpostId%7D/patch/responses/200/content/application~1json/schema/allOf/2/properties/data/allOf/7"
                             },
                             {
-                              "$ref": "#/paths/~1posts~1create/post/responses/201/content/application~1json/schema/allOf/2/properties/data/allOf/8"
+                              "$ref": "#/paths/~1posts/post/responses/201/content/application~1json/schema/allOf/2/properties/data/allOf/8"
                             }
                           ]
                         }
@@ -3834,7 +3216,742 @@
             "$ref": "#/paths/~1plans/get/responses/403"
           },
           "404": {
-            "$ref": "#/paths/~1addresses/post/responses/404"
+            "$ref": "#/paths/~1posts/post/responses/404"
+          },
+          "409": {
+            "$ref": "#/paths/~1tags~1admin/post/responses/409"
+          },
+          "500": {
+            "$ref": "#/paths/~1posts/post/responses/500"
+          }
+        }
+      }
+    },
+    "/posts/{postId}/likes": {
+      "summary": "",
+      "description": "",
+      "post": {
+        "tags": [
+          "Posts"
+        ],
+        "summary": "Add Like To Post",
+        "description": "Add Like To Post",
+        "operationId": "post.change-like-status",
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "parameters": [
+          {
+            "$ref": "#/paths/~1posts~1%7BpostId%7D/get/parameters/0"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "allOf": [
+                    {
+                      "$ref": "#/paths/~1users~1logout/post/responses/200/content/application~1json/schema/allOf/0"
+                    },
+                    {
+                      "type": "object",
+                      "properties": {
+                        "statusCode": {
+                          "type": "number",
+                          "default": 200
+                        }
+                      }
+                    },
+                    {
+                      "type": "object",
+                      "properties": {
+                        "data": {
+                          "allOf": [
+                            {
+                              "$ref": "#/paths/~1posts/post/responses/201/content/application~1json/schema/allOf/2/properties/data/allOf/0"
+                            },
+                            {
+                              "$ref": "#/paths/~1posts/post/responses/201/content/application~1json/schema/allOf/2/properties/data/allOf/1"
+                            },
+                            {
+                              "$ref": "#/paths/~1posts~1%7BpostId%7D/patch/requestBody/content/multipart~1form-data/schema/allOf/1/allOf/0"
+                            },
+                            {
+                              "$ref": "#/paths/~1posts/post/responses/201/content/application~1json/schema/allOf/2/properties/data/allOf/3"
+                            },
+                            {
+                              "type": "object",
+                              "properties": {
+                                "content": {
+                                  "title": "Post content",
+                                  "description": "Post content",
+                                  "type": "string"
+                                }
+                              }
+                            },
+                            {
+                              "$ref": "#/paths/~1posts~1%7BpostId%7D/get/responses/200/content/application~1json/schema/allOf/2/properties/data/allOf/5"
+                            },
+                            {
+                              "$ref": "#/paths/~1posts~1%7BpostId%7D/get/responses/200/content/application~1json/schema/allOf/2/properties/data/allOf/6"
+                            },
+                            {
+                              "$ref": "#/paths/~1posts~1%7BpostId%7D/patch/responses/200/content/application~1json/schema/allOf/2/properties/data/allOf/7"
+                            },
+                            {
+                              "$ref": "#/paths/~1posts/post/responses/201/content/application~1json/schema/allOf/2/properties/data/allOf/8"
+                            }
+                          ]
+                        }
+                      }
+                    }
+                  ]
+                }
+              }
+            }
+          },
+          "400": {
+            "$ref": "#/paths/~1plans/get/responses/400"
+          },
+          "401": {
+            "$ref": "#/paths/~1plans/get/responses/401"
+          },
+          "403": {
+            "$ref": "#/paths/~1plans/get/responses/403"
+          },
+          "404": {
+            "$ref": "#/paths/~1posts/post/responses/404"
+          },
+          "500": {
+            "$ref": "#/paths/~1posts/post/responses/500"
+          }
+        }
+      }
+    },
+    "/posts/{postId}/comments": {
+      "summary": "",
+      "description": "",
+      "post": {
+        "tags": [
+          "Posts"
+        ],
+        "summary": "Add Comment To Post",
+        "description": "Add Comment To Post",
+        "operationId": "post.add-comment",
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "parameters": [
+          {
+            "$ref": "#/paths/~1posts~1%7BpostId%7D/get/parameters/0"
+          }
+        ],
+        "requestBody": {
+          "description": "",
+          "content": {
+            "application/json": {
+              "schema": {
+                "allOf": [
+                  {
+                    "type": "object",
+                    "properties": {
+                      "comment": {
+                        "title": "Post Comment",
+                        "description": "Post Comment",
+                        "type": "string"
+                      }
+                    }
+                  },
+                  {
+                    "required": [
+                      "comment"
+                    ]
+                  }
+                ]
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "allOf": [
+                    {
+                      "$ref": "#/paths/~1users~1logout/post/responses/200/content/application~1json/schema/allOf/0"
+                    },
+                    {
+                      "type": "object",
+                      "properties": {
+                        "statusCode": {
+                          "type": "number",
+                          "default": 200
+                        }
+                      }
+                    },
+                    {
+                      "type": "object",
+                      "properties": {
+                        "data": {
+                          "allOf": [
+                            {
+                              "$ref": "#/paths/~1posts/post/responses/201/content/application~1json/schema/allOf/2/properties/data/allOf/0"
+                            },
+                            {
+                              "$ref": "#/paths/~1posts/post/responses/201/content/application~1json/schema/allOf/2/properties/data/allOf/1"
+                            },
+                            {
+                              "$ref": "#/paths/~1posts~1%7BpostId%7D/patch/requestBody/content/multipart~1form-data/schema/allOf/1/allOf/0"
+                            },
+                            {
+                              "$ref": "#/paths/~1posts/post/responses/201/content/application~1json/schema/allOf/2/properties/data/allOf/3"
+                            },
+                            {
+                              "type": "object",
+                              "properties": {
+                                "content": {
+                                  "title": "Post content",
+                                  "description": "Post content",
+                                  "type": "string"
+                                }
+                              }
+                            },
+                            {
+                              "$ref": "#/paths/~1posts~1%7BpostId%7D/get/responses/200/content/application~1json/schema/allOf/2/properties/data/allOf/5"
+                            },
+                            {
+                              "$ref": "#/paths/~1posts~1%7BpostId%7D/get/responses/200/content/application~1json/schema/allOf/2/properties/data/allOf/6"
+                            },
+                            {
+                              "$ref": "#/paths/~1posts~1%7BpostId%7D/patch/responses/200/content/application~1json/schema/allOf/2/properties/data/allOf/7"
+                            },
+                            {
+                              "$ref": "#/paths/~1posts/post/responses/201/content/application~1json/schema/allOf/2/properties/data/allOf/8"
+                            }
+                          ]
+                        }
+                      }
+                    }
+                  ]
+                }
+              }
+            }
+          },
+          "400": {
+            "$ref": "#/paths/~1plans/get/responses/400"
+          },
+          "401": {
+            "$ref": "#/paths/~1plans/get/responses/401"
+          },
+          "403": {
+            "$ref": "#/paths/~1plans/get/responses/403"
+          },
+          "404": {
+            "$ref": "#/paths/~1posts/post/responses/404"
+          },
+          "500": {
+            "$ref": "#/paths/~1posts/post/responses/500"
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "Posts"
+        ],
+        "summary": "Delete Comment To Post",
+        "description": "Delete Comment To Post",
+        "operationId": "post.delete-comment",
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "parameters": [
+          {
+            "$ref": "#/paths/~1posts~1%7BpostId%7D/get/parameters/0"
+          }
+        ],
+        "requestBody": {
+          "description": "",
+          "content": {
+            "application/json": {
+              "schema": {
+                "allOf": [
+                  {
+                    "type": "object",
+                    "properties": {
+                      "comment_id": {
+                        "title": "Post Comment Id",
+                        "description": "Post Comment Id",
+                        "type": "string"
+                      }
+                    }
+                  },
+                  {
+                    "required": [
+                      "comment_id"
+                    ]
+                  }
+                ]
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "allOf": [
+                    {
+                      "$ref": "#/paths/~1users~1logout/post/responses/200/content/application~1json/schema/allOf/0"
+                    },
+                    {
+                      "type": "object",
+                      "properties": {
+                        "statusCode": {
+                          "type": "number",
+                          "default": 200
+                        }
+                      }
+                    },
+                    {
+                      "type": "object",
+                      "properties": {
+                        "data": {
+                          "allOf": [
+                            {
+                              "$ref": "#/paths/~1posts/post/responses/201/content/application~1json/schema/allOf/2/properties/data/allOf/0"
+                            },
+                            {
+                              "$ref": "#/paths/~1posts/post/responses/201/content/application~1json/schema/allOf/2/properties/data/allOf/1"
+                            },
+                            {
+                              "$ref": "#/paths/~1posts~1%7BpostId%7D/patch/requestBody/content/multipart~1form-data/schema/allOf/1/allOf/0"
+                            },
+                            {
+                              "$ref": "#/paths/~1posts/post/responses/201/content/application~1json/schema/allOf/2/properties/data/allOf/3"
+                            },
+                            {
+                              "type": "object",
+                              "properties": {
+                                "content": {
+                                  "title": "Post content",
+                                  "description": "Post content",
+                                  "type": "string"
+                                }
+                              }
+                            },
+                            {
+                              "$ref": "#/paths/~1posts~1%7BpostId%7D/get/responses/200/content/application~1json/schema/allOf/2/properties/data/allOf/5"
+                            },
+                            {
+                              "$ref": "#/paths/~1posts~1%7BpostId%7D/get/responses/200/content/application~1json/schema/allOf/2/properties/data/allOf/6"
+                            },
+                            {
+                              "$ref": "#/paths/~1posts~1%7BpostId%7D/patch/responses/200/content/application~1json/schema/allOf/2/properties/data/allOf/7"
+                            },
+                            {
+                              "$ref": "#/paths/~1posts/post/responses/201/content/application~1json/schema/allOf/2/properties/data/allOf/8"
+                            }
+                          ]
+                        }
+                      }
+                    }
+                  ]
+                }
+              }
+            }
+          },
+          "400": {
+            "$ref": "#/paths/~1plans/get/responses/400"
+          },
+          "401": {
+            "$ref": "#/paths/~1plans/get/responses/401"
+          },
+          "403": {
+            "$ref": "#/paths/~1plans/get/responses/403"
+          },
+          "404": {
+            "$ref": "#/paths/~1posts/post/responses/404"
+          },
+          "500": {
+            "$ref": "#/paths/~1posts/post/responses/500"
+          }
+        }
+      }
+    },
+    "/posts/admin/": {
+      "summary": "",
+      "description": "",
+      "get": {
+        "tags": [
+          "Admins"
+        ],
+        "summary": "Get all posts",
+        "description": "Get all posts",
+        "operationId": "admins.posts.get-all",
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "limit",
+            "in": "query",
+            "description": "Maximum tag count (Default: 10)",
+            "schema": {
+              "type": "number"
+            }
+          },
+          {
+            "name": "page",
+            "in": "query",
+            "description": "Page number (Default: 1)",
+            "schema": {
+              "type": "number"
+            }
+          },
+          {
+            "in": "query",
+            "name": "props",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "title.eq": {
+                  "type": "string",
+                  "example": "blogger"
+                },
+                "createdAt.eqd": {
+                  "type": "string",
+                  "example": "2023 & 2023-03 & 2023-03-12 & 2023-03-12T18 & 2023-03-12T18:20 & 2023-03-12T18:20:45"
+                },
+                "createdAt.gt": {
+                  "type": "string",
+                  "example": "2023 & 2023-03 & 2023-03-12 & 2023-03-12T18 & 2023-03-12T18:20 & 2023-03-12T18:20:45"
+                },
+                "createdAt.lt": {
+                  "type": "string",
+                  "example": "2023 & 2023-03 & 2023-03-12 & 2023-03-12T18 & 2023-03-12T18:20 & 2023-03-12T18:20:45"
+                },
+                "createdAt.gte": {
+                  "type": "string",
+                  "example": "2023 & 2023-03 & 2023-03-12 & 2023-03-12T18 & 2023-03-12T18:20 & 2023-03-12T18:20:45"
+                },
+                "createdAt.lte": {
+                  "type": "string",
+                  "example": "2023 & 2023-03 & 2023-03-12 & 2023-03-12T18 & 2023-03-12T18:20 & 2023-03-12T18:20:45"
+                },
+                "tags.in": {
+                  "type": "string",
+                  "example": "movie"
+                }
+              }
+            },
+            "style": "form",
+            "explode": true
+          },
+          {
+            "name": "sortField",
+            "in": "query",
+            "description": "Post field name for sorting",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "sortOrder",
+            "in": "query",
+            "description": "Sorting number (-1 | 1)",
+            "schema": {
+              "type": "number"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "allOf": [
+                    {
+                      "$ref": "#/paths/~1users~1logout/post/responses/200/content/application~1json/schema/allOf/0"
+                    },
+                    {
+                      "type": "object",
+                      "properties": {
+                        "statusCode": {
+                          "type": "number",
+                          "default": 200
+                        }
+                      }
+                    },
+                    {
+                      "type": "object",
+                      "properties": {
+                        "data": {
+                          "allOf": [
+                            {
+                              "type": "object",
+                              "properties": {
+                                "posts": {
+                                  "type": "array",
+                                  "items": {
+                                    "allOf": [
+                                      {
+                                        "$ref": "#/paths/~1posts/post/responses/201/content/application~1json/schema/allOf/2/properties/data/allOf/0"
+                                      },
+                                      {
+                                        "$ref": "#/paths/~1posts/post/responses/201/content/application~1json/schema/allOf/2/properties/data/allOf/1"
+                                      },
+                                      {
+                                        "$ref": "#/paths/~1posts~1%7BpostId%7D/patch/requestBody/content/multipart~1form-data/schema/allOf/1/allOf/0"
+                                      },
+                                      {
+                                        "$ref": "#/paths/~1posts/post/responses/201/content/application~1json/schema/allOf/2/properties/data/allOf/3"
+                                      },
+                                      {
+                                        "type": "object",
+                                        "properties": {
+                                          "content": {
+                                            "title": "Post content",
+                                            "description": "Post content",
+                                            "type": "string"
+                                          }
+                                        }
+                                      },
+                                      {
+                                        "$ref": "#/paths/~1posts~1%7BpostId%7D/get/responses/200/content/application~1json/schema/allOf/2/properties/data/allOf/5"
+                                      },
+                                      {
+                                        "$ref": "#/paths/~1posts~1%7BpostId%7D/get/responses/200/content/application~1json/schema/allOf/2/properties/data/allOf/6"
+                                      },
+                                      {
+                                        "$ref": "#/paths/~1posts~1%7BpostId%7D/patch/responses/200/content/application~1json/schema/allOf/2/properties/data/allOf/7"
+                                      },
+                                      {
+                                        "$ref": "#/paths/~1posts/post/responses/201/content/application~1json/schema/allOf/2/properties/data/allOf/8"
+                                      }
+                                    ]
+                                  }
+                                }
+                              }
+                            },
+                            {
+                              "type": "object",
+                              "properties": {
+                                "statistics": {
+                                  "allOf": [
+                                    {
+                                      "type": "object",
+                                      "properties": {
+                                        "postCount": {
+                                          "title": "User's total number of posts",
+                                          "description": "User's total number of posts",
+                                          "type": "number",
+                                          "min": 0,
+                                          "example": 7
+                                        }
+                                      }
+                                    },
+                                    {
+                                      "type": "object",
+                                      "properties": {
+                                        "likesCount": {
+                                          "title": "Total likes of the user's posts",
+                                          "description": "Total likes of the user's posts",
+                                          "type": "number",
+                                          "min": 0,
+                                          "example": 16
+                                        }
+                                      }
+                                    },
+                                    {
+                                      "type": "object",
+                                      "properties": {
+                                        "viewsCount": {
+                                          "title": "Total views of the user's posts",
+                                          "description": "Total views of the user's posts",
+                                          "type": "number",
+                                          "min": 0,
+                                          "example": 47
+                                        }
+                                      }
+                                    }
+                                  ]
+                                }
+                              }
+                            }
+                          ]
+                        }
+                      }
+                    }
+                  ]
+                }
+              }
+            }
+          },
+          "400": {
+            "$ref": "#/paths/~1plans/get/responses/400"
+          },
+          "401": {
+            "$ref": "#/paths/~1plans/get/responses/401"
+          },
+          "403": {
+            "$ref": "#/paths/~1plans/get/responses/403"
+          }
+        }
+      }
+    },
+    "/posts/admin/{postId}": {
+      "summary": "",
+      "description": "",
+      "get": {
+        "tags": [
+          "Admins"
+        ],
+        "summary": "Get post by id",
+        "description": "Get post by id",
+        "operationId": "admins.posts.get-post-by-id",
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "parameters": [
+          {
+            "$ref": "#/paths/~1posts~1%7BpostId%7D/get/parameters/0"
+          }
+        ],
+        "responses": {
+          "200": {
+            "$ref": "#/paths/~1posts~1%7BpostId%7D/get/responses/200"
+          },
+          "400": {
+            "$ref": "#/paths/~1plans/get/responses/400"
+          },
+          "401": {
+            "$ref": "#/paths/~1plans/get/responses/401"
+          },
+          "403": {
+            "$ref": "#/paths/~1plans/get/responses/403"
+          },
+          "404": {
+            "$ref": "#/paths/~1posts/post/responses/404"
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "Admins"
+        ],
+        "summary": "Delete user's post",
+        "description": "Delete user's post",
+        "operationId": "admin.posts.delete",
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "parameters": [
+          {
+            "$ref": "#/paths/~1posts~1%7BpostId%7D/get/parameters/0"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "allOf": [
+                    {
+                      "$ref": "#/paths/~1users~1logout/post/responses/200/content/application~1json/schema/allOf/0"
+                    },
+                    {
+                      "type": "object",
+                      "properties": {
+                        "statusCode": {
+                          "type": "number",
+                          "default": 200
+                        }
+                      }
+                    },
+                    {
+                      "type": "object",
+                      "properties": {
+                        "data": {
+                          "allOf": [
+                            {
+                              "$ref": "#/paths/~1posts/post/responses/201/content/application~1json/schema/allOf/2/properties/data/allOf/0"
+                            },
+                            {
+                              "$ref": "#/paths/~1posts/post/responses/201/content/application~1json/schema/allOf/2/properties/data/allOf/1"
+                            },
+                            {
+                              "$ref": "#/paths/~1posts~1%7BpostId%7D/patch/requestBody/content/multipart~1form-data/schema/allOf/1/allOf/0"
+                            },
+                            {
+                              "$ref": "#/paths/~1posts/post/responses/201/content/application~1json/schema/allOf/2/properties/data/allOf/3"
+                            },
+                            {
+                              "type": "object",
+                              "properties": {
+                                "content": {
+                                  "title": "Post content",
+                                  "description": "Post content",
+                                  "type": "string"
+                                }
+                              }
+                            },
+                            {
+                              "$ref": "#/paths/~1posts~1%7BpostId%7D/get/responses/200/content/application~1json/schema/allOf/2/properties/data/allOf/5"
+                            },
+                            {
+                              "$ref": "#/paths/~1posts~1%7BpostId%7D/get/responses/200/content/application~1json/schema/allOf/2/properties/data/allOf/6"
+                            },
+                            {
+                              "$ref": "#/paths/~1posts~1%7BpostId%7D/patch/responses/200/content/application~1json/schema/allOf/2/properties/data/allOf/7"
+                            },
+                            {
+                              "$ref": "#/paths/~1posts/post/responses/201/content/application~1json/schema/allOf/2/properties/data/allOf/8"
+                            }
+                          ]
+                        }
+                      }
+                    }
+                  ]
+                }
+              }
+            }
+          },
+          "400": {
+            "$ref": "#/paths/~1plans/get/responses/400"
+          },
+          "401": {
+            "$ref": "#/paths/~1plans/get/responses/401"
+          },
+          "403": {
+            "$ref": "#/paths/~1plans/get/responses/403"
+          },
+          "404": {
+            "$ref": "#/paths/~1posts/post/responses/404"
           }
         }
       }
@@ -4009,7 +4126,7 @@
             "$ref": "#/paths/~1plans/get/responses/403"
           },
           "404": {
-            "$ref": "#/paths/~1addresses/post/responses/404"
+            "$ref": "#/paths/~1posts/post/responses/404"
           }
         }
       }
@@ -4174,7 +4291,7 @@
             "$ref": "#/paths/~1plans/get/responses/403"
           },
           "404": {
-            "$ref": "#/paths/~1addresses/post/responses/404"
+            "$ref": "#/paths/~1posts/post/responses/404"
           }
         }
       }
@@ -4432,50 +4549,10 @@
             "$ref": "#/paths/~1plans/get/responses/403"
           },
           "404": {
-            "description": "Not found error",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "allOf": [
-                    {
-                      "$ref": "#/paths/~1tags~1/get/responses/400/content/application~1json/schema/allOf/0"
-                    },
-                    {
-                      "type": "object",
-                      "properties": {
-                        "statusCode": {
-                          "type": "number",
-                          "default": 404
-                        }
-                      }
-                    }
-                  ]
-                }
-              }
-            }
+            "$ref": "#/paths/~1posts/post/responses/404"
           },
           "500": {
-            "description": "Internal server error",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "allOf": [
-                    {
-                      "$ref": "#/paths/~1tags~1/get/responses/400/content/application~1json/schema/allOf/0"
-                    },
-                    {
-                      "type": "object",
-                      "properties": {
-                        "statusCode": {
-                          "type": "number",
-                          "default": 500
-                        }
-                      }
-                    }
-                  ]
-                }
-              }
-            }
+            "$ref": "#/paths/~1posts/post/responses/500"
           }
         }
       }
@@ -4647,7 +4724,7 @@
             "$ref": "#/paths/~1plans/get/responses/403"
           },
           "404": {
-            "$ref": "#/paths/~1addresses/post/responses/404"
+            "$ref": "#/paths/~1posts/post/responses/404"
           }
         }
       },
@@ -4802,7 +4879,7 @@
             "$ref": "#/paths/~1plans/get/responses/403"
           },
           "404": {
-            "$ref": "#/paths/~1addresses/post/responses/404"
+            "$ref": "#/paths/~1posts/post/responses/404"
           }
         }
       },
@@ -4919,7 +4996,7 @@
             "$ref": "#/paths/~1plans/get/responses/403"
           },
           "404": {
-            "$ref": "#/paths/~1addresses/post/responses/404"
+            "$ref": "#/paths/~1posts/post/responses/404"
           }
         }
       }
@@ -4977,20 +5054,7 @@
                 "schema": {
                   "allOf": [
                     {
-                      "type": "object",
-                      "properties": {
-                        "error": {
-                          "properties": {
-                            "message": {
-                              "type": "string"
-                            }
-                          }
-                        },
-                        "success": {
-                          "type": "boolean",
-                          "default": false
-                        }
-                      }
+                      "$ref": "#/paths/~1users~1profile/get/responses/401/content/application~1json/schema/allOf/0"
                     },
                     {
                       "type": "object",
@@ -5013,7 +5077,7 @@
                 "schema": {
                   "allOf": [
                     {
-                      "$ref": "#/paths/~1tags~1/get/responses/400/content/application~1json/schema/allOf/0"
+                      "$ref": "#/paths/~1users~1profile/get/responses/401/content/application~1json/schema/allOf/0"
                     },
                     {
                       "type": "object",
@@ -5036,7 +5100,7 @@
                 "schema": {
                   "allOf": [
                     {
-                      "$ref": "#/paths/~1tags~1/get/responses/400/content/application~1json/schema/allOf/0"
+                      "$ref": "#/paths/~1users~1profile/get/responses/401/content/application~1json/schema/allOf/0"
                     },
                     {
                       "type": "object",
@@ -5120,7 +5184,7 @@
             "$ref": "#/paths/~1plans/get/responses/403"
           },
           "404": {
-            "$ref": "#/paths/~1addresses/post/responses/404"
+            "$ref": "#/paths/~1posts/post/responses/404"
           }
         }
       }
@@ -5208,7 +5272,7 @@
             "$ref": "#/paths/~1tags~1admin/post/responses/409"
           },
           "500": {
-            "$ref": "#/paths/~1addresses/post/responses/500"
+            "$ref": "#/paths/~1posts/post/responses/500"
           }
         }
       }
@@ -5336,13 +5400,13 @@
             "$ref": "#/paths/~1plans/get/responses/403"
           },
           "404": {
-            "$ref": "#/paths/~1addresses/post/responses/404"
+            "$ref": "#/paths/~1posts/post/responses/404"
           },
           "409": {
             "$ref": "#/paths/~1tags~1admin/post/responses/409"
           },
           "500": {
-            "$ref": "#/paths/~1addresses/post/responses/500"
+            "$ref": "#/paths/~1posts/post/responses/500"
           }
         }
       },
@@ -5377,7 +5441,7 @@
             "$ref": "#/paths/~1plans/get/responses/403"
           },
           "404": {
-            "$ref": "#/paths/~1addresses/post/responses/404"
+            "$ref": "#/paths/~1posts/post/responses/404"
           }
         }
       }
@@ -5615,72 +5679,46 @@
               "allOf": [
                 {
                   "type": "object",
-                  "allOf": [
-                    {
-                      "type": "object",
-                      "properties": {
-                        "cover_image": {
-                          "type": "string",
-                          "format": "binary"
-                        }
-                      }
-                    },
-                    {
-                      "required": [
-                        "cover_image"
-                      ]
+                  "properties": {
+                    "cover_image": {
+                      "type": "string",
+                      "format": "binary"
                     }
+                  },
+                  "required": [
+                    "cover_image"
                   ]
                 },
                 {
                   "type": "object",
-                  "allOf": [
-                    {
-                      "type": "object",
-                      "properties": {
-                        "title": {
-                          "title": "Post title",
-                          "description": "Post title",
-                          "type": "string"
-                        },
-                        "description": {
-                          "title": "Post description",
-                          "description": "Post description",
-                          "type": "string"
-                        },
-                        "slug": {
-                          "title": "Post slug (unique)",
-                          "description": "Post slug (unique)",
-                          "type": "string"
-                        }
-                      }
+                  "properties": {
+                    "title": {
+                      "title": "Post title",
+                      "description": "Post title",
+                      "type": "string"
                     },
-                    {
-                      "required": [
-                        "title",
-                        "description"
-                      ]
+                    "description": {
+                      "title": "Post description",
+                      "description": "Post description",
+                      "type": "string"
                     }
+                  },
+                  "required": [
+                    "title",
+                    "description"
                   ]
                 },
                 {
                   "type": "object",
-                  "allOf": [
-                    {
-                      "type": "object",
-                      "properties": {
-                        "content": {
-                          "title": "Post content",
-                          "description": "Post content",
-                          "type": "string"
-                        }
-                      }
-                    },
-                    {
-                      "required": [
-                        "content"
-                      ]
+                  "properties": {
+                    "content": {
+                      "title": "Post content",
+                      "description": "Post content",
+                      "type": "string"
                     }
+                  },
+                  "required": [
+                    "content"
                   ]
                 }
               ]

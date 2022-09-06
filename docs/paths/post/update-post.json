@@ -2,9 +2,7 @@
     "summary": "",
     "description": "",
     "patch": {
-        "tags": [
-            "Posts"
-        ],
+        "tags": ["Posts"],
         "summary": "Update My Post",
         "description": "Update My Post",
         "operationId": "post.update-post",
@@ -39,6 +37,79 @@
             },
             "500": {
                 "$ref": "../../responses/api-responses/500.json"
+            }
+        }
+    },
+    "summary": "",
+    "description": "",
+    "delete": {
+        "tags": ["Posts"],
+        "summary": "Delete My Post",
+        "description": "Delete My Post",
+        "operationId": "post.delete-post",
+        "security": [
+            {
+                "bearerAuth": []
+            }
+        ],
+        "parameters": [
+            {
+                "$ref": "../../parameters/path/post/post_id.json"
+            }
+        ],
+        "responses": {
+            "200": {
+                "$ref": "../../responses/post/delete-post.json"
+            },
+            "400": {
+                "$ref": "../../responses/api-responses/400.json"
+            },
+            "401": {
+                "$ref": "../../responses/api-responses/401.json"
+            },
+            "403": {
+                "$ref": "../../responses/api-responses/403.json"
+            },
+            "404": {
+                "$ref": "../../responses/api-responses/404.json"
+            },
+            "500": {
+                "$ref": "../../responses/api-responses/500.json"
+            }
+        }
+    },
+    "summary": "",
+    "description": "",
+    "get": {
+        "tags": ["Posts"],
+        "summary": "Get other user's post",
+        "description": "Get other user's post",
+        "operationId": "post.get-other-users-post",
+        "security": [
+            {
+                "bearerAuth": []
+            }
+        ],
+        "parameters": [
+            {
+                "$ref": "../../parameters/path/post/post_id.json"
+            }
+        ],
+        "responses": {
+            "200": {
+                "$ref": "../../responses/post/get-post-by-id.json"
+            },
+            "400": {
+                "$ref": "../../responses/api-responses/400.json"
+            },
+            "401": {
+                "$ref": "../../responses/api-responses/401.json"
+            },
+            "403": {
+                "$ref": "../../responses/api-responses/403.json"
+            },
+            "404": {
+                "$ref": "../../responses/api-responses/404.json"
             }
         }
     }

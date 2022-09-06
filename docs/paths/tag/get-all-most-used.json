@@ -2,9 +2,7 @@
     "summary": "",
     "description": "",
     "get": {
-        "tags": [
-            "Tags"
-        ],
+        "tags": ["Tags"],
         "summary": "Get all most used tags",
         "description": "Get all most used tags",
         "operationId": "tags.get-all-most-used-tags",

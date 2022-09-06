@@ -6,56 +6,40 @@
                 "allOf": [
                     {
                         "type": "object",
-                        "allOf": [
-                            {
-                                "type": "object",
-                                "properties": {
-                                    "cover_image": {
-                                        "type": "string",
-                                        "format": "binary"
-                                    }
-                                }
-                            },
-                            {
-                                "required": [
-                                    "cover_image"
-                                ]
+                        "properties": {
+                            "cover_image": {
+                                "type": "string",
+                                "format": "binary"
                             }
-                        ]
+                        },
+                        "required": ["cover_image"]
                     },
                     {
                         "type": "object",
-                        "allOf": [
-                            {
-                                "$ref": "../../schemas/post/other/title-description.json"
+                        "properties": {
+                            "title": {
+                                "title": "Post title",
+                                "description": "Post title",
+                                "type": "string"
                             },
-                            {
-                                "required": [
-                                    "title",
-                                    "description"
-                                ]
+                            "description": {
+                                "title": "Post description",
+                                "description": "Post description",
+                                "type": "string"
                             }
-                        ]
+                        },
+                        "required": ["title", "description"]
                     },
                     {
                         "type": "object",
-                        "allOf": [
-                            {
-                                "type": "object",
-                                "properties": {
-                                    "content": {
-                                        "title": "Post content",
-                                        "description": "Post content",
-                                        "type": "string"
-                                    }
-                                }
-                            },
-                            {
-                                "required": [
-                                    "content"
-                                ]
+                        "properties": {
+                            "content": {
+                                "title": "Post content",
+                                "description": "Post content",
+                                "type": "string"
                             }
-                        ]
+                        },
+                        "required": ["content"]
                     }
                 ]
             }

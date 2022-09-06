@@ -9,18 +9,15 @@ const schemas = require('../validations/post.validations');
 // eslint-disable-next-line max-len
 const paramIdValidator = require('../middlewares/params-id-validator.middleware');
 
-// TODO: Kullanıcının aboneliği varsa getir
-router
-    .route('/get-all/my')
-    .get(authenticate, queryOptions, controller.fetchAllMyPosts); // ! FIXME: Abone olmalı
+router.route('/my').get(authenticate, queryOptions, controller.fetchAllMyPosts);
 
 router
-    .route('/get/my/:id')
-    .get(authenticate, paramIdValidator, controller.fetchOneMyPost); // ! FIXME: Abone olmalı
+    .route('/my/:id')
+    .get(authenticate, paramIdValidator, controller.fetchOneMyPost);
 
-router.route('/get-all/previews').get(controller.fetchAllPreviews);
+router.route('/previews').get(controller.fetchAllPreviews);
 
-router.route('/create').post(
+router.route('/').post(
     authenticate,
     bodyValidator(schemas.createValidation),
     fileValidator([
@@ -35,10 +32,10 @@ router.route('/create').post(
 );
 
 router
-    .route('/delete/my/:id')
+    .route('/:id')
     .delete(authenticate, paramIdValidator, controller.deleteMyPost);
 
-router.route('/update/my/:id').patch(
+router.route('/:id').patch(
     authenticate,
     paramIdValidator,
     bodyValidator(schemas.updateValidation),
@@ -53,16 +50,19 @@ router.route('/update/my/:id').patch(
     controller.updateMyPost
 );
 
+// ! FIXME: Abone olmalı
 router
-    .route('/add-view/:id')
-    .post(authenticate, paramIdValidator, controller.addView); // ! FIXME: Abone olmalı
+    .route('/:id')
+    .get(authenticate, paramIdValidator, controller.fetchOtherUsersPost);
 
+// ! FIXME: Abone olmalı
 router
-    .route('/change-like-status/:id')
-    .post(authenticate, paramIdValidator, controller.changeLikeStatus); // ! FIXME: Abone olmalı
+    .route('/:id/likes')
+    .post(authenticate, paramIdValidator, controller.changeLikeStatus);
 
+// ! FIXME: Abone olmalı
 router
-    .route('/add-comment/:id')
+    .route('/:id/comments')
     .post(
         authenticate,
         paramIdValidator,
@@ -70,14 +70,14 @@ router
         controller.addComment
     );
 
+// ! FIXME: Abone olmalı
 router
-    .route('/delete-comment/:id')
+    .route('/:id/comments')
     .delete(
         authenticate,
         paramIdValidator,
         bodyValidator(schemas.deleteComment),
         controller.deleteComment
     );
-// TODO: Comment silme ekle
 
 module.exports = router;

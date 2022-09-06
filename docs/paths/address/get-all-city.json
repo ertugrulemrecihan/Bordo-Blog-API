@@ -2,9 +2,7 @@
     "summary": "",
     "description": "",
     "get": {
-        "tags": [
-            "Addresses"
-        ],
+        "tags": ["Addresses"],
         "summary": "Get all cities by country id",
         "description": "Get all cities by country id",
         "operationId": "address.get-all-city",
@@ -12,7 +10,7 @@
             {
                 "bearerAuth": []
             }
-        ],        
+        ],
         "parameters": [
             {
                 "$ref": "../../parameters/path/address/country_id.json"

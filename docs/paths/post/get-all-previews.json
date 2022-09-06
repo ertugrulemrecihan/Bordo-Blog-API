@@ -2,9 +2,7 @@
     "summary": "",
     "description": "",
     "get": {
-        "tags": [
-            "Posts"
-        ],
+        "tags": ["Posts"],
         "summary": "Get All Post Previews",
         "description": "Get All Post Previews",
         "operationId": "post.get-all-previews",

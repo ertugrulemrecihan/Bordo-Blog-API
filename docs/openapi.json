@@ -104,35 +104,29 @@
         "/tags/admin/{tagId}": {
             "$ref": "./paths/admin/tag/delete-tag.json"
         },
-        "/posts/get-all/my": {
+        "/posts/my": {
             "$ref": "./paths/post/get-all-my-post.json"
         },
-        "/posts/get/my/{postId}": {
+        "/posts/my/{postId}": {
             "$ref": "./paths/post/get-my-post-by-id.json"
         },
-        "/posts/get-all/previews": {
+        "/posts/previews": {
             "$ref": "./paths/post/get-all-previews.json"
         },
-        "/posts/create": {
+        "/posts": {
             "$ref": "./paths/post/create-post.json"
+        },
+        "/posts/{postId}": {
+            "$ref": "./paths/post/update-post.json"
         },
         "/posts/add-view/{postId}": {
             "$ref": "./paths/post/add-view.json"
         },
-        "/posts/change-like-status/{postId}": {
+        "/posts/{postId}/likes": {
             "$ref": "./paths/post/change-like-status.json"
         },
-        "/posts/add-comment/{postId}": {
+        "/posts/{postId}/comments": {
             "$ref": "./paths/post/add-comment.json"
-        },
-        "/posts/update/my/{postId}": {
-            "$ref": "./paths/post/update-post.json"
-        },
-        "/posts/delete/my/{postId}": {
-            "$ref": "./paths/post/delete-post.json"
-        },
-        "/posts/delete-comment/{postId}": {
-            "$ref": "./paths/post/delete-comment.json"
         },
         "/posts/admin/": {
             "$ref": "./paths/admin/post/get-all-posts.json"

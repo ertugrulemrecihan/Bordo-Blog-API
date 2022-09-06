@@ -2,9 +2,7 @@
     "summary": "",
     "description": "",
     "post": {
-        "tags": [
-            "Posts"
-        ],
+        "tags": ["Posts"],
         "summary": "Add Comment To Post",
         "description": "Add Comment To Post",
         "operationId": "post.add-comment",
@@ -24,6 +22,47 @@
         "responses": {
             "200": {
                 "$ref": "../../responses/post/add-comment.json"
+            },
+            "400": {
+                "$ref": "../../responses/api-responses/400.json"
+            },
+            "401": {
+                "$ref": "../../responses/api-responses/401.json"
+            },
+            "403": {
+                "$ref": "../../responses/api-responses/403.json"
+            },
+            "404": {
+                "$ref": "../../responses/api-responses/404.json"
+            },
+            "500": {
+                "$ref": "../../responses/api-responses/500.json"
+            }
+        }
+    },
+    "summary": "",
+    "description": "",
+    "delete": {
+        "tags": ["Posts"],
+        "summary": "Delete Comment To Post",
+        "description": "Delete Comment To Post",
+        "operationId": "post.delete-comment",
+        "security": [
+            {
+                "bearerAuth": []
+            }
+        ],
+        "parameters": [
+            {
+                "$ref": "../../parameters/path/post/post_id.json"
+            }
+        ],
+        "requestBody": {
+            "$ref": "../../request-bodies/post/delete-comment.json"
+        },
+        "responses": {
+            "200": {
+                "$ref": "../../responses/post/delete-comment.json"
             },
             "400": {
                 "$ref": "../../responses/api-responses/400.json"
