@@ -74,8 +74,8 @@ const createAndVerifyEmail = async (email) => {
 
     const verifyUrl =
         process.env.NODE_ENV == 'PRODUCTION'
-            ? `${process.env.API_URL}/users/verify-email/${emailVerifyToken}`
-            : `${process.env.API_URL}:${process.env.PORT}/api/v1/users/verify-email/${emailVerifyToken}`;
+            ? `${process.env.API_URL}/api/v1/users/redirects/verify-email/${emailVerifyToken}`
+            : `${process.env.API_URL}:${process.env.PORT}/api/v1/users/redirects/verify-email/${emailVerifyToken}`;
 
     eventEmitter.emit('send_email', {
         to: user.email,
