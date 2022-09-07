@@ -51,7 +51,7 @@ router
     );
 
 router
-    .route('/redirects/password-reset')
+    .route('/password-reset')
     .post(
         bodyValidator(schemas.resetPasswordValidation),
         controller.resetPassword

@@ -23,7 +23,6 @@ const authenticate = async (req, res, next) => {
             populate: [
                 {
                     path: 'user',
-                    select: '-password -salt',
                     populate: [
                         {
                             path: 'roles',

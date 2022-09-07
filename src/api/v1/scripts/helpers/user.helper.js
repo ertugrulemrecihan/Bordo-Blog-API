@@ -40,16 +40,14 @@ const deletePasswordAndSaltFields = (user) => {
 };
 
 const createAndVerifyEmail = async (email) => {
-    const user = await userService.fetchOneByQuery(
-        { email: email },
-        { select: '-password -salt' }
-    );
+    const user = await userService.fetchOneByQuery({ email: email });
 
     if (!user) {
-        throw new ApiError(
-            'No user found associated with this email',
-            httpStatus.NOT_FOUND
-        );
+        // * E-posta varlığıyıla alakalı bilgi vermemek için gönderildi mesajı verdik
+        return {
+            message: 'Email verification link successfully sent to email',
+            statusCode: httpStatus.OK,
+        };
     }
 
     if (user.email_verified) {

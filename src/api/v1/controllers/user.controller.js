@@ -1,5 +1,6 @@
 /* eslint-disable max-len */
 const httpStatus = require('http-status');
+const mongoose = require('mongoose');
 const service = require('../services/user.service');
 const postService = require('../services/post.service');
 const statisticHelper = require('../scripts/helpers/statistics.helper');
@@ -29,17 +30,22 @@ class UserController extends BaseController {
     }
 
     register = async (req, res, next) => {
-        const { hashedPassword, hashedSalt } = passwordHelper.passwordToHash(
-            req.body.password
-        );
-
-        req.body.password = hashedPassword;
-        req.body.salt = hashedSalt;
-        req.body.last_login = Date.now();
+        const session = await mongoose.startSession();
+        session.startTransaction();
 
         try {
-            const user = await service.create(req.body);
+            const { hashedPassword, hashedSalt } =
+                passwordHelper.passwordToHash(req.body.password);
+
+            req.body.password = hashedPassword;
+            req.body.salt = hashedSalt;
+            req.body.last_login = Date.now();
+
+            const user = (await service.create(req.body, session))[0];
             if (!user) {
+                await session.abortTransaction();
+                await session.endSession();
+
                 throw new Error();
             }
 
@@ -48,36 +54,37 @@ class UserController extends BaseController {
             const accessToken = response.access_token;
             const refreshToken = response.refresh_token;
 
-            const accessTokenResult = await accessTokenService.create({
-                user: user._id,
-                token: accessToken,
-            });
+            const accessTokenResult = (
+                await accessTokenService.create(
+                    {
+                        user: user._id,
+                        token: accessToken,
+                    },
+                    session
+                )
+            )[0];
 
-            const refreshTokenResult = await refreshTokenService.create({
-                user: user._id,
-                token: refreshToken,
-            });
+            const refreshTokenResult = (
+                await refreshTokenService.create(
+                    {
+                        user: user._id,
+                        token: refreshToken,
+                    },
+                    session
+                )
+            )[0];
 
             if (!accessTokenResult || !refreshTokenResult) {
-                // ! FIXME - Add transaction
-                // ! Kullanıcıyı silmek yerine transaction'ı rollback yaptır
+                await session.abortTransaction();
+                await session.endSession();
 
-                await userService.deleteById(user._id);
                 throw new Error();
             }
 
-            try {
-                await userHelper.createAndVerifyEmail(req.body.email);
-            } catch (error) {
-                await redisHelper.removeByClassName(this.constructor.name);
+            await session.commitTransaction();
+            await session.endSession();
 
-                ApiDataSuccess.send(
-                    response,
-                    'Your registration has been created successfully, but the verification link could not be sent',
-                    httpStatus.CREATED,
-                    res
-                );
-            }
+            await userHelper.createAndVerifyEmail(req.body.email);
 
             await redisHelper.removeByClassName(this.constructor.name);
 
@@ -88,6 +95,9 @@ class UserController extends BaseController {
                 res
             );
         } catch (error) {
+            await session.abortTransaction();
+            await session.endSession();
+
             if (error.code === 11000) {
                 return next(
                     new ApiError('Email already exists', httpStatus.CONFLICT)
@@ -104,13 +114,18 @@ class UserController extends BaseController {
     };
 
     login = async (req, res, next) => {
-        const user = await service.fetchOneByQuery({ email: req.body.email });
+        const user = await service.fetchOneByQuery(
+            { email: req.body.email },
+            {
+                select: '+password +salt',
+            }
+        );
 
         if (!user) {
             return next(
                 new ApiError(
-                    'No user found associated with this email',
-                    httpStatus.NOT_FOUND
+                    'Email or password is incorrect',
+                    httpStatus.BAD_REQUEST
                 )
             );
         }
@@ -122,7 +137,10 @@ class UserController extends BaseController {
 
         if (user.password !== hashedPassword) {
             return next(
-                new ApiError('Invalid password', httpStatus.BAD_REQUEST)
+                new ApiError(
+                    'Email or password is incorrect',
+                    httpStatus.BAD_REQUEST
+                )
             );
         }
 
@@ -602,7 +620,6 @@ class UserController extends BaseController {
 
         const users = await userService.fetchAll({
             queryOptions: req?.queryOptions,
-            select: '-password -salt',
         });
 
         const response = [];
@@ -654,9 +671,7 @@ class UserController extends BaseController {
     };
 
     fetchOneByParamsIdForAdmin = async (req, res, next) => {
-        const user = await service.fetchOneById(req.params.id, {
-            select: '-password -salt',
-        });
+        const user = await service.fetchOneById(req.params.id);
 
         if (!user) {
             return next(new ApiError('User not found', httpStatus.NOT_FOUND));
@@ -724,6 +739,10 @@ class UserController extends BaseController {
                 },
             });
 
+            if (!updatedUser) {
+                throw new Error();
+            }
+
             const newUpdatedUser =
                 userHelper.deletePasswordAndSaltFields(updatedUser);
 
@@ -736,7 +755,12 @@ class UserController extends BaseController {
                 res
             );
         } catch (error) {
-            return next(new ApiError(error, httpStatus.BAD_REQUEST));
+            return next(
+                new ApiError(
+                    'There was a problem uploading the avatar image.',
+                    httpStatus.INTERNAL_SERVER_ERROR
+                )
+            );
         }
     };
 

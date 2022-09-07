@@ -47,9 +47,6 @@
         }
     ],
     "paths": {
-        "/users/redirects/verify-email/{emailVerifyToken}": {
-            "$ref": "./paths/user/verify-email.json"
-        },
         "/users/profile": {
             "$ref": "./paths/user/profile.json"
         },
@@ -62,8 +59,17 @@
         "/users/emails/email-change": {
             "$ref": "./paths/user/change-email-get-email.json"
         },
+        "/users/emails/password-reset": {
+            "$ref": "./paths/user/get-password-reset-email.json"
+        },
+        "/users/emails/email-verification": {
+            "$ref": "./paths/user/get-email-verification-email.json"
+        },
         "/users/redirects/change-email/{changeEmailToken}": {
             "$ref": "./paths/user/change-email.json"
+        },
+        "/users/redirects/verify-email/{emailVerifyToken}": {
+            "$ref": "./paths/user/verify-email.json"
         },
         "/users/logout": {
             "$ref": "./paths/user/logout.json"
@@ -71,14 +77,8 @@
         "/users/upload-avatar": {
             "$ref": "./paths/user/upload-avatar.json"
         },
-        "/users/emails/password-reset": {
-            "$ref": "./paths/user/get-password-reset-email.json"
-        },
-        "/users/redirects/password-reset": {
+        "/users/password-reset": {
             "$ref": "./paths/user/reset-password.json"
-        },
-        "/users/emails/email-verification": {
-            "$ref": "./paths/user/get-email-verification-email.json"
         },
         "/users/password-change": {
             "$ref": "./paths/user/change-password.json"

@@ -47,60 +47,6 @@
     }
   ],
   "paths": {
-    "/users/redirects/verify-email/{emailVerifyToken}": {
-      "summary": "",
-      "description": "",
-      "get": {
-        "tags": [
-          "Users"
-        ],
-        "summary": "Verify email",
-        "description": "Verify email",
-        "operationId": "users.verify.email",
-        "parameters": [
-          {
-            "in": "path",
-            "name": "emailVerifyToken",
-            "schema": {
-              "type": "string"
-            },
-            "required": true,
-            "description": "emailVerifyToken in email verification mail"
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "Email verification successfully",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "allOf": [
-                    {
-                      "$ref": "#/paths/~1users~1logout/post/responses/200/content/application~1json/schema/allOf/0"
-                    },
-                    {
-                      "type": "object",
-                      "properties": {
-                        "statusCode": {
-                          "type": "number",
-                          "default": 200
-                        }
-                      }
-                    }
-                  ]
-                }
-              }
-            }
-          },
-          "400": {
-            "$ref": "#/paths/~1plans/get/responses/400"
-          },
-          "500": {
-            "$ref": "#/paths/~1posts/post/responses/500"
-          }
-        }
-      }
-    },
     "/users/profile": {
       "summary": "",
       "description": "",
@@ -370,9 +316,6 @@
           "400": {
             "$ref": "#/paths/~1plans/get/responses/400"
           },
-          "404": {
-            "$ref": "#/paths/~1posts/post/responses/404"
-          },
           "500": {
             "$ref": "#/paths/~1posts/post/responses/500"
           }
@@ -509,6 +452,98 @@
         }
       }
     },
+    "/users/emails/password-reset": {
+      "summary": "",
+      "description": "",
+      "post": {
+        "tags": [
+          "Users"
+        ],
+        "summary": "Reset password",
+        "description": "With the token received from this endpoint, a request can be made to the `user/password-reset` endpoint.",
+        "operationId": "users.get-password-reset-email",
+        "requestBody": {
+          "$ref": "#/components/requestBodies/get-password-reset-email"
+        },
+        "responses": {
+          "200": {
+            "description": "When this response is received, a password reset link is sent to the user's e-mail address",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "allOf": [
+                    {
+                      "$ref": "#/paths/~1users~1logout/post/responses/200/content/application~1json/schema/allOf/0"
+                    },
+                    {
+                      "type": "object",
+                      "properties": {
+                        "statusCode": {
+                          "type": "number",
+                          "default": 200
+                        }
+                      }
+                    }
+                  ]
+                }
+              }
+            }
+          },
+          "400": {
+            "$ref": "#/paths/~1plans/get/responses/400"
+          },
+          "404": {
+            "$ref": "#/paths/~1posts/post/responses/404"
+          }
+        }
+      }
+    },
+    "/users/emails/email-verification": {
+      "summary": "",
+      "description": "",
+      "post": {
+        "tags": [
+          "Users"
+        ],
+        "summary": "Verify email address",
+        "description": "With the token received from this endpoint, a request can be made to the `user/verify-email` endpoint.",
+        "operationId": "users.get-email-verification-email",
+        "requestBody": {
+          "$ref": "#/components/requestBodies/get-email-verification-email"
+        },
+        "responses": {
+          "200": {
+            "description": "When this response is received, an email verification link will be sent to the user's email address.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "allOf": [
+                    {
+                      "$ref": "#/paths/~1users~1logout/post/responses/200/content/application~1json/schema/allOf/0"
+                    },
+                    {
+                      "type": "object",
+                      "properties": {
+                        "statusCode": {
+                          "type": "number",
+                          "default": 200
+                        }
+                      }
+                    }
+                  ]
+                }
+              }
+            }
+          },
+          "400": {
+            "$ref": "#/paths/~1plans/get/responses/400"
+          },
+          "500": {
+            "$ref": "#/paths/~1posts/post/responses/500"
+          }
+        }
+      }
+    },
     "/users/redirects/change-email/{changeEmailToken}": {
       "summary": "",
       "description": "",
@@ -559,6 +594,60 @@
           },
           "409": {
             "$ref": "#/paths/~1tags~1admin/post/responses/409"
+          },
+          "500": {
+            "$ref": "#/paths/~1posts/post/responses/500"
+          }
+        }
+      }
+    },
+    "/users/redirects/verify-email/{emailVerifyToken}": {
+      "summary": "",
+      "description": "",
+      "get": {
+        "tags": [
+          "Users"
+        ],
+        "summary": "Verify email",
+        "description": "Verify email",
+        "operationId": "users.verify.email",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "emailVerifyToken",
+            "schema": {
+              "type": "string"
+            },
+            "required": true,
+            "description": "emailVerifyToken in email verification mail"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Email verification successfully",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "allOf": [
+                    {
+                      "$ref": "#/paths/~1users~1logout/post/responses/200/content/application~1json/schema/allOf/0"
+                    },
+                    {
+                      "type": "object",
+                      "properties": {
+                        "statusCode": {
+                          "type": "number",
+                          "default": 200
+                        }
+                      }
+                    }
+                  ]
+                }
+              }
+            }
+          },
+          "400": {
+            "$ref": "#/paths/~1plans/get/responses/400"
           },
           "500": {
             "$ref": "#/paths/~1posts/post/responses/500"
@@ -794,53 +883,7 @@
         }
       }
     },
-    "/users/emails/password-reset": {
-      "summary": "",
-      "description": "",
-      "post": {
-        "tags": [
-          "Users"
-        ],
-        "summary": "Reset password",
-        "description": "With the token received from this endpoint, a request can be made to the `user/password-reset` endpoint.",
-        "operationId": "users.get-password-reset-email",
-        "requestBody": {
-          "$ref": "#/components/requestBodies/get-password-reset-email"
-        },
-        "responses": {
-          "200": {
-            "description": "When this response is received, a password reset link is sent to the user's e-mail address",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "allOf": [
-                    {
-                      "$ref": "#/paths/~1users~1logout/post/responses/200/content/application~1json/schema/allOf/0"
-                    },
-                    {
-                      "type": "object",
-                      "properties": {
-                        "statusCode": {
-                          "type": "number",
-                          "default": 200
-                        }
-                      }
-                    }
-                  ]
-                }
-              }
-            }
-          },
-          "400": {
-            "$ref": "#/paths/~1plans/get/responses/400"
-          },
-          "404": {
-            "$ref": "#/paths/~1posts/post/responses/404"
-          }
-        }
-      }
-    },
-    "/users/redirects/password-reset": {
+    "/users/password-reset": {
       "summary": "",
       "description": "",
       "post": {
@@ -879,55 +922,6 @@
           },
           "400": {
             "$ref": "#/paths/~1plans/get/responses/400"
-          },
-          "500": {
-            "$ref": "#/paths/~1posts/post/responses/500"
-          }
-        }
-      }
-    },
-    "/users/emails/email-verification": {
-      "summary": "",
-      "description": "",
-      "post": {
-        "tags": [
-          "Users"
-        ],
-        "summary": "Verify email address",
-        "description": "With the token received from this endpoint, a request can be made to the `user/verify-email` endpoint.",
-        "operationId": "users.get-email-verification-email",
-        "requestBody": {
-          "$ref": "#/components/requestBodies/get-email-verification-email"
-        },
-        "responses": {
-          "200": {
-            "description": "When this response is received, an email verification link will be sent to the user's email address.",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "allOf": [
-                    {
-                      "$ref": "#/paths/~1users~1logout/post/responses/200/content/application~1json/schema/allOf/0"
-                    },
-                    {
-                      "type": "object",
-                      "properties": {
-                        "statusCode": {
-                          "type": "number",
-                          "default": 200
-                        }
-                      }
-                    }
-                  ]
-                }
-              }
-            }
-          },
-          "400": {
-            "$ref": "#/paths/~1plans/get/responses/400"
-          },
-          "404": {
-            "$ref": "#/paths/~1posts/post/responses/404"
           },
           "500": {
             "$ref": "#/paths/~1posts/post/responses/500"

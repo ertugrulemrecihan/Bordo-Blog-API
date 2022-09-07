@@ -49,10 +49,12 @@ const UserSchema = Mongoose.Schema(
             type: String,
             min: 8,
             required: true,
+            select: false,
         },
         salt: {
             type: String,
             required: true,
+            select: false,
         },
         roles: [
             {
