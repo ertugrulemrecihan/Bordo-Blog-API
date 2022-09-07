@@ -12,6 +12,7 @@ const random = require('random-gen');
 const ApiSuccess = require('../scripts/responses/success/apiSuccess');
 const commentService = require('../services/comment.service');
 const statisticHelper = require('../scripts/helpers/statistics.helper');
+const mongoose = require('mongoose');
 
 class PostController extends BaseController {
     constructor() {
@@ -83,17 +84,46 @@ class PostController extends BaseController {
     // Override
     create = async (req, res, next) => {
         req.body.writer = req.user._id;
-
         const coverImage = req.files.cover_image;
-
         const tags = req.body.tags;
+
+        const uploadResponse = await googleDriveHelper.uploadFile(
+            coverImage,
+            process.env.GOOGLE_POSTS_COVER_IMAGES_FOLDER
+        );
+
+        if (!uploadResponse) {
+            return next(
+                new ApiError(
+                    'Cover image upload error. Failed to create post',
+                    httpStatus.INTERNAL_SERVER_ERROR
+                )
+            );
+        }
+
+        const coverImageBody = {
+            url: uploadResponse.imageUrl,
+            file_id: uploadResponse.id,
+            name: uploadResponse.name,
+        };
+
+        const session = await mongoose.startSession();
+        session.startTransaction();
 
         if (tags) {
             for (const tagId of tags) {
-                const result = await tagService.updateById(tagId, {
-                    $inc: { post_count: 1 },
-                });
+                const result = await tagService.updateById(
+                    tagId,
+                    {
+                        $inc: { post_count: 1 },
+                    },
+                    session
+                );
+
                 if (!result) {
+                    await session.abortTransaction();
+                    await session.endSession();
+
                     return next(
                         new ApiError(
                             `Tag not found. Tag Id: ${tagId}`,
@@ -104,17 +134,6 @@ class PostController extends BaseController {
             }
         }
 
-        const uploadResponse = await googleDriveHelper.uploadFile(
-            coverImage,
-            process.env.GOOGLE_POSTS_COVER_IMAGES_FOLDER
-        );
-
-        const coverImageBody = {
-            url: uploadResponse.imageUrl,
-            file_id: uploadResponse.id,
-            name: uploadResponse.name,
-        };
-
         req.body.cover_image = coverImageBody;
 
         const slugRandom = random.alphaNum(12).toLowerCase();
@@ -123,9 +142,12 @@ class PostController extends BaseController {
         req.body.slug = postSlug;
 
         try {
-            const response = await postService.create(req.body);
+            const response = await postService.create(req.body, session);
 
             if (!response) {
+                await session.abortTransaction();
+                await session.endSession();
+
                 return next(
                     new ApiError(
                         'Post creation failed',
@@ -134,6 +156,9 @@ class PostController extends BaseController {
                 );
             }
 
+            await session.commitTransaction();
+            await session.endSession();
+
             ApiDataSuccess.send(
                 response,
                 'Post created successfully',
@@ -141,6 +166,9 @@ class PostController extends BaseController {
                 res
             );
         } catch (err) {
+            session.abortTransaction();
+            await session.endSession();
+
             if (err.code === 11000) {
                 return next(
                     new ApiError(
@@ -212,9 +240,36 @@ class PostController extends BaseController {
 
         await googleDriveHelper.deleteFile(post.cover_image.file_id);
 
-        const result = await postService.deleteById(post._id);
+        const session = await mongoose.startSession();
+        session.startTransaction();
+
+        if (post.tags.length > 0) {
+            for (const tag of post.tags) {
+                const removeTagResult = await tagService.updateById(tag._id, {
+                    $inc: { post_count: -1 },
+                });
+
+                if (!removeTagResult) {
+                    await session.abortTransaction();
+                    await session.endSession();
+
+                    return next(
+                        new ApiError(
+                            // eslint-disable-next-line max-len
+                            'Post tags could not be updated. Post could not be deleted',
+                            httpStatus.INTERNAL_SERVER_ERROR
+                        )
+                    );
+                }
+            }
+        }
+
+        const result = await postService.deleteById(post._id, session);
 
         if (!result) {
+            await session.abortTransaction();
+            await session.endSession();
+
             return next(
                 new ApiError(
                     'Post deletion failed',
@@ -222,6 +277,9 @@ class PostController extends BaseController {
                 )
             );
         }
+
+        await session.commitTransaction();
+        await session.endSession();
 
         ApiSuccess.send('Post deletion successfully', httpStatus.OK, res);
     };
@@ -249,6 +307,15 @@ class PostController extends BaseController {
                 coverImage,
                 process.env.GOOGLE_POSTS_COVER_IMAGES_FOLDER
             );
+
+            if (!uploadResponse) {
+                return next(
+                    new ApiError(
+                        'Cover image upload error. Failed to update post',
+                        httpStatus.INTERNAL_SERVER_ERROR
+                    )
+                );
+            }
 
             const coverImageBody = {
                 url: uploadResponse.imageUrl,
@@ -327,16 +394,19 @@ class PostController extends BaseController {
         const index = post.likes.findIndex(
             (o) => o._id.toString() == req.user._id.toString()
         );
+
         let message = null;
 
         if (index > -1) {
             // * Unlike
             post.likes.splice(index, 1);
+
             message =
                 'User has been successfully removed from the list of likes';
         } else {
             // * Like
             post.likes.push(req.user);
+
             message = 'User has been successfully added to the list of likes';
         }
 
