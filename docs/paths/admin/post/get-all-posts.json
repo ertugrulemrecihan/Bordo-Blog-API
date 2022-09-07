@@ -38,31 +38,31 @@
                     "properties": {
                         "title.eq": {
                             "type": "string",
-                            "example": "blogger"
+                            "example": "Bordo Blog"
                         },
                         "createdAt.eqd": {
                             "type": "string",
-                            "example": "2023 & 2023-03 & 2023-03-12 & 2023-03-12T18 & 2023-03-12T18:20 & 2023-03-12T18:20:45"
+                            "example": "2023  or  2023-03  or  2023-03-12  or  2023-03-12T18  or  2023-03-12T18:20  or  2023-03-12T18:20:45"
                         },
                         "createdAt.gt": {
                             "type": "string",
-                            "example": "2023 & 2023-03 & 2023-03-12 & 2023-03-12T18 & 2023-03-12T18:20 & 2023-03-12T18:20:45"
+                            "example": "1662361877178"
                         },
                         "createdAt.lt": {
                             "type": "string",
-                            "example": "2023 & 2023-03 & 2023-03-12 & 2023-03-12T18 & 2023-03-12T18:20 & 2023-03-12T18:20:45"
+                            "example": "1662361877178"
                         },
                         "createdAt.gte": {
                             "type": "string",
-                            "example": "2023 & 2023-03 & 2023-03-12 & 2023-03-12T18 & 2023-03-12T18:20 & 2023-03-12T18:20:45"
+                            "example": "1662361877178"
                         },
                         "createdAt.lte": {
                             "type": "string",
-                            "example": "2023 & 2023-03 & 2023-03-12 & 2023-03-12T18 & 2023-03-12T18:20 & 2023-03-12T18:20:45"
+                            "example": "1662361877178"
                         },
                         "tags.in": {
                             "type": "string",
-                            "example": "movie"
+                            "example": "movie, software"
                         }
                     }
                 },
